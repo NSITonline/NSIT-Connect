@@ -15,32 +15,22 @@
 
             <FrameLayout
                 android:id="@+id/content_frame"
-                android:background="#ffffff"
+                android:background="#b9b9b9"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:animateLayoutChanges="true"   >
 
+                <android.support.v4.widget.SwipeRefreshLayout
 
-
-
-                <LinearLayout
+                    android:id="@+id/swipe_container"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_gravity="center"
-                        android:id="@+id/next"
-                        android:gravity="center"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Helloooooo!!!! "
-                         />
-
-
-                </LinearLayout>
-
+                    android:layout_height="match_parent">
+                    <ListView
+                        android:id="@+id/list"
+                        android:divider="@null"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </android.support.v4.widget.SwipeRefreshLayout>
 
 
             </FrameLayout>

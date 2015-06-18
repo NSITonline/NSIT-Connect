@@ -25,9 +25,7 @@ public class CustomList2 extends ArrayAdapter<String>{
 	public View getView(int position, View view, ViewGroup parent) {
 		LayoutInflater inflater = context.getLayoutInflater();
 		View rowView= inflater.inflate(R.layout.message, null, true);
-		Typeface custom_font = Typeface.createFromAsset(getContext().getAssets(), "fonts/Raleway-Regular.ttf");
 		TextView txtTitle = (TextView) rowView.findViewById(R.id.textView1);
-		txtTitle.setTypeface(custom_font);
 		ImageView imageView = (ImageView) rowView.findViewById(R.id.imageView1);
 		txtTitle.setText(web[position]);
 		imageView.setImageResource(imageId[position]);

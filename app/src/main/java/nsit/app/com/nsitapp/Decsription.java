@@ -155,7 +155,7 @@ String text;
                 ob = new JSONObject(text);
                 arr = ob.getJSONArray("images");
 
-                imglink = arr.getJSONObject(1).getString("source");
+                imglink = arr.getJSONObject(0).getString("source");
                 if(imglink!=null) {
                     if (isNetworkAvailable())
                         new DownloadImageTask(imageView).execute(imglink);

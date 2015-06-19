@@ -157,31 +157,35 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                 List<String> list7 = new ArrayList<String>();
 
                 Log.e("yo", " " + arr + arr.length());
-                for(int i = 0; i < arr.length();i++ ){
+                for(int i = 0; i < arr.length(); i++){
                     try {
-                        if(arr.getJSONObject(i).has("message"))
+                        if(arr.getJSONObject(i).has("message")&&arr.getJSONObject(i).has("picture")&&arr.getJSONObject(i).has("link")&&arr.getJSONObject(i).has("likes")) {
                             list.add(arr.getJSONObject(i).getString("message"));
-                        else
-                        list.add(null);
-                        if(!(arr.getJSONObject(i).has("link")))
-                            list5.add(null);
-                        else  list5.add(arr.getJSONObject(i).getString("link"));
+                            Log.e("YOLO", "Message : " + i + " " + arr.getJSONObject(i).getString("message"));
+
+                        }
+                        else {
+                            continue;
+                        }
                         if(!(arr.getJSONObject(i).has("object_id")))
                             list1.add(null);
                         else
                             list1.add(arr.getJSONObject(i).getString("object_id"));
 
 
-                        Log.e("YOLO", "Message : " + i + " " + arr.getJSONObject(i).getString("message"));
 
-                        if(arr.getJSONObject(i).has("picture"))
-                        list6.add(arr.getJSONObject(i).getString("picture"));
+                        if(arr.getJSONObject(i).has("picture")) {
+                            list6.add(arr.getJSONObject(i).getString("picture"));
+                            Log.e("yo","Picture  " +i+ arr.getJSONObject(i).getString("picture"));
+                        }
                         else
-                        list6.add(null);
-                        if(arr.getJSONObject(i).has("link"))
-                        list7.add(arr.getJSONObject(i).getString("link"));
+                            list6.add(null);
+                        if(arr.getJSONObject(i).has("link")) {
+                            list7.add(arr.getJSONObject(i).getString("link"));
+                            Log.e("yo", "link " + i+ arr.getJSONObject(i).getString("link"));
+                        }
                         else
-                        list7.add(null);
+                            list7.add(null);
                         if(arr.getJSONObject(i).has("likes")) {
                             String s = arr.getJSONObject(i).getString("likes");
                             JSONObject o = new JSONObject(s);

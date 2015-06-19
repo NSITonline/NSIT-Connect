@@ -6,6 +6,8 @@ import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
@@ -23,11 +26,10 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-
-
-
 
 public class ImageAct extends AppCompatActivity {
     String img,des,like,link,obid,imglink;
@@ -39,8 +41,10 @@ public class ImageAct extends AppCompatActivity {
         Intent i = getIntent();
         img = i.getStringExtra("img");
         obid = i.getStringExtra("oid");
-        getSupportActionBar().hide();
+      //  getSupportActionBar().hide();
         iv  = (TouchImageView) findViewById(R.id.iv);
+
+        setTitle("Image");
 
         if(isNetworkAvailable()) {
             if (img == null)
@@ -65,6 +69,45 @@ public class ImageAct extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+        if(id==R.id.save)
+        {
+            iv.setDrawingCacheEnabled(true);
+            Bitmap b = iv.getDrawingCache();
+
+            File root = Environment.getExternalStorageDirectory();
+            File dir = new File(root.getAbsolutePath() +"/NSIT Online");
+            try{
+                if(dir.mkdir()) {
+                    System.out.println("Directory created");
+                    Log.e("yo", "Directory created");
+                } else {
+                    System.out.println("Directory is not created");
+                    Log.e("yo", "Directory not created");
+                }
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+              File cachePath = new File(root.getAbsolutePath() + "/NSIT Online/image_"+ System.currentTimeMillis()+ ".jpg");
+
+
+
+
+            try
+            {
+                cachePath.createNewFile();
+                FileOutputStream ostream = new FileOutputStream(cachePath);
+                b.compress(Bitmap.CompressFormat.JPEG, 100, ostream);
+                ostream.close();
+                Toast.makeText(ImageAct.this,"Image Saved",Toast.LENGTH_SHORT).show();
+
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+                Log.e("Error","Error : " + e.getMessage());
+            }
+
+        }
 
         //noinspection SimplifiableIfStatement
 
@@ -134,7 +177,7 @@ public class ImageAct extends AppCompatActivity {
                 ob = new JSONObject(text);
                 arr = ob.getJSONArray("images");
 
-                imglink = arr.getJSONObject(1).getString("source");
+                imglink = arr.getJSONObject(0).getString("source");
                 if(imglink!=null)
                     if(isNetworkAvailable())
                         new DownloadImageTask(iv).execute(imglink);

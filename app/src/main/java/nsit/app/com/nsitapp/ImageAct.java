@@ -6,10 +6,8 @@ import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
-import android.os.Environment;
-import android.provider.MediaStore;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -41,7 +39,6 @@ public class ImageAct extends AppCompatActivity {
         Intent i = getIntent();
         img = i.getStringExtra("img");
         obid = i.getStringExtra("oid");
-      //  getSupportActionBar().hide();
         iv  = (TouchImageView) findViewById(R.id.iv);
 
         setTitle("Image");
@@ -69,7 +66,7 @@ public class ImageAct extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if(id==R.id.save)
+        if(id== R.id.save)
         {
             iv.setDrawingCacheEnabled(true);
             Bitmap b = iv.getDrawingCache();
@@ -153,7 +150,7 @@ public class ImageAct extends AppCompatActivity {
         protected String doInBackground(String... urls) {
 
             Log.e("Yo", "Started");
-            String URL = "https://graph.facebook.com/"+obid+"?fields=images&access_token="+Val.common_access;
+            String URL = "https://graph.facebook.com/"+obid+"?fields=images&access_token="+ Val.common_access;
             HttpClient Client = new DefaultHttpClient();
             HttpGet httpget = new HttpGet(URL);
             ResponseHandler<String> responseHandler = new BasicResponseHandler();

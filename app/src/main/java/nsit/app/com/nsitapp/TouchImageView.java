@@ -1,7 +1,7 @@
 package nsit.app.com.nsitapp;
 
 /**
- * Created by kamlesh kumar garg on 17-06-2015.
+ * Created by Swati garg on 17-06-2015.
  */
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -13,7 +13,6 @@ import android.graphics.PointF;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
@@ -128,7 +127,7 @@ public class TouchImageView extends ImageView {
     }
 
     @Override
-    public void setOnTouchListener(View.OnTouchListener l) {
+    public void setOnTouchListener(OnTouchListener l) {
         userTouchListener = l;
     }
 
@@ -1168,7 +1167,7 @@ public class TouchImageView extends ImageView {
         }
     }
 
-    @TargetApi(Build.VERSION_CODES.GINGERBREAD)
+    @TargetApi(VERSION_CODES.GINGERBREAD)
     private class CompatScroller {
         Scroller scroller;
         OverScroller overScroller;
@@ -1235,7 +1234,7 @@ public class TouchImageView extends ImageView {
         }
     }
 
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+    @TargetApi(VERSION_CODES.JELLY_BEAN)
     private void compatPostOnAnimation(Runnable runnable) {
         if (VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN) {
             postOnAnimation(runnable);

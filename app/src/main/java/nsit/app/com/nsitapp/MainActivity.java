@@ -1,17 +1,16 @@
 package nsit.app.com.nsitapp;
 
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,26 +18,18 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.ResponseHandler;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.BasicResponseHandler;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
+public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     ListView lv;
     private ActionBarDrawerToggle mDrawerToggle;
     Boolean Nsitonline,Collegespace,Crosslinks,Junoon,Bullet,Rotaract;
-    static final String[] sideitems = new String[] { "Item 1" , "Item 2","Item 3","Item 4" , "Item 5","Item 6" };	//items on navigation drawer
+    static final String[] sideitems = new String[] { "Home" , "My Feed","Video","Calendar" , "Item 5","About" };	//items on navigation drawer
     SwipeRefreshLayout swipeLayout;
     List<String> list = new ArrayList<String>();
     List<String> list1 = new ArrayList<String>();
@@ -58,32 +49,11 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        Intent i = getIntent();
-
-
-        Nsitonline = i.getBooleanExtra("nsitonline",false);
-        Crosslinks = i.getBooleanExtra("crosslinks",false);
-        Collegespace= i.getBooleanExtra("collegespace",false);
-        Bullet = i.getBooleanExtra("bullet",false);
-        Junoon = i.getBooleanExtra("junoon",false);
-        Rotaract = i.getBooleanExtra("rotaract",false);
-
-
-        if(Nsitonline)
-            new DownloadWebPageTask2(Val.id_nsitonline).execute();
-        if(Crosslinks)
-            new DownloadWebPageTask2(Val.id_crosslinks).execute();
-        if(Collegespace)
-            new DownloadWebPageTask2(Val.id_collegespace).execute();
-        if(Bullet)
-            new DownloadWebPageTask2(Val.id_bullet).execute();
-        if(Junoon)
-            new DownloadWebPageTask2(Val.id_junoon).execute();
-        if(Rotaract)
-            new DownloadWebPageTask2(Val.id_rotaract).execute();
-
-
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        Fragment f = new Home();
+        ft.replace(R.id.content_frame, f);
+        getSupportActionBar().setTitle("Home");
+        ft.commit();
 
         lv = (ListView) findViewById(R.id.list);
         android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
@@ -93,25 +63,11 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
 
 
-
-        swipeLayout.setOnRefreshListener(this);
-        swipeLayout.setColorScheme(android.R.color.holo_blue_bright,
-                android.R.color.holo_green_light,
-                android.R.color.holo_orange_light,
-                android.R.color.holo_red_light);
-
-
-
         //All for navigation drawer
-
-
         CustomList2 adapter2 = new CustomList2(this, sideitems, imageId);
         mDrawerList.addHeaderView(new View(this));
         mDrawerList.addFooterView(new View(this));
         mDrawerList.setAdapter(adapter2);
-
-/*        mDrawerList.setAdapter(new ArrayAdapter<String>(this,
-                R.layout.side_panel, sideitems));*/
         mDrawerToggle = new ActionBarDrawerToggle(
 
                 this,                  /* host Activity */
@@ -128,166 +84,17 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                 // TODO Auto-generated method stub
                 Toast.makeText(MainActivity.this, "Position : " + position + " Clicked ", Toast.LENGTH_SHORT).show();
                 mDrawerLayout.closeDrawer(Gravity.LEFT);
+                changeItem(position);
             }
         });
 
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setTitle("  Welcome");
         getSupportActionBar().setIcon(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
     }
 
-    @Override
-    public void onRefresh() {
-        //new DownloadWebPageTask2().execute();
-        swipeLayout.setRefreshing(false);
 
-    }
-
-    String text;
-
-
-    private class DownloadWebPageTask2 extends AsyncTask<String, Void, String> {
-
-
-        String id;
-
-        public DownloadWebPageTask2(String id) {
-            this.id = id;
-        }
-
-
-        @Override
-        protected String doInBackground(String... urls) {
-
-            Log.e("Yo", "Started");
-            String URL;
-            if(id==Val.id_junoon)
-                URL = "https://graph.facebook.com/"+id+"/feed?access_token=" + Val.common_access;
-
-            else
-                URL = "https://graph.facebook.com/"+id+"/feed?since=0000&until=1234567899999999999990&access_token=" + Val.common_access;
-            HttpClient Client = new DefaultHttpClient();
-            HttpGet httpget = new HttpGet(URL);
-            ResponseHandler<String> responseHandler = new BasicResponseHandler();
-            try {
-                text = Client.execute(httpget, responseHandler);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            return null;
-
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            Log.e("YO", "Done");
-            Log.e("yrs",""+text);
-
-            int j=0;
-            JSONObject ob;
-            JSONArray arr;
-            try {
-                ob = new JSONObject(text);
-                arr = ob.getJSONArray("data");
-
-
-                Log.e("yo", " " + arr + arr.length());
-                for(int i = 0; i < arr.length(); i++){
-                    try {
-                        if(arr.getJSONObject(i).has("message")&&arr.getJSONObject(i).has("picture")&&arr.getJSONObject(i).has("link")&&arr.getJSONObject(i).has("likes")) {
-                            list.add(arr.getJSONObject(i).getString("message"));
-                            //   Log.e("YOLO", "Message : " + i + " " + arr.getJSONObject(i).getString("message"));
-
-                        }
-                        else {
-                            continue;
-                        }
-                        if(!(arr.getJSONObject(i).has("object_id")))
-                            list1.add(null);
-                        else
-                            list1.add(arr.getJSONObject(i).getString("object_id"));
-
-
-
-                        if(arr.getJSONObject(i).has("picture")) {
-                            list6.add(arr.getJSONObject(i).getString("picture"));
-                            // Log.e("yo","Picture  " +i+ arr.getJSONObject(i).getString("picture"));
-                        }
-                        else
-                            list6.add(null);
-                        if(arr.getJSONObject(i).has("link")) {
-                            list7.add(arr.getJSONObject(i).getString("link"));
-                            // Log.e("yo", "link " + i+ arr.getJSONObject(i).getString("link"));
-                        }
-                        else
-                            list7.add(null);
-                        if(arr.getJSONObject(i).has("likes")) {
-                            String s = arr.getJSONObject(i).getString("likes");
-                            JSONObject o = new JSONObject(s);
-                            JSONArray a2 = o.getJSONArray("data");
-                            list2.add(Integer.toString(a2.length()));   //No of likes
-                        }
-                        else
-                            list2.add("0");
-
-                    } catch (Exception e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                        Log.e("Error","Errror at : " + i + " "+e.getMessage());
-                    }
-                }
-
-
-
-            } catch (Exception e) {
-
-            }
-
-            switch(id)
-            {
-                case Val.id_nsitonline : Nsitonline=false;break;
-                case Val.id_collegespace :Collegespace=false;break;
-                case Val.id_crosslinks : Crosslinks=false;break;
-                case Val.id_bullet : Bullet=false;break;
-                case Val.id_junoon : Junoon=false;break;
-                case Val.id_rotaract : Rotaract=false;break;
-            }
-
-            done();
-
-            Log.e("Yo", text);
-        }
-    }
-
-
-
-    public void done()
-    {
-        if(!Nsitonline&&!Collegespace&&!Crosslinks&&!Bullet&&!Junoon&&!Rotaract) {
-            String[] id = new String[list.size()];
-            String[] des = new String[list.size()];
-            String[] pic = new String[list.size()];
-            String[] like = new String[list.size()];
-            String[] link = new String[list.size()];
-
-
-            des = list.toArray(des);
-            like = list2.toArray(like);
-            id = list1.toArray(id);
-            pic = list6.toArray(pic);
-            link = list7.toArray(link);
-
-
-            swipeLayout.setRefreshing(false);
-            CustomList adapter = new CustomList(MainActivity.this, pic, des, like, link, id);
-            lv.addHeaderView(new View(MainActivity.this));
-            lv.addFooterView(new View(MainActivity.this));
-            lv.setAdapter(adapter);
-        }
-    }
 
     private boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager
@@ -329,5 +136,36 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         mDrawerToggle.onConfigurationChanged(newConfig);
+    }
+
+    private void changeItem(int position){
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+
+        // Locate Position
+        switch (position) {
+            case 1:
+                Fragment f = new Home();
+                ft.replace(R.id.content_frame, f);
+                getSupportActionBar().setTitle("Home");
+                break;
+
+            case 2:
+
+                Fragment f1 = new Feed();
+                ft.replace(R.id.content_frame, f1);
+                getSupportActionBar().setTitle("My Feed");
+                break;
+
+
+            case 3:
+                Fragment f2 = new Video();
+                ft.replace(R.id.content_frame, f2);
+                getSupportActionBar().setTitle("Video");
+                break;
+        }
+        ft.commit();
+        //drawerListView.setItemChecked(position, true);
+        setTitle("Title");
+        //drawerLayout.closeDrawer(drawerListView);
     }
 }

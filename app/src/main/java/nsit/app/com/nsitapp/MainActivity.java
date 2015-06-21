@@ -7,6 +7,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -25,7 +27,6 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     ListView lv;
     private ActionBarDrawerToggle mDrawerToggle;
     Boolean Nsitonline,Collegespace,Crosslinks,Junoon,Bullet,Rotaract;
-    static final String[] sideitems = new String[] { "Item 1" , "Item 2","Item 3","Item 4" , "Item 5","Item 6" };	//items on navigation drawer
+    static final String[] sideitems = new String[] { "Home" , "My Feed","Video","Calendar" , "Item 5","About" };	//items on navigation drawer
     SwipeRefreshLayout swipeLayout;
     List<String> list = new ArrayList<String>();
     List<String> list1 = new ArrayList<String>();
@@ -128,6 +129,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                 // TODO Auto-generated method stub
                 Toast.makeText(MainActivity.this, "Position : " + position + " Clicked ", Toast.LENGTH_SHORT).show();
                 mDrawerLayout.closeDrawer(Gravity.LEFT);
+                changeItem(position);
             }
         });
 
@@ -329,5 +331,30 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         mDrawerToggle.onConfigurationChanged(newConfig);
+    }
+
+    private void changeItem(int position){
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+
+        // Locate Position
+        switch (position) {
+            case 1:
+                    // TODO@Swati: Implement Home as a fragment and add it here.
+//
+//                Fragment f = new Home();
+//                ft.replace(R.id.drawer_layout, f);
+//                getSupportActionBar().setTitle("Home");
+                break;
+
+            case 3:
+                Fragment f = new Video();
+                ft.replace(R.id.content_frame, f);
+                getSupportActionBar().setTitle("Video");
+                break;
+        }
+        ft.commit();
+        //drawerListView.setItemChecked(position, true);
+        setTitle("Title");
+        //drawerLayout.closeDrawer(drawerListView);
     }
 }

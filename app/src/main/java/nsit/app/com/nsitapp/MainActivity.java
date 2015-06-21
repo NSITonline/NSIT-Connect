@@ -1,5 +1,6 @@
 package nsit.app.com.nsitapp;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
@@ -36,8 +37,15 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     private ListView mDrawerList;
     ListView lv;
     private ActionBarDrawerToggle mDrawerToggle;
+    Boolean Nsitonline,Collegespace,Crosslinks,Junoon,Bullet,Rotaract;
     static final String[] sideitems = new String[] { "Item 1" , "Item 2","Item 3","Item 4" , "Item 5","Item 6" };	//items on navigation drawer
     SwipeRefreshLayout swipeLayout;
+    List<String> list = new ArrayList<String>();
+    List<String> list1 = new ArrayList<String>();
+    List<String> list2 = new ArrayList<String>();
+    List<String> list5 = new ArrayList<String>();
+    List<String> list6 = new ArrayList<String>();
+    List<String> list7 = new ArrayList<String>();
     Integer[] imageId = {
             R.drawable.ic_action_star_10,
             R.drawable.ic_action_star_10,
@@ -49,25 +57,52 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        lv = (ListView) findViewById(R.id.list);
 
+
+        Intent i = getIntent();
+
+
+        Nsitonline = i.getBooleanExtra("nsitonline",false);
+        Crosslinks = i.getBooleanExtra("crosslinks",false);
+        Collegespace= i.getBooleanExtra("collegespace",false);
+        Bullet = i.getBooleanExtra("bullet",false);
+        Junoon = i.getBooleanExtra("junoon",false);
+        Rotaract = i.getBooleanExtra("rotaract",false);
+
+
+        if(Nsitonline)
+            new DownloadWebPageTask2(Val.id_nsitonline).execute();
+        if(Crosslinks)
+            new DownloadWebPageTask2(Val.id_crosslinks).execute();
+        if(Collegespace)
+            new DownloadWebPageTask2(Val.id_collegespace).execute();
+        if(Bullet)
+            new DownloadWebPageTask2(Val.id_bullet).execute();
+        if(Junoon)
+            new DownloadWebPageTask2(Val.id_junoon).execute();
+        if(Rotaract)
+            new DownloadWebPageTask2(Val.id_rotaract).execute();
+
+
+
+        lv = (ListView) findViewById(R.id.list);
+        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerList = (ListView) findViewById(R.id.left_drawer);
         swipeLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_container);
+
+
+
+
         swipeLayout.setOnRefreshListener(this);
         swipeLayout.setColorScheme(android.R.color.holo_blue_bright,
                 android.R.color.holo_green_light,
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
 
-        if(isNetworkAvailable())
-            new DownloadWebPageTask().execute();
-        else
-            Toast.makeText(this,"Cannot connect to internet",Toast.LENGTH_SHORT).show();
 
 
         //All for navigation drawer
-        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
 
         CustomList2 adapter2 = new CustomList2(this, sideitems, imageId);
@@ -105,24 +140,34 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
     @Override
     public void onRefresh() {
-        new DownloadWebPageTask().execute();
+        //new DownloadWebPageTask2().execute();
+        swipeLayout.setRefreshing(false);
+
     }
 
     String text;
 
-    private class DownloadWebPageTask extends AsyncTask<String, Void, String> {
-        @Override
-        protected void onPreExecute() {
 
-            //  bar.setVisibility(View.VISIBLE);
+    private class DownloadWebPageTask2 extends AsyncTask<String, Void, String> {
 
-        };
+
+        String id;
+
+        public DownloadWebPageTask2(String id) {
+            this.id = id;
+        }
+
 
         @Override
         protected String doInBackground(String... urls) {
 
             Log.e("Yo", "Started");
-             String URL = "https://graph.facebook.com/"+Val.id+"/feed?since=0000&until=1234567899999999999990&access_token=" + Val.access;
+            String URL;
+            if(id==Val.id_junoon)
+                URL = "https://graph.facebook.com/"+id+"/feed?access_token=" + Val.common_access;
+
+            else
+                URL = "https://graph.facebook.com/"+id+"/feed?since=0000&until=1234567899999999999990&access_token=" + Val.common_access;
             HttpClient Client = new DefaultHttpClient();
             HttpGet httpget = new HttpGet(URL);
             ResponseHandler<String> responseHandler = new BasicResponseHandler();
@@ -139,9 +184,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         @Override
         protected void onPostExecute(String result) {
             Log.e("YO", "Done");
-            //pd.dismiss();
-            //Toast.makeText(MainActivity.this,"Response : " + text , Toast.LENGTH_LONG).show();
-            Log.e("yrs",text);
+            Log.e("yrs",""+text);
 
             int j=0;
             JSONObject ob;
@@ -149,19 +192,14 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
             try {
                 ob = new JSONObject(text);
                 arr = ob.getJSONArray("data");
-                List<String> list = new ArrayList<String>();
-                List<String> list1 = new ArrayList<String>();
-                List<String> list2 = new ArrayList<String>();
-                List<String> list5 = new ArrayList<String>();
-                List<String> list6 = new ArrayList<String>();
-                List<String> list7 = new ArrayList<String>();
+
 
                 Log.e("yo", " " + arr + arr.length());
                 for(int i = 0; i < arr.length(); i++){
                     try {
                         if(arr.getJSONObject(i).has("message")&&arr.getJSONObject(i).has("picture")&&arr.getJSONObject(i).has("link")&&arr.getJSONObject(i).has("likes")) {
                             list.add(arr.getJSONObject(i).getString("message"));
-                            Log.e("YOLO", "Message : " + i + " " + arr.getJSONObject(i).getString("message"));
+                            //   Log.e("YOLO", "Message : " + i + " " + arr.getJSONObject(i).getString("message"));
 
                         }
                         else {
@@ -176,13 +214,13 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
                         if(arr.getJSONObject(i).has("picture")) {
                             list6.add(arr.getJSONObject(i).getString("picture"));
-                            Log.e("yo","Picture  " +i+ arr.getJSONObject(i).getString("picture"));
+                            // Log.e("yo","Picture  " +i+ arr.getJSONObject(i).getString("picture"));
                         }
                         else
                             list6.add(null);
                         if(arr.getJSONObject(i).has("link")) {
                             list7.add(arr.getJSONObject(i).getString("link"));
-                            Log.e("yo", "link " + i+ arr.getJSONObject(i).getString("link"));
+                            // Log.e("yo", "link " + i+ arr.getJSONObject(i).getString("link"));
                         }
                         else
                             list7.add(null);
@@ -203,32 +241,22 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                 }
 
 
-                String[] id = new String[list.size()];
-                String[] des = new String[list.size()];
-                String[] pic = new String[list.size()];
-                String[] like = new String[list.size()];
-                String[] link = new String[list.size()];
-
-
-                des = list.toArray(des);
-                like = list2.toArray(like);
-                id = list1.toArray(id);
-                pic = list6.toArray(pic);
-                link = list7.toArray(link);
-
-
-
-                swipeLayout.setRefreshing(false);
-                CustomList adapter = new CustomList(MainActivity.this,pic,des,like,link,id);
-                lv.addHeaderView(new View(MainActivity.this));
-                lv.addFooterView(new View(MainActivity.this));
-                lv.setAdapter(adapter);
 
             } catch (Exception e) {
 
             }
 
+            switch(id)
+            {
+                case Val.id_nsitonline : Nsitonline=false;break;
+                case Val.id_collegespace :Collegespace=false;break;
+                case Val.id_crosslinks : Crosslinks=false;break;
+                case Val.id_bullet : Bullet=false;break;
+                case Val.id_junoon : Junoon=false;break;
+                case Val.id_rotaract : Rotaract=false;break;
+            }
 
+            done();
 
             Log.e("Yo", text);
         }
@@ -236,6 +264,30 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
 
 
+    public void done()
+    {
+        if(!Nsitonline&&!Collegespace&&!Crosslinks&&!Bullet&&!Junoon&&!Rotaract) {
+            String[] id = new String[list.size()];
+            String[] des = new String[list.size()];
+            String[] pic = new String[list.size()];
+            String[] like = new String[list.size()];
+            String[] link = new String[list.size()];
+
+
+            des = list.toArray(des);
+            like = list2.toArray(like);
+            id = list1.toArray(id);
+            pic = list6.toArray(pic);
+            link = list7.toArray(link);
+
+
+            swipeLayout.setRefreshing(false);
+            CustomList adapter = new CustomList(MainActivity.this, pic, des, like, link, id);
+            lv.addHeaderView(new View(MainActivity.this));
+            lv.addFooterView(new View(MainActivity.this));
+            lv.setAdapter(adapter);
+        }
+    }
 
     private boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager
@@ -262,8 +314,6 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
-
-
         return super.onOptionsItemSelected(item);
     }
 

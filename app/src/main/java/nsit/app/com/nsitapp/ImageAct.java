@@ -153,7 +153,7 @@ public class ImageAct extends AppCompatActivity {
         protected String doInBackground(String... urls) {
 
             Log.e("Yo", "Started");
-            String URL = "http://graph.facebook.com/"+obid+"?fields=images";
+            String URL = "https://graph.facebook.com/"+obid+"?fields=images&access_token="+Val.common_access;
             HttpClient Client = new DefaultHttpClient();
             HttpGet httpget = new HttpGet(URL);
             ResponseHandler<String> responseHandler = new BasicResponseHandler();

@@ -43,6 +43,7 @@ public class Decsription extends AppCompatActivity{
     Button Link;
     ImageView imageView;
     String imglink,obid;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +63,7 @@ public class Decsription extends AppCompatActivity{
         Link = (Button) findViewById(R.id.link);
         Des = (TextView) findViewById(R.id.des);
 
-
+        Log.e("object id is : ", "" + obid);
 
         if(like==null)
             Like.setText("0");
@@ -82,7 +83,7 @@ public class Decsription extends AppCompatActivity{
             if (img == null)
                 imageView.setVisibility(View.GONE);
             else if (obid == null)
-                new DownloadImageTask(imageView).execute(img);
+                imageLoader.DisplayImage(img, imageView);
             else
                 new DownloadWebPageTask().execute();
         }
@@ -100,30 +101,6 @@ public class Decsription extends AppCompatActivity{
         });
 
     }
-    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
-        ImageView bmImage;
-
-        public DownloadImageTask(ImageView bmImage) {
-            this.bmImage = bmImage;
-        }
-
-        protected Bitmap doInBackground(String... urls) {
-            String urldisplay = urls[0];
-            Bitmap mIcon11 = null;
-            try {
-                InputStream in = new java.net.URL(urldisplay).openStream();
-                mIcon11 = BitmapFactory.decodeStream(in);
-            } catch (Exception e) {
-                Log.e("Error", e.getMessage());
-                e.printStackTrace();
-            }
-            return mIcon11;
-        }
-
-        protected void onPostExecute(Bitmap result) {
-            bmImage.setImageBitmap(result);
-        }
-    }
 
 String text;
     private class DownloadWebPageTask extends AsyncTask<String, Void, String> {
@@ -132,7 +109,7 @@ String text;
         protected String doInBackground(String... urls) {
 
             Log.e("Yo", "Started");
-            String URL = "http://graph.facebook.com/"+obid+"?fields=images";
+            String URL = "https://graph.facebook.com/"+obid+"?fields=images&access_token="+Val.common_access;
             HttpClient Client = new DefaultHttpClient();
             HttpGet httpget = new HttpGet(URL);
             ResponseHandler<String> responseHandler = new BasicResponseHandler();
@@ -140,6 +117,7 @@ String text;
                 text = Client.execute(httpget, responseHandler);
             } catch (IOException e) {
                 e.printStackTrace();
+                Log.e("eroore",e.getMessage());
             }
 
             return null;
@@ -147,19 +125,21 @@ String text;
 
         @Override
         protected void onPostExecute(String result) {
-            Log.e("YO", "Done" + obid);
-            Log.e("yrs",text);
+            Log.e("YO", "Done" + obid + text);
+//            Log.e("yrs",text);
             JSONObject ob;
             JSONArray arr;
             try {
                 ob = new JSONObject(text);
+
                 arr = ob.getJSONArray("images");
 
+                if(arr.getJSONObject(0).has("source"))
                 imglink = arr.getJSONObject(0).getString("source");
                 if(imglink!=null) {
                     if (isNetworkAvailable())
-                        new DownloadImageTask(imageView).execute(imglink);
-                }
+                        imageLoader.DisplayImage(imglink, imageView);
+ }
                 else
                     imageView.setVisibility(View.GONE);
                 Log.e("yrs","Image Link is : " + imglink);
@@ -167,8 +147,6 @@ String text;
             } catch (Exception e) {
                     Log.e("yo",e.getMessage());
             }
-
-
 
             Log.e("Yo", imglink);
         }

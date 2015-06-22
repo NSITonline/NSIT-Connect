@@ -3,23 +3,21 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Test run video"
-        android:id="@+id/startTestVideo"
-        android:layout_gravity="center_horizontal" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Fetch content"
-        android:id="@+id/fetchVideos"
-        android:layout_gravity="center_horizontal" />
-
-    <ListView
-        android:id="@+id/videos_list"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:divider="@android:color/transparent"
-        android:dividerHeight="50dp"/>
+        android:layout_height="match_parent">
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@android:style/Widget.Holo.Light.ProgressBar.Large.Inverse"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="20dp"
+            android:id="@+id/VideoProgressSpinner" />
+        <ListView
+            android:id="@+id/videos_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="50dp"/>
+    </FrameLayout>
 </LinearLayout>

@@ -14,6 +14,12 @@
         android:id="@+id/VideoThumbnail"
         android:background="#000000" />
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="6dp"
+        android:background="#ff29d1ae"></LinearLayout>
+
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,8 +30,8 @@
                 android:layout_height="wrap_content"
                 android:text="Title of video"
             android:textSize="15sp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginTop="7dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="0dp"
             android:textColor="#ffa4a4a4"
             android:id="@+id/VideoTitle"
             android:layout_row="0"
@@ -50,7 +56,8 @@
             android:layout_row="1"
             android:layout_columnSpan="2"
             android:textSize="13sp"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp" />
 
         <Button
             android:layout_width="wrap_content"
@@ -65,7 +72,7 @@
             android:layout_margin="0dp"
             android:layout_marginLeft="0dp"
             android:layout_marginTop="0dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="15dp"
             android:layout_marginBottom="0dp"
             android:textSize="12sp"
             android:textColor="#ffffffff" />

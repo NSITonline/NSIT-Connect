@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="350dp"
+    android:layout_height="250dp"
+    android:orientation="vertical"
+    android:layout_gravity="center_horizontal"
+    android:background="#ffffffff"
+    android:layout_marginBottom="50dp"
+    >
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="175dp"
+        android:id="@+id/imageView"
+        android:background="#ff30ffd0" />
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="75dp">
+
+        <TextView android:layout_width="182dp"
+                android:layout_height="wrap_content"
+                android:text="Header"
+            android:textSize="18sp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="8dp"
+            android:textColor="#ffa4a4a4" />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/text"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:text="PLAY"
+            android:id="@+id/play_video_button"
+            android:layout_gravity="right"
+            android:enabled="false"
+            android:textColor="@android:color/white"
+            android:background="#ff2acca5"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="10dp" />
+    </GridLayout>
+
+</LinearLayout>

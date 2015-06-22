@@ -3,18 +3,23 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Video section"
-        android:id="@+id/textView"
-        android:layout_gravity="center_horizontal" />
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="run video"
-        android:id="@+id/startVideo"
+        android:text="Test run video"
+        android:id="@+id/startTestVideo"
         android:layout_gravity="center_horizontal" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fetch content"
+        android:id="@+id/fetchVideos"
+        android:layout_gravity="center_horizontal" />
+
+    <ListView
+        android:id="@+id/videos_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="50dp"/>
 </LinearLayout>

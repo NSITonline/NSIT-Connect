@@ -24,6 +24,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -34,13 +35,17 @@ import java.io.IOException;
 public class Video extends Fragment {
     ListView listview;
 
+    public static void LaunchVideo(String id){
+
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-
-
+    }
+    public void populateList(JSONArray Items){
+        listview.setAdapter(new VideoList_Adapter(getActivity(), Items));
     }
 
     Activity activity;
@@ -56,8 +61,7 @@ public class Video extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_video, container, false);
 //        Videos List Initialization.
         listview = (ListView) rootView.findViewById(R.id.videos_list);
-        listview.setAdapter(new VideoList_Adapter(getActivity(), new String[] { "data1",
-                "data2" }));
+
 //
 
 //        Test Button to check whether YouTube Player API is working or not.
@@ -114,7 +118,7 @@ public class Video extends Fragment {
                                 }
                             });
                     alertDialog.show();
-                    Log.e("YouTube:", "Cannot fetch "+e.toString());
+                    Log.e("YouTube:", "Cannot fetch " + e.toString());
                 }
 
             }
@@ -127,8 +131,6 @@ public class Video extends Fragment {
 
     public class Video_RetrieveFeed extends AsyncTask<String, Void, String> {
         private Exception exception;
-
-        String ReceivedResult;
 
         protected String doInBackground(String... urls) {
             try {
@@ -146,17 +148,13 @@ public class Video extends Fragment {
             }
         }
 
-        protected void onProgressUpdate(Integer... progress) {
-            Log.e("Progress is: ",progress.toString());
-        }
-
         @Override
         protected void onPostExecute(String Result) {
             try{
                 Log.e("YouTube Data", "Received Result: "+Result.toString());
                 JSONObject YTFeed = new JSONObject(String.valueOf(Result));
-                Log.e("YouTube Data",YTFeed.toString());
-
+                JSONArray YTFeedItems = YTFeed.getJSONArray("items");
+                populateList(YTFeedItems);
             } catch (Exception e) {
                 e.printStackTrace();
             }

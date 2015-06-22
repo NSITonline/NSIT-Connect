@@ -123,7 +123,7 @@ public class Feed extends Fragment {
                 bundle.putBoolean("junoon", Junoon);
                 bundle.putBoolean("rotaract", Rotaract);
                 mFragment.setArguments(bundle);
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, mFragment).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, mFragment).addToBackStack( "tag" ).commit();
             }
         });
 

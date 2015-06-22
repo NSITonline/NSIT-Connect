@@ -28,15 +28,8 @@ public class MainActivity extends AppCompatActivity {
     private ListView mDrawerList;
     ListView lv;
     private ActionBarDrawerToggle mDrawerToggle;
-    Boolean Nsitonline,Collegespace,Crosslinks,Junoon,Bullet,Rotaract;
-    static final String[] sideitems = new String[] { "Home" , "My Feed","Video","Calendar" , "Item 5","About" };	//items on navigation drawer
+    static final String[] sideitems = new String[] { "Home" , "My Feed","Video","Calendar" , "Professors","About" };	//items on navigation drawer
     SwipeRefreshLayout swipeLayout;
-    List<String> list = new ArrayList<String>();
-    List<String> list1 = new ArrayList<String>();
-    List<String> list2 = new ArrayList<String>();
-    List<String> list5 = new ArrayList<String>();
-    List<String> list6 = new ArrayList<String>();
-    List<String> list7 = new ArrayList<String>();
     Integer[] imageId = {
             R.drawable.ic_action_star_10,
             R.drawable.ic_action_star_10,
@@ -103,7 +96,15 @@ public class MainActivity extends AppCompatActivity {
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
-
+    @Override
+    public void onBackPressed() {
+        if(getFragmentManager().getBackStackEntryCount() == 0) {
+            super.onBackPressed();
+        }
+        else {
+            getFragmentManager().popBackStack();
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -162,6 +163,14 @@ public class MainActivity extends AppCompatActivity {
                 ft.replace(R.id.content_frame, f2);
                 getSupportActionBar().setTitle("Video");
                 break;
+
+
+            case 5 :
+                Fragment f4 = new Professors();
+                ft.replace(R.id.content_frame, f4);
+                getSupportActionBar().setTitle("Professors List");
+                break;
+
         }
         ft.commit();
         //drawerListView.setItemChecked(position, true);

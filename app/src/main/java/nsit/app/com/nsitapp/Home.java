@@ -171,7 +171,6 @@ public class Home extends Fragment {
             String[] like = new String[list.size()];
             String[] link = new String[list.size()];
 
-
             des = list.toArray(des);
             like = list2.toArray(like);
             id = list1.toArray(id);

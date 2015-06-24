@@ -13,7 +13,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
@@ -29,6 +31,7 @@ import functions.ImageLoader;
 
 
 public class Decsription extends AppCompatActivity {
+    ProgressBar pb;
     public ImageLoader imageLoader;
     String img,des,like,link;
     TextView Des,Like;
@@ -40,6 +43,7 @@ public class Decsription extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_decsription);
+        pb=(ProgressBar)findViewById(R.id.progressBar1);
 
         setTitle("Post");
         Intent i = getIntent();
@@ -72,13 +76,19 @@ public class Decsription extends AppCompatActivity {
                                 }
         );
         if(isNetworkAvailable()) {
-            if (img == null)
+            if (img == null) {
                 imageView.setVisibility(View.GONE);
-            else if (obid == null)
+                pb.setVisibility(View.GONE);
+            }
+            else if (obid == null) {
                 imageLoader.DisplayImage(img, imageView);
+                pb.setVisibility(View.GONE);
+            }
             else
                 new DownloadWebPageTask().execute();
-        }
+        } else
+            Toast.makeText(this, "Cannot connect to Internet", Toast.LENGTH_SHORT).show();
+
         if (img == null)
             imageView.setVisibility(View.GONE);
         else imageView.setOnClickListener(new View.OnClickListener() {
@@ -129,16 +139,22 @@ String text;
                 if(arr.getJSONObject(0).has("source"))
                 imglink = arr.getJSONObject(0).getString("source");
                 if(imglink!=null) {
-                    if (isNetworkAvailable())
+                    if (isNetworkAvailable()) {
                         imageLoader.DisplayImage(imglink, imageView);
- }
-                else
+                        pb.setVisibility(View.GONE);
+                    }
+                }
+                else {
                     imageView.setVisibility(View.GONE);
-                Log.e("yrs","Image Link is : " + imglink);
+                    pb.setVisibility(View.GONE);
+                }
+                Log.e("yrs", "Image Link is : " + imglink);
 
             } catch (Exception e) {
                     Log.e("yo",e.getMessage());
             }
+
+            pb.setVisibility(View.GONE);
 
             Log.e("Yo", imglink);
         }

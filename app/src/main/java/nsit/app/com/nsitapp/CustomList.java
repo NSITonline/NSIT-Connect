@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import functions.ImageLoader;
@@ -32,8 +33,10 @@ public class CustomList extends ArrayAdapter<String>{
 	@Override
 	public View getView(final int position, View view, ViewGroup parent) {
 		LayoutInflater inflater = context.getLayoutInflater();
+		ProgressBar pb,pb2;
 
 		View rowView= inflater.inflate(R.layout.message_layout, null, true);
+		pb=(ProgressBar)rowView.findViewById(R.id.progressBar1);
 
 		TextView txtTitle = (TextView) rowView.findViewById(R.id.des);
 		txtTitle.setText(des[position]);

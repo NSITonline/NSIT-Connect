@@ -8,12 +8,16 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.EditText;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +28,7 @@ import java.util.List;
 
 
 public class ProfList extends Fragment {
+    EditText s;
     public static final String[] acro = new String[] { "ECE",
             "COE", "ICE", "MPAE", "IT", "BT","PCME"};
 
@@ -83,9 +88,11 @@ public class ProfList extends Fragment {
        int dept = i.getInt("dept", 0);
 
 
+        s = (EditText) rootView.findViewById(R.id.search);
+s.setVisibility(View.GONE);
         ListView listView;
         listView = (ListView) rootView.findViewById(R.id.profListView);
-
+        listView.setTextFilterEnabled(true);
         TextView tv = (TextView) rootView.findViewById(R.id.textView);
 
         List<ProfListRowItem> eceItems;
@@ -105,95 +112,109 @@ public class ProfList extends Fragment {
         btItems = new ArrayList<ProfListRowItem>();
         pcmeItems = new ArrayList<ProfListRowItem>();
 
-
+        final ProfListCustomListViewAdapter adapter;
         switch (dept) {
             case 0:
                 tv.setText(titles[dept]);
 
                 for (int j = 0; j < eceprofs.length; j++) {
                     ProfListRowItem item = new ProfListRowItem(eceprofs[j],eceids[j]);
-                    eceItems.add(item);
-                    ProfListCustomListViewAdapter adapter = new ProfListCustomListViewAdapter(getActivity(), R.layout.prof_list_item, eceItems);
+                    eceItems.add(item);}
+                    adapter = new ProfListCustomListViewAdapter(getActivity(), R.layout.prof_list_item, eceItems);
                     listView.setAdapter(adapter);
 
-                }
+
                 break;
             case 1:
                 tv.setText(titles[dept]);
 
                 for (int j = 0; j < coeprofs.length; j++) {
                     ProfListRowItem item = new ProfListRowItem(coeprofs[j],coeids[j]);
-                    coeItems.add(item);
-                    ProfListCustomListViewAdapter adapter = new ProfListCustomListViewAdapter(getActivity(),
+                    coeItems.add(item);}
+                     adapter = new ProfListCustomListViewAdapter(getActivity(),
                             R.layout.prof_list_item, coeItems);
                     listView.setAdapter(adapter);
 
-                }
+
                 break;
             case 2:
                 tv.setText(titles[dept]);
 
                 for (int j = 0; j < iceprofs.length; j++) {
                     ProfListRowItem item = new ProfListRowItem(iceprofs[j],iceids[j]);
-                    iceItems.add(item);
-                    ProfListCustomListViewAdapter adapter = new ProfListCustomListViewAdapter(getActivity(),
+                    iceItems.add(item);}
+                    adapter = new ProfListCustomListViewAdapter(getActivity(),
                             R.layout.prof_list_item, iceItems);
                     listView.setAdapter(adapter);
 
-                }
+
                 break;
             case 3:
                 tv.setText(titles[dept]);
 
                 for (int j = 0; j < mpaeprofs.length; j++) {
                     ProfListRowItem item = new ProfListRowItem(mpaeprofs[j],mpaeids[j]);
-                    mpaeItems.add(item);
-                    ProfListCustomListViewAdapter adapter = new ProfListCustomListViewAdapter(getActivity(),
+                    mpaeItems.add(item);}
+                     adapter = new ProfListCustomListViewAdapter(getActivity(),
                             R.layout.prof_list_item, mpaeItems);
                     listView.setAdapter(adapter);
 
-                }
+
                 break;
             case 4:
                 tv.setText(titles[dept]);
 
                 for (int j = 0; j < itprofs.length; j++) {
                     ProfListRowItem item = new ProfListRowItem(itprofs[j],itids[j]);
-                    itItems.add(item);
-                    ProfListCustomListViewAdapter adapter = new ProfListCustomListViewAdapter(getActivity(),
+                    itItems.add(item);}
+                    adapter = new ProfListCustomListViewAdapter(getActivity(),
                             R.layout.prof_list_item, itItems);
                     listView.setAdapter(adapter);
 
-                }
+
                 break;
             case 5:
                 tv.setText(titles[dept]);
 
                 for (int j = 0; j < btprofs.length; j++) {
                     ProfListRowItem item = new ProfListRowItem(btprofs[j],btids[j]);
-                    btItems.add(item);
-                    ProfListCustomListViewAdapter adapter = new ProfListCustomListViewAdapter(getActivity(),
+                    btItems.add(item);}
+                   adapter = new ProfListCustomListViewAdapter(getActivity(),
                             R.layout.prof_list_item, btItems);
                     listView.setAdapter(adapter);
 
-                }
+
                 break;
             case 6:
                 tv.setText(titles[dept]);
 
                 for (int j = 0; j < pcmeprofs.length; j++) {
                     ProfListRowItem item = new ProfListRowItem(pcmeprofs[j],pcmeids[j]);
-                    pcmeItems.add(item);
-                    ProfListCustomListViewAdapter adapter = new ProfListCustomListViewAdapter(getActivity(),
+                    pcmeItems.add(item);}
+                   adapter = new ProfListCustomListViewAdapter(getActivity(),
                             R.layout.prof_list_item, pcmeItems);
                     listView.setAdapter(adapter);
 
 
-                }
+
                 break;
         }
 
+        final ProfListCustomListViewAdapter adapter2= new ProfListCustomListViewAdapter(getActivity(), R.layout.prof_list_item, eceItems);
+        s.addTextChangedListener(new TextWatcher() {
 
+            public void afterTextChanged(Editable s) {
+            }
+
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+              //
+              //  adapter2.getFilter().filter(s.toString());
+                Log.e("vgsves"," "+s.toString());
+            }
+        });
 
 
     return rootView;

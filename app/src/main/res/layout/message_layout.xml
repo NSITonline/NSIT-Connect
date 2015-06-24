@@ -18,14 +18,22 @@
     android:orientation="horizontal"
     android:descendantFocusability="afterDescendants"
     android:background="@drawable/card">
-    <ImageView
-        android:id="@+id/image"
+
+    <FrameLayout
         android:paddingRight="10dp"
         android:layout_weight="0.5"
         android:layout_width="0dp"
-        android:layout_height="fill_parent"
-        android:src="@drawable/yolo"/>
+        android:layout_height="fill_parent">
+        <ProgressBar android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center" android:id="@+id/progressBar1"
+            />
+        <ImageView
+        android:id="@+id/image"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"/>
 
+    </FrameLayout>
     <LinearLayout
         android:paddingLeft="10dp"
         android:id="@+id/data"

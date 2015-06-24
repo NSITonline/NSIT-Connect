@@ -1,10 +1,12 @@
 package nsit.app.com.nsitapp;
 
 /**
- * Created by kamlesh kumar garg on 21-06-2015.
+ * Created by Swati garg on 21-06-2015.
  */
 
 import android.app.Activity;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -14,6 +16,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
@@ -38,6 +42,7 @@ public class Home extends Fragment {
     List<String> list7 = new ArrayList<String>();
     ListView lv;
     SwipeRefreshLayout swipeLayout;
+    ProgressBar pb,pb2;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -58,6 +63,7 @@ public class Home extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
         lv = (ListView) rootView.findViewById(R.id.list);
         swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
+        pb=(ProgressBar)rootView.findViewById(R.id.progressBar1);
 
         swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -71,8 +77,17 @@ public class Home extends Fragment {
                 android.R.color.holo_red_light);
 
 
+        if(isNetworkAvailable())
         new DownloadWebPageTask2(Val.id_nsitonline).execute();
+        else
+        Toast.makeText(getActivity(),"Cannot connect to Internet",Toast.LENGTH_SHORT).show();
         return rootView;
+    }
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getActivity().getSystemService(getActivity().CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
 
@@ -86,11 +101,15 @@ public class Home extends Fragment {
 
 
         @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+        @Override
         protected String doInBackground(String... urls) {
 
             Log.e("Yo", "Started");
             String URL;
-            URL = "https://graph.facebook.com/"+id+"/feed?since=0000&until=1234567899999999999990&access_token=" + Val.common_access;
+            URL = "https://graph.facebook.com/"+id+"/feed?fields=picture,shares,message,object_id,link,comments.limit(0).summary(true),likes.limit(0).summary(true)&access_token=" + Val.common_access;
             HttpClient Client = new DefaultHttpClient();
             HttpGet httpget = new HttpGet(URL);
             ResponseHandler<String> responseHandler = new BasicResponseHandler();
@@ -101,14 +120,13 @@ public class Home extends Fragment {
             }
 
             return null;
-
         }
 
         @Override
         protected void onPostExecute(String result) {
             Log.e("YO", "Done");
-            Log.e("yrs",""+text);
-
+            //Log.e("yrs",""+text);
+            pb.setVisibility(View.GONE);
             int j=0;
             JSONObject ob;
             JSONArray arr;
@@ -147,7 +165,10 @@ public class Home extends Fragment {
                             String s = arr.getJSONObject(i).getString("likes");
                             JSONObject o = new JSONObject(s);
                             JSONArray a2 = o.getJSONArray("data");
-                            list2.add(Integer.toString(a2.length()));   //No of likes
+                            String x = o.getString("summary");
+                            JSONObject o2 = new JSONObject(x);
+
+                            list2.add(o2.getString("total_count"));   //No of likes
                         }
                         else
                             list2.add("0");
@@ -183,7 +204,7 @@ public class Home extends Fragment {
             lv.addHeaderView(new View(getActivity()));
             lv.addFooterView(new View(getActivity()));
             lv.setAdapter(adapter);
-            Log.e("Yo", text);
+           // Log.e("Yo", text);
         }
     }
 

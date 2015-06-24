@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import org.apache.http.client.HttpClient;
@@ -31,15 +32,17 @@ import java.io.InputStream;
 
 public class ImageAct extends AppCompatActivity {
     String img,des,like,link,obid,imglink;
+    //ProgressBar pb;
     TouchImageView iv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image);
-        Intent i = getIntent();
+       Intent i = getIntent();
         img = i.getStringExtra("img");
         obid = i.getStringExtra("oid");
         iv  = (TouchImageView) findViewById(R.id.iv);
+        //=(ProgressBar)findViewById(R.id.progressBar1);
 
         setTitle("Image");
 
@@ -133,7 +136,8 @@ public class ImageAct extends AppCompatActivity {
         }
 
         protected void onPostExecute(Bitmap result) {
-            bmImage.setImageBitmap(result);
+         bmImage.setImageBitmap(result);
+           // pb.setVisibility(View.INVISIBLE);
         }
     }
 

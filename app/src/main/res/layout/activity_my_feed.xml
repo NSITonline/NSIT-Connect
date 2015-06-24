@@ -4,7 +4,10 @@
     android:background="#ffffff"
     tools:context=".MyFeed">
 
-
+    <ProgressBar android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center" android:id="@+id/progressBar1"
+        />
     <android.support.v4.widget.DrawerLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/drawer_layout"

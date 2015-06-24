@@ -2,14 +2,19 @@ package nsit.app.com.nsitapp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
@@ -31,6 +36,8 @@ import java.util.List;
 
 public class FinalFeed extends Fragment {
     Boolean Nsitonline,Collegespace,Crosslinks,Junoon,Bullet,Rotaract;
+    ProgressBar pb,pb2;
+    SwipeRefreshLayout swipeLayout;
 
     List<String> list = new ArrayList<String>();
     List<String> list1 = new ArrayList<String>();
@@ -56,6 +63,7 @@ public class FinalFeed extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_feedfinal, container, false);
+        pb=(ProgressBar)rootView.findViewById(R.id.progressBar1);
         lv = (ListView) rootView.findViewById(R.id.list);
         Bundle i = this.getArguments();
         Nsitonline = i.getBoolean("nsitonline", false);
@@ -64,6 +72,22 @@ public class FinalFeed extends Fragment {
         Bullet = i.getBoolean("bullet", false);
         Junoon = i.getBoolean("junoon", false);
         Rotaract = i.getBoolean("rotaract", false);
+
+        swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
+
+        swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipeLayout.setRefreshing(false);
+            }
+        });
+        swipeLayout.setColorScheme(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
+
+
+        if(isNetworkAvailable()){
 
         if (Nsitonline)
             new DownloadWebPageTask2(Val.id_nsitonline).execute();
@@ -80,8 +104,11 @@ public class FinalFeed extends Fragment {
 
         if (!Nsitonline && !Collegespace && !Crosslinks && !Bullet && !Junoon && !Rotaract) {
             new DownloadWebPageTask2(Val.id_nsitonline).execute();
-
         }
+        }
+        else
+            Toast.makeText(getActivity(), "Cannot connect to Internet", Toast.LENGTH_SHORT).show();
+
         return rootView;
     }
 
@@ -99,11 +126,7 @@ public class FinalFeed extends Fragment {
 
             Log.e("Yo", "Started");
             String URL;
-            if(id== Val.id_junoon)
-                URL = "https://graph.facebook.com/"+id+"/feed?access_token=" + Val.common_access;
-
-            else
-                URL = "https://graph.facebook.com/"+id+"/feed?since=0000&until=1234567899999999999990&access_token=" + Val.common_access;
+            URL = "https://graph.facebook.com/"+id+"/feed?fields=picture,shares,message,object_id,link,comments.limit(0).summary(true),likes.limit(0).summary(true)&access_token=" + Val.common_access;
             HttpClient Client = new DefaultHttpClient();
             HttpGet httpget = new HttpGet(URL);
             ResponseHandler<String> responseHandler = new BasicResponseHandler();
@@ -160,7 +183,11 @@ public class FinalFeed extends Fragment {
                             String s = arr.getJSONObject(i).getString("likes");
                             JSONObject o = new JSONObject(s);
                             JSONArray a2 = o.getJSONArray("data");
-                            list2.add(Integer.toString(a2.length()));   //No of likes
+                            String x = o.getString("summary");
+                            Log.e("fvdv", " "+x);
+                            JSONObject o2 = new JSONObject(x);
+
+                            list2.add(o2.getString("total_count"));    //No of likes
                         }
                         else
                             list2.add("0");
@@ -213,7 +240,7 @@ public class FinalFeed extends Fragment {
             link = list7.toArray(link);
 
 
-
+            pb.setVisibility(View.GONE);
             CustomList adapter = new CustomList(getActivity(), pic, des, like, link, id);
             lv.addHeaderView(new View(getActivity()));
             lv.addFooterView(new View(getActivity()));
@@ -221,6 +248,11 @@ public class FinalFeed extends Fragment {
         }
     }
 
-
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getActivity().getSystemService(getActivity().CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
 
 }

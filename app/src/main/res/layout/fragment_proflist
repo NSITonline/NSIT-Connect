@@ -22,6 +22,11 @@
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:paddingLeft="10dp" />
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter a professor's name : "
+            android:id="@+id/search"/>
 
         <ListView
             android:focusable="false"

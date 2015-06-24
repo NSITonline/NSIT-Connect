@@ -5,6 +5,8 @@ package nsit.app.com.nsitapp;
  */
 
 import android.app.Activity;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -17,7 +19,9 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
@@ -33,6 +37,7 @@ import java.util.List;
 
 
 public class Feed extends Fragment {
+    ProgressBar pb,pb2;
     CheckBox nsitonline,collegespace,crosslinks,junoon,bullet,rotaract;
     Boolean Nsitonline=false,Collegespace=false,Crosslinks=false,Junoon=false,Bullet=false,Rotaract=false;
     TextView tNsitonline,tCollegespace,tCrosslinks,tJunoon,tBullet,tRotaract;
@@ -127,17 +132,28 @@ public class Feed extends Fragment {
             }
         });
 
+        if(isNetworkAvailable()) {
 
-        new Calclike(tNsitonline, Val.id_nsitonline).execute();
-        new Calclike(tCrosslinks, Val.id_crosslinks).execute();
-        new Calclike(tCollegespace, Val.id_collegespace).execute();
-        new Calclike(tJunoon, Val.id_junoon).execute();
-        new Calclike(tBullet, Val.id_bullet).execute();
-        new Calclike(tRotaract, Val.id_rotaract).execute();
+            new Calclike(tNsitonline, Val.id_nsitonline).execute();
+            new Calclike(tCrosslinks, Val.id_crosslinks).execute();
+            new Calclike(tCollegespace, Val.id_collegespace).execute();
+            new Calclike(tJunoon, Val.id_junoon).execute();
+            new Calclike(tBullet, Val.id_bullet).execute();
+            new Calclike(tRotaract, Val.id_rotaract).execute();
+        }
+        else
+            Toast.makeText(getActivity(), "Cannot connect to Internet", Toast.LENGTH_SHORT).show();
+
 
         return rootView;
     }
 
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getActivity().getSystemService(getActivity().CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
 
     String text;
     private class Calclike extends AsyncTask<String, Void, String> {

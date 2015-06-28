@@ -34,8 +34,8 @@ public class ProfList extends Fragment {
 
     public static final String[] titles = new String[] {
             "DIVISION OF ELECTRONICS & COMMUNICATION ENGG",
-            "DIVISION OF COMPUTER ENGINEERING", "DIVISION OF INSTRUMENTATION & CONTROL ENGG.",
-            "DIVISION OF MANUFACTURING PROCESSES AND  AUTOMATION ENGINEERING", "DIVISION OF INFORMATION TECHNOLOGY","DIVISION OF BIO-TECHNOLOGY","SCHOOL OF APPLIED SCIENCES"
+            "DIVISION OF COMPUTER ENGINEERING","DIVISION OF INFORMATION TECHNOLOGY", "DIVISION OF INSTRUMENTATION & CONTROL ENGG.",
+            "DIVISION OF MANUFACTURING PROCESSES AND  AUTOMATION ENGINEERING", "DIVISION OF BIO-TECHNOLOGY","SCHOOL OF APPLIED SCIENCES"
     };
 
     public static final String[] eceprofs = new String[]{"Dr. Raj Senani, Professor &  Head","Dr. Harish Parthasarathy, Professor","Dr. Maneesha Gupta,  Professor","Mrs. Sujata Sengar, Associate Professor","Sh. D.V. Gadre, Associate Professor","Dr. Parul Garg, Associate Professor","Dr. S.P. Singh, Associate Professor","Dr. D.K. Upadhyay, Associate Professor","Dr. Jyotsna Singh, Assistant Professor","Dr. Tarun Rawat, Assistant Professor","Sh. Shailesh Mishra, Assistant Professor","Dr. Ankur Bansal, Assistant Professor","Sh. Kunwar Singh, Assistant Professor","Ms. Bhawna Aggarwal, Assistant Professor","Ms. Urvashi Bansal, Assistant Professor"};
@@ -140,6 +140,18 @@ s.setVisibility(View.GONE);
             case 2:
                 tv.setText(titles[dept]);
 
+                for (int j = 0; j < itprofs.length; j++) {
+                    ProfListRowItem item = new ProfListRowItem(itprofs[j],itids[j]);
+                    itItems.add(item);}
+                adapter = new ProfListCustomListViewAdapter(getActivity(),
+                        R.layout.prof_list_item, itItems);
+                listView.setAdapter(adapter);
+
+
+                break;
+            case 3:
+                tv.setText(titles[dept]);
+
                 for (int j = 0; j < iceprofs.length; j++) {
                     ProfListRowItem item = new ProfListRowItem(iceprofs[j],iceids[j]);
                     iceItems.add(item);}
@@ -149,7 +161,7 @@ s.setVisibility(View.GONE);
 
 
                 break;
-            case 3:
+            case 4:
                 tv.setText(titles[dept]);
 
                 for (int j = 0; j < mpaeprofs.length; j++) {
@@ -161,18 +173,7 @@ s.setVisibility(View.GONE);
 
 
                 break;
-            case 4:
-                tv.setText(titles[dept]);
 
-                for (int j = 0; j < itprofs.length; j++) {
-                    ProfListRowItem item = new ProfListRowItem(itprofs[j],itids[j]);
-                    itItems.add(item);}
-                    adapter = new ProfListCustomListViewAdapter(getActivity(),
-                            R.layout.prof_list_item, itItems);
-                    listView.setAdapter(adapter);
-
-
-                break;
             case 5:
                 tv.setText(titles[dept]);
 

@@ -164,6 +164,11 @@ public class MainActivity extends AppCompatActivity {
                 getSupportActionBar().setTitle("Video");
                 break;
 
+            case  4:
+                Fragment f3 = new Calender();
+                ft.replace(R.id.content_frame, f3);
+                getSupportActionBar().setTitle("Time Table");
+                break;
 
             case 5 :
                 Fragment f4 = new Professors();
@@ -173,8 +178,5 @@ public class MainActivity extends AppCompatActivity {
 
         }
         ft.commit();
-        //drawerListView.setItemChecked(position, true);
-        setTitle("Title");
-        //drawerLayout.closeDrawer(drawerListView);
     }
 }

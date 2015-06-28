@@ -33,9 +33,12 @@ android {
     }
 }
 
+
 dependencies {
+    compile 'org.lucasr.twowayview:twowayview:0.1.4'
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:22.1.1'
     compile project(':YouTubeAndroidPlayerApi')
     compile files('C:/Users/kamlesh kumar garg/Downloads/PlaceComplete/nsitapp2/YouTubeAndroidPlayerApi/YouTubeAndroidPlayerApi.jar')
+    compile files('src/main/libs/devsmartlib.jar')
 }

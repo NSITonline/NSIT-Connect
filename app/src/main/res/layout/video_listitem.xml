@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="350dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_gravity="center_horizontal"
+    android:background="#ffffffff"
+    android:layout_marginBottom="50dp"
+    >
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="175dp"
+        android:id="@+id/VideoThumbnail"
+        android:background="#000000" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="6dp"
+        android:background="#ff29d1ae"></LinearLayout>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/TextContentGrid"
+        android:layout_margin="10dp">
+
+        <TextView android:layout_width="182dp"
+                android:layout_height="wrap_content"
+                android:text="Title of video"
+            android:textSize="15sp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="0dp"
+            android:textColor="#ffa4a4a4"
+            android:id="@+id/VideoTitle"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:layout_margin="0dp"
+            android:layout_gravity="top" />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/text"/>
+
+
+
+        <TextView
+            android:layout_width="341dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Some description text associated with the youtube video.sdfisdlfjlsdf"
+            android:id="@+id/VideoDescription"
+            android:layout_column="0"
+            android:layout_row="1"
+            android:layout_columnSpan="2"
+            android:textSize="13sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:text="Play"
+            android:id="@+id/PlayVideoButton"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:enabled="true"
+            android:clickable="true"
+            android:layout_gravity="center_horizontal|right"
+            android:layout_margin="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="0dp"
+            android:textSize="12sp"
+            android:textColor="#ffffffff" />
+    </GridLayout>
+
+</LinearLayout>

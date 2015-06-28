@@ -23,12 +23,12 @@ import java.util.List;
 public class Professors extends Fragment implements
         AdapterView.OnItemClickListener {
     public static final String[] titles = new String[] { "ECE",
-            "COE", "ICE", "MPAE", "IT", "BT","PCME"};
+            "COE","IT", "ICE", "MPAE",  "BT","PCME"};
 
     public static final String[] full = new String[] {
             "Division Of Electronics & Communication Engg",
-            "Division Of Computer Engg", "Division Of Instrumentation & Control Engg",
-            "Division Of Manufacturing Processes & Automation Engg", "Division Of Information Technology","Division Of Bio-Technology","School Of Applied Sciences"
+            "Division Of Computer Engg",  "Division Of Information Technology","Division Of Instrumentation & Control Engg",
+            "Division Of Manufacturing Processes & Automation Engg","Division Of Bio-Technology","School Of Applied Sciences"
     };
 
     ListView listView;

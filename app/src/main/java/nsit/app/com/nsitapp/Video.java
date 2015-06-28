@@ -61,38 +61,11 @@ public class Video extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_video, container, false);
 //        Videos List Initialization.
         listview = (ListView) rootView.findViewById(R.id.videos_list);
-
-        try {
-            Intent intent = YouTubeStandalonePlayer.createVideoIntent(getActivity(), "AIzaSyD-hWnEb2F-94y6XyaG5WlKXZKBpKr9PaE", "zXLZvsSmBIs");
-            startActivity(intent);
-        } catch (ActivityNotFoundException e) {
-            AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
-            alertDialog.setTitle("YouTube API not found.");
-            alertDialog.setMessage("This section needs YouTube app to be installed on your device. Please get it from the Google Play Store.");
-            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    });
-            alertDialog.show();
-        } catch (Exception e) {
-            AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
-            alertDialog.setTitle("Oops!");
-            alertDialog.setMessage("The error exception is " + e.toString() + " ; Send this to us and we will get this fixed.");
-            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    });
-            alertDialog.show();
-        }
         Log.e("YouTube:", "Fetching data");
         View Spinner = rootView.findViewById(R.id.VideoProgressSpinner);
+        Spinner.setVisibility(View.VISIBLE);
         try {
             new Video_RetrieveFeed().execute();
-            Spinner.setAlpha(1);
         } catch (Exception e) {
             AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
             alertDialog.setTitle("Can't connect.");
@@ -106,8 +79,7 @@ public class Video extends Fragment {
             alertDialog.show();
             Log.e("YouTube:", "Cannot fetch " + e.toString());
         }
-        Spinner.setAlpha(0);
-
+        Spinner.setVisibility(View.GONE);
 
         return rootView;
     }

@@ -1,7 +1,7 @@
 package nsit.app.com.nsitapp;
 
 /**
- * Created by kamlesh kumar garg on 22-06-2015.
+ * Created by Swati garg on 22-06-2015.
  */
 
 import android.app.Activity;
@@ -21,10 +21,6 @@ import android.widget.EditText;
 
 import java.util.ArrayList;
 import java.util.List;
-
-/*
- * Created by Swati garg on 22-06-2015.
- */
 
 
 public class ProfList extends Fragment {

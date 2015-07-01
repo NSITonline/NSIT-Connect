@@ -34,8 +34,12 @@ import java.util.List;
  */
 
 
+
+
+
+
 public class FinalFeed extends Fragment {
-    Boolean Nsitonline,Collegespace,Crosslinks,Junoon,Bullet,Rotaract;
+    Boolean Collegespace=false,Crosslinks=false,Junoon=false,Bullet=false,Rotaract=false,Quiz=false,Ieee=false,Csi=false,Ashwa=false,Deb=false;
     ProgressBar pb,pb2;
     SwipeRefreshLayout swipeLayout;
 
@@ -59,19 +63,22 @@ public class FinalFeed extends Fragment {
         super.onAttach(activity);
         this.activity = activity;
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_feedfinal, container, false);
         pb=(ProgressBar)rootView.findViewById(R.id.progressBar1);
         lv = (ListView) rootView.findViewById(R.id.list);
         Bundle i = this.getArguments();
-        Nsitonline = i.getBoolean("nsitonline", false);
         Crosslinks = i.getBoolean("crosslinks", false);
         Collegespace = i.getBoolean("collegespace", false);
         Bullet = i.getBoolean("bullet", false);
         Junoon = i.getBoolean("junoon", false);
         Rotaract = i.getBoolean("rotaract", false);
+        Csi = i.getBoolean("csi", false);
+        Ieee = i.getBoolean("ieee", false);
+        Deb = i.getBoolean("debsoc", false);
+        Quiz = i.getBoolean("quiz", false);
+        Ashwa = i.getBoolean("ashwq", false);
 
         swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
 
@@ -89,8 +96,6 @@ public class FinalFeed extends Fragment {
 
         if(isNetworkAvailable()){
 
-        if (Nsitonline)
-            new DownloadWebPageTask2(Val.id_nsitonline).execute();
         if (Crosslinks)
             new DownloadWebPageTask2(Val.id_crosslinks).execute();
         if (Collegespace)
@@ -102,9 +107,17 @@ public class FinalFeed extends Fragment {
         if (Rotaract)
             new DownloadWebPageTask2(Val.id_rotaract).execute();
 
-        if (!Nsitonline && !Collegespace && !Crosslinks && !Bullet && !Junoon && !Rotaract) {
-            new DownloadWebPageTask2(Val.id_nsitonline).execute();
-        }
+            if (Csi)
+                new DownloadWebPageTask2(Val.id_csi).execute();
+            if (Ieee)
+                new DownloadWebPageTask2(Val.id_ieee).execute();
+            if (Ashwa)
+                new DownloadWebPageTask2(Val.id_ashwa).execute();
+            if (Quiz)
+                new DownloadWebPageTask2(Val.id_quiz).execute();
+            if (Deb)
+                new DownloadWebPageTask2(Val.id_debsoc).execute();
+
         }
         else
             Toast.makeText(getActivity(), "Cannot connect to Internet", Toast.LENGTH_SHORT).show();
@@ -119,7 +132,6 @@ public class FinalFeed extends Fragment {
         public DownloadWebPageTask2(String id) {
             this.id = id;
         }
-
 
         @Override
         protected String doInBackground(String... urls) {
@@ -153,7 +165,6 @@ public class FinalFeed extends Fragment {
                 arr = ob.getJSONArray("data");
 
 
-                Log.e("yo", " " + arr + arr.length());
                 for(int i = 0; i < arr.length(); i++){
                     try {
                         if(arr.getJSONObject(i).has("message")&&arr.getJSONObject(i).has("picture")&&arr.getJSONObject(i).has("link")&&arr.getJSONObject(i).has("likes")) {
@@ -184,7 +195,6 @@ public class FinalFeed extends Fragment {
                             JSONObject o = new JSONObject(s);
                             JSONArray a2 = o.getJSONArray("data");
                             String x = o.getString("summary");
-                            Log.e("fvdv", " "+x);
                             JSONObject o2 = new JSONObject(x);
 
                             list2.add(o2.getString("total_count"));    //No of likes
@@ -193,31 +203,32 @@ public class FinalFeed extends Fragment {
                             list2.add("0");
 
                     } catch (Exception e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                        Log.e("Error","Errror at : " + i + " "+e.getMessage());
+                         Log.e("Error","Errror at : " + i + " "+e.getMessage());
                     }
                 }
 
 
-
             } catch (Exception e) {
+                Log.e("Error","Errror at : "+ " "+e.getMessage());
 
             }
 
             switch(id)
             {
-                case Val.id_nsitonline : Nsitonline=false;break;
                 case Val.id_collegespace :Collegespace=false;break;
                 case Val.id_crosslinks : Crosslinks=false;break;
                 case Val.id_bullet : Bullet=false;break;
                 case Val.id_junoon : Junoon=false;break;
                 case Val.id_rotaract : Rotaract=false;break;
+                case Val.id_csi :Csi=false;break;
+                case Val.id_ieee : Ieee=false;break;
+                case Val.id_quiz : Quiz=false;break;
+                case Val.id_ashwa : Ashwa=false;break;
+                case Val.id_debsoc : Deb=false;break;
             }
 
             done();
 
-            Log.e("Yo", text);
         }
     }
 
@@ -225,7 +236,10 @@ public class FinalFeed extends Fragment {
 
     public void done()
     {
-        if(!Nsitonline&&!Collegespace&&!Crosslinks&&!Bullet&&!Junoon&&!Rotaract) {
+
+
+        Log.e("status : "," "+ Csi + Collegespace+Crosslinks+Crosslinks+Bullet+Junoon+Ieee+Ashwa+Quiz+Deb+Rotaract);
+        if(!Csi && !Collegespace && !Crosslinks && !Bullet && !Junoon && !Ieee&& !Ashwa&& !Quiz&& !Deb &&!Rotaract) {
             String[] id = new String[list.size()];
             String[] des = new String[list.size()];
             String[] pic = new String[list.size()];
@@ -238,6 +252,8 @@ public class FinalFeed extends Fragment {
             id = list1.toArray(id);
             pic = list6.toArray(pic);
             link = list7.toArray(link);
+
+            Log.e("EFinish","All done");
 
 
             pb.setVisibility(View.GONE);

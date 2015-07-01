@@ -38,9 +38,9 @@ import java.util.List;
 
 public class Feed extends Fragment {
     ProgressBar pb,pb2;
-    CheckBox nsitonline,collegespace,crosslinks,junoon,bullet,rotaract;
-    Boolean Nsitonline=false,Collegespace=false,Crosslinks=false,Junoon=false,Bullet=false,Rotaract=false;
-    TextView tNsitonline,tCollegespace,tCrosslinks,tJunoon,tBullet,tRotaract;
+    CheckBox collegespace,crosslinks,junoon,bullet,rotaract,quiz,ieee,csi,ashwa,deb;
+    Boolean Collegespace=false,Crosslinks=false,Junoon=false,Bullet=false,Rotaract=false,Quiz=false,Ieee=false,Csi=false,Ashwa=false,Deb=false;
+    TextView tCollegespace,tCrosslinks,tJunoon,tBullet,tRotaract,tQuiz,tIeee,tCsi,tAshwa,tDeb;
     Button next;
     List<String> list = new ArrayList<String>();
     List<String> list1 = new ArrayList<String>();
@@ -48,8 +48,7 @@ public class Feed extends Fragment {
     List<String> list5 = new ArrayList<String>();
     List<String> list6 = new ArrayList<String>();
     List<String> list7 = new ArrayList<String>();
-    ListView lv;
-    SwipeRefreshLayout swipeLayout;
+     SwipeRefreshLayout swipeLayout;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -65,29 +64,46 @@ public class Feed extends Fragment {
         this.activity = activity;
     }
 
+
+    @Override
+    public void onResume() {
+
+        super.onResume();
+        Collegespace=false;Crosslinks=false;Junoon=false;Bullet=false;Rotaract=false;Quiz=false;Ieee=false;
+        Csi=false;Ashwa=false;Deb=false;
+
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_feed, container, false);
-        lv = (ListView) rootView.findViewById(R.id.list);
         next = (Button) rootView.findViewById(R.id.next);
-        nsitonline = (CheckBox) rootView.findViewById(R.id.check_nsitonline);
+
         collegespace = (CheckBox) rootView.findViewById(R.id.check_collegespace);
         crosslinks = (CheckBox) rootView.findViewById(R.id.check_crosslinks);
         junoon = (CheckBox) rootView.findViewById(R.id.check_junoon);
         rotaract = (CheckBox) rootView.findViewById(R.id.check_rotaract);
         bullet = (CheckBox) rootView.findViewById(R.id.check_bullet);
-        tNsitonline = (TextView) rootView.findViewById(R.id.stars_nsitonline);
+        csi = (CheckBox) rootView.findViewById(R.id.check_csi);
+        ieee = (CheckBox) rootView.findViewById(R.id.check_ieee);
+        deb = (CheckBox) rootView.findViewById(R.id.check_debsoc);
+        quiz = (CheckBox) rootView.findViewById(R.id.check_quiz);
+        ashwa = (CheckBox) rootView.findViewById(R.id.check_ashwa);
+
+
+
         tCollegespace = (TextView) rootView.findViewById(R.id.stars_collegespace);
         tCrosslinks = (TextView) rootView.findViewById(R.id.stars_crosslinks);
         tJunoon = (TextView) rootView.findViewById(R.id.stars_junoon);
         tRotaract = (TextView) rootView.findViewById(R.id.stars_rotaract);
         tBullet = (TextView) rootView.findViewById(R.id.stars_bullethawk);
+        tCsi = (TextView) rootView.findViewById(R.id.stars_csi);
+        tIeee = (TextView) rootView.findViewById(R.id.stars_ieee);
+        tDeb = (TextView) rootView.findViewById(R.id.stars_debsoc);
+        tQuiz = (TextView) rootView.findViewById(R.id.stars_quiz);
+        tAshwa = (TextView) rootView.findViewById(R.id.stars_ashwa);
 
-        nsitonline.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {Nsitonline = b;
-            }
-        });
+
         crosslinks.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {Crosslinks = b;
@@ -115,18 +131,56 @@ public class Feed extends Fragment {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {Rotaract = b;
             }
         });
+        csi.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                Csi = b;
+            }
+        });
+        ieee.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {Ieee = b;
+            }
+        });
+       deb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                Deb = b;
+            }
+        });
+        quiz.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                Quiz = b;
+            }
+        });
+        ashwa.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {Ashwa = b;
+            }
+        });
+
+
+
+
+
+
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 Fragment mFragment = new FinalFeed();
                 Bundle bundle = new Bundle();
-                bundle.putBoolean("nsitonline", Nsitonline);
                 bundle.putBoolean("crosslinks", Crosslinks);
                 bundle.putBoolean("collegespace", Collegespace);
                 bundle.putBoolean("bullet", Bullet);
                 bundle.putBoolean("junoon", Junoon);
                 bundle.putBoolean("rotaract", Rotaract);
+                bundle.putBoolean("csi", Csi);
+                bundle.putBoolean("ieee", Ieee);
+                bundle.putBoolean("debsoc", Deb);
+                bundle.putBoolean("quiz", Quiz);
+                bundle.putBoolean("ashwa", Ashwa);
                 mFragment.setArguments(bundle);
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, mFragment).addToBackStack( "tag" ).commit();
             }
@@ -134,12 +188,16 @@ public class Feed extends Fragment {
 
         if(isNetworkAvailable()) {
 
-            new Calclike(tNsitonline, Val.id_nsitonline).execute();
             new Calclike(tCrosslinks, Val.id_crosslinks).execute();
             new Calclike(tCollegespace, Val.id_collegespace).execute();
             new Calclike(tJunoon, Val.id_junoon).execute();
             new Calclike(tBullet, Val.id_bullet).execute();
             new Calclike(tRotaract, Val.id_rotaract).execute();
+            new Calclike(tCsi, Val.id_csi).execute();
+            new Calclike(tIeee, Val.id_ieee).execute();
+            new Calclike(tDeb, Val.id_debsoc).execute();
+            new Calclike(tQuiz, Val.id_quiz).execute();
+            new Calclike(tAshwa, Val.id_ashwa).execute();
         }
         else
             Toast.makeText(getActivity(), "Cannot connect to Internet", Toast.LENGTH_SHORT).show();
@@ -167,8 +225,6 @@ public class Feed extends Fragment {
 
         @Override
         protected String doInBackground(String... urls) {
-
-            Log.e("Yo", "Started");
             String URL = "https://graph.facebook.com/"+id+"?access_token=" + Val.common_access;
             HttpClient Client = new DefaultHttpClient();
             HttpGet httpget = new HttpGet(URL);
@@ -185,10 +241,6 @@ public class Feed extends Fragment {
 
         @Override
         protected void onPostExecute(String result) {
-            Log.e("YO", "Done");
-            //pd.dismiss();
-            //Toast.makeText(MainActivity.this,"Response : " + text , Toast.LENGTH_LONG).show();
-            Log.e("yrs", text);
 
             int j = 0;
             JSONObject ob;

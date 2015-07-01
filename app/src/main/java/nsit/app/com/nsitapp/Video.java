@@ -64,7 +64,7 @@ public class Video extends Fragment {
 
         try {
             Intent intent = YouTubeStandalonePlayer.createVideoIntent(getActivity(), "AIzaSyD-hWnEb2F-94y6XyaG5WlKXZKBpKr9PaE", "zXLZvsSmBIs");
-            startActivity(intent);
+            //startActivity(intent);
         } catch (ActivityNotFoundException e) {
             AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
             alertDialog.setTitle("YouTube API not found.");

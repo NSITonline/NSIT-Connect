@@ -2,16 +2,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/content_frame"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="fill_parent"
     android:animateLayoutChanges="true"   >
 
     <ListView
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
+
         android:divider="@android:color/transparent"
         android:dividerHeight="10.0sp"
+        android:background="#ffffff"
         android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"

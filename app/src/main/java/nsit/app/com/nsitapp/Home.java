@@ -124,8 +124,6 @@ public class Home extends Fragment {
 
         @Override
         protected void onPostExecute(String result) {
-            Log.e("YO", "Done");
-            //Log.e("yrs",""+text);
             pb.setVisibility(View.GONE);
             int j=0;
             JSONObject ob;
@@ -135,7 +133,6 @@ public class Home extends Fragment {
                 arr = ob.getJSONArray("data");
 
 
-                Log.e("yo", " " + arr + arr.length());
                 for(int i = 0; i < arr.length(); i++){
                     try {
                         if(arr.getJSONObject(i).has("message")&&arr.getJSONObject(i).has("picture")&&arr.getJSONObject(i).has("link")&&arr.getJSONObject(i).has("likes")) {

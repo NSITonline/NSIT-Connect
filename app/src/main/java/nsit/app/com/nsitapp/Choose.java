@@ -1,6 +1,8 @@
 package nsit.app.com.nsitapp;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.internal.widget.AdapterViewCompat;
 import android.view.Menu;
@@ -9,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Button;
 import android.widget.Toast;
 
 public class Choose extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -23,7 +26,9 @@ public class Choose extends AppCompatActivity implements AdapterView.OnItemSelec
 
     String[] x ={"Select Section"};
     Spinner Sem,Branch,Sec,Half;
-    Boolean s,b,se,ha;
+    Boolean s,b,sect,h;
+    Button set;
+    String se,br,sec,hal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +39,7 @@ public class Choose extends AppCompatActivity implements AdapterView.OnItemSelec
         Branch = (Spinner) findViewById(R.id.branch);
         Sec = (Spinner) findViewById(R.id.sec);
         Half = (Spinner) findViewById(R.id.half);
+        set = (Button) findViewById(R.id.set);
 
         ArrayAdapter adapte = new ArrayAdapter(this,android.R.layout.simple_spinner_dropdown_item,x);
         Sec.setAdapter(adapte);
@@ -53,6 +59,29 @@ public class Choose extends AppCompatActivity implements AdapterView.OnItemSelec
         Half.setOnItemSelectedListener(this);
 
 
+        set.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!s){
+                    Toast.makeText(getApplicationContext(),"Select Semester",Toast.LENGTH_SHORT).show();
+                }else if(!b){
+                    Toast.makeText(getApplicationContext(),"Select Branch",Toast.LENGTH_SHORT).show();
+                }else if(!sect){
+                    Toast.makeText(getApplicationContext(),"Select Section",Toast.LENGTH_SHORT).show();
+                }else if(!h){
+                    Toast.makeText(getApplicationContext(),"Select Half",Toast.LENGTH_SHORT).show();
+                }else {
+                    SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                    SharedPreferences.Editor e = s.edit();
+                    e.putString("sem", se);
+                    e.putString("sec", sec);
+                    e.putString("branch", br);
+                    e.putString("half", hal);
+                    e.commit();
+                    finish();
+                }
+            }
+        });
         setTitle("Select Your Class ");
 
     }
@@ -65,6 +94,7 @@ public class Choose extends AppCompatActivity implements AdapterView.OnItemSelec
         if(parent.getId()==R.id.sem) {
             if(position!=0){
               s=true;
+                se = sem[position];
             }else {
                 s = false;
             }
@@ -77,7 +107,7 @@ public class Choose extends AppCompatActivity implements AdapterView.OnItemSelec
             }else {
 
                 b=true;
-
+                br = branch[position];
                 if(position==2){
                     ArrayAdapter adapter2 = new ArrayAdapter(this,android.R.layout.simple_spinner_dropdown_item,section1);
                     Sec.setAdapter(adapter2);
@@ -86,6 +116,7 @@ public class Choose extends AppCompatActivity implements AdapterView.OnItemSelec
                 }else if(position==6){
                     ArrayAdapter adapte = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, x);
                     Sec.setAdapter(adapte);
+                    h=true;
 
                 }
 
@@ -93,6 +124,23 @@ public class Choose extends AppCompatActivity implements AdapterView.OnItemSelec
                     ArrayAdapter adapter2 = new ArrayAdapter(this,android.R.layout.simple_spinner_dropdown_item,section);
                     Sec.setAdapter(adapter2);
                 }
+            }
+        }
+        if(parent.getId()==R.id.half){
+            if(position==0){
+                h=false;
+            }
+            else{
+                h=true;
+                hal = Half2[position];
+            }
+        }
+        if(parent.getId()==R.id.sec){
+            if(position==0){
+                sect=false;
+            }else{
+                sect=true;
+                sec = section[position];
             }
         }
     }

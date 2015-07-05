@@ -3,13 +3,17 @@ package nsit.app.com.nsitapp;
 import android.app.Activity;
 import android.content.Context;
 import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
+import android.location.LocationListener;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
+
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -23,7 +27,9 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONArray;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 /**
  * Created by Sidharth Patro on 01-Jul-15.
@@ -77,18 +83,16 @@ public class LocationMapView extends Activity {
                 Toast msg2 = Toast.makeText(LocationMapView.this,String.valueOf(acc), Toast.LENGTH_SHORT);
                 msg.show();
                 msg2.show();
-                if (acc>15.0){
-                    OriginLat = Double.toString(loc.getLongitude());
-                    OriginLong = Double.toString(loc.getLatitude());
-                    locmgr.removeUpdates(this);
-                    getDirections.execute();
-                }
+                OriginLat = Double.toString(loc.getLongitude());
+                OriginLong = Double.toString(loc.getLatitude());
+                locmgr.removeUpdates(this);
+                getDirections.execute();
             }
             public void onStatusChanged(String provider, int status, Bundle extras) {}
             public void onProviderEnabled(String provider) {}
             public void onProviderDisabled(String provider) {}
         };
-        locmgr.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1, locationListener);
+        locmgr.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 0, locationListener);
 
     }
 

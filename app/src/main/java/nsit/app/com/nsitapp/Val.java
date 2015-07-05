@@ -500,7 +500,7 @@ MPAE_sem7_sec3  =
                 "    \"Header\": \"DEPARTMENT OF CHEMISTRY\",\n" +
                 "    \"ContentArray\": [\n" +
                 "      {\n" +
-                "        \"Name\": \"Dr. Sanjeeve Thakur\",\n" +
+                "        \"Name\": \"Dr. Sanjeev Thakur\",\n" +
                 "        \"Designation\": \"Associate Professor\",\n" +
                 "        \"Email\": \"sanjeevthakur@nsit.ac.in\",\n" +
                 "        \"ContactNo\": \"25000239(DID) , 3239(Int)\"\n" +

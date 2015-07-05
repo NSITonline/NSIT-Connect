@@ -41,7 +41,6 @@ dependencies {
     compile project(':YouTubeAndroidPlayerApi')
     compile files('C:/Users/kamlesh kumar garg/Downloads/PlaceComplete/nsitapp2/YouTubeAndroidPlayerApi/YouTubeAndroidPlayerApi.jar')
     compile files('src/main/libs/devsmartlib.jar')
-    compile files('libs/dropbox-sync-sdk-android.jar')
     compile 'com.google.android.gms:play-services-maps:6.+'
     compile 'com.google.android.gms:play-services-location:6.+'
 }

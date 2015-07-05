@@ -35,9 +35,9 @@ import java.io.IOException;
 public class Video extends Fragment {
     ListView listview;
 
-    public static void LaunchVideo(String id){
-
-    }
+    String nextPageToken = "";
+    String prevPageToken = "";
+    String navigateTo = "next";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -61,53 +61,58 @@ public class Video extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_video, container, false);
 //        Videos List Initialization.
         listview = (ListView) rootView.findViewById(R.id.videos_list);
-
-        try {
-            Intent intent = YouTubeStandalonePlayer.createVideoIntent(getActivity(), "AIzaSyD-hWnEb2F-94y6XyaG5WlKXZKBpKr9PaE", "zXLZvsSmBIs");
-            //startActivity(intent);
-        } catch (ActivityNotFoundException e) {
-            AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
-            alertDialog.setTitle("YouTube API not found.");
-            alertDialog.setMessage("This section needs YouTube app to be installed on your device. Please get it from the Google Play Store.");
-            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    });
-            alertDialog.show();
-        } catch (Exception e) {
-            AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
-            alertDialog.setTitle("Oops!");
-            alertDialog.setMessage("The error exception is " + e.toString() + " ; Send this to us and we will get this fixed.");
-            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    });
-            alertDialog.show();
-        }
         Log.e("YouTube:", "Fetching data");
         View Spinner = rootView.findViewById(R.id.VideoProgressSpinner);
-        try {
-            new Video_RetrieveFeed().execute();
-            Spinner.setAlpha(1);
-        } catch (Exception e) {
-            AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
-            alertDialog.setTitle("Can't connect.");
-            alertDialog.setMessage("We cannot connect to the internet right now. Please try again later. Exception e: " + e.toString());
-            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    });
-            alertDialog.show();
-            Log.e("YouTube:", "Cannot fetch " + e.toString());
-        }
-        Spinner.setAlpha(0);
+        Spinner.setVisibility(View.VISIBLE);
 
+        Button btnNextPage = (Button)rootView.findViewById(R.id.NextPageButton);
+        Button btnPrevPage = (Button)rootView.findViewById(R.id.PrevPageButton);
+
+        btnNextPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    navigateTo = "next";
+                    new Video_RetrieveFeed().execute();
+                } catch (Exception e) {
+                    AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
+                    alertDialog.setTitle("Can't connect.");
+                    alertDialog.setMessage("We cannot connect to the internet right now. Please try again later. Exception e: " + e.toString());
+                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                    alertDialog.show();
+                    Log.e("YouTube:", "Cannot fetch " + e.toString());
+                }
+            }
+        });
+        btnPrevPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    navigateTo = "prev";
+                    new Video_RetrieveFeed().execute();
+                } catch (Exception e) {
+                    AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
+                    alertDialog.setTitle("Can't connect.");
+                    alertDialog.setMessage("We cannot connect to the internet right now. Please try again later. Exception e: " + e.toString());
+                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                    alertDialog.show();
+                    Log.e("YouTube:", "Cannot fetch " + e.toString());
+                }
+            }
+        });
+
+
+        Spinner.setVisibility(View.GONE);
 
         return rootView;
     }
@@ -118,9 +123,19 @@ public class Video extends Fragment {
         protected String doInBackground(String... urls) {
             try {
                 Log.e("YouTube Data","Starting to fetch stuff");
+                String url = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=UUu445B5LTXzkNr5eft8wNHg&key=AIzaSyBgktirlOODUO9zWD-808D7zycmP7smp-Y";
+                if (navigateTo=="next")
+                {
+                    url = url+"&pageToken="+nextPageToken;
+                }
+                else if (navigateTo=="prev")
+                {
+                    url = url+"&pageToken="+prevPageToken;
+                }
                 HttpClient client = new DefaultHttpClient();
-                HttpUriRequest request = new HttpGet("https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=UUu445B5LTXzkNr5eft8wNHg&key=AIzaSyBgktirlOODUO9zWD-808D7zycmP7smp-Y");
+                HttpUriRequest request = new HttpGet(url);
                 ResponseHandler<String> responseHandler = new BasicResponseHandler();
+                Log.e("GET: ",url);
                 String Result = client.execute(request, responseHandler);
 
                 return Result;
@@ -138,8 +153,13 @@ public class Video extends Fragment {
                 Log.e("YouTube Data", "Received Result: "+Result.toString());
                 JSONObject YTFeed = new JSONObject(String.valueOf(Result));
                 JSONArray YTFeedItems = YTFeed.getJSONArray("items");
+                if(YTFeed.has("nextPageToken")) {
+                    nextPageToken = YTFeed.getString("nextPageToken");
+                }
+                if(YTFeed.has("prevPageToken")){
+                    prevPageToken = YTFeed.getString("prevPageToken");
+                }
                 populateList(YTFeedItems);
-
             } catch (Exception e) {
                 e.printStackTrace();
             }

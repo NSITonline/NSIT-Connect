@@ -10,10 +10,10 @@ public class ProfListRowItem {
         private String phone;
         private String email;
 
-        public ProfListRowItem(String name, String email) {
+        public ProfListRowItem(String name, String email,String con) {
             this.name = name;
             this.room = "";
-            this.phone = "";
+            this.phone = con;
             this.email = email;
         }
 

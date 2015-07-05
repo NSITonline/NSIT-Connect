@@ -29,12 +29,13 @@ public class VideoList_Adapter extends BaseAdapter {
 
     Context context;
     JSONArray FeedItems;
+    ImageLoader imageLoader;
     private static LayoutInflater inflater = null;
 
     public VideoList_Adapter(Context context, JSONArray FeedItems) {
-        // TODO Auto-generated constructor stub
         this.context = context;
         this.FeedItems = FeedItems;
+        imageLoader=new ImageLoader(context.getApplicationContext());
         inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -69,13 +70,18 @@ public class VideoList_Adapter extends BaseAdapter {
         TextView Title = (TextView) vi.findViewById(R.id.VideoTitle);
         TextView Description = (TextView) vi.findViewById(R.id.VideoDescription);
         String VideoId = null;
-        ImageLoader imageLoader=new ImageLoader(context.getApplicationContext());
         ImageView VideoThumbnail =  (ImageView) vi.findViewById(R.id.VideoThumbnail);
         try {
             Title.setText(FeedItems.getJSONObject(position).getJSONObject("snippet").getString("title"));
             Description.setText(FeedItems.getJSONObject(position).getJSONObject("snippet").getString("description"));
             VideoId = FeedItems.getJSONObject(position).getJSONObject("snippet").getJSONObject("resourceId").getString("videoId");
-            imageLoader.DisplayImage(FeedItems.getJSONObject(position).getJSONObject("snippet").getJSONObject("thumbnails").getJSONObject("maxres").getString("url"), VideoThumbnail);
+            if (FeedItems.getJSONObject(position).getJSONObject("snippet").getJSONObject("thumbnails").has("maxres"))
+            {
+                imageLoader.DisplayImage(FeedItems.getJSONObject(position).getJSONObject("snippet").getJSONObject("thumbnails").getJSONObject("maxres").getString("url"), VideoThumbnail);
+            }
+            else{
+                imageLoader.DisplayImage(FeedItems.getJSONObject(position).getJSONObject("snippet").getJSONObject("thumbnails").getJSONObject("default").getString("url"), VideoThumbnail);
+            }
             Log.e("FeedItem",FeedItems.get(position).toString());
         } catch (JSONException e) {
             e.printStackTrace();
@@ -89,7 +95,7 @@ public class VideoList_Adapter extends BaseAdapter {
                 Activity activity = (Activity)v.getContext();
                 try {
                     Intent intent = YouTubeStandalonePlayer.createVideoIntent(activity, "AIzaSyD-hWnEb2F-94y6XyaG5WlKXZKBpKr9PaE", finalVideoId);
-                     activity.startActivity(intent);
+                    activity.startActivity(intent);
                 } catch (ActivityNotFoundException e) {
                     AlertDialog alertDialog = new AlertDialog.Builder(activity).create();
                     alertDialog.setTitle("YouTube API not found.");

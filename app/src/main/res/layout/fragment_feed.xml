@@ -25,7 +25,6 @@
                 android:orientation="horizontal"
                 android:layout_height="270dp">
 
-
                 <LinearLayout
                     android:layout_gravity="center"
                     android:gravity="center"
@@ -39,7 +38,7 @@
                     <ImageView
                         android:layout_width="fill_parent"
                         android:layout_height="200dp"
-                        android:src="@drawable/nsit_online"/>
+                        android:src="@drawable/collegespace"/>
                     <LinearLayout
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
@@ -47,7 +46,7 @@
                         <TextView
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
-                            android:text="NSIT ONLINE"
+                            android:text="COLLEGESPACE"
                             android:textSize="20sp"
                             android:textColor="#ffffff"
                             android:gravity="center"/>
@@ -65,7 +64,7 @@
                             android:textSize="20sp"
                             android:paddingTop="5dp"
                             android:paddingLeft="10dp"
-                            android:id="@+id/stars_nsitonline"/>
+                            android:id="@+id/stars_collegespace"/>
                         <ImageView
                             android:layout_width="30dp"
                             android:layout_height="30dp"
@@ -74,13 +73,14 @@
                         <CheckBox
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/check_nsitonline"
+                            android:id="@+id/check_collegespace"
                             android:layout_marginLeft="50dp"/>
 
 
                     </LinearLayout>
 
                 </LinearLayout>
+
 
                 <LinearLayout
                     android:layout_gravity="center"
@@ -138,12 +138,14 @@
 
                 </LinearLayout>
             </LinearLayout>
+
+
+
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:orientation="horizontal"
                 android:layout_marginTop="10dp"
                 android:layout_height="270dp">
-
 
                 <LinearLayout
                     android:layout_gravity="center"
@@ -158,7 +160,7 @@
                     <ImageView
                         android:layout_width="fill_parent"
                         android:layout_height="200dp"
-                        android:src="@drawable/collegespace"/>
+                        android:src="@drawable/csi"/>
                     <LinearLayout
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
@@ -166,7 +168,7 @@
                         <TextView
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
-                            android:text="COLLEGESPACE"
+                            android:text="CSI NSIT"
                             android:textSize="20sp"
                             android:textColor="#ffffff"
                             android:gravity="center"/>
@@ -184,7 +186,7 @@
                             android:textSize="20sp"
                             android:paddingTop="5dp"
                             android:paddingLeft="10dp"
-                            android:id="@+id/stars_collegespace"/>
+                            android:id="@+id/stars_csi"/>
                         <ImageView
                             android:layout_width="30dp"
                             android:layout_height="30dp"
@@ -193,13 +195,82 @@
                         <CheckBox
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/check_collegespace"
+                            android:id="@+id/check_csi"
                             android:layout_marginLeft="50dp"/>
 
 
                     </LinearLayout>
 
                 </LinearLayout>
+
+                <LinearLayout
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="0.5"
+                    android:orientation="vertical"
+                    android:background="@drawable/card">
+                    <ImageView
+                        android:layout_width="fill_parent"
+                        android:layout_height="200dp"
+                        android:src="@drawable/ieee"/>
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#0288d1">
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:text="IEEE NSIT"
+                            android:textSize="20sp"
+                            android:textColor="#ffffff"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2,123"
+                            android:textSize="20sp"
+                            android:paddingTop="5dp"
+                            android:paddingLeft="10dp"
+                            android:id="@+id/stars_ieee"/>
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/ic_action_star_10"/>
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:id="@+id/check_ieee"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="50dp"/>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_height="270dp">
+
 
                 <LinearLayout
                     android:layout_gravity="center"
@@ -250,69 +321,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/check_bullet"
-                            android:layout_marginLeft="50dp"/>
-
-
-                    </LinearLayout>
-
-                </LinearLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp"
-                android:layout_height="270dp">
-
-
-                <LinearLayout
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_width="0dp"
-                    android:layout_height="fill_parent"
-                    android:layout_weight="0.5"
-                    android:orientation="vertical"
-                    android:background="@drawable/card">
-                    <ImageView
-                        android:layout_width="fill_parent"
-                        android:layout_height="200dp"
-                        android:src="@drawable/junoon"/>
-                    <LinearLayout
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:background="#0288d1">
-                        <TextView
-                            android:layout_width="fill_parent"
-                            android:layout_height="fill_parent"
-                            android:text="JUNOON"
-                            android:textSize="20sp"
-                            android:textColor="#ffffff"
-                            android:gravity="center"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="2,123"
-                            android:textSize="20sp"
-                            android:paddingTop="5dp"
-                            android:paddingLeft="10dp"
-                            android:id="@+id/stars_junoon"/>
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:src="@drawable/ic_action_star_10"/>
-
-                        <CheckBox
-                            android:layout_width="wrap_content"
-                            android:id="@+id/check_junoon"
-                            android:layout_height="wrap_content"
                             android:layout_marginLeft="50dp"/>
 
 
@@ -376,6 +384,251 @@
 
                 </LinearLayout>
             </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_height="270dp">
+
+
+                <LinearLayout
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="0.5"
+                    android:orientation="vertical"
+                    android:background="@drawable/card">
+                    <ImageView
+                        android:layout_width="fill_parent"
+                        android:layout_height="200dp"
+                        android:src="@drawable/debsoc"/>
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#0288d1">
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:text="DEBSOC "
+                            android:textSize="20sp"
+                            android:textColor="#ffffff"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2,423"
+                            android:textSize="20sp"
+                            android:paddingTop="5dp"
+                            android:paddingLeft="10dp"
+                            android:id="@+id/stars_debsoc"/>
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/ic_action_star_10"/>
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/check_debsoc"
+                            android:layout_marginLeft="50dp"/>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="0.5"
+                    android:orientation="vertical"
+                    android:background="@drawable/card">
+                    <ImageView
+                        android:layout_width="fill_parent"
+                        android:layout_height="200dp"
+                        android:src="@drawable/quiz"/>
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#0288d1">
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:text="QUIZ CLUB"
+                            android:textSize="20sp"
+                            android:textColor="#ffffff"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2,423"
+                            android:textSize="20sp"
+                            android:paddingTop="5dp"
+                            android:paddingLeft="10dp"
+                            android:id="@+id/stars_quiz"/>
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/ic_action_star_10"/>
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/check_quiz"
+                            android:layout_marginLeft="50dp"/>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_height="270dp">
+
+
+                <LinearLayout
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="0.5"
+                    android:orientation="vertical"
+                    android:background="@drawable/card">
+                    <ImageView
+                        android:layout_width="fill_parent"
+                        android:layout_height="200dp"
+                        android:src="@drawable/ashwamedh"/>
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#0288d1">
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:text="ASHWAMEDH "
+                            android:textSize="20sp"
+                            android:textColor="#ffffff"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2,423"
+                            android:textSize="20sp"
+                            android:paddingTop="5dp"
+                            android:paddingLeft="10dp"
+                            android:id="@+id/stars_ashwa"/>
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/ic_action_star_10"/>
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/check_ashwa"
+                            android:layout_marginLeft="50dp"/>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="0.5"
+                    android:orientation="vertical"
+                    android:background="@drawable/card">
+                    <ImageView
+                        android:layout_width="fill_parent"
+                        android:layout_height="200dp"
+                        android:src="@drawable/junoon"/>
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#0288d1">
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:text="JUNOON"
+                            android:textSize="20sp"
+                            android:textColor="#ffffff"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2,423"
+                            android:textSize="20sp"
+                            android:paddingTop="5dp"
+                            android:paddingLeft="10dp"
+                            android:id="@+id/stars_junoon"/>
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/ic_action_star_10"/>
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/check_junoon"
+                            android:layout_marginLeft="50dp"/>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
 
             <Button
                 android:layout_width="fill_parent"

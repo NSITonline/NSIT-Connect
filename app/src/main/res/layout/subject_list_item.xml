@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#ffffff"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingTop="10sp">
+    <LinearLayout
+        android:layout_weight="0.5"
+        android:layout_width="0dp"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="Code"
+        />
+
+    <TextView
+        android:id="@+id/title"
+        android:focusable="false"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="hellllooooo"/>
+
+
+        <TextView
+            android:id="@+id/attendance"
+            android:focusable="false"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Attendance"/>
+    </LinearLayout>
+
+    <Button
+        android:layout_weight="0.15"
+        android:layout_width="0dp"
+        android:textColor="#ffffff"
+        android:padding="5dp"
+        android:background="@color/colorPrimary"
+        android:id="@+id/add"
+        android:layout_height="wrap_content"
+        android:text="Add date"/>
+    <Button
+        android:layout_weight="0.15"
+        android:id="@+id/rem"
+        android:padding="5dp"
+        android:textColor="#ffffff"
+        android:background="@color/colorPrimary"
+        android:layout_marginLeft="10dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Show dates"/>
+     
+</LinearLayout>

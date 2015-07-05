@@ -3,6 +3,19 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:animateLayoutChanges="true"
     android:layout_height="match_parent">
+<<<<<<< HEAD
+=======
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Next Page"
+        android:id="@+id/NextPageButton"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Prev Page"
+        android:id="@+id/PrevPageButton"/>
+>>>>>>> origin/master
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">

@@ -64,6 +64,24 @@ public class Video extends Fragment {
         Log.e("YouTube:", "Fetching data");
         View Spinner = rootView.findViewById(R.id.VideoProgressSpinner);
         Spinner.setVisibility(View.VISIBLE);
+<<<<<<< HEAD
+        try {
+            new Video_RetrieveFeed().execute();
+        } catch (Exception e) {
+            AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
+            alertDialog.setTitle("Can't connect.");
+            alertDialog.setMessage("We cannot connect to the internet right now. Please try again later. Exception e: " + e.toString());
+            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+            alertDialog.show();
+            Log.e("YouTube:", "Cannot fetch " + e.toString());
+        }
+        Spinner.setVisibility(View.GONE);
+=======
 
         Button btnNextPage = (Button)rootView.findViewById(R.id.NextPageButton);
         Button btnPrevPage = (Button)rootView.findViewById(R.id.PrevPageButton);
@@ -111,6 +129,7 @@ public class Video extends Fragment {
             }
         });
 
+>>>>>>> origin/master
 
         Spinner.setVisibility(View.GONE);
 

@@ -49,11 +49,11 @@
     <TextView
         android:id="@+id/des"
         android:paddingTop="5dp"
-        android:maxLines="11"
+        android:maxLines="10"
         android:ellipsize="end"
         android:text="NSIT Online Blog"
         android:layout_width="fill_parent"
-        android:layout_height="220dp"
+        android:layout_height="200dp"
         android:textSize="15sp"
         />
         <LinearLayout
@@ -80,8 +80,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15sp"/>
-</LinearLayout>
-            </LinearLayout>
+
+    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="date"
+                android:id="@+id/date"/>
+        </LinearLayout>
 
     </LinearLayout>
 

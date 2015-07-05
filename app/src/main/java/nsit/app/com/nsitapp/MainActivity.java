@@ -11,6 +11,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,9 +29,10 @@ public class MainActivity extends AppCompatActivity {
     private ListView mDrawerList;
     ListView lv;
     private ActionBarDrawerToggle mDrawerToggle;
-    static final String[] sideitems = new String[] { "Home" , "My Feed","Video","Calendar" , "Professors","About" };	//items on navigation drawer
+    static final String[] sideitems = new String[] { "Home" , "My Feed","Video","Calendar" , "Professors","Locations","About" };	//items on navigation drawer
     SwipeRefreshLayout swipeLayout;
     Integer[] imageId = {
+            R.drawable.ic_action_star_10,
             R.drawable.ic_action_star_10,
             R.drawable.ic_action_star_10,
             R.drawable.ic_action_star_10,
@@ -61,15 +63,17 @@ public class MainActivity extends AppCompatActivity {
         mDrawerList.addHeaderView(new View(this));
         mDrawerList.addFooterView(new View(this));
         mDrawerList.setAdapter(adapter2);
-        mDrawerToggle = new ActionBarDrawerToggle(
-
-                this,                  /* host Activity */
-                mDrawerLayout,         /* DrawerLayout object */
-                toolbar,  /* navigation drawer icon to replace 'Up' caret */
-                R.string.app_name,  /* "open drawer" description */
-                R.string.app_name  /* "close drawer" description */
-        ) ;
-
+        try {
+            mDrawerToggle = new ActionBarDrawerToggle(
+                    this,                  /* host Activity */
+                    mDrawerLayout,         /* DrawerLayout object */
+                    toolbar,  /* navigation drawer icon to replace 'Up' caret */
+                    R.string.app_name,  /* "open drawer" description */
+                    R.string.app_name  /* "close drawer" description */
+            );
+        }catch(Exception e){
+            Log.e("error", e.getMessage());
+        }
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
@@ -79,7 +83,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
+        try {
+            mDrawerLayout.setDrawerListener(mDrawerToggle);
+        }catch(Exception e){
+
+        }
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setIcon(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
@@ -173,7 +181,11 @@ public class MainActivity extends AppCompatActivity {
                 ft.replace(R.id.content_frame, f4);
                 getSupportActionBar().setTitle("Professors List");
                 break;
-
+            case 6 :
+                Fragment f5 = new Locations();
+                ft.replace(R.id.content_frame, f5);
+                getSupportActionBar().setTitle("Locations");
+                break;
         }
         ft.commit();
     }

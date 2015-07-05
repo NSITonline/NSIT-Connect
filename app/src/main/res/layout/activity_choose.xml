@@ -1,0 +1,38 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="nsit.app.com.nsitapp.Choose">
+
+
+    <Spinner
+        android:layout_width="fill_parent"
+        android:id="@+id/sem"
+        android:layout_height="wrap_content"/>
+    <Spinner
+        android:layout_width="fill_parent"
+        android:id="@+id/branch"
+        android:layout_height="wrap_content"/>
+
+    <Spinner
+        android:layout_width="fill_parent"
+        android:id="@+id/sec"
+        android:layout_height="wrap_content"/>
+
+
+    <Spinner
+        android:layout_width="fill_parent"
+        android:id="@+id/half"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:textColor="#ffffff"
+        android:text="Set"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="40dp"/>
+
+
+</LinearLayout>

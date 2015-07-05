@@ -202,7 +202,6 @@ public class Feed extends Fragment {
         else
             Toast.makeText(getActivity(), "Cannot connect to Internet", Toast.LENGTH_SHORT).show();
 
-
         return rootView;
     }
 

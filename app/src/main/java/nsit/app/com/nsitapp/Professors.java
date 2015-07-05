@@ -22,13 +22,21 @@ import java.util.List;
 
 public class Professors extends Fragment implements
         AdapterView.OnItemClickListener {
-    public static final String[] titles = new String[] { "ECE",
-            "COE","IT", "ICE", "MPAE",  "BT","PCME"};
+
+
+    public static final String[] titles = new String[] { "DM","DC","DP",
+            "DM","H&M",
+            "ECE",
+            "COE","ICE","MPAE", "IT",   "BT","SAS"};
 
     public static final String[] full = new String[] {
+            "DEPARTMENT OF MANAGEMENT","DEPARTMENT OF CHEMISTRY","DEPARTMENT OF PHYSICS",
+            "DEPARTMENT OF MATHS","School Of Humanities & Management",
             "Division Of Electronics & Communication Engg",
-            "Division Of Computer Engg",  "Division Of Information Technology","Division Of Instrumentation & Control Engg",
-            "Division Of Manufacturing Processes & Automation Engg","Division Of Bio-Technology","School Of Applied Sciences"
+            "Division Of Computer Engg",  "Division Of Instrumentation & Control Engg",
+            "Division Of Manufacturing Processes & Automation Engg",
+            "Division Of Information Technology",
+           "Division Of Bio-Technology","School Of Applied Sciences"
     };
 
     ListView listView;
@@ -64,7 +72,6 @@ public class Professors extends Fragment implements
                 R.layout.list_item, rowItems);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);
-
 
         return rootView;
     }

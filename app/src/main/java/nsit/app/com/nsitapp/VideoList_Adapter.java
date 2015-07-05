@@ -32,7 +32,6 @@ public class VideoList_Adapter extends BaseAdapter {
     private static LayoutInflater inflater = null;
 
     public VideoList_Adapter(Context context, JSONArray FeedItems) {
-        // TODO Auto-generated constructor stub
         this.context = context;
         this.FeedItems = FeedItems;
         inflater = (LayoutInflater) context

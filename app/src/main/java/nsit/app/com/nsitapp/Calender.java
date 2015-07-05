@@ -79,6 +79,8 @@ public class Calender extends Fragment {
         lvTest = (TwoWayView) rootView.findViewById(R.id.lvItems);
 
 
+Intent i = new Intent(getActivity(),Choose.class);
+        startActivity(i);
 
 
         if(isNetworkAvailable())

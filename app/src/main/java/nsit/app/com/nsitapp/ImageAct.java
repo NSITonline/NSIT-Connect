@@ -171,7 +171,6 @@ public class ImageAct extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             Log.e("YO", "Done" + obid);
-            Log.e("yrs",text);
             JSONObject ob;
             JSONArray arr;
             try {

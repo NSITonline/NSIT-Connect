@@ -3,14 +3,19 @@ package nsit.app.com.nsitapp;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
@@ -54,10 +59,11 @@ public class FinalFeed extends Fragment {
     List<String> list7 = new ArrayList<String>();
     List<String> list8 = new ArrayList<String>();
     View footerView;
+    SharedPreferences i;
     ListView lv;
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        super.onCreate(savedInstanceState); setHasOptionsMenu(true);
     }
 
     Activity activity;
@@ -66,6 +72,7 @@ public class FinalFeed extends Fragment {
     {
         super.onAttach(activity);
         this.activity = activity;
+
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -73,7 +80,10 @@ public class FinalFeed extends Fragment {
         pb=(ProgressBar)rootView.findViewById(R.id.progressBar1);
         lv = (ListView) rootView.findViewById(R.id.list);
         first=1;
-        final Bundle i = this.getArguments();
+
+
+
+         i = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
         Crosslinks = i.getBoolean("crosslinks", false);
         Collegespace = i.getBoolean("collegespace", false);
         Bullet = i.getBoolean("bullet", false);
@@ -84,6 +94,10 @@ public class FinalFeed extends Fragment {
         Deb = i.getBoolean("debsoc", false);
         Quiz = i.getBoolean("quiz", false);
         Ashwa = i.getBoolean("ashwa", false);
+
+
+
+
         footerView = ((LayoutInflater)getActivity().getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.footer_layout, null, false);
         lv.addFooterView(footerView);
 
@@ -485,6 +499,26 @@ public class FinalFeed extends Fragment {
             Log.e("first","zero");
 
         }
+    }
+
+
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.clear();
+        inflater.inflate(R.menu.menu_feed, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if(item.getItemId()==R.id.items){
+
+            Fragment mFragment = new Feed();
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, mFragment).commit();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     private boolean isNetworkAvailable() {

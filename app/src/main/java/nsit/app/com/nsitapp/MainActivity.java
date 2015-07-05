@@ -1,10 +1,12 @@
 package nsit.app.com.nsitapp;
 
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
@@ -158,8 +160,16 @@ public class MainActivity extends AppCompatActivity {
 
             case 2:
 
+                SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                Boolean set = s.getBoolean("set",false);
+                if(set==false) {
                 Fragment f1 = new Feed();
                 ft.replace(R.id.content_frame, f1);
+                }
+                else{
+                    Fragment f1 = new FinalFeed();
+                    ft.replace(R.id.content_frame, f1);
+                }
                 getSupportActionBar().setTitle("My Feed");
                 break;
 

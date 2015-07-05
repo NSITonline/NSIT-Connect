@@ -63,17 +63,31 @@ public class LocationMapView extends Activity {
                 Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
                 this.OriginLong = String.valueOf(location.getLongitude());
                 this.OriginLat = String.valueOf(location.getLatitude());
+                Log.e("locations",this.OriginLat + " " + this.OriginLong);
             }catch(Exception e){
-                Log.e("Maps Error",e.toString());
-                e.printStackTrace();
+                Log.e("Maps Error", e.toString());
             }
 
-            Log.e("TextHeader",String.valueOf(txtHeader));
             txtHeader.setText(LocationName);
             ShowMarker(Double.parseDouble(LocationLat), Double.parseDouble(LocationLong), LocationName);
         }
 
         final Location_GetDirections getDirections = new Location_GetDirections();
+
+
+        GPSTracker tracker = new GPSTracker(this);
+        if (tracker.canGetLocation() == false) {
+            tracker.showSettingsAlert();
+          //  locationgot = false;
+        } else {
+            OriginLat = Double.toString(tracker.getLatitude());
+            OriginLong = Double.toString(tracker.getLongitude());
+            //locationgot = true;
+            getDirections.execute();
+        }
+
+
+
 
         locmgr = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         final LocationListener locationListener = new LocationListener() {

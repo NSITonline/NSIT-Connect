@@ -14,7 +14,10 @@
         android:layout_height="50dp"
         android:text="Prev Page"
         android:id="@+id/PrevPageButton"/>
+<<<<<<< HEAD
 
+=======
+>>>>>>> e29868a3c39921bfe1c571ba6696dfec5a5b72e0
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">

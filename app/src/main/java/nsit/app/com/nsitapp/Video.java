@@ -60,12 +60,16 @@ public class Video extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_video, container, false);
-//        Videos List Initialization.
         listview = (ListView) rootView.findViewById(R.id.videos_list);
         Log.e("YouTube:", "Fetching data");
         View Spinner = rootView.findViewById(R.id.VideoProgressSpinner);
         Spinner.setVisibility(View.VISIBLE);
+<<<<<<< HEAD
    try {
+=======
+
+        try {
+>>>>>>> e29868a3c39921bfe1c571ba6696dfec5a5b72e0
             new Video_RetrieveFeed().execute();
         } catch (Exception e) {
             AlertDialog alertDialog = new AlertDialog.Builder(activity).create();
@@ -81,7 +85,12 @@ public class Video extends Fragment {
             Log.e("YouTube:", "Cannot fetch " + e.toString());
         }
         Spinner.setVisibility(View.GONE);
+<<<<<<< HEAD
        Button btnNextPage = (Button)rootView.findViewById(R.id.NextPageButton);
+=======
+
+        Button btnNextPage = (Button)rootView.findViewById(R.id.NextPageButton);
+>>>>>>> e29868a3c39921bfe1c571ba6696dfec5a5b72e0
         Button btnPrevPage = (Button)rootView.findViewById(R.id.PrevPageButton);
 
         btnNextPage.setOnClickListener(new View.OnClickListener() {
@@ -127,7 +136,10 @@ public class Video extends Fragment {
             }
         });
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> e29868a3c39921bfe1c571ba6696dfec5a5b72e0
         Spinner.setVisibility(View.GONE);
 
         return rootView;

@@ -58,6 +58,9 @@ public class LocationMapView extends Activity {
             TextView txtHeader = (TextView)findViewById(R.id.LocationTitle);
             this.DestinationLat = LocationLat;
             this.DestinationLong = LocationLong;
+<<<<<<< HEAD
+            Log.e("TextHeader",String.valueOf(txtHeader));
+=======
             LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
             try {
                 Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
@@ -68,6 +71,7 @@ public class LocationMapView extends Activity {
                 Log.e("Maps Error", e.toString());
             }
 
+>>>>>>> origin/master
             txtHeader.setText(LocationName);
             ShowMarker(Double.parseDouble(LocationLat), Double.parseDouble(LocationLong), LocationName);
         }
@@ -90,13 +94,19 @@ public class LocationMapView extends Activity {
 
 
         locmgr = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        Location location = locmgr.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        if (location==null){
+            Log.e("getLastKnownLocation","Not found.");
+        }
+        else{
+            OriginLat = Double.toString(location.getLongitude());
+            OriginLong = Double.toString(location.getLatitude());
+            Log.e("getLastKnownLocation","Lat: "+OriginLat+" Long: "+OriginLong);
+            getDirections.execute();
+        }
         final LocationListener locationListener = new LocationListener() {
             public void onLocationChanged(Location loc) {
-                Toast msg = Toast.makeText(LocationMapView.this, "Lon: " + Double.toString(loc.getLongitude()) + " Lat: " + Double.toString(loc.getLatitude()), Toast.LENGTH_SHORT);
-                float acc = loc.getAccuracy();
-                Toast msg2 = Toast.makeText(LocationMapView.this,String.valueOf(acc), Toast.LENGTH_SHORT);
-                msg.show();
-                msg2.show();
+                Log.e("GPS: ","Location change called.");
                 OriginLat = Double.toString(loc.getLongitude());
                 OriginLong = Double.toString(loc.getLatitude());
                 locmgr.removeUpdates(this);

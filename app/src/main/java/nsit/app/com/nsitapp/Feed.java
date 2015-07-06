@@ -5,10 +5,12 @@ package nsit.app.com.nsitapp;
  */
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
@@ -66,15 +68,6 @@ public class Feed extends Fragment {
 
 
     @Override
-    public void onResume() {
-
-        super.onResume();
-        Collegespace=false;Crosslinks=false;Junoon=false;Bullet=false;Rotaract=false;Quiz=false;Ieee=false;
-        Csi=false;Ashwa=false;Deb=false;
-
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_feed, container, false);
         next = (Button) rootView.findViewById(R.id.next);
@@ -102,6 +95,30 @@ public class Feed extends Fragment {
         tDeb = (TextView) rootView.findViewById(R.id.stars_debsoc);
         tQuiz = (TextView) rootView.findViewById(R.id.stars_quiz);
         tAshwa = (TextView) rootView.findViewById(R.id.stars_ashwa);
+
+        SharedPreferences i = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
+        Crosslinks = i.getBoolean("crosslinks", false);
+        Collegespace = i.getBoolean("collegespace", false);
+        Bullet = i.getBoolean("bullet", false);
+        Junoon = i.getBoolean("junoon", false);
+        Rotaract = i.getBoolean("rotaract", false);
+        Csi = i.getBoolean("csi", false);
+        Ieee = i.getBoolean("ieee", false);
+        Deb = i.getBoolean("debsoc", false);
+        Quiz = i.getBoolean("quiz", false);
+        Ashwa = i.getBoolean("ashwa", false);
+
+
+        collegespace.setChecked(Collegespace);
+        crosslinks.setChecked(Crosslinks);
+        junoon.setChecked(Junoon);
+        bullet.setChecked(Bullet);
+        rotaract.setChecked(Rotaract);
+        quiz.setChecked(Quiz);
+        ieee.setChecked(Ieee);
+        csi.setChecked(Csi);
+        ashwa.setChecked(Ashwa);
+        deb.setChecked(Deb);
 
 
         crosslinks.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -169,20 +186,24 @@ public class Feed extends Fragment {
             @Override
             public void onClick(View view) {
 
+                SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
+                SharedPreferences.Editor e = p.edit();
                 Fragment mFragment = new FinalFeed();
-                Bundle bundle = new Bundle();
-                bundle.putBoolean("crosslinks", Crosslinks);
-                bundle.putBoolean("collegespace", Collegespace);
-                bundle.putBoolean("bullet", Bullet);
-                bundle.putBoolean("junoon", Junoon);
-                bundle.putBoolean("rotaract", Rotaract);
-                bundle.putBoolean("csi", Csi);
-                bundle.putBoolean("ieee", Ieee);
-                bundle.putBoolean("debsoc", Deb);
-                bundle.putBoolean("quiz", Quiz);
-                bundle.putBoolean("ashwa", Ashwa);
-                mFragment.setArguments(bundle);
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, mFragment).addToBackStack( "tag" ).commit();
+
+
+                e.putBoolean("crosslinks", Crosslinks);
+                e.putBoolean("collegespace", Collegespace);
+                e.putBoolean("bullet", Bullet);
+                e.putBoolean("junoon", Junoon);
+                e.putBoolean("rotaract", Rotaract);
+                e.putBoolean("csi", Csi);
+                e.putBoolean("ieee", Ieee);
+                e.putBoolean("debsoc", Deb);
+                e.putBoolean("quiz", Quiz);
+                e.putBoolean("ashwa", Ashwa);
+                e.putBoolean("set", true);
+                e.commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, mFragment).commit();
             }
         });
 

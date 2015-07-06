@@ -58,12 +58,40 @@ public class LocationMapView extends Activity {
             TextView txtHeader = (TextView)findViewById(R.id.LocationTitle);
             this.DestinationLat = LocationLat;
             this.DestinationLong = LocationLong;
+<<<<<<< HEAD
             Log.e("TextHeader",String.valueOf(txtHeader));
+=======
+            LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+            try {
+                Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                this.OriginLong = String.valueOf(location.getLongitude());
+                this.OriginLat = String.valueOf(location.getLatitude());
+                Log.e("locations",this.OriginLat + " " + this.OriginLong);
+            }catch(Exception e){
+                Log.e("Maps Error", e.toString());
+            }
+
+>>>>>>> origin/master
             txtHeader.setText(LocationName);
             ShowMarker(Double.parseDouble(LocationLat), Double.parseDouble(LocationLong), LocationName);
         }
 
         final Location_GetDirections getDirections = new Location_GetDirections();
+
+
+        GPSTracker tracker = new GPSTracker(this);
+        if (tracker.canGetLocation() == false) {
+            tracker.showSettingsAlert();
+          //  locationgot = false;
+        } else {
+            OriginLat = Double.toString(tracker.getLatitude());
+            OriginLong = Double.toString(tracker.getLongitude());
+            //locationgot = true;
+            getDirections.execute();
+        }
+
+
+
 
         locmgr = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         Location location = locmgr.getLastKnownLocation(LocationManager.GPS_PROVIDER);

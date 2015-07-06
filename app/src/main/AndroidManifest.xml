@@ -45,9 +45,7 @@
         <uses-permission android:name="android.permission.INTERNET" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCmmTcw4LR_qzSaGcl6orGV4S6nfHDhlss"/>
-
-
+            android:value="AIzaSyBgktirlOODUO9zWD-808D7zycmP7smp-Y"/>
         <activity
             android:name=".Choose"
             android:label="Select" >

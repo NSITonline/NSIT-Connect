@@ -59,12 +59,11 @@ public class Video extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_video, container, false);
-//        Videos List Initialization.
         listview = (ListView) rootView.findViewById(R.id.videos_list);
         Log.e("YouTube:", "Fetching data");
         View Spinner = rootView.findViewById(R.id.VideoProgressSpinner);
         Spinner.setVisibility(View.VISIBLE);
-<<<<<<< HEAD
+
         try {
             new Video_RetrieveFeed().execute();
         } catch (Exception e) {
@@ -81,7 +80,6 @@ public class Video extends Fragment {
             Log.e("YouTube:", "Cannot fetch " + e.toString());
         }
         Spinner.setVisibility(View.GONE);
-=======
 
         Button btnNextPage = (Button)rootView.findViewById(R.id.NextPageButton);
         Button btnPrevPage = (Button)rootView.findViewById(R.id.PrevPageButton);
@@ -128,8 +126,6 @@ public class Video extends Fragment {
                 }
             }
         });
-
->>>>>>> origin/master
 
         Spinner.setVisibility(View.GONE);
 

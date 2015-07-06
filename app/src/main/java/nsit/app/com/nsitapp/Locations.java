@@ -65,7 +65,6 @@ public class Locations extends Fragment {
         myIntent.putExtra("LocationName", LocationItem.Name);
         myIntent.putExtra("LocationLat", String.valueOf(LocationItem.Coord.latitude));
         myIntent.putExtra("LocationLong", String.valueOf(LocationItem.Coord.longitude));
-        //myIntent.putExtra("LocationLong", LocationItem.Coord.longitude);
         Locations.this.startActivity(myIntent);
     }
 

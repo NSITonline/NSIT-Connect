@@ -20,7 +20,7 @@
             android:layout_weight="1.0"
             android:layout_gravity="center_vertical"
             android:textColor="@color/colorPrimary"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:id="@+id/day"
             android:text=" Day"/>
         <View
@@ -33,7 +33,7 @@
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:layout_weight="1.0"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:text="Subject 1"/>
         <View
             android:layout_marginTop="5dp"
@@ -46,7 +46,7 @@
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:layout_weight="1.0"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:text="Sub2"/>
         <View
             android:layout_marginTop="5dp"
@@ -59,7 +59,7 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1.0"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:text="Sub3"/>
         <View
             android:layout_marginTop="5dp"
@@ -72,7 +72,7 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1.0"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:text="Sub4"/>
         <View
             android:layout_marginTop="5dp"
@@ -85,7 +85,7 @@
             android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1.0"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:text="Sub5"/>
         <View
             android:layout_marginTop="5dp"
@@ -98,7 +98,7 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1.0"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:text="Sub6"/>
         <View
             android:layout_marginTop="5dp"
@@ -110,7 +110,7 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1.0"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:text="Sub7"/>
         <View
             android:layout_marginTop="5dp"
@@ -123,8 +123,21 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1.0"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:text="Sub8"/>
+        <View
+            android:layout_marginTop="5dp"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorPrimary"/>
+        <TextView
+            android:id="@+id/p9"
+            android:paddingTop="5dp"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.0"
+            android:textSize="15sp"
+            android:text="Sub9"/>
         <View
             android:layout_marginTop="5dp"
             android:layout_width="fill_parent"

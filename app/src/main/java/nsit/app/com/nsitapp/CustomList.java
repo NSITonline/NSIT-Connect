@@ -3,6 +3,9 @@ package nsit.app.com.nsitapp;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.AsyncTask;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +17,15 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.ResponseHandler;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.BasicResponseHandler;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.List;
 
 import functions.ImageLoader;
@@ -29,7 +41,8 @@ public class CustomList extends ArrayAdapter<String>{
 	private final Activity context;
 	private final List<String> img,des,lik,link,obid,date;
 	public ImageLoader imageLoader;
-	String obids;
+
+
 	public CustomList(Activity context,List<String>image, List<String>desc, List<String>like,List<String>links,List<String>oid,List<String>d){
 		super(context, R.layout.message_layout, desc);
 		this.context = context;
@@ -57,26 +70,29 @@ public class CustomList extends ArrayAdapter<String>{
 			like.setText("0");
 		else
 			like.setText(lik.get(position));
-		ImageView imageView = (ImageView) rowView.findViewById(R.id.image);
+		ImageView imageView;
+
+		imageView = (ImageView) rowView.findViewById(R.id.image);
 
 		TextView d = (TextView) rowView.findViewById(R.id.date);
 
-		Date dates=null;
-		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
-		try {
-			dates = format.parse(date.get(position));
-		}catch (Exception e){
-			//Log.e("vsf",e.getMessage());
-		}
+		String x = GetLocalDateStringFromUTCString(date.get(position));
+		String formattedDate=x;
+try {
 
-
-
-if(dates!=null) {
-	DateFormat formatter = new SimpleDateFormat("dd MMMM, HH:mm");
-	String dateFormatted = formatter.format(dates);
-
-	d.setText(dateFormatted);
+	DateFormat originalFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss+SSSS", Locale.ENGLISH);
+	DateFormat targetFormat = new SimpleDateFormat("dd MMMM , hh:mm a");
+	Date date2 = originalFormat.parse(x);
+	formattedDate = targetFormat.format(date2);
+}catch(Exception e){
+	Log.e("error",e.getMessage()+" ");
 }
+
+		d.setText(formattedDate);
+
+
+
+
 			LinearLayout l = (LinearLayout) rowView.findViewById(R.id.data);
 
 		l.setOnClickListener(new OnClickListener() {
@@ -94,12 +110,20 @@ if(dates!=null) {
 			}
 		});
 
-		imageLoader.DisplayImage(img.get(position), imageView);
 
 
 		if (img.get(position) == null)
 			imageView.setVisibility(View.GONE);
-		else
+		else {
+
+
+			if(obid.get(position)==null)
+				imageLoader.DisplayImage(img.get(position), imageView);
+			else{
+				new DownloadWebPageTask(obid.get(position),img.get(position),imageView).execute();
+			}
+
+
 			imageView.setOnClickListener(new OnClickListener() {
 
 				@Override
@@ -112,11 +136,12 @@ if(dates!=null) {
 
 				}
 			});
+		}
 		return rowView;
 	}
 
 	public String GetLocalDateStringFromUTCString(String utcLongDateTime) {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss+SSSS");
 		String localDateString = null;
 
 		long when = 0;
@@ -131,21 +156,75 @@ if(dates!=null) {
 	}
 
 
-		public static Timestamp convertStringToTimestamp(String str_date) {
-			try {
-				DateFormat formatter;
-				formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-				// you can change format of date
-				Date date = formatter.parse(str_date);
-				java.sql.Timestamp timeStampDate = new Timestamp(date.getTime());
 
-				return timeStampDate;
-			} catch (ParseException e) {
-				System.out.println("Exception :" + e);
-				return null;
-			}
+	private class DownloadWebPageTask extends AsyncTask<String, Void, String> {
+		String obids,imgs;
+		ImageView imageView;
+		String text,imglink;
+		private  DownloadWebPageTask(String a,String b,ImageView imageView){
+			obids = a;
+			imgs = b;
+			this.imageView = imageView;
 		}
+		@Override
+		protected String doInBackground(String... urls) {
+
+			String URL = "https://graph.facebook.com/"+obids+"?fields=images&access_token="+ Val.common_access;
+			HttpClient Client = new DefaultHttpClient();
+			HttpGet httpget = new HttpGet(URL);
+			ResponseHandler<String> responseHandler = new BasicResponseHandler();
+			try {
+				text = Client.execute(httpget, responseHandler);
+			} catch (IOException e) {
+				e.printStackTrace();
+				Log.e("eroore",e.getMessage());
+			}
+
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+			JSONObject ob;
+			JSONArray arr;
+			if(text==null){
+
+				imageLoader.DisplayImage(imgs, imageView);
+
+			}else {
+				try {
+					ob = new JSONObject(text);
+
+					arr = ob.getJSONArray("images");
+
+					if (arr.getJSONObject(0).has("source"))
+						imglink = arr.getJSONObject(0).getString("source");
+					if (imglink != null) {
+						if (isNetworkAvailable()) {
+							imageLoader.DisplayImage(imglink, imageView);
+
+						}
+					} else {
+						imageView.setVisibility(View.GONE);
+
+					}
+
+				} catch (Exception e) {
+					Log.e("yo", "" + e.getMessage());
+				}
+			}
+
 	}
+	}
+
+
+	private boolean isNetworkAvailable() {
+		ConnectivityManager connectivityManager
+				= (ConnectivityManager) getContext().getSystemService(getContext().CONNECTIVITY_SERVICE);
+		NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+		return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+	}
+}
 
 
 

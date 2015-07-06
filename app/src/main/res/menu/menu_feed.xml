@@ -3,6 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools" tools:context="nsit.app.com.nsitapp.MyFeed">
     <item android:id="@+id/items"
         app:showAsAction="always"
-        android:icon="@drawable/ic_action_list"
+        android:icon="@drawable/ic_settings_white"
         android:title="Items" />
 </menu>

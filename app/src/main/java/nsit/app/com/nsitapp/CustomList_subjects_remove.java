@@ -44,7 +44,7 @@ public class CustomList_subjects_remove extends ArrayAdapter<String>{
 		TextView txtTitle = (TextView) rowView.findViewById(R.id.status);
 		txtTitle.setText(status.get(position));
 		txtTitle = (TextView) rowView.findViewById(R.id.date);
-		String s = getDate(Long.parseLong(date.get(position)), "dd/MM/yyyy");		//Convert date format
+		String s = getDate(Long.parseLong(date.get(position)), "dd MMMM yyyy");		//Convert date format
 		txtTitle.setText(s);
 		DBhelp mDbHelper = new DBhelp(getContext());
 		final SQLiteDatabase db = mDbHelper.getReadableDatabase();

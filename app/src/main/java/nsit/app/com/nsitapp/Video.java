@@ -45,7 +45,8 @@ public class Video extends Fragment {
 
     }
     public void populateList(JSONArray Items){
-        listview.setAdapter(new VideoList_Adapter(getActivity(), Items));
+        if (activity != null)
+            listview.setAdapter(new VideoList_Adapter(activity, Items));
     }
 
     Activity activity;
@@ -64,11 +65,10 @@ public class Video extends Fragment {
         Log.e("YouTube:", "Fetching data");
         View Spinner = rootView.findViewById(R.id.VideoProgressSpinner);
         Spinner.setVisibility(View.VISIBLE);
-<<<<<<< HEAD
-        try {
+   try {
             new Video_RetrieveFeed().execute();
         } catch (Exception e) {
-            AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
+            AlertDialog alertDialog = new AlertDialog.Builder(activity).create();
             alertDialog.setTitle("Can't connect.");
             alertDialog.setMessage("We cannot connect to the internet right now. Please try again later. Exception e: " + e.toString());
             alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
@@ -81,9 +81,7 @@ public class Video extends Fragment {
             Log.e("YouTube:", "Cannot fetch " + e.toString());
         }
         Spinner.setVisibility(View.GONE);
-=======
-
-        Button btnNextPage = (Button)rootView.findViewById(R.id.NextPageButton);
+       Button btnNextPage = (Button)rootView.findViewById(R.id.NextPageButton);
         Button btnPrevPage = (Button)rootView.findViewById(R.id.PrevPageButton);
 
         btnNextPage.setOnClickListener(new View.OnClickListener() {
@@ -93,7 +91,7 @@ public class Video extends Fragment {
                     navigateTo = "next";
                     new Video_RetrieveFeed().execute();
                 } catch (Exception e) {
-                    AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
+                    AlertDialog alertDialog = new AlertDialog.Builder(activity).create();
                     alertDialog.setTitle("Can't connect.");
                     alertDialog.setMessage("We cannot connect to the internet right now. Please try again later. Exception e: " + e.toString());
                     alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
@@ -114,7 +112,7 @@ public class Video extends Fragment {
                     navigateTo = "prev";
                     new Video_RetrieveFeed().execute();
                 } catch (Exception e) {
-                    AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
+                    AlertDialog alertDialog = new AlertDialog.Builder(activity).create();
                     alertDialog.setTitle("Can't connect.");
                     alertDialog.setMessage("We cannot connect to the internet right now. Please try again later. Exception e: " + e.toString());
                     alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
@@ -129,7 +127,6 @@ public class Video extends Fragment {
             }
         });
 
->>>>>>> origin/master
 
         Spinner.setVisibility(View.GONE);
 

@@ -47,7 +47,7 @@
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:text="COLLEGESPACE"
-                            android:textSize="20sp"
+                            android:textSize="15sp"
                             android:textColor="#ffffff"
                             android:gravity="center"/>
                     </LinearLayout>
@@ -58,23 +58,31 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:text="2,123"
-                            android:textSize="20sp"
+                            android:textSize="15sp"
                             android:paddingTop="5dp"
                             android:paddingLeft="10dp"
+                            android:layout_weight="1.5"
                             android:id="@+id/stars_collegespace"/>
                         <ImageView
-                            android:layout_width="30dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
                             android:layout_height="30dp"
                             android:src="@drawable/ic_action_star_10"/>
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            />
 
                         <CheckBox
-                            android:layout_width="wrap_content"
+
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
                             android:layout_height="wrap_content"
-                            android:id="@+id/check_collegespace"
-                            android:layout_marginLeft="50dp"/>
+                            android:id="@+id/check_collegespace"/>
 
 
                     </LinearLayout>
@@ -104,7 +112,7 @@
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:text="CROSSLINKS"
-                            android:textSize="20sp"
+                            android:textSize="15sp"
                             android:textColor="#ffffff"
                             android:gravity="center"/>
                     </LinearLayout>
@@ -115,23 +123,33 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="2,423"
-                            android:textSize="20sp"
+                            android:text="2,123"
+                            android:textSize="15sp"
                             android:paddingTop="5dp"
                             android:paddingLeft="10dp"
+                            android:layout_weight="1.5"
                             android:id="@+id/stars_crosslinks"/>
                         <ImageView
-                            android:layout_width="30dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
                             android:layout_height="30dp"
                             android:src="@drawable/ic_action_star_10"/>
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            />
 
                         <CheckBox
-                            android:layout_width="wrap_content"
+
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
                             android:layout_height="wrap_content"
-                            android:id="@+id/check_crosslinks"
-                            android:layout_marginLeft="50dp"/>
+                            android:id="@+id/check_crosslinks"/>
+
+
 
 
                     </LinearLayout>
@@ -169,7 +187,7 @@
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:text="CSI NSIT"
-                            android:textSize="20sp"
+                            android:textSize="15sp"
                             android:textColor="#ffffff"
                             android:gravity="center"/>
                     </LinearLayout>
@@ -180,23 +198,31 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:text="2,123"
-                            android:textSize="20sp"
+                            android:textSize="15sp"
                             android:paddingTop="5dp"
                             android:paddingLeft="10dp"
+                            android:layout_weight="1.5"
                             android:id="@+id/stars_csi"/>
                         <ImageView
-                            android:layout_width="30dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
                             android:layout_height="30dp"
                             android:src="@drawable/ic_action_star_10"/>
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            />
 
                         <CheckBox
-                            android:layout_width="wrap_content"
+
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
                             android:layout_height="wrap_content"
-                            android:id="@+id/check_csi"
-                            android:layout_marginLeft="50dp"/>
+                            android:id="@+id/check_csi"/>
 
 
                     </LinearLayout>
@@ -225,7 +251,7 @@
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:text="IEEE NSIT"
-                            android:textSize="20sp"
+                            android:textSize="15sp"
                             android:textColor="#ffffff"
                             android:gravity="center"/>
                     </LinearLayout>
@@ -236,23 +262,31 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:text="2,123"
-                            android:textSize="20sp"
+                            android:textSize="15sp"
                             android:paddingTop="5dp"
                             android:paddingLeft="10dp"
+                            android:layout_weight="1.5"
                             android:id="@+id/stars_ieee"/>
                         <ImageView
-                            android:layout_width="30dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
                             android:layout_height="30dp"
                             android:src="@drawable/ic_action_star_10"/>
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            />
 
                         <CheckBox
-                            android:layout_width="wrap_content"
-                            android:id="@+id/check_ieee"
+
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="50dp"/>
+                            android:id="@+id/check_ieee"/>
 
 
                     </LinearLayout>
@@ -294,7 +328,7 @@
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:text="BULLETHAWK "
-                            android:textSize="20sp"
+                            android:textSize="15sp"
                             android:textColor="#ffffff"
                             android:gravity="center"/>
                     </LinearLayout>
@@ -305,23 +339,31 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="2,423"
-                            android:textSize="20sp"
+                            android:text="2,123"
+                            android:textSize="15sp"
                             android:paddingTop="5dp"
                             android:paddingLeft="10dp"
+                            android:layout_weight="1.5"
                             android:id="@+id/stars_bullethawk"/>
                         <ImageView
-                            android:layout_width="30dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
                             android:layout_height="30dp"
                             android:src="@drawable/ic_action_star_10"/>
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            />
 
                         <CheckBox
-                            android:layout_width="wrap_content"
+
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
                             android:layout_height="wrap_content"
-                            android:id="@+id/check_bullet"
-                            android:layout_marginLeft="50dp"/>
+                            android:id="@+id/check_bullet"/>
 
 
                     </LinearLayout>
@@ -350,7 +392,7 @@
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:text="ROTARACT"
-                            android:textSize="20sp"
+                            android:textSize="15sp"
                             android:textColor="#ffffff"
                             android:gravity="center"/>
                     </LinearLayout>
@@ -361,23 +403,31 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="2,423"
-                            android:textSize="20sp"
+                            android:text="2,123"
+                            android:textSize="15sp"
                             android:paddingTop="5dp"
                             android:paddingLeft="10dp"
+                            android:layout_weight="1.5"
                             android:id="@+id/stars_rotaract"/>
                         <ImageView
-                            android:layout_width="30dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
                             android:layout_height="30dp"
                             android:src="@drawable/ic_action_star_10"/>
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            />
 
                         <CheckBox
-                            android:layout_width="wrap_content"
+
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
                             android:layout_height="wrap_content"
-                            android:id="@+id/check_rotaract"
-                            android:layout_marginLeft="50dp"/>
+                            android:id="@+id/check_rotaract"/>
 
 
                     </LinearLayout>
@@ -417,7 +467,7 @@
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:text="DEBSOC "
-                            android:textSize="20sp"
+                            android:textSize="15sp"
                             android:textColor="#ffffff"
                             android:gravity="center"/>
                     </LinearLayout>
@@ -428,24 +478,31 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="2,423"
-                            android:textSize="20sp"
+                            android:text="2,123"
+                            android:textSize="15sp"
                             android:paddingTop="5dp"
                             android:paddingLeft="10dp"
+                            android:layout_weight="1.5"
                             android:id="@+id/stars_debsoc"/>
                         <ImageView
-                            android:layout_width="30dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
                             android:layout_height="30dp"
                             android:src="@drawable/ic_action_star_10"/>
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            />
 
                         <CheckBox
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/check_debsoc"
-                            android:layout_marginLeft="50dp"/>
 
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/check_debsoc"/>
 
                     </LinearLayout>
 
@@ -473,7 +530,7 @@
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:text="QUIZ CLUB"
-                            android:textSize="20sp"
+                            android:textSize="15sp"
                             android:textColor="#ffffff"
                             android:gravity="center"/>
                     </LinearLayout>
@@ -484,23 +541,31 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="2,423"
-                            android:textSize="20sp"
+                            android:text="2,123"
+                            android:textSize="15sp"
                             android:paddingTop="5dp"
                             android:paddingLeft="10dp"
+                            android:layout_weight="1.5"
                             android:id="@+id/stars_quiz"/>
                         <ImageView
-                            android:layout_width="30dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
                             android:layout_height="30dp"
                             android:src="@drawable/ic_action_star_10"/>
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            />
 
                         <CheckBox
-                            android:layout_width="wrap_content"
+
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
                             android:layout_height="wrap_content"
-                            android:id="@+id/check_quiz"
-                            android:layout_marginLeft="50dp"/>
+                            android:id="@+id/check_quiz"/>
 
 
                     </LinearLayout>
@@ -538,7 +603,7 @@
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:text="ASHWAMEDH "
-                            android:textSize="20sp"
+                            android:textSize="15sp"
                             android:textColor="#ffffff"
                             android:gravity="center"/>
                     </LinearLayout>
@@ -549,23 +614,31 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="2,423"
-                            android:textSize="20sp"
+                            android:text="2,123"
+                            android:textSize="15sp"
                             android:paddingTop="5dp"
                             android:paddingLeft="10dp"
+                            android:layout_weight="1.5"
                             android:id="@+id/stars_ashwa"/>
                         <ImageView
-                            android:layout_width="30dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
                             android:layout_height="30dp"
                             android:src="@drawable/ic_action_star_10"/>
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            />
 
                         <CheckBox
-                            android:layout_width="wrap_content"
+
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
                             android:layout_height="wrap_content"
-                            android:id="@+id/check_ashwa"
-                            android:layout_marginLeft="50dp"/>
+                            android:id="@+id/check_ashwa"/>
 
 
                     </LinearLayout>
@@ -594,7 +667,7 @@
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:text="JUNOON"
-                            android:textSize="20sp"
+                            android:textSize="15sp"
                             android:textColor="#ffffff"
                             android:gravity="center"/>
                     </LinearLayout>
@@ -605,23 +678,31 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="2,423"
-                            android:textSize="20sp"
+                            android:text="2,123"
+                            android:textSize="15sp"
                             android:paddingTop="5dp"
                             android:paddingLeft="10dp"
+                            android:layout_weight="1.5"
                             android:id="@+id/stars_junoon"/>
                         <ImageView
-                            android:layout_width="30dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
                             android:layout_height="30dp"
                             android:src="@drawable/ic_action_star_10"/>
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            />
 
                         <CheckBox
-                            android:layout_width="wrap_content"
+
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
                             android:layout_height="wrap_content"
-                            android:id="@+id/check_junoon"
-                            android:layout_marginLeft="50dp"/>
+                            android:id="@+id/check_junoon"/>
 
 
                     </LinearLayout>

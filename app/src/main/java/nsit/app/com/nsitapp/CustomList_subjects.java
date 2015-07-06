@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -16,9 +17,10 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.DatePicker;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class CustomList_subjects extends ArrayAdapter<String>{
 	private final Activity context;
@@ -68,19 +70,29 @@ public class CustomList_subjects extends ArrayAdapter<String>{
 			@Override
 			public void onClick(View view) {
 				final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-
+				final DatePicker picker = new DatePicker(getContext());
+				picker.setCalendarViewShown(false);
+				builder.setView(picker);
 				builder.setTitle(title.get(position));
-				builder.setMessage("Is the class attended or missed?");
+				builder.setMessage("Is class missed or attended?");
 				builder.setPositiveButton("Attended", new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog,int id) {
+					public void onClick(DialogInterface dialog, int id) {
 
 						DBhelp mDbHelper = new DBhelp(getContext());
 						SQLiteDatabase db = mDbHelper.getWritableDatabase();
 
 						// Create a new map of values, where column names are the keys
 						ContentValues values = new ContentValues();
-						values.put(TableEntry.COLUMN_NAME_SUBJECT,code.get(position) );
-						values.put(TableEntry.COLUMN_NAME_DATE, System.currentTimeMillis());
+
+
+						Calendar cal = Calendar.getInstance();
+						cal.set(Calendar.DAY_OF_MONTH,picker.getDayOfMonth());
+						cal.set(Calendar.MONTH, picker.getMonth());
+						cal.set(Calendar.YEAR, picker.getYear());
+
+						Log.e("date selected", "Month" + picker.getMonth() + "\nDay " + picker.getDayOfMonth());
+						values.put(TableEntry.COLUMN_NAME_SUBJECT, code.get(position));
+						values.put(TableEntry.COLUMN_NAME_DATE,cal.getTimeInMillis() );
 						values.put(TableEntry.COLUMN_NAME_STATUS, "attended");
 
 						db.insert(
@@ -100,9 +112,14 @@ public class CustomList_subjects extends ArrayAdapter<String>{
 						SQLiteDatabase db = mDbHelper.getWritableDatabase();
 
 						// Create a new map of values, where column names are the keys
+						Log.e("date selected",picker.getMonth()+" ");
 						ContentValues values = new ContentValues();
+						Calendar cal = Calendar.getInstance();
+						cal.set(Calendar.DAY_OF_MONTH,picker.getDayOfMonth());
+						cal.set(Calendar.MONTH, picker.getMonth());
+						cal.set(Calendar.YEAR, picker.getYear());
 						values.put(TableEntry.COLUMN_NAME_SUBJECT,code.get(position) );
-						values.put(TableEntry.COLUMN_NAME_DATE, System.currentTimeMillis());
+						values.put(TableEntry.COLUMN_NAME_DATE, cal.getTimeInMillis());
 						values.put(TableEntry.COLUMN_NAME_STATUS, "missed");
 
 						// Insert the new row, returning the primary key value of the new row
@@ -155,9 +172,6 @@ public class CustomList_subjects extends ArrayAdapter<String>{
 		);
 
 
-		Log.e("sgareger","position" + position);
-
-
 		float total = c.getCount();
 		float attended=0;
 
@@ -176,7 +190,11 @@ public class CustomList_subjects extends ArrayAdapter<String>{
 			txtTitle2.setText("No classes yet");
 		else {
 			float x = attended/total*100;
-			txtTitle2.setText(Float.toString(x) + " % attendance");
+			if(x<75)
+				txtTitle2.setTextColor(Color.parseColor("#ff3300"));
+			else
+				txtTitle2.setTextColor(Color.parseColor("#33cc00"));
+				txtTitle2.setText(Float.toString(x) + " % attendance");
 		}
 	}
 }

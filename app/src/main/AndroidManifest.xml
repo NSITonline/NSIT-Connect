@@ -31,14 +31,17 @@
         </activity>
         <activity
             android:name=".Decsription"
+            android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_decsription" >
         </activity>
         <activity
             android:name=".ImageAct"
+            android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_image" >
         </activity>
         <activity
             android:name=".LocationMapView"
+            android:configChanges="orientation|screenSize"
             android:label="LocationMapView" >
         </activity>
 
@@ -50,6 +53,7 @@
 
         <activity
             android:name=".Choose"
+            android:configChanges="orientation|screenSize"
             android:label="Select" >
         </activity>
     </application>

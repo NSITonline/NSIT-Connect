@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -44,6 +46,7 @@ public class Professors extends Fragment implements
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
         super.onCreate(savedInstanceState);
 
     }
@@ -68,9 +71,10 @@ public class Professors extends Fragment implements
         }
 
         listView = (ListView) rootView.findViewById(R.id.list);
-        CustomListViewAdapter adapter = new CustomListViewAdapter(getActivity(),
+        CustomListViewAdapter adapter = new CustomListViewAdapter(activity,
                 R.layout.list_item, rowItems);
-        listView.setAdapter(adapter);
+        if (activity != null)
+            listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);
 
         return rootView;
@@ -85,6 +89,11 @@ public class Professors extends Fragment implements
         mFragment.setArguments(bundle);
         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, mFragment).addToBackStack( "tag" ).commit();
 
+    }
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.clear();
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
 }

@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListAdapter;
@@ -26,6 +28,7 @@ public class Locations extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
+        setHasOptionsMenu(true);
         super.onCreate(savedInstanceState);
     }
 
@@ -39,7 +42,8 @@ public class Locations extends Fragment {
 
     public void populateList(ArrayList<LocationGroup> Items){
         FillGroupsList();
-        listAdapter = new LocationsList_Adapter(getActivity(),Items,null);
+        if (activity != null)
+            listAdapter = new LocationsList_Adapter(activity,Items,null);
         listView.setAdapter(listAdapter);
     }
 
@@ -165,6 +169,11 @@ public class Locations extends Fragment {
         this.LocationsGroupsList.add(WiFiGroup);
         this.LocationsGroupsList.add(SportsGroup);
         this.LocationsGroupsList.add(MiscGroup);
+    }
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.clear();
+        super.onCreateOptionsMenu(menu, inflater);
     }
 }
 

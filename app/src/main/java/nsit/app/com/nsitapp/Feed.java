@@ -15,6 +15,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -55,6 +57,7 @@ public class Feed extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
 
     }
 
@@ -96,7 +99,7 @@ public class Feed extends Fragment {
         tQuiz = (TextView) rootView.findViewById(R.id.stars_quiz);
         tAshwa = (TextView) rootView.findViewById(R.id.stars_ashwa);
 
-        SharedPreferences i = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
+        SharedPreferences i = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
         Crosslinks = i.getBoolean("crosslinks", false);
         Collegespace = i.getBoolean("collegespace", false);
         Bullet = i.getBoolean("bullet", false);
@@ -186,7 +189,7 @@ public class Feed extends Fragment {
             @Override
             public void onClick(View view) {
 
-                SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
+                SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
                 SharedPreferences.Editor e = p.edit();
                 Fragment mFragment = new FinalFeed();
 
@@ -221,14 +224,14 @@ public class Feed extends Fragment {
             new Calclike(tAshwa, Val.id_ashwa).execute();
         }
         else
-            Toast.makeText(getActivity(), "Cannot connect to Internet", Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, "Cannot connect to Internet", Toast.LENGTH_SHORT).show();
 
         return rootView;
     }
 
     private boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager
-                = (ConnectivityManager) getActivity().getSystemService(getActivity().CONNECTIVITY_SERVICE);
+                = (ConnectivityManager) activity.getSystemService(activity.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
@@ -276,6 +279,11 @@ public class Feed extends Fragment {
             }
             bmImage.setText(text);
         }
+    }
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.clear();
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
 }

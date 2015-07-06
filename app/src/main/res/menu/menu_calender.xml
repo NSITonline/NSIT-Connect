@@ -5,4 +5,6 @@
         app:showAsAction="always"
         android:icon="@drawable/ic_action_calendar_day"
         android:title="Subjects" />
+    <item android:id="@+id/choose"
+        android:title="Select Class" />
 </menu>

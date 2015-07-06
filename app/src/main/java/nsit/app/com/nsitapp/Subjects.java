@@ -11,6 +11,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
@@ -47,6 +49,7 @@ public class Subjects extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
 
     }
 
@@ -75,9 +78,8 @@ public class Subjects extends Fragment {
                 list2.add(ar.getJSONObject(i).getString("title"));
             }
 
-            CustomList_subjects a = new CustomList_subjects(getActivity(),list1,list2);
-            lv.addHeaderView(new View(getActivity()));
-            lv.addFooterView(new View(getActivity()));
+            CustomList_subjects a = new CustomList_subjects(activity,list1,list2);
+            
             lv.setAdapter(a);
 
 
@@ -87,6 +89,11 @@ public class Subjects extends Fragment {
 
 
         return rootView;
+    }
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.clear();
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
 

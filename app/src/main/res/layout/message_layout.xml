@@ -5,14 +5,14 @@
    android:layout_height="wrap_content"
     android:layout_marginTop="5dp"
     android:layout_marginRight="5dp"
-    android:layout_marginBottom="10dp"
+    android:layout_marginBottom="5dp"
     android:layout_marginLeft="5dp"
    android:descendantFocusability="beforeDescendants">
 <LinearLayout
     android:layout_gravity="center"
     android:gravity="center"
-    android:layout_margin="10dp"
-    android:padding="10dp"
+    android:layout_margin="5dp"
+    android:padding="5dp"
     android:layout_width="match_parent"
     android:layout_height="270dp"
     android:orientation="horizontal"
@@ -20,7 +20,7 @@
     android:background="@drawable/card">
 
     <FrameLayout
-        android:paddingRight="10dp"
+        android:paddingRight="2dp"
         android:layout_weight="0.5"
         android:layout_width="0dp"
         android:layout_height="fill_parent">
@@ -35,7 +35,7 @@
 
     </FrameLayout>
     <LinearLayout
-        android:paddingLeft="10dp"
+        android:paddingLeft="2dp"
         android:id="@+id/data"
         android:layout_weight="0.5"
         android:layout_width="0dp"
@@ -70,7 +70,7 @@
         android:id="@+id/likes"
         android:text="2"
         android:paddingTop="2dp"
-        android:textColor="#0288d1"
+        android:textColor="@color/colorPrimary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"/>

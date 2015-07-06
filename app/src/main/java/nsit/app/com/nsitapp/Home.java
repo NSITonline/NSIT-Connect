@@ -14,6 +14,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
@@ -48,12 +50,13 @@ public class Home extends Fragment {
     ListView lv;
     int first=1;
     SwipeRefreshLayout swipeLayout;
-    ProgressBar pb,pb2;
+    ProgressBar pb;
     String next=" ",token;
     CustomList adapter;
     View footerView;
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
         super.onCreate(savedInstanceState);
     }
 
@@ -61,6 +64,7 @@ public class Home extends Fragment {
     @Override
     public void onAttach(Activity activity)
     {
+
         super.onAttach(activity);
         this.activity = activity;
     }
@@ -71,8 +75,8 @@ public class Home extends Fragment {
         lv = (ListView) rootView.findViewById(R.id.list);
         swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
         pb=(ProgressBar)rootView.findViewById(R.id.progressBar1);
-        adapter = new CustomList(getActivity(), list6,list, list2, list7, list1,list8);
-       footerView = ((LayoutInflater)getActivity().getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.footer_layout, null, false);
+        adapter = new CustomList(activity, list6,list, list2, list7, list1,list8);
+       footerView = ((LayoutInflater)activity.getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.footer_layout, null, false);
         lv.addFooterView(footerView);
         lv.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
@@ -107,14 +111,14 @@ public class Home extends Fragment {
         if(isNetworkAvailable())
         new DownloadWebPageTask2(Val.id_nsitonline).execute();
         else
-        Toast.makeText(getActivity(),"Cannot connect to Internet",Toast.LENGTH_SHORT).show();
+        Toast.makeText(activity,"Cannot connect to Internet",Toast.LENGTH_SHORT).show();
 
 
         return rootView;
     }
     private boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager
-                = (ConnectivityManager) getActivity().getSystemService(getActivity().CONNECTIVITY_SERVICE);
+                = (ConnectivityManager) activity.getSystemService(activity.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
@@ -219,9 +223,9 @@ public class Home extends Fragment {
 
 
             swipeLayout.setRefreshing(false);
-            lv.addHeaderView(new View(getActivity()));
-            lv.addFooterView(new View(getActivity()));
-            lv.setAdapter(adapter);
+            if (activity != null)
+
+                lv.setAdapter(adapter);
 
 
 
@@ -343,5 +347,9 @@ public class Home extends Fragment {
             // Log.e("Yo", text);
         }
     }
-
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.clear();
+        super.onCreateOptionsMenu(menu, inflater);
+    }
 }

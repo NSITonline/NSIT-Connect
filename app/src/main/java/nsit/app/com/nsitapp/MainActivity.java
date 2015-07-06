@@ -34,13 +34,13 @@ public class MainActivity extends AppCompatActivity {
     static final String[] sideitems = new String[] { "Home" , "My Feed","Video","Calendar" , "Professors","Locations","About" };	//items on navigation drawer
     SwipeRefreshLayout swipeLayout;
     Integer[] imageId = {
-            R.drawable.ic_action_star_10,
-            R.drawable.ic_action_star_10,
-            R.drawable.ic_action_star_10,
-            R.drawable.ic_action_star_10,
-            R.drawable.ic_action_star_10,
-            R.drawable.ic_action_star_10,
-            R.drawable.ic_action_star_10};
+            R.drawable.ic_action_home,
+            R.drawable.ic_action_tiles_large,
+            R.drawable.ic_action_video,
+            R.drawable.ic_action_calendar_month,
+            R.drawable.ic_action_user,
+            R.drawable.ic_action_location,
+            R.drawable.ic_action_info};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

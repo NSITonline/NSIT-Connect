@@ -83,7 +83,7 @@ public class FinalFeed extends Fragment {
 
 
 
-         i = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
+         i = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
         Crosslinks = i.getBoolean("crosslinks", false);
         Collegespace = i.getBoolean("collegespace", false);
         Bullet = i.getBoolean("bullet", false);
@@ -98,7 +98,7 @@ public class FinalFeed extends Fragment {
 
 
 
-        footerView = ((LayoutInflater)getActivity().getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.footer_layout, null, false);
+        footerView = ((LayoutInflater)activity.getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.footer_layout, null, false);
         lv.addFooterView(footerView);
 
         swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
@@ -115,7 +115,7 @@ public class FinalFeed extends Fragment {
                 android.R.color.holo_red_light);
 
         if(!Csi && !Collegespace && !Crosslinks && !Bullet && !Junoon && !Ieee&& !Ashwa&& !Quiz&& !Deb &&!Rotaract) {
-            Toast.makeText(getActivity(),"No item selected",Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity,"No item selected",Toast.LENGTH_SHORT).show();
         }else {
 
             if (isNetworkAvailable()) {
@@ -143,7 +143,7 @@ public class FinalFeed extends Fragment {
                     new DownloadWebPageTask2(Val.id_debsoc).execute();
 
             } else
-                Toast.makeText(getActivity(), "Cannot connect to Internet", Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, "Cannot connect to Internet", Toast.LENGTH_SHORT).show();
 
         }
 
@@ -192,7 +192,7 @@ public class FinalFeed extends Fragment {
 
                     }
                     else
-                        Toast.makeText(getActivity(), "Cannot connect to Internet", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(activity, "Cannot connect to Internet", Toast.LENGTH_SHORT).show();
 
 
 
@@ -491,10 +491,11 @@ public class FinalFeed extends Fragment {
 
             lv.removeFooterView(footerView);
 
-            adapter = new CustomList(getActivity(), list6, list, list2, list7, list1, list8);
-            lv.addHeaderView(new View(getActivity()));
-            lv.addFooterView(new View(getActivity()));
-            lv.setAdapter(adapter);
+            adapter = new CustomList(activity, list6, list, list2, list7, list1, list8);
+            lv.addHeaderView(new View(activity));
+            lv.addFooterView(new View(activity));
+            if (activity != null)
+                lv.setAdapter(adapter);
             first = 0;
             Log.e("first","zero");
 
@@ -523,7 +524,7 @@ public class FinalFeed extends Fragment {
 
     private boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager
-                = (ConnectivityManager) getActivity().getSystemService(getActivity().CONNECTIVITY_SERVICE);
+                = (ConnectivityManager) activity.getSystemService(activity.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }

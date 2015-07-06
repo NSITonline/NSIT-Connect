@@ -129,7 +129,7 @@ public class ImageAct extends AppCompatActivity {
                 InputStream in = new java.net.URL(urldisplay).openStream();
                 mIcon11 = BitmapFactory.decodeStream(in);
             } catch (Exception e) {
-                Log.e("Error", e.getMessage());
+                Log.e("Error", ""+e.getMessage());
                 e.printStackTrace();
             }
             return mIcon11;
@@ -173,19 +173,24 @@ public class ImageAct extends AppCompatActivity {
             Log.e("YO", "Done" + obid);
             JSONObject ob;
             JSONArray arr;
-            try {
-                ob = new JSONObject(text);
-                arr = ob.getJSONArray("images");
+            if(text==null){
 
-                imglink = arr.getJSONObject(0).getString("source");
-                if(imglink!=null)
-                    if(isNetworkAvailable())
-                        new DownloadImageTask(iv).execute(imglink);
-                    else iv.setVisibility(View.GONE);
-            } catch (Exception e) {
-                Log.e("yo",e.getMessage());
+                new DownloadImageTask(iv).execute(img);
+
+            }else {
+                try {
+                    ob = new JSONObject(text);
+                    arr = ob.getJSONArray("images");
+
+                    imglink = arr.getJSONObject(0).getString("source");
+                    if (imglink != null)
+                        if (isNetworkAvailable())
+                            new DownloadImageTask(iv).execute(imglink);
+                        else iv.setVisibility(View.GONE);
+                } catch (Exception e) {
+                    Log.e("yo", ""+e.getMessage());
+                }
             }
-
 
             Log.e("yrs","Image Link is : " + imglink);
 

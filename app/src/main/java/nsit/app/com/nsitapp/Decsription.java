@@ -131,32 +131,37 @@ String text;
 //            Log.e("yrs",text);
             JSONObject ob;
             JSONArray arr;
-            try {
-                ob = new JSONObject(text);
+            if(text==null){
 
-                arr = ob.getJSONArray("images");
 
-                if(arr.getJSONObject(0).has("source"))
-                imglink = arr.getJSONObject(0).getString("source");
-                if(imglink!=null) {
-                    if (isNetworkAvailable()) {
-                        imageLoader.DisplayImage(imglink, imageView);
+                imageLoader.DisplayImage(img, imageView);
+
+            }else {
+                try {
+                    ob = new JSONObject(text);
+
+                    arr = ob.getJSONArray("images");
+
+                    if (arr.getJSONObject(0).has("source"))
+                        imglink = arr.getJSONObject(0).getString("source");
+                    if (imglink != null) {
+                        if (isNetworkAvailable()) {
+                            imageLoader.DisplayImage(imglink, imageView);
+                            pb.setVisibility(View.GONE);
+                        }
+                    } else {
+                        imageView.setVisibility(View.GONE);
                         pb.setVisibility(View.GONE);
                     }
-                }
-                else {
-                    imageView.setVisibility(View.GONE);
-                    pb.setVisibility(View.GONE);
-                }
-                Log.e("yrs", "Image Link is : " + imglink);
+                    Log.e("yrs", "Image Link is : " + imglink);
 
-            } catch (Exception e) {
-                    Log.e("yo",e.getMessage());
+                } catch (Exception e) {
+                    Log.e("yo", "" + e.getMessage());
+                }
             }
-
             pb.setVisibility(View.GONE);
 
-            Log.e("Yo", imglink);
+            Log.e("Yo", imglink+"");
         }
     }
 

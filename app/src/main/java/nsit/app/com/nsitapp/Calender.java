@@ -6,10 +6,12 @@ package nsit.app.com.nsitapp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
@@ -76,21 +78,58 @@ public class Calender extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_calender, container, false);
         lvTest = (TwoWayView) rootView.findViewById(R.id.lvItems);
 
+        SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
 
-Intent i = new Intent(getActivity(),Choose.class);
-        startActivity(i);
-
-
-        if(isNetworkAvailable())
-        new DownloadWebPageTask2().execute();
-        else
-            Toast.makeText(getActivity(), "Cannot connect to Internet", Toast.LENGTH_SHORT).show();
-
-
-        adapter2 = new CustomList3(getActivity(), days, p1,p2,p3,p4,p5,p6,p7,p8);
+        Boolean b = s.getBoolean("classset",false);
+        if(!b) {
+            Intent i = new Intent(activity, Choose.class);
+            startActivity(i);
+        }
 
 
 
+        Boolean a = s.getBoolean("timetablechanged",true);
+        timetable = s.getString("timetable",null);
+
+        adapter2 = new CustomList3(activity, days, p1,p2,p3,p4,p5,p6,p7,p8);
+        if(a || timetable==null) {
+
+
+            if (isNetworkAvailable())
+                new DownloadWebPageTask2().execute();
+            else {
+                adapter2 = new CustomList3(activity, days, p1, p2, p3, p4, p5, p6, p7, p8);
+                if (activity != null)
+                    lvTest.setAdapter(adapter2);
+                lvTest.setItemMargin(10);
+                Toast.makeText(activity, "Cannot connect to Internet", Toast.LENGTH_SHORT).show();
+            }
+        }else{
+            load();
+            adapter2 = new CustomList3(activity, days, p1,p2,p3,p4,p5,p6,p7,p8);
+            if (activity != null)
+                lvTest.setAdapter(adapter2);
+            lvTest.setItemMargin(10);
+        }
+
+        lvTest.setOnScrollListener(new TwoWayView.OnScrollListener() {
+            //useless here, skip!
+            @Override
+            public void onScrollStateChanged(TwoWayView view, int scrollState) {
+            }
+
+            @Override
+            public void onScroll(TwoWayView view, int firstVisibleItem,
+                                 int visibleItemCount, int totalItemCount) {
+                //what is the bottom iten that is visible
+                int lastInScreen = firstVisibleItem + visibleItemCount;
+                //is the bottom item visible & not loading more already ? Load more !
+                if ((lastInScreen == totalItemCount) && !(loadingMore)) {
+                    load();
+                }
+                adapter2.notifyDataSetChanged();
+            }
+        });
         return rootView;
     }
 
@@ -191,6 +230,10 @@ Intent i = new Intent(getActivity(),Choose.class);
              getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, mFragment).addToBackStack(                    "tag").commit();
 
         }
+        if(item.getItemId() == R.id.choose){
+            Intent i = new Intent(activity, Choose.class);
+            startActivity(i);
+        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -206,9 +249,19 @@ Intent i = new Intent(getActivity(),Choose.class);
         @Override
         protected String doInBackground(String... urls) {
 
+
+
+            SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
+            String id = s.getString("timetableid",null);
+            if(id==null){
+                id = "0B9uRC8Uvb5sFZFdNcVJVN0VhUEE";
+            }
+
+
+
             Log.e("Yo", "Started");
             String URL;
-            URL = "https://docs.google.com/uc?id=0B9uRC8Uvb5sFZFdNcVJVN0VhUEE&export=download";
+            URL = "https://docs.google.com/uc?id="+id+"&export=download";
             HttpClient Client = new DefaultHttpClient();
             HttpGet httpget = new HttpGet(URL);
             ResponseHandler<String> responseHandler = new BasicResponseHandler();
@@ -225,31 +278,24 @@ Intent i = new Intent(getActivity(),Choose.class);
         @Override
         protected void onPostExecute(String result) {
             Log.e("YO", "Done");
-            Log.e("yrs", "" + text);
 
             timetable = text;
             load();
-            adapter2 = new CustomList3(getActivity(), days, p1,p2,p3,p4,p5,p6,p7,p8);
-            lvTest.setAdapter(adapter2);
-            lvTest.setItemMargin(10);
-            lvTest.setOnScrollListener(new TwoWayView.OnScrollListener() {
-                //useless here, skip!
-                @Override
-                public void onScrollStateChanged(TwoWayView view, int scrollState) {
-                }
 
-                @Override
-                public void onScroll(TwoWayView view, int firstVisibleItem,
-                                     int visibleItemCount, int totalItemCount) {
-                    //what is the bottom iten that is visible
-                    int lastInScreen = firstVisibleItem + visibleItemCount;
-                    //is the bottom item visible & not loading more already ? Load more !
-                    if ((lastInScreen == totalItemCount) && !(loadingMore)) {
-                        load();
-                    }
-                    adapter2.notifyDataSetChanged();
-                }
-            });
+            SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
+            SharedPreferences.Editor e = s.edit();
+            e.putBoolean("timetablechanged", false);
+            e.putString("timetable", text);
+
+            e.commit();
+            Log.e("Putting value :",text);
+
+
+            adapter2 = new CustomList3(activity, days, p1,p2,p3,p4,p5,p6,p7,p8);
+            if (activity != null)
+                 lvTest.setAdapter(adapter2);
+                 lvTest.setItemMargin(10);
+
 
         }
     }
@@ -257,7 +303,7 @@ Intent i = new Intent(getActivity(),Choose.class);
 
     private boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager
-                = (ConnectivityManager) getActivity().getSystemService(getActivity().CONNECTIVITY_SERVICE);
+                = (ConnectivityManager) activity.getSystemService(activity.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }

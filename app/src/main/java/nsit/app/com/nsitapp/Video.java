@@ -38,6 +38,7 @@ public class Video extends Fragment {
     String nextPageToken = "";
     String prevPageToken = "";
     String navigateTo = "next";
+    View Spinner;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,8 +46,7 @@ public class Video extends Fragment {
 
     }
     public void populateList(JSONArray Items){
-        if (activity != null)
-            listview.setAdapter(new VideoList_Adapter(activity, Items));
+        listview.setAdapter(new VideoList_Adapter(getActivity(), Items));
     }
 
     Activity activity;
@@ -62,17 +62,13 @@ public class Video extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_video, container, false);
         listview = (ListView) rootView.findViewById(R.id.videos_list);
         Log.e("YouTube:", "Fetching data");
-        View Spinner = rootView.findViewById(R.id.VideoProgressSpinner);
+        Spinner = rootView.findViewById(R.id.VideoProgressSpinner);
         Spinner.setVisibility(View.VISIBLE);
-<<<<<<< HEAD
-   try {
-=======
 
         try {
->>>>>>> e29868a3c39921bfe1c571ba6696dfec5a5b72e0
             new Video_RetrieveFeed().execute();
         } catch (Exception e) {
-            AlertDialog alertDialog = new AlertDialog.Builder(activity).create();
+            AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
             alertDialog.setTitle("Can't connect.");
             alertDialog.setMessage("We cannot connect to the internet right now. Please try again later. Exception e: " + e.toString());
             alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
@@ -84,23 +80,22 @@ public class Video extends Fragment {
             alertDialog.show();
             Log.e("YouTube:", "Cannot fetch " + e.toString());
         }
-        Spinner.setVisibility(View.GONE);
-<<<<<<< HEAD
-       Button btnNextPage = (Button)rootView.findViewById(R.id.NextPageButton);
-=======
+
 
         Button btnNextPage = (Button)rootView.findViewById(R.id.NextPageButton);
->>>>>>> e29868a3c39921bfe1c571ba6696dfec5a5b72e0
         Button btnPrevPage = (Button)rootView.findViewById(R.id.PrevPageButton);
 
         btnNextPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
-                    navigateTo = "next";
-                    new Video_RetrieveFeed().execute();
+                    if(nextPageToken!="") {
+                        Spinner.setVisibility(View.VISIBLE);
+                        navigateTo = "next";
+                        new Video_RetrieveFeed().execute();
+                    }
                 } catch (Exception e) {
-                    AlertDialog alertDialog = new AlertDialog.Builder(activity).create();
+                    AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
                     alertDialog.setTitle("Can't connect.");
                     alertDialog.setMessage("We cannot connect to the internet right now. Please try again later. Exception e: " + e.toString());
                     alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
@@ -118,10 +113,14 @@ public class Video extends Fragment {
             @Override
             public void onClick(View v) {
                 try {
-                    navigateTo = "prev";
-                    new Video_RetrieveFeed().execute();
+                    if(prevPageToken!="")
+                    {
+                        Spinner.setVisibility(View.VISIBLE);
+                        navigateTo = "prev";
+                        new Video_RetrieveFeed().execute();
+                    }
                 } catch (Exception e) {
-                    AlertDialog alertDialog = new AlertDialog.Builder(activity).create();
+                    AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
                     alertDialog.setTitle("Can't connect.");
                     alertDialog.setMessage("We cannot connect to the internet right now. Please try again later. Exception e: " + e.toString());
                     alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
@@ -135,12 +134,6 @@ public class Video extends Fragment {
                 }
             }
         });
-
-<<<<<<< HEAD
-
-=======
->>>>>>> e29868a3c39921bfe1c571ba6696dfec5a5b72e0
-        Spinner.setVisibility(View.GONE);
 
         return rootView;
     }
@@ -184,10 +177,17 @@ public class Video extends Fragment {
                 if(YTFeed.has("nextPageToken")) {
                     nextPageToken = YTFeed.getString("nextPageToken");
                 }
+                else{
+                    nextPageToken = "";
+                }
                 if(YTFeed.has("prevPageToken")){
                     prevPageToken = YTFeed.getString("prevPageToken");
                 }
+                else{
+                    prevPageToken = "";
+                }
                 populateList(YTFeedItems);
+                Spinner.setVisibility(View.GONE);
             } catch (Exception e) {
                 e.printStackTrace();
             }

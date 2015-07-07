@@ -7,6 +7,7 @@
     android:layout_marginRight="5dp"
     android:layout_marginBottom="5dp"
     android:layout_marginLeft="5dp"
+    android:background="@drawable/shadow_1"
    android:descendantFocusability="beforeDescendants">
 <LinearLayout
     android:layout_gravity="center"
@@ -17,7 +18,7 @@
     android:layout_height="270dp"
     android:orientation="horizontal"
     android:descendantFocusability="afterDescendants"
-    android:background="@drawable/card">
+    android:background="#ffffff">
 
     <FrameLayout
         android:paddingRight="2dp"

@@ -58,9 +58,7 @@ public class LocationMapView extends Activity {
             TextView txtHeader = (TextView)findViewById(R.id.LocationTitle);
             this.DestinationLat = LocationLat;
             this.DestinationLong = LocationLong;
-<<<<<<< HEAD
             Log.e("TextHeader",String.valueOf(txtHeader));
-=======
             LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
             try {
                 Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
@@ -71,7 +69,6 @@ public class LocationMapView extends Activity {
                 Log.e("Maps Error", e.toString());
             }
 
->>>>>>> origin/master
             txtHeader.setText(LocationName);
             ShowMarker(Double.parseDouble(LocationLat), Double.parseDouble(LocationLong), LocationName);
         }
@@ -140,7 +137,6 @@ public class LocationMapView extends Activity {
             try {
                 Log.e("Locations Directions","Starting to fetch stuff");
                 HttpClient client = new DefaultHttpClient();
-
 
                 HttpUriRequest request = new HttpGet("https://maps.googleapis.com/maps/api/directions/json?origin="+OriginLat+","+OriginLong+"&destination="+DestinationLat+","+DestinationLong+"&key=AIzaSyBgktirlOODUO9zWD-808D7zycmP7smp-Y&mode=driving");
                 ResponseHandler<String> responseHandler = new BasicResponseHandler();

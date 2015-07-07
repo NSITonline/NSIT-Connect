@@ -11,6 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Interpolator;
+import android.view.animation.ScaleAnimation;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -41,8 +44,6 @@ public class CustomList extends ArrayAdapter<String>{
 	private final Activity context;
 	private final List<String> img,des,lik,link,obid,date;
 	public ImageLoader imageLoader;
-
-
 	public CustomList(Activity context,List<String>image, List<String>desc, List<String>like,List<String>links,List<String>oid,List<String>d){
 		super(context, R.layout.message_layout, desc);
 		this.context = context;
@@ -137,6 +138,11 @@ try {
 				}
 			});
 		}
+		ScaleAnimation scale = new ScaleAnimation((float)0.5, 1, (float)0.5, 1, Animation.RELATIVE_TO_SELF, (float)0.5, Animation.RELATIVE_TO_SELF, (float)0.5);
+		scale.setInterpolator(new HesitateInterpolator());
+		scale.setDuration(500);
+		//rowView.setAnimation(scale);
+		//rowView.startAnimation(scale);
 		return rowView;
 	}
 
@@ -155,6 +161,13 @@ try {
 		return localDateString;
 	}
 
+	public class HesitateInterpolator implements Interpolator {
+		public HesitateInterpolator() {}
+		public float getInterpolation(float t) {
+			float x=t;
+			return (x*x*x);
+		}
+	}
 
 
 	private class DownloadWebPageTask extends AsyncTask<String, Void, String> {

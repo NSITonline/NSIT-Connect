@@ -4,34 +4,51 @@
     android:animateLayoutChanges="true"
     android:layout_height="match_parent">
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Next Page"
-        android:id="@+id/NextPageButton"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Prev Page"
-        android:id="@+id/PrevPageButton"/>
-<<<<<<< HEAD
-
-=======
->>>>>>> e29868a3c39921bfe1c571ba6696dfec5a5b72e0
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <ProgressBar
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_gravity="center"
-            android:id="@+id/VideoProgressSpinner"
-            > </ProgressBar>
+
         <ListView
             android:id="@+id/videos_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:divider="@android:color/transparent"
-            android:dividerHeight="50dp"/>
+            android:dividerHeight="10dp"
+            android:paddingBottom="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="#ffffffff"
+            android:gravity="center">
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:text="Prev Page"
+                android:id="@+id/PrevPageButton"
+                android:textSize="10sp"
+                android:background="#fffdfdfd"
+                android:layout_marginRight="100dp" />
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:text="Next Page"
+                android:id="@+id/NextPageButton"
+                android:textSize="10sp"
+                android:background="#fffdfdfd" />
+
+        </LinearLayout>
+
+        <ProgressBar
+            android:layout_height="30dp"
+            android:layout_width="30dp"
+            android:layout_gravity="center|bottom"
+            android:id="@+id/VideoProgressSpinner"
+            > </ProgressBar>
+
     </FrameLayout>
+
 </LinearLayout>

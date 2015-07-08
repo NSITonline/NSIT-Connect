@@ -18,25 +18,22 @@
             android:id="@+id/textView"
             android:textStyle="bold|normal"
             android:textColor="#ffffff"
-            android:background="#0288d1"
+            android:background="@color/colorPrimary"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:paddingLeft="10dp" />
-        <EditText
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter a professor's name : "
-            android:id="@+id/search"/>
 
         <ListView
-            android:focusable="false"
-            android:focusableInTouchMode="false"
-            android:layout_width="match_parent"
+            android:dividerHeight="5.0sp"
+            android:background="@color/universalBackground"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:divider="@android:color/transparent"
+            android:fastScrollAlwaysVisible="false"
+            android:focusable="false"
+            android:fastScrollEnabled="false"
+            android:focusableInTouchMode="false"
             android:id="@+id/profListView"
-            android:smoothScrollbar="true"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginBottom="5dp" />
+            />
     </LinearLayout>
 </FrameLayout>

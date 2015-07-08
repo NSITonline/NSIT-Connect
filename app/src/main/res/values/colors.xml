@@ -1,10 +1,11 @@
 <resources>
 
-    <color name="colorPrimary">#0288d1</color>
-    <color name="colorPrimaryDark">#00796b</color>
-    <color name="textColorPrimary">#212121</color>
-    <color name="colorAccent">#009688</color>
-    <color name="textColorPrimaryInverse">@android:color/white</color>
-
+    <color name="colorPrimary">#01b29b</color>
+    <color name="colorPrimaryDark">#008978</color>
+    <color name="textColorPrimary">#5e5e5e</color>
+    <color name="colorAccent">#00b69f</color>
+    <color name="textColorPrimaryInverse">#ffffff</color>
+    <color name="universalBackground">#e3e3e3</color>
+    <color name="backgroundDark">#565555</color>
 
 </resources>

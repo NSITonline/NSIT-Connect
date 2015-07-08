@@ -11,28 +11,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.view.animation.ScaleAnimation;
+import android.view.animation.TranslateAnimation;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.ResponseHandler;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.BasicResponseHandler;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.io.IOException;
+import android.widget.Button;
 import java.util.List;
 
 import functions.ImageLoader;
-import java.sql.Timestamp;
+import functions.ImageLoader2;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -43,7 +39,7 @@ import java.util.TimeZone;
 public class CustomList extends ArrayAdapter<String>{
 	private final Activity context;
 	private final List<String> img,des,lik,link,obid,date;
-	public ImageLoader imageLoader;
+	public ImageLoader2 imageLoader;
 	public CustomList(Activity context,List<String>image, List<String>desc, List<String>like,List<String>links,List<String>oid,List<String>d){
 		super(context, R.layout.message_layout, desc);
 		this.context = context;
@@ -53,7 +49,7 @@ public class CustomList extends ArrayAdapter<String>{
 		obid=oid;
 		link = links;
 		date=d;
-		imageLoader=new ImageLoader(context.getApplicationContext());
+		imageLoader=new ImageLoader2(context.getApplicationContext());
 	}
 
 	@Override
@@ -92,11 +88,10 @@ try {
 		d.setText(formattedDate);
 
 
+		TextView b = (TextView) rowView.findViewById(R.id.read);
 
 
-			LinearLayout l = (LinearLayout) rowView.findViewById(R.id.data);
-
-		l.setOnClickListener(new OnClickListener() {
+		b.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View view) {
 				// TODO Auto-generated method stub
@@ -111,21 +106,15 @@ try {
 			}
 		});
 
+		ImageView imageView2;
+
+		imageView2 = (ImageView) rowView.findViewById(R.id.image2);
 
 
-		if (img.get(position) == null)
-			imageView.setVisibility(View.GONE);
-		else {
+		Button b1 = (Button) rowView.findViewById(R.id.show);
 
-
-			if(obid.get(position)==null)
-				imageLoader.DisplayImage(img.get(position), imageView);
-			else{
-				new DownloadWebPageTask(obid.get(position),img.get(position),imageView).execute();
-			}
-
-
-			imageView.setOnClickListener(new OnClickListener() {
+			imageLoader.DisplayImage(img.get(position), imageView,imageView2);
+			b1.setOnClickListener(new OnClickListener() {
 
 				@Override
 				public void onClick(View v) {
@@ -137,12 +126,20 @@ try {
 
 				}
 			});
-		}
-		ScaleAnimation scale = new ScaleAnimation((float)0.5, 1, (float)0.5, 1, Animation.RELATIVE_TO_SELF, (float)0.5, Animation.RELATIVE_TO_SELF, (float)0.5);
-		scale.setInterpolator(new HesitateInterpolator());
-		scale.setDuration(500);
-		//rowView.setAnimation(scale);
-		//rowView.startAnimation(scale);
+
+
+
+			/*AnimationSet set = new AnimationSet(true);
+			TranslateAnimation slide = new TranslateAnimation(-200, 0, -200, 0);
+			slide.setInterpolator(new DecelerateInterpolator(5.0f));
+			slide.setDuration(300);
+			Animation fade = new AlphaAnimation(0, 1.0f);
+			fade.setInterpolator(new DecelerateInterpolator(5.0f));
+			fade.setDuration(300);
+			set.addAnimation(slide);
+			set.addAnimation(fade);
+			rowView.startAnimation(set);*/
+
 		return rowView;
 	}
 
@@ -161,74 +158,6 @@ try {
 		return localDateString;
 	}
 
-	public class HesitateInterpolator implements Interpolator {
-		public HesitateInterpolator() {}
-		public float getInterpolation(float t) {
-			float x=t;
-			return (x*x*x);
-		}
-	}
-
-
-	private class DownloadWebPageTask extends AsyncTask<String, Void, String> {
-		String obids,imgs;
-		ImageView imageView;
-		String text,imglink;
-		private  DownloadWebPageTask(String a,String b,ImageView imageView){
-			obids = a;
-			imgs = b;
-			this.imageView = imageView;
-		}
-		@Override
-		protected String doInBackground(String... urls) {
-
-			String URL = "https://graph.facebook.com/"+obids+"?fields=images&access_token="+ Val.common_access;
-			HttpClient Client = new DefaultHttpClient();
-			HttpGet httpget = new HttpGet(URL);
-			ResponseHandler<String> responseHandler = new BasicResponseHandler();
-			try {
-				text = Client.execute(httpget, responseHandler);
-			} catch (IOException e) {
-				e.printStackTrace();
-				Log.e("eroore",e.getMessage());
-			}
-
-			return null;
-		}
-
-		@Override
-		protected void onPostExecute(String result) {
-			JSONObject ob;
-			JSONArray arr;
-			if(text==null){
-
-				imageLoader.DisplayImage(imgs, imageView);
-
-			}else {
-				try {
-					ob = new JSONObject(text);
-
-					arr = ob.getJSONArray("images");
-
-					if (arr.getJSONObject(0).has("source"))
-						imglink = arr.getJSONObject(0).getString("source");
-					if (imglink != null) {
-						if (isNetworkAvailable()) {
-							imageLoader.DisplayImage(imglink, imageView);
-
-						}
-					} else {
-						imageView.setVisibility(View.GONE);
-
-					}
-
-				} catch (Exception e) {
-					Log.e("yo", "" + e.getMessage());
-				}
-			}
-
-	}
-	}
 
 
 	private boolean isNetworkAvailable() {

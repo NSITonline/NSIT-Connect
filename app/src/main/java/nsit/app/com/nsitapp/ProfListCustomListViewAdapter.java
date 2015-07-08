@@ -12,6 +12,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.TranslateAnimation;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
@@ -75,6 +80,17 @@ public class ProfListCustomListViewAdapter extends ArrayAdapter<ProfListRowItem>
                 getContext().startActivity(Intent.createChooser(intent, "Choose..."));
             }
         });
+
+        AnimationSet set = new AnimationSet(true);
+        TranslateAnimation slide = new TranslateAnimation(-200,0,-200,0);
+        slide.setInterpolator(new DecelerateInterpolator(5.0f));
+        slide.setDuration(300);
+        Animation fade = new AlphaAnimation(0,1.0f);
+        fade.setInterpolator(new DecelerateInterpolator(5.0f));
+        fade.setDuration(300);
+        set.addAnimation(slide);
+        set.addAnimation(fade);
+       convertView.startAnimation(set);
         return convertView;
     }
 

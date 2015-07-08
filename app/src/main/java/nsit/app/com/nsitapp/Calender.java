@@ -93,8 +93,6 @@ public class Calender extends Fragment {
 
         adapter2 = new CustomList3(activity, days, p1,p2,p3,p4,p5,p6,p7,p8);
         if(a || timetable==null) {
-
-
             if (isNetworkAvailable())
                 new DownloadWebPageTask2().execute();
             else {
@@ -308,6 +306,36 @@ public class Calender extends Fragment {
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+
+        SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
+
+        Boolean a = s.getBoolean("timetablechanged",true);
+        timetable = s.getString("timetable",null);
+
+        adapter2 = new CustomList3(activity, days, p1,p2,p3,p4,p5,p6,p7,p8);
+        if(a || timetable==null) {
+            if (isNetworkAvailable())
+                new DownloadWebPageTask2().execute();
+            else {
+                adapter2 = new CustomList3(activity, days, p1, p2, p3, p4, p5, p6, p7, p8);
+                if (activity != null)
+                    lvTest.setAdapter(adapter2);
+                lvTest.setItemMargin(10);
+                Toast.makeText(activity, "Cannot connect to Internet", Toast.LENGTH_SHORT).show();
+            }
+        }else{
+            load();
+            adapter2 = new CustomList3(activity, days, p1,p2,p3,p4,p5,p6,p7,p8);
+            if (activity != null)
+                lvTest.setAdapter(adapter2);
+            lvTest.setItemMargin(10);
+        }
+
+    }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {

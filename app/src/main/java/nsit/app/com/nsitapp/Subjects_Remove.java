@@ -33,6 +33,7 @@ public class Subjects_Remove extends Fragment {
     ArrayList<String> list3 = new ArrayList<String>();
     Button b;
     String code;
+    static int itemsadded=-1;
 
     ListView lv;
     @Override

@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="#ffffff"
-    android:layout_width="match_parent"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:paddingTop="10sp">
+    android:layout_gravity="center_horizontal"
+    android:background="@drawable/shadow_1"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:showDividers="none">
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff">
     <LinearLayout
         android:layout_weight="0.5"
         android:layout_width="0dp"
+        android:padding="5dp"
         android:orientation="vertical"
         android:layout_height="wrap_content">
 
@@ -30,16 +40,38 @@
             android:layout_height="wrap_content"
             android:text="Attendance"/>
     </LinearLayout>
-
-    <Button
-        android:layout_weight="0.15"
-        android:id="@+id/rem"
-        android:padding="5dp"
-        android:textColor="#ffffff"
-        android:background="@color/colorPrimary"
-        android:layout_marginLeft="10dp"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_gravity="right"
         android:layout_height="wrap_content"
-        android:text="Rem date"/>
-     
+        android:background="@drawable/shadow_1">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/colorPrimary"
+            android:clickable="true"
+            android:id="@+id/rem"
+            android:layout_gravity="right"
+            android:focusable="true">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="    REMOVE DATE    "
+               android:layout_gravity="center_vertical"
+                android:textStyle="bold"
+                android:textColor="#ffffffff"
+                
+                android:clickable="false"
+                android:focusable="false"
+                android:duplicateParentState="true"
+                />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/colorPrimary"></LinearLayout>
 </LinearLayout>

@@ -5,9 +5,10 @@
    android:layout_height="wrap_content"
     android:layout_marginTop="5dp"
     android:layout_marginRight="5dp"
-    android:layout_marginBottom="5dp"
+     android:layout_marginBottom="5dp"
     android:layout_marginLeft="5dp"
     android:background="@drawable/shadow_1"
+    android:backgroundTint="#ff000000"
    android:descendantFocusability="beforeDescendants">
 <LinearLayout
     android:layout_gravity="center"
@@ -21,7 +22,7 @@
     android:background="#ffffff">
 
     <FrameLayout
-        android:paddingRight="2dp"
+        android:paddingRight="5dp"
         android:layout_weight="0.5"
         android:layout_width="0dp"
         android:layout_height="fill_parent">
@@ -29,14 +30,37 @@
             android:layout_width="wrap_content"
             android:layout_gravity="center" android:id="@+id/progressBar1"
             />
-        <ImageView
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+            <ImageView
+                android:id="@+id/image2"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                android:layout_width="170dp"
+                android:layout_height="220dp"/>
+       <!-- <ImageView
         android:id="@+id/image"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"/>
-
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/nsit_online"
+        android:layout_width="130dp"
+        android:layout_height="130dp"/>-->
+            <ImageView
+                android:id="@+id/image"
+                android:layout_gravity="center"
+                android:layout_width="130dp"
+                android:layout_height="130dp"/>
+        </FrameLayout>
+        <Button
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="bottom"
+            android:id="@+id/show"
+            android:background="@drawable/ic_photo_camera_black_24dp"/>
     </FrameLayout>
     <LinearLayout
-        android:paddingLeft="2dp"
+        android:paddingLeft="5dp"
         android:id="@+id/data"
         android:layout_weight="0.5"
         android:layout_width="0dp"
@@ -50,11 +74,11 @@
     <TextView
         android:id="@+id/des"
         android:paddingTop="5dp"
-        android:maxLines="10"
+        android:maxLines="8"
         android:ellipsize="end"
         android:text="NSIT Online Blog"
         android:layout_width="fill_parent"
-        android:layout_height="200dp"
+        android:layout_height="170dp"
         android:textSize="15sp"
         />
         <LinearLayout
@@ -81,13 +105,45 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15sp"/>
-
     </LinearLayout>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="date"
                 android:id="@+id/date"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_gravity="right"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shadow_1">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@color/colorPrimary"
+                    android:clickable="true"
+                    android:id="@+id/PlayContainer"
+                    android:layout_gravity="right"
+                    android:focusable="true">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="  READ MORE  "
+                        android:id="@+id/read"
+                        android:layout_gravity="center_vertical"
+                        android:textStyle="bold"
+                        android:textColor="#ffffffff"
+                        android:textSize="10sp"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:duplicateParentState="true"
+                        />
+
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>

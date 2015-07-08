@@ -48,8 +48,9 @@ public class FinalFeed extends Fragment {
     ProgressBar pb,pb2;
     SwipeRefreshLayout swipeLayout;
     String nextn;
-    CustomList adapter;
+    CustomList_feed adapter;
     int first;
+    static int itemsadded=-1;
    String nextcollegespace,nextcrosslinks,nextjunoon,nextbullet,nextrotaract,nextquiz,nextieee,nextcsi,nextashwa,nextdeb;
     List<String> list = new ArrayList<String>();
     List<String> list1 = new ArrayList<String>();
@@ -382,7 +383,8 @@ public class FinalFeed extends Fragment {
 
                 for(int i = 0; i < arr.length(); i++){
                     try {
-                        if(arr.getJSONObject(i).has("message")&&arr.getJSONObject(i).has("picture")&&arr.getJSONObject(i).has("link")&&arr.getJSONObject(i).has("likes")) {
+                        if(arr.getJSONObject(i).has("message")&&arr.getJSONObject(i).has("picture")&&
+                                arr.getJSONObject(i).has("link")&&arr.getJSONObject(i).has("likes")) {
                             list.add(arr.getJSONObject(i).getString("message"));
                         }
                         else {
@@ -491,7 +493,7 @@ public class FinalFeed extends Fragment {
 
             lv.removeFooterView(footerView);
 
-            adapter = new CustomList(activity, list6, list, list2, list7, list1, list8);
+            adapter = new CustomList_feed(activity, list6, list, list2, list7, list1, list8);
             lv.addHeaderView(new View(activity));
             lv.addFooterView(new View(activity));
             if (activity != null)

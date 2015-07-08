@@ -67,8 +67,6 @@ public class ProfList extends Fragment {
         int dept = i.getInt("dept", 0);
 
 
-        s = (EditText) rootView.findViewById(R.id.search);
-        s.setVisibility(View.GONE);
         ListView listView;
         listView = (ListView) rootView.findViewById(R.id.profListView);
         listView.setTextFilterEnabled(true);

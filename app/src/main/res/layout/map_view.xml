@@ -9,10 +9,18 @@
         android:layout_width="match_parent"
         android:layout_height="400dp"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/colorPrimary"></LinearLayout>
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/MapDescGrid">
+        android:id="@+id/MapDescGrid"
+        android:background="#ffffff"
+        android:paddingTop="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -21,44 +29,64 @@
             android:text="Mini Zayca"
             android:id="@+id/LocationTitle"
             android:layout_column="0"
-            android:layout_row="0" />
+            android:layout_row="0"
+            android:textSize="21sp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Fetching..."
+            android:text=""
             android:id="@+id/LocationDistance"
             android:layout_row="0"
             android:layout_column="1"
             android:layout_marginLeft="10dp"
             android:layout_columnSpan="1" />
+        <ProgressBar
+            android:layout_height="30dp"
+            android:layout_width="30dp"
+            android:layout_column="2"
+            android:layout_row="0"
+            android:id="@+id/MapProgressBar"
+            android:layout_marginLeft="10dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Drive time"
-            android:id="@+id/TimeDrive"
-            android:layout_row="1"
+        <LinearLayout
             android:layout_column="0"
-            android:layout_marginLeft="10dp"
-            android:layout_columnSpan="1" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Walk time"
-            android:id="@+id/TimeWalk"
             android:layout_row="1"
-            android:layout_column="1"
-            android:layout_marginLeft="10dp"
-            android:layout_columnSpan="1" />
+            android:layout_columnSpan="2"
+            android:layout_marginTop="10dp">
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_drive_eta_black_24dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text=""
+                android:layout_marginLeft="5dp"
+                android:id="@+id/TimeDrive" />
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="30dp"
+                android:src="@drawable/ic_directions_walk_black_24dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginLeft="5dp"
+                android:id="@+id/TimeWalk" />
+        </LinearLayout>
+
+
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="129dp"
+            android:layout_marginTop="10dp"
             android:text="askjdahsdkjahsdkjahsdjkhasjdkhaskjdhaskjdhakjsdhaksjdhaskjdhajksdhaksjdhaksjdhaksjd"
             android:id="@+id/LocDescription"
             android:layout_column="0"

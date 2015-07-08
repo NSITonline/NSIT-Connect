@@ -167,7 +167,8 @@ public class Home extends Fragment {
 
                 for(int i = 0; i < arr.length(); i++){
                     try {
-                        if(arr.getJSONObject(i).has("message")&&arr.getJSONObject(i).has("picture")&&arr.getJSONObject(i).has("link")&&arr.getJSONObject(i).has("likes")) {
+                        if(arr.getJSONObject(i).has("message")&&arr.getJSONObject(i).has("picture")&&
+                                arr.getJSONObject(i).has("link")&&arr.getJSONObject(i).has("likes")&&arr.getJSONObject(i).has("object_id")) {
                             list.add(arr.getJSONObject(i).getString("message"));
                         }
                         else {
@@ -214,13 +215,11 @@ public class Home extends Fragment {
                 next = ob.getString("next");
 
 
-
                 first=0;
 
             } catch (Exception e) {
 
             }
-
 
             swipeLayout.setRefreshing(false);
             if (activity != null)
@@ -285,7 +284,8 @@ public class Home extends Fragment {
 
                 for(int i = 0; i < arr.length(); i++){
                     try {
-                        if(arr.getJSONObject(i).has("message")&&arr.getJSONObject(i).has("picture")&&arr.getJSONObject(i).has("link")&&arr.getJSONObject(i).has("likes")) {
+                        if(arr.getJSONObject(i).has("message")&&arr.getJSONObject(i).has("picture")&&
+                                arr.getJSONObject(i).has("link")&&arr.getJSONObject(i).has("likes")&&arr.getJSONObject(i).has("object_id")) {
                             list.add(arr.getJSONObject(i).getString("message"));
                         }
                         else {
@@ -342,7 +342,12 @@ public class Home extends Fragment {
             lv.removeFooterView(footerView);
             adapter.notifyDataSetChanged();
 
-
+          /*  lv.post(new Runnable() {
+                @Override
+                public void run() {
+                   Home.loaded.clear();
+                }
+            });*/
 
             // Log.e("Yo", text);
         }

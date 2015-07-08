@@ -72,14 +72,7 @@ public class Choose extends AppCompatActivity implements AdapterView.OnItemSelec
                 }else if(!h){
                     Toast.makeText(getApplicationContext(),"Select Half",Toast.LENGTH_SHORT).show();
                 }else {
-                    SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                    SharedPreferences.Editor e = s.edit();
-                    e.putString("sem", se);
-                    e.putString("sec", sec);
-                    e.putString("branch", br);
-                    e.putString("half", hal);
 
-                    
                     Log.e("here",se +"\n"+sec+"\n"+br+"\n"+"  ");
                 String timetableid = null;
                     if(se.equals("Sem 1")){
@@ -304,9 +297,18 @@ public class Choose extends AppCompatActivity implements AdapterView.OnItemSelec
 
                     }
 
+                    SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                    SharedPreferences.Editor e = s.edit();
+                    e.putString("sem", se);
+                    e.putString("sec", sec);
+                    e.putString("branch", br);
+                    e.putString("half", hal);
 
-                    if(s.getString("timetableid",null).equals(timetableid))
-                        e.putBoolean("timetablechanged",true);
+
+                    String x =s.getString("timetableid",null);
+                    if(x!=null)
+                    if(x.equals(timetableid))
+                    e.putBoolean("timetablechanged",true);
 
 
                     e.putString("timetableid",timetableid);

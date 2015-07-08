@@ -1,24 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="350dp"
-    android:layout_height="wrap_content"
+<LinearLayout
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_gravity="center_horizontal"
+android:background="@drawable/shadow_1"
+xmlns:android="http://schemas.android.com/apk/res/android"
+android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:layout_gravity="center_horizontal"
-    android:background="#ffffffff"
-    android:layout_marginBottom="50dp"
-    >
-
-
-    <TextView
-        android:layout_width="wrap_content"
+    android:showDividers="none">
+    <LinearLayout
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/LocationsGroupHeader" />
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        android:background="#ffffffff"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="35dp">
 
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/LocationsGroupList" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Location group"
+            android:id="@+id/LocationsGroupHeader"
+            android:layout_marginLeft="10dp" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:gravity="right">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/GroupTypeImage"
+                android:layout_marginRight="20dp"
+                />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/colorPrimary"></LinearLayout>
 </LinearLayout>

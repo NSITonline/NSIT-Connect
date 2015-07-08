@@ -14,7 +14,7 @@
 
             <FrameLayout
                 android:id="@+id/content_frame"
-                android:background="#b9b9b9"
+                android:background="@color/universalBackground"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:animateLayoutChanges="true"   >

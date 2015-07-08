@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListAdapter;
@@ -28,7 +26,6 @@ public class Locations extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
-        setHasOptionsMenu(true);
         super.onCreate(savedInstanceState);
     }
 
@@ -42,8 +39,7 @@ public class Locations extends Fragment {
 
     public void populateList(ArrayList<LocationGroup> Items){
         FillGroupsList();
-        if (activity != null)
-            listAdapter = new LocationsList_Adapter(activity,Items,null);
+        listAdapter = new LocationsList_Adapter(getActivity(),Items,null);
         listView.setAdapter(listAdapter);
     }
 
@@ -52,23 +48,50 @@ public class Locations extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_locations, container, false);
         listView = (ExpandableListView) rootView.findViewById(R.id.locations_list);
         populateList(LocationsGroupsList);
+
+
+
         this.listView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
 
             @Override
             public boolean onChildClick(ExpandableListView parent, View v,
                                         int groupPosition, int childPosition, long id) {
-                ShowOnMap(v,LocationsGroupsList.get(groupPosition).Locations.get(childPosition));
+                String groupType =  LocationsGroupsList.get(groupPosition).GroupType;
+                Integer IconId = null;
+                switch(groupType){
+                    case "College": IconId = R.drawable.ic_school_black_24dp;
+                        break;
+                    case "Campus": IconId = R.drawable.ic_business_black_24dp;
+                        break;
+                    case "Hostel": IconId = R.drawable.ic_hotel_black_24dp;
+                        break;
+                    case "Canteen": IconId = R.drawable.ic_local_cafe_black_24dp;
+                        break;
+                    case "Stationery": IconId = R.drawable.ic_brush_black_24dp;
+                        break;
+                    case "ATM": IconId = R.drawable.ic_credit_card_black_24dp;
+                        break;
+                    case "WiFi": IconId = R.drawable.ic_network_wifi_black_24dp;
+                        break;
+                    case "Sports": IconId = R.drawable.ic_directions_bike_black_24dp;
+                        break;
+                    case "Miscellaneous": IconId = R.drawable.ic_public_black_24dp;
+                        break;
+                }
+                ShowOnMap(v,LocationsGroupsList.get(groupPosition).Locations.get(childPosition),IconId);
                 return false;
             }
         });
         return rootView;
     }
 
-    public void ShowOnMap(View view, Location LocationItem){
+    public void ShowOnMap(View view, Location LocationItem, Integer GroupItem){
         Intent myIntent = new Intent(view.getContext(),LocationMapView.class);
         myIntent.putExtra("LocationName", LocationItem.Name);
         myIntent.putExtra("LocationLat", String.valueOf(LocationItem.Coord.latitude));
         myIntent.putExtra("LocationLong", String.valueOf(LocationItem.Coord.longitude));
+        myIntent.putExtra("LocationLong", String.valueOf(LocationItem.Coord.longitude));
+        myIntent.putExtra("LocationIcon", GroupItem);
         Locations.this.startActivity(myIntent);
     }
 
@@ -169,10 +192,4 @@ public class Locations extends Fragment {
         this.LocationsGroupsList.add(SportsGroup);
         this.LocationsGroupsList.add(MiscGroup);
     }
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        menu.clear();
-        super.onCreateOptionsMenu(menu, inflater);
-    }
 }
-

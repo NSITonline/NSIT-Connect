@@ -6,15 +6,21 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.transition.Fade;
 import android.transition.Transition;
 import android.transition.TransitionValues;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.BaseInterpolator;
+import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.view.animation.ScaleAnimation;
+import android.view.animation.TranslateAnimation;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -175,21 +181,20 @@ public class VideoList_Adapter extends BaseAdapter {
             }
         });
 
+        AnimationSet set = new AnimationSet(true);
+        TranslateAnimation slide = new TranslateAnimation(-200,0,-200,0);
+        slide.setInterpolator(new DecelerateInterpolator(5.0f));
+        slide.setDuration(300);
+        Animation fade = new AlphaAnimation(0,1.0f);
+        fade.setInterpolator(new DecelerateInterpolator(5.0f));
+        fade.setDuration(300);
+        set.addAnimation(slide);
+        set.addAnimation(fade);
+        vi.startAnimation(set);
 
-        ScaleAnimation scale = new ScaleAnimation((float)0.5, 1, (float)0.5, 1, Animation.RELATIVE_TO_SELF, (float)0.5, Animation.RELATIVE_TO_SELF, (float)0.5);
-        scale.setInterpolator(new HesitateInterpolator());
-        scale.setDuration(500);
-        vi.setAnimation(scale);
-        vi.startAnimation(scale);
+
 
         return vi;
     }
 
-    public class HesitateInterpolator implements Interpolator {
-        public HesitateInterpolator() {}
-        public float getInterpolation(float t) {
-            float x=t;
-            return (x*x*x);
-        }
-    }
 }

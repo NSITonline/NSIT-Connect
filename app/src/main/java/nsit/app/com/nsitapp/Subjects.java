@@ -44,6 +44,7 @@ public class Subjects extends Fragment {
     ArrayList<String> list1 = new ArrayList<String>();
     ArrayList<String> list2 = new ArrayList<String>();
     Button b;
+    static int itemsadded=-1;
 
     ListView lv;
     @Override

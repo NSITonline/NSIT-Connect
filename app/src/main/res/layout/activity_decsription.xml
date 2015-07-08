@@ -34,7 +34,7 @@
     android:layout_marginTop="20dp"
     android:layout_width="fill_parent"
     android:layout_height="2dp"
-    android:background="#0288d1"/>
+    android:background="@color/colorPrimary"/>
 
     <LinearLayout
         android:layout_marginTop="20dp"
@@ -47,7 +47,7 @@
             android:id="@+id/likes"
             android:text="2"
             android:paddingTop="2dp"
-            android:textColor="#0288d1"
+            android:textColor="@color/colorPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"/>
@@ -62,7 +62,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/button"
+        android:background="@color/colorPrimary"
         android:layout_marginTop="20dp"
         android:layout_gravity="center"
         android:textColor="#ffffff"

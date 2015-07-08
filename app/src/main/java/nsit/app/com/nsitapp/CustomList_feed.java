@@ -68,20 +68,23 @@ public class CustomList_feed extends ArrayAdapter<String>{
 
 		TextView d = (TextView) rowView.findViewById(R.id.date);
 
-		String x = GetLocalDateStringFromUTCString(date.get(position));
-		String formattedDate=x;
-try {
+		if(date.get(position)!=null) {
+			String x = GetLocalDateStringFromUTCString(date.get(position));
+			String formattedDate = x;
+			try {
 
-	DateFormat originalFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss+SSSS", Locale.ENGLISH);
-	DateFormat targetFormat = new SimpleDateFormat("dd MMMM , hh:mm a");
-	Date date2 = originalFormat.parse(x);
-	formattedDate = targetFormat.format(date2);
-}catch(Exception e){
-	Log.e("error",e.getMessage()+" ");
-}
+				DateFormat originalFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss+SSSS", Locale.ENGLISH);
+				DateFormat targetFormat = new SimpleDateFormat("dd MMMM , hh:mm a");
+				Date date2 = originalFormat.parse(x);
+				formattedDate = targetFormat.format(date2);
+			} catch (Exception e) {
+				Log.e("error", e.getMessage() + " ");
+			}
 
-		d.setText(formattedDate);
-
+			d.setText(formattedDate);
+		}
+		else
+		d.setVisibility(View.INVISIBLE);
 
 		TextView b = (TextView) rowView.findViewById(R.id.read);
 

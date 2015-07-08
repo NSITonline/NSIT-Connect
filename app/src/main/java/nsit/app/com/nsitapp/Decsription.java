@@ -65,7 +65,16 @@ public class Decsription extends AppCompatActivity {
             Like.setText("0");
         else
             Like.setText(like);
-        Des.setText(des);
+
+
+        if(des==null)
+            Des.setText("No description");
+        else
+            Des.setText(des);
+
+        if(link==null)
+            Link.setVisibility(View.GONE);
+        else
         Link.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {

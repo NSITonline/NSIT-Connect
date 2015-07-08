@@ -99,7 +99,7 @@ public class Home extends Fragment {
         swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                new DownloadWebPageTask2(Val.id_nsitonline).execute();
+                new DownloadWebPageTask3(Val.id_nsitonline).execute();
             }
         });
         swipeLayout.setColorScheme(android.R.color.holo_blue_bright,
@@ -142,6 +142,7 @@ public class Home extends Fragment {
             Log.e("Yo", "Started");
             String URL;
             URL = "https://graph.facebook.com/"+id+"/feed?limit=10&fields=picture,shares,message,object_id,link,created_time,comments.limit(0).summary(true),likes.limit(0).summary(true)&access_token=" + Val.common_access;
+            Log.e("this2",URL);
             HttpClient Client = new DefaultHttpClient();
             HttpGet httpget = new HttpGet(URL);
             ResponseHandler<String> responseHandler = new BasicResponseHandler();
@@ -167,12 +168,11 @@ public class Home extends Fragment {
 
                 for(int i = 0; i < arr.length(); i++){
                     try {
-                        if(arr.getJSONObject(i).has("message")&&arr.getJSONObject(i).has("picture")&&
-                                arr.getJSONObject(i).has("link")&&arr.getJSONObject(i).has("likes")&&arr.getJSONObject(i).has("object_id")) {
+                        if(arr.getJSONObject(i).has("message")) {
                             list.add(arr.getJSONObject(i).getString("message"));
                         }
                         else {
-                            continue;
+                            list.add(null);
                         }
                         if(!(arr.getJSONObject(i).has("object_id")))
                             list1.add(null);
@@ -197,13 +197,14 @@ public class Home extends Fragment {
                             JSONArray a2 = o.getJSONArray("data");
                             String x = o.getString("summary");
                             JSONObject o2 = new JSONObject(x);
-
                             list2.add(o2.getString("total_count"));   //No of likes
                         }
                         else
                             list2.add("0");
-                        list8.add(arr.getJSONObject(i).getString("created_time"));
-
+                        if(arr.getJSONObject(i).has("created_time"))
+                            list8.add(arr.getJSONObject(i).getString("created_time"));
+                        else
+                            list8.add(null);
                     } catch (Exception e) {
                         // TODO Auto-generated catch block
                         e.printStackTrace();
@@ -213,25 +214,13 @@ public class Home extends Fragment {
 
                 ob = ob.getJSONObject("paging");
                 next = ob.getString("next");
-
-
                 first=0;
-
             } catch (Exception e) {
 
             }
-
             swipeLayout.setRefreshing(false);
             if (activity != null)
-
                 lv.setAdapter(adapter);
-
-
-
-
-
-
-
         }
     }
 
@@ -253,11 +242,9 @@ public class Home extends Fragment {
             Log.e("Yo", "Started 2");
             String URL;
 
-            String[] x = next.split("&__paging_token=");
-          token=x[1];
-            URL = "https://graph.facebook.com/"+id+"/feed?limit=10&fields=picture,shares,message,created_time,object_id,link,comments.limit(0).summary(true),likes.limit(0).summary(true)&access_token=" +
-                    Val.common_access+"&__paging_token="+token;
+            URL = next;
 
+            Log.e("this3 ",URL);
 
 
             HttpClient Client = new DefaultHttpClient();
@@ -284,13 +271,14 @@ public class Home extends Fragment {
 
                 for(int i = 0; i < arr.length(); i++){
                     try {
-                        if(arr.getJSONObject(i).has("message")&&arr.getJSONObject(i).has("picture")&&
-                                arr.getJSONObject(i).has("link")&&arr.getJSONObject(i).has("likes")&&arr.getJSONObject(i).has("object_id")) {
+                        if(arr.getJSONObject(i).has("message")) {
                             list.add(arr.getJSONObject(i).getString("message"));
                         }
                         else {
-                            continue;
+                            list.add(null);
                         }
+
+
                         if(!(arr.getJSONObject(i).has("object_id")))
                             list1.add(null);
                         else
@@ -320,8 +308,10 @@ public class Home extends Fragment {
                         else
                             list2.add("0");
 
-                        list8.add(arr.getJSONObject(i).getString("created_time"));
-
+                        if(arr.getJSONObject(i).has("created_time"))
+                            list8.add(arr.getJSONObject(i).getString("created_time"));
+                        else
+                            list8.add(null);
                     } catch (Exception e) {
                         // TODO Auto-generated catch block
                         e.printStackTrace();

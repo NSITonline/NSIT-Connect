@@ -11,22 +11,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.Interpolator;
-import android.view.animation.ScaleAnimation;
-import android.view.animation.TranslateAnimation;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Button;
 import java.util.List;
 
-import functions.ImageLoader;
 import functions.ImageLoader2;
 
 import java.text.DateFormat;
@@ -61,36 +53,47 @@ public class CustomList extends ArrayAdapter<String>{
 		pb = (ProgressBar) rowView.findViewById(R.id.progressBar1);
 
 		TextView txtTitle = (TextView) rowView.findViewById(R.id.des);
-		txtTitle.setText(des.get(position));
+		if(des.get(position)==null)
+			txtTitle.setText("No desrciption");
+		else
+			txtTitle.setText(des.get(position));
+
+
 		TextView like = (TextView) rowView.findViewById(R.id.likes);
 		if (lik.get(position) == null)
 			like.setText("0");
 		else
 			like.setText(lik.get(position));
-		ImageView imageView;
 
-		imageView = (ImageView) rowView.findViewById(R.id.image);
+
 
 		TextView d = (TextView) rowView.findViewById(R.id.date);
+		if(date.get(position)!=null) {
+			String x = GetLocalDateStringFromUTCString(date.get(position));
+			String formattedDate = x;
+			try {
 
-		String x = GetLocalDateStringFromUTCString(date.get(position));
-		String formattedDate=x;
-try {
+				DateFormat originalFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss+SSSS", Locale.ENGLISH);
+				DateFormat targetFormat = new SimpleDateFormat("dd MMMM , hh:mm a");
+				Date date2 = originalFormat.parse(x);
+				formattedDate = targetFormat.format(date2);
+			} catch (Exception e) {
+				Log.e("error", e.getMessage() + " ");
+			}
 
-	DateFormat originalFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss+SSSS", Locale.ENGLISH);
-	DateFormat targetFormat = new SimpleDateFormat("dd MMMM , hh:mm a");
-	Date date2 = originalFormat.parse(x);
-	formattedDate = targetFormat.format(date2);
-}catch(Exception e){
-	Log.e("error",e.getMessage()+" ");
-}
+			d.setText(formattedDate);
+		}
+		else
+		d.setVisibility(View.INVISIBLE);
 
-		d.setText(formattedDate);
+
+		ImageView imageView;
+		imageView = (ImageView) rowView.findViewById(R.id.image);
+		ImageView imageView2;
+		imageView2 = (ImageView) rowView.findViewById(R.id.image2);
 
 
 		TextView b = (TextView) rowView.findViewById(R.id.read);
-
-
 		b.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View view) {
@@ -106,14 +109,9 @@ try {
 			}
 		});
 
-		ImageView imageView2;
-
-		imageView2 = (ImageView) rowView.findViewById(R.id.image2);
-
-
-		Button b1 = (Button) rowView.findViewById(R.id.show);
-
-			imageLoader.DisplayImage(img.get(position), imageView,imageView2);
+		if(img.get(position)!=null) {
+			Button b1 = (Button) rowView.findViewById(R.id.show);
+			imageLoader.DisplayImage(img.get(position), imageView, imageView2);
 			b1.setOnClickListener(new OnClickListener() {
 
 				@Override
@@ -127,7 +125,10 @@ try {
 				}
 			});
 
-
+		}else{
+			FrameLayout f = (FrameLayout) rowView.findViewById(R.id.frame);
+			f.setVisibility(View.GONE);
+		}
 
 			/*AnimationSet set = new AnimationSet(true);
 			TranslateAnimation slide = new TranslateAnimation(-200, 0, -200, 0);
@@ -154,7 +155,6 @@ try {
 			e.printStackTrace();
 		}
 		localDateString = dateFormat.format(new Date(when + TimeZone.getDefault().getRawOffset() + (TimeZone.getDefault().inDaylightTime(new Date()) ? TimeZone.getDefault().getDSTSavings() : 0)));
-
 		return localDateString;
 	}
 

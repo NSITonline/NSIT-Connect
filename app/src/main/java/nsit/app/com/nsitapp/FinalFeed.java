@@ -48,7 +48,7 @@ public class FinalFeed extends Fragment {
     ProgressBar pb,pb2;
     SwipeRefreshLayout swipeLayout;
     String nextn;
-    CustomList_feed adapter;
+    CustomList adapter;
     int first;
     static int itemsadded=-1;
    String nextcollegespace,nextcrosslinks,nextjunoon,nextbullet,nextrotaract,nextquiz,nextieee,nextcsi,nextashwa,nextdeb;
@@ -236,7 +236,6 @@ public class FinalFeed extends Fragment {
         @Override
         protected void onPostExecute(String result) {
             Log.e("YO", "Done");
-            Log.e("yrs",""+text);
 
             int j=0;
             JSONObject ob;
@@ -248,11 +247,10 @@ public class FinalFeed extends Fragment {
 
                 for(int i = 0; i < arr.length(); i++){
                     try {
-                        if(arr.getJSONObject(i).has("message")&&arr.getJSONObject(i).has("picture")&&arr.getJSONObject(i).has("link")&&arr.getJSONObject(i).has("likes")) {
+                        if(arr.getJSONObject(i).has("message"))
                             list.add(arr.getJSONObject(i).getString("message"));
-                        }
                         else {
-                            continue;
+                           list.add(null);
                         }
                         if(!(arr.getJSONObject(i).has("object_id")))
                             list1.add(null);
@@ -284,7 +282,10 @@ public class FinalFeed extends Fragment {
                             list2.add("0");
 
 
+                        if(arr.getJSONObject(i).has("created_time"))
                         list8.add(arr.getJSONObject(i).getString("created_time"));
+                        else
+                            list8.add(null);
                     } catch (Exception e) {
                          Log.e("Error","Errror at : " + i + " "+e.getMessage());
                     }
@@ -355,8 +356,8 @@ public class FinalFeed extends Fragment {
             String[] x = next.split("&__paging_token=");
             token=x[1];
 
-            URL = "https://graph.facebook.com/" + id + "/feed?limit=10&fields=picture,shares,message,object_id,link,comments.limit(0).summary(true)" +
-                    ",likes.limit(0).summary(true)&access_token=" + Val.common_access+"&__paging_token="+token;
+            URL = next;
+            Log.e("this",URL);
             HttpClient Client = new DefaultHttpClient();
             HttpGet httpget = new HttpGet(URL);
             ResponseHandler<String> responseHandler = new BasicResponseHandler();
@@ -383,8 +384,7 @@ public class FinalFeed extends Fragment {
 
                 for(int i = 0; i < arr.length(); i++){
                     try {
-                        if(arr.getJSONObject(i).has("message")&&arr.getJSONObject(i).has("picture")&&
-                                arr.getJSONObject(i).has("link")&&arr.getJSONObject(i).has("likes")) {
+                        if(arr.getJSONObject(i).has("message")) {
                             list.add(arr.getJSONObject(i).getString("message"));
                         }
                         else {
@@ -419,8 +419,10 @@ public class FinalFeed extends Fragment {
                         else
                             list2.add("0");
 
+                        if(arr.getJSONObject(i).has("created_time"))
                         list8.add(arr.getJSONObject(i).getString("created_time"));
-
+                        else
+                            list8.add(null);
 
 
 
@@ -486,14 +488,11 @@ public class FinalFeed extends Fragment {
         Log.e("status : "," "+ Csi + Collegespace+Crosslinks+Crosslinks+Bullet+Junoon+Ieee+Ashwa+Quiz+Deb+Rotaract);
         if(!Csi && !Collegespace && !Crosslinks && !Bullet && !Junoon && !Ieee&& !Ashwa&& !Quiz&& !Deb &&!Rotaract) {
 
-            Log.e("EFinish", "All done");
-
-
             pb.setVisibility(View.GONE);
 
             lv.removeFooterView(footerView);
 
-            adapter = new CustomList_feed(activity, list6, list, list2, list7, list1, list8);
+            adapter = new CustomList(activity, list6, list, list2, list7, list1, list8);
             lv.addHeaderView(new View(activity));
             lv.addFooterView(new View(activity));
             if (activity != null)

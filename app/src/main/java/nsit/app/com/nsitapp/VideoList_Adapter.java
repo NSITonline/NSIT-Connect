@@ -138,7 +138,7 @@ public class VideoList_Adapter extends BaseAdapter {
             else{
                 imageLoader.DisplayImage(FeedItems.getJSONObject(position).getJSONObject("snippet").getJSONObject("thumbnails").getJSONObject("default").getString("url"), VideoThumbnail);
             }
-            Log.e("FeedItem",FeedItems.get(position).toString()+" ");
+            Log.e("FeedItem",FeedItems.get(position).toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }

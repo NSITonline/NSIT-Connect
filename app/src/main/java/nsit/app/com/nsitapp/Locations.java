@@ -20,7 +20,7 @@ import java.util.ArrayList;
 public class Locations extends Fragment {
 
     ArrayList<LocationGroup> LocationsGroupsList = new ArrayList<>();
-    ExpandableListView listView;
+    public ExpandableListView listView;
     ExpandableListAdapter listAdapter;
 
     @Override
@@ -28,6 +28,7 @@ public class Locations extends Fragment {
     {
         super.onCreate(savedInstanceState);
     }
+
 
     Activity activity;
     @Override
@@ -78,7 +79,8 @@ public class Locations extends Fragment {
                     case "Miscellaneous": IconId = R.drawable.ic_public_black_24dp;
                         break;
                 }
-                ShowOnMap(v,LocationsGroupsList.get(groupPosition).Locations.get(childPosition),IconId);
+                v.setTag(groupPosition);
+                ShowOnMap(v, LocationsGroupsList.get(groupPosition).Locations.get(childPosition), IconId);
                 return false;
             }
         });
@@ -192,4 +194,7 @@ public class Locations extends Fragment {
         this.LocationsGroupsList.add(SportsGroup);
         this.LocationsGroupsList.add(MiscGroup);
     }
+
+
+
 }

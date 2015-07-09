@@ -12,5 +12,8 @@
         android:groupIndicator="@android:color/transparent"
         android:divider="@android:color/transparent"
         android:id="@+id/locations_list"
-        android:background="@color/universalBackground" />
+    android:background="@color/universalBackground"
+    android:dividerHeight="5dp"
+    android:childDivider="#00000000"
+    />
 </LinearLayout>

@@ -1,6 +1,8 @@
 package nsit.app.com.nsitapp;
 
 import android.content.Context;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,26 +11,13 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.TranslateAnimation;
-import android.widget.BaseAdapter;
 import android.widget.BaseExpandableListAdapter;
-import android.widget.Button;
+import android.widget.ExpandableListView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 
-import com.google.android.youtube.player.YouTubeStandalonePlayer;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
 
-import functions.ImageLoader;
 
 /**
  * Created by Sidharth Patro on 22-Jun-15.
@@ -38,7 +27,16 @@ public class LocationsList_Adapter extends BaseExpandableListAdapter {
     Context context;
     ArrayList<Locations.LocationGroup> LocationItems = new ArrayList<>();
     ArrayList<Locations.Location> LocationGroupItems = new ArrayList<>();
+    public int groupClicked;
+
     private static LayoutInflater inflater = null;
+    ExpandableListView listView;
+    public static int lastExpandedGroupPosition = -1;
+
+
+    public void setGroupClicked(int groupPosition){
+        groupClicked = groupPosition;
+    }
 
     public LocationsList_Adapter(Context context, ArrayList<Locations.LocationGroup> LocationItems, ArrayList<Locations.Location> LocationGroupItems) {
         this.context = context;
@@ -89,11 +87,13 @@ public class LocationsList_Adapter extends BaseExpandableListAdapter {
         Locations.LocationGroup LocGroup = getGroup(groupPosition);
         String headerTitle = LocGroup.GroupHeader;
         String groupType = LocGroup.GroupType;
-        if (convertView == null) {
+                listView = (ExpandableListView)parent;
+         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this.context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = infalInflater.inflate(R.layout.location_listitem, null);
         }
+        this.listView = (ExpandableListView)parent;
 
         TextView GroupHeader = (TextView) convertView
                 .findViewById(R.id.LocationsGroupHeader);
@@ -137,22 +137,31 @@ public class LocationsList_Adapter extends BaseExpandableListAdapter {
         TextView txtHeader = (TextView) convertView.findViewById(R.id.LocationItem);
         txtHeader.setText(childText);
 
-        AnimationSet set = new AnimationSet(true);
-        TranslateAnimation slide = new TranslateAnimation(0,0,-50,0);
-        slide.setInterpolator(new DecelerateInterpolator(5.0f));
-        slide.setDuration(100);
-        Animation fade = new AlphaAnimation(0,1.0f);
-        fade.setInterpolator(new DecelerateInterpolator(5.0f));
-        fade.setDuration(100);
-        set.addAnimation(slide);
-        set.addAnimation(fade);
-        set.setStartOffset(childPosition*100);
-        convertView.startAnimation(set);
+        if(lastExpandedGroupPosition == groupPosition) {
+            AnimationSet set = new AnimationSet(true);
+            TranslateAnimation slide = new TranslateAnimation(0, 0, -50, 0);
+            slide.setInterpolator(new DecelerateInterpolator(5.0f));
+            slide.setDuration(100);
+            Animation fade = new AlphaAnimation(0, 1.0f);
+            fade.setInterpolator(new DecelerateInterpolator(5.0f));
+            fade.setDuration(100);
+            set.addAnimation(slide);
+            set.addAnimation(fade);
+            set.setStartOffset(childPosition * 100);
+            convertView.startAnimation(set);
+        }
+
         return convertView;
+
     }
 
     @Override
     public boolean isChildSelectable(int groupPosition, int childPosition) {
         return true;
+    }
+
+    @Override
+    public void onGroupExpanded(int groupPosition){
+        lastExpandedGroupPosition = groupPosition;
     }
 }

@@ -6,4 +6,14 @@
     <string name="title_activity_decsription">Decsription</string>
     <string name="title_activity_image">ImageAct</string>
     <string name="title_activity_my_feed">MyFeed</string>
+    <string name="north_gate_desc">The gate closer towards Dwarka, sees the most of the Metro-travelling students during morning and evening, and also some hostellers during night to get some "relaxation" at the nearly situated Khokha. </string>
+    <string name="south_gate_desc">The prominent entry gate of the college. At night, the intellectual-minded could see the large weather status display just sitting a little beside the gate, making it hard to pass by unnoticed. </string>
+    <string name="admin_block_desc">Admin - The land of people who keep the wheels of NSIT running. This is the place where a student spends most of his time in his college years. Not because its a likeable place, it is due to the endless rounds that the poor guy has to make around the building collecting documents, submitting documents, correcting documents, searching for documents....sigh.</string>
+    <string name="block6_desc">The academic block for ICE/MPAE branches. Its always crowded, thanks to the expertise of the students who are proficient in mass bunking the 99% of their classes.</string>
+    <string name="block5_desc">COE/IT block, students can be found either studying, doing programming competitions on their laptops or discussing in large groups whether to mass bunk the next class or not (Spoiler alert: They don\'t). </string>
+    <string name="block4_desc">One floor dedicated to the BT branch students, and the rest to ECE. The terrace on the block is a good hangout place for people who love sunsets, fresh air, and a good view of the Admin as well as the fountain.</string>
+    <string name="main_audi_desc">Every institution has an entertainment venue, and the main auditorium or "Main Audi" manages to serve quite the same with a fully air conditioned hall, cushioned seats (if you manage to get one), and nice surround sound speakers for the gala lovers.</string>
+    <string name="mini_audi_desc">The baby version of "Main Audi". Smaller size, smaller events. Most suitable for quiz competitions, presentations and yada yada.</string>
+    <string name="bh1_desc">The oldest one. One could easily point that out by observing how less it shares with the other hostels. Its got a good looking plaque in front of it, that\'s for sure.</string>
+    <string name="bh2_desc">Situated nearby to the McCain and facing right at it, </string>
 </resources>

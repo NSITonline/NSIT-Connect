@@ -48,9 +48,8 @@ public class FinalFeed extends Fragment {
     ProgressBar pb,pb2;
     SwipeRefreshLayout swipeLayout;
     String nextn;
-    CustomList adapter;
+    MyFeedList adapter;
     int first;
-    static int itemsadded=-1;
    String nextcollegespace,nextcrosslinks,nextjunoon,nextbullet,nextrotaract,nextquiz,nextieee,nextcsi,nextashwa,nextdeb;
     List<String> list = new ArrayList<String>();
     List<String> list1 = new ArrayList<String>();
@@ -59,6 +58,7 @@ public class FinalFeed extends Fragment {
     List<String> list6 = new ArrayList<String>();
     List<String> list7 = new ArrayList<String>();
     List<String> list8 = new ArrayList<String>();
+    List<String> list9 = new ArrayList<String>();
     View footerView;
     SharedPreferences i;
     ListView lv;
@@ -81,6 +81,7 @@ public class FinalFeed extends Fragment {
         pb=(ProgressBar)rootView.findViewById(R.id.progressBar1);
         lv = (ListView) rootView.findViewById(R.id.list);
         first=1;
+        adapter = new MyFeedList(activity, list6, list, list2, list7, list1, list8,list9);
 
         SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
         Boolean set = s.getBoolean("set",false);
@@ -119,7 +120,8 @@ public class FinalFeed extends Fragment {
 
             Log.e("Yo", "Started");
             String URL;
-            URL = "https://graph.facebook.com/" + id + "/feed?limit=10&fields=picture,shares,message,object_id,link,comments.limit(0).summary(true),likes.limit(0).summary(true)&access_token=" + Val.common_access;
+            URL = "https://graph.facebook.com/" + id + "/feed?limit=10&fields=picture,shares,message,object_id," +
+                    "link,comments.limit(0).summary(true),to,created_time,likes.limit(0).summary(true)&access_token=" + Val.common_access;
             HttpClient Client = new DefaultHttpClient();
             HttpGet httpget = new HttpGet(URL);
             ResponseHandler<String> responseHandler = new BasicResponseHandler();
@@ -184,12 +186,32 @@ public class FinalFeed extends Fragment {
                         list8.add(arr.getJSONObject(i).getString("created_time"));
                         else
                             list8.add(null);
+
+
+                        if(arr.getJSONObject(i).has("to")){
+                            JSONObject o = new JSONObject(arr.getJSONObject(i).getString("to"));
+                            JSONArray a2 = o.getJSONArray("data");
+                            String x = a2.getJSONObject(0).getString("name");
+                            list9.add(x);
+                        }else
+                            list9.add(null);
+
+
                     } catch (Exception e) {
                          Log.e("Error","Errror at : " + i + " "+e.getMessage());
                     }
                 }
-                ob = ob.getJSONObject("paging");
-                nextn = ob.getString("next");
+                if(ob.has("paging")) {
+                    ob = ob.getJSONObject("paging");
+
+                    if (ob.has("next"))
+                        nextn = ob.getString("next");
+                    else
+                        nextn = null;
+
+                }
+                else
+                    nextn = null;
 
 
             } catch (Exception e) {
@@ -297,6 +319,13 @@ public class FinalFeed extends Fragment {
                             list1.add(arr.getJSONObject(i).getString("object_id"));
 
 
+                        if(arr.getJSONObject(i).has("to")){
+                            JSONObject o = new JSONObject(arr.getJSONObject(i).getString("to"));
+                            JSONArray a2 = o.getJSONArray("data");
+                            String x = a2.getJSONObject(0).getString("name");
+                            list9.add(x);
+                        }else
+                        list9.add(null);
 
                         if(arr.getJSONObject(i).has("picture")) {
                             list6.add(arr.getJSONObject(i).getString("picture"));
@@ -331,8 +360,17 @@ public class FinalFeed extends Fragment {
                     } catch (Exception e) {
                         Log.e("Error","Errror at : " + i + " "+e.getMessage());
                     }
-                    ob = ob.getJSONObject("paging");
-                    nextn = ob.getString("next");
+                    if(ob.has("paging")) {
+                        ob = ob.getJSONObject("paging");
+
+                        if (ob.has("next"))
+                            nextn = ob.getString("next");
+                        else
+                            nextn = null;
+
+                    }
+                    else
+                        nextn = null;
 
                 }
 
@@ -373,7 +411,6 @@ public class FinalFeed extends Fragment {
                         Deb = false;
                         break;
              }
-            adapter.notifyDataSetChanged();
             loadingMore=false;
             lv.removeFooterView(footerView);
 
@@ -386,16 +423,13 @@ public class FinalFeed extends Fragment {
     {
 
 
-        Log.e("status : "," "+ Csi + Collegespace+Crosslinks+Crosslinks+Bullet+Junoon+Ieee+Ashwa+Quiz+Deb+Rotaract);
+        Log.e("status : ", " " + Csi + Collegespace + Crosslinks + Crosslinks + Bullet + Junoon + Ieee + Ashwa + Quiz + Deb + Rotaract);
         if(!Csi && !Collegespace && !Crosslinks && !Bullet && !Junoon && !Ieee&& !Ashwa&& !Quiz&& !Deb &&!Rotaract) {
 
+            adapter.notifyDataSetChanged();
             pb.setVisibility(View.GONE);
-
             lv.removeFooterView(footerView);
 
-            adapter = new CustomList(activity, list6, list, list2, list7, list1, list8);
-            lv.addHeaderView(new View(activity));
-            lv.addFooterView(new View(activity));
             if (activity != null)
                 lv.setAdapter(adapter);
             first = 0;
@@ -404,11 +438,22 @@ public class FinalFeed extends Fragment {
 
     @Override
     public void onResume() {
-        list.clear();list1.clear();
-        list2.clear();list6.clear();
-        list7.clear();list8.clear();
-        load();
-        Log.e("here","On Resume");
+
+        SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
+        SharedPreferences.Editor e = s.edit();
+        if(s.getBoolean("item_changed",false)) {
+            list.clear();
+            list1.clear();
+            list2.clear();
+            list6.clear();
+            list7.clear();
+            list8.clear();
+            adapter.notifyDataSetChanged();
+            e.putBoolean("item_changed", false);
+            e.commit();
+            load();
+            Log.e("here", "On Resume");
+        }
         super.onResume();
 
     }
@@ -519,7 +564,6 @@ public class FinalFeed extends Fragment {
         });
     }
 
-
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         menu.clear();
@@ -528,11 +572,9 @@ public class FinalFeed extends Fragment {
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
         if(item.getItemId()==R.id.items){
             Intent i = new Intent(getActivity(),ChooseFeedItems.class);
             startActivity(i);
-
         }
         return super.onOptionsItemSelected(item);
     }

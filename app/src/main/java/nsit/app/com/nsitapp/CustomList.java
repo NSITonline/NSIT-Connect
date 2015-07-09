@@ -1,36 +1,36 @@
+package nsit.app.com.nsitapp;
 
-		package nsit.app.com.nsitapp;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.AsyncTask;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.TranslateAnimation;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.FrameLayout;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Button;
+import java.util.List;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
+import functions.ImageLoader;
 
-		import android.app.Activity;
-		import android.content.Context;
-		import android.content.Intent;
-		import android.net.ConnectivityManager;
-		import android.net.NetworkInfo;
-		import android.os.AsyncTask;
-		import android.util.Log;
-		import android.view.LayoutInflater;
-		import android.view.View;
-		import android.view.View.OnClickListener;
-		import android.view.ViewGroup;
-		import android.view.animation.AlphaAnimation;
-		import android.view.animation.Animation;
-		import android.view.animation.AnimationSet;
-		import android.view.animation.DecelerateInterpolator;
-		import android.view.animation.TranslateAnimation;
-		import android.widget.ArrayAdapter;
-		import android.widget.ImageView;
-		import android.widget.FrameLayout;
-		import android.widget.ProgressBar;
-		import android.widget.TextView;
-		import android.widget.Button;
-		import java.util.List;
-		import functions.ImageLoader;
-		import java.text.DateFormat;
-		import java.text.ParseException;
-		import java.text.SimpleDateFormat;
-		import java.util.Date;
-		import java.util.Locale;
-		import java.util.TimeZone;
 
 public class CustomList extends ArrayAdapter<String>{
 	private final Activity context;
@@ -171,5 +171,3 @@ public class CustomList extends ArrayAdapter<String>{
 		return activeNetworkInfo != null && activeNetworkInfo.isConnected();
 	}
 }
-
-

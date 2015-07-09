@@ -2,7 +2,7 @@
 <FrameLayout
    xmlns:android="http://schemas.android.com/apk/res/android"
    android:layout_width="match_parent"
-   android:layout_height="250dp"
+   android:layout_height="wrap_content"
     android:layout_marginTop="5dp"
     android:layout_marginRight="5dp"
      android:layout_marginBottom="5dp"
@@ -14,7 +14,7 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="@drawable/shadow_1">
 
         <LinearLayout
@@ -22,14 +22,14 @@
             android:gravity="center"
 
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
 
             android:descendantFocusability="afterDescendants"
             android:background="#ffffff">
 
             <FrameLayout
-                android:layout_weight="0.35"
+                android:layout_weight="0.4"
                 android:layout_width="0dp"
                 android:id="@+id/frame"
                 android:layout_height="match_parent"
@@ -91,7 +91,7 @@
                 android:id="@+id/des"
                 android:maxLines="8"
                 android:ellipsize="end"
-                android:text="NSIT Online Blog"
+                android:text="NSIT Online Blog NSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online Blog"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:lineSpacingExtra="2dp"
@@ -149,8 +149,6 @@
                             android:id="@+id/PlayContainer"
                             android:layout_gravity="right"
                             android:focusable="true">
-
-
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"

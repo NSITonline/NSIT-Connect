@@ -17,12 +17,34 @@
             android:id="@+id/progressBar1"
             > </ProgressBar>
 
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="fill_parent"
-        android:layout_height="300dp"/>
+        <FrameLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shadow_1">
 
-    <TextView
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/backgroundDark">
+
+                <ImageView
+                android:id="@+id/image"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_margin="5dp"
+                android:layout_gravity="center"/>
+            </LinearLayout>
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/ic_photo_library_white_24dp"
+                android:layout_gravity="bottom"
+                android:layout_margin="10dp"/>
+        </FrameLayout>
+
+        <TextView
         android:id="@+id/des"
         android:paddingTop="20dp"
         android:text="NSIT Online Blog"
@@ -66,8 +88,10 @@
         android:layout_marginTop="20dp"
         android:layout_gravity="center"
         android:textColor="#ffffff"
+        android:textSize="14sp"
         android:id="@+id/link"
-        android:text="  Show on Page  "/>
+        android:padding="10dp"
+        android:text="Show on Page"/>
 
 </LinearLayout>
 </ScrollView>

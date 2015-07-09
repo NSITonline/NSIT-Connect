@@ -4,11 +4,14 @@
     android:id="@+id/content_frame"
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
-    android:background="#ffffff"
+    android:background="@color/universalBackground"
     android:animateLayoutChanges="true"
     tools:context=".MainActivity"   >
-    <ProgressBar android:layout_height="wrap_content" android:layout_width="wrap_content" android:layout_gravity="center" android:id="@+id/progressBar1"
-        > </ProgressBar>
+    <ProgressBar android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:id="@+id/progressBar1"
+        />
     <android.support.v4.widget.SwipeRefreshLayout
 
         android:id="@+id/swipe_container"

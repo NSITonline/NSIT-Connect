@@ -13,9 +13,7 @@
             android:id="@+id/videos_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:divider="@android:color/transparent"
-            android:dividerHeight="20dp"
-            android:paddingBottom="40dp" />
+            android:divider="@android:color/transparent" />
 
         <LinearLayout
             android:layout_width="match_parent"

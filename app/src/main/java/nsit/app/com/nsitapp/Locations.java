@@ -80,7 +80,7 @@ public class Locations extends Fragment {
                         break;
                 }
                 v.setTag(groupPosition);
-                ShowOnMap(v, LocationsGroupsList.get(groupPosition).Locations.get(childPosition), IconId);
+                ShowOnMap(v,LocationsGroupsList.get(groupPosition).Locations.get(childPosition),IconId);
                 return false;
             }
         });
@@ -194,7 +194,6 @@ public class Locations extends Fragment {
         this.LocationsGroupsList.add(SportsGroup);
         this.LocationsGroupsList.add(MiscGroup);
     }
-
 
 
 }

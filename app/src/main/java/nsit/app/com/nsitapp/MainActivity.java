@@ -162,14 +162,9 @@ public class MainActivity extends AppCompatActivity {
 
                 SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 Boolean set = s.getBoolean("set",false);
-                if(set==false) {
-                Fragment f1 = new Feed();
-                ft.replace(R.id.content_frame, f1);
-                }
-                else{
+
                     Fragment f1 = new FinalFeed();
                     ft.replace(R.id.content_frame, f1);
-                }
                 getSupportActionBar().setTitle("My Feed");
                 break;
 

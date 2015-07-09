@@ -22,6 +22,7 @@ public class DBhelp extends SQLiteOpenHelper {
                     TableEntry.COLUMN_NAME_SUBJECT + TEXT_TYPE + COMMA_SEP +
                     TableEntry.COLUMN_NAME_STATUS + TEXT_TYPE + COMMA_SEP +
                     TableEntry.COLUMN_NAME_DATE + TEXT_TYPE + COMMA_SEP +
+                    TableEntry.COLUMN_NAME_ATTENDANCE + TEXT_TYPE + COMMA_SEP +
                     TableEntry.COLUMN_NAME_NUMBER + INT_TYPE +
             " )";
 

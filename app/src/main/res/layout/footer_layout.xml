@@ -14,5 +14,13 @@
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:layout_gravity="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="LOADING MORE POSTS"
+            android:textSize="10sp"
+            android:textColor="#232323"
+            android:layout_marginLeft="10dp"/>
 
 </LinearLayout>

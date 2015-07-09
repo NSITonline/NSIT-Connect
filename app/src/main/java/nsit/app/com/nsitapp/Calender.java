@@ -57,6 +57,7 @@ public class Calender extends Fragment {
     static  ArrayList<Subject_struct> p6 = new ArrayList<Subject_struct>();
     static  ArrayList<Subject_struct> p7 = new ArrayList<Subject_struct>();
     static  ArrayList<Subject_struct> p8 = new ArrayList<Subject_struct>();
+    static  ArrayList<Subject_struct> p9 = new ArrayList<Subject_struct>();
     CustomList3 adapter2;
     TwoWayView lvTest;
     @Override
@@ -91,12 +92,12 @@ public class Calender extends Fragment {
         Boolean a = s.getBoolean("timetablechanged",true);
         timetable = s.getString("timetable",null);
 
-        adapter2 = new CustomList3(activity, days, p1,p2,p3,p4,p5,p6,p7,p8);
+        adapter2 = new CustomList3(activity, days, p1,p2,p3,p4,p5,p6,p7,p8,p9);
         if(a || timetable==null) {
             if (isNetworkAvailable())
                 new DownloadWebPageTask2().execute();
             else {
-                adapter2 = new CustomList3(activity, days, p1, p2, p3, p4, p5, p6, p7, p8);
+                adapter2 = new CustomList3(activity, days, p1, p2, p3, p4, p5, p6, p7, p8,p9);
                 if (activity != null)
                     lvTest.setAdapter(adapter2);
                 lvTest.setItemMargin(10);
@@ -104,7 +105,7 @@ public class Calender extends Fragment {
             }
         }else{
             load();
-            adapter2 = new CustomList3(activity, days, p1,p2,p3,p4,p5,p6,p7,p8);
+            adapter2 = new CustomList3(activity, days, p1,p2,p3,p4,p5,p6,p7,p8,p9);
             if (activity != null)
                 lvTest.setAdapter(adapter2);
             lvTest.setItemMargin(10);
@@ -167,7 +168,6 @@ public class Calender extends Fragment {
                    } else {
                        g = null;
                        h = null;
-
                        c = ar2.getJSONObject(i).getString("professorFH");
                        d = ar2.getJSONObject(i).getString("roomFH");
                        e = ar2.getJSONObject(i).getString("professorSH");
@@ -201,7 +201,9 @@ public class Calender extends Fragment {
                    case 7:
                        p8.add(x);
                        break;
-
+                   case 8:
+                       p9.add(x);
+                       break;
 
                }
            }
@@ -224,8 +226,8 @@ public class Calender extends Fragment {
 
         if(item.getItemId()==R.id.subjects){
 
-            Fragment mFragment = new Subjects();
-             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, mFragment).addToBackStack(                    "tag").commit();
+          Intent i = new Intent(activity,SubjectsShow.class);
+            startActivity(i);
 
         }
         if(item.getItemId() == R.id.choose){
@@ -286,7 +288,7 @@ public class Calender extends Fragment {
             e.putString("timetable", text);
             e.commit();
 
-            adapter2 = new CustomList3(activity, days, p1,p2,p3,p4,p5,p6,p7,p8);
+            adapter2 = new CustomList3(activity, days, p1,p2,p3,p4,p5,p6,p7,p8,p9);
             if (activity != null)
                  lvTest.setAdapter(adapter2);
                  lvTest.setItemMargin(10);
@@ -313,12 +315,12 @@ public class Calender extends Fragment {
         Boolean a = s.getBoolean("timetablechanged",true);
         timetable = s.getString("timetable",null);
 
-        adapter2 = new CustomList3(activity, days, p1,p2,p3,p4,p5,p6,p7,p8);
+        adapter2 = new CustomList3(activity, days, p1,p2,p3,p4,p5,p6,p7,p8,p9);
         if(a || timetable==null) {
             if (isNetworkAvailable())
                 new DownloadWebPageTask2().execute();
             else {
-                adapter2 = new CustomList3(activity, days, p1, p2, p3, p4, p5, p6, p7, p8);
+                adapter2 = new CustomList3(activity, days, p1, p2, p3, p4, p5, p6, p7, p8,p9);
                 if (activity != null)
                     lvTest.setAdapter(adapter2);
                 lvTest.setItemMargin(10);
@@ -326,7 +328,7 @@ public class Calender extends Fragment {
             }
         }else{
             load();
-            adapter2 = new CustomList3(activity, days, p1,p2,p3,p4,p5,p6,p7,p8);
+            adapter2 = new CustomList3(activity, days, p1,p2,p3,p4,p5,p6,p7,p8,p9);
             if (activity != null)
                 lvTest.setAdapter(adapter2);
             lvTest.setItemMargin(10);

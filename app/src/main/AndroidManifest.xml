@@ -18,7 +18,6 @@
         android:theme="@style/AppTheme" >
         <uses-permission android:name="android.permission.INTERNET" />
 
-
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|screenSize"
@@ -46,16 +45,28 @@
         </activity>
 
         <uses-permission android:name="android.permission.INTERNET" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBgktirlOODUO9zWD-808D7zycmP7smp-Y"/>
+            android:value="AIzaSyBgktirlOODUO9zWD-808D7zycmP7smp-Y" />
 
-
-        <!--"AIzaSyCmmTcw4LR_qzSaGcl6orGV4S6nfHDhlss"-->
+        <!-- "AIzaSyCmmTcw4LR_qzSaGcl6orGV4S6nfHDhlss" -->
         <activity
             android:name=".Choose"
             android:configChanges="orientation|screenSize"
             android:label="Select" >
+        </activity>
+        <activity
+            android:name=".ChooseFeedItems"
+            android:label="@string/title_activity_choose_feed_items" >
+        </activity>
+        <activity
+            android:name=".SubjectsShow"
+            android:label="@string/title_activity_subjects_show" >
+        </activity>
+        <activity
+            android:name=".SubjectRemove"
+            android:label="@string/title_activity_subject_remove" >
         </activity>
     </application>
 

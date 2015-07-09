@@ -3,6 +3,7 @@ package nsit.app.com.nsitapp;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
@@ -55,17 +56,13 @@ public class CustomList_subjects extends ArrayAdapter<String>{
 		LinearLayout add,rem;
 		add = (LinearLayout) rowView.findViewById(R.id.add);
 		rem = (LinearLayout) rowView.findViewById(R.id.rem);
-
-
 		rem.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
 
-				Fragment mFragment = new Subjects_Remove();
-				Bundle bundle = new Bundle();
-				bundle.putString("code", code.get(position));
-				mFragment.setArguments(bundle);
-				((FragmentActivity) getContext()).getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, mFragment).commit();
+			Intent i = new Intent(getContext(),SubjectRemove.class);
+				i.putExtra("code", code.get(position));
+				getContext().startActivity(i);
 
 			}
 		});
@@ -107,8 +104,7 @@ public class CustomList_subjects extends ArrayAdapter<String>{
 								values);
 
 						refresh(position);
-
-
+						notifyDataSetChanged();
 					}
 				});
 				builder.setNegativeButton("Missed", new DialogInterface.OnClickListener() {
@@ -136,12 +132,24 @@ public class CustomList_subjects extends ArrayAdapter<String>{
 
 						Log.e("Calling", " " + position);
 						refresh(position);
+						notifyDataSetChanged();
+
 					}
 				});
 				builder.show();
 			}
 		});
 
+		AnimationSet set = new AnimationSet(true);
+		TranslateAnimation slide = new TranslateAnimation(-100, 0, -100, 0);
+		slide.setInterpolator(new DecelerateInterpolator(5.0f));
+		slide.setDuration(300);
+		Animation fade = new AlphaAnimation(0, 1.0f);
+		fade.setInterpolator(new DecelerateInterpolator(5.0f));
+		fade.setDuration(300);
+		set.addAnimation(slide);
+		set.addAnimation(fade);
+		rowView.startAnimation(set);
 
 		return rowView;
 	}
@@ -165,9 +173,7 @@ public class CustomList_subjects extends ArrayAdapter<String>{
 		String sortOrder =
 				TableEntry.COLUMN_NAME_SUBJECT + " ASC";
 		String[] whereArgs = new String[] {
-				code.get(position)
-
-		};
+				code.get(position)};
 		Cursor c = db.query(
 				TableEntry.TABLE_NAME,  // The table to query
 				projection,                               // The columns to return
@@ -191,7 +197,6 @@ public class CustomList_subjects extends ArrayAdapter<String>{
 		}
 
 
-		notifyDataSetChanged();
 
 		if(total==0)
 			txtTitle2.setText("No classes yet");
@@ -199,11 +204,11 @@ public class CustomList_subjects extends ArrayAdapter<String>{
 			float x = attended/total*100;
 			if(x<75) {
 				txtTitle3.setTextColor(Color.parseColor("#ff3300"));
-				txtTitle3.setText(" Your attendance is short, you need to attend the next 5 classes to be safe.");
+				txtTitle3.setText(" Your attendance is short.");
 			}
 			else {
 				txtTitle3.setTextColor(Color.parseColor("#33cc00"));
-				txtTitle3.setText(" You can afford to miss 7 classes and still be safe.");
+				txtTitle3.setText(" You are safe.");
 			}
 				txtTitle2.setText(Float.toString(x) + " % attendance");
 		}

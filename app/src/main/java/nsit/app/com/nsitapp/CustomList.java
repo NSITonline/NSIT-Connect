@@ -1,44 +1,42 @@
-package nsit.app.com.nsitapp;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.os.AsyncTask;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.TranslateAnimation;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.FrameLayout;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import android.widget.Button;
-import java.util.List;
+		package nsit.app.com.nsitapp;
 
-import functions.ImageLoader2;
-
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-import java.util.TimeZone;
+		import android.app.Activity;
+		import android.content.Context;
+		import android.content.Intent;
+		import android.net.ConnectivityManager;
+		import android.net.NetworkInfo;
+		import android.os.AsyncTask;
+		import android.util.Log;
+		import android.view.LayoutInflater;
+		import android.view.View;
+		import android.view.View.OnClickListener;
+		import android.view.ViewGroup;
+		import android.view.animation.AlphaAnimation;
+		import android.view.animation.Animation;
+		import android.view.animation.AnimationSet;
+		import android.view.animation.DecelerateInterpolator;
+		import android.view.animation.TranslateAnimation;
+		import android.widget.ArrayAdapter;
+		import android.widget.ImageView;
+		import android.widget.FrameLayout;
+		import android.widget.ProgressBar;
+		import android.widget.TextView;
+		import android.widget.Button;
+		import java.util.List;
+		import functions.ImageLoader;
+		import java.text.DateFormat;
+		import java.text.ParseException;
+		import java.text.SimpleDateFormat;
+		import java.util.Date;
+		import java.util.Locale;
+		import java.util.TimeZone;
 
 public class CustomList extends ArrayAdapter<String>{
 	private final Activity context;
-	private final List<String> img,des,lik,link,obid,date,id;
-	public ImageLoader2 imageLoader;
-	public CustomList(Activity context,List<String>image, List<String>desc, List<String>like,
-					  List<String>links,List<String>oid,List<String>d,List<String>i){
+	private final List<String> img,des,lik,link,obid,date;
+	public ImageLoader imageLoader;
+	public CustomList(Activity context,List<String>image, List<String>desc, List<String>like,List<String>links,List<String>oid,List<String>d){
 		super(context, R.layout.message_layout, desc);
 		this.context = context;
 		img=image;
@@ -47,8 +45,7 @@ public class CustomList extends ArrayAdapter<String>{
 		obid=oid;
 		link = links;
 		date=d;
-		id=i;
-		imageLoader=new ImageLoader2(context.getApplicationContext());
+		imageLoader=new ImageLoader(context.getApplicationContext());
 	}
 
 	@Override
@@ -61,7 +58,7 @@ public class CustomList extends ArrayAdapter<String>{
 
 		TextView txtTitle = (TextView) rowView.findViewById(R.id.des);
 		if(des.get(position)==null)
-			txtTitle.setText("No desrciption");
+			txtTitle.setText("No description");
 		else
 			txtTitle.setText(des.get(position));
 
@@ -91,7 +88,7 @@ public class CustomList extends ArrayAdapter<String>{
 			d.setText(formattedDate);
 		}
 		else
-		d.setVisibility(View.INVISIBLE);
+			d.setVisibility(View.INVISIBLE);
 
 
 		ImageView imageView;
@@ -118,7 +115,7 @@ public class CustomList extends ArrayAdapter<String>{
 
 		if(img.get(position)!=null) {
 			Button b1 = (Button) rowView.findViewById(R.id.show);
-			imageLoader.DisplayImage(img.get(position), imageView, imageView2);
+			imageLoader.DisplayImage(img.get(position), imageView);
 			b1.setOnClickListener(new OnClickListener() {
 
 				@Override
@@ -136,20 +133,18 @@ public class CustomList extends ArrayAdapter<String>{
 			FrameLayout f = (FrameLayout) rowView.findViewById(R.id.frame);
 			f.setVisibility(View.GONE);
 		}
-		/*
-			AnimationSet set = new AnimationSet(true);
-			TranslateAnimation slide = new TranslateAnimation(-200, 0, -200, 0);
-			slide.setInterpolator(new DecelerateInterpolator(5.0f));
-			slide.setDuration(300);
-			Animation fade = new AlphaAnimation(0, 1.0f);
-			fade.setInterpolator(new DecelerateInterpolator(5.0f));
-			fade.setDuration(300);
-			set.addAnimation(slide);
-			set.addAnimation(fade);
-			rowView.startAnimation(set);
 
-			Log.e("here","No tin list "+position);
-		*/
+		AnimationSet set = new AnimationSet(true);
+		TranslateAnimation slide = new TranslateAnimation(-100, 0, -100, 0);
+		slide.setInterpolator(new DecelerateInterpolator(5.0f));
+		slide.setDuration(300);
+		Animation fade = new AlphaAnimation(0, 1.0f);
+		fade.setInterpolator(new DecelerateInterpolator(5.0f));
+		fade.setDuration(300);
+		set.addAnimation(slide);
+		set.addAnimation(fade);
+		rowView.startAnimation(set);
+
 		return rowView;
 	}
 
@@ -176,7 +171,5 @@ public class CustomList extends ArrayAdapter<String>{
 		return activeNetworkInfo != null && activeNetworkInfo.isConnected();
 	}
 }
-
-
 
 

@@ -38,7 +38,6 @@ import java.util.List;
 
 public class Home extends Fragment {
 
-    int currentFirstVisibleItem, currentVisibleItemCount, currentTotalItemCount;
     boolean loadingMore=false;
     List<String> list = new ArrayList<String>();
     List<String> list1 = new ArrayList<String>();
@@ -47,8 +46,6 @@ public class Home extends Fragment {
     List<String> list6 = new ArrayList<String>();
     List<String> list7 = new ArrayList<String>();
     List<String> list8 = new ArrayList<String>();
-    List<String> list9 = new ArrayList<String>();
-    static List<String> loaded = new ArrayList<String>();
     ListView lv;
     int first=1;
     SwipeRefreshLayout swipeLayout;
@@ -56,6 +53,7 @@ public class Home extends Fragment {
     String next=" ",token;
     CustomList adapter;
     View footerView;
+    int listCount;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         setHasOptionsMenu(true);
@@ -77,8 +75,8 @@ public class Home extends Fragment {
         lv = (ListView) rootView.findViewById(R.id.list);
         swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
         pb=(ProgressBar)rootView.findViewById(R.id.progressBar1);
-        adapter = new CustomList(activity, list6,list, list2, list7, list1,list8,list9);
-       footerView = ((LayoutInflater)activity.getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.footer_layout, null, false);
+        adapter = new CustomList(activity, list6,list, list2, list7, list1,list8);
+        footerView = ((LayoutInflater)activity.getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.footer_layout, null, false);
         lv.addFooterView(footerView);
         lv.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
@@ -92,6 +90,7 @@ public class Home extends Fragment {
                     loadingMore=true;
                     lv.addFooterView(footerView);
                     new DownloadWebPageTask3(Val.id_nsitonline).execute();
+                    listCount = lastInScreen;
                 }
 
             }
@@ -111,9 +110,9 @@ public class Home extends Fragment {
 
 
         if(isNetworkAvailable())
-        new DownloadWebPageTask2(Val.id_nsitonline).execute();
+            new DownloadWebPageTask2(Val.id_nsitonline).execute();
         else
-        Toast.makeText(activity,"Cannot connect to Internet",Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity,"Cannot connect to Internet",Toast.LENGTH_SHORT).show();
 
 
         return rootView;
@@ -143,7 +142,7 @@ public class Home extends Fragment {
 
             Log.e("Yo", "Started");
             String URL;
-            URL = "https://graph.facebook.com/"+id+"/feed?limit=10&fields=picture,id,shares,message,object_id,link,created_time,comments.limit(0).summary(true),likes.limit(0).summary(true)&access_token=" + Val.common_access;
+            URL = "https://graph.facebook.com/"+id+"/feed?limit=10&fields=picture,shares,message,object_id,link,created_time,comments.limit(0).summary(true),likes.limit(0).summary(true)&access_token=" + Val.common_access;
             Log.e("this2",URL);
             HttpClient Client = new DefaultHttpClient();
             HttpGet httpget = new HttpGet(URL);
@@ -181,10 +180,6 @@ public class Home extends Fragment {
                         else
                             list1.add(arr.getJSONObject(i).getString("object_id"));
 
-                        if(!(arr.getJSONObject(i).has("id")))
-                            list9.add(null);
-                        else
-                            list9.add(arr.getJSONObject(i).getString("id"));
 
 
                         if(arr.getJSONObject(i).has("picture")) {
@@ -250,9 +245,10 @@ public class Home extends Fragment {
 
             URL = next;
 
-            Log.e("this3 ",URL);
+            Log.e("this3 ",URL+" ");
 
 
+            if(URL!=null){
             HttpClient Client = new DefaultHttpClient();
             HttpGet httpget = new HttpGet(URL);
             ResponseHandler<String> responseHandler = new BasicResponseHandler();
@@ -260,7 +256,7 @@ public class Home extends Fragment {
                 text = Client.execute(httpget, responseHandler);
             } catch (IOException e) {
                 e.printStackTrace();
-            }
+            }}
 
             return null;
         }
@@ -268,9 +264,9 @@ public class Home extends Fragment {
         protected void onPostExecute(String result) {
             pb.setVisibility(View.GONE);
             int j=0;
-            loaded=list9;
             JSONObject ob;
             JSONArray arr;
+            if(text!=null)
             try {
                 ob = new JSONObject(text);
                 arr = ob.getJSONArray("data");
@@ -278,25 +274,15 @@ public class Home extends Fragment {
 
                 for(int i = 0; i < arr.length(); i++){
                     try {
-                        if(arr.getJSONObject(i).has("message")) {
+                        if(arr.getJSONObject(i).has("message"))
                             list.add(arr.getJSONObject(i).getString("message"));
-                        }
-                        else {
-                            list.add(null);
-                        }
-
-                        if(!(arr.getJSONObject(i).has("id")))
-                            list9.add(null);
                         else
-                            list9.add(arr.getJSONObject(i).getString("id"));
-
+                            list.add(null);
 
                         if(!(arr.getJSONObject(i).has("object_id")))
                             list1.add(null);
                         else
                             list1.add(arr.getJSONObject(i).getString("object_id"));
-
-
 
                         if(arr.getJSONObject(i).has("picture")) {
                             list6.add(arr.getJSONObject(i).getString("picture"));
@@ -324,13 +310,18 @@ public class Home extends Fragment {
                             list8.add(arr.getJSONObject(i).getString("created_time"));
                         else
                             list8.add(null);
+
+
                     } catch (Exception e) {
-                         Log.e("Error","Errror at : " + i + " "+e.getMessage());
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                        Log.e("Error","Errror at : " + i + " "+e.getMessage());
                     }
                 }
 
                 ob = ob.getJSONObject("paging");
                 next = ob.getString("next");
+
 
             } catch (Exception e) {
 
@@ -341,14 +332,14 @@ public class Home extends Fragment {
             loadingMore=false;
             lv.removeFooterView(footerView);
             adapter.notifyDataSetChanged();
-
-           lv.post(new Runnable() {
-                @Override
-                public void run() {
-                   Home.loaded.clear();
-                }
-            });
-
+            try{
+                Log.e("ListCount: ",String.valueOf(listCount));
+                lv.smoothScrollToPosition(listCount+1);
+            }
+            catch (Exception e){
+                Log.e("Scroll To: ",e.toString());
+                e.printStackTrace();
+            }
         }
     }
     @Override

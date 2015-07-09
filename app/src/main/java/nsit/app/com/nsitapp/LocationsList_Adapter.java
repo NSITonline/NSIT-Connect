@@ -1,7 +1,6 @@
 package nsit.app.com.nsitapp;
 
 import android.content.Context;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,9 +10,12 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.TranslateAnimation;
+import android.widget.BaseAdapter;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -87,8 +89,8 @@ public class LocationsList_Adapter extends BaseExpandableListAdapter {
         Locations.LocationGroup LocGroup = getGroup(groupPosition);
         String headerTitle = LocGroup.GroupHeader;
         String groupType = LocGroup.GroupType;
-                listView = (ExpandableListView)parent;
-         if (convertView == null) {
+        listView = (ExpandableListView)parent;
+        if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this.context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = infalInflater.inflate(R.layout.location_listitem, null);
@@ -152,7 +154,6 @@ public class LocationsList_Adapter extends BaseExpandableListAdapter {
         }
 
         return convertView;
-
     }
 
     @Override
@@ -165,3 +166,4 @@ public class LocationsList_Adapter extends BaseExpandableListAdapter {
         lastExpandedGroupPosition = groupPosition;
     }
 }
+

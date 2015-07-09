@@ -83,20 +83,17 @@ public class CustomList_subjects_remove extends ArrayAdapter<String>{
 			}
 		});
 
-
-			/*AnimationSet set = new AnimationSet(true);
-			TranslateAnimation slide = new TranslateAnimation(-200, 0, -200, 0);
-			slide.setInterpolator(new DecelerateInterpolator(5.0f));
-			slide.setDuration(300);
-			Animation fade = new AlphaAnimation(0, 1.0f);
-			fade.setInterpolator(new DecelerateInterpolator(5.0f));
-			fade.setDuration(300);
-			set.addAnimation(slide);
-			set.addAnimation(fade);
-			rowView.startAnimation(set);
-			Subjects_Remove.itemsadded++;
-
-*/		return rowView;
+		AnimationSet set = new AnimationSet(true);
+		TranslateAnimation slide = new TranslateAnimation(-100, 0, -100, 0);
+		slide.setInterpolator(new DecelerateInterpolator(5.0f));
+		slide.setDuration(300);
+		Animation fade = new AlphaAnimation(0, 1.0f);
+		fade.setInterpolator(new DecelerateInterpolator(5.0f));
+		fade.setDuration(300);
+		set.addAnimation(slide);
+		set.addAnimation(fade);
+		rowView.startAnimation(set);
+		return rowView;
 	}
 
 

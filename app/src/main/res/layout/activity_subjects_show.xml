@@ -1,0 +1,17 @@
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/content_frame"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:animateLayoutChanges="true"   >
+    <ListView
+        android:background="#ffffff"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:divider="@android:color/transparent"
+        android:fastScrollAlwaysVisible="false"
+        android:focusable="false"
+        android:fastScrollEnabled="false"
+        android:focusableInTouchMode="false"
+        android:id="@+id/list" />
+</FrameLayout>

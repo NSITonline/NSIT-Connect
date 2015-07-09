@@ -82,27 +82,15 @@ public class FinalFeed extends Fragment {
         lv = (ListView) rootView.findViewById(R.id.list);
         first=1;
 
-
-
-         i = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
-        Crosslinks = i.getBoolean("crosslinks", false);
-        Collegespace = i.getBoolean("collegespace", false);
-        Bullet = i.getBoolean("bullet", false);
-        Junoon = i.getBoolean("junoon", false);
-        Rotaract = i.getBoolean("rotaract", false);
-        Csi = i.getBoolean("csi", false);
-        Ieee = i.getBoolean("ieee", false);
-        Deb = i.getBoolean("debsoc", false);
-        Quiz = i.getBoolean("quiz", false);
-        Ashwa = i.getBoolean("ashwa", false);
-
-
-
-
-        footerView = ((LayoutInflater)activity.getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.footer_layout, null, false);
-        lv.addFooterView(footerView);
+        SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
+        Boolean set = s.getBoolean("set",false);
+        if(set==false) {
+            Intent i = new Intent(getActivity(),ChooseFeedItems.class);
+            startActivity(i);
+        }
 
         swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
+        footerView = ((LayoutInflater)activity.getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.footer_layout, null, false);
 
         swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -114,97 +102,7 @@ public class FinalFeed extends Fragment {
                 android.R.color.holo_green_light,
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
-
-        if(!Csi && !Collegespace && !Crosslinks && !Bullet && !Junoon && !Ieee&& !Ashwa&& !Quiz&& !Deb &&!Rotaract) {
-            Toast.makeText(activity,"No item selected",Toast.LENGTH_SHORT).show();
-        }else {
-
-            if (isNetworkAvailable()) {
-
-
-                if (Crosslinks)
-                    new DownloadWebPageTask2(Val.id_crosslinks).execute();
-                if (Collegespace)
-                    new DownloadWebPageTask2(Val.id_collegespace).execute();
-                if (Bullet)
-                    new DownloadWebPageTask2(Val.id_bullet).execute();
-                if (Junoon)
-                    new DownloadWebPageTask2(Val.id_junoon).execute();
-                if (Rotaract)
-                    new DownloadWebPageTask2(Val.id_rotaract).execute();
-                if (Csi)
-                    new DownloadWebPageTask2(Val.id_csi).execute();
-                if (Ieee)
-                    new DownloadWebPageTask2(Val.id_ieee).execute();
-                if (Ashwa)
-                    new DownloadWebPageTask2(Val.id_ashwa).execute();
-                if (Quiz)
-                    new DownloadWebPageTask2(Val.id_quiz).execute();
-                if (Deb)
-                    new DownloadWebPageTask2(Val.id_debsoc).execute();
-
-            } else
-                Toast.makeText(activity, "Cannot connect to Internet", Toast.LENGTH_SHORT).show();
-
-        }
-
-        lv.setOnScrollListener(new AbsListView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(AbsListView absListView, int i) {
-            }
-            @Override
-            public void onScroll(AbsListView absListView, int firstVisibleItem,
-                                 int visibleItemCount, int totalItemCount) {
-                int lastInScreen = firstVisibleItem + visibleItemCount;
-                if ((lastInScreen == totalItemCount) && !(loadingMore) && first!=1) {
-                    loadingMore=true;
-                    lv.addFooterView(footerView);
-                    if(isNetworkAvailable()){
-                        Crosslinks = i.getBoolean("crosslinks", false);
-                        Collegespace = i.getBoolean("collegespace", false);
-                        Bullet = i.getBoolean("bullet", false);
-                        Junoon = i.getBoolean("junoon", false);
-                        Rotaract = i.getBoolean("rotaract", false);
-                        Csi = i.getBoolean("csi", false);
-                        Ieee = i.getBoolean("ieee", false);
-                        Deb = i.getBoolean("debsoc", false);
-                        Quiz = i.getBoolean("quiz", false);
-                        Ashwa = i.getBoolean("ashwa", false);
-                        if (Crosslinks)
-                            new DownloadWebPageTask3(Val.id_crosslinks,nextcrosslinks).execute();
-                        if (Collegespace)
-                            new DownloadWebPageTask3(Val.id_collegespace,nextcollegespace).execute();
-                        if (Bullet)
-                            new DownloadWebPageTask3(Val.id_bullet,nextbullet).execute();
-                        if (Junoon)
-                            new DownloadWebPageTask3(Val.id_junoon,nextjunoon).execute();
-                        if (Rotaract)
-                            new DownloadWebPageTask3(Val.id_rotaract,nextrotaract).execute();
-                        if (Csi)
-                            new DownloadWebPageTask3(Val.id_csi,nextcsi).execute();
-                        if (Ieee)
-                            new DownloadWebPageTask3(Val.id_ieee,nextieee).execute();
-                        if (Ashwa)
-                            new DownloadWebPageTask3(Val.id_ashwa,nextashwa).execute();
-                        if (Quiz)
-                            new DownloadWebPageTask3(Val.id_quiz,nextquiz).execute();
-                        if (Deb)
-                            new DownloadWebPageTask3(Val.id_debsoc,nextdeb).execute();
-
-                    }
-                    else
-                        Toast.makeText(activity, "Cannot connect to Internet", Toast.LENGTH_SHORT).show();
-
-
-
-                }
-
-            }
-        });
-
-
-
-
+        load();
         return rootView;
     }
 
@@ -353,6 +251,7 @@ public class FinalFeed extends Fragment {
             Log.e("Yo", "Started");
             String URL;
 
+            if(next!=null){
             String[] x = next.split("&__paging_token=");
             token=x[1];
 
@@ -366,6 +265,7 @@ public class FinalFeed extends Fragment {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            }
             return null;
         }
 
@@ -377,6 +277,7 @@ public class FinalFeed extends Fragment {
             int j=0;
             JSONObject ob;
             JSONArray arr;
+            if(text!=null)
             try {
                 ob = new JSONObject(text);
                 arr = ob.getJSONArray("data");
@@ -492,16 +393,131 @@ public class FinalFeed extends Fragment {
 
             lv.removeFooterView(footerView);
 
-            adapter = new CustomList(activity, list6, list, list2, list7, list1, list8,list8);
+            adapter = new CustomList(activity, list6, list, list2, list7, list1, list8);
             lv.addHeaderView(new View(activity));
             lv.addFooterView(new View(activity));
             if (activity != null)
                 lv.setAdapter(adapter);
             first = 0;
-
         }
     }
 
+    @Override
+    public void onResume() {
+        list.clear();list1.clear();
+        list2.clear();list6.clear();
+        list7.clear();list8.clear();
+        load();
+        Log.e("here","On Resume");
+        super.onResume();
+
+    }
+
+    public void load(){
+        i = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
+        Crosslinks = i.getBoolean("crosslinks", false);
+        Collegespace = i.getBoolean("collegespace", false);
+        Bullet = i.getBoolean("bullet", false);
+        Junoon = i.getBoolean("junoon", false);
+        Rotaract = i.getBoolean("rotaract", false);
+        Csi = i.getBoolean("csi", false);
+        Ieee = i.getBoolean("ieee", false);
+        Deb = i.getBoolean("debsoc", false);
+        Quiz = i.getBoolean("quiz", false);
+        Ashwa = i.getBoolean("ashwa", false);
+
+
+
+
+        lv.addFooterView(footerView);
+
+        if(!Csi && !Collegespace && !Crosslinks && !Bullet && !Junoon && !Ieee&& !Ashwa&& !Quiz&& !Deb &&!Rotaract) {
+            Toast.makeText(activity,"No item selected",Toast.LENGTH_SHORT).show();
+        }else {
+
+            if (isNetworkAvailable()) {
+
+
+                if (Crosslinks)
+                    new DownloadWebPageTask2(Val.id_crosslinks).execute();
+                if (Collegespace)
+                    new DownloadWebPageTask2(Val.id_collegespace).execute();
+                if (Bullet)
+                    new DownloadWebPageTask2(Val.id_bullet).execute();
+                if (Junoon)
+                    new DownloadWebPageTask2(Val.id_junoon).execute();
+                if (Rotaract)
+                    new DownloadWebPageTask2(Val.id_rotaract).execute();
+                if (Csi)
+                    new DownloadWebPageTask2(Val.id_csi).execute();
+                if (Ieee)
+                    new DownloadWebPageTask2(Val.id_ieee).execute();
+                if (Ashwa)
+                    new DownloadWebPageTask2(Val.id_ashwa).execute();
+                if (Quiz)
+                    new DownloadWebPageTask2(Val.id_quiz).execute();
+                if (Deb)
+                    new DownloadWebPageTask2(Val.id_debsoc).execute();
+
+            } else
+                Toast.makeText(activity, "Cannot connect to Internet", Toast.LENGTH_SHORT).show();
+
+        }
+
+        lv.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView absListView, int i) {
+            }
+            @Override
+            public void onScroll(AbsListView absListView, int firstVisibleItem,
+                                 int visibleItemCount, int totalItemCount) {
+                int lastInScreen = firstVisibleItem + visibleItemCount;
+                if ((lastInScreen == totalItemCount) && !(loadingMore) && first!=1) {
+                    loadingMore=true;
+                    lv.addFooterView(footerView);
+                    if(isNetworkAvailable()){
+                        Crosslinks = i.getBoolean("crosslinks", false);
+                        Collegespace = i.getBoolean("collegespace", false);
+                        Bullet = i.getBoolean("bullet", false);
+                        Junoon = i.getBoolean("junoon", false);
+                        Rotaract = i.getBoolean("rotaract", false);
+                        Csi = i.getBoolean("csi", false);
+                        Ieee = i.getBoolean("ieee", false);
+                        Deb = i.getBoolean("debsoc", false);
+                        Quiz = i.getBoolean("quiz", false);
+                        Ashwa = i.getBoolean("ashwa", false);
+                        if (Crosslinks)
+                            new DownloadWebPageTask3(Val.id_crosslinks,nextcrosslinks).execute();
+                        if (Collegespace)
+                            new DownloadWebPageTask3(Val.id_collegespace,nextcollegespace).execute();
+                        if (Bullet)
+                            new DownloadWebPageTask3(Val.id_bullet,nextbullet).execute();
+                        if (Junoon)
+                            new DownloadWebPageTask3(Val.id_junoon,nextjunoon).execute();
+                        if (Rotaract)
+                            new DownloadWebPageTask3(Val.id_rotaract,nextrotaract).execute();
+                        if (Csi)
+                            new DownloadWebPageTask3(Val.id_csi,nextcsi).execute();
+                        if (Ieee)
+                            new DownloadWebPageTask3(Val.id_ieee,nextieee).execute();
+                        if (Ashwa)
+                            new DownloadWebPageTask3(Val.id_ashwa,nextashwa).execute();
+                        if (Quiz)
+                            new DownloadWebPageTask3(Val.id_quiz,nextquiz).execute();
+                        if (Deb)
+                            new DownloadWebPageTask3(Val.id_debsoc,nextdeb).execute();
+
+                    }
+                    else
+                        Toast.makeText(activity, "Cannot connect to Internet", Toast.LENGTH_SHORT).show();
+
+
+
+                }
+
+            }
+        });
+    }
 
 
     @Override
@@ -514,11 +530,10 @@ public class FinalFeed extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         if(item.getItemId()==R.id.items){
+            Intent i = new Intent(getActivity(),ChooseFeedItems.class);
+            startActivity(i);
 
-            Fragment mFragment = new Feed();
-            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, mFragment).commit();
         }
-
         return super.onOptionsItemSelected(item);
     }
 

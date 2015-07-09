@@ -31,7 +31,7 @@ public class CustomListViewAdapter extends ArrayAdapter<RowItem> {
 
     /*private view holder class*/
     private class ViewHolder {
-//        ImageView imageView;
+        //        ImageView imageView;
         TextView txtTitle;
         TextView txtDesc;
     }

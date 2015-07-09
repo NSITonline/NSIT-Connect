@@ -11,6 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.TranslateAnimation;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.FrameLayout;
@@ -30,9 +35,10 @@ import java.util.TimeZone;
 
 public class CustomList extends ArrayAdapter<String>{
 	private final Activity context;
-	private final List<String> img,des,lik,link,obid,date;
+	private final List<String> img,des,lik,link,obid,date,id;
 	public ImageLoader2 imageLoader;
-	public CustomList(Activity context,List<String>image, List<String>desc, List<String>like,List<String>links,List<String>oid,List<String>d){
+	public CustomList(Activity context,List<String>image, List<String>desc, List<String>like,
+					  List<String>links,List<String>oid,List<String>d,List<String>i){
 		super(context, R.layout.message_layout, desc);
 		this.context = context;
 		img=image;
@@ -41,6 +47,7 @@ public class CustomList extends ArrayAdapter<String>{
 		obid=oid;
 		link = links;
 		date=d;
+		id=i;
 		imageLoader=new ImageLoader2(context.getApplicationContext());
 	}
 
@@ -129,8 +136,8 @@ public class CustomList extends ArrayAdapter<String>{
 			FrameLayout f = (FrameLayout) rowView.findViewById(R.id.frame);
 			f.setVisibility(View.GONE);
 		}
-
-			/*AnimationSet set = new AnimationSet(true);
+		/*
+			AnimationSet set = new AnimationSet(true);
 			TranslateAnimation slide = new TranslateAnimation(-200, 0, -200, 0);
 			slide.setInterpolator(new DecelerateInterpolator(5.0f));
 			slide.setDuration(300);
@@ -139,8 +146,10 @@ public class CustomList extends ArrayAdapter<String>{
 			fade.setDuration(300);
 			set.addAnimation(slide);
 			set.addAnimation(fade);
-			rowView.startAnimation(set);*/
+			rowView.startAnimation(set);
 
+			Log.e("here","No tin list "+position);
+		*/
 		return rowView;
 	}
 

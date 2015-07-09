@@ -128,7 +128,7 @@ String text;
                 text = Client.execute(httpget, responseHandler);
             } catch (IOException e) {
                 e.printStackTrace();
-                Log.e("eroore",e.getMessage());
+                Log.e("eroore",e.getMessage()+" ");
             }
 
             return null;
@@ -165,7 +165,7 @@ String text;
                     Log.e("yrs", "Image Link is : " + imglink);
 
                 } catch (Exception e) {
-                    Log.e("yo", "" + e.getMessage());
+                    Log.e("yo", "" + e.getMessage()+" ");
                 }
             }
             pb.setVisibility(View.GONE);

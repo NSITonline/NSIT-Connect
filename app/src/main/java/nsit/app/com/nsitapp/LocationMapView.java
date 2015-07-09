@@ -59,7 +59,7 @@ public class LocationMapView extends Activity {
         this.mapFragment = (com.google.android.gms.maps.MapFragment) getFragmentManager()
                 .findFragmentById(R.id.map);
         Bundle extras = getIntent().getExtras();
-        Log.e("extras",extras.toString());
+        Log.e("extras",extras.toString()+" ");
         if (extras != null) {
             String LocationLat = extras.getString("LocationLat");
             String LocationLong = extras.getString("LocationLong");
@@ -68,7 +68,7 @@ public class LocationMapView extends Activity {
             TextView txtHeader = (TextView)findViewById(R.id.LocationTitle);
             this.DestinationLat = LocationLat;
             this.DestinationLong = LocationLong;
-            Log.e("TextHeader",String.valueOf(txtHeader));
+            Log.e("TextHeader",String.valueOf(txtHeader)+" ");
             LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
             try {
                 Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
@@ -76,7 +76,7 @@ public class LocationMapView extends Activity {
                 this.OriginLat = String.valueOf(location.getLatitude());
                 Log.e("locations",this.OriginLat + " " + this.OriginLong);
             }catch(Exception e){
-                Log.e("Maps Error", e.toString());
+                Log.e("Maps Error", e.toString()+" ");
             }
 
             txtHeader.setText(LocationName);
@@ -102,13 +102,15 @@ public class LocationMapView extends Activity {
         GoogleMap map = mapFragment.getMap();
         LatLng Coord = new LatLng(LocationLat, LocationLong);
 
-        map.setMyLocationEnabled(true);
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(Coord, 17));
+        if(map!=null) {
+            map.setMyLocationEnabled(true);
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(Coord, 17));
 
-        map.addMarker(new MarkerOptions()
-                .title(LocationName)
-                .position(Coord)
-                .icon(BitmapDescriptorFactory.fromResource(LocationIcon)));
+            map.addMarker(new MarkerOptions()
+                    .title(LocationName)
+                    .position(Coord)
+                    .icon(BitmapDescriptorFactory.fromResource(LocationIcon)));
+        }
     }
 
     public class Location_GetDirections extends AsyncTask<String, Void, String> {
@@ -130,7 +132,7 @@ public class LocationMapView extends Activity {
                 return DriveResult+"/NSITAPP/"+WalkResult;
             } catch (Exception e) {
                 this.exception = e;
-                Log.e("Locations Directions", e.toString());
+                Log.e("Locations Directions", e.toString()+" ");
                 e.printStackTrace();
                 return null;
             }
@@ -142,8 +144,8 @@ public class LocationMapView extends Activity {
                 String[] ResultArray = Result.split("/NSITAPP/");
                 JSONObject DriveObject = new JSONObject(ResultArray[0]);
                 JSONObject WalkObject = new JSONObject(ResultArray[1]);
-                Log.e("DriveObject",DriveObject.toString());
-                Log.e("WalkObject",DriveObject.toString());
+                Log.e("DriveObject",DriveObject.toString() + " ");
+                Log.e("WalkObject",DriveObject.toString()+" ");
                 String Distance = DriveObject.getJSONArray("routes").getJSONObject(0).getJSONArray("legs").getJSONObject(0).getJSONObject("distance").getString("text");
                 String TimeDrive = DriveObject.getJSONArray("routes").getJSONObject(0).getJSONArray("legs").getJSONObject(0).getJSONObject("duration").getString("text");
                 String TimeWalk = WalkObject.getJSONArray("routes").getJSONObject(0).getJSONArray("legs").getJSONObject(0).getJSONObject("duration").getString("text");

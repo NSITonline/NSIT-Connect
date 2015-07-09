@@ -275,7 +275,7 @@ public class Feed extends Fragment {
                 else
                     text="1000";
             } catch (Exception e) {
-                Log.e("Error", e.getMessage());
+                Log.e("Error", e.getMessage() + " ");
             }
             bmImage.setText(text);
         }

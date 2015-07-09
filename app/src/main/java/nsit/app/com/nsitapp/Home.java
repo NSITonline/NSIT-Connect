@@ -47,6 +47,8 @@ public class Home extends Fragment {
     List<String> list6 = new ArrayList<String>();
     List<String> list7 = new ArrayList<String>();
     List<String> list8 = new ArrayList<String>();
+    List<String> list9 = new ArrayList<String>();
+    static List<String> loaded = new ArrayList<String>();
     ListView lv;
     int first=1;
     SwipeRefreshLayout swipeLayout;
@@ -75,7 +77,7 @@ public class Home extends Fragment {
         lv = (ListView) rootView.findViewById(R.id.list);
         swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
         pb=(ProgressBar)rootView.findViewById(R.id.progressBar1);
-        adapter = new CustomList(activity, list6,list, list2, list7, list1,list8);
+        adapter = new CustomList(activity, list6,list, list2, list7, list1,list8,list9);
        footerView = ((LayoutInflater)activity.getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.footer_layout, null, false);
         lv.addFooterView(footerView);
         lv.setOnScrollListener(new AbsListView.OnScrollListener() {
@@ -141,7 +143,7 @@ public class Home extends Fragment {
 
             Log.e("Yo", "Started");
             String URL;
-            URL = "https://graph.facebook.com/"+id+"/feed?limit=10&fields=picture,shares,message,object_id,link,created_time,comments.limit(0).summary(true),likes.limit(0).summary(true)&access_token=" + Val.common_access;
+            URL = "https://graph.facebook.com/"+id+"/feed?limit=10&fields=picture,id,shares,message,object_id,link,created_time,comments.limit(0).summary(true),likes.limit(0).summary(true)&access_token=" + Val.common_access;
             Log.e("this2",URL);
             HttpClient Client = new DefaultHttpClient();
             HttpGet httpget = new HttpGet(URL);
@@ -179,6 +181,10 @@ public class Home extends Fragment {
                         else
                             list1.add(arr.getJSONObject(i).getString("object_id"));
 
+                        if(!(arr.getJSONObject(i).has("id")))
+                            list9.add(null);
+                        else
+                            list9.add(arr.getJSONObject(i).getString("id"));
 
 
                         if(arr.getJSONObject(i).has("picture")) {
@@ -262,6 +268,7 @@ public class Home extends Fragment {
         protected void onPostExecute(String result) {
             pb.setVisibility(View.GONE);
             int j=0;
+            loaded=list9;
             JSONObject ob;
             JSONArray arr;
             try {
@@ -277,6 +284,11 @@ public class Home extends Fragment {
                         else {
                             list.add(null);
                         }
+
+                        if(!(arr.getJSONObject(i).has("id")))
+                            list9.add(null);
+                        else
+                            list9.add(arr.getJSONObject(i).getString("id"));
 
 
                         if(!(arr.getJSONObject(i).has("object_id")))
@@ -313,9 +325,7 @@ public class Home extends Fragment {
                         else
                             list8.add(null);
                     } catch (Exception e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                        Log.e("Error","Errror at : " + i + " "+e.getMessage());
+                         Log.e("Error","Errror at : " + i + " "+e.getMessage());
                     }
                 }
 
@@ -332,14 +342,13 @@ public class Home extends Fragment {
             lv.removeFooterView(footerView);
             adapter.notifyDataSetChanged();
 
-          /*  lv.post(new Runnable() {
+           lv.post(new Runnable() {
                 @Override
                 public void run() {
                    Home.loaded.clear();
                 }
-            });*/
+            });
 
-            // Log.e("Yo", text);
         }
     }
     @Override

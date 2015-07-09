@@ -357,7 +357,7 @@ public class FinalFeed extends Fragment {
             token=x[1];
 
             URL = next;
-            Log.e("this",URL);
+            Log.e("this",URL + " ");
             HttpClient Client = new DefaultHttpClient();
             HttpGet httpget = new HttpGet(URL);
             ResponseHandler<String> responseHandler = new BasicResponseHandler();
@@ -492,13 +492,12 @@ public class FinalFeed extends Fragment {
 
             lv.removeFooterView(footerView);
 
-            adapter = new CustomList(activity, list6, list, list2, list7, list1, list8);
+            adapter = new CustomList(activity, list6, list, list2, list7, list1, list8,list8);
             lv.addHeaderView(new View(activity));
             lv.addFooterView(new View(activity));
             if (activity != null)
                 lv.setAdapter(adapter);
             first = 0;
-            Log.e("first","zero");
 
         }
     }

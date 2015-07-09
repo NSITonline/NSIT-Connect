@@ -207,7 +207,7 @@ public class Calender extends Fragment {
            }
            }
        } catch (Exception e) {
-            Log.e("Error",e.getMessage());
+            Log.e("Error"," " +e.getMessage());
        }
        days.add("Monday");
        days.add("Tuesday");
@@ -284,10 +284,7 @@ public class Calender extends Fragment {
             SharedPreferences.Editor e = s.edit();
             e.putBoolean("timetablechanged", false);
             e.putString("timetable", text);
-
             e.commit();
-            Log.e("Putting value :",text);
-
 
             adapter2 = new CustomList3(activity, days, p1,p2,p3,p4,p5,p6,p7,p8);
             if (activity != null)

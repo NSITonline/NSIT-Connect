@@ -76,7 +76,6 @@ public class Choose extends AppCompatActivity implements AdapterView.OnItemSelec
                     Log.e("here",se +"\n"+sec+"\n"+br+"\n"+"  ");
                 String timetableid = null;
                     if(se.equals("Sem 1")){
-                        Log.e("in","Sem 1");
                         if(br.equals("COE")) {
                             if(sec.equals("Sec 1"))
                             timetableid = Val.COE_sem1_sec1;
@@ -121,7 +120,6 @@ public class Choose extends AppCompatActivity implements AdapterView.OnItemSelec
 
                     }
                     if(se.equals("Sem 3")){
-                        Log.e("in","Sem 3");
                         if(br.equals("COE")) {
                             if(sec.equals("Sec 1"))
                                 timetableid = Val.COE_sem3_sec1;

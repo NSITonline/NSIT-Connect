@@ -188,7 +188,7 @@ public class ImageAct extends AppCompatActivity {
                             new DownloadImageTask(iv).execute(imglink);
                         else iv.setVisibility(View.GONE);
                 } catch (Exception e) {
-                    Log.e("yo", ""+e.getMessage());
+                    Log.e("yo", " "+e.getMessage());
                 }
             }
 

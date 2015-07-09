@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                     R.string.app_name  /* "close drawer" description */
             );
         }catch(Exception e){
-            Log.e("error", e.getMessage());
+            Log.e("error", e.getMessage()+" ");
         }
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 

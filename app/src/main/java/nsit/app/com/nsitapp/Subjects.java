@@ -85,7 +85,7 @@ public class Subjects extends Fragment {
 
 
         }catch (Exception e){
-            Log.e("erro",e.getMessage());
+            Log.e("erro",e.getMessage()+" ");
         }
 
 

@@ -101,7 +101,7 @@ public class ProfList extends Fragment {
             }
 
         } catch (Exception e) {
-            Log.e("eroor", e.getMessage());
+            Log.e("eroor", e.getMessage()+" ");
         }
         for (int j = 0; j <k; j++) {
             ProfListRowItem item = new ProfListRowItem(name[j], ids[j], contact[j]);

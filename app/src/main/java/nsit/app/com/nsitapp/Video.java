@@ -162,7 +162,7 @@ public class Video extends Fragment {
                 return Result;
             } catch (Exception e) {
                 this.exception = e;
-                Log.e("YouTube Data", e.toString());
+                Log.e("YouTube Data", e.toString()+" ");
                 e.printStackTrace();
                 return null;
             }

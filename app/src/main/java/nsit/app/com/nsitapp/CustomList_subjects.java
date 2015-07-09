@@ -202,13 +202,19 @@ public class CustomList_subjects extends ArrayAdapter<String>{
 			txtTitle2.setText("No classes yet");
 		else {
 			float x = attended/total*100;
+			float attend = attended,missed = total-attended;
 			if(x<75) {
+
+				float m =(3*missed-attend);
+				int  n = (int)Math.floor(m);
 				txtTitle3.setTextColor(Color.parseColor("#ff3300"));
-				txtTitle3.setText(" Your attendance is short.");
+				txtTitle3.setText(" Your attendance is short.You need to attend "+n+" classes to be safe");
 			}
 			else {
+				float m = (attend-3*missed)/3;
+				int n = (int)Math.floor(m);
 				txtTitle3.setTextColor(Color.parseColor("#33cc00"));
-				txtTitle3.setText(" You are safe.");
+				txtTitle3.setText(" You are safe.You can leave "+n+" classes and still be safe.");
 			}
 				txtTitle2.setText(Float.toString(x) + " % attendance");
 		}

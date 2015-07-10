@@ -220,4 +220,5 @@ public class CustomList_subjects extends ArrayAdapter<String>{
 		}
 
 	}
+
 }

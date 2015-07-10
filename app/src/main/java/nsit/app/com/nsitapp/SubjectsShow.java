@@ -20,6 +20,13 @@ public class SubjectsShow extends AppCompatActivity {
     ArrayList<String> list2 = new ArrayList<String>();
     Button b;
     ListView lv;
+    CustomList_subjects a;
+    @Override
+    protected void onResume() {
+        super.onResume();
+        a.notifyDataSetChanged();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +48,7 @@ public class SubjectsShow extends AppCompatActivity {
         }catch (Exception e){
             Log.e("erro", e.getMessage() + " ");
         }
-        CustomList_subjects a = new CustomList_subjects(this,list1,list2);
+        a = new CustomList_subjects(this,list1,list2);
         lv.setAdapter(a);
     }
 

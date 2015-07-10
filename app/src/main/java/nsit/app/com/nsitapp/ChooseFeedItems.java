@@ -169,7 +169,6 @@ public class ChooseFeedItems extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 SharedPreferences.Editor e = p.edit();
                 e.putBoolean("crosslinks", Crosslinks);
@@ -184,6 +183,8 @@ public class ChooseFeedItems extends AppCompatActivity {
                 e.putBoolean("ashwa", Ashwa);
                 e.putBoolean("set", true);
                 e.putBoolean("item_changed",true);
+                Log.e("something ","changed"+Crosslinks +Collegespace+Bullet+Junoon+Rotaract+Csi+
+                Ieee+Deb);
                 e.commit();
                 finish();
             }

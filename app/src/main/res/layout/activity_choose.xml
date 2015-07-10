@@ -2,8 +2,18 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="nsit.app.com.nsitapp.Choose">
+    tools:context="nsit.app.com.nsitapp.Choose"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tell us your class so we can fetch your time-table for you."
+        android:textSize="20sp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp">
+    </TextView>
 
     <Spinner
         android:layout_width="fill_parent"
@@ -28,11 +38,11 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="15dp"
         android:background="@color/colorPrimary"
         android:textColor="#ffffff"
         android:id="@+id/set"
-        android:text="Set"
-        android:layout_marginLeft="20dp"
+        android:text="DONE"
         android:layout_marginTop="40dp"/>
 
 

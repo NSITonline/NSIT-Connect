@@ -471,6 +471,8 @@ public class FinalFeed extends Fragment {
         Ashwa = i.getBoolean("ashwa", false);
 
 
+        Log.e("2something ","changed"+Crosslinks +Collegespace+Bullet+Junoon+Rotaract+Csi+
+                Ieee+Deb);
 
 
         lv.addFooterView(footerView);
@@ -480,8 +482,6 @@ public class FinalFeed extends Fragment {
         }else {
 
             if (isNetworkAvailable()) {
-
-
                 if (Crosslinks)
                     new DownloadWebPageTask2(Val.id_crosslinks).execute();
                 if (Collegespace)

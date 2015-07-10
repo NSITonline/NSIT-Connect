@@ -22,6 +22,8 @@
             android:textColor="@color/colorPrimary"
             android:textSize="15sp"
             android:id="@+id/day"
+            android:textAllCaps="true"
+            android:textStyle="bold"
             android:text=" Day"/>
         <View
             android:layout_width="fill_parent"

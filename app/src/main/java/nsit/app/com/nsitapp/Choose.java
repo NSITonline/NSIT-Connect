@@ -19,13 +19,13 @@ public class Choose extends AppCompatActivity implements AdapterView.OnItemSelec
 
 
 
-    String[] sem={"Select semester","Sem 1","Sem 3","Sem 5","Sem 7"};
-    String[] branch={"Select Branch","COE","IT","ECE","ICE","MPAE","BT"};
-    String[] section={"Select section","Sec 1","Sec 2","Sec 3"};
-    String[] section1={"Select section","Sec 1","Sec 2"};
-    String[] Half2={"Select Half","First Half","Second Half"};
+    String[] sem={"Semester","Sem 1","Sem 3","Sem 5","Sem 7"};
+    String[] branch={"Branch","COE","IT","ECE","ICE","MPAE","BT"};
+    String[] section={"Section","Sec 1","Sec 2","Sec 3"};
+    String[] section1={"Section","Sec 1","Sec 2"};
+    String[] Half2={"Half","First Half","Second Half"};
 
-    String[] x ={"Select Section"};
+    String[] x ={"Section"};
     Spinner Sem,Branch,Sec,Half;
     Boolean s,b,sect,h;
     Button set;
@@ -64,21 +64,21 @@ public class Choose extends AppCompatActivity implements AdapterView.OnItemSelec
             @Override
             public void onClick(View view) {
                 if(!s){
-                    Toast.makeText(getApplicationContext(),"Select Semester",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Semester",Toast.LENGTH_SHORT).show();
                 }else if(!b){
-                    Toast.makeText(getApplicationContext(),"Select Branch",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Branch",Toast.LENGTH_SHORT).show();
                 }else if(!sect){
-                    Toast.makeText(getApplicationContext(),"Select Section",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Section",Toast.LENGTH_SHORT).show();
                 }else if(!h){
-                    Toast.makeText(getApplicationContext(),"Select Half",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Half",Toast.LENGTH_SHORT).show();
                 }else {
 
                     Log.e("here",se +"\n"+sec+"\n"+br+"\n"+"  ");
-                String timetableid = null;
+                    String timetableid = null;
                     if(se.equals("Sem 1")){
                         if(br.equals("COE")) {
                             if(sec.equals("Sec 1"))
-                            timetableid = Val.COE_sem1_sec1;
+                                timetableid = Val.COE_sem1_sec1;
                             if(sec.equals("Sec 2"))
                                 timetableid = Val.COE_sem1_sec2;
                             if(sec.equals("Sec 3"))
@@ -89,7 +89,7 @@ public class Choose extends AppCompatActivity implements AdapterView.OnItemSelec
                                 timetableid = Val.IT_sem1_sec1;
                             if(sec.equals("Sec 2"))
                                 timetableid = Val.IT_sem1_sec2;
-                             }
+                        }
                         if(br.equals("ECE")) {
                             if(sec.equals("Sec 1"))
                                 timetableid = Val.ECE_sem1_sec1;
@@ -115,7 +115,7 @@ public class Choose extends AppCompatActivity implements AdapterView.OnItemSelec
                                 timetableid = Val.MPAE_sem1_sec3;
                         }
                         if(br.equals("BT")) {
-                                timetableid = Val.BT_sem1_sec1;
+                            timetableid = Val.BT_sem1_sec1;
                         }
 
                     }
@@ -305,8 +305,8 @@ public class Choose extends AppCompatActivity implements AdapterView.OnItemSelec
 
                     String x =s.getString("timetableid",null);
                     if(x!=null)
-                    if(x.equals(timetableid))
-                    e.putBoolean("timetablechanged",true);
+                        if(x.equals(timetableid))
+                            e.putBoolean("timetablechanged",true);
 
 
                     e.putString("timetableid",timetableid);
@@ -330,7 +330,7 @@ public class Choose extends AppCompatActivity implements AdapterView.OnItemSelec
         // Showing selected spinner item
         if(parent.getId()==R.id.sem) {
             if(position!=0){
-              s=true;
+                s=true;
                 se = sem[position];
             }else {
                 s = false;
@@ -357,7 +357,7 @@ public class Choose extends AppCompatActivity implements AdapterView.OnItemSelec
 
                 }
 
-               else {
+                else {
                     ArrayAdapter adapter2 = new ArrayAdapter(this,android.R.layout.simple_spinner_dropdown_item,section);
                     Sec.setAdapter(adapter2);
                 }

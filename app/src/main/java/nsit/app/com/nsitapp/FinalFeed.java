@@ -143,7 +143,50 @@ public class FinalFeed extends Fragment {
             try {
                 ob = new JSONObject(text);
                 arr = ob.getJSONArray("data");
+                if(ob.has("paging")) {
+                    ob = ob.getJSONObject("paging");
 
+                    if (ob.has("next"))
+                        nextn = ob.getString("next");
+                    else
+                        nextn = null;
+
+                }
+                else
+                    nextn = null;
+
+                switch (id) {
+                    case Val.id_collegespace:nextcollegespace=nextn;
+                        Collegespace = false;
+                        break;
+                    case Val.id_crosslinks:nextcrosslinks=nextn;
+                        Crosslinks = false;
+                        break;
+                    case Val.id_bullet:nextbullet=nextn;
+                        Bullet = false;
+                        break;
+                    case Val.id_junoon:nextjunoon=nextn;
+                        Junoon = false;
+                        break;
+                    case Val.id_rotaract:nextrotaract=nextn;
+                        Rotaract = false;
+                        break;
+                    case Val.id_csi:nextcsi=nextn;
+                        Csi = false;
+                        break;
+                    case Val.id_ieee:nextieee=nextn;
+                        Ieee = false;
+                        break;
+                    case Val.id_quiz:nextquiz=nextn;
+                        Quiz = false;
+                        break;
+                    case Val.id_ashwa:nextashwa=nextn;
+                        Ashwa = false;
+                        break;
+                    case Val.id_debsoc:nextdeb=nextn;
+                        Deb = false;
+                        break;
+                }
 
                 for(int i = 0; i < arr.length(); i++){
                     try {
@@ -201,17 +244,7 @@ public class FinalFeed extends Fragment {
                          Log.e("Error","Errror at : " + i + " "+e.getMessage());
                     }
                 }
-                if(ob.has("paging")) {
-                    ob = ob.getJSONObject("paging");
 
-                    if (ob.has("next"))
-                        nextn = ob.getString("next");
-                    else
-                        nextn = null;
-
-                }
-                else
-                    nextn = null;
 
 
             } catch (Exception e) {
@@ -219,40 +252,6 @@ public class FinalFeed extends Fragment {
 
             }
             if(first==1) {
-
-                switch (id) {
-                    case Val.id_collegespace:nextcollegespace=nextn;
-                        Collegespace = false;
-                        break;
-                    case Val.id_crosslinks:nextcrosslinks=nextn;
-                        Crosslinks = false;
-                        break;
-                    case Val.id_bullet:nextbullet=nextn;
-                        Bullet = false;
-                        break;
-                    case Val.id_junoon:nextjunoon=nextn;
-                        Junoon = false;
-                        break;
-                    case Val.id_rotaract:nextrotaract=nextn;
-                        Rotaract = false;
-                        break;
-                    case Val.id_csi:nextcsi=nextn;
-                        Csi = false;
-                        break;
-                    case Val.id_ieee:nextieee=nextn;
-                        Ieee = false;
-                        break;
-                    case Val.id_quiz:nextquiz=nextn;
-                        Quiz = false;
-                        break;
-                    case Val.id_ashwa:nextashwa=nextn;
-                        Ashwa = false;
-                        break;
-                    case Val.id_debsoc:nextdeb=nextn;
-                        Deb = false;
-                        break;
-                }
-
                 done();
             }
 
@@ -303,6 +302,17 @@ public class FinalFeed extends Fragment {
             try {
                 ob = new JSONObject(text);
                 arr = ob.getJSONArray("data");
+                if(ob.has("paging")) {
+                    ob = ob.getJSONObject("paging");
+
+                    if (ob.has("next"))
+                        nextn = ob.getString("next");
+                    else
+                        nextn = null;
+
+                }
+                else
+                    nextn = null;
 
 
                 for(int i = 0; i < arr.length(); i++){
@@ -360,17 +370,6 @@ public class FinalFeed extends Fragment {
                     } catch (Exception e) {
                         Log.e("Error","Errror at : " + i + " "+e.getMessage());
                     }
-                    if(ob.has("paging")) {
-                        ob = ob.getJSONObject("paging");
-
-                        if (ob.has("next"))
-                            nextn = ob.getString("next");
-                        else
-                            nextn = null;
-
-                    }
-                    else
-                        nextn = null;
 
                 }
 

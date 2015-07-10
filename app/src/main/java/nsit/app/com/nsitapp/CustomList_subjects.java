@@ -77,7 +77,6 @@ public class CustomList_subjects extends ArrayAdapter<String>{
 				picker.setCalendarViewShown(false);
 				builder.setView(picker);
 				builder.setTitle(title.get(position));
-				builder.setMessage("Is class missed or attended?");
 				builder.setPositiveButton("Attended", new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
 
@@ -199,7 +198,7 @@ public class CustomList_subjects extends ArrayAdapter<String>{
 
 
 		if(total==0)
-			txtTitle2.setText("No classes yet");
+			txtTitle2.setText("?");
 		else {
 			float x = attended/total*100;
 			float attend = attended,missed = total-attended;
@@ -208,17 +207,33 @@ public class CustomList_subjects extends ArrayAdapter<String>{
 				float m =(3*missed-attend);
 				int  n = (int)Math.floor(m);
 				txtTitle3.setTextColor(Color.parseColor("#ff3300"));
-				txtTitle3.setText(" Your attendance is short.You need to attend "+n+" classes to be safe");
+				txtTitle3.setText("Your attendance is short. You need to attend the next "+n+" classes to be safe");
 			}
 			else {
 				float m = (attend-3*missed)/3;
 				int n = (int)Math.floor(m);
 				txtTitle3.setTextColor(Color.parseColor("#33cc00"));
-				txtTitle3.setText(" You are safe.You can leave "+n+" classes and still be safe.");
+				txtTitle3.setText("You are safe. You can leave "+n+" classes and still be safe.");
 			}
-				txtTitle2.setText(Float.toString(x) + " % attendance");
+				txtTitle2.setText(reducePlaces(x));
 		}
+
 
 	}
 
+    // Reduces number of decimal places for a float number
+    public String reducePlaces(Float f){
+        String pString = Float.toString(f);
+        String[] parts = pString.split("\\.");
+
+        if(parts.length>1){
+            if(parts[1].length() > 2)
+            {
+                parts[1] = parts[1].substring(0,2);
+                parts[0] = parts[0]+"."+parts[1];
+            }
+        }
+
+        return parts[0];
+    }
 }

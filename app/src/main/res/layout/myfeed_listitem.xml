@@ -128,11 +128,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="12sp"/>
-                        <TextView
-                            android:text=" Likes"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="12sp"/>
+                        <ImageView
+                            android:layout_width="12dp"
+                            android:layout_height="12dp"
+                            android:src="@drawable/ic_thumb_up_black_24dp"
+                            android:layout_marginLeft="5dp"
+                            android:alpha="0.4"
+                            android:layout_gravity="center"
+                            />
                     </LinearLayout>
                     <TextView
                         android:layout_width="wrap_content"
@@ -141,7 +144,7 @@
                         android:id="@+id/date"
                         android:textSize="12sp"
                         android:layout_gravity="center|right"
-                        android:layout_marginLeft="5dp" />
+                        android:layout_marginLeft="15dp" />
 
                 </LinearLayout>
                 <TextView

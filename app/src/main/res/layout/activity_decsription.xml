@@ -73,12 +73,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"/>
-        <TextView
-            android:text=" Likes"
-            android:paddingTop="2dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="15sp"/>
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@drawable/ic_thumb_up_black_24dp"
+            android:layout_marginLeft="5dp"
+            android:alpha="0.4"
+            android:layout_gravity="center"
+            />
     </LinearLayout>
 
     <LinearLayout

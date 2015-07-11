@@ -9,15 +9,16 @@
     android:orientation="vertical"
     android:showDividers="none">
 <LinearLayout
-    android:layout_width="360dp"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:layout_gravity="center_horizontal"
     android:background="#ffffffff"
-    android:paddingLeft="10dp"
+    android:paddingLeft="20dp"
     android:paddingTop="10dp"
     android:paddingRight="10dp"
-    android:paddingBottom="35dp">
+    android:paddingBottom="35dp"
+    >
 
     <TextView
         android:layout_width="match_parent"
@@ -26,20 +27,20 @@
         android:id="@+id/tvname"
         android:layout_marginTop="10dp"
         android:textStyle="bold"
-        android:textSize="17sp" />
+        android:textSize="15sp" />
 
-   
+
     <LinearLayout
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="15dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
 
-        <TextView
-            android:layout_width="110dp"
-            android:layout_height="wrap_content"
-            android:text="Contact Number:"
-            android:textStyle="bold"
-            android:textSize="14sp" />
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_call_black_24dp"
+            android:alpha="0.5" />
 
         <TextView
         android:layout_width="wrap_content"
@@ -47,34 +48,35 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Phone Number"
         android:id="@+id/tvphone"
-        android:textSize="14sp"
-        android:layout_alignTop="@+id/tvroom"
-        android:layout_toRightOf="@+id/tvroom"
-        android:layout_marginLeft="10dp" />
+        android:textSize="15sp"
+        android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+
+        />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
 
-        <TextView
-            android:layout_width="110dp"
-            android:layout_height="wrap_content"
-            android:text="Email Id:"
-            android:textStyle="bold"
-            android:textSize="14sp" />
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_mail_black_24dp"
+            android:alpha="0.5" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/colorPrimary"
             android:text="Email id"
             android:id="@+id/tvemail"
             android:layout_marginLeft="10dp"
-            android:layout_alignTop="@+id/tvphone"
-            android:layout_toRightOf="@+id/tvphone"
-            android:textSize="14sp" />
+            android:layout_gravity="center"
+            android:textSize="15sp" />
 
     </LinearLayout>
 </LinearLayout>

@@ -7,7 +7,7 @@
     android:background="@color/universalBackground">
 
     <ExpandableListView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:groupIndicator="@android:color/transparent"
         android:divider="@android:color/transparent"

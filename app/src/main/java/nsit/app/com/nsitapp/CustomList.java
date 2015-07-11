@@ -3,6 +3,7 @@ package nsit.app.com.nsitapp;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -22,6 +23,8 @@ import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Button;
+
+
 import java.util.List;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -53,7 +56,7 @@ public class CustomList extends ArrayAdapter<String>{
 		LayoutInflater inflater = context.getLayoutInflater();
 		ProgressBar pb, pb2;
 
-		View rowView = inflater.inflate(R.layout.message_layout, null, true);
+		final View rowView = inflater.inflate(R.layout.message_layout, null, true);
 		pb = (ProgressBar) rowView.findViewById(R.id.progressBar1);
 
 		TextView txtTitle = (TextView) rowView.findViewById(R.id.des);
@@ -102,6 +105,7 @@ public class CustomList extends ArrayAdapter<String>{
 			@Override
 			public void onClick(View view) {
 				// TODO Auto-generated method stub
+
 				Context c = getContext();
 				Intent i = new Intent(getContext(), Decsription.class);
 				i.putExtra("dec", des.get(position));

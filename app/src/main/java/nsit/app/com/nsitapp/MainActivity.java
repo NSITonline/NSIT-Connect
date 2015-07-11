@@ -20,10 +20,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -61,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         //All for navigation drawer
-        CustomList2 adapter2 = new CustomList2(this, sideitems, imageId);
+        DrawerList_Adapter adapter2 = new DrawerList_Adapter(this, sideitems, imageId);
         mDrawerList.addHeaderView(new View(this));
         mDrawerList.addFooterView(new View(this));
         mDrawerList.setAdapter(adapter2);

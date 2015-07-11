@@ -27,7 +27,7 @@
                 android:layout_height="30dp"
                 android:text="Prev Page"
                 android:id="@+id/PrevPageButton"
-                android:textSize="10sp"
+                android:textSize="12sp"
                 android:background="#fffdfdfd"
                 android:layout_marginRight="100dp" />
 
@@ -36,7 +36,7 @@
                 android:layout_height="30dp"
                 android:text="Next Page"
                 android:id="@+id/NextPageButton"
-                android:textSize="10sp"
+                android:textSize="12sp"
                 android:background="#fffdfdfd" />
 
         </LinearLayout>

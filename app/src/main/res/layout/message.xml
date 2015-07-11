@@ -2,15 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal" 
-    android:paddingTop="10sp">
+    android:orientation="horizontal"
+    android:padding="5dp">
     <ImageView 
         android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
+        android:layout_width="35dp"
         android:focusable="false"
  android:focusableInTouchMode="false"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
         android:src="@drawable/ic_action_star_10"
+        android:layout_marginLeft="5dp"
+        android:alpha="0.7"
         />
 
     <TextView
@@ -23,7 +25,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="hellllooooo"
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textAllCaps="true"
+
+        android:layout_marginLeft="5dp"/>
     
    
      

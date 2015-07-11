@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-android:layout_width="wrap_content"
+android:layout_width="match_parent"
 android:layout_height="wrap_content"
 android:layout_gravity="center_horizontal"
 android:background="@drawable/shadow_1"
@@ -8,44 +8,43 @@ xmlns:android="http://schemas.android.com/apk/res/android"
 android:gravity="center_horizontal"
     android:orientation="vertical"
     android:showDividers="none">
-    <LinearLayout
-        android:layout_width="350dp"
+    <FrameLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_gravity="center_horizontal"
         android:background="#ffffffff"
         android:paddingLeft="10dp"
-        android:paddingTop="10dp"
+        android:paddingTop="20dp"
         android:paddingRight="10dp"
-        android:paddingBottom="35dp">
+
+        >
 
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="17sp"
+            android:layout_gravity="left"
             android:text="Location group"
+            android:textStyle="bold"
+            android:layout_marginBottom="30dp"
             android:id="@+id/LocationsGroupHeader"
             android:layout_marginLeft="10dp" />
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:id="@+id/GroupTypeImage"
+            android:layout_marginRight="20dp"
+            android:alpha="0.5"
             android:layout_gravity="right"
-            android:gravity="right">
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:id="@+id/GroupTypeImage"
-                android:layout_marginRight="20dp"
-                />
-
-        </LinearLayout>
+            />
 
 
-    </LinearLayout>
+    </FrameLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="5dp"

@@ -72,6 +72,7 @@
                     android:id="@+id/show"
                     android:background="@drawable/ic_photo_library_black_24dp"
                     android:layout_marginLeft="5dp"
+                    android:alpha="0.5"
                     android:layout_marginBottom="5dp" />
 
             </FrameLayout>
@@ -98,7 +99,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:lineSpacingExtra="2dp"
-                    android:textSize="13sp"
+                    android:textSize="15sp"
                     android:layout_gravity="top"
                     android:layout_margin="5dp"
                     />
@@ -128,11 +129,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="12sp"/>
-                        <TextView
-                            android:text=" Likes"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="12sp"/>
+                        <ImageView
+                            android:layout_width="12dp"
+                            android:layout_height="12dp"
+                            android:src="@drawable/ic_thumb_up_black_24dp"
+                            android:layout_marginLeft="5dp"
+                            android:alpha="0.4"
+                            android:layout_gravity="center"
+                            />
                     </LinearLayout>
                     <TextView
                         android:layout_width="wrap_content"
@@ -141,7 +145,7 @@
                         android:id="@+id/date"
                         android:textSize="12sp"
                         android:layout_gravity="center|right"
-                        android:layout_marginLeft="5dp" />
+                        android:layout_marginLeft="15dp" />
 
                 </LinearLayout>
                 <TextView
@@ -152,7 +156,7 @@
                     android:id="@+id/cat"
                     android:textStyle="bold"
                     android:textColor="#ff686868"
-                    android:textSize="10sp"
+                    android:textSize="12sp"
                     android:clickable="false"
                     android:focusable="false"
                     android:padding="5dp"
@@ -186,7 +190,7 @@
                                 android:id="@+id/read"
                                 android:textStyle="bold"
                                 android:textColor="#ffffffff"
-                                android:textSize="11dp"
+                                android:textSize="12sp"
                                 android:clickable="false"
                                 android:focusable="false"
                                 android:padding="5dp"

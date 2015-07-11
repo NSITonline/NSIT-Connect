@@ -31,7 +31,7 @@ import java.util.Calendar;
 
 public class CustomList_subjects extends ArrayAdapter<String>{
 	private final Activity context;
-	TextView txtTitle2,txtTitle3;
+	TextView txtTitle2,txtTitle3,suff;
 	private final ArrayList<String> code,title;
 	public CustomList_subjects(Activity context, ArrayList<String> a, ArrayList<String> b) {
 		super(context, R.layout.subject_list_item, a);
@@ -50,7 +50,7 @@ public class CustomList_subjects extends ArrayAdapter<String>{
 		txtTitle.setText(title.get(position));
 		txtTitle2 = (TextView) rowView.findViewById(R.id.attendance);
 		txtTitle3 = (TextView) rowView.findViewById(R.id.message);
-
+		suff = (TextView) rowView.findViewById(R.id.attendance_suffix);
 		refresh(position);
 
 		LinearLayout add,rem;
@@ -198,8 +198,10 @@ public class CustomList_subjects extends ArrayAdapter<String>{
 
 
 
-		if(total==0)
-			txtTitle2.setText("No classes yet");
+		if(total==0) {
+			txtTitle2.setText(" ");
+			suff.setText(" ");
+		}
 		else {
 			float x = attended/total*100;
 			float attend = attended,missed = total-attended;
@@ -214,9 +216,13 @@ public class CustomList_subjects extends ArrayAdapter<String>{
 				float m = (attend-3*missed)/3;
 				int n = (int)Math.floor(m);
 				txtTitle3.setTextColor(Color.parseColor("#33cc00"));
-				txtTitle3.setText(" You are safe.You can leave "+n+" classes and still be safe.");
+				if(n!=0)
+					txtTitle3.setText(" You are safe.You can leave "+n+" classes and still be safe.");
+				else
+					txtTitle3.setText(" You are safe, but you should not miss any class.");
+
 			}
-				txtTitle2.setText(Float.toString(x) + " % attendance");
+				txtTitle2.setText(Float.toString(x) );
 		}
 
 	}

@@ -8,12 +8,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class CustomList2 extends ArrayAdapter<String>{
+public class DrawerList_Adapter extends ArrayAdapter<String>{
 	private final Activity context;
 	private final String[] web;
 	private boolean isSpeakButtonLongPressed ;
 	private final Integer[] imageId;
-	public CustomList2(Activity context, String[] web, Integer[] imageId) {
+	public DrawerList_Adapter(Activity context, String[] web, Integer[] imageId) {
 			super(context, R.layout.message, web);
 			this.context = context;
 			this.web = web;

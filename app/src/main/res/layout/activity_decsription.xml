@@ -72,7 +72,7 @@
             android:textColor="@color/colorPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"/>
+            android:textSize="15sp"/>
         <ImageView
             android:layout_width="15dp"
             android:layout_height="15dp"
@@ -95,9 +95,12 @@
             android:background="@color/colorPrimary"
             android:layout_gravity="center"
             android:textColor="#ffffff"
-            android:textSize="14sp"
+            android:textSize="15sp"
             android:id="@+id/link"
-            android:padding="10dp"
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:text="Show on Page"
             android:duplicateParentState="true"/>
     </LinearLayout>

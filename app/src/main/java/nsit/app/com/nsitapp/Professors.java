@@ -5,11 +5,8 @@ package nsit.app.com.nsitapp;
  */
 
 import android.app.Activity;
-import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -72,7 +69,7 @@ public class Professors extends Fragment implements
 
         listView = (ListView) rootView.findViewById(R.id.list);
         CustomListViewAdapter adapter = new CustomListViewAdapter(activity,
-                R.layout.list_item, rowItems);
+                R.layout.department_list_item, rowItems);
         if (activity != null)
             listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);

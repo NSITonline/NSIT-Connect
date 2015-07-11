@@ -17,7 +17,8 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Small Text"
             android:id="@+id/LocationItem"
-            android:textSize="17sp"
+            android:layout_marginLeft="10dp"
+            android:textSize="15sp"
             />
     </LinearLayout>
 

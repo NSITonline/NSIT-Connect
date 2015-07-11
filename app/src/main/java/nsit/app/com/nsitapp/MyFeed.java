@@ -6,7 +6,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -29,7 +28,6 @@ import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.io.IOException;
 
@@ -130,7 +128,7 @@ public class MyFeed extends AppCompatActivity {
 
 
 
-        CustomList2 adapter2 = new CustomList2(this, sideitems, imageId);
+        DrawerList_Adapter adapter2 = new DrawerList_Adapter(this, sideitems, imageId);
         mDrawerList.addHeaderView(new View(this));
         mDrawerList.addFooterView(new View(this));
         mDrawerList.setAdapter(adapter2);

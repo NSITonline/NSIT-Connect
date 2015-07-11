@@ -12,32 +12,38 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    android:background="@drawable/card">
+    android:background="@drawable/card"
+    android:paddingLeft="20dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="20dp"
+    android:paddingRight="20dp">
     
     <TextView
         android:id="@+id/title"
         android:text="Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingBottom="10dp"
+        android:textSize="17sp"
         android:textStyle="bold"
-        android:textSize="25dp"
-        android:paddingLeft="15dp"
-        android:paddingTop="5dp" />
-
+        android:layout_marginTop="10dp"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#d3d3d3"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"></LinearLayout>
     <TextView
         android:id="@+id/desc"
         android:text = "Description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:paddingBottom="20dp"
-        android:textColor="@color/colorPrimary"
-        android:textSize="14dp"
-        android:textStyle="bold"
+        android:textColor="#ff797979"
+        android:textSize="12sp"
         android:layout_alignBottom="@+id/icon"
         android:layout_below="@+id/title"
-        android:layout_toRightOf="@+id/title" />
+        android:layout_toRightOf="@+id/title"
+        android:textAllCaps="false"/>
 </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"

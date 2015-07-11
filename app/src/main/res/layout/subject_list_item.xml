@@ -33,7 +33,7 @@
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
                     android:text="Code"
-                    android:textSize="17sp"
+                    android:textSize="15sp"
                     />
 
                 <TextView
@@ -45,7 +45,7 @@
                     android:layout_height="wrap_content"
                     android:text="hellllooooo"
                     android:layout_marginTop="5dp"
-                    android:textSize="17sp"
+                    android:textSize="15sp"
                     />
             </LinearLayout>
             <LinearLayout
@@ -59,7 +59,7 @@
                     android:gravity="center_vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="28sp"
+                    android:textSize="25sp"
                     android:textColor="@color/colorPrimary"
                     android:text="75.55"
                     android:digits="2" />
@@ -92,6 +92,7 @@
             android:focusable="false"
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical"
+            android:textSize="15sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Add some dates to get started."/>

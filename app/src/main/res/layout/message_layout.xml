@@ -87,7 +87,7 @@
 
             <TextView
                 android:id="@+id/des"
-                android:maxLines="8"
+                android:maxLines="6"
                 android:ellipsize="end"
                 android:text="NSIT Online Blog NSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online Blog"
                 android:layout_width="fill_parent"
@@ -120,10 +120,10 @@
                 android:textColor="@color/colorPrimary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"/>
+                android:textSize="12sp"/>
             <ImageView
-                android:layout_width="15dp"
-                android:layout_height="15dp"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
                 android:src="@drawable/ic_thumb_up_black_24dp"
                 android:layout_marginLeft="5dp"
                 android:alpha="0.4"
@@ -135,6 +135,7 @@
                         android:layout_height="wrap_content"
                         android:text="Date"
                         android:layout_marginTop="5dp"
+                        android:textSize="12sp"
                         android:id="@+id/date"/>
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -155,15 +156,18 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:text="  READ MORE  "
+                                android:text="READ MORE"
                                 android:id="@+id/read"
                                 android:layout_gravity="center_vertical"
                                 android:textStyle="bold"
                                 android:textColor="#ffffffff"
-                                android:textSize="10sp"
+                                android:textSize="12sp"
                                 android:clickable="false"
                                 android:focusable="false"
-                                android:padding="8dp"
+                                android:paddingTop="5dp"
+                                android:paddingBottom="5dp"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
                                 android:duplicateParentState="true"
                                 />
 

@@ -54,6 +54,7 @@
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:text="COLLEGESPACE"
+                            android:textStyle="bold"
                             android:textSize="15sp"
                             android:textColor="#ffffff"
                             android:gravity="center"/>
@@ -132,6 +133,7 @@
                             android:layout_height="fill_parent"
                             android:text="CROSSLINKS"
                             android:textSize="15sp"
+                            android:textStyle="bold"
                             android:textColor="#ffffff"
                             android:gravity="center"/>
                     </LinearLayout>
@@ -216,6 +218,7 @@
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:text="CSI NSIT"
+                            android:textStyle="bold"
                             android:textSize="15sp"
                             android:textColor="#ffffff"
                             android:gravity="center"/>
@@ -294,6 +297,7 @@
                             android:layout_height="fill_parent"
                             android:text="IEEE NSIT"
                             android:textSize="15sp"
+                            android:textStyle="bold"
                             android:textColor="#ffffff"
                             android:gravity="center"/>
                     </LinearLayout>
@@ -378,7 +382,8 @@
                         <TextView
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
-                            android:text="DEBSOC"
+                            android:text="ASHWAMEDH"
+                            android:textStyle="bold"
                             android:textSize="15sp"
                             android:textColor="#ffffff"
                             android:gravity="center"/>
@@ -454,6 +459,7 @@
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:text="JUNOON"
+                            android:textStyle="bold"
                             android:textSize="15sp"
                             android:textColor="#ffffff"
                             android:gravity="center"/>
@@ -537,6 +543,7 @@
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:text="DEBSOC"
+                            android:textStyle="bold"
                             android:textSize="15sp"
                             android:textColor="#ffffff"
                             android:gravity="center"/>
@@ -611,7 +618,8 @@
                         <TextView
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
-                            android:text="DEBSOC"
+                            android:text="QUIZ CLUB"
+                            android:textStyle="bold"
                             android:textSize="15sp"
                             android:textColor="#ffffff"
                             android:gravity="center"/>
@@ -694,6 +702,7 @@
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:text="BULLETHAWK"
+                            android:textStyle="bold"
                             android:textSize="15sp"
                             android:textColor="#ffffff"
                             android:gravity="center"/>
@@ -769,6 +778,7 @@
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:text="ROTARACT"
+                            android:textStyle="bold"
                             android:textSize="15sp"
                             android:textColor="#ffffff"
                             android:gravity="center"/>

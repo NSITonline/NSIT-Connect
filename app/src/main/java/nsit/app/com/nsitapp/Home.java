@@ -6,8 +6,6 @@ package nsit.app.com.nsitapp;
 
 import android.app.Activity;
 import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -35,6 +33,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import functions.Utils;
+import functions.Val;
+
 
 public class Home extends Fragment {
 
@@ -42,7 +43,6 @@ public class Home extends Fragment {
     List<String> list = new ArrayList<String>();
     List<String> list1 = new ArrayList<String>();
     List<String> list2 = new ArrayList<String>();
-    List<String> list5 = new ArrayList<String>();
     List<String> list6 = new ArrayList<String>();
     List<String> list7 = new ArrayList<String>();
     List<String> list8 = new ArrayList<String>();
@@ -82,12 +82,13 @@ public class Home extends Fragment {
             @Override
             public void onScrollStateChanged(AbsListView absListView, int i) {
             }
+
             @Override
             public void onScroll(AbsListView absListView, int firstVisibleItem,
                                  int visibleItemCount, int totalItemCount) {
                 int lastInScreen = firstVisibleItem + visibleItemCount;
-                if ((lastInScreen == totalItemCount) && !(loadingMore) && first!=1) {
-                    loadingMore=true;
+                if ((lastInScreen == totalItemCount) && !(loadingMore) && first != 1) {
+                    loadingMore = true;
                     lv.addFooterView(footerView);
                     new DownloadWebPageTask3(Val.id_nsitonline).execute();
                     listCount = lastInScreen;
@@ -109,19 +110,13 @@ public class Home extends Fragment {
                 android.R.color.holo_red_light);
 
 
-        if(isNetworkAvailable())
+        if(Utils.isNetworkAvailable(activity))
             new DownloadWebPageTask2(Val.id_nsitonline).execute();
         else
             Toast.makeText(activity,"Cannot connect to Internet",Toast.LENGTH_SHORT).show();
 
 
         return rootView;
-    }
-    private boolean isNetworkAvailable() {
-        ConnectivityManager connectivityManager
-                = (ConnectivityManager) activity.getSystemService(activity.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
 

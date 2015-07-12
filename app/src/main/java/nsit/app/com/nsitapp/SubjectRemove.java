@@ -3,7 +3,6 @@ package nsit.app.com.nsitapp;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -13,6 +12,9 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+
+import functions.DBhelp;
+import functions.TableEntry;
 
 
 public class SubjectRemove extends AppCompatActivity {

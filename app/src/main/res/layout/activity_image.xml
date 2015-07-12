@@ -4,7 +4,7 @@
     android:orientation="vertical"
     tools:context="nsit.app.com.nsitapp.ImageAct">
 
-    <nsit.app.com.nsitapp.TouchImageView
+    <functions.TouchImageView
         android:id="@+id/iv"
         android:background="#ffffff"
         android:layout_width="match_parent"

@@ -1,14 +1,9 @@
 package nsit.app.com.nsitapp;
 
 import android.app.Activity;
-import android.content.ContentValues;
 import android.content.DialogInterface;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,19 +15,18 @@ import android.view.animation.AnimationSet;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
+
+import functions.DBhelp;
+import functions.TableEntry;
 
 public class CustomList_subjects_remove extends ArrayAdapter<String>{
 	private final Activity context;
-	TextView txtTitle2;
 	LinearLayout rem;
 	private final ArrayList<String> status,date,ids;
 	public CustomList_subjects_remove(Activity context, ArrayList<String> a, ArrayList<String> b,ArrayList<String> c) {
@@ -43,24 +37,39 @@ public class CustomList_subjects_remove extends ArrayAdapter<String>{
 		ids=c;
 	}
 
+	private class ViewHolder {
+		TextView stat,dat;
+		LinearLayout rem;
+
+	}
+
 	@Override
 	public View getView(final int position, View view, ViewGroup parent) {
-		LayoutInflater inflater = context.getLayoutInflater();
-		View rowView= inflater.inflate(R.layout.subject_list_item_remove, null, true);
-		TextView txtTitle = (TextView) rowView.findViewById(R.id.status);
+		ViewHolder holder = null;
+		LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+		if (view == null) {
+			view = mInflater.inflate(R.layout.subject_list_item_remove, null);
+			holder = new ViewHolder();
+			holder.stat = (TextView) view.findViewById(R.id.status);
+			holder.dat = (TextView) view.findViewById(R.id.date);
+			holder.rem = (LinearLayout) view.findViewById(R.id.rem);
 
-		if(status.get(position).equals("Missed"))
-			txtTitle.setTextColor(Color.parseColor("#ff3300"));
+			view.setTag(holder);
+		} else {
+			holder = (ViewHolder) view.getTag();
+		}
+			if(status.get(position).equals("Missed"))
+			holder.stat.setTextColor(Color.parseColor("#ff3300"));
 		else
-			txtTitle.setTextColor(Color.parseColor("#33cc00"));
-		txtTitle.setText(status.get(position));
-		txtTitle = (TextView) rowView.findViewById(R.id.date);
+			holder.stat.setTextColor(Color.parseColor("#33cc00"));
+		holder.stat.setText(status.get(position));
+
 		String s = getDate(Long.parseLong(date.get(position)), "dd MMMM yyyy");		//Convert date format
-		txtTitle.setText(s);
+		holder.dat.setText(s);
 		DBhelp mDbHelper = new DBhelp(getContext());
 		final SQLiteDatabase db = mDbHelper.getReadableDatabase();
-		rem = (LinearLayout) rowView.findViewById(R.id.rem);
-		rem.setOnClickListener(new View.OnClickListener() {
+
+		holder.rem.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
 				final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
@@ -68,9 +77,9 @@ public class CustomList_subjects_remove extends ArrayAdapter<String>{
 				builder.setMessage("Are you sure you want to remove this date?");
 				builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
-						db.delete(TableEntry.TABLE_NAME , TableEntry._ID
+						db.delete(TableEntry.TABLE_NAME, TableEntry._ID
 								+ " = " + ids.get(position), null);
-						Log.e("yo","deleted");
+						Log.e("yo", "deleted");
 						status.remove(position);
 						date.remove(position);
 						ids.remove(position);
@@ -92,8 +101,8 @@ public class CustomList_subjects_remove extends ArrayAdapter<String>{
 		fade.setDuration(300);
 		set.addAnimation(slide);
 		set.addAnimation(fade);
-		rowView.startAnimation(set);
-		return rowView;
+		view.startAnimation(set);
+		return view;
 	}
 
 

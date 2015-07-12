@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,15 +21,25 @@ public class DrawerList_Adapter extends ArrayAdapter<String>{
 			this.web = web;
 			this.imageId = imageId;
 	}
-	
+	private class ViewHolder {
+		TextView t1;
+		ImageView imag;
+	}
+
 	@Override
 	public View getView(int position, View view, ViewGroup parent) {
-		LayoutInflater inflater = context.getLayoutInflater();
-		View rowView= inflater.inflate(R.layout.message, null, true);
-		TextView txtTitle = (TextView) rowView.findViewById(R.id.textView1);
-		ImageView imageView = (ImageView) rowView.findViewById(R.id.imageView1);
-		txtTitle.setText(web[position]);
-		imageView.setImageResource(imageId[position]);
-		return rowView;
+		ViewHolder holder = null;
+		LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+		if (view == null) {
+			view = mInflater.inflate(R.layout.message, null);
+			holder = new ViewHolder();
+			holder.t1 = (TextView) view.findViewById(R.id.textView1);
+			holder.imag = (ImageView) view.findViewById(R.id.imageView1);
+			view.setTag(holder);
+		} else
+			holder = (ViewHolder) view.getTag();
+		holder.t1.setText(web[position]);
+		holder.imag.setImageResource(imageId[position]);
+		return view;
 	}
 }

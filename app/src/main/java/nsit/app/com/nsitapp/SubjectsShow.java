@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -37,6 +38,7 @@ public class SubjectsShow extends AppCompatActivity {
         JSONObject ob;
         JSONArray ar, ar2;
 
+        if(Calender.timetable!=null)
         try {
             ob = new JSONObject(Calender.timetable);
             ar = ob.getJSONArray("subjects");
@@ -45,27 +47,13 @@ public class SubjectsShow extends AppCompatActivity {
                 list1.add(ar.getJSONObject(i).getString("code"));
                 list2.add(ar.getJSONObject(i).getString("title"));
             }
-        }catch (Exception e){
-            Log.e("erro", e.getMessage() + " ");
+        }catch (JSONException e) {
+            e.printStackTrace();
+            Log.e("error", e.getMessage() + " ");
         }
+
         a = new CustomList_subjects(this,list1,list2);
         lv.setAdapter(a);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_subjects_show, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        return super.onOptionsItemSelected(item);
-    }
 }

@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -19,7 +17,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
-import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -36,6 +33,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import functions.Utils;
+import functions.Val;
+
 
 /**
  * Created by Swati garg on 21-06-2015.
@@ -45,7 +45,7 @@ import java.util.List;
 public class FinalFeed extends Fragment {
     Boolean Collegespace=false,Crosslinks=false,Junoon=false,Bullet=false,Rotaract=false,Quiz=false,Ieee=false,Csi=false,Ashwa=false,Deb=false;
     boolean loadingMore=false;
-    ProgressBar pb,pb2;
+    ProgressBar pb;
     SwipeRefreshLayout swipeLayout;
     String nextn;
     MyFeedList adapter;
@@ -420,8 +420,6 @@ public class FinalFeed extends Fragment {
 
     public void done()
     {
-
-
         Log.e("status : ", " " + Csi + Collegespace + Crosslinks + Crosslinks + Bullet + Junoon + Ieee + Ashwa + Quiz + Deb + Rotaract);
         if(!Csi && !Collegespace && !Crosslinks && !Bullet && !Junoon && !Ieee&& !Ashwa&& !Quiz&& !Deb &&!Rotaract) {
 
@@ -481,7 +479,7 @@ public class FinalFeed extends Fragment {
             Toast.makeText(activity,"No item selected",Toast.LENGTH_SHORT).show();
         }else {
 
-            if (isNetworkAvailable()) {
+            if (Utils.isNetworkAvailable(activity)) {
                 if (Crosslinks)
                     new DownloadWebPageTask2(Val.id_crosslinks).execute();
                 if (Collegespace)
@@ -519,7 +517,7 @@ public class FinalFeed extends Fragment {
                 if ((lastInScreen == totalItemCount) && !(loadingMore) && first!=1) {
                     loadingMore=true;
                     lv.addFooterView(footerView);
-                    if(isNetworkAvailable()){
+                    if(Utils.isNetworkAvailable(activity)){
                         Crosslinks = i.getBoolean("crosslinks", false);
                         Collegespace = i.getBoolean("collegespace", false);
                         Bullet = i.getBoolean("bullet", false);
@@ -578,11 +576,6 @@ public class FinalFeed extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 
-    private boolean isNetworkAvailable() {
-        ConnectivityManager connectivityManager
-                = (ConnectivityManager) activity.getSystemService(activity.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
-    }
+
 
 }

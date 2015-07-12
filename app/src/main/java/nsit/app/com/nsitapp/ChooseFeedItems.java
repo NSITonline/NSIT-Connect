@@ -1,18 +1,11 @@
 package nsit.app.com.nsitapp;
 
 import android.content.SharedPreferences;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
-import android.support.v4.app.Fragment;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -32,6 +25,9 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import functions.Utils;
+import functions.Val;
 
 
 public class ChooseFeedItems extends AppCompatActivity {
@@ -182,15 +178,13 @@ public class ChooseFeedItems extends AppCompatActivity {
                 e.putBoolean("quiz", Quiz);
                 e.putBoolean("ashwa", Ashwa);
                 e.putBoolean("set", true);
-                e.putBoolean("item_changed",true);
-                Log.e("something ","changed"+Crosslinks +Collegespace+Bullet+Junoon+Rotaract+Csi+
-                Ieee+Deb);
+                e.putBoolean("item_changed", true);
                 e.commit();
                 finish();
             }
         });
 
-        if(isNetworkAvailable()) {
+        if(Utils.isNetworkAvailable(ChooseFeedItems.this)) {
 
             new Calclike(tCrosslinks, Val.id_crosslinks).execute();
             new Calclike(tCollegespace, Val.id_collegespace).execute();
@@ -206,12 +200,6 @@ public class ChooseFeedItems extends AppCompatActivity {
         else
             Toast.makeText(this, "Cannot connect to Internet", Toast.LENGTH_SHORT).show();
 
-    }
-    private boolean isNetworkAvailable() {
-        ConnectivityManager connectivityManager
-                = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
     String text;
@@ -259,15 +247,4 @@ public class ChooseFeedItems extends AppCompatActivity {
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_choose_feed_items, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-            return super.onOptionsItemSelected(item);
-    }
 }

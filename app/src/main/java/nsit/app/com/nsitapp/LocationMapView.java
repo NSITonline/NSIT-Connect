@@ -4,22 +4,12 @@ import android.app.Activity;
 import android.content.Context;
 import android.location.Location;
 import android.location.LocationManager;
-import android.location.LocationListener;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
 import android.util.Log;
 import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.TranslateAnimation;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -34,9 +24,9 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONArray;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
+
+import functions.GPSTracker;
 
 /**
  * Created by Sidharth Patro on 01-Jul-15.
@@ -49,6 +39,7 @@ public class LocationMapView extends Activity {
     String DestinationLong;
     ProgressBar MapSpinner;
     Integer LocationIcon;
+    String des;
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
@@ -64,6 +55,29 @@ public class LocationMapView extends Activity {
             String LocationLat = extras.getString("LocationLat");
             String LocationLong = extras.getString("LocationLong");
             String LocationName = extras.getString("LocationName");
+            if(LocationName.contains("North Gate"))
+                des =  getResources().getString(R.string.north_gate_desc);
+            if(LocationName.contains("South Gate"))
+                des =  getResources().getString(R.string.south_gate_desc);
+            if(LocationName.contains("Administrative Block"))
+                des =  getResources().getString(R.string.admin_block_desc);
+            if(LocationName.contains("Block VI"))
+                des =  getResources().getString(R.string.block6_desc);
+            else if(LocationName.contains("Block V"))
+                des =  getResources().getString(R.string.block5_desc);
+            if(LocationName.contains("Block IV"))
+                des =  getResources().getString(R.string.block4_desc);
+            if(LocationName.contains("Main Auditorium"))
+                des =  getResources().getString(R.string.main_audi_desc);
+            if(LocationName.contains("Mini Auditorium"))
+                des =  getResources().getString(R.string.mini_audi_desc);
+            if(LocationName.contains("Boys' Hostel I"))
+                des =  getResources().getString(R.string.bh1_desc);
+            if(LocationName.contains("Boys' Hostel II"))
+                des =  getResources().getString(R.string.bh2_desc);
+
+            TextView desc = (TextView) findViewById(R.id.LocDescription);
+            desc.setText(des);
             this.LocationIcon = extras.getInt("LocationIcon");
             TextView txtHeader = (TextView)findViewById(R.id.LocationTitle);
             this.DestinationLat = LocationLat;

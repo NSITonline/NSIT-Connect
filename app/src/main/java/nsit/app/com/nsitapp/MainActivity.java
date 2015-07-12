@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private ListView mDrawerList;
     ListView lv;
     private ActionBarDrawerToggle mDrawerToggle;
-    static final String[] sideitems = new String[] { "Home" , "My Feed","Video","Calendar" , "Professors","Locations","About" };	//items on navigation drawer
+    static final String[] sideitems = new String[] { "Home" , "My Feed","Video","Calendar" , "Professors","Locations","About Us" };	//items on navigation drawer
     SwipeRefreshLayout swipeLayout;
     Integer[] imageId = {
             R.drawable.ic_action_home,
@@ -58,8 +58,6 @@ public class MainActivity extends AppCompatActivity {
 
         //All for navigation drawer
         DrawerList_Adapter adapter2 = new DrawerList_Adapter(this, sideitems, imageId);
-        mDrawerList.addHeaderView(new View(this));
-        mDrawerList.addFooterView(new View(this));
         mDrawerList.setAdapter(adapter2);
         try {
             mDrawerToggle = new ActionBarDrawerToggle(
@@ -92,14 +90,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-    private boolean isNetworkAvailable() {
-        ConnectivityManager connectivityManager
-                = (ConnectivityManager) getSystemService(this.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
-    }
-
     @Override
     public void onBackPressed() {
         if(getFragmentManager().getBackStackEntryCount() == 0) {
@@ -112,23 +102,18 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+         int id = item.getItemId();
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
-
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
@@ -145,32 +130,23 @@ public class MainActivity extends AppCompatActivity {
 
     private void changeItem(int position){
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-
         // Locate Position
-        switch (position) {
+        switch (position+1) {
             case 1:
                 Fragment f = new Home();
                 ft.replace(R.id.content_frame, f);
                 getSupportActionBar().setTitle("Home");
                 break;
-
             case 2:
-
-                SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                Boolean set = s.getBoolean("set",false);
-
-                    Fragment f1 = new FinalFeed();
-                    ft.replace(R.id.content_frame, f1);
+                Fragment f1 = new FinalFeed();
+                ft.replace(R.id.content_frame, f1);
                 getSupportActionBar().setTitle("My Feed");
                 break;
-
-
             case 3:
                 Fragment f2 = new Video();
                 ft.replace(R.id.content_frame, f2);
                 getSupportActionBar().setTitle("Video");
                 break;
-
             case  4:
                 Fragment f3 = new Calender();
                 ft.replace(R.id.content_frame, f3);
@@ -186,6 +162,11 @@ public class MainActivity extends AppCompatActivity {
                 Fragment f5 = new Locations();
                 ft.replace(R.id.content_frame, f5);
                 getSupportActionBar().setTitle("Locations");
+                break;
+            case 7 :
+                Fragment f6 = new AboutUs();
+                ft.replace(R.id.content_frame, f6);
+                getSupportActionBar().setTitle("About Us");
                 break;
         }
         ft.commit();

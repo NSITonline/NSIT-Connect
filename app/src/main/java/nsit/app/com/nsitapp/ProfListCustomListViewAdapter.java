@@ -7,6 +7,7 @@ package nsit.app.com.nsitapp;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,6 +62,16 @@ public class ProfListCustomListViewAdapter extends ArrayAdapter<ProfListRowItem>
 
         holder.txtName.setText(rowItem.getName());
         holder.txtPhone.setText(rowItem.getPhone());
+        holder.txtPhone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Intent.ACTION_DIAL);
+                String[] x = rowItem.getPhone().split("(DID)");
+                String p = "tel:" + x[0];
+                i.setData(Uri.parse(p));
+                getContext().startActivity(i);
+            }
+        });
         holder.txtEmail.setText(rowItem.getEmail());
         holder.txtEmail.setOnClickListener(new View.OnClickListener() {
             @Override

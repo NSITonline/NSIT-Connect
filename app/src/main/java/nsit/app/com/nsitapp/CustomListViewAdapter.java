@@ -40,21 +40,18 @@ public class CustomListViewAdapter extends ArrayAdapter<RowItem> {
         ViewHolder holder = null;
         RowItem rowItem = getItem(position);
 
-        LayoutInflater mInflater = (LayoutInflater) context
-                .getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+        LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         if (convertView == null) {
             convertView = mInflater.inflate(R.layout.department_list_item, null);
             holder = new ViewHolder();
             holder.txtDesc = (TextView) convertView.findViewById(R.id.desc);
             holder.txtTitle = (TextView) convertView.findViewById(R.id.title);
-//            holder.imageView = (ImageView) convertView.findViewById(R.id.icon);
             convertView.setTag(holder);
         } else
             holder = (ViewHolder) convertView.getTag();
 
         holder.txtDesc.setText(rowItem.getDesc());
         holder.txtTitle.setText(rowItem.getTitle());
-//        holder.imageView.setImageResource(rowItem.getImageId());
         AnimationSet set = new AnimationSet(true);
         TranslateAnimation slide = new TranslateAnimation(-200,0,-200,0);
         slide.setInterpolator(new DecelerateInterpolator(5.0f));

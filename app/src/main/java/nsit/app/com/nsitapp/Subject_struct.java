@@ -18,7 +18,5 @@ public class Subject_struct {
         professor=g;
         room =h;
     }
-    public Subject_struct(){
 
-    }
 }

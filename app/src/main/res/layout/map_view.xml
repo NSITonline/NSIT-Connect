@@ -12,7 +12,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="5dp"
-        android:background="@color/colorPrimary"></LinearLayout>
+        android:background="@color/colorPrimary"/>
     <ScrollView android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#ffffff">
@@ -91,7 +91,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="askjdahsdkjahsdkjahsdjkhasjdkhaskjdhaskjdhakjsdhaksjdhaskjdhajksdhaksjdhaksjdhaksjd"
+            android:text="@string/block5_desc"
             android:id="@+id/LocDescription"
             android:textSize="15sp"
             android:layout_column="0"

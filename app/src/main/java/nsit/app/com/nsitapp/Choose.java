@@ -4,7 +4,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.internal.widget.AdapterViewCompat;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,6 +13,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Button;
 import android.widget.Toast;
+
+import functions.Val;
 
 public class Choose extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -250,51 +251,7 @@ public class Choose extends AppCompatActivity implements AdapterView.OnItemSelec
                             timetableid = Val.BT_sem7_sec1;
                         }
 
-                    } if(se.equals("Sem 1")){
-                        if(br.equals("COE")) {
-                            if(sec.equals("Sec 1"))
-                                timetableid = Val.COE_sem1_sec1;
-                            if(sec.equals("Sec 2"))
-                                timetableid = Val.COE_sem1_sec2;
-                            if(sec.equals("Sec 3"))
-                                timetableid = Val.COE_sem1_sec3;
-                        }
-                        if(br.equals("IT")) {
-                            if(sec.equals("Sec 1"))
-                                timetableid = Val.IT_sem1_sec1;
-                            if(sec.equals("Sec 2"))
-                                timetableid = Val.IT_sem1_sec2;
-                        }
-                        if(br.equals("ECE")) {
-                            if(sec.equals("Sec 1"))
-                                timetableid = Val.ECE_sem1_sec1;
-                            if(sec.equals("Sec 2"))
-                                timetableid = Val.ECE_sem1_sec2;
-                            if(sec.equals("Sec 3"))
-                                timetableid = Val.ECE_sem1_sec3;
-                        }
-                        if(br.equals("ICE")) {
-                            if(sec.equals("Sec 1"))
-                                timetableid = Val.ICE_sem1_sec1;
-                            if(sec.equals("Sec 2"))
-                                timetableid = Val.ICE_sem1_sec2;
-                            if(sec.equals("Sec 3"))
-                                timetableid = Val.ICE_sem1_sec3;
-                        }
-                        if(br.equals("MPAE")) {
-                            if(sec.equals("Sec 1"))
-                                timetableid = Val.MPAE_sem1_sec1;
-                            if(sec.equals("Sec 2"))
-                                timetableid = Val.MPAE_sem1_sec2;
-                            if(sec.equals("Sec 3"))
-                                timetableid = Val.MPAE_sem1_sec3;
-                        }
-                        if(br.equals("BT")) {
-                            timetableid = Val.BT_sem1_sec1;
-                        }
-
                     }
-
                     SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                     SharedPreferences.Editor e = s.edit();
                     e.putString("sem", se);
@@ -305,8 +262,7 @@ public class Choose extends AppCompatActivity implements AdapterView.OnItemSelec
 
                     String x =s.getString("timetableid",null);
                     if(x!=null)
-                        if(x.equals(timetableid))
-                            e.putBoolean("timetablechanged",true);
+                        e.putBoolean("timetablechanged",true);
 
 
                     e.putString("timetableid",timetableid);

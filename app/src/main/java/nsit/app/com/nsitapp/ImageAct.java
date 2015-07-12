@@ -3,8 +3,6 @@ package nsit.app.com.nsitapp;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
@@ -14,7 +12,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import org.apache.http.client.HttpClient;
@@ -30,9 +27,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+import functions.TouchImageView;
+import functions.Utils;
+import functions.Val;
+
 public class ImageAct extends AppCompatActivity {
     String img,des,like,link,obid,imglink;
-    //ProgressBar pb;
     TouchImageView iv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,11 +42,9 @@ public class ImageAct extends AppCompatActivity {
         img = i.getStringExtra("img");
         obid = i.getStringExtra("oid");
         iv  = (TouchImageView) findViewById(R.id.iv);
-        //=(ProgressBar)findViewById(R.id.progressBar1);
+         setTitle("Image");
 
-        setTitle("Image");
-
-        if(isNetworkAvailable()) {
+        if(Utils.isNetworkAvailable(this)) {
             if (img == null)
                 iv.setVisibility(View.GONE);
             else if (obid == null)
@@ -87,11 +85,8 @@ public class ImageAct extends AppCompatActivity {
             }catch(Exception e){
                 e.printStackTrace();
             }
-              File cachePath = new File(root.getAbsolutePath() + "/NSIT Online/image_"+ System.currentTimeMillis()+ ".jpg");
 
-
-
-
+            File cachePath = new File(root.getAbsolutePath() + "/NSIT Online/image_"+ System.currentTimeMillis()+ ".jpg");
             try
             {
                 cachePath.createNewFile();
@@ -108,8 +103,6 @@ public class ImageAct extends AppCompatActivity {
             }
 
         }
-
-        //noinspection SimplifiableIfStatement
 
         return super.onOptionsItemSelected(item);
     }
@@ -144,13 +137,6 @@ public class ImageAct extends AppCompatActivity {
     String text;
     private class DownloadWebPageTask extends AsyncTask<String, Void, String> {
         @Override
-        protected void onPreExecute() {
-
-            //  bar.setVisibility(View.VISIBLE);
-
-        };
-
-        @Override
         protected String doInBackground(String... urls) {
 
             Log.e("Yo", "Started");
@@ -184,7 +170,7 @@ public class ImageAct extends AppCompatActivity {
 
                     imglink = arr.getJSONObject(0).getString("source");
                     if (imglink != null)
-                        if (isNetworkAvailable())
+                        if (Utils.isNetworkAvailable(ImageAct.this))
                             new DownloadImageTask(iv).execute(imglink);
                         else iv.setVisibility(View.GONE);
                 } catch (Exception e) {
@@ -197,10 +183,5 @@ public class ImageAct extends AppCompatActivity {
         }
     }
 
-    private boolean isNetworkAvailable() {
-        ConnectivityManager connectivityManager
-                = (ConnectivityManager) getSystemService(this.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
-    }
+
 }

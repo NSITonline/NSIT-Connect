@@ -1,15 +1,11 @@
 package nsit.app.com.nsitapp;
 
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -28,6 +24,8 @@ import org.json.JSONObject;
 import java.io.IOException;
 
 import functions.ImageLoader;
+import functions.Utils;
+import functions.Val;
 
 
 public class Decsription extends AppCompatActivity {
@@ -84,7 +82,7 @@ public class Decsription extends AppCompatActivity {
                                     }
                                 }
         );
-        if(isNetworkAvailable()) {
+        if(Utils.isNetworkAvailable(Decsription.this)) {
             if (img == null) {
                 imageView.setVisibility(View.GONE);
                 pb.setVisibility(View.GONE);
@@ -154,7 +152,7 @@ String text;
                     if (arr.getJSONObject(0).has("source"))
                         imglink = arr.getJSONObject(0).getString("source");
                     if (imglink != null) {
-                        if (isNetworkAvailable()) {
+                        if (Utils.isNetworkAvailable(Decsription.this)) {
                             imageLoader.DisplayImage(imglink, imageView);
                             pb.setVisibility(View.GONE);
                         }
@@ -175,24 +173,5 @@ String text;
     }
 
 
-    private boolean isNetworkAvailable() {
-        ConnectivityManager connectivityManager
-                = (ConnectivityManager) getSystemService(this.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
-    }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_decsription, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        int id = item.getItemId();
-        return super.onOptionsItemSelected(item);
-    }
 }

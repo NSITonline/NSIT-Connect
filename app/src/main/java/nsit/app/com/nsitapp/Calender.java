@@ -43,10 +43,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import functions.Utils;
+
 public class Calender extends Fragment {
 
-    static String timetable;
-
+    static String timetable=null;
     boolean loadingMore=false;
     static  ArrayList<String> days = new ArrayList<String >();
     static  ArrayList<Subject_struct> p1 = new ArrayList<Subject_struct>();
@@ -94,7 +95,7 @@ public class Calender extends Fragment {
 
         adapter2 = new CustomList3(activity, days, p1,p2,p3,p4,p5,p6,p7,p8,p9);
         if(a || timetable==null) {
-            if (isNetworkAvailable())
+            if (Utils.isNetworkAvailable(activity))
                 new DownloadWebPageTask2().execute();
             else {
                 adapter2 = new CustomList3(activity, days, p1, p2, p3, p4, p5, p6, p7, p8,p9);
@@ -112,7 +113,6 @@ public class Calender extends Fragment {
         }
 
         lvTest.setOnScrollListener(new TwoWayView.OnScrollListener() {
-            //useless here, skip!
             @Override
             public void onScrollStateChanged(TwoWayView view, int scrollState) {
             }
@@ -120,7 +120,7 @@ public class Calender extends Fragment {
             @Override
             public void onScroll(TwoWayView view, int firstVisibleItem,
                                  int visibleItemCount, int totalItemCount) {
-                //what is the bottom iten that is visible
+                //what is the bottom item that is visible
                 int lastInScreen = firstVisibleItem + visibleItemCount;
                 //is the bottom item visible & not loading more already ? Load more !
                 if ((lastInScreen == totalItemCount) && !(loadingMore)) {
@@ -149,8 +149,6 @@ public class Calender extends Fragment {
 
            for(int j=0;j<ar.length();j++){
            ar2 = ar.getJSONArray(j);
-
-// subject,type,professorfh,roomfh,professorsh,roomsh,professor,room;
 
            String a, b, c, d, e, f, g, h;
            for (int i = 0; i < ar2.length(); i++) {
@@ -234,7 +232,6 @@ public class Calender extends Fragment {
             Intent i = new Intent(activity, Choose.class);
             startActivity(i);
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -256,9 +253,6 @@ public class Calender extends Fragment {
             if(id==null){
                 id = "0B9uRC8Uvb5sFZFdNcVJVN0VhUEE";
             }
-
-
-
             Log.e("Yo", "Started");
             String URL;
             URL = "https://docs.google.com/uc?id="+id+"&export=download";
@@ -290,19 +284,10 @@ public class Calender extends Fragment {
 
             adapter2 = new CustomList3(activity, days, p1,p2,p3,p4,p5,p6,p7,p8,p9);
             if (activity != null)
-                 lvTest.setAdapter(adapter2);
-                 lvTest.setItemMargin(10);
-
+                lvTest.setAdapter(adapter2);
+            lvTest.setItemMargin(10);
 
         }
-    }
-
-
-    private boolean isNetworkAvailable() {
-        ConnectivityManager connectivityManager
-                = (ConnectivityManager) activity.getSystemService(activity.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
     @Override
@@ -311,13 +296,12 @@ public class Calender extends Fragment {
 
 
         SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
-
         Boolean a = s.getBoolean("timetablechanged",true);
         timetable = s.getString("timetable",null);
 
         adapter2 = new CustomList3(activity, days, p1,p2,p3,p4,p5,p6,p7,p8,p9);
         if(a || timetable==null) {
-            if (isNetworkAvailable())
+            if (Utils.isNetworkAvailable(activity))
                 new DownloadWebPageTask2().execute();
             else {
                 adapter2 = new CustomList3(activity, days, p1, p2, p3, p4, p5, p6, p7, p8,p9);

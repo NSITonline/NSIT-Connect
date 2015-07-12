@@ -51,30 +51,49 @@ public class CustomList extends ArrayAdapter<String>{
 		imageLoader=new ImageLoader(context.getApplicationContext());
 	}
 
+	private class ViewHolder {
+		TextView Des;
+		TextView likes;
+		TextView date;
+		TextView read;
+		ImageView imag;
+		FrameLayout f;
+		Button b;
+	}
 	@Override
 	public View getView(final int position, View view, ViewGroup parent) {
-		LayoutInflater inflater = context.getLayoutInflater();
-		ProgressBar pb, pb2;
+		ViewHolder holder = null;
+		LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+		if (view == null) {
+			view = mInflater.inflate(R.layout.message_layout, null);
+			holder = new ViewHolder();
+			holder.Des = (TextView) view.findViewById(R.id.des);
+			holder.likes = (TextView) view.findViewById(R.id.likes);
+			holder.date = (TextView) view.findViewById(R.id.date);
+			holder.read = (TextView) view.findViewById(R.id.read);
+			holder.imag = (ImageView) view.findViewById(R.id.image);
+			holder.f = (FrameLayout) view.findViewById(R.id.frame);
+			holder.b = (Button) view.findViewById(R.id.show);
 
-		final View rowView = inflater.inflate(R.layout.message_layout, null, true);
-		pb = (ProgressBar) rowView.findViewById(R.id.progressBar1);
+			view.setTag(holder);
+		} else {
 
-		TextView txtTitle = (TextView) rowView.findViewById(R.id.des);
+			holder = (ViewHolder) view.getTag();
+		}
+
+
+
 		if(des.get(position)==null)
-			txtTitle.setText("No description");
+			holder.Des.setText("No description");
 		else
-			txtTitle.setText(des.get(position));
+			holder.Des.setText(des.get(position));
 
 
-		TextView like = (TextView) rowView.findViewById(R.id.likes);
 		if (lik.get(position) == null)
-			like.setText("0");
+			holder.likes.setText("0");
 		else
-			like.setText(lik.get(position));
+			holder.likes.setText(lik.get(position));
 
-
-
-		TextView d = (TextView) rowView.findViewById(R.id.date);
 		if(date.get(position)!=null) {
 			String x = GetLocalDateStringFromUTCString(date.get(position));
 			String formattedDate = x;
@@ -88,24 +107,14 @@ public class CustomList extends ArrayAdapter<String>{
 				Log.e("error", e.getMessage() + " ");
 			}
 
-			d.setText(formattedDate);
+			holder.date.setText(formattedDate);
 		}
 		else
-			d.setVisibility(View.INVISIBLE);
+			holder.date.setVisibility(View.INVISIBLE);
 
-
-		ImageView imageView;
-		imageView = (ImageView) rowView.findViewById(R.id.image);
-		ImageView imageView2;
-		imageView2 = (ImageView) rowView.findViewById(R.id.image2);
-
-
-		TextView b = (TextView) rowView.findViewById(R.id.read);
-		b.setOnClickListener(new OnClickListener() {
+		holder.read.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				// TODO Auto-generated method stub
-
 				Context c = getContext();
 				Intent i = new Intent(getContext(), Decsription.class);
 				i.putExtra("dec", des.get(position));
@@ -118,9 +127,8 @@ public class CustomList extends ArrayAdapter<String>{
 		});
 
 		if(img.get(position)!=null) {
-			Button b1 = (Button) rowView.findViewById(R.id.show);
-			imageLoader.DisplayImage(img.get(position), imageView);
-			b1.setOnClickListener(new OnClickListener() {
+			imageLoader.DisplayImage(img.get(position), holder.imag);
+			holder.b.setOnClickListener(new OnClickListener() {
 
 				@Override
 				public void onClick(View v) {
@@ -134,8 +142,7 @@ public class CustomList extends ArrayAdapter<String>{
 			});
 
 		}else{
-			FrameLayout f = (FrameLayout) rowView.findViewById(R.id.frame);
-			f.setVisibility(View.GONE);
+			holder.f.setVisibility(View.GONE);
 		}
 
 		AnimationSet set = new AnimationSet(true);
@@ -147,9 +154,8 @@ public class CustomList extends ArrayAdapter<String>{
 		fade.setDuration(300);
 		set.addAnimation(slide);
 		set.addAnimation(fade);
-		rowView.startAnimation(set);
-
-		return rowView;
+		view.startAnimation(set);
+		return view;
 	}
 
 	public String GetLocalDateStringFromUTCString(String utcLongDateTime) {
@@ -162,16 +168,9 @@ public class CustomList extends ArrayAdapter<String>{
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		localDateString = dateFormat.format(new Date(when + TimeZone.getDefault().getRawOffset() + (TimeZone.getDefault().inDaylightTime(new Date()) ? TimeZone.getDefault().getDSTSavings() : 0)));
+		localDateString = dateFormat.format(new Date(when + TimeZone.getDefault().getRawOffset() +
+				(TimeZone.getDefault().inDaylightTime(new Date()) ? TimeZone.getDefault().getDSTSavings() : 0)));
 		return localDateString;
 	}
 
-
-
-	private boolean isNetworkAvailable() {
-		ConnectivityManager connectivityManager
-				= (ConnectivityManager) getContext().getSystemService(getContext().CONNECTIVITY_SERVICE);
-		NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-		return activeNetworkInfo != null && activeNetworkInfo.isConnected();
-	}
 }

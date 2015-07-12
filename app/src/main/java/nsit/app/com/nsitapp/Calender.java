@@ -253,6 +253,8 @@ public class Calender extends Fragment {
             if(id==null){
                 id = "0B9uRC8Uvb5sFZFdNcVJVN0VhUEE";
             }
+
+            Log.e("sed","time table id "+id);
             Log.e("Yo", "Started");
             String URL;
             URL = "https://docs.google.com/uc?id="+id+"&export=download";

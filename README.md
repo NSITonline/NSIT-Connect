@@ -2,3 +2,5 @@
 NSIT APP
 An app for NSIT students.
 NSIT app repository aims to connect the students of NSIT(Netaji Subhas Institute ofTechnology) college. It provides students with important college related announcements, professors' directory, college landmarks, timetable etc.
+
+![Alt text](/../master/app/src/main/res/drawable/nsit_online.png " ")

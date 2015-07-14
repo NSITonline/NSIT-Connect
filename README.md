@@ -11,7 +11,7 @@ The home page is the news feed of the NSITOnline official page. All the latest n
 ![Post Description](/../master/app/src/main/res/drawable/7.png "Post Description")
 
 ###2.My Feed
-The My Feed section allows you to curate your own news feed by following only the specific groups or societies you want to hear from.
+The My Feed section allows you to create your own news feed by following only the specific groups or societies you want to hear from.
 
 ![My Feed Interests](/../master/app/src/main/res/drawable/2.png "My Feed Interests")
 ![My Feed](/../master/app/src/main/res/drawable/3.png "My Feed")

@@ -276,6 +276,8 @@ public class Choose extends AppCompatActivity implements AdapterView.OnItemSelec
             }
         });
         setTitle("Select Your Class ");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
 
     }
 
@@ -351,6 +353,8 @@ public class Choose extends AppCompatActivity implements AdapterView.OnItemSelec
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId()==android.R.id.home)
+            finish();
         return super.onOptionsItemSelected(item);
     }
 }

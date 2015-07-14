@@ -6,6 +6,7 @@ import android.preference.PreferenceManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -103,12 +104,14 @@ public class ChooseFeedItems extends AppCompatActivity {
 
         crosslinks.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {Crosslinks = b;
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                Crosslinks = b;
             }
         });
         collegespace.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {Collegespace = b;
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                Collegespace = b;
             }
         });
         bullet.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -199,6 +202,8 @@ public class ChooseFeedItems extends AppCompatActivity {
         }
         else
             Toast.makeText(this, "Cannot connect to Internet", Toast.LENGTH_SHORT).show();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
 
     }
 
@@ -246,5 +251,10 @@ public class ChooseFeedItems extends AppCompatActivity {
             bmImage.setText(text);
         }
     }
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId()==android.R.id.home)
+            finish();
+        return super.onOptionsItemSelected(item);
+    }
 }

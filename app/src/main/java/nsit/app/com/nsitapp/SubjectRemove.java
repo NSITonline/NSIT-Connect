@@ -75,6 +75,11 @@ public class SubjectRemove extends AppCompatActivity {
         lv.addHeaderView(new View(this));
         lv.addFooterView(new View(this));
         lv.setAdapter(a);
+
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+
     }
 
     @Override
@@ -86,10 +91,8 @@ public class SubjectRemove extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+        if(item.getItemId()==android.R.id.home)
+            finish();
         return super.onOptionsItemSelected(item);
     }
 }

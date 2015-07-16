@@ -41,10 +41,8 @@ It's very easy to contribute to NSIT App v2. Just follow these steps:
 3. Make your changes to that repo, and we will pull them when needed.
 
 That's all there is to be a contributor of NSIT App v2. We are looking forward to working together with lots of aspiring developers and maintain this project by collaborating as an open community.
-To read about how the apis are used in the project, read [our wiki page](https://github.com/Swati4star/NSIT-App-v2/wiki)
+
+To know about about how the APIs are used in the project and the other project related documentation, please refer to our [ wiki page](https://github.com/Swati4star/NSIT-App-v2/wiki).
 
 ##Project Maintainers
 This project is founded and actively mantained by [Sidharth Patro](https://github.com/sdpatro/) and [Swati Garg](https://github.com/Swati4star/). For any sort of queries feel free to either mail at sidharth.patro@outlook.com or swati4star@gmail.com. We will certainly reply to you as soon as we can.
-
-
-*This readme is written by Sidharth Patro*

@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">nsitapp</string>
-
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_decsription">Decsription</string>
@@ -15,10 +14,37 @@
     <string name="main_audi_desc">Every institution has an entertainment venue, and the main auditorium or "Main Audi" manages to serve quite the same with a fully air conditioned hall, cushioned seats (if you manage to get one), and nice surround sound speakers for the gala lovers.</string>
     <string name="mini_audi_desc">The baby version of "Main Audi". Smaller size, smaller events. Most suitable for quiz competitions, presentations and yada yada.</string>
     <string name="bh1_desc">The oldest one. One could easily point that out by observing how less it shares with the other hostels. Its got a good looking plaque in front of it, that\'s for sure.</string>
-    <string name="bh2_desc">Situated nearby to the McCain and facing right at it, </string>
+    <string name="bh2_desc">Situated in the best possible area in the entire college campus, guys living here have unrestricted access to our much loved canteens, McCain and Just Cafe </string>
+    <string name="bh3_desc">BH-3 can boast of a sprawling lush open garden of its own.Situated quite close to BH-2 </string>
+	<string name="bh4_desc">Located just in front of the North Gate, BH-4 is the residence of the first year boys of the college.  </string>
+    <string name="gh1_desc">Closer from the South Gate, GH-1 is resided by the girls of the first,second and third year and can be reached by taking a left turn from the Staff quarters and going beyond the Nursery</string>
+    <string name="gh2_desc">Closer from the North Gate, GH-2 is resided by the girls of the final year and can be reached by a left from the Staff Quarters located in front of the Shopping Complex</string>
+	<string name="main_zayca">The biggest canteen of the college is accessible from multiple locations-adjacent to the backside of the Library, a few steps ahead after taking a left from the Central Workshop, or a few steps ahead after taking a right from the Basketball Court.</string>
+	<string name="mini_zayca">Mini Zayca is the best place one could be in during the recess time.The shade of the trees try to  keep it cool making it a nice place to relax.It faces the nicely maintained (by Nsit standards, mind you) Nesci lawns, which are much loved by the students who like to laze around, they bask there in the sun during winters</string>
+	<string name="just_cafe">Located opposite Jeetos(McCain),Just Cafe is one of the canteens of NSIT.It can also be reached from the backside of the MPAE Block.</string>
+	<string name="McCain">Located in front of BH-2 and opposite Just Cafe, Jeetos(McCain) is one of the most popular canteens of NSIT</string>
+	<string name="radha">Located behind the Administrative Block,Radha Stationery provides services such as those of xerox/photocopying,provision of stationery(as suggested by the name itself),Mobile recharge,etc.</string>
+	<string name="babloo">Located in the NSIT shopping Complex, a stationery shop providing every stationery item, along with the services like photocopy, printing,etc..Crowded at its maximum when exam days are close.</string>
+	<string name="admin_atm"></string>
+	<string name="northgate_atm"></string>
+	<string name="southgate_atm"></string>
+    <string name="cad_lab"></string>
+    <string name="gc_lab"></string>
+    <string name="khushil"></string>
+    <string name="pavillion"></string>
+    <string name="tennis"></string>
+    <string name="basketball"></string>
+    <string name="volleyball"></string>
+    <string name="football"></string>
+    <string name="cricket"></string>
+    <string name="library"></string>
+    <string name="garage"></string>
+    <string name="nescii">Nescii Lawns : One of the best maintained location of NSIT. These lawns are much loved by the students who like to laze around, they bask there in the sun during winters</string>
+    <string name="shoppingcomplex"></string>
     <string name="title_activity_choose_feed_items">ChooseFeedItems</string>
     <string name="title_activity_subjects_show">SubjectsShow</string>
     <string name="title_activity_subject_remove">SubjectRemove</string>
+    <string name="title_activity_feedback">Feedback</string>
 
 </resources>
 

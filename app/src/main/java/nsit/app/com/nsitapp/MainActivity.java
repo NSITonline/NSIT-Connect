@@ -1,5 +1,6 @@
 package nsit.app.com.nsitapp;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.drawable.ColorDrawable;
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private ListView mDrawerList;
     ListView lv;
     private ActionBarDrawerToggle mDrawerToggle;
-    static final String[] sideitems = new String[] { "Home" , "My Feed","Video","Calendar" , "Professors","Locations","About Us" };	//items on navigation drawer
+    static final String[] sideitems = new String[] { "Home" , "My Feed","Video","Calendar" , "Professors","Locations","Feedback","About Us" };	//items on navigation drawer
     SwipeRefreshLayout swipeLayout;
     Integer[] imageId = {
             R.drawable.ic_action_home,
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.ic_action_calendar_month,
             R.drawable.ic_action_user,
             R.drawable.ic_action_location,
+            R.drawable.ic_feedback_black_24dp,
             R.drawable.ic_action_info};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -164,6 +166,11 @@ public class MainActivity extends AppCompatActivity {
                 getSupportActionBar().setTitle("Locations");
                 break;
             case 7 :
+                Intent i = new Intent(MainActivity.this,Feedback.class);
+                startActivity(i);
+                break;
+
+            case 8 :
                 Fragment f6 = new AboutUs();
                 ft.replace(R.id.content_frame, f6);
                 getSupportActionBar().setTitle("About Us");

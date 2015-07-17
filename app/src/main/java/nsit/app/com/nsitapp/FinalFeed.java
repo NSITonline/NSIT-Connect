@@ -41,7 +41,6 @@ import functions.Val;
  * Created by Swati garg on 21-06-2015.
  */
 
-
 public class FinalFeed extends Fragment {
     Boolean Collegespace=false,Crosslinks=false,Junoon=false,Bullet=false,Rotaract=false,Quiz=false,Ieee=false,Csi=false,Ashwa=false,Deb=false;
     boolean loadingMore=false;
@@ -83,13 +82,14 @@ public class FinalFeed extends Fragment {
         first=1;
         adapter = new MyFeedList(activity, list6, list, list2, list7, list1, list8,list9);
 
-        SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
-        Boolean set = s.getBoolean("set",false);
-        if(set==false) {
-            Intent i = new Intent(getActivity(),ChooseFeedItems.class);
-            startActivity(i);
+        if(activity!=null) {
+            SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
+            Boolean set = s.getBoolean("set", false);
+            if (set == false) {
+                Intent i = new Intent(getActivity(), ChooseFeedItems.class);
+                startActivity(i);
+            }
         }
-
         swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
         footerView = ((LayoutInflater)activity.getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.footer_layout, null, false);
 

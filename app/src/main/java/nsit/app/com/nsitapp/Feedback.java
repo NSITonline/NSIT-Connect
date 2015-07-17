@@ -36,11 +36,12 @@ public class Feedback extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.activity_feedback, container, false);
         WebView browser = (WebView) rootView.findViewById(R.id.webview);
-        if(Utils.isNetworkAvailable(activity))
-            browser.loadUrl("http://goo.gl/forms/DS8To6mufz");
-        else
-            Toast.makeText(activity, "Cannot connect to Internet", Toast.LENGTH_SHORT).show();
-
+        if(activity!=null) {
+            if (Utils.isNetworkAvailable(activity))
+                browser.loadUrl("http://goo.gl/forms/DS8To6mufz");
+            else
+                Toast.makeText(activity, "Cannot connect to Internet", Toast.LENGTH_SHORT).show();
+        }
         return rootView;
 
     }

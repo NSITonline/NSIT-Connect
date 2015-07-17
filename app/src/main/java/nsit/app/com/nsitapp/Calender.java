@@ -80,38 +80,38 @@ public class Calender extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_calender, container, false);
         lvTest = (TwoWayView) rootView.findViewById(R.id.lvItems);
 
-        SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
+        if(activity!=null) {
+            SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
 
-        Boolean b = s.getBoolean("classset",false);
-        if(!b) {
-            Intent i = new Intent(activity, Choose.class);
-            startActivity(i);
-        }
+            Boolean b = s.getBoolean("classset", false);
+            if (!b) {
+                Intent i = new Intent(activity, Choose.class);
+                startActivity(i);
+            }
 
 
+            Boolean a = s.getBoolean("timetablechanged", true);
+            timetable = s.getString("timetable", null);
 
-        Boolean a = s.getBoolean("timetablechanged",true);
-        timetable = s.getString("timetable",null);
-
-        adapter2 = new CustomList3(activity, days, p1,p2,p3,p4,p5,p6,p7,p8,p9);
-        if(a || timetable==null) {
-            if (Utils.isNetworkAvailable(activity))
-                new DownloadWebPageTask2().execute();
-            else {
-                adapter2 = new CustomList3(activity, days, p1, p2, p3, p4, p5, p6, p7, p8,p9);
+            adapter2 = new CustomList3(activity, days, p1, p2, p3, p4, p5, p6, p7, p8, p9);
+            if (a || timetable == null) {
+                if (Utils.isNetworkAvailable(activity))
+                    new DownloadWebPageTask2().execute();
+                else {
+                    adapter2 = new CustomList3(activity, days, p1, p2, p3, p4, p5, p6, p7, p8, p9);
+                    if (activity != null)
+                        lvTest.setAdapter(adapter2);
+                    lvTest.setItemMargin(10);
+                    Toast.makeText(activity, "Cannot connect to Internet", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                load();
+                adapter2 = new CustomList3(activity, days, p1, p2, p3, p4, p5, p6, p7, p8, p9);
                 if (activity != null)
                     lvTest.setAdapter(adapter2);
                 lvTest.setItemMargin(10);
-                Toast.makeText(activity, "Cannot connect to Internet", Toast.LENGTH_SHORT).show();
             }
-        }else{
-            load();
-            adapter2 = new CustomList3(activity, days, p1,p2,p3,p4,p5,p6,p7,p8,p9);
-            if (activity != null)
-                lvTest.setAdapter(adapter2);
-            lvTest.setItemMargin(10);
         }
-
         lvTest.setOnScrollListener(new TwoWayView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(TwoWayView view, int scrollState) {
@@ -278,17 +278,19 @@ public class Calender extends Fragment {
             timetable = text;
             load();
 
-            SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
+            if(activity!=null)
+            {
+                SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
             SharedPreferences.Editor e = s.edit();
             e.putBoolean("timetablechanged", false);
             e.putString("timetable", text);
-            e.commit();
+            e.commit();}
 
-            adapter2 = new CustomList3(activity, days, p1,p2,p3,p4,p5,p6,p7,p8,p9);
-            if (activity != null)
+            if (activity != null) {
+                adapter2 = new CustomList3(activity, days, p1, p2, p3, p4, p5, p6, p7, p8, p9);
                 lvTest.setAdapter(adapter2);
-            lvTest.setItemMargin(10);
-
+                lvTest.setItemMargin(10);
+            }
         }
     }
 
@@ -297,29 +299,30 @@ public class Calender extends Fragment {
         super.onResume();
 
 
-        SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
-        Boolean a = s.getBoolean("timetablechanged",true);
-        timetable = s.getString("timetable",null);
+        if(activity!=null) {
+            SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
+            Boolean a = s.getBoolean("timetablechanged", true);
+            timetable = s.getString("timetable", null);
 
-        adapter2 = new CustomList3(activity, days, p1,p2,p3,p4,p5,p6,p7,p8,p9);
-        if(a || timetable==null) {
-            if (Utils.isNetworkAvailable(activity))
-                new DownloadWebPageTask2().execute();
-            else {
-                adapter2 = new CustomList3(activity, days, p1, p2, p3, p4, p5, p6, p7, p8,p9);
+            adapter2 = new CustomList3(activity, days, p1, p2, p3, p4, p5, p6, p7, p8, p9);
+            if (a || timetable == null) {
+                if (Utils.isNetworkAvailable(activity))
+                    new DownloadWebPageTask2().execute();
+                else {
+                    adapter2 = new CustomList3(activity, days, p1, p2, p3, p4, p5, p6, p7, p8, p9);
+                    if (activity != null)
+                        lvTest.setAdapter(adapter2);
+                    lvTest.setItemMargin(10);
+                    Toast.makeText(activity, "Cannot connect to Internet", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                load();
+                adapter2 = new CustomList3(activity, days, p1, p2, p3, p4, p5, p6, p7, p8, p9);
                 if (activity != null)
                     lvTest.setAdapter(adapter2);
                 lvTest.setItemMargin(10);
-                Toast.makeText(activity, "Cannot connect to Internet", Toast.LENGTH_SHORT).show();
             }
-        }else{
-            load();
-            adapter2 = new CustomList3(activity, days, p1,p2,p3,p4,p5,p6,p7,p8,p9);
-            if (activity != null)
-                lvTest.setAdapter(adapter2);
-            lvTest.setItemMargin(10);
         }
-
     }
 
     @Override

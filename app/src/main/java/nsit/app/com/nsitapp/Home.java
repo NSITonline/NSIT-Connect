@@ -137,7 +137,7 @@ public class Home extends Fragment {
 
             Log.e("Yo", "Started");
             String URL;
-            URL = "https://graph.facebook.com/"+id+"/feed?limit=10&fields=picture,shares,message,object_id,link,created_time,comments.limit(0).summary(true),likes.limit(0).summary(true)&access_token=" + Val.common_access;
+            URL = "https://graph.facebook.com/"+id+"/feed?limit=20&fields=picture,from,shares,message,object_id,link,created_time,comments.limit(0).summary(true),likes.limit(0).summary(true)&access_token=" + Val.common_access;
             Log.e("this2",URL);
             HttpClient Client = new DefaultHttpClient();
             HttpGet httpget = new HttpGet(URL);
@@ -155,7 +155,7 @@ public class Home extends Fragment {
         protected void onPostExecute(String result) {
             pb.setVisibility(View.GONE);
             int j=0;
-            JSONObject ob;
+            JSONObject ob,ob2;
             JSONArray arr;
             try {
                 ob = new JSONObject(text2);
@@ -164,6 +164,14 @@ public class Home extends Fragment {
 
                 for(int i = 0; i < arr.length(); i++){
                     try {
+
+                        String s2 = arr.getJSONObject(i).getString("from");
+                        ob2 = new JSONObject(s2);
+                        s2 = ob2.getString("id");
+                        if(!s2.equals(id))
+                            continue;
+
+
                         if(arr.getJSONObject(i).has("message")) {
                             list.add(arr.getJSONObject(i).getString("message"));
                         }
@@ -259,7 +267,7 @@ public class Home extends Fragment {
         protected void onPostExecute(String result) {
             pb.setVisibility(View.GONE);
             int j=0;
-            JSONObject ob;
+            JSONObject ob,ob2;
             JSONArray arr;
             if(text!=null)
             try {
@@ -269,6 +277,13 @@ public class Home extends Fragment {
 
                 for(int i = 0; i < arr.length(); i++){
                     try {
+
+                        String s2 = arr.getJSONObject(i).getString("from");
+                        ob2 = new JSONObject(s2);
+                        s2 = ob2.getString("id");
+                        if(!s2.equals(id))
+                            continue;
+
                         if(arr.getJSONObject(i).has("message"))
                             list.add(arr.getJSONObject(i).getString("message"));
                         else

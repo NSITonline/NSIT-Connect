@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="nsit.app.com.nsitapp" >
-
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -13,7 +12,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
@@ -45,7 +44,6 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBgktirlOODUO9zWD-808D7zycmP7smp-Y" />
-
         <!-- "AIzaSyCmmTcw4LR_qzSaGcl6orGV4S6nfHDhlss" -->
         <activity
             android:name=".Choose"
@@ -64,10 +62,7 @@
             android:name=".SubjectRemove"
             android:label="@string/title_activity_subject_remove" >
         </activity>
-        <activity
-            android:name=".Feedback"
-            android:label="@string/title_activity_feedback" >
-        </activity>
+
     </application>
 
 </manifest>

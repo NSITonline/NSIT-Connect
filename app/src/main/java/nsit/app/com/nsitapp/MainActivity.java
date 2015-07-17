@@ -9,6 +9,7 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -136,42 +137,51 @@ public class MainActivity extends AppCompatActivity {
         switch (position+1) {
             case 1:
                 Fragment f = new Home();
+                getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 ft.replace(R.id.content_frame, f);
                 getSupportActionBar().setTitle("Home");
                 break;
             case 2:
                 Fragment f1 = new FinalFeed();
+                getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 ft.replace(R.id.content_frame, f1);
                 getSupportActionBar().setTitle("My Feed");
                 break;
             case 3:
                 Fragment f2 = new Video();
+                getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 ft.replace(R.id.content_frame, f2);
                 getSupportActionBar().setTitle("Video");
                 break;
             case  4:
                 Fragment f3 = new Calender();
+                getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 ft.replace(R.id.content_frame, f3);
                 getSupportActionBar().setTitle("Time Table");
                 break;
 
             case 5 :
                 Fragment f4 = new Professors();
+                getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 ft.replace(R.id.content_frame, f4);
                 getSupportActionBar().setTitle("Professors List");
                 break;
             case 6 :
                 Fragment f5 = new Locations();
+                getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 ft.replace(R.id.content_frame, f5);
                 getSupportActionBar().setTitle("Locations");
                 break;
             case 7 :
-                Intent i = new Intent(MainActivity.this,Feedback.class);
-                startActivity(i);
+                Fragment f7 = new Feedback();
+                getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                ft.replace(R.id.content_frame, f7);
+                getSupportActionBar().setTitle("Feedback");
                 break;
 
             case 8 :
                 Fragment f6 = new AboutUs();
+                getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 ft.replace(R.id.content_frame, f6);
                 getSupportActionBar().setTitle("About Us");
                 break;

@@ -1,43 +1,50 @@
 package nsit.app.com.nsitapp;
 
+import android.app.Activity;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.webkit.WebView;
+import android.widget.Toast;
+
+import functions.Utils;
 
 
-public class Feedback extends AppCompatActivity {
+public class Feedback extends Fragment {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_feedback);
-        WebView browser = (WebView) findViewById(R.id.webview);
-        browser.loadUrl("http://goo.gl/forms/DS8To6mufz");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
+        setHasOptionsMenu(true);
+    }
 
+    Activity activity;
+    @Override
+    public void onAttach(Activity activity)
+    {
+        super.onAttach(activity);
+        this.activity = activity;
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_feedback, menu);
-        return true;
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.activity_feedback, container, false);
+        WebView browser = (WebView) rootView.findViewById(R.id.webview);
+        if(Utils.isNetworkAvailable(activity))
+            browser.loadUrl("http://goo.gl/forms/DS8To6mufz");
+        else
+            Toast.makeText(activity, "Cannot connect to Internet", Toast.LENGTH_SHORT).show();
+
+        return rootView;
+
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if(item.getItemId()==android.R.id.home)
-            finish();
-        return super.onOptionsItemSelected(item);
-    }
 
 
 

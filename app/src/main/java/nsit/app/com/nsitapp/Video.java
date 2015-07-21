@@ -38,6 +38,8 @@ public class Video extends Fragment {
     String nextPageToken = "";
     String prevPageToken = "";
     String navigateTo = "next";
+    Button btnNextPage;
+    Button btnPrevPage;
     View Spinner;
 
     @Override
@@ -82,8 +84,8 @@ public class Video extends Fragment {
         }
 
 
-        Button btnNextPage = (Button)rootView.findViewById(R.id.NextPageButton);
-        Button btnPrevPage = (Button)rootView.findViewById(R.id.PrevPageButton);
+        btnNextPage = (Button)rootView.findViewById(R.id.NextPageButton);
+        btnPrevPage = (Button)rootView.findViewById(R.id.PrevPageButton);
 
         btnNextPage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,6 +94,8 @@ public class Video extends Fragment {
                     if(nextPageToken!="") {
                         Spinner.setVisibility(View.VISIBLE);
                         navigateTo = "next";
+                        ButtonAnimation btnAnimation = new ButtonAnimation();
+                        btnAnimation.animateButton(v, getActivity());
                         new Video_RetrieveFeed().execute();
                     }
                 } catch (Exception e) {
@@ -113,10 +117,11 @@ public class Video extends Fragment {
             @Override
             public void onClick(View v) {
                 try {
-                    if(prevPageToken!="")
-                    {
+                    if (prevPageToken != "") {
                         Spinner.setVisibility(View.VISIBLE);
                         navigateTo = "prev";
+                        ButtonAnimation btnAnimation = new ButtonAnimation();
+                        btnAnimation.animateButton(v, getActivity());
                         new Video_RetrieveFeed().execute();
                     }
                 } catch (Exception e) {
@@ -176,15 +181,19 @@ public class Video extends Fragment {
                 JSONArray YTFeedItems = YTFeed.getJSONArray("items");
                 if(YTFeed.has("nextPageToken")) {
                     nextPageToken = YTFeed.getString("nextPageToken");
+                    btnNextPage.setAlpha(1f);
                 }
                 else{
                     nextPageToken = "";
+                    btnNextPage.setAlpha(0.3f);
                 }
                 if(YTFeed.has("prevPageToken")){
                     prevPageToken = YTFeed.getString("prevPageToken");
+                    btnPrevPage.setAlpha(1f);
                 }
                 else{
                     prevPageToken = "";
+                    btnPrevPage.setAlpha(0.3f);
                 }
                 populateList(YTFeedItems);
                 Spinner.setVisibility(View.GONE);

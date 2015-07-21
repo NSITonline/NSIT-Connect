@@ -80,6 +80,8 @@ public class Decsription extends AppCompatActivity {
                                         Uri uri = Uri.parse(link);
                                         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                                         startActivity(intent);
+                                        ButtonAnimation btnAnimation = new ButtonAnimation();
+                                        btnAnimation.animateButton(view, getApplicationContext());
                                     }
                                 }
         );
@@ -106,7 +108,8 @@ public class Decsription extends AppCompatActivity {
                 i.putExtra("img",img);
                 i.putExtra("oid",obid);
                 startActivity(i);
-
+                ButtonAnimation btnAnimation = new ButtonAnimation();
+                btnAnimation.animateButton(view, getApplicationContext());
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

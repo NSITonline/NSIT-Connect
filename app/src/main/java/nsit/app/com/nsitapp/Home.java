@@ -27,6 +27,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -135,10 +136,8 @@ public class Home extends Fragment {
         @Override
         protected String doInBackground(String... urls) {
 
-            Log.e("Yo", "Started");
             String URL;
             URL = "https://graph.facebook.com/"+id+"/feed?limit=20&fields=picture,from,shares,message,object_id,link,created_time,comments.limit(0).summary(true),likes.limit(0).summary(true)&access_token=" + Val.common_access;
-            Log.e("this2",URL);
             HttpClient Client = new DefaultHttpClient();
             HttpGet httpget = new HttpGet(URL);
             ResponseHandler<String> responseHandler = new BasicResponseHandler();
@@ -163,7 +162,7 @@ public class Home extends Fragment {
 
 
                 for(int i = 0; i < arr.length(); i++){
-                    try {
+
 
                         String s2 = arr.getJSONObject(i).getString("from");
                         ob2 = new JSONObject(s2);
@@ -209,18 +208,14 @@ public class Home extends Fragment {
                             list8.add(arr.getJSONObject(i).getString("created_time"));
                         else
                             list8.add(null);
-                    } catch (Exception e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                        Log.e("Error","Errror at : " + i + " "+e.getMessage());
-                    }
+
                 }
 
                 ob = ob.getJSONObject("paging");
                 next = ob.getString("next");
                 first=0;
-            } catch (Exception e) {
-
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
             swipeLayout.setRefreshing(false);
             if (activity != null)
@@ -243,15 +238,10 @@ public class Home extends Fragment {
         @Override
         protected String doInBackground(String... urls) {
 
-            Log.e("Yo", "Started 2");
             String URL;
 
             URL = next;
-
-            Log.e("this3 ",URL+" ");
-
-
-            if(URL!=null){
+              if(URL!=null){
             HttpClient Client = new DefaultHttpClient();
             HttpGet httpget = new HttpGet(URL);
             ResponseHandler<String> responseHandler = new BasicResponseHandler();
@@ -276,7 +266,6 @@ public class Home extends Fragment {
 
 
                 for(int i = 0; i < arr.length(); i++){
-                    try {
 
                         String s2 = arr.getJSONObject(i).getString("from");
                         ob2 = new JSONObject(s2);
@@ -321,33 +310,23 @@ public class Home extends Fragment {
                         else
                             list8.add(null);
 
-
-                    } catch (Exception e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                        Log.e("Error","Errror at : " + i + " "+e.getMessage());
-                    }
                 }
 
                 ob = ob.getJSONObject("paging");
                 next = ob.getString("next");
 
 
-            } catch (Exception e) {
-
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
-
-
             swipeLayout.setRefreshing(false);
             loadingMore=false;
             lv.removeFooterView(footerView);
             adapter.notifyDataSetChanged();
             try{
-                Log.e("ListCount: ",String.valueOf(listCount));
                 lv.smoothScrollToPosition(listCount+1);
             }
             catch (Exception e){
-                Log.e("Scroll To: ",e.toString());
                 e.printStackTrace();
             }
         }

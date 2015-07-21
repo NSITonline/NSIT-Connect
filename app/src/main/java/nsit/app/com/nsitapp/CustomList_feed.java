@@ -100,6 +100,8 @@ public class CustomList_feed extends ArrayAdapter<String>{
 				i.putExtra("img", img.get(position));
 				i.putExtra("link", link.get(position));
 				i.putExtra("oid", obid.get(position));
+				ButtonAnimation btnAnimation = new ButtonAnimation();
+				btnAnimation.animateButton(view, c);
 				c.startActivity(i);
 			}
 		});
@@ -119,8 +121,9 @@ public class CustomList_feed extends ArrayAdapter<String>{
 					Intent i = new Intent(getContext(), ImageAct.class);
 					i.putExtra("img", img.get(position));
 					i.putExtra("oid", obid.get(position));
+                    ButtonAnimation btnAnimation = new ButtonAnimation();
+                    btnAnimation.animateButton(v, c);
 					c.startActivity(i);
-
 				}
 			});
 

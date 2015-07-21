@@ -7,13 +7,10 @@ package nsit.app.com.nsitapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -21,12 +18,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.ListView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.apache.http.client.HttpClient;
@@ -35,13 +26,11 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 import org.lucasr.twowayview.TwoWayView;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import functions.Utils;
 
@@ -85,7 +74,7 @@ public class Calender extends Fragment {
 
             Boolean b = s.getBoolean("classset", false);
             if (!b) {
-                Intent i = new Intent(activity, Choose.class);
+                Intent i = new Intent(activity, ChooseClass.class);
                 startActivity(i);
             }
 
@@ -229,7 +218,7 @@ public class Calender extends Fragment {
 
         }
         if(item.getItemId() == R.id.choose){
-            Intent i = new Intent(activity, Choose.class);
+            Intent i = new Intent(activity, ChooseClass.class);
             startActivity(i);
         }
         return super.onOptionsItemSelected(item);

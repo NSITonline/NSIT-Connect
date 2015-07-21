@@ -5,4 +5,5 @@
 .DS_Store
 /build
 /captures
-.idea
+.idea/ app/build.gradle
+/app/src/main/AndroidManifest.xml

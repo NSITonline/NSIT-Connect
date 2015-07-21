@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.EditText;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -85,7 +86,6 @@ public class ProfList extends Fragment {
             ar = new JSONArray(Val.pro);
             ob = ar.getJSONObject(dept);
             ar = ob.getJSONArray("ContentArray");
-            Log.e("ar",ar.length() +" " );
             for (int j = 0; j < ar.length(); j++) {
 
                 name[k] = ar.getJSONObject(j).getString("Name") ;
@@ -96,8 +96,8 @@ public class ProfList extends Fragment {
                 k++;
             }
 
-        } catch (Exception e) {
-            Log.e("eroor", e.getMessage()+" ");
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
         for (int j = 0; j <k; j++) {
             ProfListRowItem item = new ProfListRowItem(name[j], ids[j], contact[j]);

@@ -81,7 +81,7 @@ public class ProfListCustomListViewAdapter extends ArrayAdapter<ProfListRowItem>
                 intent.putExtra(Intent.EXTRA_EMAIL, new String[] { rowItem.getEmail() });
                 intent.putExtra(Intent.EXTRA_SUBJECT, " ");
                 intent.putExtra(Intent.EXTRA_TEXT, rowItem.getName());
-                getContext().startActivity(Intent.createChooser(intent, "Choose..."));
+                getContext().startActivity(Intent.createChooser(intent, "ChooseClass..."));
             }
         });
 

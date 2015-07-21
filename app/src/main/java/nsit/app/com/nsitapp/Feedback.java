@@ -17,7 +17,6 @@ import functions.Utils;
 
 
 public class Feedback extends Fragment {
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,8 +44,4 @@ public class Feedback extends Fragment {
         return rootView;
 
     }
-
-
-
-
 }

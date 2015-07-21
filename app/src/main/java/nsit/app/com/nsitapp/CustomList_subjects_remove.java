@@ -88,6 +88,8 @@ public class CustomList_subjects_remove extends ArrayAdapter<String>{
 					}
 				});
 				builder.setNegativeButton("No", null);
+				ButtonAnimation btnAnimation = new ButtonAnimation();
+				btnAnimation.animateButton(view, getContext());
 				builder.show();
 			}
 		});

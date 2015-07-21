@@ -21,6 +21,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -236,19 +237,23 @@ public class ChooseFeedItems extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
 
-            int j = 0;
-            JSONObject ob;
-            JSONArray arr;
             try {
-                ob = new JSONObject(text);
-                if(ob.has("likes"))
-                    text = ob.getString("likes");
-                else
-                    text="1000";
-            } catch (Exception e) {
-                Log.e("Error", e.getMessage() + " ");
+                int j = 0;
+                JSONObject ob;
+                JSONArray arr;
+                try {
+                    ob = new JSONObject(text);
+                    if (ob.has("likes"))
+                        text = ob.getString("likes");
+                    else
+                        text = "1000";
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                bmImage.setText(text);
+            }catch(Exception e){
+
             }
-            bmImage.setText(text);
         }
     }
     @Override

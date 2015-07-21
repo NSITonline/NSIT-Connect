@@ -20,6 +20,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
@@ -144,7 +145,6 @@ public class ImageAct extends AppCompatActivity {
         @Override
         protected String doInBackground(String... urls) {
 
-            Log.e("Yo", "Started");
             String URL = "https://graph.facebook.com/"+obid+"?fields=images&access_token="+ Val.common_access;
             HttpClient Client = new DefaultHttpClient();
             HttpGet httpget = new HttpGet(URL);
@@ -161,7 +161,6 @@ public class ImageAct extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
-            Log.e("YO", "Done" + obid);
             JSONObject ob;
             JSONArray arr;
             if(text==null){
@@ -178,12 +177,10 @@ public class ImageAct extends AppCompatActivity {
                         if (Utils.isNetworkAvailable(ImageAct.this))
                             new DownloadImageTask(iv).execute(imglink);
                         else iv.setVisibility(View.GONE);
-                } catch (Exception e) {
-                    Log.e("yo", " "+e.getMessage());
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
             }
-
-            Log.e("yrs","Image Link is : " + imglink);
 
         }
     }

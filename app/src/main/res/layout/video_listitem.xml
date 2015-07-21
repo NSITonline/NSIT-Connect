@@ -39,7 +39,7 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="40dp"
-    android:background="#ff2ed2b1"
+    android:background="@color/colorAccent"
         android:clickable="true"
     android:id="@+id/PlayContainer"
         android:layout_gravity="top"

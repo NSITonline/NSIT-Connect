@@ -15,8 +15,7 @@ android:layout_gravity="center_horizontal"
 android:background="@drawable/shadow_1"
 android:gravity="center_horizontal"
     android:orientation="vertical"
-            android:padding="10dp"
-    android:showDividers="none">
+            android:showDividers="none">
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -54,24 +53,35 @@ android:gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="17sp"
+            android:textSize="15sp"
             android:layout_gravity="left"
-            android:text="Sidharth Patro"
-            android:layout_marginLeft="10dp" />
+            android:text="Sidharth Patro" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
-                    android:textSize="17sp"
+                    android:textSize="15sp"
                     android:layout_gravity="left"
                     android:text="IT 2012-2016"
-                    android:layout_marginLeft="10dp" />
+                    android:layout_marginTop="5dp" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:id="@+id/linked_sidharth"
                     android:layout_gravity="bottom"
-                    android:src="@drawable/linkedin"/>
+                    android:src="@drawable/linkedin"
+                    android:layout_marginTop="5dp" />
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:id="@+id/facebook_sidharth"
+                    android:layout_gravity="bottom"
+                    android:src="@drawable/facebook"
+                    android:layout_marginTop="5dp" />
+                </LinearLayout>
 
             </LinearLayout>
         </LinearLayout>
@@ -88,34 +98,33 @@ android:gravity="center_horizontal"
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
                 android:src="@drawable/ic_settings_black_24dp"
-                android:layout_marginRight="5dp"/>
+                android:layout_marginRight="5dp"
+                android:alpha="0.6"
+                android:layout_gravity="center_vertical" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="17sp"
-                android:layout_gravity="left"
-                android:text="Developer"/>
+                android:textSize="15sp"
+                android:text="Developer"
+                android:layout_marginRight="10dp" />
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                />
             <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_gravity="end|right"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
                 android:src="@drawable/ic_brush_black_24dp"
-                android:layout_marginRight="5dp"/>
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="30dp"
+                android:alpha="0.6"
+                android:layout_gravity="center_vertical" />
             <TextView
                 android:layout_marginRight="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="17sp"
-                android:layout_gravity="end|right"
+                android:textSize="15sp"
+                android:layout_gravity="end"
                 android:text="UI Designer"/>
 
         </LinearLayout>
@@ -131,7 +140,6 @@ android:gravity="center_horizontal"
 </LinearLayout>
 
         <LinearLayout
-            android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -176,26 +184,37 @@ android:gravity="center_horizontal"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceLarge"
-                                android:textSize="17sp"
+                                android:textSize="15sp"
                                 android:layout_gravity="left"
-                                android:text="Swati Garg"
-                                android:layout_marginLeft="10dp" />
+                                android:text="Swati Garg" />
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="3dp"
-                                android:textSize="17sp"
+                                android:textSize="15sp"
                                 android:layout_gravity="left"
                                 android:text="IT 2013-2017"
-                                android:layout_marginLeft="10dp" />
+                                android:layout_marginTop="5dp" />
 
-
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
                             <ImageView
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
                                 android:id="@+id/linked_swati"
                                 android:layout_gravity="bottom"
-                                android:src="@drawable/linkedin"/>
+                                android:src="@drawable/linkedin"
+                                android:layout_marginTop="5dp" />
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_marginLeft="10dp"
+                                android:id="@+id/facebook_swati"
+                                android:layout_gravity="bottom"
+                                android:src="@drawable/facebook"
+                                android:layout_marginTop="5dp" />
+                        </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
                     <LinearLayout
@@ -211,33 +230,34 @@ android:gravity="center_horizontal"
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
                             android:src="@drawable/ic_settings_black_24dp"
-                            android:layout_marginRight="5dp"/>
+                            android:layout_marginRight="5dp"
+                            android:alpha="0.6"
+                            android:layout_gravity="center_vertical" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="17sp"
-                            android:layout_gravity="left"
-                            android:text="Developer"/>
+                            android:textSize="15sp"
+                            android:text="Developer"
+                            android:layout_marginRight="10dp" />
 
 
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
-                            />
                         <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
                             android:src="@drawable/ic_build_black_24dp"
-                            android:layout_marginRight="5dp"/>
+                            android:layout_marginRight="5dp"
+                            android:layout_marginLeft="30dp"
+                            android:baselineAlignBottom="false"
+                            android:alpha="0.6"
+                            android:layout_gravity="center_vertical" />
                         <TextView
                             android:layout_marginRight="20dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="17sp"
+                            android:textSize="15sp"
                             android:layout_gravity="left"
                             android:text="Tester"/>
 
@@ -254,7 +274,112 @@ android:gravity="center_horizontal"
         </LinearLayout>
 
         <LinearLayout
-            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/shadow_1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:showDividers="none">
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                android:background="#ffffffff"
+                android:paddingLeft="10dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:paddingRight="10dp"
+                >
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <FrameLayout
+                            android:layout_width="120dp"
+                            android:layout_height="120dp">
+                            <ImageView
+                                android:layout_width="120dp"
+                                android:layout_height="120dp"
+                                android:src="@drawable/chetan"
+                                />
+                        </FrameLayout>
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:padding="10dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:textSize="15sp"
+                                android:layout_gravity="left"
+                                android:text="Chetan Shukla" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="15sp"
+                                android:layout_gravity="left"
+                                android:text="COE 2013-2017"
+                                android:layout_marginTop="5dp" />
+
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:id="@+id/facebook_chetan"
+                                android:layout_gravity="bottom"
+                                android:src="@drawable/facebook"
+                                android:layout_marginTop="5dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_marginTop="15dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/colorPrimary"
+                        android:layout_marginRight="5dp"/>
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_marginTop="10dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:src="@drawable/ic_settings_black_24dp"
+                            android:layout_marginRight="5dp"
+                            android:alpha="0.6"
+                            android:layout_gravity="center_vertical" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="15sp"
+                            android:text="Content Writer"
+                            android:layout_marginRight="10dp" />
+
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </FrameLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@color/colorPrimary"/>
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -268,12 +393,7 @@ android:gravity="center_horizontal"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_gravity="center_horizontal"
-                android:background="@color/colorPrimary"
-                android:paddingLeft="5dp"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:paddingRight="10dp"
-                >
+                android:background="@color/colorPrimary">
                 <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
@@ -283,11 +403,14 @@ android:gravity="center_horizontal"
                         android:layout_gravity="center_vertical"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
-                        android:orientation="horizontal">
-                        <FrameLayout
-                            android:layout_width="100dp"
+                        android:orientation="vertical">
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:background="#ffffff"
-                            android:layout_height="100dp">
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:weightSum="1"
+                            android:gravity="center_horizontal">
                             <ImageView
                                 android:layout_width="100dp"
                                 android:layout_height="100dp"
@@ -298,11 +421,22 @@ android:gravity="center_horizontal"
                                 android:layout_height="30dp"
                                 android:src="@drawable/github"
                                 android:id="@+id/git"
-                                />
-                        </FrameLayout>
+                                android:layout_gravity="center_vertical" />
+
+                            <TextView
+                                android:layout_width="96dp"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:text="Go to NSIT App v2 repository"
+                                android:id="@+id/GoToRepo"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="10dp"
+                                android:padding="10dp"
+                                android:layout_weight="0.57"
+                                android:background="#ffededed" />
+                        </LinearLayout>
                         <LinearLayout
                             android:layout_width="fill_parent"
-                            android:padding="10dp"
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
                             <TextView
@@ -313,7 +447,7 @@ android:gravity="center_horizontal"
                                 android:textColor="#ffffff"
                                 android:layout_gravity="left"
                                 android:padding="10dp"
-                                android:text="Dear user, let's work on this app together"
+                                android:text="Dear user, let&apos;s work on this app together."
                                 android:layout_marginLeft="10dp" />
 
                             <LinearLayout
@@ -321,16 +455,20 @@ android:gravity="center_horizontal"
                                 android:background="#ffffff"
                                 android:padding="10dp"
                                 android:layout_marginTop="10dp"
-                                android:layout_marginLeft="20dp"
-                                android:layout_height="wrap_content">
+                                android:layout_height="wrap_content"
+                                android:weightSum="1"
+                                android:layout_gravity="center_horizontal">
                                 <TextView
-                                    android:textSize="14sp"
+                                    android:textSize="12sp"
                                     android:textStyle="bold"
-                                    android:textAllCaps="true"
+                                    android:textAllCaps="false"
                                     android:id="@+id/cont"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="I WANT TO CONTRIBUTE"/>
+                                    android:text="I WANT TO CONTRIBUTE"
+                                    android:textAlignment="center"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_weight="2.24" />
 
                             </LinearLayout>
                         </LinearLayout>
@@ -338,10 +476,6 @@ android:gravity="center_horizontal"
                 </LinearLayout>
 
             </FrameLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="5dp"
-                android:background="@color/colorPrimary"></LinearLayout>
         </LinearLayout>
 
 

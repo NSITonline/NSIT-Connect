@@ -16,7 +16,6 @@ public class MapViewFragment extends FragmentActivity implements OnMapReadyCallb
     com.google.android.gms.maps.MapFragment mapFragment;
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        Log.e("Map onCreate", "Called");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.map_view);
         this.mapFragment = (com.google.android.gms.maps.MapFragment) getFragmentManager()
@@ -27,13 +26,11 @@ public class MapViewFragment extends FragmentActivity implements OnMapReadyCallb
         map.addMarker(new MarkerOptions()
                 .position(new LatLng(37.7750, 122.4183))
                 .title("San Francisco"));
-        Log.e("Marker", "Added");
     }
     @Override
     public void onMapReady(GoogleMap googleMap) {
         googleMap.addMarker(new MarkerOptions()
                 .position(new LatLng(10, 10))
                 .title("Hello world"));
-        Log.e("Marker", "Added");
     }
 }

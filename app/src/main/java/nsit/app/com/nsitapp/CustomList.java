@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
+import android.view.animation.AnimationUtils;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.ArrayAdapter;
@@ -23,6 +24,7 @@ import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Button;
+import nsit.app.com.nsitapp.ButtonAnimation;
 
 
 import java.util.List;
@@ -122,6 +124,8 @@ public class CustomList extends ArrayAdapter<String>{
 				i.putExtra("img", img.get(position));
 				i.putExtra("link", link.get(position));
 				i.putExtra("oid", obid.get(position));
+                ButtonAnimation btnAnimation = new ButtonAnimation();
+                btnAnimation.animateButton(view, c);
 				c.startActivity(i);
 			}
 		});
@@ -130,16 +134,17 @@ public class CustomList extends ArrayAdapter<String>{
 			imageLoader.DisplayImage(img.get(position), holder.imag);
 			holder.b.setOnClickListener(new OnClickListener() {
 
-				@Override
-				public void onClick(View v) {
-					Context c = getContext();
-					Intent i = new Intent(getContext(), ImageAct.class);
-					i.putExtra("img", img.get(position));
-					i.putExtra("oid", obid.get(position));
-					c.startActivity(i);
-
-				}
-			});
+                @Override
+                public void onClick(View v) {
+                    Context c = getContext();
+                    Intent i = new Intent(getContext(), ImageAct.class);
+                    i.putExtra("img", img.get(position));
+                    i.putExtra("oid", obid.get(position));
+                    ButtonAnimation btnAnimation = new ButtonAnimation();
+                    btnAnimation.animateButton(v, c);
+                    c.startActivity(i);
+                }
+            });
 
 		}else{
 			holder.f.setVisibility(View.GONE);

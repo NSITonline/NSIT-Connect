@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="nsit.app.com.nsitapp.Choose"
+    tools:context="nsit.app.com.nsitapp.ChooseClass"
     android:paddingLeft="20dp"
     android:paddingRight="20dp">
 

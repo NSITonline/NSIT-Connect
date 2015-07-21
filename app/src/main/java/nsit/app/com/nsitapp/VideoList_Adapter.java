@@ -28,7 +28,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.android.youtube.player.YouTubeStandalonePlayer;
-import com.h6ah4i.android.materialshadowninepatch.MaterialShadowContainerView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -153,6 +152,8 @@ public class VideoList_Adapter extends BaseAdapter {
                     Log.e("activity", activity.toString());
                     Log.e("finalVideoId", finalVideoId);
                     Intent intent = YouTubeStandalonePlayer.createVideoIntent(activity, "AIzaSyD-hWnEb2F-94y6XyaG5WlKXZKBpKr9PaE", finalVideoId);
+                    ButtonAnimation btnAnimation = new ButtonAnimation();
+                    btnAnimation.animateButton(v, activity);
                     activity.startActivity(intent);
                 } catch (ActivityNotFoundException e) {
                     AlertDialog alertDialog = new AlertDialog.Builder(activity).create();

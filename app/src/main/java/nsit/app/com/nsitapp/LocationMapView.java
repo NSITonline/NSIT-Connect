@@ -149,15 +149,12 @@ public class LocationMapView extends Activity {
             TextView txtHeader = (TextView)findViewById(R.id.LocationTitle);
             this.DestinationLat = LocationLat;
             this.DestinationLong = LocationLong;
-            Log.e("TextHeader",String.valueOf(txtHeader)+" ");
             LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
             try {
                 Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
                 this.OriginLong = String.valueOf(location.getLongitude());
                 this.OriginLat = String.valueOf(location.getLatitude());
-                Log.e("locations",this.OriginLat + " " + this.OriginLong);
             }catch(Exception e){
-                Log.e("Maps Error", e.toString()+" ");
             }
 
             txtHeader.setText(LocationName);
@@ -170,11 +167,9 @@ public class LocationMapView extends Activity {
         GPSTracker tracker = new GPSTracker(this);
         if (tracker.canGetLocation() == false) {
             tracker.showSettingsAlert();
-            Log.e("GPS Tracker","Failed to initialize.");
         } else {
             OriginLat = Double.toString(tracker.getLatitude());
             OriginLong = Double.toString(tracker.getLongitude());
-            Log.e("GPS Tracker", "Got coordinates, fetching data.");
             getDirections.execute();
         }
     }
@@ -199,21 +194,18 @@ public class LocationMapView extends Activity {
 
         protected String doInBackground(String... Coordinates) {
             try {
-                Log.e("Locations Directions","Starting to fetch stuff");
                 HttpClient client = new DefaultHttpClient();
 
 
                 HttpUriRequest request = new HttpGet("https://maps.googleapis.com/maps/api/directions/json?origin="+OriginLat+","+OriginLong+"&destination="+DestinationLat+","+DestinationLong+"&key=AIzaSyBgktirlOODUO9zWD-808D7zycmP7smp-Y&mode=driving");
                 ResponseHandler<String> responseHandler = new BasicResponseHandler();
                 String DriveResult = client.execute(request, responseHandler);
-                Log.e("URL","https://maps.googleapis.com/maps/api/directions/json?origin="+OriginLat+","+OriginLong+"&destination="+DestinationLat+","+DestinationLong+"&key=AIzaSyBgktirlOODUO9zWD-808D7zycmP7smp-Y&mode=driving");
                 request = new HttpGet("https://maps.googleapis.com/maps/api/directions/json?origin="+OriginLat+","+OriginLong+"&destination="+DestinationLat+","+DestinationLong+"&key=AIzaSyBgktirlOODUO9zWD-808D7zycmP7smp-Y&mode=walking");
                 String WalkResult = client.execute(request, responseHandler);
 
                 return DriveResult+"/NSITAPP/"+WalkResult;
             } catch (Exception e) {
                 this.exception = e;
-                Log.e("Locations Directions", e.toString()+" ");
                 e.printStackTrace();
                 return null;
             }
@@ -225,8 +217,6 @@ public class LocationMapView extends Activity {
                 String[] ResultArray = Result.split("/NSITAPP/");
                 JSONObject DriveObject = new JSONObject(ResultArray[0]);
                 JSONObject WalkObject = new JSONObject(ResultArray[1]);
-                Log.e("DriveObject",DriveObject.toString() + " ");
-                Log.e("WalkObject",DriveObject.toString()+" ");
                 String Distance = DriveObject.getJSONArray("routes").getJSONObject(0).getJSONArray("legs").getJSONObject(0).getJSONObject("distance").getString("text");
                 String TimeDrive = DriveObject.getJSONArray("routes").getJSONObject(0).getJSONArray("legs").getJSONObject(0).getJSONObject("duration").getString("text");
                 String TimeWalk = WalkObject.getJSONArray("routes").getJSONObject(0).getJSONArray("legs").getJSONObject(0).getJSONObject("duration").getString("text");

@@ -1,5 +1,7 @@
 package nsit.app.com.nsitapp;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -15,7 +17,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -71,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
                     R.string.app_name  /* "close drawer" description */
             );
         }catch(Exception e){
-            Log.e("error", e.getMessage()+" ");
         }
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -95,12 +95,23 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if(getFragmentManager().getBackStackEntryCount() == 0) {
+        new AlertDialog.Builder(MainActivity.this)
+                .setMessage("Are you sure you want to exit?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        finish();
+                    }
+                })
+                .setNegativeButton("No", null)
+                .show();
+       /* if(getFragmentManager().getBackStackEntryCount() == 0) {
+
             super.onBackPressed();
         }
         else {
             getFragmentManager().popBackStack();
-        }
+        }*/
     }
 
     @Override
@@ -111,7 +122,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-         int id = item.getItemId();
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
@@ -121,7 +131,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        // Sync the toggle state after onRestoreInstanceState has occurred.
         mDrawerToggle.syncState();
     }
 
@@ -133,7 +142,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void changeItem(int position){
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        // Locate Position
         switch (position+1) {
             case 1:
                 Fragment f = new Home();
@@ -159,7 +167,6 @@ public class MainActivity extends AppCompatActivity {
                 ft.replace(R.id.content_frame, f3);
                 getSupportActionBar().setTitle("Time Table");
                 break;
-
             case 5 :
                 Fragment f4 = new Professors();
                 getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
@@ -178,7 +185,6 @@ public class MainActivity extends AppCompatActivity {
                 ft.replace(R.id.content_frame, f7);
                 getSupportActionBar().setTitle("Feedback");
                 break;
-
             case 8 :
                 Fragment f6 = new AboutUs();
                 getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);

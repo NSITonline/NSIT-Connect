@@ -57,6 +57,8 @@ public class Locations extends Fragment {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v,
                                         int groupPosition, int childPosition, long id) {
+                ButtonAnimation btnAnimation = new ButtonAnimation();
+                btnAnimation.animateButton(v,getActivity());
                 String groupType =  LocationsGroupsList.get(groupPosition).GroupType;
                 Integer IconId = null;
                 switch(groupType){
@@ -80,7 +82,7 @@ public class Locations extends Fragment {
                         break;
                 }
                 v.setTag(groupPosition);
-                ShowOnMap(v,LocationsGroupsList.get(groupPosition).Locations.get(childPosition),IconId);
+                ShowOnMap(v, LocationsGroupsList.get(groupPosition).Locations.get(childPosition), IconId);
                 return false;
             }
         });

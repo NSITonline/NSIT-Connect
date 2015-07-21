@@ -30,52 +30,43 @@ import functions.TableEntry;
 
 public class CustomList_subjects extends ArrayAdapter<String>{
 	private final Activity context;
-	TextView txtTitle2,txtTitle3;
 	private final ArrayList<String> code,title;
+	TextView cod,tit,att,msg;
+	LinearLayout add,rem;
+
 	public CustomList_subjects(Activity context, ArrayList<String> a, ArrayList<String> b) {
 		super(context, R.layout.subject_list_item, a);
 		this.context = context;
 		code=a;
 		title=b;
 	}
-	private class ViewHolder {
-		TextView code,att,msg,tit;
-		LinearLayout add,rem;
-
-	}
+	
 
 	@Override
-	public View getView(final int position, View view, ViewGroup parent) {
-		ViewHolder holder = null;
-		LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-		if (view == null) {
-			view = mInflater.inflate(R.layout.subject_list_item, null);
-			holder = new ViewHolder();
-			holder.code = (TextView) view.findViewById(R.id.code);
-			holder.tit = (TextView) view.findViewById(R.id.title);
-			holder.att = (TextView) view.findViewById(R.id.attendance);
-			holder.msg = (TextView) view.findViewById(R.id.message);
-			holder.add = (LinearLayout) view.findViewById(R.id.add);
-			holder.rem = (LinearLayout) view.findViewById(R.id.rem);
+	public View getView(final int position, View view2, ViewGroup parent) {
+		LayoutInflater inflater = context.getLayoutInflater();
+		View view= inflater.inflate(R.layout.subject_list_item, null, true);
+			 cod = (TextView) view.findViewById(R.id.code);
+			 tit = (TextView) view.findViewById(R.id.title);
+			 att = (TextView) view.findViewById(R.id.attendance);
+			 msg = (TextView) view.findViewById(R.id.message);
+			 add = (LinearLayout) view.findViewById(R.id.add);
+			 rem = (LinearLayout) view.findViewById(R.id.rem);
 
-			view.setTag(holder);
-		} else {
-			holder = (ViewHolder) view.getTag();
-		}
 
-		holder.code.setText(code.get(position));
-		holder.tit.setText(title.get(position));
-		txtTitle2 = holder.att;
-		txtTitle3 = holder.msg;
+		 cod.setText(code.get(position));
+		 tit.setText(title.get(position));
 
 		refresh(position);
 
-		holder.rem.setOnClickListener(new View.OnClickListener() {
+		 rem.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
 
 				Intent i = new Intent(getContext(), SubjectRemove.class);
 				i.putExtra("code", code.get(position));
+				ButtonAnimation btnAnimation = new ButtonAnimation();
+				btnAnimation.animateButton(view, getContext());
 				getContext().startActivity(i);
 
 			}
@@ -83,7 +74,7 @@ public class CustomList_subjects extends ArrayAdapter<String>{
 
 
 
-		holder.add.setOnClickListener(new View.OnClickListener() {
+		 add.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
 				final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
@@ -92,61 +83,63 @@ public class CustomList_subjects extends ArrayAdapter<String>{
 				builder.setView(picker);
 				builder.setTitle(title.get(position));
 				builder.setPositiveButton("Attended", new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int id) {
+                    public void onClick(DialogInterface dialog, int id) {
 
-						DBhelp mDbHelper = new DBhelp(getContext());
-						SQLiteDatabase db = mDbHelper.getWritableDatabase();
+                        DBhelp mDbHelper = new DBhelp(getContext());
+                        SQLiteDatabase db = mDbHelper.getWritableDatabase();
 
-						// Create a new map of values, where column names are the keys
-						ContentValues values = new ContentValues();
-						Calendar cal = Calendar.getInstance();
-						cal.set(Calendar.DAY_OF_MONTH, picker.getDayOfMonth());
-						cal.set(Calendar.MONTH, picker.getMonth());
-						cal.set(Calendar.YEAR, picker.getYear());
+                        // Create a new map of values, where column names are the keys
+                        ContentValues values = new ContentValues();
+                        Calendar cal = Calendar.getInstance();
+                        cal.set(Calendar.DAY_OF_MONTH, picker.getDayOfMonth());
+                        cal.set(Calendar.MONTH, picker.getMonth());
+                        cal.set(Calendar.YEAR, picker.getYear());
 
-						Log.e("date selected", "Month" + picker.getMonth() + "\nDay " + picker.getDayOfMonth());
-						values.put(TableEntry.COLUMN_NAME_SUBJECT, code.get(position));
-						values.put(TableEntry.COLUMN_NAME_DATE, cal.getTimeInMillis());
-						values.put(TableEntry.COLUMN_NAME_STATUS, "Attended");
+                        Log.e("date selected", "Month" + picker.getMonth() + "\nDay " + picker.getDayOfMonth());
+                        values.put(TableEntry.COLUMN_NAME_SUBJECT, code.get(position));
+                        values.put(TableEntry.COLUMN_NAME_DATE, cal.getTimeInMillis());
+                        values.put(TableEntry.COLUMN_NAME_STATUS, "Attended");
 
-						db.insert(
-								TableEntry.TABLE_NAME,
-								TableEntry.COLUMN_NAME_STATUS,
-								values);
+                        db.insert(
+                                TableEntry.TABLE_NAME,
+                                TableEntry.COLUMN_NAME_STATUS,
+                                values);
 
-						refresh(position);
-						notifyDataSetChanged();
-					}
-				});
+                        refresh(position);
+                        notifyDataSetChanged();
+                    }
+                });
 				builder.setNegativeButton("Missed", new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int id) {
+                    public void onClick(DialogInterface dialog, int id) {
 
-						DBhelp mDbHelper = new DBhelp(getContext());
-						SQLiteDatabase db = mDbHelper.getWritableDatabase();
+                        DBhelp mDbHelper = new DBhelp(getContext());
+                        SQLiteDatabase db = mDbHelper.getWritableDatabase();
 
-						// Create a new map of values, where column names are the keys
-						Log.e("date selected", picker.getMonth() + " ");
-						ContentValues values = new ContentValues();
-						Calendar cal = Calendar.getInstance();
-						cal.set(Calendar.DAY_OF_MONTH, picker.getDayOfMonth());
-						cal.set(Calendar.MONTH, picker.getMonth());
-						cal.set(Calendar.YEAR, picker.getYear());
-						values.put(TableEntry.COLUMN_NAME_SUBJECT, code.get(position));
-						values.put(TableEntry.COLUMN_NAME_DATE, cal.getTimeInMillis());
-						values.put(TableEntry.COLUMN_NAME_STATUS, "Missed");
+                        // Create a new map of values, where column names are the keys
+                        Log.e("date selected", picker.getMonth() + " ");
+                        ContentValues values = new ContentValues();
+                        Calendar cal = Calendar.getInstance();
+                        cal.set(Calendar.DAY_OF_MONTH, picker.getDayOfMonth());
+                        cal.set(Calendar.MONTH, picker.getMonth());
+                        cal.set(Calendar.YEAR, picker.getYear());
+                        values.put(TableEntry.COLUMN_NAME_SUBJECT, code.get(position));
+                        values.put(TableEntry.COLUMN_NAME_DATE, cal.getTimeInMillis());
+                        values.put(TableEntry.COLUMN_NAME_STATUS, "Missed");
 
-						// Insert the new row, returning the primary key value of the new row
-						db.insert(
-								TableEntry.TABLE_NAME,
-								TableEntry.COLUMN_NAME_STATUS,
-								values);
+                        // Insert the new row, returning the primary key value of the new row
+                        db.insert(
+                                TableEntry.TABLE_NAME,
+                                TableEntry.COLUMN_NAME_STATUS,
+                                values);
 
-						Log.e("Calling", " " + position);
-						refresh(position);
-						notifyDataSetChanged();
+                        Log.e("Calling", " " + position);
+                        refresh(position);
+                        notifyDataSetChanged();
 
-					}
-				});
+                    }
+                });
+                ButtonAnimation btnAnimation = new ButtonAnimation();
+                btnAnimation.animateButton(view, getContext());
 				builder.show();
 			}
 		});
@@ -210,7 +203,7 @@ public class CustomList_subjects extends ArrayAdapter<String>{
 
 
 		if(total==0)
-			txtTitle2.setText("?");
+			att.setText("?");
 		else {
 			float x = attended/total*100;
 			float attend = attended,missed = total-attended;
@@ -218,23 +211,21 @@ public class CustomList_subjects extends ArrayAdapter<String>{
 
 				float m =(3*missed-attend);
 				int  n = (int)Math.floor(m);
-				txtTitle3.setTextColor(Color.parseColor("#ff3300"));
-				txtTitle3.setText("Your attendance is short. You need to attend the next " + n + " classes to be safe");
+				msg.setTextColor(Color.parseColor("#ff3300"));
+				msg.setText("Your attendance is short. You need to attend the next " + n + " classes to be safe");
 			}
 			else {
 				float m = (attend-3*missed)/3;
 				int n = (int)Math.floor(m);
-				txtTitle3.setTextColor(Color.parseColor("#33cc00"));
+				msg.setTextColor(Color.parseColor("#33cc00"));
 				if(n!=0)
-					txtTitle3.setText("You are safe. You can leave "+n+" classes and still be safe.");
+					msg.setText("You are safe. You can leave "+n+" classes and still be safe.");
 				else
-					txtTitle3.setText("You are safe, but you should not leave any class.");
+					msg.setText("You are safe, but you should not leave any class.");
 
 			}
-				txtTitle2.setText(reducePlaces(x));
+				att.setText(reducePlaces(x));
 		}
-
-
 	}
 
     // Reduces number of decimal places for a float number

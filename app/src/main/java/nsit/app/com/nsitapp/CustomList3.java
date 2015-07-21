@@ -78,16 +78,16 @@ public class CustomList3 extends ArrayAdapter<Subject_struct>{
 		}
 
 		holder.dat.setText(day.get(position));
-
-		add(p1.get(position), holder.t1);
-		add(p2.get(position),holder.t2);
-		add(p3.get(position),holder.t3);
-		add(p4.get(position),holder.t4);
-		add(p5.get(position),holder.t5);
-		add(p6.get(position),holder.t6);
-		add(p7.get(position),holder.t7);
-		add(p8.get(position),holder.t8);
-
+if(position<p1.size()) {
+	add(p1.get(position), holder.t1);
+	add(p2.get(position), holder.t2);
+	add(p3.get(position), holder.t3);
+	add(p4.get(position), holder.t4);
+	add(p5.get(position), holder.t5);
+	add(p6.get(position), holder.t6);
+	add(p7.get(position), holder.t7);
+	add(p8.get(position), holder.t8);
+}
 
 		if(position< p9.size())
 			add(p9.get(position),holder.t9);

@@ -27,6 +27,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -118,7 +119,6 @@ public class FinalFeed extends Fragment {
         @Override
         protected String doInBackground(String... urls) {
 
-            Log.e("Yo", "Started");
             String URL;
             URL = "https://graph.facebook.com/" + id + "/feed?limit=10&fields=picture,shares,message,object_id," +
                     "link,comments.limit(0).summary(true),to,created_time,likes.limit(0).summary(true)&access_token=" + Val.common_access;
@@ -135,8 +135,6 @@ public class FinalFeed extends Fragment {
 
         @Override
         protected void onPostExecute(String result) {
-            Log.e("YO", "Done");
-
             int j=0;
             JSONObject ob;
             JSONArray arr;
@@ -189,7 +187,7 @@ public class FinalFeed extends Fragment {
                 }
 
                 for(int i = 0; i < arr.length(); i++){
-                    try {
+
                         if(arr.getJSONObject(i).has("message"))
                             list.add(arr.getJSONObject(i).getString("message"));
                         else {
@@ -239,17 +237,12 @@ public class FinalFeed extends Fragment {
                         }else
                             list9.add(null);
 
-
-                    } catch (Exception e) {
-                         Log.e("Error","Errror at : " + i + " "+e.getMessage());
-                    }
                 }
 
 
 
-            } catch (Exception e) {
-                Log.e("Error","Errror at : "+ " "+e.getMessage());
-
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
             if(first==1) {
                 done();
@@ -268,8 +261,6 @@ public class FinalFeed extends Fragment {
 
         @Override
         protected String doInBackground(String... urls) {
-
-            Log.e("Yo", "Started");
             String URL;
 
             if(next!=null){
@@ -277,7 +268,6 @@ public class FinalFeed extends Fragment {
             token=x[1];
 
             URL = next;
-            Log.e("this",URL + " ");
             HttpClient Client = new DefaultHttpClient();
             HttpGet httpget = new HttpGet(URL);
             ResponseHandler<String> responseHandler = new BasicResponseHandler();
@@ -292,9 +282,6 @@ public class FinalFeed extends Fragment {
 
         @Override
         protected void onPostExecute(String result) {
-            Log.e("YO", "Done");
-            Log.e("yrs",""+text);
-
             int j=0;
             JSONObject ob;
             JSONArray arr;
@@ -316,7 +303,7 @@ public class FinalFeed extends Fragment {
 
 
                 for(int i = 0; i < arr.length(); i++){
-                    try {
+
                         if(arr.getJSONObject(i).has("message")) {
                             list.add(arr.getJSONObject(i).getString("message"));
                         }
@@ -363,23 +350,13 @@ public class FinalFeed extends Fragment {
                         list8.add(arr.getJSONObject(i).getString("created_time"));
                         else
                             list8.add(null);
-
-
-
-
-                    } catch (Exception e) {
-                        Log.e("Error","Errror at : " + i + " "+e.getMessage());
-                    }
-
                 }
 
 
-            } catch (Exception e) {
-                Log.e("Error","Errror at : "+ " "+e.getMessage());
-
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
-
-                switch (id) {
+            switch (id) {
                     case Val.id_collegespace: nextcollegespace=nextn;
                         break;
                     case Val.id_crosslinks:nextcrosslinks=nextn;
@@ -420,7 +397,6 @@ public class FinalFeed extends Fragment {
 
     public void done()
     {
-        Log.e("status : ", " " + Csi + Collegespace + Crosslinks + Crosslinks + Bullet + Junoon + Ieee + Ashwa + Quiz + Deb + Rotaract);
         if(!Csi && !Collegespace && !Crosslinks && !Bullet && !Junoon && !Ieee&& !Ashwa&& !Quiz&& !Deb &&!Rotaract) {
 
             adapter.notifyDataSetChanged();
@@ -449,7 +425,6 @@ public class FinalFeed extends Fragment {
             e.putBoolean("item_changed", false);
             e.commit();
             load();
-            Log.e("here", "On Resume");
         }
         super.onResume();
 
@@ -469,8 +444,6 @@ public class FinalFeed extends Fragment {
         Ashwa = i.getBoolean("ashwa", false);
 
 
-        Log.e("2something ","changed"+Crosslinks +Collegespace+Bullet+Junoon+Rotaract+Csi+
-                Ieee+Deb);
 
 
         lv.addFooterView(footerView);

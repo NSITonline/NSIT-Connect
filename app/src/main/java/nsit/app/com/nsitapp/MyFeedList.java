@@ -114,8 +114,8 @@ public class MyFeedList extends ArrayAdapter<String>{
                 DateFormat targetFormat = new SimpleDateFormat("dd MMMM , hh:mm a");
                 Date date2 = originalFormat.parse(x);
                 formattedDate = targetFormat.format(date2);
-            } catch (Exception e) {
-                Log.e("error", e.getMessage() + " ");
+            } catch (ParseException e) {
+                e.printStackTrace();
             }
 
             holder.date.setText(formattedDate);

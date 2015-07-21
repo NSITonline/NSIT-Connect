@@ -6,7 +6,7 @@
     android:layout_height="fill_parent"
     android:background="@color/universalBackground"
     android:animateLayoutChanges="true"
-    tools:context=".MainActivity"   >
+    tools:context=".MainActivity">
     <ProgressBar android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:layout_gravity="center"

@@ -34,9 +34,9 @@ public class SubjectsShow extends AppCompatActivity {
         setContentView(R.layout.activity_subjects_show);
         lv = (ListView) findViewById(R.id.list);
 
-        setTitle("Subjects");
+        setTitle("Attendance");
         JSONObject ob;
-        JSONArray ar, ar2;
+        JSONArray ar;
 
         if(Calender.timetable!=null)
         try {

@@ -3,7 +3,7 @@ package functions;
 import android.provider.BaseColumns;
 
 /**
- * Created by kamlesh kumar garg on 30-06-2015.
+ * Created by Swati garg on 30-06-2015.
  */
     /* Inner class that defines the table contents */
     public  abstract class TableEntry implements BaseColumns {

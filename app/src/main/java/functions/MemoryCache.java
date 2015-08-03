@@ -1,11 +1,10 @@
 package functions;
 
 /**
- * Created by kamlesh kumar garg on 04-06-2015.
+ * Created by Swati garg on 04-06-2015.
  */
 
 import android.graphics.Bitmap;
-import android.util.Log;
 
 import java.util.Collections;
 import java.util.Iterator;

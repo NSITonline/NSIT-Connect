@@ -12,7 +12,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Button;
-import android.widget.Toast;
+
+import com.nispok.snackbar.Snackbar;
+import com.nispok.snackbar.SnackbarManager;
 
 import functions.Val;
 
@@ -65,13 +67,25 @@ public class ChooseClass extends AppCompatActivity implements AdapterView.OnItem
             @Override
             public void onClick(View view) {
                 if(!s){
-                    Toast.makeText(getApplicationContext(),"Please enter Semester",Toast.LENGTH_SHORT).show();
+                    SnackbarManager.show(
+                            Snackbar.with(getApplicationContext())
+                                    .text("Please Enter Semester")
+                                    .duration(Snackbar.SnackbarDuration.LENGTH_SHORT), ChooseClass.this);
                 }else if(!b){
-                    Toast.makeText(getApplicationContext(),"Please enter Branch",Toast.LENGTH_SHORT).show();
-                }else if(!sect){
-                    Toast.makeText(getApplicationContext(),"Please enter Section",Toast.LENGTH_SHORT).show();
+                    SnackbarManager.show(
+                            Snackbar.with(getApplicationContext())
+                                    .text("Please Enter Branch")
+                                    .duration(Snackbar.SnackbarDuration.LENGTH_SHORT), ChooseClass.this);
+                }else if(!sect && !br.equals("BT")){
+                    SnackbarManager.show(
+                            Snackbar.with(getApplicationContext())
+                                    .text("Please Enter Section")
+                                    .duration(Snackbar.SnackbarDuration.LENGTH_SHORT), ChooseClass.this);
                 }else if(!h){
-                    Toast.makeText(getApplicationContext(),"Please enter Half",Toast.LENGTH_SHORT).show();
+                    SnackbarManager.show(
+                            Snackbar.with(getApplicationContext())
+                                    .text("Please Enter Half")
+                                    .duration(Snackbar.SnackbarDuration.LENGTH_SHORT), ChooseClass.this);
                 }else {
 
                     Log.e("here",se +"\n"+sec+"\n"+br+"\n"+"  ");
@@ -258,7 +272,6 @@ public class ChooseClass extends AppCompatActivity implements AdapterView.OnItem
                     e.putString("sec", sec);
                     e.putString("branch", br);
                     e.putString("half", hal);
-
 
                     String x =s.getString("timetableid",null);
                     if(x!=null)

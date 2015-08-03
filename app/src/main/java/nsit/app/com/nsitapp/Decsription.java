@@ -12,7 +12,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.nispok.snackbar.Snackbar;
+import com.nispok.snackbar.SnackbarManager;
 
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
@@ -91,13 +93,15 @@ public class Decsription extends AppCompatActivity {
                 pb.setVisibility(View.GONE);
             }
             else if (obid == null) {
-                imageLoader.DisplayImage(img, imageView);
-                pb.setVisibility(View.GONE);
+                imageLoader.DisplayImage(img, imageView,pb);
             }
             else
                 new DownloadWebPageTask().execute();
         } else
-            Toast.makeText(this, "Cannot connect to Internet", Toast.LENGTH_SHORT).show();
+            SnackbarManager.show(
+                    Snackbar.with(getApplicationContext())
+                            .text("Check You Internet Connection")
+                            .duration(Snackbar.SnackbarDuration.LENGTH_SHORT), this);
 
         if (img == null)
             imageView.setVisibility(View.GONE);
@@ -145,10 +149,7 @@ String text;
             JSONObject ob;
             JSONArray arr;
             if(text==null){
-
-
-                imageLoader.DisplayImage(img, imageView);
-
+                imageLoader.DisplayImage(img, imageView,pb);
             }else {
                 try {
                     ob = new JSONObject(text);
@@ -159,7 +160,7 @@ String text;
                         imglink = arr.getJSONObject(0).getString("source");
                     if (imglink != null) {
                         if (Utils.isNetworkAvailable(Decsription.this)) {
-                            imageLoader.DisplayImage(imglink, imageView);
+                            imageLoader.DisplayImage(imglink, imageView,pb);
                             pb.setVisibility(View.GONE);
                         }
                     } else {

@@ -12,7 +12,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
+
+import com.nispok.snackbar.Snackbar;
+import com.nispok.snackbar.SnackbarManager;
 
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
@@ -99,7 +101,11 @@ public class ImageAct extends AppCompatActivity {
                 FileOutputStream ostream = new FileOutputStream(cachePath);
                 b.compress(Bitmap.CompressFormat.JPEG, 100, ostream);
                 ostream.close();
-                Toast.makeText(ImageAct.this,"Image Saved",Toast.LENGTH_SHORT).show();
+                SnackbarManager.show(
+                        Snackbar.with(getApplicationContext())
+                                .text("Image Saved to Device")
+                                .duration(Snackbar.SnackbarDuration.LENGTH_SHORT), ImageAct.this);
+
 
             }
             catch (Exception e)

@@ -37,7 +37,7 @@ public class AboutUs extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_aboutus, container, false);
-        ImageView s1,s2,s3,s4,s5;
+        ImageView s1,s2,s3,s4,s5,s6;
         TextView con;
         TextView rep;
         s1 = (ImageView) rootView.findViewById(R.id.linked_sidharth);
@@ -45,6 +45,7 @@ public class AboutUs extends Fragment {
         s3 = (ImageView) rootView.findViewById(R.id.facebook_sidharth);
         s4 = (ImageView) rootView.findViewById(R.id.facebook_swati);
         s5 = (ImageView) rootView.findViewById(R.id.facebook_chetan);
+        s6 = (ImageView) rootView.findViewById(R.id.linked_chetan);
         rep = (TextView) rootView.findViewById(R.id.GoToRepo);
         con = (TextView) rootView.findViewById(R.id.cont);
         s1.setOnClickListener(new View.OnClickListener() {
@@ -91,6 +92,16 @@ public class AboutUs extends Fragment {
                 ButtonAnimation btnAnimation = new ButtonAnimation();
                 btnAnimation.animateButton(view,getActivity());
                 Uri uri = Uri.parse("https://www.facebook.com/chetan.shukla.5205?fref=ts");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
+        s6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ButtonAnimation btnAnimation = new ButtonAnimation();
+                btnAnimation.animateButton(view,getActivity());
+                Uri uri = Uri.parse("https://in.linkedin.com/pub/chetan-shukla/100/415/455");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
             }

@@ -18,7 +18,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+
+import com.nispok.snackbar.Snackbar;
+import com.nispok.snackbar.SnackbarManager;
 
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
@@ -26,6 +28,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.lucasr.twowayview.TwoWayView;
 
@@ -39,6 +42,7 @@ public class Calender extends Fragment {
     static String timetable=null;
     boolean loadingMore=false;
     static  ArrayList<String> days = new ArrayList<String >();
+    static  ArrayList<Subject_struct> p0 = new ArrayList<Subject_struct>();
     static  ArrayList<Subject_struct> p1 = new ArrayList<Subject_struct>();
     static  ArrayList<Subject_struct> p2 = new ArrayList<Subject_struct>();
     static  ArrayList<Subject_struct> p3 = new ArrayList<Subject_struct>();
@@ -82,20 +86,23 @@ public class Calender extends Fragment {
             Boolean a = s.getBoolean("timetablechanged", true);
             timetable = s.getString("timetable", null);
 
-            adapter2 = new CustomList3(activity, days, p1, p2, p3, p4, p5, p6, p7, p8, p9);
+            adapter2 = new CustomList3(activity, days, p0,p1, p2, p3, p4, p5, p6, p7, p8, p9);
             if (a || timetable == null) {
                 if (Utils.isNetworkAvailable(activity))
                     new DownloadWebPageTask2().execute();
                 else {
-                    adapter2 = new CustomList3(activity, days, p1, p2, p3, p4, p5, p6, p7, p8, p9);
+                    adapter2 = new CustomList3(activity, days, p0,p1, p2, p3, p4, p5, p6, p7, p8, p9);
                     if (activity != null)
                         lvTest.setAdapter(adapter2);
                     lvTest.setItemMargin(10);
-                    Toast.makeText(activity, "Cannot connect to Internet", Toast.LENGTH_SHORT).show();
+                    SnackbarManager.show(
+                            Snackbar.with(activity.getApplicationContext())
+                                    .text("Check Your Internet Connection")
+                                    .duration(Snackbar.SnackbarDuration.LENGTH_SHORT),activity);
                 }
             } else {
                 load();
-                adapter2 = new CustomList3(activity, days, p1, p2, p3, p4, p5, p6, p7, p8, p9);
+                adapter2 = new CustomList3(activity, days, p0,p1, p2, p3, p4, p5, p6, p7, p8, p9);
                 if (activity != null)
                     lvTest.setAdapter(adapter2);
                 lvTest.setItemMargin(10);
@@ -163,7 +170,10 @@ public class Calender extends Fragment {
                    }
                }
                Subject_struct x = new Subject_struct(a, b, c, d, e, f, g, h);
-               switch (i) {
+               switch (i-1) {
+                   case -1:
+                       p0.add(x);
+                       break;
                    case 0:
                        p1.add(x);
                        break;
@@ -231,6 +241,20 @@ public class Calender extends Fragment {
     String text;
     private class DownloadWebPageTask2 extends AsyncTask<String, Void, String> {
 
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            p0.clear();
+            p1.clear();
+            p2.clear();
+            p3.clear();
+            p4.clear();
+            p5.clear();
+            p6.clear();
+            p7.clear();
+            p8.clear();
+            p9.clear();
+        }
 
         @Override
         protected String doInBackground(String... urls) {
@@ -274,9 +298,30 @@ public class Calender extends Fragment {
             e.putBoolean("timetablechanged", false);
             e.putString("timetable", text);
             e.commit();}
+            JSONObject ob;
+            JSONArray ar, ar2;
+
+            Log.e("here", "here");
+            try {
+                ob = new JSONObject(timetable);
+                ob = ob.getJSONObject("metadata");
+                String s = ob.getString("last_updated");
+                Log.e("gbfd","dsgb    "+s);
+                if(s.equals("5-7-2015")) {
+                    Log.e("ds","equal");
+                    SnackbarManager.show(
+                            Snackbar.with(activity.getApplicationContext())
+                                    .text("Time Table is not available now.")
+                                    .duration(Snackbar.SnackbarDuration.LENGTH_SHORT), activity);
+
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
 
             if (activity != null) {
-                adapter2 = new CustomList3(activity, days, p1, p2, p3, p4, p5, p6, p7, p8, p9);
+                adapter2 = new CustomList3(activity, days, p0, p1, p2, p3, p4, p5, p6, p7, p8, p9);
                 lvTest.setAdapter(adapter2);
                 lvTest.setItemMargin(10);
             }
@@ -292,21 +337,23 @@ public class Calender extends Fragment {
             SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
             Boolean a = s.getBoolean("timetablechanged", true);
             timetable = s.getString("timetable", null);
-
-            adapter2 = new CustomList3(activity, days, p1, p2, p3, p4, p5, p6, p7, p8, p9);
+            adapter2 = new CustomList3(activity, days, p0,p1, p2, p3, p4, p5, p6, p7, p8, p9);
             if (a || timetable == null) {
                 if (Utils.isNetworkAvailable(activity))
                     new DownloadWebPageTask2().execute();
                 else {
-                    adapter2 = new CustomList3(activity, days, p1, p2, p3, p4, p5, p6, p7, p8, p9);
+                    adapter2 = new CustomList3(activity, days,p0, p1, p2, p3, p4, p5, p6, p7, p8, p9);
                     if (activity != null)
                         lvTest.setAdapter(adapter2);
                     lvTest.setItemMargin(10);
-                    Toast.makeText(activity, "Cannot connect to Internet", Toast.LENGTH_SHORT).show();
+                    SnackbarManager.show(
+                            Snackbar.with(activity.getApplicationContext())
+                                    .text("Check Your Internet Connection")
+                                    .duration(Snackbar.SnackbarDuration.LENGTH_SHORT), activity);
                 }
             } else {
                 load();
-                adapter2 = new CustomList3(activity, days, p1, p2, p3, p4, p5, p6, p7, p8, p9);
+                adapter2 = new CustomList3(activity, days, p0,p1, p2, p3, p4, p5, p6, p7, p8, p9);
                 if (activity != null)
                     lvTest.setAdapter(adapter2);
                 lvTest.setItemMargin(10);

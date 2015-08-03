@@ -5,6 +5,7 @@ package nsit.app.com.nsitapp;
  */
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -40,7 +41,6 @@ public class Professors extends Fragment implements
 
     ListView listView;
     List<RowItem> rowItems;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         setHasOptionsMenu(true);
@@ -80,12 +80,9 @@ public class Professors extends Fragment implements
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Fragment mFragment = new ProfList();
-        Bundle bundle = new Bundle();
-        bundle.putInt("dept", position);
-        mFragment.setArguments(bundle);
-        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, mFragment).addToBackStack( "tag" ).commit();
-
+       Intent mFragment = new Intent(activity,ProfList.class);
+        mFragment.putExtra("dept", position);
+        startActivity(mFragment);
     }
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {

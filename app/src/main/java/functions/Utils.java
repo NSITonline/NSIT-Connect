@@ -1,7 +1,7 @@
 package functions;
 
 /**
- * Created by kamlesh kumar garg on 04-06-2015.
+ * Created by Swati garg on 04-06-2015.
  */
 
 import android.app.Activity;

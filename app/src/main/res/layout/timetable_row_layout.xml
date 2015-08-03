@@ -21,7 +21,7 @@
             android:layout_weight="1.0"
             android:layout_gravity="center_vertical"
             android:textColor="@color/colorPrimary"
-            android:textSize="15sp"
+            android:textSize="13sp"
             android:id="@+id/day"
             android:textAllCaps="true"
             android:textStyle="bold"
@@ -32,11 +32,24 @@
             android:background="#ffffff"/>
         <TextView
             android:paddingTop="5dp"
+            android:id="@+id/p0"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.0"
+            android:textSize="13sp"
+            android:text="Subject 0"/>
+        <View
+            android:layout_marginTop="5dp"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorPrimary"/>
+        <TextView
+            android:paddingTop="5dp"
             android:id="@+id/p1"
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:layout_weight="1.0"
-            android:textSize="15sp"
+            android:textSize="13sp"
             android:text="Subject 1"/>
         <View
             android:layout_marginTop="5dp"
@@ -49,7 +62,7 @@
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:layout_weight="1.0"
-            android:textSize="15sp"
+            android:textSize="13sp"
             android:text="Sub2"/>
         <View
             android:layout_marginTop="5dp"
@@ -62,7 +75,7 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1.0"
-        android:textSize="15sp"
+        android:textSize="13sp"
         android:text="Sub3"/>
         <View
             android:layout_marginTop="5dp"
@@ -75,7 +88,7 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1.0"
-        android:textSize="15sp"
+        android:textSize="13sp"
         android:text="Sub4"/>
         <View
             android:layout_marginTop="5dp"
@@ -88,7 +101,7 @@
             android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1.0"
-        android:textSize="15sp"
+        android:textSize="13sp"
         android:text="Sub5"/>
         <View
             android:layout_marginTop="5dp"
@@ -101,7 +114,7 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1.0"
-        android:textSize="15sp"
+        android:textSize="13sp"
         android:text="Sub6"/>
         <View
             android:layout_marginTop="5dp"
@@ -113,7 +126,7 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1.0"
-        android:textSize="15sp"
+        android:textSize="13sp"
         android:text="Sub7"/>
         <View
             android:layout_marginTop="5dp"
@@ -126,7 +139,7 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1.0"
-        android:textSize="15sp"
+        android:textSize="13sp"
         android:text="Sub8"/>
         <View
             android:layout_marginTop="5dp"
@@ -139,7 +152,7 @@
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:layout_weight="1.0"
-            android:textSize="15sp"
+            android:textSize="13sp"
             android:text="Sub9"/>
         <View
             android:layout_marginTop="5dp"

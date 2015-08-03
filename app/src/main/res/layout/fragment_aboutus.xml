@@ -330,13 +330,26 @@ android:gravity="center_horizontal"
                                 android:layout_marginTop="5dp" />
 
 
-                            <ImageView
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
-                                android:id="@+id/facebook_chetan"
-                                android:layout_gravity="bottom"
-                                android:src="@drawable/facebook"
-                                android:layout_marginTop="5dp" />
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+                                    android:id="@+id/linked_chetan"
+                                    android:layout_gravity="bottom"
+                                    android:src="@drawable/linkedin"
+                                    android:layout_marginTop="5dp" />
+
+                                <ImageView
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:id="@+id/facebook_chetan"
+                                    android:layout_gravity="bottom"
+                                    android:src="@drawable/facebook"
+                                    android:layout_marginTop="5dp" />
+                            </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
                     <LinearLayout

@@ -19,7 +19,9 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.Toast;
+
+import com.nispok.snackbar.Snackbar;
+import com.nispok.snackbar.SnackbarManager;
 
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
@@ -449,7 +451,10 @@ public class FinalFeed extends Fragment {
         lv.addFooterView(footerView);
 
         if(!Csi && !Collegespace && !Crosslinks && !Bullet && !Junoon && !Ieee&& !Ashwa&& !Quiz&& !Deb &&!Rotaract) {
-            Toast.makeText(activity,"No item selected",Toast.LENGTH_SHORT).show();
+            SnackbarManager.show(
+                    Snackbar.with(activity.getApplicationContext())
+                            .text("No item Selected")
+                            .duration(Snackbar.SnackbarDuration.LENGTH_SHORT), activity);
         }else {
 
             if (Utils.isNetworkAvailable(activity)) {
@@ -475,7 +480,10 @@ public class FinalFeed extends Fragment {
                     new DownloadWebPageTask2(Val.id_debsoc).execute();
 
             } else
-                Toast.makeText(activity, "Cannot connect to Internet", Toast.LENGTH_SHORT).show();
+                SnackbarManager.show(
+                        Snackbar.with(activity.getApplicationContext())
+                                .text("Check Your internet connection")
+                                .duration(Snackbar.SnackbarDuration.LENGTH_SHORT), activity);
 
         }
 
@@ -524,7 +532,10 @@ public class FinalFeed extends Fragment {
 
                     }
                     else
-                        Toast.makeText(activity, "Cannot connect to Internet", Toast.LENGTH_SHORT).show();
+                        SnackbarManager.show(
+                                Snackbar.with(activity.getApplicationContext())
+                                        .text("Check Your Internet Connection")
+                                        .duration(Snackbar.SnackbarDuration.LENGTH_SHORT), activity);
 
 
 

@@ -8,7 +8,6 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -46,7 +45,7 @@
             android:value="AIzaSyBgktirlOODUO9zWD-808D7zycmP7smp-Y" />
         <!-- "AIzaSyCmmTcw4LR_qzSaGcl6orGV4S6nfHDhlss" -->
         <activity
-            android:name=".Choose"
+            android:name=".ChooseClass"
             android:configChanges="orientation|screenSize"
             android:label="Select" >
         </activity>
@@ -62,7 +61,12 @@
             android:name=".SubjectRemove"
             android:label="@string/title_activity_subject_remove" >
         </activity>
-
+        <activity
+            android:name=".ProfList"
+            android:label="@string/title_activity_subject_remove" >
+        </activity>
+        <meta-data android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
     </application>
 
 </manifest>

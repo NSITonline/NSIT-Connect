@@ -19,7 +19,9 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.Toast;
+
+import com.nispok.snackbar.Snackbar;
+import com.nispok.snackbar.SnackbarManager;
 
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
@@ -38,9 +40,27 @@ import functions.Utils;
 import functions.Val;
 
 
+
+
+/*import com.google.android.gms.analytics.GoogleAnalytics;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;*/
+
 public class Home extends Fragment {
 
     boolean loadingMore=false;
+
+    @Override
+    public void onStart() {
+        super.onStart();
+       // GoogleAnalytics.getInstance(GoogleAnalyticsExample.this).reportActivityStart(this);
+    }
+    @Override
+    public void onStop() {
+        super.onStop();
+        //GoogleAnalytics.getInstance(GoogleAnalyticsExample.this).reportActivityStop(this);
+    }
+
     List<String> list = new ArrayList<String>();
     List<String> list1 = new ArrayList<String>();
     List<String> list2 = new ArrayList<String>();
@@ -73,6 +93,12 @@ public class Home extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
+
+  /*      Tracker t = ((GoogleAnalyticsApp) activity.getApplication()).getTracker(TrackerName.APP_TRACKER);
+        t.setScreenName("Home");
+        t.send(new HitBuilders.AppViewBuilder().build());*/
+
+
         lv = (ListView) rootView.findViewById(R.id.list);
         swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
         pb=(ProgressBar)rootView.findViewById(R.id.progressBar1);
@@ -114,7 +140,11 @@ public class Home extends Fragment {
         if(Utils.isNetworkAvailable(activity))
             new DownloadWebPageTask2(Val.id_nsitonline).execute();
         else
-            Toast.makeText(activity,"Cannot connect to Internet",Toast.LENGTH_SHORT).show();
+            SnackbarManager.show(
+                    Snackbar.with(activity.getApplicationContext())
+                            .text("Check Your Internet Connection")
+                            .duration(Snackbar.SnackbarDuration.LENGTH_SHORT), activity);
+
 
 
         return rootView;

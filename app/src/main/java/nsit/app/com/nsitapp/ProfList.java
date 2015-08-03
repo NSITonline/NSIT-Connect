@@ -5,10 +5,13 @@ package nsit.app.com.nsitapp;
  */
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
@@ -25,7 +28,7 @@ import java.util.List;
 import functions.Val;
 
 
-public class ProfList extends Fragment {
+public class ProfList extends AppCompatActivity {
     EditText s;
     public static final String[] titles = new String[] { "DM","DC","DP",
             "DM","H&M",
@@ -46,28 +49,19 @@ public class ProfList extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_proflist);
 
-    }
 
-    Activity activity;
-    @Override
-    public void onAttach(Activity activity)
-    {
-        super.onAttach(activity);
-        this.activity = activity;
-    }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_proflist, container, false);
-        Bundle i = this.getArguments();
-        int dept = i.getInt("dept", 0);
+        Intent i = getIntent();
+        int dept = i.getIntExtra("dept", 0);
 
+        setTitle("Professors");
 
         ListView listView;
-        listView = (ListView) rootView.findViewById(R.id.profListView);
+        listView = (ListView) findViewById(R.id.profListView);
         listView.setTextFilterEnabled(true);
-        TextView tv = (TextView) rootView.findViewById(R.id.textView);
+        TextView tv = (TextView) findViewById(R.id.textView);
 
 
         List<ProfListRowItem> profe=new ArrayList<ProfListRowItem>();
@@ -105,14 +99,18 @@ public class ProfList extends Fragment {
 
         }
 
-        adapter = new ProfListCustomListViewAdapter(getActivity(), R.layout.prof_list_item, profe);
+        adapter = new ProfListCustomListViewAdapter(this, R.layout.prof_list_item, profe);
         listView.setAdapter(adapter);
 
-
-
-    return rootView;
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
     }
 
 
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId()==android.R.id.home)
+            finish();
+        return super.onOptionsItemSelected(item);
+    }
 }

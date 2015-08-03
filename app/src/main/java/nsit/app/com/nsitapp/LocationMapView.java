@@ -84,7 +84,7 @@ public class LocationMapView extends Activity {
                 des = getResources().getString(R.string.bh2_desc);
             }
             else if(LocationName.contains("Boys' Hostel I")) {
-                des = getResources().getString(R.string.bh1_desc);
+                des = getResources().getString(R.string.gh1_desc);
             }
             if(LocationName.contains("Girls' Hostel II"))
                 des =  getResources().getString(R.string.gh2_desc);
@@ -113,9 +113,9 @@ public class LocationMapView extends Activity {
                 des =  getResources().getString(R.string.cad_lab);
             if(LocationName.contains("GCLAB"))
                 des =  getResources().getString(R.string.gc_lab);
-            if(LocationName.contains("Khushil"))
+            if(LocationName.contains("KHUSHIL"))
                 des =  getResources().getString(R.string.khushil);
-            if(LocationName.contains("Pavillion"))
+            if(LocationName.contains("Pavilion"))
                 des =  getResources().getString(R.string.pavillion);
             if(LocationName.contains("Tennis"))
                 des =  getResources().getString(R.string.tennis);

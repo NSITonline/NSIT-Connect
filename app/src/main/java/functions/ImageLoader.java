@@ -1,14 +1,17 @@
 package functions;
 
 /**
- * Created by kamlesh kumar garg on 04-06-2015.
+ * Created by Swati garg on 04-06-2015.
  */
 
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 import nsit.app.com.nsitapp.R;
 
@@ -31,6 +34,7 @@ public class ImageLoader {
 
     MemoryCache memoryCache=new MemoryCache();
     FileCache fileCache;
+    ProgressBar p;
     private Map<ImageView, String> imageViews=Collections.synchronizedMap(new WeakHashMap<ImageView, String>());
     ExecutorService executorService;
 
@@ -39,21 +43,26 @@ public class ImageLoader {
         executorService=Executors.newFixedThreadPool(5);
     }
 
-    public void DisplayImage(String url, ImageView imageView)
+    public void DisplayImage(String url, ImageView imageView,ProgressBar p2)
     {
+        p = p2;
         imageViews.put(imageView, url);
         Bitmap bitmap=memoryCache.get(url);
-        if(bitmap!=null)
+        if(bitmap!=null) {
             imageView.setImageBitmap(bitmap);
+            if(p!=null) {
+                p.setVisibility(View.INVISIBLE);
+            }
+        }
         else
         {
-            queuePhoto(url, imageView);
+            queuePhoto(url, imageView,p2);
         }
     }
 
-    private void queuePhoto(String url, ImageView imageView)
+    private void queuePhoto(String url, ImageView imageView,ProgressBar p2)
     {
-        PhotoToLoad p=new PhotoToLoad(url, imageView);
+        PhotoToLoad p=new PhotoToLoad(url, imageView,p2);
         executorService.submit(new PhotosLoader(p));
     }
 
@@ -121,9 +130,11 @@ public class ImageLoader {
     {
         public String url;
         public ImageView imageView;
-        public PhotoToLoad(String u, ImageView i){
+        ProgressBar p;
+        public PhotoToLoad(String u, ImageView i,ProgressBar p2){
             url=u;
             imageView=i;
+            p = p2;
         }
     }
 
@@ -164,14 +175,13 @@ public class ImageLoader {
         {
             if(imageViewReused(photoToLoad))
                 return;
-            if(bitmap!=null)
+            if(bitmap!=null) {
                 photoToLoad.imageView.setImageBitmap(bitmap);
+                if(p!=null) {
+                    photoToLoad.p.setVisibility(View.INVISIBLE);
+                }
+            }
         }
-    }
-
-    public void clearCache() {
-        memoryCache.clear();
-        fileCache.clear();
     }
 
 }

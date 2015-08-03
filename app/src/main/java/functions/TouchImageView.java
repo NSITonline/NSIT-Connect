@@ -1,7 +1,14 @@
 package functions;
 
 /**
- * Created by Swati garg on 17-06-2015.
+ * Android: TouchImageView
+ Created by: Mike Ortiz
+ Contributions by:
+ * Patrick Lackemacher
+ * Babay88
+ * @ipsilondev
+ * hank-cp
+ * singpolyma
  */
 import android.annotation.TargetApi;
 import android.content.Context;

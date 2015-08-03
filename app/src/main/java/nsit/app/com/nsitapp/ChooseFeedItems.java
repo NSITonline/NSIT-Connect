@@ -13,7 +13,9 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.nispok.snackbar.Snackbar;
+import com.nispok.snackbar.SnackbarManager;
 
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
@@ -202,7 +204,10 @@ public class ChooseFeedItems extends AppCompatActivity {
             new Calclike(tAshwa, Val.id_ashwa).execute();
         }
         else
-            Toast.makeText(this, "Cannot connect to Internet", Toast.LENGTH_SHORT).show();
+            SnackbarManager.show(
+                    Snackbar.with(getApplicationContext())
+                            .text("Check You Internet Connection")
+                            .duration(Snackbar.SnackbarDuration.LENGTH_SHORT),this);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 

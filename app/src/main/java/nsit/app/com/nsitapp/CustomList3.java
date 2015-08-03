@@ -17,13 +17,14 @@ import java.util.ArrayList;
 public class CustomList3 extends ArrayAdapter<Subject_struct>{
 	private final Activity context;
 	ArrayList<String> day;
-	private final ArrayList<Subject_struct> p1,p2,p3,p4,p5,p6,p7,p8,p9;
-	public CustomList3(Activity context,ArrayList  d,ArrayList<Subject_struct> b1,ArrayList<Subject_struct> b2,ArrayList<Subject_struct> b3,ArrayList<Subject_struct> b4,
+	private final ArrayList<Subject_struct> p0,p1,p2,p3,p4,p5,p6,p7,p8,p9;
+	public CustomList3(Activity context,ArrayList  d,ArrayList<Subject_struct> b0,ArrayList<Subject_struct> b1,ArrayList<Subject_struct> b2,ArrayList<Subject_struct> b3,ArrayList<Subject_struct> b4,
 					   ArrayList<Subject_struct> b5,ArrayList<Subject_struct> b6,ArrayList<Subject_struct> b7
 			,ArrayList<Subject_struct> b8,ArrayList<Subject_struct> b9) {
 			super(context, R.layout.message, d);
 			this.context = context;
 			day=d;
+		p0=b0;
 		p1=b1;
 		p2=b2;
 		p3=b3;
@@ -39,6 +40,7 @@ public class CustomList3 extends ArrayAdapter<Subject_struct>{
 
 	private class ViewHolder {
 		TextView dat;
+		TextView t0;
 		TextView t1;
 		TextView t2;
 		TextView t3;
@@ -61,6 +63,7 @@ public class CustomList3 extends ArrayAdapter<Subject_struct>{
 			view = mInflater.inflate(R.layout.timetable_row_layout, null);
 			holder = new ViewHolder();
 			holder.dat = (TextView) view.findViewById(R.id.day);
+			holder.t0 = (TextView) view.findViewById(R.id.p0);
 			holder.t1 = (TextView) view.findViewById(R.id.p1);
 			holder.t2 = (TextView) view.findViewById(R.id.p2);
 			holder.t3 = (TextView) view.findViewById(R.id.p3);
@@ -79,6 +82,7 @@ public class CustomList3 extends ArrayAdapter<Subject_struct>{
 
 		holder.dat.setText(day.get(position));
 if(position<p1.size()) {
+	add(p0.get(position), holder.t0);
 	add(p1.get(position), holder.t1);
 	add(p2.get(position), holder.t2);
 	add(p3.get(position), holder.t3);
@@ -86,9 +90,10 @@ if(position<p1.size()) {
 	add(p5.get(position), holder.t5);
 	add(p6.get(position), holder.t6);
 	add(p7.get(position), holder.t7);
-	add(p8.get(position), holder.t8);
-}
 
+}
+		if(position< p8.size())
+			add(p8.get(position), holder.t8);
 		if(position< p9.size())
 			add(p9.get(position),holder.t9);
 		return view;
@@ -104,7 +109,7 @@ if(position<p1.size()) {
 				t.setText(p.subject + "\n" + p.roomfh +","+ p.roomsh);
 
 		else
-			t.setText("Break");
+			t.setText("  ");
 
 	}
 

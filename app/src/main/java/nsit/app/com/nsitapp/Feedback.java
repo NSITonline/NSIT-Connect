@@ -11,7 +11,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
-import android.widget.Toast;
+import android.webkit.WebViewClient;
+
+import com.nispok.snackbar.Snackbar;
+import com.nispok.snackbar.SnackbarManager;
 
 import functions.Utils;
 
@@ -35,13 +38,25 @@ public class Feedback extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.activity_feedback, container, false);
         WebView browser = (WebView) rootView.findViewById(R.id.webview);
+        browser.setWebViewClient(new MyWebViewClient());
         if(activity!=null) {
             if (Utils.isNetworkAvailable(activity))
                 browser.loadUrl("http://goo.gl/forms/DS8To6mufz");
             else
-                Toast.makeText(activity, "Cannot connect to Internet", Toast.LENGTH_SHORT).show();
+                SnackbarManager.show(
+                        Snackbar.with(activity.getApplicationContext())
+                                .text("Check You Internet Connection")
+                                .duration(Snackbar.SnackbarDuration.LENGTH_SHORT), activity);
         }
         return rootView;
 
+    }
+    private class MyWebViewClient extends WebViewClient {
+
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            view.loadUrl(url);
+            return false;
+        }
     }
 }

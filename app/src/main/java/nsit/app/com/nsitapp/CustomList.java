@@ -41,6 +41,7 @@ public class CustomList extends ArrayAdapter<String>{
 	private final Activity context;
 	private final List<String> img,des,lik,link,obid,date;
 	public ImageLoader imageLoader;
+	ProgressBar p;
 	public CustomList(Activity context,List<String>image, List<String>desc, List<String>like,List<String>links,List<String>oid,List<String>d){
 		super(context, R.layout.message_layout, desc);
 		this.context = context;
@@ -53,48 +54,40 @@ public class CustomList extends ArrayAdapter<String>{
 		imageLoader=new ImageLoader(context.getApplicationContext());
 	}
 
-	private class ViewHolder {
 		TextView Des;
 		TextView likes;
-		TextView date;
+		TextView dates;
 		TextView read;
 		ImageView imag;
 		FrameLayout f;
 		Button b;
-	}
+
 	@Override
-	public View getView(final int position, View view, ViewGroup parent) {
-		ViewHolder holder = null;
+	public View getView(final int position, View view2, ViewGroup parent) {
+		View view;
 		LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-		if (view == null) {
 			view = mInflater.inflate(R.layout.message_layout, null);
-			holder = new ViewHolder();
-			holder.Des = (TextView) view.findViewById(R.id.des);
-			holder.likes = (TextView) view.findViewById(R.id.likes);
-			holder.date = (TextView) view.findViewById(R.id.date);
-			holder.read = (TextView) view.findViewById(R.id.read);
-			holder.imag = (ImageView) view.findViewById(R.id.image);
-			holder.f = (FrameLayout) view.findViewById(R.id.frame);
-			holder.b = (Button) view.findViewById(R.id.show);
+			 Des = (TextView) view.findViewById(R.id.des);
+			 likes = (TextView) view.findViewById(R.id.likes);
+			 dates = (TextView) view.findViewById(R.id.date);
+			 read = (TextView) view.findViewById(R.id.read);
+			 imag = (ImageView) view.findViewById(R.id.image);
+			 f = (FrameLayout) view.findViewById(R.id.frame);
+			 b = (Button) view.findViewById(R.id.show);
 
-			view.setTag(holder);
-		} else {
-
-			holder = (ViewHolder) view.getTag();
-		}
-
+		p = (ProgressBar) view.findViewById(R.id.progressBar1);
 
 
 		if(des.get(position)==null)
-			holder.Des.setText("No description");
+			 Des.setText("No description");
 		else
-			holder.Des.setText(des.get(position));
+			 Des.setText(des.get(position));
 
 
 		if (lik.get(position) == null)
-			holder.likes.setText("0");
+			 likes.setText("0");
 		else
-			holder.likes.setText(lik.get(position));
+			 likes.setText(lik.get(position));
 
 		if(date.get(position)!=null) {
 			String x = GetLocalDateStringFromUTCString(date.get(position));
@@ -109,12 +102,12 @@ public class CustomList extends ArrayAdapter<String>{
 				Log.e("error", e.getMessage() + " ");
 			}
 
-			holder.date.setText(formattedDate);
+			 dates.setText(formattedDate);
 		}
 		else
-			holder.date.setVisibility(View.INVISIBLE);
+			 dates.setVisibility(View.INVISIBLE);
 
-		holder.read.setOnClickListener(new OnClickListener() {
+		 read.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View view) {
 				Context c = getContext();
@@ -131,8 +124,8 @@ public class CustomList extends ArrayAdapter<String>{
 		});
 
 		if(img.get(position)!=null) {
-			imageLoader.DisplayImage(img.get(position), holder.imag);
-			holder.b.setOnClickListener(new OnClickListener() {
+			imageLoader.DisplayImage(img.get(position),  imag,p);
+			 b.setOnClickListener(new OnClickListener() {
 
                 @Override
                 public void onClick(View v) {
@@ -147,7 +140,7 @@ public class CustomList extends ArrayAdapter<String>{
             });
 
 		}else{
-			holder.f.setVisibility(View.GONE);
+			 f.setVisibility(View.GONE);
 		}
 
 		AnimationSet set = new AnimationSet(true);

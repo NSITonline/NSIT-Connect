@@ -37,6 +37,7 @@ public class MyFeedList extends ArrayAdapter<String>{
     private final Activity context;
     private final List<String> img,des,lik,link,obid,date,cat;
     public ImageLoader imageLoader;
+    ProgressBar p;
     public MyFeedList(Activity context,List<String>image, List<String>desc, List<String>like,List<String>links
             ,List<String>oid,List<String>d,List<String>e){
         super(context, R.layout.message_layout, desc);
@@ -52,57 +53,48 @@ public class MyFeedList extends ArrayAdapter<String>{
     }
 
 
-    private class ViewHolder {
         TextView Des;
-        TextView likes,cat;
-        TextView date;
+        TextView likes,cats;
+        TextView dates;
         TextView read;
         ImageView imag;
         FrameLayout f;
         Button b;
-    }
 
 
     @Override
-    public View getView(final int position, View view, ViewGroup parent) {
-        ViewHolder holder = null;
+    public View getView(final int position, View view2, ViewGroup parent) {
+        View view;
         LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-        if (view == null) {
             view = mInflater.inflate(R.layout.myfeed_listitem, null);
-            holder = new ViewHolder();
-            holder.Des = (TextView) view.findViewById(R.id.des);
-            holder.likes = (TextView) view.findViewById(R.id.likes);
-            holder.date = (TextView) view.findViewById(R.id.date);
-            holder.cat = (TextView) view.findViewById(R.id.cat);
-            holder.read = (TextView) view.findViewById(R.id.read);
-            holder.imag = (ImageView) view.findViewById(R.id.image);
-            holder.f = (FrameLayout) view.findViewById(R.id.frame);
-            holder.b = (Button) view.findViewById(R.id.show);
-
-            view.setTag(holder);
-        } else {
-
-            holder = (ViewHolder) view.getTag();
-        }
+             Des = (TextView) view.findViewById(R.id.des);
+             likes = (TextView) view.findViewById(R.id.likes);
+             dates = (TextView) view.findViewById(R.id.date);
+             cats = (TextView) view.findViewById(R.id.cat);
+             read = (TextView) view.findViewById(R.id.read);
+             imag = (ImageView) view.findViewById(R.id.image);
+             f = (FrameLayout) view.findViewById(R.id.frame);
+             b = (Button) view.findViewById(R.id.show);
+        p = (ProgressBar) view.findViewById(R.id.progressBar1);
 
 
-       if(des.get(position)==null)
-            holder.Des.setText("No description");
+        if(des.get(position)==null)
+             Des.setText("No description");
         else
-            holder.Des.setText(des.get(position));
+             Des.setText(des.get(position));
 
 
         if (lik.get(position) == null)
-            holder.likes.setText("0");
+             likes.setText("0");
         else
-            holder.likes.setText(lik.get(position));
+             likes.setText(lik.get(position));
 
 
         if(cat.get(position)!=null) {
-           holder.cat.setText(cat.get(position));
+            cats.setText(cat.get(position));
         }
         else
-            holder.cat.setText(" ");
+             cats.setText(" ");
 
 
         if(date.get(position)!=null) {
@@ -118,15 +110,13 @@ public class MyFeedList extends ArrayAdapter<String>{
                 e.printStackTrace();
             }
 
-            holder.date.setText(formattedDate);
+             dates.setText(formattedDate);
         }
         else
-            holder.date.setVisibility(View.INVISIBLE);
+             dates.setVisibility(View.INVISIBLE);
 
 
-
-
-        holder.read.setOnClickListener(new OnClickListener() {
+         read.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 // TODO Auto-generated method stub
@@ -142,8 +132,8 @@ public class MyFeedList extends ArrayAdapter<String>{
         });
 
         if(img.get(position)!=null) {
-            imageLoader.DisplayImage(img.get(position), holder.imag);
-            holder.b.setOnClickListener(new OnClickListener() {
+            imageLoader.DisplayImage(img.get(position),  imag,p);
+             b.setOnClickListener(new OnClickListener() {
 
                 @Override
                 public void onClick(View v) {
@@ -157,7 +147,7 @@ public class MyFeedList extends ArrayAdapter<String>{
             });
 
         }else{
-            holder.f.setVisibility(View.GONE);
+             f.setVisibility(View.GONE);
         }
 
         AnimationSet set = new AnimationSet(true);

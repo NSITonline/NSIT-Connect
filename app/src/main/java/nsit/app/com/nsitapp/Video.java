@@ -34,7 +34,6 @@ import java.io.IOException;
  */
 public class Video extends Fragment {
     ListView listview;
-
     String nextPageToken = "";
     String prevPageToken = "";
     String navigateTo = "next";

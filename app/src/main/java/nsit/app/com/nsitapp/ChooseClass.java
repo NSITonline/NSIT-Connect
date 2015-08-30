@@ -23,7 +23,7 @@ public class ChooseClass extends AppCompatActivity implements AdapterView.OnItem
 
 
     String[] sem={"Semester","Sem 1","Sem 3","Sem 5","Sem 7"};
-    String[] branch={"Branch","COE","IT","ECE","ICE","MPAE","BT"};
+    String[] branch={"Branch","COE","IT","ECE","ICE","MPAE","BT","ME"};
     String[] section={"Section","Sec 1","Sec 2","Sec 3"};
     String[] section1={"Section","Sec 1","Sec 2"};
     String[] Half2={"Half","First Half","Second Half"};
@@ -76,7 +76,7 @@ public class ChooseClass extends AppCompatActivity implements AdapterView.OnItem
                             Snackbar.with(getApplicationContext())
                                     .text("Please Enter Branch")
                                     .duration(Snackbar.SnackbarDuration.LENGTH_SHORT), ChooseClass.this);
-                }else if(!sect && !br.equals("BT")){
+                }else if(!sect && !br.equals("BT")&&!br.equals("ME")){
                     SnackbarManager.show(
                             Snackbar.with(getApplicationContext())
                                     .text("Please Enter Section")
@@ -90,6 +90,9 @@ public class ChooseClass extends AppCompatActivity implements AdapterView.OnItem
 
                     Log.e("here",se +"\n"+sec+"\n"+br+"\n"+"  ");
                     String timetableid = null;
+                    if(br.equals("ME"))
+                        timetableid = Val.ME_sem1_sec1;
+
                     if(se.equals("Sem 1")){
                         if(br.equals("COE")) {
                             if(sec.equals("Sec 1"))
@@ -283,6 +286,9 @@ public class ChooseClass extends AppCompatActivity implements AdapterView.OnItem
 
                     Log.e("timetable id", " " + timetableid);
                     e.commit();
+
+
+
                     finish();
                 }
                 ButtonAnimation btnAnimation = new ButtonAnimation();
@@ -298,8 +304,6 @@ public class ChooseClass extends AppCompatActivity implements AdapterView.OnItem
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        String item = parent.getItemAtPosition(position).toString();
-        // Showing selected spinner item
         if(parent.getId()==R.id.sem) {
             if(position!=0){
                 s=true;
@@ -322,7 +326,7 @@ public class ChooseClass extends AppCompatActivity implements AdapterView.OnItem
                     Sec.setAdapter(adapter2);
 
 
-                }else if(position==6){
+                }else if(position==6 || position==7){
                     ArrayAdapter adapte = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, x);
                     Sec.setAdapter(adapte);
                     h=true;

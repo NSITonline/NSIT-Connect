@@ -37,7 +37,7 @@
             android:layout_height="0dp"
             android:layout_weight="1.0"
             android:textSize="13sp"
-            android:text="Subject 0"/>
+            android:text=""/>
         <View
             android:layout_marginTop="5dp"
             android:layout_width="fill_parent"
@@ -50,7 +50,7 @@
             android:layout_height="0dp"
             android:layout_weight="1.0"
             android:textSize="13sp"
-            android:text="Subject 1"/>
+            android:text=""/>
         <View
             android:layout_marginTop="5dp"
             android:layout_width="fill_parent"
@@ -63,7 +63,7 @@
             android:layout_height="0dp"
             android:layout_weight="1.0"
             android:textSize="13sp"
-            android:text="Sub2"/>
+            android:text=""/>
         <View
             android:layout_marginTop="5dp"
             android:layout_width="fill_parent"
@@ -76,7 +76,7 @@
         android:layout_height="0dp"
         android:layout_weight="1.0"
         android:textSize="13sp"
-        android:text="Sub3"/>
+        android:text=""/>
         <View
             android:layout_marginTop="5dp"
             android:layout_width="fill_parent"
@@ -89,7 +89,7 @@
         android:layout_height="0dp"
         android:layout_weight="1.0"
         android:textSize="13sp"
-        android:text="Sub4"/>
+        android:text=""/>
         <View
             android:layout_marginTop="5dp"
             android:layout_width="fill_parent"
@@ -102,7 +102,7 @@
         android:layout_height="0dp"
         android:layout_weight="1.0"
         android:textSize="13sp"
-        android:text="Sub5"/>
+        android:text=""/>
         <View
             android:layout_marginTop="5dp"
             android:layout_width="fill_parent"
@@ -115,7 +115,7 @@
         android:layout_height="0dp"
         android:layout_weight="1.0"
         android:textSize="13sp"
-        android:text="Sub6"/>
+        android:text=""/>
         <View
             android:layout_marginTop="5dp"
             android:layout_width="fill_parent"
@@ -127,7 +127,7 @@
         android:layout_height="0dp"
         android:layout_weight="1.0"
         android:textSize="13sp"
-        android:text="Sub7"/>
+        android:text=""/>
         <View
             android:layout_marginTop="5dp"
             android:layout_width="fill_parent"
@@ -140,7 +140,7 @@
         android:layout_height="0dp"
         android:layout_weight="1.0"
         android:textSize="13sp"
-        android:text="Sub8"/>
+        android:text=""/>
         <View
             android:layout_marginTop="5dp"
             android:layout_width="fill_parent"
@@ -153,7 +153,7 @@
             android:layout_height="0dp"
             android:layout_weight="1.0"
             android:textSize="13sp"
-            android:text="Sub9"/>
+            android:text=""/>
         <View
             android:layout_marginTop="5dp"
             android:layout_width="fill_parent"

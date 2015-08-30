@@ -41,11 +41,6 @@ import functions.Val;
 
 
 
-
-/*import com.google.android.gms.analytics.GoogleAnalytics;
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;*/
-
 public class Home extends Fragment {
 
     boolean loadingMore=false;
@@ -71,7 +66,7 @@ public class Home extends Fragment {
     int first=1;
     SwipeRefreshLayout swipeLayout;
     ProgressBar pb;
-    String next=" ",token;
+    String next=" ";
     CustomList adapter;
     View footerView;
     int listCount;
@@ -167,7 +162,7 @@ public class Home extends Fragment {
         protected String doInBackground(String... urls) {
 
             String URL;
-            URL = "https://graph.facebook.com/"+id+"/feed?limit=20&fields=picture,from,shares,message,object_id,link,created_time,comments.limit(0).summary(true),likes.limit(0).summary(true)&access_token=" + Val.common_access;
+            URL = "https://graph.facebook.com/"+id+"/posts?limit=20&fields=picture,from,shares,message,object_id,link,created_time,comments.limit(0).summary(true),likes.limit(0).summary(true)&access_token=" + Val.common_access;
             HttpClient Client = new DefaultHttpClient();
             HttpGet httpget = new HttpGet(URL);
             ResponseHandler<String> responseHandler = new BasicResponseHandler();

@@ -50,6 +50,9 @@ public class Video extends Fragment {
         listview.setAdapter(new VideoList_Adapter(getActivity(), Items));
     }
 
+
+
+
     Activity activity;
     @Override
     public void onAttach(Activity activity)
@@ -147,7 +150,6 @@ public class Video extends Fragment {
 
         protected String doInBackground(String... urls) {
             try {
-                Log.e("YouTube Data","Starting to fetch stuff");
                 String url = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=UUu445B5LTXzkNr5eft8wNHg&key=AIzaSyBgktirlOODUO9zWD-808D7zycmP7smp-Y";
                 if (navigateTo=="next")
                 {
@@ -160,13 +162,11 @@ public class Video extends Fragment {
                 HttpClient client = new DefaultHttpClient();
                 HttpUriRequest request = new HttpGet(url);
                 ResponseHandler<String> responseHandler = new BasicResponseHandler();
-                Log.e("GET: ",url);
                 String Result = client.execute(request, responseHandler);
 
                 return Result;
             } catch (Exception e) {
                 this.exception = e;
-                Log.e("YouTube Data", e.toString()+" ");
                 e.printStackTrace();
                 return null;
             }
@@ -175,7 +175,6 @@ public class Video extends Fragment {
         @Override
         protected void onPostExecute(String Result) {
             try{
-                Log.e("YouTube Data", "Received Result: "+Result.toString());
                 JSONObject YTFeed = new JSONObject(String.valueOf(Result));
                 JSONArray YTFeedItems = YTFeed.getJSONArray("items");
                 if(YTFeed.has("nextPageToken")) {

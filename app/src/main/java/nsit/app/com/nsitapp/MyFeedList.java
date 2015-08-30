@@ -52,51 +52,60 @@ public class MyFeedList extends ArrayAdapter<String>{
         imageLoader=new ImageLoader(context.getApplicationContext());
     }
 
+    private class ViewHolder {
 
         TextView Des;
-        TextView likes,cats;
+        TextView likes, cats;
         TextView dates;
         TextView read;
         ImageView imag;
         FrameLayout f;
         Button b;
-
+    }
 
     @Override
-    public View getView(final int position, View view2, ViewGroup parent) {
-        View view;
+    public View getView(final int position, View view, ViewGroup parent) {
+        ViewHolder holder = null;
+
         LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+        if (view == null) {
             view = mInflater.inflate(R.layout.myfeed_listitem, null);
-             Des = (TextView) view.findViewById(R.id.des);
-             likes = (TextView) view.findViewById(R.id.likes);
-             dates = (TextView) view.findViewById(R.id.date);
-             cats = (TextView) view.findViewById(R.id.cat);
-             read = (TextView) view.findViewById(R.id.read);
-             imag = (ImageView) view.findViewById(R.id.image);
-             f = (FrameLayout) view.findViewById(R.id.frame);
-             b = (Button) view.findViewById(R.id.show);
-        p = (ProgressBar) view.findViewById(R.id.progressBar1);
+            holder = new ViewHolder();
+            holder.Des = (TextView) view.findViewById(R.id.des);
+            holder.likes = (TextView) view.findViewById(R.id.likes);
+            holder.dates = (TextView) view.findViewById(R.id.date);
+            holder.cats = (TextView) view.findViewById(R.id.cat);
+            holder.read = (TextView) view.findViewById(R.id.read);
+            holder.imag = (ImageView) view.findViewById(R.id.image);
+            holder.f = (FrameLayout) view.findViewById(R.id.frame);
+            holder.b = (Button) view.findViewById(R.id.show);
+            view.setTag(holder);
+        } else
+            holder = (ViewHolder) view.getTag();
+
+            p = (ProgressBar) view.findViewById(R.id.progressBar1);
 
 
         if(des.get(position)==null)
-             Des.setText("No description");
+            holder.Des.setText("No description");
         else
-             Des.setText(des.get(position));
+            holder.Des.setText(des.get(position));
 
 
         if (lik.get(position) == null)
-             likes.setText("0");
+            holder.likes.setText("0");
         else
-             likes.setText(lik.get(position));
+            holder.likes.setText(lik.get(position));
 
 
         if(cat.get(position)!=null) {
-            cats.setText(cat.get(position));
+            holder.cats.setText(cat.get(position));
         }
         else
-             cats.setText(" ");
+            holder.cats.setText(" ");
 
 
+        holder.dates.setVisibility(View.VISIBLE);
         if(date.get(position)!=null) {
             String x = GetLocalDateStringFromUTCString(date.get(position));
             String formattedDate = x;
@@ -110,13 +119,13 @@ public class MyFeedList extends ArrayAdapter<String>{
                 e.printStackTrace();
             }
 
-             dates.setText(formattedDate);
+            holder.dates.setText(formattedDate);
         }
         else
-             dates.setVisibility(View.INVISIBLE);
+            holder.dates.setVisibility(View.INVISIBLE);
 
 
-         read.setOnClickListener(new OnClickListener() {
+        holder.read.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 // TODO Auto-generated method stub
@@ -131,9 +140,10 @@ public class MyFeedList extends ArrayAdapter<String>{
             }
         });
 
+        holder.f.setVisibility(View.VISIBLE);
         if(img.get(position)!=null) {
-            imageLoader.DisplayImage(img.get(position),  imag,p);
-             b.setOnClickListener(new OnClickListener() {
+            imageLoader.DisplayImage(img.get(position),  holder.imag,p);
+            holder.b.setOnClickListener(new OnClickListener() {
 
                 @Override
                 public void onClick(View v) {
@@ -146,9 +156,9 @@ public class MyFeedList extends ArrayAdapter<String>{
                 }
             });
 
-        }else{
-             f.setVisibility(View.GONE);
-        }
+        }else
+            holder.f.setVisibility(View.GONE);
+
 
         AnimationSet set = new AnimationSet(true);
         TranslateAnimation slide = new TranslateAnimation(-100, 0, -100, 0);

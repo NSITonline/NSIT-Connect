@@ -122,7 +122,7 @@ public class FinalFeed extends Fragment {
         protected String doInBackground(String... urls) {
 
             String URL;
-            URL = "https://graph.facebook.com/" + id + "/feed?limit=10&fields=picture,shares,message,object_id," +
+            URL = "https://graph.facebook.com/" + id + "/posts?limit=10&fields=picture,shares,message,object_id," +
                     "link,comments.limit(0).summary(true),to,created_time,likes.limit(0).summary(true)&access_token=" + Val.common_access;
             HttpClient Client = new DefaultHttpClient();
             HttpGet httpget = new HttpGet(URL);
@@ -358,6 +358,8 @@ public class FinalFeed extends Fragment {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+
+
             switch (id) {
                     case Val.id_collegespace: nextcollegespace=nextn;
                         break;
@@ -391,7 +393,6 @@ public class FinalFeed extends Fragment {
              }
             loadingMore=false;
             lv.removeFooterView(footerView);
-
 
         }
     }

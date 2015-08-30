@@ -22,6 +22,10 @@ public class Val {
     id_csi="126976547314225",id_quiz="185960271431856",id_ashwa="135639763273290";
 
 
+    public final static String nsit_online="0",
+            cross_links="1",college_space="2",bullet="3",junoon="4",
+            rotaract="5",debsoc="6",ieee="7",
+            csi="8",quiz="9",ashwa="10";
 
     public final static String
 BT_sem1_sec1  =
@@ -393,7 +397,7 @@ IT_sem3_sec2   =
 IT_sem5_sec1  =
 "0B4kiTfcbhEZIWlhOOUtoaVVkYVE",
 
-  
+    ME_sem1_sec1 = "0B9uRC8Uvb5sFUzJvOWRtc3ozNjg",
 
  
 IT_sem5_sec2  =

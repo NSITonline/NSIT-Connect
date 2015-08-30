@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.LinearLayout;
+import android.widget.FrameLayout;
 
 import com.nispok.snackbar.Snackbar;
 import com.nispok.snackbar.SnackbarManager;
@@ -30,6 +32,8 @@ import functions.ImageLoader;
 import functions.Utils;
 import functions.Val;
 
+import static nsit.app.com.nsitapp.R.id.imag_cont;
+
 
 public class Decsription extends AppCompatActivity {
     ProgressBar pb;
@@ -39,6 +43,8 @@ public class Decsription extends AppCompatActivity {
     Button Link;
     ImageView imageView;
     String imglink,obid;
+    FrameLayout img_cont;
+    LinearLayout but_con;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +65,9 @@ public class Decsription extends AppCompatActivity {
         Like = (TextView) findViewById(R.id.likes);
         Link = (Button) findViewById(R.id.link);
         Des = (TextView) findViewById(R.id.des);
+        img_cont = (FrameLayout) findViewById(imag_cont);
+        but_con = (LinearLayout) findViewById(R.id.but_con);
+
 
         Log.e("object id is : ", "" + obid);
 
@@ -74,7 +83,7 @@ public class Decsription extends AppCompatActivity {
             Des.setText(des);
 
         if(link==null)
-            Link.setVisibility(View.GONE);
+            but_con.setVisibility(View.GONE);
         else
         Link.setOnClickListener(new View.OnClickListener() {
                                     @Override
@@ -89,7 +98,7 @@ public class Decsription extends AppCompatActivity {
         );
         if(Utils.isNetworkAvailable(Decsription.this)) {
             if (img == null) {
-                imageView.setVisibility(View.GONE);
+                img_cont.setVisibility(View.GONE);
                 pb.setVisibility(View.GONE);
             }
             else if (obid == null) {
@@ -104,7 +113,7 @@ public class Decsription extends AppCompatActivity {
                             .duration(Snackbar.SnackbarDuration.LENGTH_SHORT), this);
 
         if (img == null)
-            imageView.setVisibility(View.GONE);
+            img_cont.setVisibility(View.GONE);
         else imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -164,7 +173,7 @@ String text;
                             pb.setVisibility(View.GONE);
                         }
                     } else {
-                        imageView.setVisibility(View.GONE);
+                        img_cont.setVisibility(View.GONE);
                         pb.setVisibility(View.GONE);
                     }
                     Log.e("yrs", "Image Link is : " + imglink);

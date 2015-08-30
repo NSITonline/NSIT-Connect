@@ -1,15 +1,12 @@
 package nsit.app.com.nsitapp;
 
 import android.app.Activity;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
+import android.graphics.Typeface;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -37,8 +34,8 @@ public class CustomList3 extends ArrayAdapter<Subject_struct>{
 
 	}
 
-
 	private class ViewHolder {
+
 		TextView dat;
 		TextView t0;
 		TextView t1;
@@ -54,12 +51,11 @@ public class CustomList3 extends ArrayAdapter<Subject_struct>{
 	}
 
 
-
 	@Override
 	public View getView(int position, View view, ViewGroup parent) {
-		ViewHolder holder = null;
 		LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-		if (view == null) {
+		ViewHolder holder = null;
+		if(view==null) {
 			view = mInflater.inflate(R.layout.timetable_row_layout, null);
 			holder = new ViewHolder();
 			holder.dat = (TextView) view.findViewById(R.id.day);
@@ -73,34 +69,42 @@ public class CustomList3 extends ArrayAdapter<Subject_struct>{
 			holder.t7 = (TextView) view.findViewById(R.id.p7);
 			holder.t8 = (TextView) view.findViewById(R.id.p8);
 			holder.t9 = (TextView) view.findViewById(R.id.p9);
-
 			view.setTag(holder);
-		} else {
-
-			holder = (ViewHolder) view.getTag();
-		}
+		}else
+		holder = (ViewHolder) view.getTag();
+//mon0 tue1 wed2 thu3 fri4 sat5 sun6
 
 		holder.dat.setText(day.get(position));
 if(position<p1.size()) {
-	add(p0.get(position), holder.t0);
-	add(p1.get(position), holder.t1);
-	add(p2.get(position), holder.t2);
-	add(p3.get(position), holder.t3);
-	add(p4.get(position), holder.t4);
-	add(p5.get(position), holder.t5);
-	add(p6.get(position), holder.t6);
-	add(p7.get(position), holder.t7);
+	add(p0.get(position),   holder.t0);
+	add(p1.get(position),   holder.t1);
+	add(p2.get(position),   holder.t2);
+	add(p3.get(position),   holder.t3);
+	add(p4.get(position),   holder.t4);
+	add(p5.get(position),   holder.t5);
+	add(p6.get(position),   holder.t6);
+
 
 }
+		if(position<p7.size())
+			add(p7.get(position),   holder.t7);
 		if(position< p8.size())
-			add(p8.get(position), holder.t8);
+			add(p8.get(position),   holder.t8);
 		if(position< p9.size())
-			add(p9.get(position),holder.t9);
+			add(p9.get(position),  holder.t9);
 		return view;
+
+
 	}
 
 
 	public void add(Subject_struct p,TextView t){
+		Typeface custom_font = Typeface.createFromAsset(context.getAssets(), "fonts/food_icons.ttf");
+
+		t.setTypeface(Typeface.DEFAULT);
+
+		t.setText(" ");
+		t.setTextSize(TypedValue.COMPLEX_UNIT_SP, 13);
 
 		if(!p.subject.contains("break"))
 			if(p.type.contains("theory"))
@@ -108,9 +112,17 @@ if(position<p1.size()) {
 			else
 				t.setText(p.subject + "\n" + p.roomfh +","+ p.roomsh);
 
-		else
-			t.setText("  ");
+		else {
+			if(p.subject.contains("lunch")) {
+				t.setTypeface(custom_font);
+				t.setTextSize(TypedValue.COMPLEX_UNIT_SP, 40);
+				t.setText("BOH");
+			}else{
 
+				t.setTypeface(Typeface.DEFAULT);
+				t.setText(" ");
+			}
+		}
 	}
 
 }

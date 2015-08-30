@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ProgressBar;
 
 import com.nispok.snackbar.Snackbar;
 import com.nispok.snackbar.SnackbarManager;
@@ -20,6 +21,7 @@ import functions.Utils;
 
 
 public class Feedback extends Fragment {
+    ProgressBar pb;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +40,8 @@ public class Feedback extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.activity_feedback, container, false);
         WebView browser = (WebView) rootView.findViewById(R.id.webview);
+        pb= (ProgressBar) rootView.findViewById(R.id.pb);
+
         browser.setWebViewClient(new MyWebViewClient());
         if(activity!=null) {
             if (Utils.isNetworkAvailable(activity))
@@ -58,5 +62,12 @@ public class Feedback extends Fragment {
             view.loadUrl(url);
             return false;
         }
+        @Override
+        public void onPageFinished(WebView webview, String url){
+            super.onPageFinished(webview, url);
+            pb.setVisibility(View.GONE);
+            activity.setProgressBarIndeterminateVisibility(false);
+        }
     }
+
 }

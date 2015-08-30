@@ -1,5 +1,7 @@
 package nsit.app.com.nsitapp;
 
+import android.util.Log;
+
 /**
  * Created by Swati garg on 29-06-2015.
  */
@@ -17,6 +19,7 @@ public class Subject_struct {
         roomsh=f;
         professor=g;
         room =h;
+
     }
 
 }

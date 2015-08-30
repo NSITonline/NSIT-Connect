@@ -21,6 +21,7 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -43,8 +44,10 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.ic_action_info};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setProgressBarIndeterminateVisibility(false);
 
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         Fragment f = new Home();

@@ -11,13 +11,13 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 
 import com.nispok.snackbar.Snackbar;
 import com.nispok.snackbar.SnackbarManager;
@@ -66,6 +66,7 @@ public class Calender extends Fragment {
     {
         super.onAttach(activity);
         this.activity = activity;
+
     }
 
     @Override
@@ -75,7 +76,6 @@ public class Calender extends Fragment {
 
         if(activity!=null) {
             SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
-
             Boolean b = s.getBoolean("classset", false);
             if (!b) {
                 Intent i = new Intent(activity, ChooseClass.class);
@@ -87,7 +87,7 @@ public class Calender extends Fragment {
             timetable = s.getString("timetable", null);
 
             adapter2 = new CustomList3(activity, days, p0,p1, p2, p3, p4, p5, p6, p7, p8, p9);
-            if (a || timetable == null) {
+            if (a==true || timetable == null) {
                 if (Utils.isNetworkAvailable(activity))
                     new DownloadWebPageTask2().execute();
                 else {
@@ -108,6 +108,10 @@ public class Calender extends Fragment {
                 lvTest.setItemMargin(10);
             }
         }
+
+
+
+
         lvTest.setOnScrollListener(new TwoWayView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(TwoWayView view, int scrollState) {
@@ -116,9 +120,7 @@ public class Calender extends Fragment {
             @Override
             public void onScroll(TwoWayView view, int firstVisibleItem,
                                  int visibleItemCount, int totalItemCount) {
-                //what is the bottom item that is visible
                 int lastInScreen = firstVisibleItem + visibleItemCount;
-                //is the bottom item visible & not loading more already ? Load more !
                 if ((lastInScreen == totalItemCount) && !(loadingMore)) {
                     load();
                 }
@@ -138,6 +140,15 @@ public class Calender extends Fragment {
    void load() {
        JSONObject ob;
        JSONArray ar, ar2;
+       if(activity==null )
+           return;
+
+
+       SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
+       timetable = s.getString("timetable", null);
+
+       if(timetable==null)
+           return;
 
        try {
            ob = new JSONObject(timetable);
@@ -206,7 +217,6 @@ public class Calender extends Fragment {
            }
            }
        } catch (Exception e) {
-            Log.e("Error"," " +e.getMessage());
        }
        days.add("Monday");
        days.add("Tuesday");
@@ -215,6 +225,7 @@ public class Calender extends Fragment {
        days.add("Friday");
        days.add("Saturday");
        days.add("Sunday");
+       adapter2.notifyDataSetChanged();
    }
 
 
@@ -254,12 +265,13 @@ public class Calender extends Fragment {
             p7.clear();
             p8.clear();
             p9.clear();
+            lvTest.scrollTo(0, 0);
+            adapter2.notifyDataSetChanged();
+
         }
 
         @Override
         protected String doInBackground(String... urls) {
-
-
 
             SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
             String id = s.getString("timetableid",null);
@@ -267,8 +279,6 @@ public class Calender extends Fragment {
                 id = "0B9uRC8Uvb5sFZFdNcVJVN0VhUEE";
             }
 
-            Log.e("sed","time table id "+id);
-            Log.e("Yo", "Started");
             String URL;
             URL = "https://docs.google.com/uc?id="+id+"&export=download";
             HttpClient Client = new DefaultHttpClient();
@@ -286,29 +296,28 @@ public class Calender extends Fragment {
 
         @Override
         protected void onPostExecute(String result) {
-            Log.e("YO", "Done");
-
             timetable = text;
-            load();
+            if(activity==null)
+                return;
 
-            if(activity!=null)
-            {
-                SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
-            SharedPreferences.Editor e = s.edit();
-            e.putBoolean("timetablechanged", false);
-            e.putString("timetable", text);
-            e.commit();}
+
+            SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
+            SharedPreferences.Editor e1 = s.edit();
+            e1.putBoolean("timetablechanged", false);
+            e1.putString("timetable", text);
+            e1.commit();
+
+
             JSONObject ob;
             JSONArray ar, ar2;
 
-            Log.e("here", "here");
+            if(timetable==null)
+                return;
             try {
                 ob = new JSONObject(timetable);
                 ob = ob.getJSONObject("metadata");
-                String s = ob.getString("last_updated");
-                Log.e("gbfd","dsgb    "+s);
-                if(s.equals("5-7-2015")) {
-                    Log.e("ds","equal");
+                String s2 = ob.getString("last_updated");
+                if(s2.equals("5-7-2015")) {
                     SnackbarManager.show(
                             Snackbar.with(activity.getApplicationContext())
                                     .text("Time Table is not available now.")
@@ -320,19 +329,34 @@ public class Calender extends Fragment {
                 e.printStackTrace();
             }
 
-            if (activity != null) {
-                adapter2 = new CustomList3(activity, days, p0, p1, p2, p3, p4, p5, p6, p7, p8, p9);
+
+            adapter2 = new CustomList3(activity, days, p0, p1, p2, p3, p4, p5, p6, p7, p8, p9);
+            load();
                 lvTest.setAdapter(adapter2);
                 lvTest.setItemMargin(10);
-            }
+                lvTest.setOnScrollListener(new TwoWayView.OnScrollListener() {
+                    @Override
+                    public void onScrollStateChanged(TwoWayView view, int scrollState) {
+                    }
+
+                    @Override
+                    public void onScroll(TwoWayView view, int firstVisibleItem,
+                                         int visibleItemCount, int totalItemCount) {
+                        int lastInScreen = firstVisibleItem + visibleItemCount;
+                        if ((lastInScreen == totalItemCount) && !(loadingMore)) {
+                            load();
+                        }
+                        adapter2.notifyDataSetChanged();
+                    }
+                });
+
+
+
         }
     }
 
     @Override
     public void onResume() {
-        super.onResume();
-
-
         if(activity!=null) {
             SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
             Boolean a = s.getBoolean("timetablechanged", true);
@@ -359,6 +383,7 @@ public class Calender extends Fragment {
                 lvTest.setItemMargin(10);
             }
         }
+        super.onResume();
     }
 
     @Override

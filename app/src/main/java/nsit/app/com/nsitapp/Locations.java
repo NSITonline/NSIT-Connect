@@ -130,7 +130,7 @@ public class Locations extends Fragment {
 
         ArrayList<Location> Campus_locations = new ArrayList<>();
         Campus_locations.add(new Location("Administrative Block", new LatLng(28.609790, 77.036969)));
-        Campus_locations.add(new Location("Block VI - ICE/MPAE", new LatLng(28.610334, 77.037869)));
+        Campus_locations.add(new Location("Block VI - ICE/MPAE/ME", new LatLng(28.610334, 77.037869)));
         Campus_locations.add(new Location("Block V - COE/IT", new LatLng(28.609853, 77.038506)));
         Campus_locations.add(new Location("Block IV - ECE/BT", new LatLng(28.609706, 77.037629)));
         Campus_locations.add(new Location("Main Auditorium", new LatLng(28.609687, 77.037034)));

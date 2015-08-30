@@ -84,12 +84,12 @@ public class LocationMapView extends Activity {
                 des = getResources().getString(R.string.bh2_desc);
             }
             else if(LocationName.contains("Boys' Hostel I")) {
-                des = getResources().getString(R.string.gh1_desc);
+                des = getResources().getString(R.string.bh1_desc);
             }
             if(LocationName.contains("Girls' Hostel II"))
                 des =  getResources().getString(R.string.gh2_desc);
             else  if(LocationName.contains("Girls' Hostel"))
-                des =  getResources().getString(R.string.bh1_desc);
+                des =  getResources().getString(R.string.gh1_desc);
 
             if(LocationName.contains("Mini Zayca"))
                 des =  getResources().getString(R.string.mini_zayca);

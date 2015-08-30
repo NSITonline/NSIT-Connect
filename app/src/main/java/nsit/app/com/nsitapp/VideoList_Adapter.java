@@ -48,6 +48,7 @@ public class VideoList_Adapter extends BaseAdapter {
         this.context = context;
         this.FeedItems = FeedItems;
         imageLoader=new ImageLoader(context.getApplicationContext());
+
         inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -121,6 +122,8 @@ public class VideoList_Adapter extends BaseAdapter {
         TextView txtDate = (TextView) vi.findViewById(R.id.DateStamp);
         String VideoId = null;
         ImageView VideoThumbnail =  (ImageView) vi.findViewById(R.id.VideoThumbnail);
+
+
         try {
             Title.setText(FeedItems.getJSONObject(position).getJSONObject("snippet").getString("title"));
             String DescriptionText =FeedItems.getJSONObject(position).getJSONObject("snippet").getString("description");
@@ -181,6 +184,10 @@ public class VideoList_Adapter extends BaseAdapter {
                 }
             }
         });
+
+
+
+
 
         AnimationSet set = new AnimationSet(true);
         TranslateAnimation slide = new TranslateAnimation(-200,0,-200,0);

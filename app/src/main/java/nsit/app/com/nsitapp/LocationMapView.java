@@ -26,12 +26,13 @@ import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONObject;
 
+import functions.Constant;
 import functions.GPSTracker;
 
 /**
  * Created by Sidharth Patro on 01-Jul-15.
  */
-public class LocationMapView extends Activity {
+public class LocationMapView extends Activity implements Constant{
     com.google.android.gms.maps.MapFragment mapFragment;
     String OriginLat;
     String OriginLong;
@@ -52,9 +53,9 @@ public class LocationMapView extends Activity {
         Bundle extras = getIntent().getExtras();
         Log.e("extras",extras.toString()+" ");
         if (extras != null) {
-            String LocationLat = extras.getString("LocationLat");
-            String LocationLong = extras.getString("LocationLong");
-            String LocationName = extras.getString("LocationName");
+            String LocationLat = extras.getString(LOCATION_LAT);
+            String LocationLong = extras.getString(LOCATION_LON);
+            String LocationName = extras.getString(LOCATION_NAME);
             Log.e("here",LocationName);
             if(LocationName.contains("North Gate"))
                 des =  getResources().getString(R.string.north_gate_desc);
@@ -145,7 +146,7 @@ public class LocationMapView extends Activity {
 
             TextView desc = (TextView) findViewById(R.id.LocDescription);
             desc.setText(des);
-            this.LocationIcon = extras.getInt("LocationIcon");
+            this.LocationIcon = extras.getInt(LOCATION_ICON);
             TextView txtHeader = (TextView)findViewById(R.id.LocationTitle);
             this.DestinationLat = LocationLat;
             this.DestinationLong = LocationLong;
@@ -190,7 +191,6 @@ public class LocationMapView extends Activity {
     }
 
     public class Location_GetDirections extends AsyncTask<String, Void, String> {
-        private Exception exception;
 
         protected String doInBackground(String... Coordinates) {
             try {
@@ -205,7 +205,6 @@ public class LocationMapView extends Activity {
 
                 return DriveResult+"/NSITAPP/"+WalkResult;
             } catch (Exception e) {
-                this.exception = e;
                 e.printStackTrace();
                 return null;
             }

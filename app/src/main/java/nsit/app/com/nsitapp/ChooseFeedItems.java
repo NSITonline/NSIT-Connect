@@ -30,22 +30,17 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import functions.Constant;
 import functions.Utils;
 import functions.Val;
 
 
-public class ChooseFeedItems extends AppCompatActivity {
-    ProgressBar pb,pb2;
+public class ChooseFeedItems extends AppCompatActivity implements Constant {
     CheckBox collegespace,crosslinks,junoon,bullet,rotaract,quiz,ieee,csi,ashwa,deb;
     Boolean Collegespace=false,Crosslinks=false,Junoon=false,Bullet=false,Rotaract=false,Quiz=false,Ieee=false,Csi=false,Ashwa=false,Deb=false;
     TextView tCollegespace,tCrosslinks,tJunoon,tBullet,tRotaract,tQuiz,tIeee,tCsi,tAshwa,tDeb;
     Button next;
     List<String> list = new ArrayList<String>();
-    List<String> list1 = new ArrayList<String>();
-    List<String> list2 = new ArrayList<String>();
-    List<String> list5 = new ArrayList<String>();
-    List<String> list6 = new ArrayList<String>();
-    List<String> list7 = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,16 +76,16 @@ public class ChooseFeedItems extends AppCompatActivity {
         tAshwa = (TextView)  findViewById(R.id.stars_ashwa);
 
         SharedPreferences i = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        Crosslinks = i.getBoolean("crosslinks", false);
-        Collegespace = i.getBoolean("collegespace", false);
-        Bullet = i.getBoolean("bullet", false);
-        Junoon = i.getBoolean("junoon", false);
-        Rotaract = i.getBoolean("rotaract", false);
-        Csi = i.getBoolean("csi", false);
-        Ieee = i.getBoolean("ieee", false);
-        Deb = i.getBoolean("debsoc", false);
-        Quiz = i.getBoolean("quiz", false);
-        Ashwa = i.getBoolean("ashwa", false);
+        Crosslinks = i.getBoolean(CROSSLINKS, false);
+        Collegespace = i.getBoolean(COLLEGESPACE, false);
+        Bullet = i.getBoolean(BULLET, false);
+        Junoon = i.getBoolean(JUNOON, false);
+        Rotaract = i.getBoolean(ROTARACT, false);
+        Csi = i.getBoolean(CSI, false);
+        Ieee = i.getBoolean(IEEE, false);
+        Deb = i.getBoolean(DEB, false);
+        Quiz = i.getBoolean(QUIZ, false);
+        Ashwa = i.getBoolean(ASHWA, false);
 
 
         collegespace.setChecked(Collegespace);
@@ -173,18 +168,18 @@ public class ChooseFeedItems extends AppCompatActivity {
             public void onClick(View view) {
                 SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 SharedPreferences.Editor e = p.edit();
-                e.putBoolean("crosslinks", Crosslinks);
-                e.putBoolean("collegespace", Collegespace);
-                e.putBoolean("bullet", Bullet);
-                e.putBoolean("junoon", Junoon);
-                e.putBoolean("rotaract", Rotaract);
-                e.putBoolean("csi", Csi);
-                e.putBoolean("ieee", Ieee);
-                e.putBoolean("debsoc", Deb);
-                e.putBoolean("quiz", Quiz);
-                e.putBoolean("ashwa", Ashwa);
-                e.putBoolean("set", true);
-                e.putBoolean("item_changed", true);
+                e.putBoolean(CROSSLINKS, Crosslinks);
+                e.putBoolean(COLLEGESPACE, Collegespace);
+                e.putBoolean(BULLET, Bullet);
+                e.putBoolean(JUNOON, Junoon);
+                e.putBoolean(ROTARACT, Rotaract);
+                e.putBoolean(CSI, Csi);
+                e.putBoolean(IEEE, Ieee);
+                e.putBoolean(DEB, Deb);
+                e.putBoolean(QUIZ, Quiz);
+                e.putBoolean(ASHWA, Ashwa);
+                e.putBoolean(SOCIETY_SET, true);
+                e.putBoolean(SOCIETY_ITEM_CHANGED, true);
                 e.commit();
                 finish();
             }

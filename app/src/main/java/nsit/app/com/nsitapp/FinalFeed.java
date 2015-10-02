@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -36,6 +35,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import adapters.MyFeedList;
+import functions.Constant;
 import functions.Utils;
 import functions.Val;
 
@@ -44,7 +45,7 @@ import functions.Val;
  * Created by Swati garg on 21-06-2015.
  */
 
-public class FinalFeed extends Fragment {
+public class FinalFeed extends Fragment implements Constant{
     Boolean Collegespace=false,Crosslinks=false,Junoon=false,Bullet=false,Rotaract=false,Quiz=false,Ieee=false,Csi=false,Ashwa=false,Deb=false;
     boolean loadingMore=false;
     ProgressBar pb;
@@ -82,19 +83,21 @@ public class FinalFeed extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_feedfinal, container, false);
         pb=(ProgressBar)rootView.findViewById(R.id.progressBar1);
         lv = (ListView) rootView.findViewById(R.id.list);
+        swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
+        footerView = ((LayoutInflater)activity.getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.footer_layout, null, false);
+
+
         first=1;
         adapter = new MyFeedList(activity, list6, list, list2, list7, list1, list8,list9);
 
         if(activity!=null) {
             SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
-            Boolean set = s.getBoolean("set", false);
+            Boolean set = s.getBoolean(SOCIETY_SET, false);
             if (set == false) {
                 Intent i = new Intent(getActivity(), ChooseFeedItems.class);
                 startActivity(i);
             }
         }
-        swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
-        footerView = ((LayoutInflater)activity.getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.footer_layout, null, false);
 
         swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -435,16 +438,16 @@ public class FinalFeed extends Fragment {
 
     public void load(){
         i = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
-        Crosslinks = i.getBoolean("crosslinks", false);
-        Collegespace = i.getBoolean("collegespace", false);
-        Bullet = i.getBoolean("bullet", false);
-        Junoon = i.getBoolean("junoon", false);
-        Rotaract = i.getBoolean("rotaract", false);
-        Csi = i.getBoolean("csi", false);
-        Ieee = i.getBoolean("ieee", false);
-        Deb = i.getBoolean("debsoc", false);
-        Quiz = i.getBoolean("quiz", false);
-        Ashwa = i.getBoolean("ashwa", false);
+        Crosslinks = i.getBoolean(CROSSLINKS, false);
+        Collegespace = i.getBoolean(COLLEGESPACE, false);
+        Bullet = i.getBoolean(BULLET, false);
+        Junoon = i.getBoolean(JUNOON, false);
+        Rotaract = i.getBoolean(ROTARACT, false);
+        Csi = i.getBoolean(CSI, false);
+        Ieee = i.getBoolean(IEEE, false);
+        Deb = i.getBoolean(DEB, false);
+        Quiz = i.getBoolean(QUIZ, false);
+        Ashwa = i.getBoolean(ASHWA, false);
 
 
 
@@ -500,16 +503,16 @@ public class FinalFeed extends Fragment {
                     loadingMore=true;
                     lv.addFooterView(footerView);
                     if(Utils.isNetworkAvailable(activity)){
-                        Crosslinks = i.getBoolean("crosslinks", false);
-                        Collegespace = i.getBoolean("collegespace", false);
-                        Bullet = i.getBoolean("bullet", false);
-                        Junoon = i.getBoolean("junoon", false);
-                        Rotaract = i.getBoolean("rotaract", false);
-                        Csi = i.getBoolean("csi", false);
-                        Ieee = i.getBoolean("ieee", false);
-                        Deb = i.getBoolean("debsoc", false);
-                        Quiz = i.getBoolean("quiz", false);
-                        Ashwa = i.getBoolean("ashwa", false);
+                        Crosslinks = i.getBoolean(CROSSLINKS, false);
+                        Collegespace = i.getBoolean(COLLEGESPACE, false);
+                        Bullet = i.getBoolean(BULLET, false);
+                        Junoon = i.getBoolean(JUNOON, false);
+                        Rotaract = i.getBoolean(ROTARACT, false);
+                        Csi = i.getBoolean(CSI, false);
+                        Ieee = i.getBoolean(IEEE, false);
+                        Deb = i.getBoolean(DEB, false);
+                        Quiz = i.getBoolean(QUIZ, false);
+                        Ashwa = i.getBoolean(ASHWA, false);
                         if (Crosslinks)
                             new DownloadWebPageTask3(Val.id_crosslinks,nextcrosslinks).execute();
                         if (Collegespace)

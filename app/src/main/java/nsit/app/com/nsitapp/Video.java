@@ -3,9 +3,7 @@ package nsit.app.com.nsitapp;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -16,8 +14,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.google.android.youtube.player.YouTubeStandalonePlayer;
-
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.HttpGet;
@@ -27,7 +23,8 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.IOException;
+import adapters.VideoList_Adapter;
+import functions.ButtonAnimation;
 
 /**
  * Created by Sidharth Patro on 21-Jun-15.
@@ -46,17 +43,16 @@ public class Video extends Fragment {
         super.onCreate(savedInstanceState);
 
     }
-    public void populateList(JSONArray Items){
+
+    public void populateList(JSONArray Items) {
         listview.setAdapter(new VideoList_Adapter(getActivity(), Items));
     }
 
 
-
-
     Activity activity;
+
     @Override
-    public void onAttach(Activity activity)
-    {
+    public void onAttach(Activity activity) {
         super.onAttach(activity);
         this.activity = activity;
     }
@@ -86,14 +82,14 @@ public class Video extends Fragment {
         }
 
 
-        btnNextPage = (Button)rootView.findViewById(R.id.NextPageButton);
-        btnPrevPage = (Button)rootView.findViewById(R.id.PrevPageButton);
+        btnNextPage = (Button) rootView.findViewById(R.id.NextPageButton);
+        btnPrevPage = (Button) rootView.findViewById(R.id.PrevPageButton);
 
         btnNextPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
-                    if(nextPageToken!="") {
+                    if (nextPageToken != "") {
                         Spinner.setVisibility(View.VISIBLE);
                         navigateTo = "next";
                         ButtonAnimation btnAnimation = new ButtonAnimation();
@@ -151,13 +147,10 @@ public class Video extends Fragment {
         protected String doInBackground(String... urls) {
             try {
                 String url = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=UUu445B5LTXzkNr5eft8wNHg&key=AIzaSyBgktirlOODUO9zWD-808D7zycmP7smp-Y";
-                if (navigateTo=="next")
-                {
-                    url = url+"&pageToken="+nextPageToken;
-                }
-                else if (navigateTo=="prev")
-                {
-                    url = url+"&pageToken="+prevPageToken;
+                if (navigateTo == "next") {
+                    url = url + "&pageToken=" + nextPageToken;
+                } else if (navigateTo == "prev") {
+                    url = url + "&pageToken=" + prevPageToken;
                 }
                 HttpClient client = new DefaultHttpClient();
                 HttpUriRequest request = new HttpGet(url);
@@ -174,22 +167,20 @@ public class Video extends Fragment {
 
         @Override
         protected void onPostExecute(String Result) {
-            try{
+            try {
                 JSONObject YTFeed = new JSONObject(String.valueOf(Result));
                 JSONArray YTFeedItems = YTFeed.getJSONArray("items");
-                if(YTFeed.has("nextPageToken")) {
+                if (YTFeed.has("nextPageToken")) {
                     nextPageToken = YTFeed.getString("nextPageToken");
                     btnNextPage.setAlpha(1f);
-                }
-                else{
+                } else {
                     nextPageToken = "";
                     btnNextPage.setAlpha(0.3f);
                 }
-                if(YTFeed.has("prevPageToken")){
+                if (YTFeed.has("prevPageToken")) {
                     prevPageToken = YTFeed.getString("prevPageToken");
                     btnPrevPage.setAlpha(1f);
-                }
-                else{
+                } else {
                     prevPageToken = "";
                     btnPrevPage.setAlpha(0.3f);
                 }

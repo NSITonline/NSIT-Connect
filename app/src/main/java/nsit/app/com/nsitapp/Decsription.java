@@ -28,6 +28,8 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
+import functions.ButtonAnimation;
+import functions.Constant;
 import functions.ImageLoader;
 import functions.Utils;
 import functions.Val;
@@ -35,7 +37,7 @@ import functions.Val;
 import static nsit.app.com.nsitapp.R.id.imag_cont;
 
 
-public class Decsription extends AppCompatActivity {
+public class Decsription extends AppCompatActivity implements Constant{
     ProgressBar pb;
     public ImageLoader imageLoader;
     String img,des,like,link;
@@ -53,13 +55,14 @@ public class Decsription extends AppCompatActivity {
         pb=(ProgressBar)findViewById(R.id.progressBar1);
 
         setTitle("Post");
+
         Intent i = getIntent();
-        img = i.getStringExtra("img");
-        des = i.getStringExtra("dec");
-        like = i.getStringExtra("like");
-        link = i.getStringExtra("link");
+        img = i.getStringExtra(IMAGE);
+        des = i.getStringExtra(DES);
+        like = i.getStringExtra(LIKE);
+        link = i.getStringExtra(LINK);
         imageLoader=new ImageLoader(this);
-        obid = i.getStringExtra("oid");
+        obid = i.getStringExtra(OBID);
 
         imageView = (ImageView) findViewById(R.id.image);
         Like = (TextView) findViewById(R.id.likes);
@@ -69,7 +72,6 @@ public class Decsription extends AppCompatActivity {
         but_con = (LinearLayout) findViewById(R.id.but_con);
 
 
-        Log.e("object id is : ", "" + obid);
 
         if(like==null)
             Like.setText("0");
@@ -118,8 +120,8 @@ public class Decsription extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(Decsription.this,ImageAct.class);
-                i.putExtra("img",img);
-                i.putExtra("oid",obid);
+                i.putExtra(IMAGE,img);
+                i.putExtra(OBID,obid);
                 startActivity(i);
                 ButtonAnimation btnAnimation = new ButtonAnimation();
                 btnAnimation.animateButton(view, getApplicationContext());
@@ -136,7 +138,7 @@ String text;
         @Override
         protected String doInBackground(String... urls) {
 
-            Log.e("Yo", "Started");
+
             String URL = "https://graph.facebook.com/"+obid+"?fields=images&access_token="+ Val.common_access;
             HttpClient Client = new DefaultHttpClient();
             HttpGet httpget = new HttpGet(URL);
@@ -154,7 +156,6 @@ String text;
         @Override
         protected void onPostExecute(String result) {
             Log.e("YO", "Done" + obid + text);
-//            Log.e("yrs",text);
             JSONObject ob;
             JSONArray arr;
             if(text==null){

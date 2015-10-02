@@ -19,28 +19,31 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
+import adapters.CustomListViewAdapter;
+
 
 public class Professors extends Fragment implements
         AdapterView.OnItemClickListener {
 
 
-    public static final String[] titles = new String[] { "DM","DC","DP",
-            "DM","H&M",
+    public static final String[] titles = new String[]{"DM", "DC", "DP",
+            "DM", "H&M",
             "ECE",
-            "COE","ICE","MPAE", "IT",   "BT","SAS"};
+            "COE", "ICE", "MPAE", "IT", "BT", "SAS"};
 
-    public static final String[] full = new String[] {
-            "DEPARTMENT OF MANAGEMENT","DEPARTMENT OF CHEMISTRY","DEPARTMENT OF PHYSICS",
-            "DEPARTMENT OF MATHS","School Of Humanities & Management",
+    public static final String[] full = new String[]{
+            "DEPARTMENT OF MANAGEMENT", "DEPARTMENT OF CHEMISTRY", "DEPARTMENT OF PHYSICS",
+            "DEPARTMENT OF MATHS", "School Of Humanities & Management",
             "Division Of Electronics & Communication Engg",
-            "Division Of Computer Engg",  "Division Of Instrumentation & Control Engg",
+            "Division Of Computer Engg", "Division Of Instrumentation & Control Engg",
             "Division Of Manufacturing Processes & Automation Engg",
             "Division Of Information Technology",
-           "Division Of Bio-Technology","School Of Applied Sciences"
+            "Division Of Bio-Technology", "School Of Applied Sciences"
     };
 
     ListView listView;
     List<RowItem> rowItems;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         setHasOptionsMenu(true);
@@ -49,9 +52,9 @@ public class Professors extends Fragment implements
     }
 
     Activity activity;
+
     @Override
-    public void onAttach(Activity activity)
-    {
+    public void onAttach(Activity activity) {
         super.onAttach(activity);
         this.activity = activity;
     }
@@ -80,10 +83,11 @@ public class Professors extends Fragment implements
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-       Intent mFragment = new Intent(activity,ProfList.class);
+        Intent mFragment = new Intent(activity, ProfList.class);
         mFragment.putExtra("dept", position);
         startActivity(mFragment);
     }
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         menu.clear();

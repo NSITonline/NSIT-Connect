@@ -14,10 +14,14 @@ import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
 
+import adapters.LocationsList_Adapter;
+import functions.ButtonAnimation;
+import functions.Constant;
+
 /**
  * Created by Sidharth Patro on 21-Jun-15.
  */
-public class Locations extends Fragment {
+public class Locations extends Fragment implements Constant {
 
     ArrayList<LocationGroup> LocationsGroupsList = new ArrayList<>();
     public ExpandableListView listView;
@@ -91,11 +95,10 @@ public class Locations extends Fragment {
 
     public void ShowOnMap(View view, Location LocationItem, Integer GroupItem){
         Intent myIntent = new Intent(view.getContext(),LocationMapView.class);
-        myIntent.putExtra("LocationName", LocationItem.Name);
-        myIntent.putExtra("LocationLat", String.valueOf(LocationItem.Coord.latitude));
-        myIntent.putExtra("LocationLong", String.valueOf(LocationItem.Coord.longitude));
-        myIntent.putExtra("LocationLong", String.valueOf(LocationItem.Coord.longitude));
-        myIntent.putExtra("LocationIcon", GroupItem);
+        myIntent.putExtra(LOCATION_NAME, LocationItem.Name);
+        myIntent.putExtra(LOCATION_LAT, String.valueOf(LocationItem.Coord.latitude));
+        myIntent.putExtra(LOCATION_LON, String.valueOf(LocationItem.Coord.longitude));
+        myIntent.putExtra(LOCATION_ICON, GroupItem);
         Locations.this.startActivity(myIntent);
     }
 

@@ -6,7 +6,7 @@ import android.provider.BaseColumns;
  * Created by Swati garg on 30-06-2015.
  */
     /* Inner class that defines the table contents */
-    public  abstract class TableEntryVideo implements BaseColumns {
+public abstract class TableEntryVideo implements BaseColumns {
 
     public static final String TABLE2_NAME = "feeds";
     public static final String COLUMN_NAME2_MESSAGE = "message";

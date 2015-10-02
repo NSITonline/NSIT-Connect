@@ -4,16 +4,10 @@ package nsit.app.com.nsitapp;
  * Created by Swati garg on 22-06-2015.
  */
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.EditText;
@@ -25,24 +19,25 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import adapters.ProfListCustomListViewAdapter;
 import functions.Val;
 
 
 public class ProfList extends AppCompatActivity {
     EditText s;
-    public static final String[] titles = new String[] { "DM","DC","DP",
-            "DM","H&M",
+    public static final String[] titles = new String[]{"DM", "DC", "DP",
+            "DM", "H&M",
             "ECE",
-            "COE","ICE","MPAE", "IT",   "BT","SAS"};
+            "COE", "ICE", "MPAE", "IT", "BT", "SAS"};
 
-    public static final String[] full = new String[] {
-            "DEPARTMENT OF MANAGEMENT","DEPARTMENT OF CHEMISTRY","DEPARTMENT OF PHYSICS",
-            "DEPARTMENT OF MATHS","School Of Humanities & Management",
+    public static final String[] full = new String[]{
+            "DEPARTMENT OF MANAGEMENT", "DEPARTMENT OF CHEMISTRY", "DEPARTMENT OF PHYSICS",
+            "DEPARTMENT OF MATHS", "School Of Humanities & Management",
             "Division Of Electronics & Communication Engg",
-            "Division Of Computer Engg",  "Division Of Instrumentation & Control Engg",
+            "Division Of Computer Engg", "Division Of Instrumentation & Control Engg",
             "Division Of Manufacturing Processes & Automation Engg",
             "Division Of Information Technology",
-            "Division Of Bio-Technology","School Of Applied Sciences"
+            "Division Of Bio-Technology", "School Of Applied Sciences"
     };
 
 
@@ -50,7 +45,6 @@ public class ProfList extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_proflist);
-
 
 
         Intent i = getIntent();
@@ -64,7 +58,7 @@ public class ProfList extends AppCompatActivity {
         TextView tv = (TextView) findViewById(R.id.textView);
 
 
-        List<ProfListRowItem> profe=new ArrayList<ProfListRowItem>();
+        List<ProfListRowItem> profe = new ArrayList<ProfListRowItem>();
 
         tv.setText(full[dept]);
 
@@ -82,8 +76,8 @@ public class ProfList extends AppCompatActivity {
             ar = ob.getJSONArray("ContentArray");
             for (int j = 0; j < ar.length(); j++) {
 
-                name[k] = ar.getJSONObject(j).getString("Name") ;
-                if(ar.getJSONObject(j).getString("Designation")!="")
+                name[k] = ar.getJSONObject(j).getString("Name");
+                if (ar.getJSONObject(j).getString("Designation") != "")
                     name[k] = name[k] + " , " + ar.getJSONObject(j).getString("Designation");
                 ids[k] = ar.getJSONObject(j).getString("Email");
                 contact[k] = ar.getJSONObject(j).getString("ContactNo");
@@ -93,7 +87,7 @@ public class ProfList extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        for (int j = 0; j <k; j++) {
+        for (int j = 0; j < k; j++) {
             ProfListRowItem item = new ProfListRowItem(name[j], ids[j], contact[j]);
             profe.add(item);
 
@@ -109,7 +103,7 @@ public class ProfList extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId()==android.R.id.home)
+        if (item.getItemId() == android.R.id.home)
             finish();
         return super.onOptionsItemSelected(item);
     }

@@ -1,4 +1,4 @@
-package nsit.app.com.nsitapp;
+package adapters;
 
 import android.content.Context;
 import android.util.Log;
@@ -20,6 +20,9 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import nsit.app.com.nsitapp.Locations;
+import nsit.app.com.nsitapp.R;
+
 
 /**
  * Created by Sidharth Patro on 22-Jun-15.
@@ -36,7 +39,7 @@ public class LocationsList_Adapter extends BaseExpandableListAdapter {
     public static int lastExpandedGroupPosition = -1;
 
 
-    public void setGroupClicked(int groupPosition){
+    public void setGroupClicked(int groupPosition) {
         groupClicked = groupPosition;
     }
 
@@ -89,37 +92,46 @@ public class LocationsList_Adapter extends BaseExpandableListAdapter {
         Locations.LocationGroup LocGroup = getGroup(groupPosition);
         String headerTitle = LocGroup.GroupHeader;
         String groupType = LocGroup.GroupType;
-        listView = (ExpandableListView)parent;
+        listView = (ExpandableListView) parent;
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this.context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = infalInflater.inflate(R.layout.location_listitem, null);
         }
-        this.listView = (ExpandableListView)parent;
+        this.listView = (ExpandableListView) parent;
 
         TextView GroupHeader = (TextView) convertView
                 .findViewById(R.id.LocationsGroupHeader);
         GroupHeader.setText(headerTitle);
-        ImageView GroupIcon = (ImageView)convertView.findViewById(R.id.GroupTypeImage);
+        ImageView GroupIcon = (ImageView) convertView.findViewById(R.id.GroupTypeImage);
 
-        switch(groupType){
-            case "College": GroupIcon.setImageResource(R.drawable.ic_school_black_24dp);
+        switch (groupType) {
+            case "College":
+                GroupIcon.setImageResource(R.drawable.ic_school_black_24dp);
                 break;
-            case "Campus": GroupIcon.setImageResource(R.drawable.ic_business_black_24dp);
+            case "Campus":
+                GroupIcon.setImageResource(R.drawable.ic_business_black_24dp);
                 break;
-            case "Hostel": GroupIcon.setImageResource(R.drawable.ic_hotel_black_24dp);
+            case "Hostel":
+                GroupIcon.setImageResource(R.drawable.ic_hotel_black_24dp);
                 break;
-            case "Canteen": GroupIcon.setImageResource(R.drawable.ic_local_cafe_black_24dp);
+            case "Canteen":
+                GroupIcon.setImageResource(R.drawable.ic_local_cafe_black_24dp);
                 break;
-            case "Stationery": GroupIcon.setImageResource(R.drawable.ic_brush_black_24dp);
+            case "Stationery":
+                GroupIcon.setImageResource(R.drawable.ic_brush_black_24dp);
                 break;
-            case "ATM": GroupIcon.setImageResource(R.drawable.ic_credit_card_black_24dp);
+            case "ATM":
+                GroupIcon.setImageResource(R.drawable.ic_credit_card_black_24dp);
                 break;
-            case "WiFi": GroupIcon.setImageResource(R.drawable.ic_network_wifi_black_24dp);
+            case "WiFi":
+                GroupIcon.setImageResource(R.drawable.ic_network_wifi_black_24dp);
                 break;
-            case "Sports": GroupIcon.setImageResource(R.drawable.ic_directions_bike_black_24dp);
+            case "Sports":
+                GroupIcon.setImageResource(R.drawable.ic_directions_bike_black_24dp);
                 break;
-            case "Miscellaneous": GroupIcon.setImageResource(R.drawable.ic_public_black_24dp);
+            case "Miscellaneous":
+                GroupIcon.setImageResource(R.drawable.ic_public_black_24dp);
                 break;
         }
 
@@ -128,7 +140,7 @@ public class LocationsList_Adapter extends BaseExpandableListAdapter {
 
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
-        final String childText = ((Locations.Location)getChild(groupPosition, childPosition)).Name;
+        final String childText = ((Locations.Location) getChild(groupPosition, childPosition)).Name;
 
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this.context
@@ -139,7 +151,7 @@ public class LocationsList_Adapter extends BaseExpandableListAdapter {
         TextView txtHeader = (TextView) convertView.findViewById(R.id.LocationItem);
         txtHeader.setText(childText);
 
-        if(lastExpandedGroupPosition == groupPosition) {
+        if (lastExpandedGroupPosition == groupPosition) {
             AnimationSet set = new AnimationSet(true);
             TranslateAnimation slide = new TranslateAnimation(0, 0, -50, 0);
             slide.setInterpolator(new DecelerateInterpolator(5.0f));
@@ -162,7 +174,7 @@ public class LocationsList_Adapter extends BaseExpandableListAdapter {
     }
 
     @Override
-    public void onGroupExpanded(int groupPosition){
+    public void onGroupExpanded(int groupPosition) {
         lastExpandedGroupPosition = groupPosition;
     }
 }

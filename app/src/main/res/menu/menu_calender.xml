@@ -1,12 +1,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools" tools:context="nsit.app.com.nsitapp.MyFeed">
-    <item android:id="@+id/subjects"
-        app:showAsAction="always"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="nsit.app.com.nsitapp.MyFeed">
+    <item
+        android:id="@+id/subjects"
         android:icon="@drawable/ic_library_books_white_24dp"
-        android:title="Subjects" />
-    <item android:id="@+id/choose"
-        app:showAsAction="always"
+        android:title="Subjects"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/choose"
         android:icon="@drawable/ic_settings_white"
-        android:title="Select Class" />
+        android:title="Select Class"
+        app:showAsAction="always" />
 </menu>

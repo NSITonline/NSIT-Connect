@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
@@ -8,176 +7,188 @@
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:showDividers="none">
-   <LinearLayout
-       android:layout_width="fill_parent"
-       android:layout_height="wrap_content"
-       android:background="#ffffff"
-       android:orientation="vertical"
-       android:padding="10dp">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:orientation="vertical"
+        android:padding="10dp">
 
         <FrameLayout
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:background="#ffffff"
             android:orientation="horizontal"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:layout_marginBottom="10dp">
+            android:padding="5dp">
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="center_vertical">
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical">
+
                 <TextView
                     android:id="@+id/code"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textStyle="bold"
                     android:text="Code"
                     android:textSize="15sp"
-                    />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/title"
-                    android:focusable="false"
-                    android:layout_gravity="center_vertical"
-                    android:gravity="center_vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="hellllooooo"
+                    android:layout_gravity="center_vertical"
                     android:layout_marginTop="5dp"
-                    android:textSize="15sp"
-                    />
+                    android:focusable="false"
+                    android:gravity="center_vertical"
+                    android:text="hellllooooo"
+                    android:textSize="15sp" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right">
+
                 <TextView
                     android:id="@+id/attendance"
-                    android:focusable="false"
-                    android:layout_gravity="center_vertical"
-                    android:gravity="center_vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="25sp"
-                    android:textColor="@color/colorPrimary"
+                    android:layout_gravity="center_vertical"
+                    android:digits="2"
+                    android:focusable="false"
+                    android:gravity="center_vertical"
                     android:text="75.55"
-                    android:digits="2" />
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="25sp" />
+
                 <TextView
                     android:id="@+id/attendance_suffix"
-                    android:focusable="false"
-                    android:layout_gravity="center_vertical"
-                    android:gravity="center_vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:textColor="#929292"
-                    android:text="%"
+                    android:layout_gravity="center_vertical"
                     android:layout_marginLeft="5dp"
-                    android:digits="5" />
+                    android:digits="5"
+                    android:focusable="false"
+                    android:gravity="center_vertical"
+                    android:text="%"
+                    android:textColor="#929292"
+                    android:textSize="20sp" />
             </LinearLayout>
         </FrameLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="#e3e3e3"
-        android:layout_marginBottom="10dp"></LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:padding="5dp">
-        <TextView
-            android:id="@+id/message"
-            android:focusable="false"
-            android:layout_gravity="center_vertical"
-            android:gravity="center_vertical"
-            android:textSize="15sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Add some dates to get started."/>
-    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_gravity="right"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginBottom="10dp"
+            android:background="#e3e3e3"></LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/shadow_1">
-            <LinearLayout
-                android:orientation="horizontal"
+            android:layout_marginBottom="10dp"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/message"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/colorPrimary"
-                android:padding="10dp"
-                android:clickable="true"
-                android:id="@+id/add"
-                android:layout_gravity="right"
-                android:focusable="true">
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_add_white_24dp"
-                    android:layout_marginRight="5dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="ADD DATE"
-                    android:layout_gravity="center_vertical"
-                    android:textStyle="bold"
-                    android:textColor="#ffffffff"
-                    android:textSize="12sp"
-                    android:clickable="false"
-                    android:focusable="false"
-                    android:duplicateParentState="true"
-                    />
-            </LinearLayout>
+                android:layout_gravity="center_vertical"
+                android:focusable="false"
+                android:gravity="center_vertical"
+                android:text="Add some dates to get started."
+                android:textSize="15sp" />
         </LinearLayout>
+
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_gravity="right"
-            android:layout_height="wrap_content"
-            android:background="@drawable/shadow_1">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/rem"
-                android:background="@color/colorPrimary"
-                android:clickable="true"
-                android:padding="10dp"
                 android:layout_gravity="right"
-                android:focusable="true">
+                android:background="@drawable/shadow_1">
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_subject_white_24dp"
-                    android:layout_marginRight="5dp"/>
-                <TextView
+                <LinearLayout
+                    android:id="@+id/add"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="SHOW DATES"
-                    android:layout_gravity="center_vertical"
-                    android:textStyle="bold"
-                    android:textColor="#ffffffff"
-                    android:textSize="12sp"
-                    android:clickable="false"
-                    android:focusable="false"
-                    android:duplicateParentState="true"
-                    />
+                    android:layout_gravity="right"
+                    android:background="@color/colorPrimary"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
 
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginRight="5dp"
+                        android:src="@drawable/ic_add_white_24dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:clickable="false"
+                        android:duplicateParentState="true"
+                        android:focusable="false"
+                        android:text="ADD DATE"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="#ffffffff"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:background="@drawable/shadow_1">
+
+                <LinearLayout
+                    android:id="@+id/rem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:background="@color/colorPrimary"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginRight="5dp"
+                        android:src="@drawable/ic_subject_white_24dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:clickable="false"
+                        android:duplicateParentState="true"
+                        android:focusable="false"
+                        android:text="SHOW DATES"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="#ffffffff"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
+
+
     </LinearLayout>
 
-
-
-   </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="5dp"

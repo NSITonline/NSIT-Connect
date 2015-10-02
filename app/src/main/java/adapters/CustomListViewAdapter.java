@@ -1,4 +1,4 @@
-package nsit.app.com.nsitapp;
+package adapters;
 
 /**
  * Created by dhruvmullick on 09/07/14.
@@ -18,6 +18,9 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.util.List;
+
+import nsit.app.com.nsitapp.R;
+import nsit.app.com.nsitapp.RowItem;
 
 public class CustomListViewAdapter extends ArrayAdapter<RowItem> {
 
@@ -53,10 +56,10 @@ public class CustomListViewAdapter extends ArrayAdapter<RowItem> {
         holder.txtDesc.setText(rowItem.getDesc());
         holder.txtTitle.setText(rowItem.getTitle());
         AnimationSet set = new AnimationSet(true);
-        TranslateAnimation slide = new TranslateAnimation(-200,0,-200,0);
+        TranslateAnimation slide = new TranslateAnimation(-200, 0, -200, 0);
         slide.setInterpolator(new DecelerateInterpolator(5.0f));
         slide.setDuration(300);
-        Animation fade = new AlphaAnimation(0,1.0f);
+        Animation fade = new AlphaAnimation(0, 1.0f);
         fade.setInterpolator(new DecelerateInterpolator(5.0f));
         fade.setDuration(300);
         set.addAnimation(slide);

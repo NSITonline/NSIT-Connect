@@ -16,9 +16,11 @@ import android.widget.Button;
 import com.nispok.snackbar.Snackbar;
 import com.nispok.snackbar.SnackbarManager;
 
+import functions.ButtonAnimation;
+import functions.Constant;
 import functions.Val;
 
-public class ChooseClass extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class ChooseClass extends AppCompatActivity implements AdapterView.OnItemSelectedListener, Constant {
 
 
 
@@ -276,17 +278,16 @@ public class ChooseClass extends AppCompatActivity implements AdapterView.OnItem
                     e.putString("branch", br);
                     e.putString("half", hal);
 
-                    String x =s.getString("timetableid",null);
+                    String x =s.getString(GET_TIME_TABLE_ID,null);
                     if(x!=null)
-                        e.putBoolean("timetablechanged",true);
+                        e.putBoolean(IS_TIME_TABLE_CHANGED,true);
 
 
-                    e.putString("timetableid", timetableid);
-                    e.putBoolean("classset", true);
+                    e.putString(GET_TIME_TABLE_ID, timetableid);
+                    e.putBoolean(IS_CLASS_SET, true);
 
                     Log.e("timetable id", " " + timetableid);
                     e.commit();
-
 
 
                     finish();

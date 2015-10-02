@@ -13,6 +13,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import adapters.CustomList_subjects_remove;
 import functions.DBhelp;
 import functions.TableEntry;
 
@@ -40,13 +41,13 @@ public class SubjectRemove extends AppCompatActivity {
         String[] projection = {
                 TableEntry._ID,
                 TableEntry.COLUMN_NAME_SUBJECT,
-                TableEntry.COLUMN_NAME_DATE ,
+                TableEntry.COLUMN_NAME_DATE,
                 TableEntry.COLUMN_NAME_STATUS,
                 TableEntry.COLUMN_NAME_NUMBER
         };
         String sortOrder =
                 TableEntry.COLUMN_NAME_DATE + " DESC";
-        String[] whereArgs = new String[] {
+        String[] whereArgs = new String[]{
                 code};
         Cursor c = db.query(
                 TableEntry.TABLE_NAME,  // The table to query
@@ -59,19 +60,16 @@ public class SubjectRemove extends AppCompatActivity {
         );
 
 
-
-        if (c.moveToFirst()){
-            do{
+        if (c.moveToFirst()) {
+            do {
                 list1.add(c.getString(c.getColumnIndex(TableEntry.COLUMN_NAME_STATUS)));
                 list2.add(c.getString(c.getColumnIndex(TableEntry.COLUMN_NAME_DATE)));
                 list3.add(c.getString(c.getColumnIndex(TableEntry._ID)));
-            }while(c.moveToNext());
+            } while (c.moveToNext());
         }
 
 
-
-
-        CustomList_subjects_remove a = new CustomList_subjects_remove(this,list1,list2,list3);
+        CustomList_subjects_remove a = new CustomList_subjects_remove(this, list1, list2, list3);
         lv.addHeaderView(new View(this));
         lv.addFooterView(new View(this));
         lv.setAdapter(a);
@@ -91,7 +89,7 @@ public class SubjectRemove extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId()==android.R.id.home)
+        if (item.getItemId() == android.R.id.home)
             finish();
         return super.onOptionsItemSelected(item);
     }

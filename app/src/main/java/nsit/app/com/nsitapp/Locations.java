@@ -103,10 +103,10 @@ public class Locations extends Fragment implements Constant {
     }
 
     // Locations' data and definitions go below...
-    class LocationGroup{
-        String GroupHeader;
-        String GroupType;
-        ArrayList<Location> Locations;
+    public class LocationGroup{
+        public String GroupHeader;
+        public String GroupType;
+        public ArrayList<Location> Locations;
 
         LocationGroup(String GroupHeader, String GroupType, ArrayList<Location> Locations){
             this.GroupHeader = GroupHeader;
@@ -115,9 +115,9 @@ public class Locations extends Fragment implements Constant {
         }
     }
 
-    class Location{
-        String Name;
-        LatLng Coord;
+    public class Location{
+        public String Name;
+        public LatLng Coord;
 
         public Location(String Name, LatLng Coord) {
             this.Name = Name;

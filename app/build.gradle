@@ -39,9 +39,10 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:22.1.1'
     compile project(':YouTubeAndroidPlayerApi')
-    compile files('C:/Users/kamlesh kumar garg/Downloads/PlaceComplete/nsitapp2/YouTubeAndroidPlayerApi/YouTubeAndroidPlayerApi.jar')
+    compile files('libs/YouTubeAndroidPlayerApi.jar')
     compile 'com.h6ah4i.android.materialshadowninepatch:materialshadowninepatch:0.6.3'
     compile files('src/main/libs/devsmartlib.jar')
+    compile 'com.nispok:snackbar:2.6.1'
     compile 'com.google.android.gms:play-services-maps:6.+'
     compile 'com.google.android.gms:play-services-location:6.+'
 }

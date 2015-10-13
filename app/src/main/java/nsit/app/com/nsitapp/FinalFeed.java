@@ -4,11 +4,13 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -53,7 +55,7 @@ public class FinalFeed extends Fragment implements Constant{
     String nextn;
     MyFeedList adapter;
     int first;
-   String nextcollegespace,nextcrosslinks,nextjunoon,nextbullet,nextrotaract,nextquiz,nextieee,nextcsi,nextashwa,nextdeb;
+    String nextcollegespace,nextcrosslinks,nextjunoon,nextbullet,nextrotaract,nextquiz,nextieee,nextcsi,nextashwa,nextdeb;
     List<String> list = new ArrayList<String>();
     List<String> list1 = new ArrayList<String>();
     List<String> list2 = new ArrayList<String>();
@@ -114,6 +116,8 @@ public class FinalFeed extends Fragment implements Constant{
     }
 
     String text;
+
+
     private class DownloadWebPageTask2 extends AsyncTask<String, Void, String> {
         String id;
 
@@ -191,6 +195,9 @@ public class FinalFeed extends Fragment implements Constant{
                         break;
                 }
 
+                dbAdapter db = new dbAdapter(getActivity());
+                db.open();
+
                 for(int i = 0; i < arr.length(); i++){
 
                         if(arr.getJSONObject(i).has("message"))
@@ -242,8 +249,10 @@ public class FinalFeed extends Fragment implements Constant{
                         }else
                             list9.add(null);
 
+                    db.insertRow(list.get(i), list1.get(i), list2.get(i), list6.get(i), list7.get(i), list8.get(i), list9.get(i));
                 }
 
+                db.close();
 
 
             } catch (JSONException e) {
@@ -306,6 +315,8 @@ public class FinalFeed extends Fragment implements Constant{
                 else
                     nextn = null;
 
+                dbAdapter db = new dbAdapter(getActivity());
+                db.open();
 
                 for(int i = 0; i < arr.length(); i++){
 
@@ -355,7 +366,11 @@ public class FinalFeed extends Fragment implements Constant{
                         list8.add(arr.getJSONObject(i).getString("created_time"));
                         else
                             list8.add(null);
+
+                    db.insertRow(list.get(i), list1.get(i), list2.get(i), list6.get(i), list7.get(i), list8.get(i), list9.get(i));
+
                 }
+                db.close();
 
 
             } catch (JSONException e) {
@@ -450,7 +465,7 @@ public class FinalFeed extends Fragment implements Constant{
         Ashwa = i.getBoolean(ASHWA, false);
 
 
-
+        dbAdapter db = new dbAdapter(getActivity());
 
         lv.addFooterView(footerView);
 
@@ -462,6 +477,11 @@ public class FinalFeed extends Fragment implements Constant{
         }else {
 
             if (Utils.isNetworkAvailable(activity)) {
+
+                db.open();
+                db.deleteAll();
+                db.close();
+
                 if (Crosslinks)
                     new DownloadWebPageTask2(Val.id_crosslinks).execute();
                 if (Collegespace)
@@ -483,11 +503,29 @@ public class FinalFeed extends Fragment implements Constant{
                 if (Deb)
                     new DownloadWebPageTask2(Val.id_debsoc).execute();
 
-            } else
+            } else {
                 SnackbarManager.show(
                         Snackbar.with(activity.getApplicationContext())
-                                .text("Check Your internet connection")
+                                .text("No Internet Connection")
                                 .duration(Snackbar.SnackbarDuration.LENGTH_SHORT), activity);
+                db.open();
+                Cursor c = db.getAllRows();
+                if (c.moveToFirst()) {
+                    do {
+                        list.add(c.getString(1));
+                        Log.v("DATABASE LOGS", c.getString(1)+" ");
+                        list1.add(c.getString(2));
+                        list2.add(c.getString(3));
+                        list6.add(c.getString(4));
+                        list7.add(c.getString(5));
+                        list8.add(c.getString(6));
+                        list9.add(c.getString(7));
+                    } while (c.moveToNext());
+                }
+                db.close();
+            }
+            lv.setAdapter(adapter);
+            adapter.notifyDataSetChanged();
 
         }
 
@@ -499,10 +537,18 @@ public class FinalFeed extends Fragment implements Constant{
             public void onScroll(AbsListView absListView, int firstVisibleItem,
                                  int visibleItemCount, int totalItemCount) {
                 int lastInScreen = firstVisibleItem + visibleItemCount;
+
+                dbAdapter db = new dbAdapter(getActivity());
+
                 if ((lastInScreen == totalItemCount) && !(loadingMore) && first!=1) {
                     loadingMore=true;
                     lv.addFooterView(footerView);
                     if(Utils.isNetworkAvailable(activity)){
+
+                        db.open();
+                        db.deleteAll();
+                        db.close();
+
                         Crosslinks = i.getBoolean(CROSSLINKS, false);
                         Collegespace = i.getBoolean(COLLEGESPACE, false);
                         Bullet = i.getBoolean(BULLET, false);
@@ -535,13 +581,30 @@ public class FinalFeed extends Fragment implements Constant{
                             new DownloadWebPageTask3(Val.id_debsoc,nextdeb).execute();
 
                     }
-                    else
+                    else {
                         SnackbarManager.show(
                                 Snackbar.with(activity.getApplicationContext())
-                                        .text("Check Your Internet Connection")
+                                        .text("No Internet Connection")
                                         .duration(Snackbar.SnackbarDuration.LENGTH_SHORT), activity);
 
+                        db.open();
+                        Cursor c = db.getAllRows();
+                        if(c.moveToFirst()) {
+                            do {
+                                list.add(c.getString(1));
+                                Log.v("DATABASE LOGS", c.getString(1));
+                                list1.add(c.getString(2));
+                                list2.add(c.getString(3));
+                                list6.add(c.getString(4));
+                                list7.add(c.getString(5));
+                                list8.add(c.getString(6));
+                                list9.add(c.getString(7));
+                            } while(c.moveToNext());
+                        }
+                        db.close();
+                        adapter.notifyDataSetChanged();
 
+                    }
 
                 }
 

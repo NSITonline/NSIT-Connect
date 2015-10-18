@@ -1,4 +1,4 @@
-package nsit.app.com.nsitapp;
+package adapters;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -14,9 +14,10 @@ import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
 
-import adapters.LocationsList_Adapter;
 import functions.ButtonAnimation;
 import functions.Constant;
+import nsit.app.com.nsitapp.LocationMapView;
+import nsit.app.com.nsitapp.R;
 
 /**
  * Created by Sidharth Patro on 21-Jun-15.

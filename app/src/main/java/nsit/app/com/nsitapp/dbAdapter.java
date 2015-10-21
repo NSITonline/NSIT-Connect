@@ -40,7 +40,7 @@ public class dbAdapter {
     public static final String DATABASE_NAME = "NSIT Connect";
     public static final String DATABASE_TABLE = "myFeed";
 
-    public static final long DATABASE_VERSION = 1;
+    public static final long DATABASE_VERSION = 3;
 
     private static final String DATABASE_CREATE_SQL =
             "create table " + DATABASE_TABLE
@@ -115,7 +115,7 @@ public class dbAdapter {
 */
 
     public void deleteAll() {
-        db.execSQL("DELETE FROM " + DATABASE_TABLE);
+        db.delete(DATABASE_TABLE, null, null);
     }
 
     public Cursor getAllRows() {

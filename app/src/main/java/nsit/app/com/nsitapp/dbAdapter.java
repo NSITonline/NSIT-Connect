@@ -49,7 +49,7 @@ public class dbAdapter implements  Constant {
     public static final String DATABASE_NAME = "NSITConnect";
     public static final String DATABASE_TABLE = "myFeed";
 
-    public static final long DATABASE_VERSION = 1;
+    public static final long DATABASE_VERSION = 3;
 
     private static final String DATABASE_CREATE_SQL =
             "create table " + DATABASE_TABLE

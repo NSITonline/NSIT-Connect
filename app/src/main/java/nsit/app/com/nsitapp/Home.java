@@ -125,8 +125,9 @@ public class Home extends Fragment {
         } else {
             SnackbarManager.show(
                     Snackbar.with(activity.getApplicationContext())
-                            .text("Check Your Internet Connection")
+                            .text("No Internet Connection")
                             .duration(Snackbar.SnackbarDuration.LENGTH_SHORT), activity);
+            show_off();
 
         }
 

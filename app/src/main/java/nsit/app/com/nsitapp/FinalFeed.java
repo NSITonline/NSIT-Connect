@@ -249,7 +249,8 @@ public class FinalFeed extends Fragment implements Constant{
                         }else
                             list9.add(null);
 
-                    db.insertRow(list.get(i), list1.get(i), list2.get(i), list6.get(i), list7.get(i), list8.get(i), list9.get(i));
+                    db.insertRow(list.get(list.size()-1), list1.get(list1.size()-1), list2.get(list2.size()-1), list6.get(list6.size()-1),
+                            list7.get(list7.size()-1), list8.get(list8.size()-1), list9.get(list9.size()-1), id);
                 }
 
                 db.close();
@@ -367,7 +368,8 @@ public class FinalFeed extends Fragment implements Constant{
                         else
                             list8.add(null);
 
-                    db.insertRow(list.get(i), list1.get(i), list2.get(i), list6.get(i), list7.get(i), list8.get(i), list9.get(i));
+                    db.insertRow(list.get(list.size()-1), list1.get(list1.size()-1), list2.get(list2.size()-1), list6.get(list6.size()-1),
+                            list7.get(list7.size()-1), list8.get(list8.size()-1), list9.get(list9.size()-1), id);
 
                 }
                 db.close();
@@ -523,6 +525,7 @@ public class FinalFeed extends Fragment implements Constant{
                     } while (c.moveToNext());
                 }
                 db.close();
+                pb.setVisibility(View.GONE);
             }
             lv.setAdapter(adapter);
             adapter.notifyDataSetChanged();
@@ -545,9 +548,6 @@ public class FinalFeed extends Fragment implements Constant{
                     lv.addFooterView(footerView);
                     if(Utils.isNetworkAvailable(activity)){
 
-                        db.open();
-                        db.deleteAll();
-                        db.close();
 
                         Crosslinks = i.getBoolean(CROSSLINKS, false);
                         Collegespace = i.getBoolean(COLLEGESPACE, false);
@@ -602,6 +602,7 @@ public class FinalFeed extends Fragment implements Constant{
                             } while(c.moveToNext());
                         }
                         db.close();
+                        pb.setVisibility(View.GONE);
                         adapter.notifyDataSetChanged();
 
                     }

@@ -21,6 +21,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import adapters.DrawerList_Adapter;
+import adapters.Locations;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     ListView lv;
     private ActionBarDrawerToggle mDrawerToggle;
     static final String[] sideitems = new String[] { "Home" , "My Feed","Video","Calendar" ,
-            "Professors","Locations","Feedback","About Us" };	//items on navigation drawer
+            "Professors","Locations","CodeRadar","Feedback","About Us" };	//items on navigation drawer
     SwipeRefreshLayout swipeLayout;
     Integer[] imageId = {
             R.drawable.ic_action_home,
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.ic_action_calendar_month,
             R.drawable.ic_action_user,
             R.drawable.ic_action_location,
+            R.drawable.ic_action_info,
             R.drawable.ic_feedback_black_24dp,
             R.drawable.ic_action_info};
     @Override
@@ -180,13 +182,19 @@ public class MainActivity extends AppCompatActivity {
                 ft.replace(R.id.content_frame, f5);
                 getSupportActionBar().setTitle("Locations");
                 break;
-            case 7 :
+            case 7:
+              //  Fragment f8= new CodeRadar();
+               // getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+               // ft.replace(R.id.content_frame,f8);
+               // getSupportActionBar().setTitle("CodeRadar");
+                break;
+            case 8 :
                 Fragment f7 = new Feedback();
                 getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 ft.replace(R.id.content_frame, f7);
                 getSupportActionBar().setTitle("Feedback");
                 break;
-            case 8 :
+            case 9 :
                 Fragment f6 = new AboutUs();
                 getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 ft.replace(R.id.content_frame, f6);

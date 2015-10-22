@@ -7,5 +7,15 @@
     <color name="textColorPrimaryInverse">#ffffff</color>
     <color name="universalBackground">#e3e3e3</color>
     <color name="backgroundDark">#565555</color>
+    <color name="accent">#EF9A9A</color>
+    <color name="tab_scroll_color">@android:color/white</color>
+    <color name="primary">#343838</color>
+    <color name="primary_dark">#263238</color>
+    <color name="codeforces">#EF9A9A</color>
+    <color name="topcoder">#fa8072</color>
+    <color name="hackerrank">#9bb7a7</color>
+    <color name="urioj">#F2A328</color>
+    <color name="hackerearth">#1D3853</color>
+    <color name="codechef">#CAC749</color>
 
 </resources>

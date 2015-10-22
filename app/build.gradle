@@ -9,22 +9,20 @@ buildscript {
     }
 }
 
-
-
 repositories {
     mavenCentral()
 }
 android {
     compileSdkVersion 22
     buildToolsVersion "22.0.1"
-
     defaultConfig {
         applicationId "nsit.app.com.nsitapp"
         minSdkVersion 14
         targetSdkVersion 22
-        versionCode 1
-        versionName "1.0"
+        versionCode 11
+        versionName "2.2"
     }
+  
     buildTypes {
         release {
             minifyEnabled false
@@ -37,11 +35,14 @@ android {
 dependencies {
     compile 'org.lucasr.twowayview:twowayview:0.1.4'
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:22.1.1'
+    compile 'com.android.support:appcompat-v7:22.2.0'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile group:'org.jsoup',name:'jsoup',version:'1.8.3'
     compile project(':YouTubeAndroidPlayerApi')
-    compile files('C:/Users/kamlesh kumar garg/Downloads/PlaceComplete/nsitapp2/YouTubeAndroidPlayerApi/YouTubeAndroidPlayerApi.jar')
-    compile 'com.h6ah4i.android.materialshadowninepatch:materialshadowninepatch:0.6.3'
-    compile files('src/main/libs/devsmartlib.jar')
-    compile 'com.google.android.gms:play-services-maps:6.+'
-    compile 'com.google.android.gms:play-services-location:6.+'
+    compile 'com.google.android.gms:play-services-maps:7.5.0'
+    compile 'com.google.android.gms:play-services-location:7.5.0'
+    compile 'com.nispok:snackbar:2.10.+'
+
+
+
 }

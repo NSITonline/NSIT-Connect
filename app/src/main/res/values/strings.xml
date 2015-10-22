@@ -46,5 +46,75 @@
     <string name="title_activity_subject_remove">SubjectRemove</string>
     <string name="title_activity_feedback">Feedback</string>
 
+
+
+    <array name="contest_source">
+        <item>@string/codeforces</item>
+        <item>@string/hackerrank</item>
+        <item>@string/topcoder</item>
+        <item>@string/hackerearth</item>
+        <item>@string/codechef</item>
+        <item>@string/urioj</item>
+        <item>@string/unknown</item>
+    </array>
+
+
+    <!-- Action bar related -->
+    <string name="action_calendar">Add to Calendar</string>
+    <string name="action_browse">Go to website</string>
+    <string name="action_filter">Filter</string>
+
+    <!-- Contest Filter Dialog related -->
+    <string name="filter_dialog_title">Filter</string>
+    <string name="filter_dialog_ok">Ok</string>
+    <string name="filter_dialog_cancel">Cancel</string>
+
+    <!-- SyncAdapter related -->
+    <string name="sync_account_type">nsit.app.com</string>
+    <string name="content_authority">nsit.app.com.nsitapp</string>
+
+
+    <string name="codeforces">Codeforces</string>
+    <string name="hackerrank">Hackerrank</string>
+    <string name="topcoder">TopCoder</string>
+    <string name="hackerearth">Hackerearth</string>
+    <string name="codechef">Codechef</string>
+    <string name="urioj">URIOJ</string>
+    <string name="unknown">Unknown</string>
+
+    <string name="title_section_running">Running</string>
+    <string name="title_section_upcoming">Upcoming</string>
+    <string name="title_activity_contest_detail">Contest Detail</string>
+    <string name="notification_remider_title">Contest Reminder</string>
+
+    <!-- Preference related -->
+    <string name="pref_reminder_title">Reminder</string>
+    <string name="pref_reminder_filter_title">Reminder Filter</string>
+    <string name="pref_reminder_vibrate">Vibrate</string>
+    <string name="pref_ringtone_silent">Silent</string>
+
+    <string-array name="pref_reminder_frequency_titles">
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>3 hours</item>
+        <item>6 hours</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_reminder_frequency_values">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>180</item>
+        <item>360</item>
+        <item>-1</item>
+    </string-array>
+    <string name="CodeForces">CodeForces Handle</string>
+    <string name="handleedittext">Enter CodeForces Handle</string>
+    <string name="Searchbutton">User Information</string>
+    <string name="UserRatings">User Ratings</string>
+    <string name="UserSubmissions">User Submissions</string>
+
+
 </resources>
 

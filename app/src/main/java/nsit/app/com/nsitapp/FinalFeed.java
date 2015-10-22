@@ -143,6 +143,8 @@ public class FinalFeed extends Fragment implements Constant{
             int j=0;
             JSONObject ob;
             JSONArray arr;
+            if(text==null)
+                return;
             try {
                 ob = new JSONObject(text);
                 arr = ob.getJSONArray("data");

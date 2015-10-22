@@ -9,6 +9,11 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:allowBackup="true"
@@ -64,6 +69,71 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBgktirlOODUO9zWD-808D7zycmP7smp-Y" />
 
+
+
+        <activity
+            android:name=".User_Info"
+            android:screenOrientation="portrait"
+            android:label="@string/app_name" >
+
+        </activity>
+
+
+        <activity
+            android:name=".contest_info"
+            android:label="@string/app_name"/>
+
+
+
+
+        <activity
+            android:name=".problem_info"
+            android:label="@string/app_name" >
+        </activity>
+
+
+        <activity
+            android:name="view.ContestDetailActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/title_activity_contest_detail"
+            android:parentActivityName="view.contest_reminder"
+            android:theme="@style/DetailTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="view.contest_reminder" />
+        </activity>
+
+
+        <activity
+            android:name="view.SettingsActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName="view.contest_reminder" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="view.contest_reminder" />
+        </activity>
+
+
+
+        <activity
+            android:name=".usr_list"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ratings_change"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="view.contest_reminder"
+            android:theme="@style/AppTheme"
+            android:label="@string/app_name"
+            >
+
+
+
+        </activity>
 
     </application>
 

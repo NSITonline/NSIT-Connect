@@ -13,4 +13,12 @@
     </style>
 
 
+    <style name="DetailTheme" parent="AppTheme">
+        <item name="android:actionBarStyle">@style/DetailActionBar</item>
+        <item name="android:windowActionBarOverlay">true</item>
+    </style>
+
+    <style name="DetailActionBar" parent="android:Widget.Material.Light.ActionBar">
+        <item name="android:displayOptions">homeAsUp</item>
+    </style>
 </resources>

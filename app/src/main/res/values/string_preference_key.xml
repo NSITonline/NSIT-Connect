@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="pref_reminder_vibration_key">pref_vibration</string>
+
+    <string name="pref_reminder_key">pref_reminder</string>
+
+    <string name="pref_reminder_filter_title_key">pref_reminder_filter_title</string>
+
+    <!-- Online Judge Filter -->
+    <string name="pref_codeforces_reminder_key">pref_codeforces_reminder</string>
+    <string name="pref_hackerrank_reminder_key">pref_hackerrank_reminder</string>
+    <string name="pref_codechef_reminder_key">pref_codechef_reminder</string>
+    <string name="pref_topcoder_reminder_key">pref_topcoder_reminder</string>
+    <string name="pref_hackerearth_reminder_key">pref_hackerearth_reminder</string>
+    <string name="pref_urioj_reminder_key">pref_urioj_reminder</string>
+    <string name="pref_unknown_reminder_key">pref_unknown_reminder</string>
+</resources>

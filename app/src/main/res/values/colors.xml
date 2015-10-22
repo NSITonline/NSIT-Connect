@@ -11,11 +11,11 @@
     <color name="tab_scroll_color">@android:color/white</color>
     <color name="primary">#343838</color>
     <color name="primary_dark">#263238</color>
-    <color name="codeforces">#EF9A9A</color>
-    <color name="topcoder">#fa8072</color>
-    <color name="hackerrank">#9bb7a7</color>
-    <color name="urioj">#F2A328</color>
-    <color name="hackerearth">#1D3853</color>
-    <color name="codechef">#CAC749</color>
+    <color name="codeforces">#de7282</color>
+    <color name="topcoder">#f2a49b</color>
+    <color name="hackerrank">#abd2c3</color>
+    <color name="urioj">#e28746</color>
+    <color name="hackerearth">#1d3853</color>
+    <color name="codechef">#44b4e1</color>
 
 </resources>

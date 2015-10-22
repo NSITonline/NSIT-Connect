@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.ic_action_calendar_month,
             R.drawable.ic_action_user,
             R.drawable.ic_action_location,
-            R.drawable.ic_action_info,
+            R.drawable.ic_computer_black_24dp,
             R.drawable.ic_feedback_black_24dp,
             R.drawable.ic_action_info};
     @Override
@@ -183,10 +183,10 @@ public class MainActivity extends AppCompatActivity {
                 getSupportActionBar().setTitle("Locations");
                 break;
             case 7:
-              //  Fragment f8= new CodeRadar();
-               // getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-               // ft.replace(R.id.content_frame,f8);
-               // getSupportActionBar().setTitle("CodeRadar");
+                Fragment f8= new CodeRadar();
+                getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                ft.replace(R.id.content_frame, f8);
+                getSupportActionBar().setTitle("CodeRadar");
                 break;
             case 8 :
                 Fragment f7 = new Feedback();

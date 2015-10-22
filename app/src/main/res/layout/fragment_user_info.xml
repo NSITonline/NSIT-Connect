@@ -22,6 +22,7 @@
         android:background="@color/colorPrimary"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
+        android:singleLine="true"
         android:paddingLeft="10dp"
         android:gravity="center_horizontal"
         android:layout_alignParentRight="true"
@@ -32,7 +33,7 @@
         android:layout_height="80dp"
 
         android:id="@+id/imageView"
-        android:src="@drawable/codeforces_logo"
+        android:src="@drawable/codeforces"
         android:layout_below="@+id/cf_header"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"

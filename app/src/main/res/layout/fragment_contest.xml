@@ -5,11 +5,11 @@
              android:orientation="vertical"
              tools:context="nsit.app.com.nsitapp.view.ContestFragment">
 
-    <view.widget.SlidingTabLayout
+    <nsit.app.com.nsitapp.view.widget.SlidingTabLayout
         android:id="@+id/sliding_tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/primary"
+        android:background="@color/colorPrimary"
         android:layout_weight="0" />
 
     <android.support.v4.view.ViewPager

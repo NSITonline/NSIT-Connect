@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     ListView lv;
     private ActionBarDrawerToggle mDrawerToggle;
     static final String[] sideitems = new String[] { "Home" , "My Feed","Video","Calendar" ,
-            "Professors","Locations","CodeRadar","Feedback","About Us" };	//items on navigation drawer
+            "Professors","Hangouts","CodeRadar","Feedback","About Us" };	//items on navigation drawer
     SwipeRefreshLayout swipeLayout;
     Integer[] imageId = {
             R.drawable.ic_action_home,
@@ -176,11 +176,10 @@ public class MainActivity extends AppCompatActivity {
                 ft.replace(R.id.content_frame, f4);
                 getSupportActionBar().setTitle("Professors List");
                 break;
-            case 6 :
-                Fragment f5 = new Locations();
-                getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                ft.replace(R.id.content_frame, f5);
-                getSupportActionBar().setTitle("Locations");
+            case 6:
+                Fragment f6 = new Hangouts();
+                ft.replace(R.id.content_frame, f6);
+                getSupportActionBar().setTitle("Hangouts");
                 break;
             case 7:
                 Fragment f8= new CodeRadar();
@@ -195,9 +194,9 @@ public class MainActivity extends AppCompatActivity {
                 getSupportActionBar().setTitle("Feedback");
                 break;
             case 9 :
-                Fragment f6 = new AboutUs();
+                Fragment f10 = new AboutUs();
                 getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                ft.replace(R.id.content_frame, f6);
+                ft.replace(R.id.content_frame, f10);
                 getSupportActionBar().setTitle("About Us");
                 break;
         }

@@ -104,7 +104,7 @@
         <item>-1</item>
     </string-array>
 
-    <string name="app_name">NSIT App</string>
+    <string name="app_name">NSIT Connect</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_decsription">Decsription</string>

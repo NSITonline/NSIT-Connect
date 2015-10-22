@@ -5,4 +5,5 @@
 .DS_Store
 /build
 build.gradle
+/app/build.gradle
 src/main/AndroidManifest.xml

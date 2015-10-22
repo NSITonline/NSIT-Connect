@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListAdapter;
@@ -22,7 +24,7 @@ import nsit.app.com.nsitapp.R;
 /**
  * Created by Sidharth Patro on 21-Jun-15.
  */
-public class Locations extends Fragment implements Constant {
+public class Locations extends AppCompatActivity implements Constant {
 
     ArrayList<LocationGroup> LocationsGroupsList = new ArrayList<>();
     public ExpandableListView listView;
@@ -32,27 +34,8 @@ public class Locations extends Fragment implements Constant {
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-    }
-
-
-    Activity activity;
-    @Override
-    public void onAttach(Activity activity)
-    {
-        super.onAttach(activity);
-        this.activity = activity;
-    }
-
-    public void populateList(ArrayList<LocationGroup> Items){
-        FillGroupsList();
-        listAdapter = new LocationsList_Adapter(getActivity(),Items,null);
-        listView.setAdapter(listAdapter);
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_locations, container, false);
-        listView = (ExpandableListView) rootView.findViewById(R.id.locations_list);
+        setContentView(R.layout.fragment_locations);
+        listView = (ExpandableListView) findViewById(R.id.locations_list);
         populateList(LocationsGroupsList);
 
 
@@ -63,27 +46,36 @@ public class Locations extends Fragment implements Constant {
             public boolean onChildClick(ExpandableListView parent, View v,
                                         int groupPosition, int childPosition, long id) {
                 ButtonAnimation btnAnimation = new ButtonAnimation();
-                btnAnimation.animateButton(v,getActivity());
-                String groupType =  LocationsGroupsList.get(groupPosition).GroupType;
+                btnAnimation.animateButton(v, Locations.this);
+                String groupType = LocationsGroupsList.get(groupPosition).GroupType;
                 Integer IconId = null;
-                switch(groupType){
-                    case "College": IconId = R.drawable.ic_school_black_24dp;
+                switch (groupType) {
+                    case "College":
+                        IconId = R.drawable.ic_school_black_24dp;
                         break;
-                    case "Campus": IconId = R.drawable.ic_business_black_24dp;
+                    case "Campus":
+                        IconId = R.drawable.ic_business_black_24dp;
                         break;
-                    case "Hostel": IconId = R.drawable.ic_hotel_black_24dp;
+                    case "Hostel":
+                        IconId = R.drawable.ic_hotel_black_24dp;
                         break;
-                    case "Canteen": IconId = R.drawable.ic_local_cafe_black_24dp;
+                    case "Canteen":
+                        IconId = R.drawable.ic_local_cafe_black_24dp;
                         break;
-                    case "Stationery": IconId = R.drawable.ic_brush_black_24dp;
+                    case "Stationery":
+                        IconId = R.drawable.ic_brush_black_24dp;
                         break;
-                    case "ATM": IconId = R.drawable.ic_credit_card_black_24dp;
+                    case "ATM":
+                        IconId = R.drawable.ic_credit_card_black_24dp;
                         break;
-                    case "WiFi": IconId = R.drawable.ic_network_wifi_black_24dp;
+                    case "WiFi":
+                        IconId = R.drawable.ic_network_wifi_black_24dp;
                         break;
-                    case "Sports": IconId = R.drawable.ic_directions_bike_black_24dp;
+                    case "Sports":
+                        IconId = R.drawable.ic_directions_bike_black_24dp;
                         break;
-                    case "Miscellaneous": IconId = R.drawable.ic_public_black_24dp;
+                    case "Miscellaneous":
+                        IconId = R.drawable.ic_public_black_24dp;
                         break;
                 }
                 v.setTag(groupPosition);
@@ -91,8 +83,34 @@ public class Locations extends Fragment implements Constant {
                 return false;
             }
         });
-        return rootView;
+
+        setTitle("College Locations");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+
+
     }
+
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    public void populateList(ArrayList<LocationGroup> Items){
+        FillGroupsList();
+        listAdapter = new LocationsList_Adapter(this,Items,null);
+        listView.setAdapter(listAdapter);
+    }
+
+
+
+
 
     public void ShowOnMap(View view, Location LocationItem, Integer GroupItem){
         Intent myIntent = new Intent(view.getContext(),LocationMapView.class);

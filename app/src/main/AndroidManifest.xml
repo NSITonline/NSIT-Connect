@@ -44,6 +44,10 @@
             android:label="LocationMapView" />
 
         <activity
+            android:name="adapters.Locations"
+            android:configChanges="orientation|screenSize"
+            android:label="LocationMapView" />
+        <activity
             android:name=".ChooseClass"
             android:configChanges="orientation|screenSize"
             android:label="Select" />
@@ -164,8 +168,15 @@
             android:label="@string/title_activity_contest_reminder"
             android:theme="@style/AppTheme">
 
-
         </activity>
+
+
+        <activity android:name=".PlaceMapActivity"
+            android:label="Place On Map"
+            android:theme="@style/AppTheme"
+            android:parentActivityName=".HangoutsTypeDisplay" />
+        <activity android:name=".HangoutsTypeDisplay" />
+
     </application>
 
 </manifest>

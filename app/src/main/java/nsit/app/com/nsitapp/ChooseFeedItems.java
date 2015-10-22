@@ -6,6 +6,7 @@ import android.preference.PreferenceManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -41,6 +42,9 @@ public class ChooseFeedItems extends AppCompatActivity implements Constant {
     TextView tCollegespace,tCrosslinks,tJunoon,tBullet,tRotaract,tQuiz,tIeee,tCsi,tAshwa,tDeb;
     Button next;
     List<String> list = new ArrayList<String>();
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -256,10 +260,38 @@ public class ChooseFeedItems extends AppCompatActivity implements Constant {
             }
         }
     }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_final_feed, menu);
+        return true;
+    }
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId()==android.R.id.home)
             finish();
+        if(item.getItemId() == R.id.check){
+            SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            SharedPreferences.Editor e = p.edit();
+            e.putBoolean(CROSSLINKS, Crosslinks);
+            e.putBoolean(COLLEGESPACE, Collegespace);
+            e.putBoolean(BULLET, Bullet);
+            e.putBoolean(JUNOON, Junoon);
+            e.putBoolean(ROTARACT, Rotaract);
+            e.putBoolean(CSI, Csi);
+            e.putBoolean(IEEE, Ieee);
+            e.putBoolean(DEB, Deb);
+            e.putBoolean(QUIZ, Quiz);
+            e.putBoolean(ASHWA, Ashwa);
+            e.putBoolean(SOCIETY_SET, true);
+            e.putBoolean(SOCIETY_ITEM_CHANGED, true);
+            e.commit();
+            finish();
+
+        }
         return super.onOptionsItemSelected(item);
     }
 }

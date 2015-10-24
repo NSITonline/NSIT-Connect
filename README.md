@@ -33,6 +33,9 @@ Locations section help you to get around the whole college by providing you the 
 ![Locations Glossary](/../master/app/src/main/res/drawable/8.png "Locations Glossary")
 ![Map view](/../master/app/src/main/res/drawable/9.png "Map view")
 
+###5.CodeRadar 
+CodeRadar is a Coding Contest Reminder that lets you keep track of all ongoing and upcoming contests on various online judges like Codechef,Topcoder,CodeForces,UraOj,HackerRank,etc..  you can filter the online judges you want to see, set reminders and do many more stuff..Happy Codingg :)
+
 ##Contribution
 It's very easy to contribute to NSIT App v2. Just follow these steps:
 

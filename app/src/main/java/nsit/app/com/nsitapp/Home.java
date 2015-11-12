@@ -249,7 +249,7 @@ public class Home extends Fragment {
                     next = ob.getString("next");
                     first = 0;
 
-                } catch (JSONException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                     Log.e("ger", e.getMessage() + " ");
                 }

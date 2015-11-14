@@ -4,10 +4,9 @@
       tools:context=".MainActivity">
 
     <item android:id="@+id/action_fitler"
+          android:showAsAction="always"
+          android:icon="@drawable/ic_filter_list_white_24dp"
           android:title="@string/action_filter"
-		  android:showAsAction="always"
-          android:icon="@drawable/ic_check_white_24dp"
-		  
         />
 
 </menu>

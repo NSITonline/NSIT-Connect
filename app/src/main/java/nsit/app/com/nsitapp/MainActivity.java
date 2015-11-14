@@ -2,6 +2,7 @@ package nsit.app.com.nsitapp;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -20,18 +21,16 @@ import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import adapters.DrawerList_Adapter;
-import adapters.Locations;
-
 
 public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     ListView lv;
     private ActionBarDrawerToggle mDrawerToggle;
-    static final String[] sideitems = new String[] { "Home" , "My Feed","Video","Calendar" ,
-            "Professors","Hangouts","CodeRadar","Feedback","About Us" };	//items on navigation drawer
+    static final String[] sideitems = new String[] { "Home" , "My Feed","Video","Calendar" , "Professors","Locations","CodeRadar","Feedback","About Us" };	//items on navigation drawer
     SwipeRefreshLayout swipeLayout;
+
+
     Integer[] imageId = {
             R.drawable.ic_action_home,
             R.drawable.ic_action_tiles_large,
@@ -39,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.ic_action_calendar_month,
             R.drawable.ic_action_user,
             R.drawable.ic_action_location,
-            R.drawable.ic_computer_black_24dp,
+            R.drawable.ic_laptop_mac_black_24dp,
             R.drawable.ic_feedback_black_24dp,
             R.drawable.ic_action_info};
     @Override
@@ -176,16 +175,20 @@ public class MainActivity extends AppCompatActivity {
                 ft.replace(R.id.content_frame, f4);
                 getSupportActionBar().setTitle("Professors List");
                 break;
-            case 6:
-                Fragment f6 = new Hangouts();
-                ft.replace(R.id.content_frame, f6);
-                getSupportActionBar().setTitle("Hangouts");
+            case 6 :
+                Fragment f5 = new Locations();
+                getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                ft.replace(R.id.content_frame, f5);
+                getSupportActionBar().setTitle("Locations");
                 break;
             case 7:
-                Fragment f8= new CodeRadar();
+                /*Fragment f8= new CodeRadar();
                 getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                ft.replace(R.id.content_frame, f8);
+                ft.replace(R.id.content_frame,f8);
                 getSupportActionBar().setTitle("CodeRadar");
+                 break;*/
+                Intent i = new Intent(this,nsit.app.com.nsitapp.view.contest_reminder.class);
+                startActivity(i);
                 break;
             case 8 :
                 Fragment f7 = new Feedback();
@@ -194,9 +197,9 @@ public class MainActivity extends AppCompatActivity {
                 getSupportActionBar().setTitle("Feedback");
                 break;
             case 9 :
-                Fragment f10 = new AboutUs();
+                Fragment f6 = new AboutUs();
                 getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                ft.replace(R.id.content_frame, f10);
+                ft.replace(R.id.content_frame, f6);
                 getSupportActionBar().setTitle("About Us");
                 break;
         }

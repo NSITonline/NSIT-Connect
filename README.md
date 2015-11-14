@@ -35,7 +35,8 @@ Locations section help you to get around the whole college by providing you the 
 
 ###6.CodeRadar 
 CodeRadar is a Coding Contest Reminder that lets you keep track of all ongoing and upcoming contests on various online judges like Codechef,Topcoder,CodeForces,UraOj,HackerRank,etc..  you can filter the online judges you want to see, set reminders and do many more stuff..Happy Codingg :)
-
+![Contest Reminder](/../master/app/src/main/res/drawable/10.png "Contest Reminder")
+![Contest Filter](/../master/app/src/main/res/drawable/11.png "Contest Filter")
 ##Contribution
 It's very easy to contribute to NSIT App v2. Just follow these steps:
 

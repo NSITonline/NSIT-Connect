@@ -5,10 +5,20 @@
     <item android:id="@+id/action_calendar"
           android:title="@string/action_calendar"
           android:icon="@drawable/ic_action_new_event"
+          android:showAsAction="ifRoom"
           app:showAsAction="always"/>
 
     <item android:id="@+id/action_browse"
           android:title="@string/action_browse"
           android:icon="@drawable/ic_action_web_site"
+          android:showAsAction="ifRoom"
           app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/share_item"
+        app:showAsAction="always|withText"
+        android:title="Share"
+        android:icon="@drawable/share_item"
+        android:actionProviderClass=
+         "android.widget.ShareActionProvider" />
 </menu>

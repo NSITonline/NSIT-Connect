@@ -22,7 +22,14 @@ public class AboutUs extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+         setHasOptionsMenu(true);
         super.onCreate(savedInstanceState);
+    }
+    
+     @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.clear();
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
     ImageView s1, s2, s3, s4, s5, s6;

@@ -27,7 +27,11 @@ public class Feedback extends Fragment {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
     }
-
+   @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.clear();
+        super.onCreateOptionsMenu(menu, inflater);
+    }
     Activity activity;
     @Override
     public void onAttach(Activity activity)

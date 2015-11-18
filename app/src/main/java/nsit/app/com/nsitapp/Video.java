@@ -40,9 +40,16 @@ public class Video extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
         super.onCreate(savedInstanceState);
 
     }
+     @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.clear();
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
 
     public void populateList(JSONArray Items) {
         listview.setAdapter(new VideoList_Adapter(getActivity(), Items));

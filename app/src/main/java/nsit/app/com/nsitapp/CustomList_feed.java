@@ -29,6 +29,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
 
+import functions.ButtonAnimation;
 import functions.ImageLoader;
 
 public class CustomList_feed extends ArrayAdapter<String>{
@@ -112,7 +113,7 @@ public class CustomList_feed extends ArrayAdapter<String>{
 
 		Button b1 = (Button) rowView.findViewById(R.id.show);
 
-			imageLoader.DisplayImage(img.get(position), imageView);
+			imageLoader.DisplayImage(img.get(position), imageView,null);
 			b1.setOnClickListener(new OnClickListener() {
 
 				@Override

@@ -10,10 +10,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import java.util.ArrayList;
-
-import adapters.Locations;
-
 /**
  * Created by AGGARWAL'S on 10/11/2015.
  */

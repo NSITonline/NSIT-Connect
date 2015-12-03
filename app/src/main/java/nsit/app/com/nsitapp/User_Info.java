@@ -246,8 +246,6 @@ public class User_Info extends AppCompatActivity implements Serializable {
                     urlConnection.setRequestMethod("GET");
                     urlConnection.connect();
 
-                    // User newuser=urlConnection.getContent(User);
-
                     InputStream inputStream = urlConnection.getInputStream();
                     StringBuffer buffer = new StringBuffer();
                     if (inputStream == null) {
@@ -258,14 +256,10 @@ public class User_Info extends AppCompatActivity implements Serializable {
 
                     String line;
                     while ((line = reader.readLine()) != null) {
-                        // Since it's JSON, adding a newline isn't necessary (it won't affect parsing)
-                        // But it does make debugging a *lot* easier if you print out the completed
-                        // buffer for debugging.
                         buffer.append(line + "\n");
                     }
 
                     if (buffer.length() == 0) {
-                        // Stream was empty.  No point in parsing.
                         forecastJsonStr = null;
                     }
                     forecastJsonStr = buffer.toString();
@@ -274,9 +268,6 @@ public class User_Info extends AppCompatActivity implements Serializable {
                     Log.v(LOG_TAG, "Forecast JSON String" + forecastJsonStr);
                 } catch (IOException e) {
                     Log.e(LOG_TAG, "Error ", e);
-                    // If the code didn't successfully get the weather data, there's no point in attemping
-                    // to parse it.
-
                     forecastJsonStr = null;
                 } finally {
                     if (urlConnection != null) {

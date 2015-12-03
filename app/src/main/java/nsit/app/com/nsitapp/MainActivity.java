@@ -21,6 +21,8 @@ import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import adapters.DrawerList_Adapter;
+
 
 public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
@@ -176,17 +178,12 @@ public class MainActivity extends AppCompatActivity {
                 getSupportActionBar().setTitle("Professors List");
                 break;
             case 6 :
-                Fragment f5 = new Locations();
+                Fragment f5 = new Hangouts();
                 getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 ft.replace(R.id.content_frame, f5);
                 getSupportActionBar().setTitle("Locations");
                 break;
             case 7:
-                /*Fragment f8= new CodeRadar();
-                getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                ft.replace(R.id.content_frame,f8);
-                getSupportActionBar().setTitle("CodeRadar");
-                 break;*/
                 Intent i = new Intent(this,nsit.app.com.nsitapp.view.contest_reminder.class);
                 startActivity(i);
                 break;

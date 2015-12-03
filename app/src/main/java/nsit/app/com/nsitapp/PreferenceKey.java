@@ -5,7 +5,6 @@ import android.content.res.Resources;
 public class PreferenceKey {
 
     private static final Resources sResource = CRApplication.getContext().getResources();
-
     public static final String CODEFORCES_REMINDER = sResource.getString(R.string.pref_codeforces_reminder_key);
     public static final String CODECHEF_REMINDER = sResource.getString(R.string.pref_codechef_reminder_key);
     public static final String HACKERRANK_REMINDER = sResource.getString(R.string.pref_hackerrank_reminder_key);

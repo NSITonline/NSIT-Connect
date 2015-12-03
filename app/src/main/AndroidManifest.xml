@@ -44,7 +44,7 @@
             android:label="LocationMapView" />
 
         <activity
-            android:name="adapters.Locations"
+            android:name=".Locations"
             android:configChanges="orientation|screenSize"
             android:label="LocationMapView" />
         <activity
@@ -166,7 +166,7 @@
 
             android:name=".view.contest_reminder"
             android:label="@string/title_activity_contest_reminder"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme2">
 
         </activity>
 

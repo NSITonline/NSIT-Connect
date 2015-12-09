@@ -130,7 +130,7 @@
             android:label="@string/title_activity_contest_detail"
             android:parentActivityName="nsit.app.com.nsitapp.view.contest_reminder"
             android:screenOrientation="portrait"
-            android:theme="@style/DetailTheme">
+            android:theme="@style/AppTheme2">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="nsit.app.com.nsitapp.view.contest_reminder" />

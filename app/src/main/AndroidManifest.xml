@@ -115,15 +115,7 @@
         <service android:name="nsit.app.com.nsitapp.NotificationService" />
 
 
-        <activity
-            android:name=".contest_info"
-            android:label="@string/title_activity_contest_info" />
-
-
-        <activity
-            android:name=".problem_info"
-            android:label="@string/title_activity_problem_info" />
-
+        
 
         <activity
             android:name="nsit.app.com.nsitapp.view.ContestDetailActivity"
@@ -147,21 +139,6 @@
                 android:value="nsit.app.com.nsitapp.view.contest_reminder" />
         </activity>
 
-
-        <activity
-            android:name=".User_Info"
-            android:label="@string/title_activity_user__info"
-            android:screenOrientation="portrait">
-
-        </activity>
-
-        <activity
-            android:name=".usr_list"
-            android:label="@string/title_activity_usr_list"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".ratings_change"
-            android:label="@string/title_activity_ratings_change"/>
         <activity
 
             android:name=".view.contest_reminder"

@@ -5,18 +5,21 @@
     <item android:id="@+id/action_calendar"
           android:title="@string/action_calendar"
           android:icon="@drawable/ic_action_new_event"
+        android:showAsAction="always"
           app:showAsAction="always"/>
 
     <item android:id="@+id/action_browse"
           android:title="@string/action_browse"
+
           android:icon="@drawable/ic_action_web_site"
+        android:showAsAction="always"
           app:showAsAction="always"/>
 
     <item
         android:id="@+id/share_item"
-        app:showAsAction="always|withText"
+        android:showAsAction="always"
+        app:showAsAction="always"
         android:title="Share"
         android:icon="@drawable/ic_share_white_24dp"
-        android:actionProviderClass=
-         "android.widget.ShareActionProvider" />
+         />
 </menu>

@@ -65,7 +65,7 @@ public class AboutUs extends Fragment {
             @Override
             public void onClick(View view) {
                 ButtonAnimation btnAnimation = new ButtonAnimation();
-                btnAnimation.animateButton(view,getActivity());
+                btnAnimation.animateButton(view,activity);
                 Uri uri = Uri.parse("https://in.linkedin.com/in/sdpatro");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
@@ -75,7 +75,7 @@ public class AboutUs extends Fragment {
             @Override
             public void onClick(View view) {
                 ButtonAnimation btnAnimation = new ButtonAnimation();
-                btnAnimation.animateButton(view,getActivity());
+                btnAnimation.animateButton(view,activity);
                 Uri uri = Uri.parse("https://in.linkedin.com/pub/swati-garg/b9/371/a79");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
@@ -85,7 +85,7 @@ public class AboutUs extends Fragment {
             @Override
             public void onClick(View view) {
                 ButtonAnimation btnAnimation = new ButtonAnimation();
-                btnAnimation.animateButton(view,getActivity());
+                btnAnimation.animateButton(view,activity);
                 Uri uri = Uri.parse("https://www.facebook.com/sumit.vohra.353?ref=br_rs");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
@@ -95,7 +95,7 @@ public class AboutUs extends Fragment {
             @Override
             public void onClick(View view) {
                 ButtonAnimation btnAnimation = new ButtonAnimation();
-                btnAnimation.animateButton(view,getActivity());
+                btnAnimation.animateButton(view,activity);
                 Uri uri = Uri.parse("https://in.linkedin.com/in/sumit-vohra-224484a0");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
@@ -105,7 +105,7 @@ public class AboutUs extends Fragment {
             @Override
             public void onClick(View view) {
                 ButtonAnimation btnAnimation = new ButtonAnimation();
-                btnAnimation.animateButton(view,getActivity());
+                btnAnimation.animateButton(view,activity);
                 Uri uri = Uri.parse("https://www.facebook.com/sidharth.patro.39?fref=ts");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
@@ -114,7 +114,7 @@ public class AboutUs extends Fragment {
             @Override
             public void onClick(View view) {
                 ButtonAnimation btnAnimation = new ButtonAnimation();
-                btnAnimation.animateButton(view,getActivity());
+                btnAnimation.animateButton(view,activity);
                 Uri uri = Uri.parse("https://www.facebook.com/swati.garg.1690");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
@@ -123,7 +123,7 @@ public class AboutUs extends Fragment {
             @Override
             public void onClick(View view) {
                 ButtonAnimation btnAnimation = new ButtonAnimation();
-                btnAnimation.animateButton(view,getActivity());
+                btnAnimation.animateButton(view,activity);
                 Uri uri = Uri.parse("https://www.facebook.com/chetan.shukla.5205?fref=ts");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
@@ -133,7 +133,7 @@ public class AboutUs extends Fragment {
             @Override
             public void onClick(View view) {
                 ButtonAnimation btnAnimation = new ButtonAnimation();
-                btnAnimation.animateButton(view,getActivity());
+                btnAnimation.animateButton(view,activity);
                 Uri uri = Uri.parse("https://in.linkedin.com/pub/chetan-shukla/100/415/455");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
@@ -145,7 +145,7 @@ public class AboutUs extends Fragment {
             @Override
             public void onClick(View view) {
                 ButtonAnimation btnAnimation = new ButtonAnimation();
-                btnAnimation.animateButton(view,getActivity());
+                btnAnimation.animateButton(view,activity);
                 Uri uri = Uri.parse("https://github.com/Swati4star/NSIT-App-v2");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
@@ -155,7 +155,7 @@ public class AboutUs extends Fragment {
             @Override
             public void onClick(View view) {
                 ButtonAnimation btnAnimation = new ButtonAnimation();
-                btnAnimation.animateButton(view,getActivity());
+                btnAnimation.animateButton(view,activity);
                 Uri uri = Uri.parse("https://github.com/Swati4star/NSIT-App-v2/wiki");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);

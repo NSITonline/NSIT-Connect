@@ -22,6 +22,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import adapters.DrawerList_Adapter;
+import nsit.app.com.nsitapp.view.contest_reminder;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private ListView mDrawerList;
     ListView lv;
     private ActionBarDrawerToggle mDrawerToggle;
-    static final String[] sideitems = new String[] { "Home" , "My Feed","Video","Calendar" , "Professors","Locations","CodeRadar","Feedback","About Us" };	//items on navigation drawer
+    static final String[] sideitems = new String[]{"Home", "My Feed", "Video", "Calendar", "Professors", "Locations", "CodeRadar", "Feedback", "About Us"};    //items on navigation drawer
     SwipeRefreshLayout swipeLayout;
 
 
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.ic_laptop_mac_black_24dp,
             R.drawable.ic_feedback_black_24dp,
             R.drawable.ic_action_info};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
@@ -63,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
         swipeLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_container);
 
 
-
         //All for navigation drawer
         DrawerList_Adapter adapter2 = new DrawerList_Adapter(this, sideitems, imageId);
         mDrawerList.setAdapter(adapter2);
@@ -75,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                     R.string.app_name,  /* "open drawer" description */
                     R.string.app_name  /* "close drawer" description */
             );
-        }catch(Exception e){
+        } catch (Exception e) {
         }
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -88,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
 
         try {
             mDrawerLayout.setDrawerListener(mDrawerToggle);
-        }catch(Exception e){
+        } catch (Exception e) {
 
         }
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -144,9 +145,9 @@ public class MainActivity extends AppCompatActivity {
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
-    private void changeItem(int position){
+    private void changeItem(int position) {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        switch (position+1) {
+        switch (position + 1) {
             case 1:
                 Fragment f = new Home();
                 getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
@@ -165,35 +166,35 @@ public class MainActivity extends AppCompatActivity {
                 ft.replace(R.id.content_frame, f2);
                 getSupportActionBar().setTitle("Video");
                 break;
-            case  4:
+            case 4:
                 Fragment f3 = new Calender();
                 getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 ft.replace(R.id.content_frame, f3);
                 getSupportActionBar().setTitle("Time Table");
                 break;
-            case 5 :
+            case 5:
                 Fragment f4 = new Professors();
                 getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 ft.replace(R.id.content_frame, f4);
                 getSupportActionBar().setTitle("Professors List");
                 break;
-            case 6 :
+            case 6:
                 Fragment f5 = new Hangouts();
                 getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 ft.replace(R.id.content_frame, f5);
                 getSupportActionBar().setTitle("Locations");
                 break;
             case 7:
-                Intent i = new Intent(this,nsit.app.com.nsitapp.view.contest_reminder.class);
+                Intent i = new Intent(this, contest_reminder.class);
                 startActivity(i);
                 break;
-            case 8 :
+            case 8:
                 Fragment f7 = new Feedback();
                 getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 ft.replace(R.id.content_frame, f7);
                 getSupportActionBar().setTitle("Feedback");
                 break;
-            case 9 :
+            case 9:
                 Fragment f6 = new AboutUs();
                 getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 ft.replace(R.id.content_frame, f6);

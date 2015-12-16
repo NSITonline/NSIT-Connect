@@ -21,6 +21,8 @@ public interface Constant {
     public static String DEB = "debsoc";
     public static String QUIZ = "quiz";
     public static String ASHWA = "ashwa";
+    public static String ENACTUS = "enactus";
+    public static String AAGAZ = "aagaz";
 
     public static String SOCIETY_SET = "set";
     public static String SOCIETY_ITEM_CHANGED = "item_changed";

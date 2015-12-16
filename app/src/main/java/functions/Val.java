@@ -9,6 +9,7 @@ public class Val {
     public final static String id = "109315262061";
 
 
+
     public final static String common_access = "CAAGZAwVFNCKgBAANhEYok6Xh7Q7UZBeTZCUqwPDLYhRZCmNn0igI8SE339jSn2zjxCpA1JUmXHm55XKVXslhdKKoTF3b5sLsiZBVd0ylYwX3MIGOnRyzn0T2XVywwoPKP7ML9WZCqELGRuIGxoM8ia05CiUiqcbgsb4wzTuBKkvKaqb7TPt2VnPtprRZBWda4kZD";
     public final static String id_nsitonline = "109315262061",
             id_crosslinks = "184835371535420",
@@ -18,13 +19,15 @@ public class Val {
             id_rotaract = "604809706256620",
             id_debsoc = "376394819102290",
             id_ieee = "190501900973620",
-            id_csi = "126976547314225", id_quiz = "185960271431856", id_ashwa = "135639763273290";
+            id_csi = "126976547314225", id_quiz = "185960271431856", id_ashwa = "135639763273290",
+            id_enactus="499766883378107",
+            id_aagaz="1457237581165961";
 
 
     public final static String nsit_online = "0",
             cross_links = "1", college_space = "2", bullet = "3", junoon = "4",
             rotaract = "5", debsoc = "6", ieee = "7",
-            csi = "8", quiz = "9", ashwa = "10";
+            csi = "8", quiz = "9", ashwa = "10", ecell="11", enactus="12", aagaz="13";
 
     public final static String
             BT_sem1_sec1 =

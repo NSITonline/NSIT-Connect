@@ -48,14 +48,16 @@ import functions.Val;
  */
 
 public class FinalFeed extends Fragment implements Constant{
-    Boolean Collegespace=false,Crosslinks=false,Junoon=false,Bullet=false,Rotaract=false,Quiz=false,Ieee=false,Csi=false,Ashwa=false,Deb=false;
+    Boolean Collegespace=false,Crosslinks=false,Junoon=false,Bullet=false,
+            Rotaract=false,Quiz=false,Ieee=false,Csi=false,Ashwa=false,Deb=false,
+            Enactus=false,Aagaz=false;
     boolean loadingMore=false;
     ProgressBar pb;
     SwipeRefreshLayout swipeLayout;
     String nextn;
     MyFeedList adapter;
     int first;
-    String nextcollegespace,nextcrosslinks,nextjunoon,nextbullet,nextrotaract,nextquiz,nextieee,nextcsi,nextashwa,nextdeb;
+    String nextcollegespace,nextcrosslinks,nextjunoon,nextbullet,nextrotaract,nextquiz,nextieee,nextcsi,nextashwa,nextdeb, nextaagaz, nextecell, nextenactus;
     List<String> list = new ArrayList<String>();
     List<String> list1 = new ArrayList<String>();
     List<String> list2 = new ArrayList<String>();
@@ -193,6 +195,14 @@ public class FinalFeed extends Fragment implements Constant{
                     case Val.id_debsoc:nextdeb=nextn;
                         Deb = false;
                         break;
+                    case Val.id_enactus:nextenactus=nextn;
+                        Enactus = false;
+                        break;
+                    case Val.id_aagaz:nextaagaz=nextn;
+                        Aagaz = false;
+                        break;
+
+
                 }
 
                 dbAdapter db = new dbAdapter(getActivity());
@@ -410,6 +420,12 @@ public class FinalFeed extends Fragment implements Constant{
                     case Val.id_debsoc:nextdeb=nextn;
                         Deb = false;
                         break;
+                    case Val.id_enactus:nextenactus=nextn;
+                        Enactus = false;
+                        break;
+                    case Val.id_aagaz:nextaagaz=nextn;
+                        Aagaz = false;
+                        break;
              }
             loadingMore=false;
             lv.removeFooterView(footerView);
@@ -420,7 +436,7 @@ public class FinalFeed extends Fragment implements Constant{
 
     public void done()
     {
-        if(!Csi && !Collegespace && !Crosslinks && !Bullet && !Junoon && !Ieee&& !Ashwa&& !Quiz&& !Deb &&!Rotaract) {
+        if(!Csi && !Collegespace && !Crosslinks && !Bullet && !Junoon && !Ieee&& !Ashwa&& !Quiz&& !Deb &&!Rotaract && !Enactus && !Aagaz) {
 
             adapter.notifyDataSetChanged();
             pb.setVisibility(View.GONE);
@@ -465,13 +481,15 @@ public class FinalFeed extends Fragment implements Constant{
         Deb = i.getBoolean(DEB, false);
         Quiz = i.getBoolean(QUIZ, false);
         Ashwa = i.getBoolean(ASHWA, false);
+        Enactus = i.getBoolean(ENACTUS, false);
+        Aagaz = i.getBoolean(AAGAZ, false);
 
 
         dbAdapter db = new dbAdapter(getActivity());
 
         lv.addFooterView(footerView);
 
-        if(!Csi && !Collegespace && !Crosslinks && !Bullet && !Junoon && !Ieee&& !Ashwa&& !Quiz&& !Deb &&!Rotaract) {
+        if(!Csi && !Collegespace && !Crosslinks && !Bullet && !Junoon && !Ieee&& !Ashwa&& !Quiz&& !Deb &&!Rotaract && !Enactus && !Aagaz) {
             SnackbarManager.show(
                     Snackbar.with(activity.getApplicationContext())
                             .text("No item Selected")
@@ -504,6 +522,10 @@ public class FinalFeed extends Fragment implements Constant{
                     new DownloadWebPageTask2(Val.id_quiz).execute();
                 if (Deb)
                     new DownloadWebPageTask2(Val.id_debsoc).execute();
+                if(Enactus)
+                    new DownloadWebPageTask2(Val.id_enactus).execute();
+                if(Aagaz)
+                    new DownloadWebPageTask2(Val.id_aagaz).execute();
 
             } else {
                 SnackbarManager.show(
@@ -559,6 +581,8 @@ public class FinalFeed extends Fragment implements Constant{
                         Deb = i.getBoolean(DEB, false);
                         Quiz = i.getBoolean(QUIZ, false);
                         Ashwa = i.getBoolean(ASHWA, false);
+                        Enactus = i.getBoolean(ENACTUS, false);
+                        Aagaz = i.getBoolean(AAGAZ, false);
                         if (Crosslinks)
                             new DownloadWebPageTask3(Val.id_crosslinks,nextcrosslinks).execute();
                         if (Collegespace)
@@ -579,6 +603,10 @@ public class FinalFeed extends Fragment implements Constant{
                             new DownloadWebPageTask3(Val.id_quiz,nextquiz).execute();
                         if (Deb)
                             new DownloadWebPageTask3(Val.id_debsoc,nextdeb).execute();
+                        if(Enactus)
+                            new DownloadWebPageTask3(Val.id_enactus,nextenactus).execute();
+                        if(Aagaz)
+                            new DownloadWebPageTask3(Val.id_aagaz,nextaagaz).execute();
 
                     }
                     else {

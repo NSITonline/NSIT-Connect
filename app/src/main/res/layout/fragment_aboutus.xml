@@ -360,7 +360,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="left"
                                 android:layout_marginTop="5dp"
-                                android:text="IT 2013-2017"
+                                android:text="COE 2014-2018"
                                 android:textSize="15sp" />
 
                             <LinearLayout

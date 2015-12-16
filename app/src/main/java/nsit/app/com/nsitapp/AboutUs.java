@@ -25,7 +25,7 @@ public class AboutUs extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
-    ImageView s1, s2, s3, s4, s5, s6, s7,s8;
+    ImageView s1, s2, s3, s4, s5, s6, namanFB, namanLinkedIn;
     TextView con, rep;
     Activity activity;
 
@@ -45,8 +45,8 @@ public class AboutUs extends Fragment {
         s4 = (ImageView) rootView.findViewById(R.id.facebook_swati);
         s5 = (ImageView) rootView.findViewById(R.id.facebook_chetan);
         s6 = (ImageView) rootView.findViewById(R.id.linked_chetan);
-        s7 = (ImageView) rootView.findViewById(R.id.facebook_naman);
-        s8 = (ImageView) rootView.findViewById(R.id.linked_naman);
+        namanFB = (ImageView) rootView.findViewById(R.id.facebook_naman);
+        namanLinkedIn = (ImageView) rootView.findViewById(R.id.linked_naman);
         rep = (TextView) rootView.findViewById(R.id.GoToRepo);
         con = (TextView) rootView.findViewById(R.id.cont);
 
@@ -111,7 +111,7 @@ public class AboutUs extends Fragment {
                 startActivity(intent);
             }
         });
-        s7.setOnClickListener(new View.OnClickListener() {
+        namanFB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ButtonAnimation btnAnimation = new ButtonAnimation();
@@ -121,7 +121,7 @@ public class AboutUs extends Fragment {
                 startActivity(intent);
             }
         });
-        s8.setOnClickListener(new View.OnClickListener() {
+        namanLinkedIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ButtonAnimation btnAnimation = new ButtonAnimation();

@@ -25,7 +25,7 @@ public class AboutUs extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
-    ImageView s1, s2, s3, s4, s5, s6;
+    ImageView s1, s2, s3, s4, s5, s6, s7,s8;
     TextView con, rep;
     Activity activity;
 
@@ -45,6 +45,8 @@ public class AboutUs extends Fragment {
         s4 = (ImageView) rootView.findViewById(R.id.facebook_swati);
         s5 = (ImageView) rootView.findViewById(R.id.facebook_chetan);
         s6 = (ImageView) rootView.findViewById(R.id.linked_chetan);
+        s7 = (ImageView) rootView.findViewById(R.id.facebook_naman);
+        s8 = (ImageView) rootView.findViewById(R.id.linked_naman);
         rep = (TextView) rootView.findViewById(R.id.GoToRepo);
         con = (TextView) rootView.findViewById(R.id.cont);
 
@@ -109,7 +111,26 @@ public class AboutUs extends Fragment {
                 startActivity(intent);
             }
         });
-
+        s7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ButtonAnimation btnAnimation = new ButtonAnimation();
+                btnAnimation.animateButton(view, getActivity());
+                Uri uri = Uri.parse("https://www.facebook.com/naman1901");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
+        s8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ButtonAnimation btnAnimation = new ButtonAnimation();
+                btnAnimation.animateButton(view, getActivity());
+                Uri uri = Uri.parse("https://in.linkedin.com/in/naman1901");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
 
         rep.setOnClickListener(new View.OnClickListener() {
             @Override

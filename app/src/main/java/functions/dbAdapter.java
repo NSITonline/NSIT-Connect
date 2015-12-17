@@ -2,15 +2,21 @@ package functions;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.preference.PreferenceManager;
 import android.util.Log;
+
+import functions.Constant;
+import functions.Val;
 
 /**
  * Created by Naman Maheshwari on 11-10-15.
  */
-public class dbAdapter {
+public class dbAdapter implements  Constant {
+
     public static final String KEY_ROWID = "_id";
     public static final int COL_ROWID = 0;
 
@@ -35,24 +41,28 @@ public class dbAdapter {
     public static final String KEY_LIST9 = "list9";
     public static final int COL_LIST9 = 7;
 
-    public static final String[] ALL_KEYS = new String[] {KEY_ROWID, KEY_LIST, KEY_LIST1, KEY_LIST2, KEY_LIST6, KEY_LIST7, KEY_LIST8, KEY_LIST9};
+    public static final String KEY_SOC = "socName";
+    public static final int COL_SOC = 8;
 
-    public static final String DATABASE_NAME = "NSIT Connect";
+    public static final String[] ALL_KEYS = new String[] {KEY_ROWID, KEY_LIST, KEY_LIST1, KEY_LIST2, KEY_LIST6, KEY_LIST7, KEY_LIST8, KEY_LIST9, KEY_SOC };
+
+    public static final String DATABASE_NAME = "NSITConnect";
     public static final String DATABASE_TABLE = "myFeed";
 
-    public static final long DATABASE_VERSION = 1;
+    public static final long DATABASE_VERSION = 3;
 
     private static final String DATABASE_CREATE_SQL =
             "create table " + DATABASE_TABLE
-            + " (" + KEY_ROWID + " integer primary key autoincrement, "
-            + KEY_LIST + " TEXT, "
-            + KEY_LIST1 + " TEXT, "
-            + KEY_LIST2 + " TEXT, "
-            + KEY_LIST6 + " TEXT, "
-            + KEY_LIST7 + " TEXT, "
-            + KEY_LIST8 + " TEXT, "
-            + KEY_LIST9 + " TEXT"
-            + ");";
+                    + " (" + KEY_ROWID + " integer primary key autoincrement, "
+                    + KEY_LIST + " TEXT, "
+                    + KEY_LIST1 + " TEXT, "
+                    + KEY_LIST2 + " TEXT, "
+                    + KEY_LIST6 + " TEXT, "
+                    + KEY_LIST7 + " TEXT, "
+                    + KEY_LIST8 + " TEXT, "
+                    + KEY_LIST9 + " TEXT, "
+                    + KEY_SOC + " TEXT "
+                    + ");";
 
     private Context context;
 
@@ -70,12 +80,10 @@ public class dbAdapter {
     }
 
     public void close() {
-        Cursor c = getAllRows();
-
         NSITConnectHelper.close();
     }
 
-    public long insertRow(String a, String b, String c, String g, String h, String i, String j) {
+    public long insertRow(String a, String b, String c, String g, String h, String i, String j, String soc) {
 
         /*THIS IS GIVING AN ERROR I CANNOT FIGURE OUT.
         Cursor cursor = db.query(DATABASE_TABLE, ALL_KEYS, KEY_LIST1 + "=?", new String[] { b }, null, null, null);
@@ -89,6 +97,7 @@ public class dbAdapter {
         values.put(KEY_LIST7, h);
         values.put(KEY_LIST8, i);
         values.put(KEY_LIST9, j);
+        values.put(KEY_SOC, soc);
 
         Log.e("inseri=ting",b+" "+c);
         return db.insert(DATABASE_TABLE, null, values);
@@ -115,17 +124,62 @@ public class dbAdapter {
 */
 
     public void deleteAll() {
-        db.execSQL("DELETE FROM " + DATABASE_TABLE);
+        db.delete(DATABASE_TABLE, null, null);
     }
 
     public Cursor getAllRows() {
-        Cursor c = db.query(DATABASE_TABLE, ALL_KEYS,
-                null, null, null, null, null);
-        if(c!=null) {
-            c.moveToFirst();
-        }
+
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
+
+        String whereArgs = " IN (  ";
+
+        if(pref.getBoolean(CROSSLINKS, false))
+            whereArgs+= (Val.id_crosslinks + ", ");
+        if(pref.getBoolean(COLLEGESPACE, false))
+            whereArgs+= (Val.id_collegespace+ ", ");
+        if(pref.getBoolean(BULLET, false))
+            whereArgs+= (Val.id_bullet+ ", ");
+        if(pref.getBoolean(ASHWA, false))
+            whereArgs+=(Val.id_ashwa+ ", ");
+        if(pref.getBoolean(JUNOON, false))
+            whereArgs+=(Val.id_junoon + ", ");
+        if(pref.getBoolean(ROTARACT, false))
+            whereArgs+=(Val.id_rotaract + ", ");
+        if(pref.getBoolean(CSI, false))
+            whereArgs+=(Val.id_csi + ", ");
+        if(pref.getBoolean(IEEE, false))
+            whereArgs+= (Val.id_ieee + ", ");
+        if(pref.getBoolean(DEB, false))
+            whereArgs+= (Val.id_debsoc + ", ");
+        if(pref.getBoolean(QUIZ, false))
+            whereArgs+= (Val.id_quiz + ", ");
+        if(pref.getBoolean(AAGAZ, false))
+            whereArgs+= (Val.id_aagaz + ", ");
+        if(pref.getBoolean(ENACTUS, false))
+            whereArgs+= (Val.id_enactus + ", ");
+
+        whereArgs = whereArgs.substring(0,whereArgs.length()-2);
+        whereArgs += " ) ";
+
+        Log.e("Query args", whereArgs);
+
+        Cursor c = db.rawQuery("SELECT * FROM " + DATABASE_TABLE + " WHERE " + KEY_SOC + whereArgs, null);
+        //Cursor c = db.rawQuery("SELECT * FROM " + DATABASE_TABLE + " WHERE " + KEY_SOC + whereArgs + " ORDER BY " + KEY_LIST1 + " DESC" , null);
+        c.moveToFirst();
         return c;
     }
+
+
+
+    public Cursor getAllnsRows() {
+        String whereArgs = " IN (  "+Val.id_nsitonline +" )";
+        Cursor c = db.rawQuery("SELECT * FROM " + DATABASE_TABLE + " WHERE " + KEY_SOC + whereArgs, null);
+        //Cursor c = db.rawQuery("SELECT * FROM " + DATABASE_TABLE + " WHERE " + KEY_SOC + whereArgs + " ORDER BY " + KEY_LIST1 + " DESC" , null);
+        c.moveToFirst();
+        return c;
+
+    }
+
 
     private static class DatabaseHelper extends SQLiteOpenHelper {
         DatabaseHelper(Context context) {

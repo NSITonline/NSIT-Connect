@@ -19,7 +19,7 @@ android {
         applicationId "nsit.app.com.nsitapp"
         minSdkVersion 14
         targetSdkVersion 22
-        versionCode 12
+        versionCode 13
         versionName "2.2"
     }
   
@@ -30,6 +30,15 @@ android {
         }
     }
 
+    signingConfigs {
+
+        release {
+            storeFile file("release.nsitapp.jks")
+            storePassword "135790"
+            keyAlias "nsit_app"
+            keyPassword "135790"
+        }
+    }
 }
 
 

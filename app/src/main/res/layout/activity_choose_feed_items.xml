@@ -181,6 +181,7 @@
                     </LinearLayout>
 
                 </LinearLayout>
+
             </LinearLayout>
 
 
@@ -266,6 +267,8 @@
 
 
                     </LinearLayout>
+
+
 
                 </LinearLayout>
 
@@ -822,6 +825,171 @@
                             android:layout_gravity="center"
                             android:layout_height="wrap_content"
                             android:id="@+id/check_rotaract"/>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:orientation="vertical"
+                    android:background="@drawable/shadow_1">
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/enactus"
+                            android:adjustViewBounds="true"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:background="@color/colorPrimary">
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:text="ENACTUS"
+                            android:textStyle="bold"
+                            android:textSize="15sp"
+                            android:textColor="#ffffff"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        >
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="15sp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1.2"
+                            android:id="@+id/stars_enactus"
+                            android:text="..." />
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_weight="0.8"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_stars_black_24dp"
+                            android:alpha="0.5"/>
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            />
+
+                        <CheckBox
+
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_gravity="center"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/check_enactus"/>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:orientation="vertical"
+                    android:background="@drawable/shadow_1">
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/aagaz"
+                            android:adjustViewBounds="true"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:background="@color/colorPrimary">
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:text="AAGAZ"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:textColor="#ffffff"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        >
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="15sp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1.2"
+                            android:id="@+id/stars_aagaz"
+                            android:text="..." />
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_weight="0.8"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_stars_black_24dp"
+                            android:alpha="0.5"/>
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            />
+
+                        <CheckBox
+
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_gravity="center"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/check_aagaz"/>
 
 
                     </LinearLayout>

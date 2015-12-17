@@ -2,8 +2,8 @@ package nsit.app.com.nsitapp;
 
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
-import android.preference.PreferenceManager;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -12,7 +12,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.nispok.snackbar.Snackbar;
@@ -37,14 +36,12 @@ import functions.Val;
 
 
 public class ChooseFeedItems extends AppCompatActivity implements Constant {
-    CheckBox collegespace,crosslinks,junoon,bullet,rotaract,quiz,ieee,csi,ashwa,deb;
-    Boolean Collegespace=false,Crosslinks=false,Junoon=false,Bullet=false,Rotaract=false,Quiz=false,Ieee=false,Csi=false,Ashwa=false,Deb=false;
-    TextView tCollegespace,tCrosslinks,tJunoon,tBullet,tRotaract,tQuiz,tIeee,tCsi,tAshwa,tDeb;
+    CheckBox collegespace,crosslinks,junoon,bullet,rotaract,quiz,ieee,csi,ashwa,deb, enactus, aagaz;
+    Boolean Collegespace=false,Crosslinks=false,Junoon=false,Bullet=false,Rotaract=false,Quiz=false,Ieee=false,
+            Csi=false,Ashwa=false,Deb=false, Enactus=false, Aagaz=false;
+    TextView tCollegespace,tCrosslinks,tJunoon,tBullet,tRotaract,tQuiz,tIeee,tCsi,tAshwa,tDeb, tEnactus, tAagaz;
     Button next;
     List<String> list = new ArrayList<String>();
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +62,8 @@ public class ChooseFeedItems extends AppCompatActivity implements Constant {
         deb = (CheckBox)  findViewById(R.id.check_debsoc);
         quiz = (CheckBox)  findViewById(R.id.check_quiz);
         ashwa = (CheckBox)  findViewById(R.id.check_ashwa);
+        enactus = (CheckBox)  findViewById(R.id.check_enactus);
+        aagaz = (CheckBox)  findViewById(R.id.check_aagaz);
 
 
 
@@ -78,6 +77,9 @@ public class ChooseFeedItems extends AppCompatActivity implements Constant {
         tDeb = (TextView)  findViewById(R.id.stars_debsoc);
         tQuiz = (TextView)  findViewById(R.id.stars_quiz);
         tAshwa = (TextView)  findViewById(R.id.stars_ashwa);
+        tEnactus = (TextView)  findViewById(R.id.stars_enactus);
+        tAagaz = (TextView)  findViewById(R.id.stars_aagaz);
+
 
         SharedPreferences i = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         Crosslinks = i.getBoolean(CROSSLINKS, false);
@@ -90,6 +92,8 @@ public class ChooseFeedItems extends AppCompatActivity implements Constant {
         Deb = i.getBoolean(DEB, false);
         Quiz = i.getBoolean(QUIZ, false);
         Ashwa = i.getBoolean(ASHWA, false);
+        Aagaz = i.getBoolean(AAGAZ, false);
+        Enactus = i.getBoolean(ENACTUS, false);
 
 
         collegespace.setChecked(Collegespace);
@@ -102,6 +106,8 @@ public class ChooseFeedItems extends AppCompatActivity implements Constant {
         csi.setChecked(Csi);
         ashwa.setChecked(Ashwa);
         deb.setChecked(Deb);
+        aagaz.setChecked(Aagaz);
+        enactus.setChecked(Enactus);
 
 
         crosslinks.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -161,6 +167,18 @@ public class ChooseFeedItems extends AppCompatActivity implements Constant {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {Ashwa = b;
             }
         });
+        enactus.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                Enactus = b;
+            }
+        });
+        aagaz.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                Aagaz = b;
+            }
+        });
 
 
 
@@ -182,9 +200,15 @@ public class ChooseFeedItems extends AppCompatActivity implements Constant {
                 e.putBoolean(DEB, Deb);
                 e.putBoolean(QUIZ, Quiz);
                 e.putBoolean(ASHWA, Ashwa);
+                e.putBoolean(ENACTUS, Enactus);
+                e.putBoolean(AAGAZ, Aagaz);
                 e.putBoolean(SOCIETY_SET, true);
                 e.putBoolean(SOCIETY_ITEM_CHANGED, true);
+
+
                 e.commit();
+
+                Log.e("society changed", " " + p.getBoolean(AAGAZ, false) + " ");
                 finish();
             }
         });
@@ -201,11 +225,13 @@ public class ChooseFeedItems extends AppCompatActivity implements Constant {
             new Calclike(tDeb, Val.id_debsoc).execute();
             new Calclike(tQuiz, Val.id_quiz).execute();
             new Calclike(tAshwa, Val.id_ashwa).execute();
+            new Calclike(tAagaz, Val.id_aagaz).execute();
+            new Calclike(tEnactus, Val.id_enactus).execute();
         }
         else
             SnackbarManager.show(
                     Snackbar.with(getApplicationContext())
-                            .text("Check You Internet Connection")
+                            .text("Check Your Internet Connection")
                             .duration(Snackbar.SnackbarDuration.LENGTH_SHORT),this);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -259,11 +285,8 @@ public class ChooseFeedItems extends AppCompatActivity implements Constant {
 
             }
         }
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    } @Override
+      public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_final_feed, menu);
         return true;
     }
@@ -286,6 +309,8 @@ public class ChooseFeedItems extends AppCompatActivity implements Constant {
             e.putBoolean(DEB, Deb);
             e.putBoolean(QUIZ, Quiz);
             e.putBoolean(ASHWA, Ashwa);
+            e.putBoolean(ENACTUS, Enactus);
+            e.putBoolean(AAGAZ, Aagaz);
             e.putBoolean(SOCIETY_SET, true);
             e.putBoolean(SOCIETY_ITEM_CHANGED, true);
             e.commit();

@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -33,6 +35,7 @@ import functions.Constant;
 import functions.ImageLoader;
 import functions.Utils;
 import functions.Val;
+import functions.ZoomableRelativeLayout;
 
 import static nsit.app.com.nsitapp.R.id.imag_cont;
 
@@ -40,6 +43,7 @@ import static nsit.app.com.nsitapp.R.id.imag_cont;
 public class Decsription extends AppCompatActivity implements Constant{
     ProgressBar pb;
     public ImageLoader imageLoader;
+    ZoomableRelativeLayout mZoomableRelativeLayout;
     String img,des,like,link;
     TextView Des,Like;
     Button Link;
@@ -53,6 +57,23 @@ public class Decsription extends AppCompatActivity implements Constant{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_decsription);
         pb=(ProgressBar)findViewById(R.id.progressBar1);
+
+
+        //Pinch to zoom functionality
+        mZoomableRelativeLayout = (ZoomableRelativeLayout) findViewById(R.id.lay);
+        final ScaleGestureDetector scaleGestureDetector = new ScaleGestureDetector(Decsription.this, new OnPinchListener());
+        mZoomableRelativeLayout.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                // TODO Auto-generated method stub
+                scaleGestureDetector.onTouchEvent(event);
+                return true;
+            }
+        });
+
+
+
 
         setTitle("Post");
 
@@ -186,6 +207,38 @@ String text;
             pb.setVisibility(View.GONE);
 
             Log.e("Yo", imglink+"");
+        }
+    }
+
+
+    private class OnPinchListener extends ScaleGestureDetector.SimpleOnScaleGestureListener
+    {
+        float currentSpan;
+        float startFocusX;
+        float startFocusY;
+
+        public boolean onScaleBegin(ScaleGestureDetector detector)
+        {
+            currentSpan = detector.getCurrentSpan();
+            startFocusX = detector.getFocusX();
+            startFocusY = detector.getFocusY();
+            return true;
+        }
+
+        public boolean onScale(ScaleGestureDetector detector)
+        {
+
+            mZoomableRelativeLayout.relativeScale(detector.getCurrentSpan() / currentSpan, startFocusX, startFocusY);
+
+            currentSpan = detector.getCurrentSpan();
+
+            return true;
+        }
+
+        public void onScaleEnd(ScaleGestureDetector detector)
+        {
+
+            mZoomableRelativeLayout.release();
         }
     }
 

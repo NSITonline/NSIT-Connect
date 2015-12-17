@@ -4,11 +4,13 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -39,6 +41,7 @@ import adapters.MyFeedList;
 import functions.Constant;
 import functions.Utils;
 import functions.Val;
+import functions.dbAdapter;
 
 
 /**
@@ -46,14 +49,16 @@ import functions.Val;
  */
 
 public class FinalFeed extends Fragment implements Constant{
-    Boolean Collegespace=false,Crosslinks=false,Junoon=false,Bullet=false,Rotaract=false,Quiz=false,Ieee=false,Csi=false,Ashwa=false,Deb=false;
+    Boolean Collegespace=false,Crosslinks=false,Junoon=false,Bullet=false,
+            Rotaract=false,Quiz=false,Ieee=false,Csi=false,Ashwa=false,Deb=false,
+            Enactus=false,Aagaz=false;
     boolean loadingMore=false;
     ProgressBar pb;
     SwipeRefreshLayout swipeLayout;
     String nextn;
     MyFeedList adapter;
     int first;
-   String nextcollegespace,nextcrosslinks,nextjunoon,nextbullet,nextrotaract,nextquiz,nextieee,nextcsi,nextashwa,nextdeb;
+    String nextcollegespace,nextcrosslinks,nextjunoon,nextbullet,nextrotaract,nextquiz,nextieee,nextcsi,nextashwa,nextdeb, nextaagaz, nextecell, nextenactus;
     List<String> list = new ArrayList<String>();
     List<String> list1 = new ArrayList<String>();
     List<String> list2 = new ArrayList<String>();
@@ -114,6 +119,8 @@ public class FinalFeed extends Fragment implements Constant{
     }
 
     String text;
+
+
     private class DownloadWebPageTask2 extends AsyncTask<String, Void, String> {
         String id;
 
@@ -143,8 +150,6 @@ public class FinalFeed extends Fragment implements Constant{
             int j=0;
             JSONObject ob;
             JSONArray arr;
-            if(text==null)
-                return;
             try {
                 ob = new JSONObject(text);
                 arr = ob.getJSONArray("data");
@@ -191,61 +196,75 @@ public class FinalFeed extends Fragment implements Constant{
                     case Val.id_debsoc:nextdeb=nextn;
                         Deb = false;
                         break;
+                    case Val.id_enactus:nextenactus=nextn;
+                        Enactus = false;
+                        break;
+                    case Val.id_aagaz:nextaagaz=nextn;
+                        Aagaz = false;
+                        break;
+
+
                 }
+
+                dbAdapter db = new dbAdapter(getActivity());
+                db.open();
 
                 for(int i = 0; i < arr.length(); i++){
 
-                        if(arr.getJSONObject(i).has("message"))
-                            list.add(arr.getJSONObject(i).getString("message"));
-                        else {
-                           list.add(null);
-                        }
-                        if(!(arr.getJSONObject(i).has("object_id")))
-                            list1.add(null);
-                        else
-                            list1.add(arr.getJSONObject(i).getString("object_id"));
+                    if(arr.getJSONObject(i).has("message"))
+                        list.add(arr.getJSONObject(i).getString("message"));
+                    else {
+                        list.add(null);
+                    }
+                    if(!(arr.getJSONObject(i).has("object_id")))
+                        list1.add(null);
+                    else
+                        list1.add(arr.getJSONObject(i).getString("object_id"));
 
 
 
-                        if(arr.getJSONObject(i).has("picture")) {
-                            list6.add(arr.getJSONObject(i).getString("picture"));
-                        }
-                        else
-                            list6.add(null);
-                        if(arr.getJSONObject(i).has("link")) {
-                            list7.add(arr.getJSONObject(i).getString("link"));
-                        }
-                        else
-                            list7.add(null);
-                        if(arr.getJSONObject(i).has("likes")) {
-                            String s = arr.getJSONObject(i).getString("likes");
-                            JSONObject o = new JSONObject(s);
-                            JSONArray a2 = o.getJSONArray("data");
-                            String x = o.getString("summary");
-                            JSONObject o2 = new JSONObject(x);
+                    if(arr.getJSONObject(i).has("picture")) {
+                        list6.add(arr.getJSONObject(i).getString("picture"));
+                    }
+                    else
+                        list6.add(null);
+                    if(arr.getJSONObject(i).has("link")) {
+                        list7.add(arr.getJSONObject(i).getString("link"));
+                    }
+                    else
+                        list7.add(null);
+                    if(arr.getJSONObject(i).has("likes")) {
+                        String s = arr.getJSONObject(i).getString("likes");
+                        JSONObject o = new JSONObject(s);
+                        JSONArray a2 = o.getJSONArray("data");
+                        String x = o.getString("summary");
+                        JSONObject o2 = new JSONObject(x);
 
-                            list2.add(o2.getString("total_count"));    //No of likes
-                        }
-                        else
-                            list2.add("0");
+                        list2.add(o2.getString("total_count"));    //No of likes
+                    }
+                    else
+                        list2.add("0");
 
 
-                        if(arr.getJSONObject(i).has("created_time"))
+                    if(arr.getJSONObject(i).has("created_time"))
                         list8.add(arr.getJSONObject(i).getString("created_time"));
-                        else
-                            list8.add(null);
+                    else
+                        list8.add(null);
 
 
-                        if(arr.getJSONObject(i).has("to")){
-                            JSONObject o = new JSONObject(arr.getJSONObject(i).getString("to"));
-                            JSONArray a2 = o.getJSONArray("data");
-                            String x = a2.getJSONObject(0).getString("name");
-                            list9.add(x);
-                        }else
-                            list9.add(null);
+                    if(arr.getJSONObject(i).has("to")){
+                        JSONObject o = new JSONObject(arr.getJSONObject(i).getString("to"));
+                        JSONArray a2 = o.getJSONArray("data");
+                        String x = a2.getJSONObject(0).getString("name");
+                        list9.add(x);
+                    }else
+                        list9.add(null);
 
+                    db.insertRow(list.get(list.size()-1), list1.get(list1.size()-1), list2.get(list2.size()-1), list6.get(list6.size()-1),
+                            list7.get(list7.size()-1), list8.get(list8.size()-1), list9.get(list9.size()-1), id);
                 }
 
+                db.close();
 
 
             } catch (JSONException e) {
@@ -271,18 +290,18 @@ public class FinalFeed extends Fragment implements Constant{
             String URL;
 
             if(next!=null){
-            String[] x = next.split("&__paging_token=");
-            token=x[1];
+                String[] x = next.split("&__paging_token=");
+                token=x[1];
 
-            URL = next;
-            HttpClient Client = new DefaultHttpClient();
-            HttpGet httpget = new HttpGet(URL);
-            ResponseHandler<String> responseHandler = new BasicResponseHandler();
-            try {
-                text = Client.execute(httpget, responseHandler);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+                URL = next;
+                HttpClient Client = new DefaultHttpClient();
+                HttpGet httpget = new HttpGet(URL);
+                ResponseHandler<String> responseHandler = new BasicResponseHandler();
+                try {
+                    text = Client.execute(httpget, responseHandler);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
             return null;
         }
@@ -293,23 +312,25 @@ public class FinalFeed extends Fragment implements Constant{
             JSONObject ob;
             JSONArray arr;
             if(text!=null)
-            try {
-                ob = new JSONObject(text);
-                arr = ob.getJSONArray("data");
-                if(ob.has("paging")) {
-                    ob = ob.getJSONObject("paging");
+                try {
+                    ob = new JSONObject(text);
+                    arr = ob.getJSONArray("data");
+                    if(ob.has("paging")) {
+                        ob = ob.getJSONObject("paging");
 
-                    if (ob.has("next"))
-                        nextn = ob.getString("next");
+                        if (ob.has("next"))
+                            nextn = ob.getString("next");
+                        else
+                            nextn = null;
+
+                    }
                     else
                         nextn = null;
 
-                }
-                else
-                    nextn = null;
+                    dbAdapter db = new dbAdapter(getActivity());
+                    db.open();
 
-
-                for(int i = 0; i < arr.length(); i++){
+                    for(int i = 0; i < arr.length(); i++){
 
                         if(arr.getJSONObject(i).has("message")) {
                             list.add(arr.getJSONObject(i).getString("message"));
@@ -329,7 +350,7 @@ public class FinalFeed extends Fragment implements Constant{
                             String x = a2.getJSONObject(0).getString("name");
                             list9.add(x);
                         }else
-                        list9.add(null);
+                            list9.add(null);
 
                         if(arr.getJSONObject(i).has("picture")) {
                             list6.add(arr.getJSONObject(i).getString("picture"));
@@ -354,48 +375,59 @@ public class FinalFeed extends Fragment implements Constant{
                             list2.add("0");
 
                         if(arr.getJSONObject(i).has("created_time"))
-                        list8.add(arr.getJSONObject(i).getString("created_time"));
+                            list8.add(arr.getJSONObject(i).getString("created_time"));
                         else
                             list8.add(null);
+
+                        db.insertRow(list.get(list.size()-1), list1.get(list1.size()-1), list2.get(list2.size()-1), list6.get(list6.size()-1),
+                                list7.get(list7.size()-1), list8.get(list8.size()-1), list9.get(list9.size()-1), id);
+
+                    }
+                    db.close();
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
 
 
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-
             switch (id) {
-                    case Val.id_collegespace: nextcollegespace=nextn;
-                        break;
-                    case Val.id_crosslinks:nextcrosslinks=nextn;
-                        Crosslinks = false;
-                        break;
-                    case Val.id_bullet:nextbullet=nextn;
-                        Bullet = false;
-                        break;
-                    case Val.id_junoon:nextjunoon=nextn;
-                        Junoon = false;
-                        break;
-                    case Val.id_rotaract:nextrotaract=nextn;
-                        Rotaract = false;
-                        break;
-                    case Val.id_csi:nextcsi=nextn;
-                        Csi = false;
-                        break;
-                    case Val.id_ieee:nextieee=nextn;
-                        Ieee = false;
-                        break;
-                    case Val.id_quiz:nextquiz=nextn;
-                        Quiz = false;
-                        break;
-                    case Val.id_ashwa:nextashwa=nextn;
-                        Ashwa = false;
-                        break;
-                    case Val.id_debsoc:nextdeb=nextn;
-                        Deb = false;
-                        break;
-             }
+                case Val.id_collegespace: nextcollegespace=nextn;
+                    break;
+                case Val.id_crosslinks:nextcrosslinks=nextn;
+                    Crosslinks = false;
+                    break;
+                case Val.id_bullet:nextbullet=nextn;
+                    Bullet = false;
+                    break;
+                case Val.id_junoon:nextjunoon=nextn;
+                    Junoon = false;
+                    break;
+                case Val.id_rotaract:nextrotaract=nextn;
+                    Rotaract = false;
+                    break;
+                case Val.id_csi:nextcsi=nextn;
+                    Csi = false;
+                    break;
+                case Val.id_ieee:nextieee=nextn;
+                    Ieee = false;
+                    break;
+                case Val.id_quiz:nextquiz=nextn;
+                    Quiz = false;
+                    break;
+                case Val.id_ashwa:nextashwa=nextn;
+                    Ashwa = false;
+                    break;
+                case Val.id_debsoc:nextdeb=nextn;
+                    Deb = false;
+                    break;
+                case Val.id_enactus:nextenactus=nextn;
+                    Enactus = false;
+                    break;
+                case Val.id_aagaz:nextaagaz=nextn;
+                    Aagaz = false;
+                    break;
+            }
             loadingMore=false;
             lv.removeFooterView(footerView);
 
@@ -405,7 +437,7 @@ public class FinalFeed extends Fragment implements Constant{
 
     public void done()
     {
-        if(!Csi && !Collegespace && !Crosslinks && !Bullet && !Junoon && !Ieee&& !Ashwa&& !Quiz&& !Deb &&!Rotaract) {
+        if(!Csi && !Collegespace && !Crosslinks && !Bullet && !Junoon && !Ieee&& !Ashwa&& !Quiz&& !Deb &&!Rotaract && !Enactus && !Aagaz) {
 
             adapter.notifyDataSetChanged();
             pb.setVisibility(View.GONE);
@@ -450,13 +482,15 @@ public class FinalFeed extends Fragment implements Constant{
         Deb = i.getBoolean(DEB, false);
         Quiz = i.getBoolean(QUIZ, false);
         Ashwa = i.getBoolean(ASHWA, false);
+        Enactus = i.getBoolean(ENACTUS, false);
+        Aagaz = i.getBoolean(AAGAZ, false);
 
 
-
+        dbAdapter db = new dbAdapter(getActivity());
 
         lv.addFooterView(footerView);
 
-        if(!Csi && !Collegespace && !Crosslinks && !Bullet && !Junoon && !Ieee&& !Ashwa&& !Quiz&& !Deb &&!Rotaract) {
+        if(!Csi && !Collegespace && !Crosslinks && !Bullet && !Junoon && !Ieee&& !Ashwa&& !Quiz&& !Deb &&!Rotaract && !Enactus && !Aagaz) {
             SnackbarManager.show(
                     Snackbar.with(activity.getApplicationContext())
                             .text("No item Selected")
@@ -464,6 +498,11 @@ public class FinalFeed extends Fragment implements Constant{
         }else {
 
             if (Utils.isNetworkAvailable(activity)) {
+
+                db.open();
+                db.deleteAll();
+                db.close();
+
                 if (Crosslinks)
                     new DownloadWebPageTask2(Val.id_crosslinks).execute();
                 if (Collegespace)
@@ -484,12 +523,35 @@ public class FinalFeed extends Fragment implements Constant{
                     new DownloadWebPageTask2(Val.id_quiz).execute();
                 if (Deb)
                     new DownloadWebPageTask2(Val.id_debsoc).execute();
+                if(Enactus)
+                    new DownloadWebPageTask2(Val.id_enactus).execute();
+                if(Aagaz)
+                    new DownloadWebPageTask2(Val.id_aagaz).execute();
 
-            } else
+            } else {
                 SnackbarManager.show(
                         Snackbar.with(activity.getApplicationContext())
-                                .text("Check Your internet connection")
+                                .text("No Internet Connection")
                                 .duration(Snackbar.SnackbarDuration.LENGTH_SHORT), activity);
+                db.open();
+                Cursor c = db.getAllRows();
+                if (c.moveToFirst()) {
+                    do {
+                        list.add(c.getString(1));
+                        Log.v("DATABASE LOGS", c.getString(1)+" ");
+                        list1.add(c.getString(2));
+                        list2.add(c.getString(3));
+                        list6.add(c.getString(4));
+                        list7.add(c.getString(5));
+                        list8.add(c.getString(6));
+                        list9.add(c.getString(7));
+                    } while (c.moveToNext());
+                }
+                db.close();
+                pb.setVisibility(View.GONE);
+            }
+            lv.setAdapter(adapter);
+            adapter.notifyDataSetChanged();
 
         }
 
@@ -501,10 +563,15 @@ public class FinalFeed extends Fragment implements Constant{
             public void onScroll(AbsListView absListView, int firstVisibleItem,
                                  int visibleItemCount, int totalItemCount) {
                 int lastInScreen = firstVisibleItem + visibleItemCount;
+
+                dbAdapter db = new dbAdapter(getActivity());
+
                 if ((lastInScreen == totalItemCount) && !(loadingMore) && first!=1) {
                     loadingMore=true;
                     lv.addFooterView(footerView);
                     if(Utils.isNetworkAvailable(activity)){
+
+
                         Crosslinks = i.getBoolean(CROSSLINKS, false);
                         Collegespace = i.getBoolean(COLLEGESPACE, false);
                         Bullet = i.getBoolean(BULLET, false);
@@ -515,6 +582,8 @@ public class FinalFeed extends Fragment implements Constant{
                         Deb = i.getBoolean(DEB, false);
                         Quiz = i.getBoolean(QUIZ, false);
                         Ashwa = i.getBoolean(ASHWA, false);
+                        Enactus = i.getBoolean(ENACTUS, false);
+                        Aagaz = i.getBoolean(AAGAZ, false);
                         if (Crosslinks)
                             new DownloadWebPageTask3(Val.id_crosslinks,nextcrosslinks).execute();
                         if (Collegespace)
@@ -535,15 +604,37 @@ public class FinalFeed extends Fragment implements Constant{
                             new DownloadWebPageTask3(Val.id_quiz,nextquiz).execute();
                         if (Deb)
                             new DownloadWebPageTask3(Val.id_debsoc,nextdeb).execute();
+                        if(Enactus)
+                            new DownloadWebPageTask3(Val.id_enactus,nextenactus).execute();
+                        if(Aagaz)
+                            new DownloadWebPageTask3(Val.id_aagaz,nextaagaz).execute();
 
                     }
-                    else
+                    else {
                         SnackbarManager.show(
                                 Snackbar.with(activity.getApplicationContext())
-                                        .text("Check Your Internet Connection")
+                                        .text("No Internet Connection")
                                         .duration(Snackbar.SnackbarDuration.LENGTH_SHORT), activity);
 
+                        db.open();
+                        Cursor c = db.getAllRows();
+                        if(c.moveToFirst()) {
+                            do {
+                                list.add(c.getString(1));
+                                Log.v("DATABASE LOGS", c.getString(1));
+                                list1.add(c.getString(2));
+                                list2.add(c.getString(3));
+                                list6.add(c.getString(4));
+                                list7.add(c.getString(5));
+                                list8.add(c.getString(6));
+                                list9.add(c.getString(7));
+                            } while(c.moveToNext());
+                        }
+                        db.close();
+                        pb.setVisibility(View.GONE);
+                        adapter.notifyDataSetChanged();
 
+                    }
 
                 }
 

@@ -128,7 +128,7 @@ public class Home extends Fragment {
             show_off();
             SnackbarManager.show(
                     Snackbar.with(activity.getApplicationContext())
-                            .text("Check Your Internet Connection")
+                            .text("No Your Internet Connection")
                             .duration(Snackbar.SnackbarDuration.LENGTH_SHORT), activity);
 
         }
@@ -239,7 +239,7 @@ public class Home extends Fragment {
                             list8.add(null);
 
 
-                        db.insertRow(list.get(i), list1.get(i), list2.get(i), list6.get(i), list7.get(i), list8.get(i), "nsit online");
+                        db.insertRow(list.get(i), list1.get(i), list2.get(i), list6.get(i), list7.get(i), list8.get(i),null, Val.id_nsitonline);
 
                         Log.e("in here","inserting");
 
@@ -277,7 +277,7 @@ public class Home extends Fragment {
 
     public void show_off() {
 
-        Cursor c = db.getAllRows();
+        Cursor c = db.getAllnsRows();
         if(c==null)
             return;
         try {

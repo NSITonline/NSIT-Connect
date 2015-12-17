@@ -8,12 +8,15 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import functions.ButtonAnimation;
+import functions.ZoomableRelativeLayout;
 
 /**
  * Created by Swati garg on 21-06-2015.
@@ -48,7 +51,11 @@ public class AboutUs extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //setHasOptionsMenu(false);
         View rootView = inflater.inflate(R.layout.fragment_aboutus, container, false);
-        ImageView s1,s2,s3,s4,s5,s6,s8,s9,s10;
+        ImageView s1,s2,s3,s4,s5,s6,s8,s9,s10, namanFB, namanLinkedIn;;
+
+
+
+
         TextView con;
         TextView rep;
         s1 = (ImageView) rootView.findViewById(R.id.linked_sidharth);
@@ -61,7 +68,9 @@ public class AboutUs extends Fragment {
         s6 = (ImageView) rootView.findViewById(R.id.linked_chetan);
         rep = (TextView) rootView.findViewById(R.id.GoToRepo);
         con = (TextView) rootView.findViewById(R.id.cont);
-        s1.setOnClickListener(new View.OnClickListener() {
+        namanFB = (ImageView) rootView.findViewById(R.id.facebook_naman);
+        namanLinkedIn = (ImageView) rootView.findViewById(R.id.linked_naman);
+        rep = (TextView) rootView.findViewById(R.id.GoToRepo);		 s1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ButtonAnimation btnAnimation = new ButtonAnimation();
@@ -141,6 +150,32 @@ public class AboutUs extends Fragment {
         });
 
 
+
+
+        namanFB.setOnClickListener(new View.OnClickListener() {
+                         @Override
+                         public void onClick(View view) {
+                                 ButtonAnimation btnAnimation = new ButtonAnimation();
+                                 btnAnimation.animateButton(view, getActivity());
+                                 Uri uri = Uri.parse("https://www.facebook.com/naman1901");
+                                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                                 startActivity(intent);
+                             }
+                     });
+                 namanLinkedIn.setOnClickListener(new View.OnClickListener() {
+                         @Override
+                         public void onClick(View view) {
+                                 ButtonAnimation btnAnimation = new ButtonAnimation();
+                                 btnAnimation.animateButton(view, getActivity());
+                                 Uri uri = Uri.parse("https://in.linkedin.com/in/naman1901");
+                                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                                 startActivity(intent);
+                             }
+                     });
+        
+        
+        
+
         rep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -163,5 +198,8 @@ public class AboutUs extends Fragment {
         });
         return rootView;
     }
+
+
+
 
 }

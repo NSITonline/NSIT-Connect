@@ -30,15 +30,7 @@ android {
         }
     }
 
-    signingConfigs {
-
-        release {
-            storeFile file("release.nsitapp.jks")
-            storePassword "135790"
-            keyAlias "nsit_app"
-            keyPassword "135790"
-        }
-    }
+  
 }
 
 

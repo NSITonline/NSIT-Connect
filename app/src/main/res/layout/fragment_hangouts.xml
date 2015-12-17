@@ -1,19 +1,452 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:animateLayoutChanges="true"
-    android:layout_height="match_parent"
-    android:showDividers="none"
-    android:layout_marginTop="10dp"
-    android:background="@color/universalBackground">
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_frame"
+    android:background="#ffffff"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:animateLayoutChanges="true"   >
 
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:divider="@android:color/transparent"
-        android:id="@+id/hangouts_list"
-        android:background="@color/universalBackground"
-        android:dividerHeight="0dp"
-        android:childDivider="#00000000"
-        />
-</LinearLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content"
+            android:paddingTop="30dp">
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:orientation="vertical"
+                    android:background="@drawable/shadow_1"
+                    android:id="@+id/hang_college"
+                    android:clickable="true">
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:scaleType="fitXY"
+                            android:layout_width="wrap_content"
+                            android:layout_height="140dp"
+                            android:src="@drawable/college_hangout"
+                            android:adjustViewBounds="true"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:background="@color/colorPrimary">
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:text="COLLEGE"
+                            android:textStyle="bold"
+                            android:textSize="15sp"
+                            android:textColor="#ffffff"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:orientation="vertical"
+                    android:background="@drawable/shadow_1"
+                    android:id="@+id/hang_restaurant"
+                    android:clickable="true">
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:scaleType="fitXY"
+                            android:layout_width="fill_parent"
+                            android:layout_height="140dp"
+                            android:src="@drawable/rest_hangout2"
+                            android:adjustViewBounds="true"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:background="@color/colorPrimary">
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:text="RESTAURANT"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:textColor="#ffffff"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:orientation="vertical"
+                    android:background="@drawable/shadow_1"
+                    android:id="@+id/hang_cafe"
+                    android:clickable="true">
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:scaleType="fitXY"
+                            android:layout_width="wrap_content"
+                            android:layout_height="140dp"
+                            android:src="@drawable/cafe_hangout"
+                            android:adjustViewBounds="true"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:background="@color/colorPrimary">
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:text="CAFES"
+                            android:textStyle="bold"
+                            android:textSize="15sp"
+                            android:textColor="#ffffff"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:orientation="vertical"
+                    android:background="@drawable/shadow_1"
+                    android:id="@+id/hang_nightclub"
+                    android:clickable="true">
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:scaleType="fitXY"
+                            android:layout_width="fill_parent"
+                            android:layout_height="140dp"
+                            android:src="@drawable/nightclub_hangout"
+                            android:adjustViewBounds="true"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:background="@color/colorPrimary">
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:text="NIGHTCLUB"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:textColor="#ffffff"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:orientation="vertical"
+                    android:background="@drawable/shadow_1"
+                    android:id="@+id/hang_shoppingmalls"
+                    android:clickable="true">
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:scaleType="fitXY"
+                            android:layout_width="wrap_content"
+                            android:layout_height="140dp"
+                            android:src="@drawable/shoppingmall_hangout"
+                            android:adjustViewBounds="true"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:background="@color/colorPrimary">
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:text="MALLS"
+                            android:textStyle="bold"
+                            android:textSize="15sp"
+                            android:textColor="#ffffff"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:orientation="vertical"
+                    android:background="@drawable/shadow_1"
+                    android:id="@+id/hang_bowling"
+                    android:clickable="true">
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:scaleType="fitXY"
+                            android:layout_width="fill_parent"
+                            android:layout_height="140dp"
+                            android:src="@drawable/bowling_hangout"
+                            android:adjustViewBounds="true"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:background="@color/colorPrimary">
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:text="BOWLING"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:textColor="#ffffff"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:orientation="vertical"
+                    android:background="@drawable/shadow_1"
+                    android:id="@+id/hang_movies"
+                    android:clickable="true">
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:scaleType="fitXY"
+                            android:layout_width="wrap_content"
+                            android:layout_height="140dp"
+                            android:src="@drawable/movie_hangout"
+                            android:adjustViewBounds="true"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:background="@color/colorPrimary">
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:text="MOVIES"
+                            android:textStyle="bold"
+                            android:textSize="15sp"
+                            android:textColor="#ffffff"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:orientation="vertical"
+                    android:background="@drawable/shadow_1"
+                    android:id="@+id/hang_food"
+                    android:clickable="true">
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:scaleType="fitXY"
+                            android:layout_width="fill_parent"
+                            android:layout_height="140dp"
+                            android:src="@drawable/food_hangout"
+                            android:adjustViewBounds="true"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:background="@color/colorPrimary">
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:text="FOOD"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:textColor="#ffffff"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:orientation="vertical"
+                    android:background="@drawable/shadow_1"
+                    android:id="@+id/hang_amusment"
+                    android:clickable="true">
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:scaleType="fitXY"
+                            android:layout_width="wrap_content"
+                            android:layout_height="140dp"
+                            android:src="@drawable/amuse_hangout"
+                            android:adjustViewBounds="true"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:background="@color/colorPrimary">
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:text="ENTERTAINMENT"
+                            android:textStyle="bold"
+                            android:textSize="15sp"
+                            android:textColor="#ffffff"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:orientation="vertical"
+                    android:background="@drawable/shadow_1"
+                    android:id="@+id/hang_park"
+                    android:clickable="true">
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:scaleType="fitXY"
+                            android:layout_width="fill_parent"
+                            android:layout_height="140dp"
+                            android:src="@drawable/park_hangout"
+                            android:adjustViewBounds="true"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:background="@color/colorPrimary">
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:text="PARK"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:textColor="#ffffff"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+</FrameLayout>

@@ -61,7 +61,6 @@ public class Video extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_video, container, false);
         listview = (ListView) rootView.findViewById(R.id.videos_list);
-        Log.e("YouTube:", "Fetching data");
         Spinner = rootView.findViewById(R.id.VideoProgressSpinner);
         Spinner.setVisibility(View.VISIBLE);
 
@@ -78,7 +77,6 @@ public class Video extends Fragment {
                         }
                     });
             alertDialog.show();
-            Log.e("YouTube:", "Cannot fetch " + e.toString());
         }
 
 
@@ -142,7 +140,6 @@ public class Video extends Fragment {
     }
 
     public class Video_RetrieveFeed extends AsyncTask<String, Void, String> {
-        private Exception exception;
 
         protected String doInBackground(String... urls) {
             try {
@@ -159,7 +156,6 @@ public class Video extends Fragment {
 
                 return Result;
             } catch (Exception e) {
-                this.exception = e;
                 e.printStackTrace();
                 return null;
             }

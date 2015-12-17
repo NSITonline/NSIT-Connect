@@ -13,7 +13,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -241,7 +240,6 @@ public class Home extends Fragment {
 
                         db.insertRow(list.get(i), list1.get(i), list2.get(i), list6.get(i), list7.get(i), list8.get(i),null, Val.id_nsitonline);
 
-                        Log.e("in here","inserting");
 
                     }
 
@@ -251,18 +249,15 @@ public class Home extends Fragment {
 
                 } catch (Exception e) {
                     e.printStackTrace();
-                    Log.e("ger", e.getMessage() + " ");
                 }
             swipeLayout.setRefreshing(false);
             loadingMore = false;
             lv.removeFooterView(footerView);
             adapter.notifyDataSetChanged();
-            Log.e("ger", "" + " dsv");
             try {
                 lv.smoothScrollToPosition(listCount + 1);
             } catch (Exception e) {
                 e.printStackTrace();
-                Log.e("ger2", e.getMessage() + " ");
             }
         }
     }
@@ -291,7 +286,6 @@ public class Home extends Fragment {
             } while (c.moveToNext());
             pb.setVisibility(View.GONE);
         }catch (Exception e){
-            Log.e("erro",e.getMessage()+" ");
         }
         adapter.notifyDataSetChanged();
     }

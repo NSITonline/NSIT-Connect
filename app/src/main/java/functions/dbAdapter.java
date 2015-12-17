@@ -7,10 +7,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.preference.PreferenceManager;
-import android.util.Log;
-
-import functions.Constant;
-import functions.Val;
 
 /**
  * Created by Naman Maheshwari on 11-10-15.
@@ -75,7 +71,11 @@ public class dbAdapter implements  Constant {
     }
 
     public dbAdapter open() {
-        db = NSITConnectHelper.getWritableDatabase();
+        try {
+            db = NSITConnectHelper.getWritableDatabase();
+        }catch(Exception e){
+
+        }
         return this;
     }
 
@@ -99,29 +99,8 @@ public class dbAdapter implements  Constant {
         values.put(KEY_LIST9, j);
         values.put(KEY_SOC, soc);
 
-        Log.e("inseri=ting",b+" "+c);
         return db.insert(DATABASE_TABLE, null, values);
     }
-/*
-
-    Redundant code. Keeping for reference only.
-
-    public boolean deleteRow(long rowID) {
-        String where = KEY_ROWID + "=" + rowID;
-        return db.delete(DATABASE_TABLE, where, null) != 0;
-    }
-
-    public void deleteAll() {
-        Cursor c = getAllRows();
-        long rowID = c.getColumnIndexOrThrow(KEY_ROWID);
-        if(c.moveToFirst()) {
-            do {
-                deleteRow(c.getLong((int) rowID));
-            } while(c.moveToNext());
-            c.close();
-        }
-    }
-*/
 
     public void deleteAll() {
         db.delete(DATABASE_TABLE, null, null);
@@ -161,10 +140,8 @@ public class dbAdapter implements  Constant {
         whereArgs = whereArgs.substring(0,whereArgs.length()-2);
         whereArgs += " ) ";
 
-        Log.e("Query args", whereArgs);
 
         Cursor c = db.rawQuery("SELECT * FROM " + DATABASE_TABLE + " WHERE " + KEY_SOC + whereArgs, null);
-        //Cursor c = db.rawQuery("SELECT * FROM " + DATABASE_TABLE + " WHERE " + KEY_SOC + whereArgs + " ORDER BY " + KEY_LIST1 + " DESC" , null);
         c.moveToFirst();
         return c;
     }
@@ -174,7 +151,6 @@ public class dbAdapter implements  Constant {
     public Cursor getAllnsRows() {
         String whereArgs = " IN (  "+Val.id_nsitonline +" )";
         Cursor c = db.rawQuery("SELECT * FROM " + DATABASE_TABLE + " WHERE " + KEY_SOC + whereArgs, null);
-        //Cursor c = db.rawQuery("SELECT * FROM " + DATABASE_TABLE + " WHERE " + KEY_SOC + whereArgs + " ORDER BY " + KEY_LIST1 + " DESC" , null);
         c.moveToFirst();
         return c;
 
@@ -199,4 +175,32 @@ public class dbAdapter implements  Constant {
         }
 
     }
+
+
+
+
+
+    /*
+
+    Redundant code. Keeping for reference only.
+
+    public boolean deleteRow(long rowID) {
+        String where = KEY_ROWID + "=" + rowID;
+        return db.delete(DATABASE_TABLE, where, null) != 0;
+    }
+
+    public void deleteAll() {
+        Cursor c = getAllRows();
+        long rowID = c.getColumnIndexOrThrow(KEY_ROWID);
+        if(c.moveToFirst()) {
+            do {
+                deleteRow(c.getLong((int) rowID));
+            } while(c.moveToNext());
+            c.close();
+        }
+    }
+*/
+
+
+
 }

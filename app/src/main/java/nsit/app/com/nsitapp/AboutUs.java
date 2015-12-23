@@ -51,7 +51,7 @@ public class AboutUs extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //setHasOptionsMenu(false);
         View rootView = inflater.inflate(R.layout.fragment_aboutus, container, false);
-        ImageView s1,s2,s3,s4,s5,s6,s8,s9,s10, namanFB, namanLinkedIn;;
+        ImageView s1,s2,s3,s4,s5,s6,s8,s9,s10,s11, namanFB, namanLinkedIn;;
 
 
 
@@ -66,6 +66,11 @@ public class AboutUs extends Fragment {
         s9= (ImageView) rootView.findViewById(R.id.linked_sumit);
         s5 = (ImageView) rootView.findViewById(R.id.facebook_chetan);
         s6 = (ImageView) rootView.findViewById(R.id.linked_chetan);
+
+
+        s10 = (ImageView) rootView.findViewById(R.id.linked_sagar);
+        s11 = (ImageView)rootView.findViewById(R.id.facebook_sagar);
+
         rep = (TextView) rootView.findViewById(R.id.GoToRepo);
         con = (TextView) rootView.findViewById(R.id.cont);
         namanFB = (ImageView) rootView.findViewById(R.id.facebook_naman);
@@ -150,6 +155,26 @@ public class AboutUs extends Fragment {
         });
 
 
+        s10.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ButtonAnimation btnAnimation = new ButtonAnimation();
+                btnAnimation.animateButton(view,activity);
+                Uri uri = Uri.parse("https://in.linkedin.com/in/sagar-aggarwal-9319b3110");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
+        s11.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ButtonAnimation btnAnimation = new ButtonAnimation();
+                btnAnimation.animateButton(view,activity);
+                Uri uri = Uri.parse("https://web.facebook.com/sagar.aggarwal.773");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
 
 
         namanFB.setOnClickListener(new View.OnClickListener() {

@@ -5,10 +5,6 @@ package functions;
  */
 public interface Constant {
 
-    public static String IS_CLASS_SET = "classset";
-    public static String IS_TIME_TABLE_CHANGED = "timetablechanged";
-    public static String GET_TIME_TABLE = "timetable";
-    public static String GET_TIME_TABLE_ID = "timetableid";
 
 
     public static String CROSSLINKS = "crosslinks";
@@ -40,5 +36,19 @@ public interface Constant {
     public static String LOCATION_NAME = "LocationName";
     public static String LOCATION_ICON = "LocationIcon";
 
+
+
+    public static String CALENDAR_BRANCH = "cal_branch";
+    public static String CALENDAR_SEM = "cal_sem";
+    public static String CALENDAR_SECTION = "cal_sec";
+    public static String IS_CLASS_SET = "classset";
+    public static String IS_TIME_TABLE_CHANGED = "timetablechanged";
+    public static String GET_TIME_TABLE = "timetable";
+
+
+
+
+    public static String CALCULATOR_BRANCH = "calculator_branch";
+    public static String CALCULATOR_SEM = "calculator_sem";
 
 }

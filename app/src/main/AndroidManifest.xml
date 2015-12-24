@@ -41,7 +41,6 @@
             android:name=".LocationMapView"
             android:configChanges="orientation|screenSize"
             android:label="LocationMapView" />
-
         <activity
             android:name=".Locations"
             android:configChanges="orientation|screenSize"
@@ -63,24 +62,22 @@
             android:name=".ProfList"
             android:label="@string/title_activity_subject_remove" />
 
-        <!-- For google maps-->
+        <!-- For google maps -->
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBgktirlOODUO9zWD-808D7zycmP7smp-Y" />
 
         <provider
-            android:name="nsit.app.com.nsitapp.data.ContestProvider"
+            android:name=".data.ContestProvider"
             android:authorities="nsit.app.com.nsitapp"
             android:exported="false"
             android:label="coderadar provider"
             android:syncable="true" />
 
-
-        <service android:name="nsit.app.com.nsitapp.sync.AuthenticatorService">
+        <service android:name=".sync.AuthenticatorService">
             <intent-filter>
                 <action android:name="android.accounts.AccountAuthenticator" />
             </intent-filter>
@@ -89,10 +86,8 @@
                 android:name="android.accounts.AccountAuthenticator"
                 android:resource="@xml/authenticator" />
         </service>
-
-
         <service
-            android:name="nsit.app.com.nsitapp.sync.SyncService"
+            android:name=".sync.SyncService"
             android:exported="true"
             android:process=":sync">
             <intent-filter>
@@ -104,55 +99,46 @@
                 android:resource="@xml/syncadapter" />
         </service>
 
-
-        <receiver android:name="nsit.app.com.nsitapp.BootReceiver">
+        <receiver android:name=".BootReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
 
-        <service android:name="nsit.app.com.nsitapp.NotificationService" />
-
-
-        
+        <service android:name=".NotificationService" />
 
         <activity
-            android:name="nsit.app.com.nsitapp.view.ContestDetailActivity"
+            android:name=".view.ContestDetailActivity"
             android:label="@string/title_activity_contest_detail"
-            android:parentActivityName="nsit.app.com.nsitapp.view.contest_reminder"
+            android:parentActivityName=".view.contest_reminder"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme2">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="nsit.app.com.nsitapp.view.contest_reminder" />
         </activity>
-
-
         <activity
-            android:name="nsit.app.com.nsitapp.view.SettingsActivity"
+            android:name=".view.SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:parentActivityName="nsit.app.com.nsitapp.view.contest_reminder"
+            android:parentActivityName=".view.contest_reminder"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="nsit.app.com.nsitapp.view.contest_reminder" />
         </activity>
-
         <activity
-
             android:name=".view.contest_reminder"
             android:label="@string/title_activity_contest_reminder"
-            android:theme="@style/AppTheme2">
-
-        </activity>
-
-
-        <activity android:name=".PlaceMapActivity"
+            android:theme="@style/AppTheme2"></activity>
+        <activity
+            android:name=".PlaceMapActivity"
             android:label="Place On Map"
-            android:theme="@style/AppTheme"
-            android:parentActivityName=".HangoutsTypeDisplay" />
+            android:parentActivityName=".HangoutsTypeDisplay"
+            android:theme="@style/AppTheme" />
         <activity android:name=".HangoutsTypeDisplay" />
-
+        <activity
+            android:name=".Calculator"
+            android:label="@string/title_activity_calculator"></activity>
     </application>
 
 </manifest>

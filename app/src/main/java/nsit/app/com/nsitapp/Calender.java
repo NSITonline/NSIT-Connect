@@ -5,12 +5,14 @@ package nsit.app.com.nsitapp;
  */
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -55,6 +57,9 @@ public class Calender extends Fragment implements Constant {
     static ArrayList<Subject_struct> p9 = new ArrayList<Subject_struct>();
     CustomList_calendar adapter2;
     TwoWayView lvTest;
+    SharedPreferences s;
+    SharedPreferences.Editor e;
+    static Activity activity;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -62,7 +67,6 @@ public class Calender extends Fragment implements Constant {
         setHasOptionsMenu(true);
     }
 
-    Activity activity;
 
     @Override
     public void onAttach(Activity activity) {
@@ -75,40 +79,42 @@ public class Calender extends Fragment implements Constant {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_calender, container, false);
         lvTest = (TwoWayView) rootView.findViewById(R.id.lvItems);
-        if (activity != null) {
-            SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
-            Boolean b = s.getBoolean(IS_CLASS_SET, false);
-            if (!b) {
-                Intent i = new Intent(activity, ChooseClass.class);
-                startActivity(i);
-            }
+        if (activity == null)
+            return rootView;
 
 
-            Boolean a = s.getBoolean(IS_TIME_TABLE_CHANGED, true);
-            timetable = s.getString(GET_TIME_TABLE, null);
-
-            adapter2 = new CustomList_calendar(activity, days, p0, p1, p2, p3, p4, p5, p6, p7, p8, p9);
-            if (a == true || timetable == null) {
-                if (Utils.isNetworkAvailable(activity))
-                    new DownloadWebPageTask2().execute();
-                else {
-                    adapter2 = new CustomList_calendar(activity, days, p0, p1, p2, p3, p4, p5, p6, p7, p8, p9);
-                    if (activity != null)
-                        lvTest.setAdapter(adapter2);
-                    lvTest.setItemMargin(10);
-                    SnackbarManager.show(
-                            Snackbar.with(activity.getApplicationContext())
-                                    .text("Check Your Internet Connection")
-                                    .duration(Snackbar.SnackbarDuration.LENGTH_SHORT), activity);
-                }
-            } else {
-                load();
-                adapter2 = new CustomList_calendar(activity, days, p0, p1, p2, p3, p4, p5, p6, p7, p8, p9);
-                if (activity != null)
-                    lvTest.setAdapter(adapter2);
-                lvTest.setItemMargin(10);
-            }
+        s = PreferenceManager.getDefaultSharedPreferences(activity);
+        e = s.edit();
+        Boolean b = s.getBoolean(IS_CLASS_SET, false);
+        if (!b) {
+            Intent i = new Intent(activity, ChooseClass.class);
+            startActivity(i);
         }
+
+
+        Boolean a = s.getBoolean(IS_TIME_TABLE_CHANGED, true);
+        timetable = s.getString(GET_TIME_TABLE, null);
+
+        adapter2 = new CustomList_calendar(activity, days, p0, p1, p2, p3, p4, p5, p6, p7, p8, p9);
+        lvTest.setAdapter(adapter2);
+        lvTest.setItemMargin(10);
+
+
+
+        if (a == true || timetable == null) {
+            if (Utils.isNetworkAvailable(activity))
+                new DownloadWebPageTask2().execute();
+            else {
+                SnackbarManager.show(
+                        Snackbar.with(activity.getApplicationContext())
+                                .text("Check Your Internet Connection")
+                                .duration(Snackbar.SnackbarDuration.LENGTH_SHORT), activity);
+            }
+        } else {
+            load();
+        }
+
+
 
 
         lvTest.setOnScrollListener(new TwoWayView.OnScrollListener() {
@@ -224,12 +230,9 @@ public class Calender extends Fragment implements Constant {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
         if (item.getItemId() == R.id.subjects) {
-
             Intent i = new Intent(activity, SubjectsShow.class);
             startActivity(i);
-
         }
         if (item.getItemId() == R.id.choose) {
             Intent i = new Intent(activity, ChooseClass.class);
@@ -239,9 +242,10 @@ public class Calender extends Fragment implements Constant {
     }
 
 
-    String text;
 
     private class DownloadWebPageTask2 extends AsyncTask<String, Void, String> {
+
+        ProgressDialog progress;
 
         @Override
         protected void onPreExecute() {
@@ -258,20 +262,28 @@ public class Calender extends Fragment implements Constant {
             p9.clear();
             lvTest.scrollTo(0, 0);
             adapter2.notifyDataSetChanged();
+            progress = new ProgressDialog(activity);
+            progress.setTitle("Loading");
+            progress.setMessage("Fetching timetable...");
 
         }
 
         @Override
         protected String doInBackground(String... urls) {
 
-            SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
-            String id = s.getString(GET_TIME_TABLE_ID, null);
-            if (id == null) {
-                id = "0B9uRC8Uvb5sFZFdNcVJVN0VhUEE";
-            }
+            int branch,sem,sec;
+            branch = s.getInt(CALENDAR_BRANCH, 1);
+            sec = s.getInt(CALENDAR_SECTION, 1);
+            sem = s.getInt(CALENDAR_SEM, 1);
+            String text = null;
 
             String URL;
-            URL = "https://docs.google.com/uc?id=" + id + "&export=download";
+            URL = "http://nsitonline.in/NSITconnect/api/get-data.php?branch=" +
+                    branch +
+                    "&semester=" +
+                    sem +
+                    "&section=" +
+                    sec;
             HttpClient Client = new DefaultHttpClient();
             HttpGet httpget = new HttpGet(URL);
             ResponseHandler<String> responseHandler = new BasicResponseHandler();
@@ -281,22 +293,21 @@ public class Calender extends Fragment implements Constant {
                 e.printStackTrace();
             }
 
-            return null;
+            return text;
 
         }
 
         @Override
         protected void onPostExecute(String result) {
-            timetable = text;
+            timetable = result;
             if (activity == null)
                 return;
 
+            Log.e("here",result );
 
-            SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
-            SharedPreferences.Editor e1 = s.edit();
-            e1.putBoolean(IS_TIME_TABLE_CHANGED, false);
-            e1.putString(GET_TIME_TABLE, text);
-            e1.commit();
+            e.putBoolean(IS_TIME_TABLE_CHANGED, false);
+            e.putString(GET_TIME_TABLE, result);
+            e.commit();
 
 
             JSONObject ob;
@@ -306,11 +317,11 @@ public class Calender extends Fragment implements Constant {
             try {
                 ob = new JSONObject(timetable);
                 ob = ob.getJSONObject("metadata");
-                String s2 = ob.getString("last_updated");
-                if (s2.equals("5-7-2015")) {
+                String s2 = ob.optString("last_updated","null");
+                if (s2.equals("null")) {
                     SnackbarManager.show(
                             Snackbar.with(activity.getApplicationContext())
-                                    .text("Time Table is not available now.")
+                                    .text("Sorry, Time Table is not available now. It will be updated shortly.")
                                     .duration(Snackbar.SnackbarDuration.LENGTH_SHORT), activity);
 
                 }
@@ -340,6 +351,7 @@ public class Calender extends Fragment implements Constant {
                 }
             });
 
+            progress.dismiss();
 
         }
     }
@@ -347,18 +359,18 @@ public class Calender extends Fragment implements Constant {
     @Override
     public void onResume() {
         if (activity != null) {
-            SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
+
             Boolean a = s.getBoolean(IS_TIME_TABLE_CHANGED, true);
             timetable = s.getString(GET_TIME_TABLE, null);
             adapter2 = new CustomList_calendar(activity, days, p0, p1, p2, p3, p4, p5, p6, p7, p8, p9);
+            lvTest.setAdapter(adapter2);
+            lvTest.setItemMargin(10);
+
             if (a || timetable == null) {
                 if (Utils.isNetworkAvailable(activity))
                     new DownloadWebPageTask2().execute();
                 else {
-                    adapter2 = new CustomList_calendar(activity, days, p0, p1, p2, p3, p4, p5, p6, p7, p8, p9);
                     if (activity != null)
-                        lvTest.setAdapter(adapter2);
-                    lvTest.setItemMargin(10);
                     SnackbarManager.show(
                             Snackbar.with(activity.getApplicationContext())
                                     .text("Check Your Internet Connection")
@@ -366,10 +378,6 @@ public class Calender extends Fragment implements Constant {
                 }
             } else {
                 load();
-                adapter2 = new CustomList_calendar(activity, days, p0, p1, p2, p3, p4, p5, p6, p7, p8, p9);
-                if (activity != null)
-                    lvTest.setAdapter(adapter2);
-                lvTest.setItemMargin(10);
             }
         }
         super.onResume();

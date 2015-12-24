@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private ListView mDrawerList;
     ListView lv;
     private ActionBarDrawerToggle mDrawerToggle;
-    static final String[] sideitems = new String[]{"Home", "My Feed", "Video", "Calendar", "Professors", "Locations", "CodeRadar", "Feedback", "About Us"};    //items on navigation drawer
+    static final String[] sideitems = new String[]{"Home", "My Feed", "Video", "TimeTable",  "Hangout", "CodeRadar","Calculator","Professors", "Feedback", "About Us"};    //items on navigation drawer
     SwipeRefreshLayout swipeLayout;
 
 
@@ -39,9 +39,10 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.ic_action_tiles_large,
             R.drawable.ic_action_video,
             R.drawable.ic_action_calendar_month,
-            R.drawable.ic_action_user,
             R.drawable.ic_action_location,
             R.drawable.ic_laptop_mac_black_24dp,
+            R.drawable.ic_format_list_numbered_black_24dp,
+            R.drawable.ic_action_user,
             R.drawable.ic_feedback_black_24dp,
             R.drawable.ic_action_info};
 
@@ -110,13 +111,6 @@ public class MainActivity extends AppCompatActivity {
                 })
                 .setNegativeButton("No", null)
                 .show();
-       /* if(getFragmentManager().getBackStackEntryCount() == 0) {
-
-            super.onBackPressed();
-        }
-        else {
-            getFragmentManager().popBackStack();
-        }*/
     }
 
     @Override
@@ -147,57 +141,65 @@ public class MainActivity extends AppCompatActivity {
 
     private void changeItem(int position) {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        Intent i;
+        Fragment f;
         switch (position + 1) {
             case 1:
-                Fragment f = new Home();
+                f = new Home();
                 getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 ft.replace(R.id.content_frame, f);
                 getSupportActionBar().setTitle("Home");
                 break;
             case 2:
-                Fragment f1 = new FinalFeed();
+                f = new FinalFeed();
                 getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                ft.replace(R.id.content_frame, f1);
+                ft.replace(R.id.content_frame, f);
                 getSupportActionBar().setTitle("My Feed");
                 break;
             case 3:
-                Fragment f2 = new Video();
+                f= new Video();
                 getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                ft.replace(R.id.content_frame, f2);
+                ft.replace(R.id.content_frame, f);
                 getSupportActionBar().setTitle("Video");
                 break;
             case 4:
-                Fragment f3 = new Calender();
+                f = new Calender();
                 getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                ft.replace(R.id.content_frame, f3);
+                ft.replace(R.id.content_frame, f);
                 getSupportActionBar().setTitle("Time Table");
                 break;
             case 5:
-                Fragment f4 = new Professors();
+                f = new Hangouts();
                 getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                ft.replace(R.id.content_frame, f4);
-                getSupportActionBar().setTitle("Professors List");
+                ft.replace(R.id.content_frame, f);
+                getSupportActionBar().setTitle("Hangouts");
                 break;
             case 6:
-                Fragment f5 = new Hangouts();
-                getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                ft.replace(R.id.content_frame, f5);
-                getSupportActionBar().setTitle("Locations");
-                break;
-            case 7:
-                Intent i = new Intent(this, contest_reminder.class);
+                i = new Intent(this, contest_reminder.class);
                 startActivity(i);
                 break;
-            case 8:
-                Fragment f7 = new Feedback();
+            case 7:
+                f = new calculator_choose();
                 getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                ft.replace(R.id.content_frame, f7);
-                getSupportActionBar().setTitle("Feedback");
+                ft.replace(R.id.content_frame, f);
+                getSupportActionBar().setTitle("Calculator");
+                break;
+            case 8:
+                f = new Professors();
+                getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                ft.replace(R.id.content_frame, f);
+                getSupportActionBar().setTitle("Professors List");
                 break;
             case 9:
-                Fragment f6 = new AboutUs();
+                f = new Feedback();
                 getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                ft.replace(R.id.content_frame, f6);
+                ft.replace(R.id.content_frame, f);
+                getSupportActionBar().setTitle("Feedback");
+                break;
+            case 10:
+                f= new AboutUs();
+                getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                ft.replace(R.id.content_frame, f);
                 getSupportActionBar().setTitle("About Us");
                 break;
         }

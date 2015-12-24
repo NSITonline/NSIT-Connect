@@ -74,7 +74,10 @@ public class ImageAct extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-          if(id== R.id.save)
+        if(id == android.R.id.home)
+            finish();
+
+        if(id== R.id.save)
         {
             iv.setDrawingCacheEnabled(true);
             Bitmap b = iv.getDrawingCache();

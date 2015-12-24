@@ -17,9 +17,9 @@ android {
     buildToolsVersion "22.0.1"
     defaultConfig {
         applicationId "nsit.app.com.nsitapp"
-        minSdkVersion 14
+        minSdkVersion 12
         targetSdkVersion 22
-        versionCode 13
+        versionCode 17
         versionName "2.2"
     }
   

@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private ListView mDrawerList;
     ListView lv;
     private ActionBarDrawerToggle mDrawerToggle;
-    static final String[] sideitems = new String[]{"Home", "My Feed", "Video", "TimeTable",  "Hangout", "CodeRadar","Calculator","Professors", "Feedback", "About Us"};    //items on navigation drawer
+    static final String[] sideitems = new String[]{"Home", "My Feed", "Video", "TimeTable",  "Locations", "CodeRadar","Professors", "Feedback", "About Us"};    //items on navigation drawer
     SwipeRefreshLayout swipeLayout;
 
 
@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.ic_action_calendar_month,
             R.drawable.ic_action_location,
             R.drawable.ic_laptop_mac_black_24dp,
-            R.drawable.ic_format_list_numbered_black_24dp,
             R.drawable.ic_action_user,
             R.drawable.ic_feedback_black_24dp,
             R.drawable.ic_action_info};
@@ -178,25 +177,26 @@ public class MainActivity extends AppCompatActivity {
                 i = new Intent(this, contest_reminder.class);
                 startActivity(i);
                 break;
-            case 7:
+          /*  case 7:
                 f = new calculator_choose();
                 getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 ft.replace(R.id.content_frame, f);
-                getSupportActionBar().setTitle("Calculator");
-                break;
-            case 8:
+                getSupportActionBar().setTitle("Calculator" +
+                        "");
+                break;*/
+            case 7:
                 f = new Professors();
                 getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 ft.replace(R.id.content_frame, f);
                 getSupportActionBar().setTitle("Professors List");
                 break;
-            case 9:
+            case 8:
                 f = new Feedback();
                 getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 ft.replace(R.id.content_frame, f);
                 getSupportActionBar().setTitle("Feedback");
                 break;
-            case 10:
+            case 9:
                 f= new AboutUs();
                 getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 ft.replace(R.id.content_frame, f);

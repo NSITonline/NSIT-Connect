@@ -3,7 +3,6 @@ package nsit.app.com.nsitapp;
 /**
  * Created by Swati garg on 28-06-2015.
  */
-
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -12,7 +11,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -277,6 +275,9 @@ public class Calender extends Fragment implements Constant {
             sem = s.getInt(CALENDAR_SEM, 1);
             String text = null;
 
+
+
+
             String URL;
             URL = "http://nsitonline.in/NSITconnect/api/get-data.php?branch=" +
                     branch +
@@ -303,7 +304,6 @@ public class Calender extends Fragment implements Constant {
             if (activity == null)
                 return;
 
-            Log.e("here",result );
 
             e.putBoolean(IS_TIME_TABLE_CHANGED, false);
             e.putString(GET_TIME_TABLE, result);

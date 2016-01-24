@@ -11,6 +11,17 @@ app/build.gradle
 /app/src/main/AndroidManifest.xml
 
 
+app/src/main/res/drawable/1.png
+app/src/main/res/drawable/2.png
+app/src/main/res/drawable/3.png
+app/src/main/res/drawable/4.png
+app/src/main/res/drawable/5.png
+app/src/main/res/drawable/6.png
+app/src/main/res/drawable/7.png
+app/src/main/res/drawable/8.png
+app/src/main/res/drawable/9.png
+app/src/main/res/drawable/10.png
+app/src/main/res/drawable/11.png
 
 #built application files
 *.apk

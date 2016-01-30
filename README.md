@@ -6,14 +6,14 @@ But this project is a lot more than an app. This is an initiative that is target
 + **[Play Store App Link](https://play.google.com/store/apps/details?id=nsit.app.com.nsitapp)**
 + **[NSITonline](http://www.nsitonline.in)**
 + **[Features](#features)**
-  + [NSITOnline News Feed](#1-notify-user-as-soon-as-he-enters-proximity)
-  + [My Feed](#2-display-services)
-  + [Video](#3-locate-nearby-airtel-stores)
-  + [Calendar](#4-recommend-best-airtel-plans)
-  + [Locations](#5-chat-services)
-  + [CodeRadar](#6-other-services)
-+ **[Contribution](#how-does-estitmote-beacon-work)**
-+ **[Project Maintainers](#contact-us)**
+  + [NSITOnline News Feed](#1nsitonline-news-feed)
+  + [My Feed](#2my-feed)
+  + [Video](#3video)
+  + [Calendar](#4calendar)
+  + [Locations](#5locations)
+  + [CodeRadar](#6coderadar)
++ **[Contribution](#contribution)**
++ **[Project Maintainers](#project-maintainers)**
 + **[Wiki Page](https://github.com/Swati4star/NSIT-App-v2/wiki)**
 
 

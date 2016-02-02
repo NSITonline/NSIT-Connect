@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:padding="10dp"
@@ -23,4 +24,31 @@
 
 
 
+=======
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="10dp"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <SeekBar
+        android:id="@+id/radius_seek"
+        android:progress="500"
+        android:max="50000"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:gravity="center"
+        android:id="@+id/radius_display"
+        android:text="Radius :500 (m)"
+        android:textSize="25dp"
+        android:textColor="@color/colorPrimary"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+
+
+>>>>>>> refs/remotes/Swati4star/master
 </LinearLayout>

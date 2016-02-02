@@ -113,7 +113,7 @@ public class CustomList_feed extends ArrayAdapter<String>{
 
 		Button b1 = (Button) rowView.findViewById(R.id.show);
 
-			imageLoader.DisplayImage(img.get(position), imageView, null);
+			imageLoader.DisplayImage(img.get(position), imageView,null);
 			b1.setOnClickListener(new OnClickListener() {
 
 				@Override

@@ -9,7 +9,6 @@ public class Val {
     public final static String id = "109315262061";
 
 
-
     public final static String common_access = "CAAGZAwVFNCKgBAANhEYok6Xh7Q7UZBeTZCUqwPDLYhRZCmNn0igI8SE339jSn2zjxCpA1JUmXHm55XKVXslhdKKoTF3b5sLsiZBVd0ylYwX3MIGOnRyzn0T2XVywwoPKP7ML9WZCqELGRuIGxoM8ia05CiUiqcbgsb4wzTuBKkvKaqb7TPt2VnPtprRZBWda4kZD";
     public final static String id_nsitonline = "109315262061",
             id_crosslinks = "184835371535420",
@@ -20,319 +19,941 @@ public class Val {
             id_debsoc = "376394819102290",
             id_ieee = "190501900973620",
             id_csi = "126976547314225", id_quiz = "185960271431856", id_ashwa = "135639763273290",
-            id_enactus="499766883378107",
-            id_aagaz="1457237581165961";
+    id_enactus="499766883378107",
+                       id_aagaz="1457237581165961";
+
+
+     public static final    String[] sem={"Semester","Sem 1","Sem 2","Sem 3","Sem 4","Sem 5","Sem 6","Sem 7","Sem 8"};
+        public static final    String[] branch={"Branch","COE","IT","ECE","ICE","MPAE","BT"};
+
+
+        public final static String subjects = "{\n" +
+                "\t\"it\" : [\n" +
+                "\t{\n" +
+                "\t\t\"subjects\" : {\n" +
+                "\t\t\t\"humanities\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 101, \"name\" : \"Humanities\", \"credits\" : 4},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 102, \"name\" : \"Mathematics I\", \"credits\" : 4},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 103, \"name\" : \"Physics I\", \"credits\" : 4},\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 104, \"name\" : \"Chemistry\", \"credits\" : 4}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"applied\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH5\", \"code\" : 105, \"name\" : \"Manufacturing Processes\", \"credits\" : 4}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"core\" : [],\n" +
+                "\t\t\t\"theory\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 101, \"name\" : \"Humanities\", \"credits\" : 4, \"category\" : \"H\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 102, \"name\" : \"Mathematics I\", \"credits\" : 4, \"category\" : \"H\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 103, \"name\" : \"Physics I\", \"credits\" : 4, \"category\" : \"H\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 104, \"name\" : \"Chemistry\", \"credits\" : 4, \"category\" : \"H\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH5\", \"code\" : 105, \"name\" : \"Manufacturing Processes\", \"credits\" : 4, \"category\" : \"A\"}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"practical\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"PR1\", \"code\" : 106, \"name\" : \"Engineering Drawing T\", \"credits\" : 3},\n" +
+                "\t\t\t\t{\"sno\" : \"PR2\", \"code\" : 107, \"name\" : \"Physics I\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR3\", \"code\" : 108, \"name\" : \"Chemistry\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR4\", \"code\" : 109, \"name\" : \"Workshop I\", \"credits\" : 2}\n" +
+                "\t\t\t]\n" +
+                "\t\t},\n" +
+                "\t\t\"totalCredits\" : 29,\n" +
+                "\t\t\"semester\" : 1\n" +
+                "\t},\n" +
+                "\t{\n" +
+                "\t\t\"subjects\" : {\n" +
+                "\t\t\t\"humanities\" : [],\n" +
+                "\t\t\t\"applied\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 111, \"name\" : \"Principles of Electrical Engg\", \"credits\" : 4},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 112, \"name\" : \"Mechanical Sciences\", \"credits\" : 4},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 113, \"name\" : \"Engineering Mathematics I\", \"credits\" : 4},\n" +
+                "\t\t\t\t{\"sno\" : \"TH5\", \"code\" : 115, \"name\" : \"Discrete Structures\", \"credits\" : 4}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"core\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 114, \"name\" : \"Introduction to Programming\", \"credits\" : 4}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"theory\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 111, \"name\" : \"Principles of Electrical Engg\", \"credits\" : 4, \"category\" : \"A\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 112, \"name\" : \"Mechanical Sciences\", \"credits\" : 4, \"category\" : \"A\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 113, \"name\" : \"Engineering Mathematics I\", \"credits\" : 4, \"category\" : \"H\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 114, \"name\" : \"Introduction to Programming\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH5\", \"code\" : 115, \"name\" : \"Discrete Structures\", \"credits\" : 4, \"category\" : \"A\"}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"practical\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"PR1\", \"code\" : 116, \"name\" : \"Principles of Electrical Science Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR2\", \"code\" : 117, \"name\" : \"Mechanical Sciences Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR3\", \"code\" : 118, \"name\" : \"Introduction to Programming Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR4\", \"code\" : 119, \"name\" : \"Linux/UNIX Lab\", \"credits\" : 2}\n" +
+                "\t\t\t]\n" +
+                "\t\t},\n" +
+                "\t\t\"totalCredits\" : 28,\n" +
+                "\t\t\"semester\" : 2\n" +
+                "\t},\n" +
+                "\t{\n" +
+                "\t\t\"subjects\" : {\n" +
+                "\t\t\t\"theory\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 201, \"name\" : \"Data Structures\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 202, \"name\" : \"Digital Circuits and Systems\", \"credits\" : 4, \"category\" : \"A\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 203, \"name\" : \"Analog Electronics\", \"credits\" : 4, \"category\" : \"A\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 204, \"name\" : \"Engineering Mathematics - II\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH5\", \"code\" : 205, \"name\" : \"Organizational Management\", \"credits\" : 4, \"category\" : \"A\"}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"practical\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"PR1\", \"code\" : 206, \"name\" : \"Data Structures Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR3\", \"code\" : 208, \"name\" : \"Digital Circuits and Systems Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR4\", \"code\" : 209, \"name\" : \"Analog Electronics\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"VS1\", \"code\" : 210, \"name\" : \"Programming I Lab\", \"credits\" : 1}\n" +
+                "\t\t\t]\n" +
+                "\t\t},\n" +
+                "\t\t\"totalCredits\" : 27,\n" +
+                "\t\t\"semester\" : 3\n" +
+                "\t},\n" +
+                "\t{\n" +
+                "\t\t\"subjects\" : {\n" +
+                "\t\t\t\"theory\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 211, \"name\" : \"System Analysis and Design\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 212, \"name\" : \"Analog and Digital Communication\", \"credits\" : 4, \"category\" : \"A\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 213, \"name\" : \"Operating Systems\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 214, \"name\" : \"Computer Graphics\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH5\", \"code\" : 215, \"name\" : \"Computer System Architecture\", \"credits\" : 4, \"category\" : \"C\"}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"practical\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"PR1\", \"code\" : 216, \"name\" : \"System Analysis and Design Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR2\", \"code\" : 217, \"name\" : \"Analog and Digital Communication Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR3\", \"code\" : 218, \"name\" : \"Operating Systems Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR4\", \"code\" : 219, \"name\" : \"Computer Graphics Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR5\", \"code\" : 220, \"name\" : \"Computer System Architecture Lab\", \"credits\" : 2}\n" +
+                "\t\t\t]\n" +
+                "\t\t},\n" +
+                "\t\t\"totalCredits\" : 30,\n" +
+                "\t\t\"semester\" : 4\n" +
+                "\t},\n" +
+                "\t{\n" +
+                "\t\t\"subjects\" : {\n" +
+                "\t\t\t\"theory\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 301, \"name\" : \"Design and Analysis of Algorithms\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 302, \"name\" : \"Object Oriented Technology\", \"credits\" : 4, \"category\" : \"A\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 303, \"name\" : \"Microprocessors and Applications\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 304, \"name\" : \"Relational Database Management Systems\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH5\", \"code\" : 305, \"name\" : \"Computer Networks\", \"credits\" : 4, \"category\" : \"C\"}\n" +
+                "\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"practical\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"PR2\", \"code\" : 307, \"name\" : \"Microprocessor Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR3\", \"code\" : 308, \"name\" : \"RDBMS Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR4\", \"code\" : 308, \"name\" : \"Networking Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"VS1\", \"code\" : 309, \"name\" : \"Technical and Business Communication\", \"credits\" : 1}\n" +
+                "\t\t\t]\n" +
+                "\t\t},\n" +
+                "\t\t\"totalCredits\" : 27,\n" +
+                "\t\t\"semester\" : 5\n" +
+                "\t},\n" +
+                "\t{\n" +
+                "\t\t\"subjects\" : {\n" +
+                "\t\t\t\"theory\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 311, \"name\" : \"Multimedia and Applications\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 312, \"name\" : \"Software Engineering\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 313, \"name\" : \"Information Technology and Coding Techniques\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 314, \"name\" : \"Elective - I\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH5\", \"code\" : 315, \"name\" : \"Microwave and Satellite Communication\", \"credits\" : 4, \"category\" : \"A\"}\n" +
+                "\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"practical\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"PR1\", \"code\" : 316, \"name\" : \"Multimedia Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR2\", \"code\" : 317, \"name\" : \"Software Engineering Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR3\", \"code\" : 318, \"name\" : \"Practical Training\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR4\", \"code\" : 319, \"name\" : \"Microwave and Satellite Communication Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"VS1\", \"code\" : 320, \"name\" : \"Advanced Programming Lab\", \"credits\" : 1}\n" +
+                "\t\t\t]\n" +
+                "\t\t},\n" +
+                "\t\t\"totalCredits\" : 29,\n" +
+                "\t\t\"semester\" : 6\n" +
+                "\t},\n" +
+                "\t{\n" +
+                "\t\t\"subjects\" : {\n" +
+                "\t\t\t\"theory\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 401, \"name\" : \"Internet and Web Engineering\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 402, \"name\" : \"Distributed Systems and Computing\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 403, \"name\" : \"Compiler and Translator Design\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 404, \"name\" : \"Elective - II\", \"credits\" : 4, \"category\" : \"A\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH5\", \"code\" : 405, \"name\" : \"Advances in Digital System Design\", \"credits\" : 4, \"category\" : \"C\"}\n" +
+                "\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"practical\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"PR1\", \"code\" : 406, \"name\" : \"Internet and Web Engineering Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR2\", \"code\" : 407, \"name\" : \"Distributed Systems and Computing Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR3\", \"code\" : 408, \"name\" : \"Elective II Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR4\", \"code\" : 409, \"name\" : \"Compiler and Translator Design Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"VS1\", \"code\" : 410, \"name\" : \"Practical Training\", \"credits\" : 4},\n" +
+                "\t\t\t\t{\"sno\" : \"VS2\", \"code\" : 411, \"name\" : \"Minor Project\", \"credits\" : 2}\n" +
+                "\t\t\t]\n" +
+                "\t\t},\n" +
+                "\t\t\"totalCredits\" : 34,\n" +
+                "\t\t\"semester\" : 7\n" +
+                "\t},\n" +
+                "\t{\n" +
+                "\t\t\"subjects\" : {\n" +
+                "\t\t\t\"theory\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 412, \"name\" : \"Information Security\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 413, \"name\" : \"Financial and Cost Management\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 414, \"name\" : \"Elective III\", \"credits\" : 4, \"category\" : \"C\"}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"practical\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"PR1\", \"code\" : 415, \"name\" : \"Elective III Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR2\", \"code\" : 416, \"name\" : \"Major Project\", \"credits\" : 8},\n" +
+                "\t\t\t\t{\"sno\" : \"PR3\", \"code\" : 417, \"name\" : \"Practical Training\", \"credits\" : 4},\n" +
+                "\t\t\t\t{\"sno\" : \"VS1\", \"code\" : 418, \"name\" : \"Seminar Reports\", \"credits\" : 2}\n" +
+                "\t\t\t]\n" +
+                "\t\t},\n" +
+                "\t\t\"totalCredits\" : 28,\n" +
+                "\t\t\"semester\" : 8\n" +
+                "\t}\n" +
+                "\t],\n" +
+                "\t\"coe\" : [\n" +
+                "\t{\n" +
+                "\t\t\"subjects\" : {\n" +
+                "\t\t\t\"humanities\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 101, \"name\" : \"Humanities\", \"credits\" : 4},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 102, \"name\" : \"Mathematics I\", \"credits\" : 4},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 103, \"name\" : \"Physics I\", \"credits\" : 4},\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 104, \"name\" : \"Chemistry\", \"credits\" : 4}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"applied\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH5\", \"code\" : 105, \"name\" : \"Manufacturing Processes\", \"credits\" : 4}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"core\" : [],\n" +
+                "\t\t\t\"theory\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 101, \"name\" : \"Humanities\", \"credits\" : 4, \"category\" : \"H\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 102, \"name\" : \"Mathematics I\", \"credits\" : 4, \"category\" : \"H\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 103, \"name\" : \"Physics I\", \"credits\" : 4, \"category\" : \"H\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 104, \"name\" : \"Chemistry\", \"credits\" : 4, \"category\" : \"H\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH5\", \"code\" : 105, \"name\" : \"Manufacturing Processes\", \"credits\" : 4, \"category\" : \"A\"}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"practical\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"PR1\", \"code\" : 106, \"name\" : \"Engineering Drawing T\", \"credits\" : 3},\n" +
+                "\t\t\t\t{\"sno\" : \"PR2\", \"code\" : 107, \"name\" : \"Physics I\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR3\", \"code\" : 108, \"name\" : \"Chemistry\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR4\", \"code\" : 109, \"name\" : \"Workshop I\", \"credits\" : 2}\n" +
+                "\t\t\t]\n" +
+                "\t\t},\n" +
+                "\t\t\"totalCredits\" : 29,\n" +
+                "\t\t\"semester\" : 1\n" +
+                "\t},\n" +
+                "\t{\n" +
+                "\t\t\"subjects\" : {\n" +
+                "\t\t\t\"humanities\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 113, \"name\" : \"Mathematics II\", \"credits\" : 4},\n" +
+                "\t\t\t\t{\"sno\" : \"TH5\", \"code\" : 115, \"name\" : \"Physics of Materials\", \"credits\" : 4}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"applied\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 111, \"name\" : \"Principles of Electrical Engg\", \"credits\" : 4},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 112, \"name\" : \"Applied Mechanics\", \"credits\" : 4}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"core\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 114, \"name\" : \"Introduction to Programming\", \"credits\" : 4}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"theory\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 111, \"name\" : \"Principles of Electrical Engg\", \"credits\" : 4, \"category\" : \"A\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 112, \"name\" : \"Applied Mechanics\", \"credits\" : 4, \"category\" : \"A\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 113, \"name\" : \"Mathematics II\", \"credits\" : 4, \"category\" : \"H\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 114, \"name\" : \"Introduction to Programming\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH5\", \"code\" : 115, \"name\" : \"Physics of Materials\", \"credits\" : 4, \"category\" : \"H\"}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"practical\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"PR1\", \"code\" : 116, \"name\" : \"Principles of Electrical Engg\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR2\", \"code\" : 117, \"name\" : \"Applied Mechanics\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR3\", \"code\" : 118, \"name\" : \"Introduction to Programming\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR4\", \"code\" : 119, \"name\" : \"Physics of Materials\", \"credits\" : 2}\n" +
+                "\t\t\t]\n" +
+                "\t\t},\n" +
+                "\t\t\"totalCredits\" : 28,\n" +
+                "\t\t\"semester\" : 2\n" +
+                "\t},\n" +
+                "\t{\n" +
+                "\t\t\"subjects\" : {\n" +
+                "\t\t\t\"humanities\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH5\", \"code\" : 205, \"name\" : \"Mathematics III\", \"credits\" : 4}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"applied\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 203, \"name\" : \"Power Apparatus\", \"credits\" : 4},\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 204, \"name\" : \"Electrical Measurements\", \"credits\" : 4}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"core\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 201, \"name\" : \"Electronics I\", \"credits\" : 4},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 202, \"name\" : \"Circuits and Systems\", \"credits\" : 4}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"theory\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 201, \"name\" : \"Electronics I\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 202, \"name\" : \"Circuits and Systems\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 203, \"name\" : \"Power Apparatus\", \"credits\" : 4, \"category\" : \"A\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 204, \"name\" : \"Electrical Measurements\", \"credits\" : 4, \"category\" : \"A\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH5\", \"code\" : 205, \"name\" : \"Mathematics III\", \"credits\" : 4, \"category\" : \"H\"}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"practical\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"PR1\", \"code\" : 206, \"name\" : \"Electronics I\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR2\", \"code\" : 207, \"name\" : \"Power Apparatus\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR3\", \"code\" : 208, \"name\" : \"Electrical Measurements\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR4\", \"code\" : 209, \"name\" : \"Machine Drawing\", \"credits\" : 3},\n" +
+                "\t\t\t\t{\"sno\" : \"VS1\", \"code\" : 210, \"name\" : \"Programming I\", \"credits\" : 1}\n" +
+                "\t\t\t]\n" +
+                "\t\t},\n" +
+                "\t\t\"totalCredits\" : 30,\n" +
+                "\t\t\"semester\" : 3\n" +
+                "\t},\n" +
+                "\t{\n" +
+                "\t\t\"subjects\" : {\n" +
+                "\t\t\t\"humanities\" : [],\n" +
+                "\t\t\t\"applied\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 212, \"name\" : \"Electromagnetic I\", \"credits\" : 4}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"core\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 211, \"name\" : \"Electronics II\", \"credits\" : 4},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 213, \"name\" : \"Data Structures\", \"credits\" : 4},\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 214, \"name\" : \"Digital Circuits and Systems I\", \"credits\" : 4},\n" +
+                "\t\t\t\t{\"sno\" : \"TH5\", \"code\" : 215, \"name\" : \"Principles of Communication Engg.\", \"credits\" : 4}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"theory\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 211, \"name\" : \"Electronics II\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 212, \"name\" : \"Electromagnetics I\", \"credits\" : 4, \"category\" : \"A\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 213, \"name\" : \"Data Structures\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 214, \"name\" : \"Digital Circuits and Systems I\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH5\", \"code\" : 215, \"name\" : \"Principles of Communication Engg.\", \"credits\" : 4, \"category\" : \"C\"}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"practical\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"PR1\", \"code\" : 216, \"name\" : \"Electronics II\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR2\", \"code\" : 217, \"name\" : \"Digital Circuits and Systems I\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR3\", \"code\" : 218, \"name\" : \"Principles of Communication Engg.\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR4\", \"code\" : 219, \"name\" : \"Electrical Workshop and Electric Drg.\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR5\", \"code\" : 220, \"name\" : \"Practical Training\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"VS1\", \"code\" : 221, \"name\" : \"Report Writing\", \"credits\" : 1},\n" +
+                "\t\t\t\t{\"sno\" : \"VS2\", \"code\" : 222, \"name\" : \"Programming II\", \"credits\" : 1}\n" +
+                "\t\t\t]\n" +
+                "\t\t},\n" +
+                "\t\t\"totalCredits\" : 32,\n" +
+                "\t\t\"semester\" : 4\n" +
+                "\t},\n" +
+                "\t{\n" +
+                "\t\t\"subjects\" : {\n" +
+                "\t\t\t\"humanities\" : [],\n" +
+                "\t\t\t\"applied\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH5\", \"code\" : 305, \"name\" : \"Industrial Org. and Mana. Eco.\", \"credits\" : 4}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"core\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 301, \"name\" : \"Principles of Computer Graphics\", \"credits\" : 4},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 302, \"name\" : \"Discrete Maths and Design of Alg.\", \"credits\" : 4},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 303, \"name\" : \"Computer System Org.\", \"credits\" : 4},\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 304, \"name\" : \"Linear Integrated Circuits\", \"credits\" : 4}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"theory\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 301, \"name\" : \"Principles of Computer Graphics\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 302, \"name\" : \"Discrete Maths and Design of Alg.\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 303, \"name\" : \"Computer System Org.\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 304, \"name\" : \"Linear Integrated Circuits\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH5\", \"code\" : 305, \"name\" : \"Industrial Org. and Mana. Eco.\", \"credits\" : 4, \"category\" : \"A\"}\n" +
+                "\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"practical\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"PR1\", \"code\" : 306, \"name\" : \"Computer System Org.\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR2\", \"code\" : 307, \"name\" : \"Linear Integrated Circuits\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR3\", \"code\" : 308, \"name\" : \"Principles of Computer Graphics\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"VS1\", \"code\" : 309, \"name\" : \"Programming III\", \"credits\" : 1}\n" +
+                "\t\t\t]\n" +
+                "\t\t},\n" +
+                "\t\t\"totalCredits\" : 27,\n" +
+                "\t\t\"semester\" : 5\n" +
+                "\t},\n" +
+                "\t{\n" +
+                "\t\t\"subjects\" : {\n" +
+                "\t\t\t\"humanities\" : [],\n" +
+                "\t\t\t\"applied\" : [],\n" +
+                "\t\t\t\"core\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 311, \"name\" : \"Microprocessors\", \"credits\" : 4},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 312, \"name\" : \"DBMS\", \"credits\" : 4},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 313, \"name\" : \"OS\", \"credits\" : 4},\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 314, \"name\" : \"Control Engineering\", \"credits\" : 4},\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 315, \"name\" : \"ACA\", \"credits\" : 4}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"theory\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 311, \"name\" : \"Microprocessors\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 312, \"name\" : \"DBMS\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 313, \"name\" : \"OS\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 314, \"name\" : \"Control Engineering\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH5\", \"code\" : 315, \"name\" : \"ACA\", \"credits\" : 4, \"category\" : \"C\"}\n" +
+                "\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"practical\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"PR1\", \"code\" : 316, \"name\" : \"Microprocessors\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR2\", \"code\" : 317, \"name\" : \"DBMS\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR3\", \"code\" : 318, \"name\" : \"Control Engineering\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"VS1\", \"code\" : 319, \"name\" : \"Programming IV\", \"credits\" : 1},\n" +
+                "\t\t\t\t{\"sno\" : \"VS2\", \"code\" : 320, \"name\" : \"Practical Training\", \"credits\" : 2}\n" +
+                "\t\t\t]\n" +
+                "\t\t},\n" +
+                "\t\t\"totalCredits\" : 29,\n" +
+                "\t\t\"semester\" : 6\n" +
+                "\t},\n" +
+                "\t{\n" +
+                "\t\t\"subjects\" : {\n" +
+                "\t\t\t\"humanities\" : [],\n" +
+                "\t\t\t\"applied\" : [],\n" +
+                "\t\t\t\"core\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 401, \"name\" : \"Compiler and Translator Design\", \"credits\" : 4},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 402, \"name\" : \"Digital Circuits and Systems II\", \"credits\" : 4},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 403, \"name\" : \"Microprocessor Applications\", \"credits\" : 4},\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 404, \"name\" : \"Elective I\", \"credits\" : 4},\n" +
+                "\t\t\t\t{\"sno\" : \"TH5\", \"code\" : 405, \"name\" : \"Elective II\", \"credits\" : 4}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"theory\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 401, \"name\" : \"Compiler and Translator Design\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 402, \"name\" : \"Digital Circuits and Systems II\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 403, \"name\" : \"Microprocessor Applications\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 404, \"name\" : \"Elective I\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH5\", \"code\" : 405, \"name\" : \"Elective II\", \"credits\" : 4, \"category\" : \"C\"}\n" +
+                "\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"practical\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"PR1\", \"code\" : 406, \"name\" : \"Compiler and Translator Design\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR2\", \"code\" : 407, \"name\" : \"Digital Circuits and Systems II\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR3\", \"code\" : 408, \"name\" : \"Electives I and II\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR4\", \"code\" : 409, \"name\" : \"Practical Training\", \"credits\" : 3},\n" +
+                "\t\t\t\t{\"sno\" : \"VS1\", \"code\" : 410, \"name\" : \"System Programming Language\", \"credits\" : 1}\n" +
+                "\t\t\t]\n" +
+                "\t\t},\n" +
+                "\t\t\"totalCredits\" : 30,\n" +
+                "\t\t\"semester\" : 7\n" +
+                "\t},\n" +
+                "\t{\n" +
+                "\t\t\"subjects\" : {\n" +
+                "\t\t\t\"humanities\" : [],\n" +
+                "\t\t\t\"applied\" : [],\n" +
+                "\t\t\t\"core\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 411, \"name\" : \"Computer Comm. and Electronics Swng.\", \"credits\" : 4},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 412, \"name\" : \"Elective III\", \"credits\" : 4},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 413, \"name\" : \"Elective IV\", \"credits\" : 4}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"theory\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 411, \"name\" : \"Computer Comm. and Electronics Swng.\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 412, \"name\" : \"Elective III\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 413, \"name\" : \"Elective IV\", \"credits\" : 4, \"category\" : \"C\"}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"practical\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"PR1\", \"code\" : 414, \"name\" : \"Elective III and IV\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR2\", \"code\" : 415, \"name\" : \"Project\", \"credits\" : 8},\n" +
+                "\t\t\t\t{\"sno\" : \"PR3\", \"code\" : 416, \"name\" : \"Practical Training\", \"credits\" : 4},\n" +
+                "\t\t\t\t{\"sno\" : \"VS1\", \"code\" : 417, \"name\" : \"Seminar/Reports\", \"credits\" : 1}\n" +
+                "\t\t\t]\n" +
+                "\t\t},\n" +
+                "\t\t\"totalCredits\" : 27,\n" +
+                "\t\t\"semester\" : 8\n" +
+                "\t}\n" +
+                "\t],\n" +
+                "\t\"ice\" : [\n" +
+                "\t{\n" +
+                "\t\t\"subjects\" : {\n" +
+                "\t\t\t\"theory\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 101, \"name\" : \"Humanities\", \"credits\" : 4, \"category\" : \"H\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 102, \"name\" : \"Mathematics I\", \"credits\" : 4, \"category\" : \"H\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 103, \"name\" : \"Physics I\", \"credits\" : 4, \"category\" : \"H\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 104, \"name\" : \"Chemistry\", \"credits\" : 4, \"category\" : \"H\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH5\", \"code\" : 105, \"name\" : \"Manufacturing Processes\", \"credits\" : 4, \"category\" : \"A\"}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"practical\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"PR1\", \"code\" : 106, \"name\" : \"Engineering Drawing T\", \"credits\" : 3},\n" +
+                "\t\t\t\t{\"sno\" : \"PR2\", \"code\" : 107, \"name\" : \"Physics I\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR3\", \"code\" : 108, \"name\" : \"Chemistry\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR4\", \"code\" : 109, \"name\" : \"Workshop I\", \"credits\" : 2}\n" +
+                "\t\t\t]\n" +
+                "\t\t},\n" +
+                "\t\t\"totalCredits\" : 29,\n" +
+                "\t\t\"semester\" : 1\n" +
+                "\t},\n" +
+                "\t{\n" +
+                "\t\t\"subjects\" : {\n" +
+                "\t\t\t\"theory\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 111, \"name\" : \"Principles of Electrical Engg\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 112, \"name\" : \"Applied Mechanics\", \"credits\" : 4, \"category\" : \"A\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 113, \"name\" : \"Mathematics II\", \"credits\" : 4, \"category\" : \"H\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 114, \"name\" : \"Introduction to Programming\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH5\", \"code\" : 115, \"name\" : \"Physics of Materials\", \"credits\" : 4, \"category\" : \"H\"}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"practical\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"PR1\", \"code\" : 116, \"name\" : \"Principles of Electrical Engg\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR2\", \"code\" : 117, \"name\" : \"Applied Mechanics\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR3\", \"code\" : 118, \"name\" : \"Introduction to Programming\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR4\", \"code\" : 119, \"name\" : \"Physics of Materials\", \"credits\" : 2}\n" +
+                "\t\t\t]\n" +
+                "\t\t},\n" +
+                "\t\t\"totalCredits\" : 28,\n" +
+                "\t\t\"semester\" : 2\n" +
+                "\t},\n" +
+                "\t{\n" +
+                "\t\t\"subjects\" : {\n" +
+                "\t\t\t\"theory\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 201, \"name\" : \"Electronics I\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 202, \"name\" : \"Circuits and Systems\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 203, \"name\" : \"Power Apparatus\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 204, \"name\" : \"Electrical Measurements\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH5\", \"code\" : 205, \"name\" : \"Mathematics III\", \"credits\" : 4, \"category\" : \"H\"}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"practical\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"PR1\", \"code\" : 206, \"name\" : \"Electronics I\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR2\", \"code\" : 207, \"name\" : \"Power Apparatus\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR3\", \"code\" : 208, \"name\" : \"Electrical Measurements\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR4\", \"code\" : 209, \"name\" : \"Machine Drawing\", \"credits\" : 3},\n" +
+                "\t\t\t\t{\"sno\" : \"VS1\", \"code\" : 210, \"name\" : \"Programming I\", \"credits\" : 1}\n" +
+                "\t\t\t]\n" +
+                "\t\t},\n" +
+                "\t\t\"totalCredits\" : 30,\n" +
+                "\t\t\"semester\" : 3\n" +
+                "\t},\n" +
+                "\t{\n" +
+                "\t\t\"subjects\" : {\n" +
+                "\t\t\t\"theory\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 211, \"name\" : \"Electronics II\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 212, \"name\" : \"Fluid Mechanics and Thermodynamics\", \"credits\" : 4, \"category\" : \"A\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 213, \"name\" : \"Electronic Instruments & Measuring Techniques\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 214, \"name\" : \"Computer Graphics\", \"credits\" : 4, \"category\" : \"A\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH5\", \"code\" : 215, \"name\" : \"Transducers & Components\", \"credits\" : 4, \"category\" : \"C\"}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"practical\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"PR1\", \"code\" : 216, \"name\" : \"Electronics II\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR2\", \"code\" : 217, \"name\" : \"Computer Graphics\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR3\", \"code\" : 218, \"name\" : \"Instrumentation Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR4\", \"code\" : 219, \"name\" : \"Electrical Workshop and Electric Drg.\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR5\", \"code\" : 220, \"name\" : \"Practical Training\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"VS1\", \"code\" : 221, \"name\" : \"Report Writing\", \"credits\" : 1},\n" +
+                "\t\t\t\t{\"sno\" : \"VS2\", \"code\" : 222, \"name\" : \"Programming II\", \"credits\" : 1}\n" +
+                "\t\t\t]\n" +
+                "\t\t},\n" +
+                "\t\t\"totalCredits\" : 32,\n" +
+                "\t\t\"semester\" : 4\n" +
+                "\t},\n" +
+                "\t{\n" +
+                "\t\t\"subjects\" : {\n" +
+                "\t\t\t\"theory\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 301, \"name\" : \"Analog and Digital Communication\", \"credits\" : 4, \"category\" : \"A\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 302, \"name\" : \"Industrial and Analytical Instruments\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 303, \"name\" : \"Digital Integrated Circuits I\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 304, \"name\" : \"Linear Integrated Circuits I\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH5\", \"code\" : 305, \"name\" : \"Industrial Org. and Mana. Eco.\", \"credits\" : 4, \"category\" : \"A\"}\n" +
+                "\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"practical\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"PR1\", \"code\" : 306, \"name\" : \"Analog and Digital Communication\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR2\", \"code\" : 307, \"name\" : \"Digital Integrated Circuits I\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR3\", \"code\" : 308, \"name\" : \"Linear Integrated Circuits\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"VS1\", \"code\" : 309, \"name\" : \"Programming III\", \"credits\" : 1}\n" +
+                "\t\t\t]\n" +
+                "\t\t},\n" +
+                "\t\t\"totalCredits\" : 27,\n" +
+                "\t\t\"semester\" : 5\n" +
+                "\t},\n" +
+                "\t{\n" +
+                "\t\t\"subjects\" : {\n" +
+                "\t\t\t\"theory\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 311, \"name\" : \"Microprocessor\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 312, \"name\" : \"Computer Aided Design\", \"credits\" : 4, \"category\" : \"A\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 313, \"name\" : \"Industrial Electronics\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 314, \"name\" : \"Control Systems I\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH5\", \"code\" : 315, \"name\" : \"Telemetry & Data Transmission\", \"credits\" : 4, \"category\" : \"C\"}\n" +
+                "\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"practical\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"PR1\", \"code\" : 316, \"name\" : \"Microprocessor\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR2\", \"code\" : 317, \"name\" : \"CAD Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR3\", \"code\" : 318, \"name\" : \"Control Systems Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"VS1\", \"code\" : 319, \"name\" : \"Programming IV\", \"credits\" : 1},\n" +
+                "\t\t\t\t{\"sno\" : \"VS2\", \"code\" : 320, \"name\" : \"Practical Training\", \"credits\" : 2}\n" +
+                "\t\t\t]\n" +
+                "\t\t},\n" +
+                "\t\t\"totalCredits\" : 29,\n" +
+                "\t\t\"semester\" : 6\n" +
+                "\t}\n" +
+                "\t],\n" +
+                "\t\"mpae\" : [\n" +
+                "\t{\n" +
+                "\t\t\"subjects\" : {\n" +
+                "\t\t\t\"theory\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 101, \"name\" : \"Humanities\", \"credits\" : 4, \"category\" : \"H\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 102, \"name\" : \"Mathematics I\", \"credits\" : 4, \"category\" : \"H\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 103, \"name\" : \"Physics I\", \"credits\" : 4, \"category\" : \"H\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 104, \"name\" : \"Chemistry\", \"credits\" : 4, \"category\" : \"H\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH5\", \"code\" : 105, \"name\" : \"Manufacturing Processes (Introduction)\", \"credits\" : 4, \"category\" : \"C\"}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"practical\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"PR1\", \"code\" : 106, \"name\" : \"Engineering Drawing T\", \"credits\" : 3},\n" +
+                "\t\t\t\t{\"sno\" : \"PR2\", \"code\" : 107, \"name\" : \"Physics I\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR3\", \"code\" : 108, \"name\" : \"Chemistry\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR4\", \"code\" : 109, \"name\" : \"Workshop I\", \"credits\" : 2}\n" +
+                "\t\t\t]\n" +
+                "\t\t},\n" +
+                "\t\t\"totalCredits\" : 29,\n" +
+                "\t\t\"semester\" : 1\n" +
+                "\t},\n" +
+                "\t{\n" +
+                "\t\t\"subjects\" : {\n" +
+                "\t\t\t\"theory\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 111, \"name\" : \"Electrical Sciences\", \"credits\" : 4, \"category\" : \"A\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 112, \"name\" : \"Mathematics II\", \"credits\" : 4, \"category\" : \"A\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 113, \"name\" : \"Mechanical Sciences\", \"credits\" : 4, \"category\" : \"A\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 114, \"name\" : \"Sciecnce of Materials\", \"credits\" : 4, \"category\" : \"A\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH5\", \"code\" : 115, \"name\" : \"Mechanics of Solids\", \"credits\" : 4, \"category\" : \"A\"}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"practical\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"PR1\", \"code\" : 116, \"name\" : \"Electrical Science Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR2\", \"code\" : 117, \"name\" : \"Mechanical Sciences Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR3\", \"code\" : 118, \"name\" : \"Introduction to Computer Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR4\", \"code\" : 119, \"name\" : \"Mecanics of Solids Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"VS1\", \"code\" : 120, \"name\" : \"Programming I Lab\", \"credits\" : 1}\n" +
+                "\t\t\t]\n" +
+                "\t\t},\n" +
+                "\t\t\"totalCredits\" : 29,\n" +
+                "\t\t\"semester\" : 2\n" +
+                "\t},\n" +
+                "\t{\n" +
+                "\t\t\"subjects\" : {\n" +
+                "\t\t\t\"theory\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 201, \"name\" : \"Machine Drawing and Graphics\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 202, \"name\" : \"Manufacturing Processes I\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 203, \"name\" : \"Electro mechanics\", \"credits\" : 4, \"category\" : \"A\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 204, \"name\" : \"Analog and Digital Electronics\", \"credits\" : 4, \"category\" : \"A\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH5\", \"code\" : 205, \"name\" : \"Technology and Society\", \"credits\" : 4, \"category\" : \"H\"}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"practical\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"PR1\", \"code\" : 206, \"name\" : \"Machine Drawing and Graphics Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR2\", \"code\" : 207, \"name\" : \"Science of Materials and Manufacturing Processes I Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR3\", \"code\" : 208, \"name\" : \"Electro Mechanics Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR4\", \"code\" : 209, \"name\" : \"Analog and Digital Electronics Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"VS1\", \"code\" : 210, \"name\" : \"Programming I Lab\", \"credits\" : 1}\n" +
+                "\t\t\t]\n" +
+                "\t\t},\n" +
+                "\t\t\"totalCredits\" : 29,\n" +
+                "\t\t\"semester\" : 3\n" +
+                "\t},\n" +
+                "\t{\n" +
+                "\t\t\"subjects\" : {\n" +
+                "\t\t\t\"theory\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 211, \"name\" : \"Kinematics and Dynamics of Machinery\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 212, \"name\" : \"Control Systems\", \"credits\" : 4, \"category\" : \"A\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 213, \"name\" : \"Mathematics III\", \"credits\" : 4, \"category\" : \"H\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 214, \"name\" : \"Manufacturing Processes II\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH5\", \"code\" : 215, \"name\" : \"Management of Manufacturing Systems\", \"credits\" : 4, \"category\" : \"C\"}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"practical\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"PR1\", \"code\" : 216, \"name\" : \"Kinematics and Dynamics of Machinery Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR2\", \"code\" : 217, \"name\" : \"Control Systems Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR3\", \"code\" : 218, \"name\" : \"Manufacturing Processes II Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR4\", \"code\" : 219, \"name\" : \"Practical Training\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"VS1\", \"code\" : 220, \"name\" : \"Report Writing\", \"credits\" : 1},\n" +
+                "\t\t\t\t{\"sno\" : \"VS2\", \"code\" : 221, \"name\" : \"Programming II\", \"credits\" : 1}\n" +
+                "\t\t\t]\n" +
+                "\t\t},\n" +
+                "\t\t\"totalCredits\" : 30,\n" +
+                "\t\t\"semester\" : 4\n" +
+                "\t},\n" +
+                "\t{\n" +
+                "\t\t\"subjects\" : {\n" +
+                "\t\t\t\"theory\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 301, \"name\" : \"Machine Tools, CNC & Automation\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 302, \"name\" : \"Transducers and Measurements\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 303, \"name\" : \"Tool Design\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 304, \"name\" : \"Industrial Control Systems\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH5\", \"code\" : 305, \"name\" : \"Microprocessors and Applications\", \"credits\" : 4, \"category\" : \"C\"}\n" +
+                "\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"practical\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"PR1\", \"code\" : 306, \"name\" : \"Machine Tools Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR2\", \"code\" : 307, \"name\" : \"Tool Design Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR3\", \"code\" : 308, \"name\" : \"MA 304 based Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR4\", \"code\" : 308, \"name\" : \"Transducers and Measurements Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"VS1\", \"code\" : 309, \"name\" : \"Programming III\", \"credits\" : 1}\n" +
+                "\t\t\t]\n" +
+                "\t\t},\n" +
+                "\t\t\"totalCredits\" : 29,\n" +
+                "\t\t\"semester\" : 5\n" +
+                "\t},\n" +
+                "\t{\n" +
+                "\t\t\"subjects\" : {\n" +
+                "\t\t\t\"theory\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 311, \"name\" : \"Robotics and CAM I\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 312, \"name\" : \"Computer Graphics\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 313, \"name\" : \"Applied Plasticity (Forming Processes)\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 314, \"name\" : \"Mechanical Design\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH5\", \"code\" : 315, \"name\" : \"Metroloay & Statistical Quality Control\", \"credits\" : 4, \"category\" : \"C\"}\n" +
+                "\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"practical\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"PR1\", \"code\" : 316, \"name\" : \"Robotics and CAM I Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR2\", \"code\" : 317, \"name\" : \"MA312 based Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR3\", \"code\" : 318, \"name\" : \"Forming Processes Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR4\", \"code\" : 319, \"name\" : \"Mechanical Design\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"VS1\", \"code\" : 320, \"name\" : \"Practical Training\", \"credits\" : 1},\n" +
+                "\t\t\t\t{\"sno\" : \"VS2\", \"code\" : 320, \"name\" : \"Programming V\", \"credits\" : 1}\n" +
+                "\t\t\t]\n" +
+                "\t\t},\n" +
+                "\t\t\"totalCredits\" : 30,\n" +
+                "\t\t\"semester\" : 6\n" +
+                "\t},\n" +
+                "\t{\n" +
+                "\t\t\"subjects\" : {\n" +
+                "\t\t\t\"theory\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 401, \"name\" : \"Introduction to CAD and Product Design\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 402, \"name\" : \"Modern Methods of Manufacturing\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 403, \"name\" : \"Industrial Electronics\", \"credits\" : 4, \"category\" : \"A\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 404, \"name\" : \"Elective I\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH5\", \"code\" : 405, \"name\" : \"Elective II\", \"credits\" : 4, \"category\" : \"C\"}\n" +
+                "\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"practical\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"PR1\", \"code\" : 406, \"name\" : \"CAD Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR2\", \"code\" : 407, \"name\" : \"Modern Methods of Manufacturing Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR3\", \"code\" : 408, \"name\" : \"Industrial Electronics Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR4\", \"code\" : 409, \"name\" : \"Practical Training\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"VS1\", \"code\" : 410, \"name\" : \"Programming IV (AUTOCAD)\", \"credits\" : 1}\n" +
+                "\t\t\t]\n" +
+                "\t\t},\n" +
+                "\t\t\"totalCredits\" : 29,\n" +
+                "\t\t\"semester\" : 7\n" +
+                "\t},\n" +
+                "\t{\n" +
+                "\t\t\"subjects\" : {\n" +
+                "\t\t\t\"theory\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 411, \"name\" : \"Macaronis or AI\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 412, \"name\" : \"Elective III\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 413, \"name\" : \"Elective IV\", \"credits\" : 4, \"category\" : \"C\"}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"practical\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"PR1\", \"code\" : 414, \"name\" : \"MA 411 based Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR2\", \"code\" : 415, \"name\" : \"Elective III and IV Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR3\", \"code\" : 416, \"name\" : \"Project\", \"credits\" : 8},\n" +
+                "\t\t\t\t{\"sno\" : \"PR4\", \"code\" : 417, \"name\" : \"Practical Training\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"VS1\", \"code\" : 418, \"name\" : \"Seminar and Reports\", \"credits\" : 1}\n" +
+                "\t\t\t]\n" +
+                "\t\t},\n" +
+                "\t\t\"totalCredits\" : 27,\n" +
+                "\t\t\"semester\" : 8\n" +
+                "\t}\n" +
+                "\t],\n" +
+                "\t\"ece\" :[\n" +
+                "\t{\n" +
+                "\t\t\"subjects\" : {\n" +
+                "\t\t\t\"theory\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 101, \"name\" : \"Humanities\", \"credits\" : 4, \"category\" : \"H\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 102, \"name\" : \"Mathematics I\", \"credits\" : 4, \"category\" : \"H\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 103, \"name\" : \"Physics I\", \"credits\" : 4, \"category\" : \"H\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 104, \"name\" : \"Chemistry\", \"credits\" : 4, \"category\" : \"H\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH5\", \"code\" : 105, \"name\" : \"Manufacturing Processes\", \"credits\" : 4, \"category\" : \"A\"}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"practical\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"PR1\", \"code\" : 106, \"name\" : \"Engineering Drawing Lab\", \"credits\" : 3},\n" +
+                "\t\t\t\t{\"sno\" : \"PR2\", \"code\" : 107, \"name\" : \"Physics I Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR3\", \"code\" : 108, \"name\" : \"Chemistry Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR4\", \"code\" : 109, \"name\" : \"Workshop I\", \"credits\" : 2}\n" +
+                "\t\t\t]\n" +
+                "\t\t},\n" +
+                "\t\t\"totalCredits\" : 29,\n" +
+                "\t\t\"semester\" : 1\n" +
+                "\t},\n" +
+                "\t{\n" +
+                "\t\t\"subjects\" : {\n" +
+                "\t\t\t\"theory\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 111, \"name\" : \"Principles of Electrical Engg\", \"credits\" : 4, \"category\" : \"A\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 112, \"name\" : \"Applied Mechanics\", \"credits\" : 4, \"category\" : \"A\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 113, \"name\" : \"Mathematics II\", \"credits\" : 4, \"category\" : \"A\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 114, \"name\" : \"Physics II\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH5\", \"code\" : 115, \"name\" : \"Electrical Engineering and Materials\", \"credits\" : 4, \"category\" : \"A\"}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"practical\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"PR1\", \"code\" : 116, \"name\" : \"Principles of Electrical Engg. Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR2\", \"code\" : 117, \"name\" : \"Applied Mechanics Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR3\", \"code\" : 118, \"name\" : \"Physics II/Electrical Engg Materials Lab\", \"credits\" : 4},\n" +
+                "\t\t\t\t{\"sno\" : \"PR4\", \"code\" : 119, \"name\" : \"Workshop II\", \"credits\" : 2}\n" +
+                "\t\t\t]\n" +
+                "\t\t},\n" +
+                "\t\t\"totalCredits\" : 30,\n" +
+                "\t\t\"semester\" : 2\n" +
+                "\t},\n" +
+                "\t{\n" +
+                "\t\t\"subjects\" : {\n" +
+                "\t\t\t\"theory\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 201, \"name\" : \"Electronics I\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 202, \"name\" : \"Circuits and Systems\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 203, \"name\" : \"Electrical Machines I\", \"credits\" : 4, \"category\" : \"A\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 204, \"name\" : \"Electrical Measurements\", \"credits\" : 4, \"category\" : \"A\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH5\", \"code\" : 205, \"name\" : \"Mathematics III\", \"credits\" : 4, \"category\" : \"H\"}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"practical\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"PR1\", \"code\" : 206, \"name\" : \"Electronics I Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR2\", \"code\" : 207, \"name\" : \"Electrical Machines I Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR3\", \"code\" : 208, \"name\" : \"Electrical Measurements Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR4\", \"code\" : 209, \"name\" : \"Machine Drawing\", \"credits\" : 3},\n" +
+                "\t\t\t\t{\"sno\" : \"VS1\", \"code\" : 210, \"name\" : \"Programming I\", \"credits\" : 1}\n" +
+                "\t\t\t]\n" +
+                "\t\t},\n" +
+                "\t\t\"totalCredits\" : 30,\n" +
+                "\t\t\"semester\" : 3\n" +
+                "\t},\n" +
+                "\t{\n" +
+                "\t\t\"subjects\" : {\n" +
+                "\t\t\t\"theory\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 211, \"name\" : \"Electronics II\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 212, \"name\" : \"Electromagnetics\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 213, \"name\" : \"Network Analysis and Synthesis\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 214, \"name\" : \"Digital Circuits and Systems I\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH5\", \"code\" : 215, \"name\" : \"Electrical Machines II\", \"credits\" : 4, \"category\" : \"A\"}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"practical\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"PR1\", \"code\" : 216, \"name\" : \"Electronics II Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR2\", \"code\" : 217, \"name\" : \"Digital Circuits and Systems I Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR3\", \"code\" : 218, \"name\" : \"Electrical Machines II Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR4\", \"code\" : 219, \"name\" : \"Electrical Workshop and Electric Drg.\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR5\", \"code\" : 220, \"name\" : \"Practical Training\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"VS1\", \"code\" : 221, \"name\" : \"Report Writing\", \"credits\" : 1},\n" +
+                "\t\t\t\t{\"sno\" : \"VS2\", \"code\" : 222, \"name\" : \"Programming II\", \"credits\" : 1}\n" +
+                "\t\t\t]\n" +
+                "\t\t},\n" +
+                "\t\t\"totalCredits\" : 32,\n" +
+                "\t\t\"semester\" : 4\n" +
+                "\t},\n" +
+                "\t{\n" +
+                "\t\t\"subjects\" : {\n" +
+                "\t\t\t\"theory\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 301, \"name\" : \"Transmission Lines\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 302, \"name\" : \"Control Engineering\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 303, \"name\" : \"Computer System Org.\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 304, \"name\" : \"LIC\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH5\", \"code\" : 305, \"name\" : \"Industrial Org. and Managerial Eco.\", \"credits\" : 4, \"category\" : \"A\"}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"practical\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"PR1\", \"code\" : 306, \"name\" : \"Computer System Org. Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR2\", \"code\" : 307, \"name\" : \"LIC Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR3\", \"code\" : 308, \"name\" : \"Control Engineering Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"VS1\", \"code\" : 309, \"name\" : \"Programming III\", \"credits\" : 1}\n" +
+                "\t\t\t]\n" +
+                "\t\t},\n" +
+                "\t\t\"totalCredits\" : 27,\n" +
+                "\t\t\"semester\" : 5\n" +
+                "\t}\n" +
+                "\t],\n" +
+                "\t\"bt\" : [\n" +
+                "\t{\n" +
+                "\t\t\"subjects\" : {\n" +
+                "\t\t\t\"theory\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 101, \"name\" : \"Humanities\", \"credits\" : 4, \"category\" : \"H\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 102, \"name\" : \"Mathematics I\", \"credits\" : 4, \"category\" : \"H\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 103, \"name\" : \"Physics I\", \"credits\" : 4, \"category\" : \"H\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 104, \"name\" : \"Chemistry\", \"credits\" : 4, \"category\" : \"H\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH5\", \"code\" : 105, \"name\" : \"Manufacturing Processes\", \"credits\" : 4, \"category\" : \"A\"}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"practical\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"PR1\", \"code\" : 106, \"name\" : \"Engineering Drawing Lab\", \"credits\" : 3},\n" +
+                "\t\t\t\t{\"sno\" : \"PR2\", \"code\" : 107, \"name\" : \"Physics I Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR3\", \"code\" : 108, \"name\" : \"Chemistry Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR4\", \"code\" : 109, \"name\" : \"Workshop I\", \"credits\" : 2}\n" +
+                "\t\t\t]\n" +
+                "\t\t},\n" +
+                "\t\t\"totalCredits\" : 29,\n" +
+                "\t\t\"semester\" : 1\n" +
+                "\t},\n" +
+                "\t{\n" +
+                "\t\t\"subjects\" : {\n" +
+                "\t\t\t\"theory\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 111, \"name\" : \"Introduction to Biotechnology\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 112, \"name\" : \"Physics II\", \"credits\" : 4, \"category\" : \"H\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 113, \"name\" : \"Chemistry II\", \"credits\" : 4, \"category\" : \"H\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 114, \"name\" : \"Mechanical Sciences\", \"credits\" : 4, \"category\" : \"A\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH5\", \"code\" : 115, \"name\" : \"Engineering Mathematics\", \"credits\" : 4, \"category\" : \"A\"}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"practical\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"PR1\", \"code\" : 116, \"name\" : \"Introduction to Biotech Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR2\", \"code\" : 117, \"name\" : \"Physics II Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR3\", \"code\" : 118, \"name\" : \"Chemistry II/Electrical Engg Materials Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR4\", \"code\" : 119, \"name\" : \"Mechanical Sciences Lab\", \"credits\" : 2}\n" +
+                "\t\t\t]\n" +
+                "\t\t},\n" +
+                "\t\t\"totalCredits\" : 28,\n" +
+                "\t\t\"semester\" : 2\n" +
+                "\t},\n" +
+                "\t{\n" +
+                "\t\t\"subjects\" : {\n" +
+                "\t\t\t\"theory\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 201, \"name\" : \"Cell Biology\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 202, \"name\" : \"Biochemistry\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 203, \"name\" : \"Microbiology\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 204, \"name\" : \"Basics of Computer Systems and Programming\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH5\", \"code\" : 205, \"name\" : \"Basic Electronics and Instrumentation\", \"credits\" : 4, \"category\" : \"A\"}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"practical\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"PR1\", \"code\" : 206, \"name\" : \"Cell Biology Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR2\", \"code\" : 207, \"name\" : \"Biochemistry and Microbiology Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR3\", \"code\" : 208, \"name\" : \"Basics of Computer Systems and Programming Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR4\", \"code\" : 209, \"name\" : \"Basic Electronics and Instrumentation Lab\", \"credits\" : 2}\n" +
+                "\t\t\t]\n" +
+                "\t\t},\n" +
+                "\t\t\"totalCredits\" : 28,\n" +
+                "\t\t\"semester\" : 3\n" +
+                "\t},\n" +
+                "\t{\n" +
+                "\t\t\"subjects\" : {\n" +
+                "\t\t\t\"theory\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 211, \"name\" : \"Molecular Biology\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 212, \"name\" : \"Genetics\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 213, \"name\" : \"Methods and Instrumentation in Biotechnology\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 214, \"name\" : \"Statistics for Biology\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH5\", \"code\" : 215, \"name\" : \"Data Structures and Algorithms\", \"credits\" : 4, \"category\" : \"C\"}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"practical\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"PR1\", \"code\" : 216, \"name\" : \"Molecular Biology and Genetics Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR2\", \"code\" : 217, \"name\" : \"Methods and Instrumentation in Biotechnology Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR3\", \"code\" : 218, \"name\" : \"Data Structures Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"VS1\", \"code\" : 219, \"name\" : \"Project\", \"credits\" : 2}\n" +
+                "\t\t\t]\n" +
+                "\t\t},\n" +
+                "\t\t\"totalCredits\" : 28,\n" +
+                "\t\t\"semester\" : 4\n" +
+                "\t},\n" +
+                "\t{\n" +
+                "\t\t\"subjects\" : {\n" +
+                "\t\t\t\"theory\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 301, \"name\" : \"Structural Biology\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 302, \"name\" : \"Immunology and Immuno-technology\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 303, \"name\" : \"Recombinant-DNA Technology I\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 304, \"name\" : \"DBMS\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH5\", \"code\" : 305, \"name\" : \"Chemical Engineering Principles\", \"credits\" : 4, \"category\" : \"A\"}\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"practical\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"PR1\", \"code\" : 306, \"name\" : \"Structural Biology Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR2\", \"code\" : 307, \"name\" : \"Immunology and Immuno-technology Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR3\", \"code\" : 308, \"name\" : \"Recombinant-DNA Technology I Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR4\", \"code\" : 309, \"name\" : \"DBMS Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"VS1\", \"code\" : 310, \"name\" : \"Term Paper and Seminar\", \"credits\" : 2}\n" +
+                "\t\t\t]\n" +
+                "\t\t},\n" +
+                "\t\t\"totalCredits\" : 30,\n" +
+                "\t\t\"semester\" : 5\n" +
+                "\t},\n" +
+                "\t{\n" +
+                "\t\t\"subjects\" : {\n" +
+                "\t\t\t\"theory\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"TH1\", \"code\" : 311, \"name\" : \"Recombinant-DNA Technology II\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH2\", \"code\" : 312, \"name\" : \"Enzymology and Enzyme Technology\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH3\", \"code\" : 313, \"name\" : \"Plant and Animal Biotechnology\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH4\", \"code\" : 314, \"name\" : \"Computational Biology I\", \"credits\" : 4, \"category\" : \"C\"},\n" +
+                "\t\t\t\t{\"sno\" : \"TH5\", \"code\" : 315, \"name\" : \"Fundamentals of Biochemical Engineering\", \"credits\" : 4, \"category\" : \"A\"}\n" +
+                "\n" +
+                "\t\t\t],\n" +
+                "\t\t\t\"practical\" : [\n" +
+                "\t\t\t\t{\"sno\" : \"PR1\", \"code\" : 316, \"name\" : \"Recombinant-DNA Technology II Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR2\", \"code\" : 317, \"name\" : \"Enzymology and Enzyme Technology Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR3\", \"code\" : 318, \"name\" : \"Plant and Animal Biotechnology Lab\", \"credits\" : 2},\n" +
+                "\t\t\t\t{\"sno\" : \"PR4\", \"code\" : 319, \"name\" : \"Computational Biology I Lab\", \"credits\" : 1}\n" +
+                "\t\t\t]\n" +
+                "\t\t},\n" +
+                "\t\t\"totalCredits\" : 28,\n" +
+                "\t\t\"semester\" : 6\n" +
+                "\t}\n" +
+                "\t]\n" +
+                "}";
 
 
-    public final static String nsit_online = "0",
-            cross_links = "1", college_space = "2", bullet = "3", junoon = "4",
-            rotaract = "5", debsoc = "6", ieee = "7",
-            csi = "8", quiz = "9", ashwa = "10", ecell="11", enactus="12", aagaz="13";
-
-    public final static String
-            BT_sem1_sec1 =
-            "0B4kiTfcbhEZIYzZFaW9sWUVLOVE",
-
-
-    BT_sem2_sec1 =
-            "0B4kiTfcbhEZIZ2N2RzdMNk9ENnM",
-
-
-    BT_sem3_sec1 =
-            "0B4kiTfcbhEZIVzRtYXFDclFVT2c",
-
-
-    BT_sem4_sec1 =
-            "0B4kiTfcbhEZIRENval81MVZQbjQ",
-
-
-    BT_sem5_sec1 =
-            "0B4kiTfcbhEZITzQ3M2RvLTgtZUU",
-
-
-    BT_sem6_sec1 =
-            "0B4kiTfcbhEZIcEVSajVYRXJkc2s",
-
-
-    BT_sem7_sec1 =
-            "0B4kiTfcbhEZIS2g0Qm9FQnlOQWM",
-
-
-    BT_sem8_sec1 =
-            "0B4kiTfcbhEZIVDdBd2xHZXRCcFk",
-
-
-    COE_sem1_sec1 =
-            "0B4kiTfcbhEZIOTQyMnhjQ01YRjg",
-
-
-    COE_sem1_sec2 =
-            "0B4kiTfcbhEZIMENIaDlJX2tDTmc",
-
-
-    COE_sem1_sec3 =
-            "0B4kiTfcbhEZIMENIaDlJX2tDTmc",
-
-
-    COE_sem2_sec1 =
-            "0B4kiTfcbhEZIckFlVWhJcmZxOUU",
-
-
-    COE_sem2_sec2 =
-            "0B4kiTfcbhEZIMkpLUEVXWW9jekk",
-
-
-    COE_sem2_sec3 =
-            "0B4kiTfcbhEZIcXhfVnFSWFZ2QU0",
-
-
-    COE_sem3_sec1 =
-            "0B4kiTfcbhEZIRlVFT1gwR1JKZUU",
-
-
-    COE_sem3_sec2 =
-            "0B4kiTfcbhEZIemZ6UHY0cDM5c1U",
-
-
-    COE_sem3_sec3 =
-            "0B4kiTfcbhEZIUTJhbkR3SnRnTWc",
-
-
-    COE_sem4_sec1 =
-            "0B4kiTfcbhEZIR1hBUXBkbWh4NFk",
-
-
-    COE_sem4_sec2 =
-            "0B4kiTfcbhEZIOGFHNEl6cERCZFU",
-
-
-    COE_sem4_sec3 =
-            "0B4kiTfcbhEZIeEhUWmVKWjhtSjg",
-
-
-    COE_sem5_sec1 =
-            "0B4kiTfcbhEZIb1RIQWFDS2R1R00",
-
-
-    COE_sem5_sec2 =
-            "0B4kiTfcbhEZIZklYbVpuOGZ2RG8",
-
-
-    COE_sem5_sec3 =
-            "0B4kiTfcbhEZIXzlwZktlSlh6Szg",
-
-
-    COE_sem6_sec1 =
-            "0B4kiTfcbhEZIN3RSaVlGa1EteG8",
-
-
-    COE_sem6_sec2 =
-            "0B4kiTfcbhEZIeWZOelh2QmJlUnM",
-
-
-    COE_sem6_sec3 =
-            "0B4kiTfcbhEZIZlJzUm9GWHBiNXc",
-
-
-    COE_sem7_sec1 =
-            "0B4kiTfcbhEZIZ1EwSG5zRG52YWM",
-
-
-    COE_sem7_sec2 =
-            "0B4kiTfcbhEZITFRuVm1SMlo5OWM",
-
-
-    COE_sem7_sec3 =
-            "0B4kiTfcbhEZIakNfemRYREVyWHc",
-
-
-    COE_sem8_sec1 =
-            "0B4kiTfcbhEZIZVA5NXYwVHV0bjg",
-
-
-    COE_sem8_sec2 =
-            "0B4kiTfcbhEZIQXBqUU9kRVU5Yjg",
-
-
-    COE_sem8_sec3 =
-            "0B4kiTfcbhEZIaF9vbV9jZkEtV0U",
-
-
-    ECE_sem1_sec1 =
-            "0B4kiTfcbhEZISzZrLW1GdHdkWXc",
-
-
-    ECE_sem1_sec2 =
-            "0B4kiTfcbhEZIN194ekR6RW1jS1k",
-
-
-    ECE_sem1_sec3 =
-            "0B4kiTfcbhEZIdE5UQXQ3VVhJWGs",
-
-
-    ECE_sem3_sec1 =
-            "0B4kiTfcbhEZIRVVlLTRhUHRUWE0",
-
-
-    ECE_sem3_sec2 =
-            "0B4kiTfcbhEZIN1VJRHpEN01NU0k",
-
-
-    ECE_sem3_sec3 =
-            "0B4kiTfcbhEZIZXJ6Q0lLbFNZelE",
-
-    ECE_sem5_sec1 =
-            "0B4kiTfcbhEZIa29scVpLUHdOWkE",
-
-
-    ECE_sem5_sec2 =
-            "0B4kiTfcbhEZIeUwzSDJkX2xKRjg",
-
-
-    ECE_sem5_sec3 =
-            "0B4kiTfcbhEZITzZYaDFKbmxEZUE",
-
-
-    ECE_sem7_sec1 =
-            "0B4kiTfcbhEZIYTd1TEF0RHhtMEU",
-
-
-    ECE_sem7_sec2 =
-            "0B4kiTfcbhEZIMFQyMzNRZjF1bTA",
-
-
-    ECE_sem7_sec3 =
-            "0B4kiTfcbhEZITnR5dW5WbkhwSDA",
-
-
-    ICE_sem1_sec1 =
-            "0B4kiTfcbhEZIRlNiY21jdWp0dW8",
-
-
-    ICE_sem1_sec2 =
-            "0B4kiTfcbhEZIMUtBNGM4cXB4amM",
-
-
-    ICE_sem1_sec3 =
-            "0B4kiTfcbhEZIUVFEQkFWOGR2R3M",
-
-
-    ICE_sem3_sec1 =
-            "0B4kiTfcbhEZIQ082WnpnamxnbWM",
-
-
-    ICE_sem3_sec2 =
-            "0B4kiTfcbhEZINktnV0JEd1kyS0E",
-
-
-    ICE_sem3_sec3 =
-            "0B4kiTfcbhEZIOElaRWEzNUYwOUE",
-
-
-    ICE_sem5_sec1 =
-            "0B4kiTfcbhEZIZllIZk5CdlladzA",
-
-
-    ICE_sem5_sec2 =
-            "0B4kiTfcbhEZIRVdvUGFDWWNlUlE",
-
-
-    ICE_sem5_sec3 =
-            "0B4kiTfcbhEZIQ3dxcjd1eGpxY0U",
-
-
-    ICE_sem7_sec1 =
-            "0B4kiTfcbhEZIOExCX25jOEh5b0E",
-
-
-    ICE_sem7_sec2 =
-            "0B4kiTfcbhEZIQ0xFTGlSbjliMlE",
-
-
-    ICE_sem7_sec3 =
-            "0B4kiTfcbhEZIXzIxOGV4T1A0TDg",
-
-
-    IT_sem1_sec1 =
-            "0B4kiTfcbhEZIOUlpZ2hOTjBETTA",
-
-
-    IT_sem1_sec2 =
-            "0B4kiTfcbhEZIekxYa2duSFI5a2s",
-
-
-    IT_sem3_sec1 =
-            "0B4kiTfcbhEZILUFKWDNwVV95clU",
-
-
-    IT_sem3_sec2 =
-            "0B4kiTfcbhEZIVHJkZkpZZDk1djQ",
-
-
-    IT_sem5_sec1 =
-            "0B4kiTfcbhEZIWlhOOUtoaVVkYVE",
-
-    ME_sem1_sec1 = "0B9uRC8Uvb5sFUzJvOWRtc3ozNjg",
-
-
-    IT_sem5_sec2 =
-            "0B4kiTfcbhEZIZVR3RndZT2w2S0E",
-
-
-    IT_sem7_sec1 =
-            "0B4kiTfcbhEZIYlA5ckJzQXNPX1U",
-
-
-    IT_sem7_sec2 =
-            "0B4kiTfcbhEZIcXZSUHgwVExFTHM",
-
-
-    MPAE_sem1_sec1 =
-            "0B4kiTfcbhEZIMjc4QnRTMHFDZjA",
-
-
-    MPAE_sem1_sec2 =
-            "0B4kiTfcbhEZIeGlQdmhEbDZkM1U",
-
-
-    MPAE_sem1_sec3 =
-            "0B4kiTfcbhEZIdUYzT3FOZFZVSms",
-
-
-    MPAE_sem3_sec1 =
-            "0B4kiTfcbhEZIWThJd1F2alJTN3c",
-
-
-    MPAE_sem3_sec2 =
-            "0B4kiTfcbhEZITHlRZ2F2bWgwR2M",
-
-
-    MPAE_sem3_sec3 =
-            "0B4kiTfcbhEZINS1DOG80bUdWaU0",
-
-
-    MPAE_sem5_sec1 =
-            "0B4kiTfcbhEZIXzBiTXdBVXlKX0U",
-
-
-    MPAE_sem5_sec2 =
-            "0B4kiTfcbhEZIN0FESnlWNUdISGs",
-
-
-    MPAE_sem5_sec3 =
-            "0B4kiTfcbhEZIbTRQcFZpR2hkdmM",
-
-
-    MPAE_sem7_sec1 =
-            "0B4kiTfcbhEZIZ0x1UWl1dXc2THc",
-
-
-    MPAE_sem7_sec2 =
-            "0B4kiTfcbhEZIakxleGxQNEtKSHc",
-
-
-    MPAE_sem7_sec3 =
-            "0B4kiTfcbhEZIUmpXTDVDYnFTeXc";
 
 
     public static final String pro = "[\n" +

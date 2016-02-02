@@ -1,10 +1,4 @@
 <resources>
-    <string name="app_name">NSIT Connect</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_decsription">Decsription</string>
-    <string name="title_activity_image">ImageAct</string>
-    <string name="title_activity_my_feed">MyFeed</string>
     <string name="north_gate_desc">The gate closer towards Dwarka, sees the most of the Metro-travelling students during morning and evening, and also some hostellers during night to get some "relaxation" at the nearly situated Khokha. </string>
     <string name="south_gate_desc">The prominent entry gate of the college. At night, the intellectual-minded could see the large weather status display just sitting a little beside the gate, making it hard to pass by unnoticed. </string>
     <string name="admin_block_desc">Admin - The land of people who keep the wheels of NSIT running. This is the place where a student spends most of his time in his college years. Not because its a likeable place, it is due to the endless rounds that the poor guy has to make around the building collecting documents, submitting documents, correcting documents, searching for documents....sigh.</string>
@@ -16,18 +10,18 @@
     <string name="bh1_desc">The oldest one. One could easily point that out by observing how less it shares with the other hostels. Its got a good looking plaque in front of it, that\'s for sure.</string>
     <string name="bh2_desc">Situated in the best possible area in the entire college campus, guys living here have unrestricted access to our much loved canteens, McCain and Just Cafe </string>
     <string name="bh3_desc">BH-3 can boast of a sprawling lush open garden of its own.Situated quite close to BH-2 </string>
-	<string name="bh4_desc">Located just in front of the North Gate, BH-4 is the residence of the first year boys of the college.  </string>
+    <string name="bh4_desc">Located just in front of the North Gate, BH-4 is the residence of the first year boys of the college.  </string>
     <string name="gh1_desc">Closer from the South Gate, GH-1 is resided by the girls of the first,second and third year and can be reached by taking a left turn from the Staff quarters and going beyond the Nursery</string>
     <string name="gh2_desc">Closer from the North Gate, GH-2 is resided by the girls of the final year and can be reached by a left from the Staff Quarters located in front of the Shopping Complex</string>
-	<string name="main_zayca">The biggest canteen of the college is accessible from multiple locations-adjacent to the backside of the Library, a few steps ahead after taking a left from the Central Workshop, or a few steps ahead after taking a right from the Basketball Court.</string>
-	<string name="mini_zayca">Mini Zayca is the best place one could be in during the recess time.The shade of the trees try to  keep it cool making it a nice place to relax.It faces the nicely maintained (by Nsit standards, mind you) Nesci lawns, which are much loved by the students who like to laze around, they bask there in the sun during winters</string>
-	<string name="just_cafe">Located opposite Jeetos(McCain),Just Cafe is one of the canteens of NSIT.It can also be reached from the backside of the MPAE Block.</string>
-	<string name="McCain">Located in front of BH-2 and opposite Just Cafe, Jeetos(McCain) is one of the most popular canteens of NSIT</string>
-	<string name="radha">Located behind the Administrative Block,Radha Stationery provides services such as those of xerox/photocopying,provision of stationery(as suggested by the name itself),Mobile recharge,etc.</string>
-	<string name="babloo">Located in the NSIT shopping Complex, a stationery shop providing every stationery item, along with the services like photocopy, printing,etc..Crowded at its maximum when exam days are close.</string>
-	<string name="admin_atm">Situated in the basement of the Administrative Block, this ATM has been a saviour for many students for last minute money transactions in the Banks (for fee purposes etc)</string>
-	<string name="northgate_atm">Situated near the North Gate, this ATM is frequently used by the residents of Boys\' Hostels for their money transactions given its proximity from the hostels.</string>
-	<string name="southgate_atm">Situated near the more prominent entry gate of the college, frequently used by residents of Girls\' Hostel and Day scholars  for their money transactions</string>
+    <string name="main_zayca">The biggest canteen of the college is accessible from multiple locations-adjacent to the backside of the Library, a few steps ahead after taking a left from the Central Workshop, or a few steps ahead after taking a right from the Basketball Court.</string>
+    <string name="mini_zayca">Mini Zayca is the best place one could be in during the recess time.The shade of the trees try to  keep it cool making it a nice place to relax.It faces the nicely maintained (by Nsit standards, mind you) Nesci lawns, which are much loved by the students who like to laze around, they bask there in the sun during winters</string>
+    <string name="just_cafe">Located opposite Jeetos(McCain),Just Cafe is one of the canteens of NSIT.It can also be reached from the backside of the MPAE Block.</string>
+    <string name="McCain">Located in front of BH-2 and opposite Just Cafe, Jeetos(McCain) is one of the most popular canteens of NSIT</string>
+    <string name="radha">Located behind the Administrative Block,Radha Stationery provides services such as those of xerox/photocopying,provision of stationery(as suggested by the name itself),Mobile recharge,etc.</string>
+    <string name="babloo">Located in the NSIT shopping Complex, a stationery shop providing every stationery item, along with the services like photocopy, printing,etc..Crowded at its maximum when exam days are close.</string>
+    <string name="admin_atm">Situated in the basement of the Administrative Block, this ATM has been a saviour for many students for last minute money transactions in the Banks (for fee purposes etc)</string>
+    <string name="northgate_atm">Situated near the North Gate, this ATM is frequently used by the residents of Boys\' Hostels for their money transactions given its proximity from the hostels.</string>
+    <string name="southgate_atm">Situated near the more prominent entry gate of the college, frequently used by residents of Girls\' Hostel and Day scholars  for their money transactions</string>
     <string name="cad_lab">Situated in COE/IT block. Take a left turn from the entrance of COE block and take the first staircase on your left. On reaching the first floor, take a right. Room No. 102 is your destination! If You\'re lucky enough you\'d be there alone or in the company of people who\'re there for the same purpose! Password? 102block5</string>
     <string name="gc_lab">Also situated in COE/IT block. Take a left turn from the entrance of COE block and take the first staircase on your left. On reaching the first floor, take a left again! Room No. 115 is your destination! If You\'re lucky enough you\'d be there alone or in the company of people who\'re there for the same purpose! Password? 115block5</string>
     <string name="khushil">Also situated in COE/IT block. Go straight from the entrance of COE block and take the first staircase on your left. On reaching the first floor, take a right. Room No. 124 is your destination! If You\'re lucky enough you\'d be there alone or in the company of people who\'re there for the same purpose! Password? 124block5</string>
@@ -45,6 +39,93 @@
     <string name="title_activity_subjects_show">SubjectsShow</string>
     <string name="title_activity_subject_remove">SubjectRemove</string>
     <string name="title_activity_feedback">Feedback</string>
+
+
+    <string name="codeforces">Codeforces</string>
+    <string name="hackerrank">Hackerrank</string>
+    <string name="topcoder">TopCoder</string>
+    <string name="hackerearth">Hackerearth</string>
+    <string name="codechef">Codechef</string>
+    <string name="urioj">URIOJ</string>
+    <string name="unknown">Unknown</string>
+
+    <array name="contest_source">
+        <item>@string/codeforces</item>
+        <item>@string/hackerrank</item>
+        <item>@string/topcoder</item>
+        <item>@string/hackerearth</item>
+        <item>@string/codechef</item>
+        <item>@string/urioj</item>
+        <item>@string/unknown</item>
+    </array>
+
+    <string name="title_section_running">Running</string>
+    <string name="title_section_upcoming">Upcoming</string>
+    <string name="title_activity_contest_detail">Contest Detail</string>
+
+    <!-- Action bar related -->
+    <string name="action_calendar">Add to Calendar</string>
+    <string name="action_browse">Go to website</string>
+    <string name="action_filter">Filter</string>
+
+    <!-- Contest Filter Dialog related -->
+    <string name="filter_dialog_title">Filter</string>
+    <string name="filter_dialog_ok">Ok</string>
+    <string name="filter_dialog_cancel">Cancel</string>
+
+    <!-- SyncAdapter related -->
+    <string name="sync_account_type">nsit.app.com</string>
+    <string name="content_authority">nsit.app.com.nsitapp</string>
+
+
+    <string name="notification_remider_title">Contest Reminder</string>
+
+    <!-- Preference related -->
+    <string name="pref_reminder_title">Reminder</string>
+    <string name="pref_reminder_filter_title">Reminder Filter</string>
+    <string name="pref_reminder_vibrate">Vibrate</string>
+
+    <string-array name="pref_reminder_frequency_titles">
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>3 hours</item>
+        <item>6 hours</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_reminder_frequency_values">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>180</item>
+        <item>360</item>
+        <item>-1</item>
+    </string-array>
+
+    <string name="app_name">NSIT Connect</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_decsription">Decsription</string>
+    <string name="title_activity_image">ImageAct</string>
+    <string name="title_activity_my_feed">MyFeed</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_main_activity2">MainActivity2</string>
+    <string name="title_activity_detail">DetailActivity</string>
+    <string name="title_activity_switcher">Switcher</string>
+    <string name="title_activity_user__info">User Information</string>
+    <string name="CodeForces">CodeForces Handle</string>
+    <string name="handleedittext">Enter CodeForces Handle</string>
+    <string name="Searchbutton">User Information</string>
+    <string name="UserRatings">User Ratings</string>
+    <string name="UserSubmissions">User Submissions</string>
+    <string name="title_activity_contest_info">contest_info</string>
+    <string name="title_activity_problem_info">problem_info</string>
+    <string name="title_activity_user_info_list">user_info_list</string>
+    <string name="title_activity_usr_list">User Information</string>
+    <string name="title_activity_ratings_change">ratings_change</string>
+    <string name="title_activity_contest_reminder">contest_reminder</string>
+    <string name="title_activity_calculator">Calculator</string>
+
 
 </resources>
 

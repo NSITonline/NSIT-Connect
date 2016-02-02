@@ -13,7 +13,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -44,17 +43,15 @@ import java.util.List;
 import java.util.Locale;
 
 import adapters.CustomList;
-import functions.DBhelpFeed;
-import functions.TableEntryFeed;
 import functions.Utils;
 import functions.Val;
+import functions.dbAdapter;
 
 
 public class Home extends Fragment {
 
     boolean loadingMore = false;
-    DBhelpFeed dbhe;
-    SQLiteDatabase db;
+    dbAdapter db ;
 
     List<String> list = new ArrayList<String>();
     List<String> list1 = new ArrayList<String>();
@@ -66,7 +63,9 @@ public class Home extends Fragment {
     int first = 1;
     SwipeRefreshLayout swipeLayout;
     ProgressBar pb;
-    String next = " ";
+    String next = "https://graph.facebook.com/" + Val.id_nsitonline + "/posts?limit=20&fields=id,picture,from,shares,message," +
+            "object_id,link,created_time,comments.limit(0).summary(true),likes.limit(0).summary(true)"+
+            "&access_token=" + Val.common_access;
     CustomList adapter;
     View footerView;
     int listCount;
@@ -84,8 +83,7 @@ public class Home extends Fragment {
 
         super.onAttach(activity);
         this.activity = activity;
-        dbhe = new DBhelpFeed(activity);
-        db = dbhe.getWritableDatabase();
+
 
     }
 
@@ -93,6 +91,8 @@ public class Home extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
+        db = new dbAdapter(activity);
+        db.open();
 
         lv = (ListView) rootView.findViewById(R.id.list);
         swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
@@ -100,9 +100,10 @@ public class Home extends Fragment {
         adapter = new CustomList(activity, list6, list, list2, list7, list1, list8);
         footerView = ((LayoutInflater) activity.getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.footer_layout, null, false);
 
+        lv.setAdapter(adapter);
         if (Utils.isNetworkAvailable(activity)) {
 
-            lv.addFooterView(footerView);
+            db.deleteAll();
             lv.setOnScrollListener(new AbsListView.OnScrollListener() {
                 @Override
                 public void onScrollStateChanged(AbsListView absListView, int i) {
@@ -121,13 +122,13 @@ public class Home extends Fragment {
 
                 }
             });
-            new DownloadWebPageTask2(Val.id_nsitonline).execute();
+            new DownloadWebPageTask3(Val.id_nsitonline).execute();
         } else {
+            show_off();
             SnackbarManager.show(
                     Snackbar.with(activity.getApplicationContext())
-                            .text("No Internet Connection")
+                            .text("No Your Internet Connection")
                             .duration(Snackbar.SnackbarDuration.LENGTH_SHORT), activity);
-            show_off();
 
         }
 
@@ -147,141 +148,6 @@ public class Home extends Fragment {
     }
 
 
-    String text2;
-
-    private class DownloadWebPageTask2 extends AsyncTask<String, Void, String> {
-        String id;
-
-        public DownloadWebPageTask2(String id) {
-            this.id = id;
-        }
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected String doInBackground(String... urls) {
-
-            String URL;
-            URL = "https://graph.facebook.com/" + id + "/posts?limit=20&fields=id,picture,from,shares,message," +
-                    "object_id,link,created_time,comments.limit(0).summary(true),likes.limit(0).summary(true)" +
-                    "&access_token=" + Val.common_access;
-            HttpClient Client = new DefaultHttpClient();
-            HttpGet httpget = new HttpGet(URL);
-            ResponseHandler<String> responseHandler = new BasicResponseHandler();
-            try {
-                text2 = Client.execute(httpget, responseHandler);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            pb.setVisibility(View.GONE);
-            int j = 0;
-            JSONObject ob, ob2;
-            JSONArray arr;
-            if (text2 == null)
-                return;
-            try {
-                ob = new JSONObject(text2);
-                arr = ob.getJSONArray("data");
-
-
-                for (int i = 0; i < arr.length(); i++) {
-
-
-                    String s2 = arr.getJSONObject(i).getString("from");
-                    ob2 = new JSONObject(s2);
-                    s2 = ob2.getString("id");
-                    if (!s2.equals(id))
-                        continue;
-
-
-                    if (arr.getJSONObject(i).has("message")) {
-                        list.add(arr.getJSONObject(i).getString("message"));
-                    } else {
-                        list.add(null);
-                    }
-                    if (!(arr.getJSONObject(i).has("object_id")))
-                        list1.add(null);
-                    else
-                        list1.add(arr.getJSONObject(i).getString("object_id"));
-
-
-                    if (arr.getJSONObject(i).has("picture")) {
-                        list6.add(arr.getJSONObject(i).getString("picture"));
-                    } else
-                        list6.add(null);
-                    if (arr.getJSONObject(i).has("link")) {
-                        list7.add(arr.getJSONObject(i).getString("link"));
-                    } else
-                        list7.add(null);
-                    if (arr.getJSONObject(i).has("likes")) {
-                        String s = arr.getJSONObject(i).getString("likes");
-                        JSONObject o = new JSONObject(s);
-                        JSONArray a2 = o.getJSONArray("data");
-                        String x = o.getString("summary");
-                        JSONObject o2 = new JSONObject(x);
-                        list2.add(o2.getString("total_count"));   //No of likes
-                    } else
-                        list2.add("0");
-                    if (arr.getJSONObject(i).has("created_time"))
-                        list8.add(arr.getJSONObject(i).getString("created_time"));
-                    else
-                        list8.add(null);
-
-
-                    Cursor c = db.rawQuery("SELECT * FROM " + TableEntryFeed.TABLE2_NAME + " WHERE " +
-                            TableEntryFeed.COLUMN_NAME2_ID + " IS '" + arr.getJSONObject(i).getString("id") + "'", null);
-                    if (c.moveToFirst())
-                        continue;
-
-
-                    DateFormat originalFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss+SSSS", Locale.ENGLISH);
-                    java.util.Date d = originalFormat.parse(list8.get(i));
-                    String millisec = Long.toString(d.getTime());
-                    ContentValues values = new ContentValues();
-                    values.put(TableEntryFeed.COLUMN_NAME2_ID, arr.getJSONObject(i).getString("id"));
-                    values.put(TableEntryFeed.COLUMN_NAME2_MESSAGE, list.get(i));
-                    values.put(TableEntryFeed.COLUMN_NAME2_OBJECTID, list1.get(i));
-                    values.put(TableEntryFeed.COLUMN_NAME2_PICTURE, list6.get(i));
-                    values.put(TableEntryFeed.COLUMN_NAME2_LINK, list7.get(i));
-                    values.put(TableEntryFeed.COLUMN_NAME2_LIKES_COUNT, list2.get(i));
-                    values.put(TableEntryFeed.COLUMN_NAME2_TIME, list8.get(i));
-                    values.put(TableEntryFeed.COLUMN_NAME2_TIME_ADDED, millisec);
-
-
-                    db.insert(
-                            TableEntryFeed.TABLE2_NAME,
-                            TableEntryFeed.COLUMN_NAME2_ID,
-                            values);
-
-                    Log.e("here", "inserting" + i + " " + list.get(i));
-
-                }
-
-                ob = ob.getJSONObject("paging");
-                next = ob.getString("next");
-                first = 0;
-            } catch (JSONException e) {
-                e.printStackTrace();
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-            swipeLayout.setRefreshing(false);
-            if (activity != null)
-                lv.setAdapter(adapter);
-        }
-    }
-
-
-    String text;
 
     private class DownloadWebPageTask3 extends AsyncTask<String, Void, String> {
         String id;
@@ -301,6 +167,7 @@ public class Home extends Fragment {
             String URL;
 
             URL = next;
+            String text = "";
             if (URL != null) {
                 HttpClient Client = new DefaultHttpClient();
                 HttpGet httpget = new HttpGet(URL);
@@ -312,7 +179,7 @@ public class Home extends Fragment {
                 }
             }
 
-            return null;
+            return text;
         }
 
         @Override
@@ -321,9 +188,10 @@ public class Home extends Fragment {
             int j = 0;
             JSONObject ob, ob2;
             JSONArray arr;
-            if (text != null)
+            db.deleteAll();
+            if (result != null)
                 try {
-                    ob = new JSONObject(text);
+                    ob = new JSONObject(result);
                     arr = ob.getJSONArray("data");
 
 
@@ -370,43 +238,16 @@ public class Home extends Fragment {
                             list8.add(null);
 
 
-                        Cursor c = db.rawQuery("SELECT * FROM " + TableEntryFeed.TABLE2_NAME + " WHERE " +
-                                TableEntryFeed.COLUMN_NAME2_ID + " IS '" + arr.getJSONObject(i).getString("id") + "'", null);
-                        if (c.moveToFirst())
-                            continue;
+                        db.insertRow(list.get(i), list1.get(i), list2.get(i), list6.get(i), list7.get(i), list8.get(i),null, Val.id_nsitonline);
 
-
-                        DateFormat originalFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss+SSSS", Locale.ENGLISH);
-                        java.util.Date d = originalFormat.parse(list8.get(i));
-                        String millisec = Long.toString(d.getTime());
-
-                        ContentValues values = new ContentValues();
-                        values.put(TableEntryFeed.COLUMN_NAME2_ID, arr.getJSONObject(i).getString("id"));
-                        values.put(TableEntryFeed.COLUMN_NAME2_MESSAGE, list.get(i));
-                        values.put(TableEntryFeed.COLUMN_NAME2_OBJECTID, list1.get(i));
-                        values.put(TableEntryFeed.COLUMN_NAME2_PICTURE, list6.get(i));
-                        values.put(TableEntryFeed.COLUMN_NAME2_LINK, list7.get(i));
-                        values.put(TableEntryFeed.COLUMN_NAME2_LIKES_COUNT, list2.get(i));
-                        values.put(TableEntryFeed.COLUMN_NAME2_TIME, list8.get(i));
-                        values.put(TableEntryFeed.COLUMN_NAME2_TIME_ADDED, millisec);
-
-
-                        db.insert(
-                                TableEntryFeed.TABLE2_NAME,
-                                TableEntryFeed.COLUMN_NAME2_ID,
-                                values);
-
-                        Log.e("here", "inserting" + i + " " + list.get(i));
 
                     }
 
                     ob = ob.getJSONObject("paging");
                     next = ob.getString("next");
+                    first = 0;
 
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                } catch (ParseException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             swipeLayout.setRefreshing(false);
@@ -430,27 +271,23 @@ public class Home extends Fragment {
 
 
     public void show_off() {
-        Cursor c = db.rawQuery("SELECT * FROM " + TableEntryFeed.TABLE2_NAME + " ORDER BY " +
-                TableEntryFeed.COLUMN_NAME2_TIME_ADDED + " DESC ", null);
 
-        Log.e("add", "adding");
-        if (c.moveToFirst())
+        Cursor c = db.getAllnsRows();
+        if(c==null)
+            return;
+        try {
             do {
-
-                list.add(c.getString(c.getColumnIndex(TableEntryFeed.COLUMN_NAME2_MESSAGE)));
-                list1.add(c.getString(c.getColumnIndex(TableEntryFeed.COLUMN_NAME2_OBJECTID)));
-                list6.add(c.getString(c.getColumnIndex(TableEntryFeed.COLUMN_NAME2_PICTURE)));
-                list7.add(c.getString(c.getColumnIndex(TableEntryFeed.COLUMN_NAME2_LINK)));
-                list2.add(c.getString(c.getColumnIndex(TableEntryFeed.COLUMN_NAME2_LIKES_COUNT)));
-                list8.add(c.getString(c.getColumnIndex(TableEntryFeed.COLUMN_NAME2_TIME)));
-
-                Log.e("add", "adding");
+                list.add(c.getString(1));
+                list1.add(c.getString(2));
+                list2.add(c.getString(3));
+                list6.add(c.getString(4));
+                list7.add(c.getString(5));
+                list8.add(c.getString(6));
             } while (c.moveToNext());
-
-
-        pb.setVisibility(View.INVISIBLE);
+            pb.setVisibility(View.GONE);
+        }catch (Exception e){
+        }
         adapter.notifyDataSetChanged();
-        lv.setAdapter(adapter);
     }
 
 }

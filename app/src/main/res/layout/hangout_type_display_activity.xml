@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -25,32 +24,4 @@
 
 
 
-=======
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="5dp"
-    android:background="@color/universalBackground"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <ProgressBar
-        android:id="@+id/progress"
-        android:visibility="gone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
-
-    <ListView
-        android:id="@+id/hangout_type_display_list"
-        android:layout_width="fill_parent"
-        android:dividerHeight="0.5dp"
-        android:layout_height="fill_parent">
-    </ListView>
-
-
-
->>>>>>> refs/remotes/Swati4star/master
 </RelativeLayout>

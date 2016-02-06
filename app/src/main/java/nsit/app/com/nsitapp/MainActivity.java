@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private ActionBarDrawerToggle mDrawerToggle;
     static final String[] sideitems = new String[]{"Home", "My Feed", "Video", "TimeTable",  "Locations", "CodeRadar","Professors", "Feedback", "About Us"};    //items on navigation drawer
     SwipeRefreshLayout swipeLayout;
+    Fragment current;
 
 
     Integer[] imageId = {
@@ -54,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         Fragment f = new Home();
+        current = f;
         ft.replace(R.id.content_frame, f);
         getSupportActionBar().setTitle("Home");
         ft.commit();
@@ -136,12 +138,19 @@ public class MainActivity extends AppCompatActivity {
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         mDrawerToggle.onConfigurationChanged(newConfig);
+        try {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.content_frame, current);
+            ft.commit();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void changeItem(int position) {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         Intent i;
-        Fragment f;
+        Fragment f=null;
         switch (position + 1) {
             case 1:
                 f = new Home();
@@ -203,6 +212,7 @@ public class MainActivity extends AppCompatActivity {
                 getSupportActionBar().setTitle("About Us");
                 break;
         }
+        current = f;
         ft.commit();
     }
 }

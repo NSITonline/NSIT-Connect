@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:background="#ffffff"
         android:orientation="horizontal"
-        android:padding="10dp">
+        android:padding="8dp">
 
         <FrameLayout
             android:layout_width="0dp"
@@ -86,8 +86,6 @@
         <LinearLayout
             android:layout_width="2dp"
             android:layout_height="match_parent"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"
             android:background="#e3e3e3" />
 
         <LinearLayout
@@ -98,8 +96,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:padding="5dp">
+                android:gravity="center"
+                android:padding="8dp">
 
                 <TextView
                     android:id="@+id/message"
@@ -109,7 +107,7 @@
                     android:focusable="false"
                     android:gravity="center_vertical"
                     android:text="Add some dates to get started."
-                    android:textSize="15sp" />
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <LinearLayout

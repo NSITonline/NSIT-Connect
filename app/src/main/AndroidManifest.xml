@@ -31,7 +31,6 @@
         </activity>
         <activity
             android:name=".Decsription"
-            android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_decsription" />
         <activity
             android:name=".ImageAct"
@@ -47,7 +46,6 @@
             android:label="LocationMapView" />
         <activity
             android:name=".ChooseClass"
-            android:configChanges="orientation|screenSize"
             android:label="Select" />
         <activity
             android:name=".ChooseFeedItems"

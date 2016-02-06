@@ -11,37 +11,33 @@
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:orientation="vertical"
-            android:layout_height="fill_parent"
-            android:paddingTop="30dp">
+            android:orientation="horizontal"
+            android:layout_height="match_parent">
 
 
             <LinearLayout
-                android:layout_width="fill_parent"
+                android:layout_width="0dp"
+                android:layout_weight="0.66"
                 android:orientation="horizontal"
-                android:layout_height="wrap_content"
-                android:paddingBottom="10dp">
+                android:layout_height="match_parent">
 
                 <LinearLayout
                     android:layout_gravity="center"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="0.5"
                     android:orientation="vertical"
-                    android:background="@drawable/shadow_1"
                     android:id="@+id/hang_college"
                     android:clickable="true">
                     <LinearLayout
                         android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="300dp"
                         android:background="#ff2c2c2c"
                         android:gravity="center_horizontal">
                         <ImageView
                             android:scaleType="fitXY"
-                            android:layout_width="wrap_content"
-                            android:layout_height="140dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:src="@drawable/college_hangout"
                             android:adjustViewBounds="false"
                             android:layout_gravity="center" />
@@ -49,8 +45,8 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:padding="10dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
                         android:background="@color/colorPrimary">
                         <TextView
                             android:layout_width="fill_parent"
@@ -66,31 +62,28 @@
 
             </LinearLayout>
 
-            <HorizontalScrollView
-                android:layout_width="fill_parent"
+            <ScrollView
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
                 android:layout_height="wrap_content"
                 android:id="@+id/scrollView"
-                android:focusableInTouchMode="false"
-                android:layout_marginTop="10dp">
+                android:focusableInTouchMode="false">
 
                 <LinearLayout
-                    android:layout_width="1600dp"
-                    android:orientation="horizontal"
-                    android:layout_height="200dp"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="20dp"
-                    android:background="#ff8b8b8b">
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content"
+                    android:background="#ff8b8b8b"
+                    android:gravity="center_horizontal">
 
                     <TextView
-                        android:layout_width="100dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="Find interesting places around you..."
                         android:id="@+id/textView3"
-                        android:layout_marginTop="20dp"
+                        android:layout_margin="16dp"
                         android:textSize="20sp"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="10dp"
                         android:textColor="#ffd2d2d2" />
 
                     <LinearLayout
@@ -415,7 +408,7 @@
                     </LinearLayout>
 
                 </LinearLayout>
-            </HorizontalScrollView>
+            </ScrollView>
 
 
         </LinearLayout>

@@ -30,7 +30,8 @@ public class MainActivity extends AppCompatActivity {
     private ListView mDrawerList;
     ListView lv;
     private ActionBarDrawerToggle mDrawerToggle;
-    static final String[] sideitems = new String[]{"Home", "My Feed", "Video", "TimeTable",  "Locations", "CodeRadar","Professors", "Feedback", "About Us"};    //items on navigation drawer
+    static final String[] sideitems = new String[]{"Home", "My Feed", "Video", "TimeTable", "Locations",
+            "Calculator", "CodeRadar", "Professors", "Feedback", "About Us"};    //items on navigation drawer
     SwipeRefreshLayout swipeLayout;
     Fragment current;
 
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.ic_action_video,
             R.drawable.ic_action_calendar_month,
             R.drawable.ic_action_location,
+            R.drawable.ic_format_list_numbered_black_24dp,
             R.drawable.ic_laptop_mac_black_24dp,
             R.drawable.ic_action_user,
             R.drawable.ic_feedback_black_24dp,
@@ -142,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.content_frame, current);
             ft.commit();
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -150,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
     private void changeItem(int position) {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         Intent i;
-        Fragment f=null;
+        Fragment f = null;
         switch (position + 1) {
             case 1:
                 f = new Home();
@@ -165,7 +167,7 @@ public class MainActivity extends AppCompatActivity {
                 getSupportActionBar().setTitle("My Feed");
                 break;
             case 3:
-                f= new Video();
+                f = new Video();
                 getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 ft.replace(R.id.content_frame, f);
                 getSupportActionBar().setTitle("Video");
@@ -183,30 +185,29 @@ public class MainActivity extends AppCompatActivity {
                 getSupportActionBar().setTitle("Hangouts");
                 break;
             case 6:
+                f = new CalculatorActivity();
+                getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                ft.replace(R.id.content_frame, f);
+                getSupportActionBar().setTitle("Calculator");
+                break;
+            case 7:
                 i = new Intent(this, contest_reminder.class);
                 startActivity(i);
                 break;
-          /*  case 7:
-                f = new calculator_choose();
-                getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                ft.replace(R.id.content_frame, f);
-                getSupportActionBar().setTitle("Calculator" +
-                        "");
-                break;*/
-            case 7:
+            case 8:
                 f = new Professors();
                 getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 ft.replace(R.id.content_frame, f);
                 getSupportActionBar().setTitle("Professors List");
                 break;
-            case 8:
+            case 9:
                 f = new Feedback();
                 getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 ft.replace(R.id.content_frame, f);
                 getSupportActionBar().setTitle("Feedback");
                 break;
-            case 9:
-                f= new AboutUs();
+            case 10:
+                f = new AboutUs();
                 getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 ft.replace(R.id.content_frame, f);
                 getSupportActionBar().setTitle("About Us");

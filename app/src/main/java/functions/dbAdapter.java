@@ -99,7 +99,10 @@ public class dbAdapter implements  Constant {
         values.put(KEY_LIST9, j);
         values.put(KEY_SOC, soc);
 
+        if(db!=null)
         return db.insert(DATABASE_TABLE, null, values);
+        else
+            return 0;
     }
 
     public void deleteAll() {

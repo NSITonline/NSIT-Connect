@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -18,6 +19,7 @@ public class CalculatorActivity extends Fragment {
     Spinner s2;
     ArrayAdapter<CharSequence> adapter;
     ArrayAdapter<CharSequence> adapter1;
+    Button b;
 
 
 
@@ -36,7 +38,16 @@ public class CalculatorActivity extends Fragment {
         adapter = ArrayAdapter.createFromResource(getActivity(),R.array.branch,android.R.layout.simple_list_item_1);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         s1.setAdapter(adapter);
-      
+        b = (Button) rooview.findViewById(R.id.buttC);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(),sub_load.class);
+                startActivity(i);
+
+            }
+        });
+
 
 
 
@@ -601,10 +612,6 @@ public class CalculatorActivity extends Fragment {
 
     }
 
-    public void onSub(View b)
-    {
-        Intent i = new Intent(getActivity(),sub_load.class);
-        startActivity(i);
-    }
+
 
 }

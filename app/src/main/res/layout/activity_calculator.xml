@@ -223,7 +223,6 @@
         android:text="Calculate"
         android:background="@color/colorPrimary"
         android:id="@+id/buttC"
-        android:clickable="true"
         android:onClick="onCalculate"
         android:textSize="18dp"
         android:textColor="#ffffff"
@@ -428,8 +427,6 @@
         android:layout_alignParentStart="true"
         android:textColor="#ffffff"
         android:textSize="18dp"
-        android:onClick="onSub"
-        android:clickable="true"
         android:layout_alignRight="@+id/twelve"
         android:layout_alignEnd="@+id/twelve" />
 

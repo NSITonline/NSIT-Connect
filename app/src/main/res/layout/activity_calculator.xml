@@ -36,8 +36,7 @@
         android:gravity="bottom|center"
         android:textSize="15dp"
         android:phoneNumber="true"
-        android:layout_marginTop="87dp"
-        android:layout_below="@+id/spinb"
+        android:layout_below="@+id/textView15"
         android:layout_toRightOf="@+id/tv1"
         android:layout_toEndOf="@+id/tv1" />
 
@@ -404,16 +403,17 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select class appropriately and dont bother to fill boxes which isn&apos;t required."
+        android:text="Choose options appropriately"
         android:id="@+id/textView15"
         android:layout_below="@+id/spinb"
         android:layout_toLeftOf="@+id/textView14"
-        android:layout_above="@+id/six"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:textSize="22dp"
         android:gravity="top|left"
-        android:textColor="#ca969191" />
+        android:textColor="#ca969191"
+        android:layout_marginTop="9dp"
+        android:layout_marginBottom="9dp" />
 
     <Button
         style="?android:attr/buttonStyleSmall"

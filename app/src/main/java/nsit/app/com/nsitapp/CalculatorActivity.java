@@ -56,7 +56,7 @@ public class CalculatorActivity extends Fragment {
         });
 
 
-        
+
         final TextView tc10 = (TextView) rooview.findViewById(R.id.tv10);
         final TextView tc11 = (TextView) rooview.findViewById(R.id.tv11);
         final TextView tc12 = (TextView) rooview.findViewById(R.id.tv12);

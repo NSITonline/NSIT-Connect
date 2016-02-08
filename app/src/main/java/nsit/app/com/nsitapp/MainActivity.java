@@ -1,5 +1,6 @@
 package nsit.app.com.nsitapp;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,14 +15,17 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
-
-import adapters.DrawerList_Adapter;
+import android.widget.TextView;
 import nsit.app.com.nsitapp.view.contest_reminder;
 
 
@@ -55,13 +59,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setProgressBarIndeterminateVisibility(false);
 
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        Fragment f = new Home();
-        current = f;
-        ft.replace(R.id.content_frame, f);
-        getSupportActionBar().setTitle("Home");
-        ft.commit();
 
+        if(savedInstanceState == null) {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            Fragment f = new Home();
+            current = f;
+            ft.replace(R.id.content_frame, f);
+            getSupportActionBar().setTitle("Home");
+            ft.commit();
+        }
         lv = (ListView) findViewById(R.id.list);
         android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -215,5 +221,42 @@ public class MainActivity extends AppCompatActivity {
         }
         current = f;
         ft.commit();
+    }
+
+
+    public class DrawerList_Adapter extends ArrayAdapter<String> {
+        private final Activity context;
+        private final String[] web;
+        private boolean isSpeakButtonLongPressed;
+        private final Integer[] imageId;
+
+        public DrawerList_Adapter(Activity context, String[] web, Integer[] imageId) {
+            super(context, R.layout.message, web);
+            this.context = context;
+            this.web = web;
+            this.imageId = imageId;
+        }
+
+        private class ViewHolder {
+            TextView t1;
+            ImageView imag;
+        }
+
+        @Override
+        public View getView(int position, View view, ViewGroup parent) {
+            ViewHolder holder = null;
+            LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+            if (view == null) {
+                view = mInflater.inflate(R.layout.message, null);
+                holder = new ViewHolder();
+                holder.t1 = (TextView) view.findViewById(R.id.textView1);
+                holder.imag = (ImageView) view.findViewById(R.id.imageView1);
+                view.setTag(holder);
+            } else
+                holder = (ViewHolder) view.getTag();
+            holder.t1.setText(web[position]);
+            holder.imag.setImageResource(imageId[position]);
+            return view;
+        }
     }
 }

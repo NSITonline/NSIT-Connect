@@ -18,4 +18,7 @@
     <color name="hackerearth">#EF9A9A</color>
     <color name="codechef">#cfce56</color>
 
+    <color name="calculator_selected">#01b29b</color>
+    <color name="calculator_notselected">#b3b3b3</color>
+
 </resources>

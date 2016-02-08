@@ -127,5 +127,54 @@
     <string name="title_activity_calculator">Calculator</string>
 
 
+
+    <string-array name="branch">
+        <item>Branch</item>
+        <item>COE</item>
+        <item>ECE</item>
+        <item>IT</item>
+        <item>ICE</item>
+        <item>MPAE</item>
+        <item>BT</item>
+    </string-array>
+
+    <string-array name="semester">
+        <item>Semester</item>
+        <item>Sem 1</item>
+        <item>Sem 2</item>
+        <item>Sem 3</item>
+        <item>Sem 4</item>
+        <item>Sem 5</item>
+        <item>Sem 6</item>
+        <item>Sem 7</item>
+        <item>Sem 8</item>
+    </string-array>
+    <string name="title_activity_sub_load">sub_load</string>
+    <string name="cd1" />
+    <string name="cd2" />
+    <string name="cd3" />
+    <string name="cd4" />
+    <string name="cd5" />
+    <string name="cd6" />
+    <string name="cd7" />
+    <string name="cd8" />
+    <string name="cd9" />
+    <string name="cd10" />
+    <string name="cd11" />
+    <string name="cd12" />
+    <string name="st1" />
+    <string name="st2" />
+    <string name="st3" />
+    <string name="st4" />
+    <string name="st5" />
+    <string name="st6" />
+    <string name="st7" />
+    <string name="st8" />
+    <string name="st9" />
+    <string name="st10" />
+    <string name="st11" />
+    <string name="st12" />
+    <string name="percentage" />
+
 </resources>
 

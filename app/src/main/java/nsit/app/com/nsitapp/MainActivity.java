@@ -1,5 +1,6 @@
 package nsit.app.com.nsitapp;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,14 +15,17 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
-
-import adapters.DrawerList_Adapter;
+import android.widget.TextView;
 import nsit.app.com.nsitapp.view.contest_reminder;
 
 
@@ -30,8 +34,10 @@ public class MainActivity extends AppCompatActivity {
     private ListView mDrawerList;
     ListView lv;
     private ActionBarDrawerToggle mDrawerToggle;
-    static final String[] sideitems = new String[]{"Home", "My Feed", "Video", "TimeTable",  "Locations", "CodeRadar","Professors", "Feedback", "About Us"};    //items on navigation drawer
+    static final String[] sideitems = new String[]{"Home", "My Feed", "Video", "TimeTable", "Locations",
+            "Calculator", "CodeRadar", "Professors", "Feedback", "About Us"};    //items on navigation drawer
     SwipeRefreshLayout swipeLayout;
+    Fragment current;
 
 
     Integer[] imageId = {
@@ -40,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.ic_action_video,
             R.drawable.ic_action_calendar_month,
             R.drawable.ic_action_location,
+            R.drawable.ic_format_list_numbered_black_24dp,
             R.drawable.ic_laptop_mac_black_24dp,
             R.drawable.ic_action_user,
             R.drawable.ic_feedback_black_24dp,
@@ -52,12 +59,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setProgressBarIndeterminateVisibility(false);
 
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        Fragment f = new Home();
-        ft.replace(R.id.content_frame, f);
-        getSupportActionBar().setTitle("Home");
-        ft.commit();
 
+        if(savedInstanceState == null) {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            Fragment f = new Home();
+            current = f;
+            ft.replace(R.id.content_frame, f);
+            getSupportActionBar().setTitle("Home");
+            ft.commit();
+        }
         lv = (ListView) findViewById(R.id.list);
         android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -136,12 +146,19 @@ public class MainActivity extends AppCompatActivity {
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         mDrawerToggle.onConfigurationChanged(newConfig);
+        try {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.content_frame, current);
+            ft.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void changeItem(int position) {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         Intent i;
-        Fragment f;
+        Fragment f = null;
         switch (position + 1) {
             case 1:
                 f = new Home();
@@ -156,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
                 getSupportActionBar().setTitle("My Feed");
                 break;
             case 3:
-                f= new Video();
+                f = new Video();
                 getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 ft.replace(R.id.content_frame, f);
                 getSupportActionBar().setTitle("Video");
@@ -174,35 +191,72 @@ public class MainActivity extends AppCompatActivity {
                 getSupportActionBar().setTitle("Hangouts");
                 break;
             case 6:
+                f = new CalculatorActivity();
+                getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                ft.replace(R.id.content_frame, f);
+                getSupportActionBar().setTitle("Calculator");
+                break;
+            case 7:
                 i = new Intent(this, contest_reminder.class);
                 startActivity(i);
                 break;
-          /*  case 7:
-                f = new calculator_choose();
-                getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                ft.replace(R.id.content_frame, f);
-                getSupportActionBar().setTitle("Calculator" +
-                        "");
-                break;*/
-            case 7:
+            case 8:
                 f = new Professors();
                 getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 ft.replace(R.id.content_frame, f);
                 getSupportActionBar().setTitle("Professors List");
                 break;
-            case 8:
+            case 9:
                 f = new Feedback();
                 getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 ft.replace(R.id.content_frame, f);
                 getSupportActionBar().setTitle("Feedback");
                 break;
-            case 9:
-                f= new AboutUs();
+            case 10:
+                f = new AboutUs();
                 getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 ft.replace(R.id.content_frame, f);
                 getSupportActionBar().setTitle("About Us");
                 break;
         }
+        current = f;
         ft.commit();
+    }
+
+
+    public class DrawerList_Adapter extends ArrayAdapter<String> {
+        private final Activity context;
+        private final String[] web;
+        private boolean isSpeakButtonLongPressed;
+        private final Integer[] imageId;
+
+        public DrawerList_Adapter(Activity context, String[] web, Integer[] imageId) {
+            super(context, R.layout.message, web);
+            this.context = context;
+            this.web = web;
+            this.imageId = imageId;
+        }
+
+        private class ViewHolder {
+            TextView t1;
+            ImageView imag;
+        }
+
+        @Override
+        public View getView(int position, View view, ViewGroup parent) {
+            ViewHolder holder = null;
+            LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+            if (view == null) {
+                view = mInflater.inflate(R.layout.message, null);
+                holder = new ViewHolder();
+                holder.t1 = (TextView) view.findViewById(R.id.textView1);
+                holder.imag = (ImageView) view.findViewById(R.id.imageView1);
+                view.setTag(holder);
+            } else
+                holder = (ViewHolder) view.getTag();
+            holder.t1.setText(web[position]);
+            holder.imag.setImageResource(imageId[position]);
+            return view;
+        }
     }
 }

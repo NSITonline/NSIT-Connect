@@ -369,7 +369,7 @@ public class CalculatorActivity extends Fragment {
         EditText t12 = (EditText) a.findViewById(R.id.twelve);
 
 
-        n1 = Double.parseDouble(t1.getText().toString());
+       /* n1 = Double.parseDouble(t1.getText().toString());
         n2 = Double.parseDouble(t2.getText().toString());
         n3 = Double.parseDouble(t3.getText().toString());
         n4 = Double.parseDouble(t4.getText().toString());
@@ -381,7 +381,7 @@ public class CalculatorActivity extends Fragment {
         n10 = Double.parseDouble(t10.getText().toString());
         n11 = Double.parseDouble(t11.getText().toString());
         n12 = Double.parseDouble(t12.getText().toString());
-
+*/
 
         double tux, pux, p = 0.0;
 
@@ -389,12 +389,33 @@ public class CalculatorActivity extends Fragment {
         if (s1.getSelectedItem().toString().equals("COE")) {
             if (s2.getSelectedItem().toString().equals("Sem 1")) {
 
+                n1 = Double.parseDouble(t1.getText().toString());
+                n2 = Double.parseDouble(t2.getText().toString());
+                n3 = Double.parseDouble(t3.getText().toString());
+                n4 = Double.parseDouble(t4.getText().toString());
+                n5 = Double.parseDouble(t5.getText().toString());
+                n6 = Double.parseDouble(t6.getText().toString());
+                n7 = Double.parseDouble(t7.getText().toString());
+                n8 = Double.parseDouble(t8.getText().toString());
+                n9 = Double.parseDouble(t9.getText().toString());
+
 
                 tux = 4 * (n1 + n2 + n3 + n4 + n5);
                 pux = (3 * n6) + 2 * (n7 + n8 + n9);
                 p = (tux + pux) / 29;
 
             } else if (s2.getSelectedItem().toString().equals("Sem 2")) {
+                n1 = Double.parseDouble(t1.getText().toString());
+                n2 = Double.parseDouble(t2.getText().toString());
+                n3 = Double.parseDouble(t3.getText().toString());
+                n4 = Double.parseDouble(t4.getText().toString());
+                n5 = Double.parseDouble(t5.getText().toString());
+                n6 = Double.parseDouble(t6.getText().toString());
+                n7 = Double.parseDouble(t7.getText().toString());
+                n8 = Double.parseDouble(t8.getText().toString());
+                n9 = Double.parseDouble(t9.getText().toString());
+
+
 
                 tux = 4 * (n1 + n2 + n3 + n4 + n5);
                 pux = 2 * (n6 + n7 + n8 + n9);
@@ -402,6 +423,19 @@ public class CalculatorActivity extends Fragment {
 
 
             } else if (s2.getSelectedItem().toString().equals("Sem 3")) {
+
+                n1 = Double.parseDouble(t1.getText().toString());
+                n2 = Double.parseDouble(t2.getText().toString());
+                n3 = Double.parseDouble(t3.getText().toString());
+                n4 = Double.parseDouble(t4.getText().toString());
+                n5 = Double.parseDouble(t5.getText().toString());
+                n6 = Double.parseDouble(t6.getText().toString());
+                n7 = Double.parseDouble(t7.getText().toString());
+                n8 = Double.parseDouble(t8.getText().toString());
+                n9 = Double.parseDouble(t9.getText().toString());
+                n10 = Double.parseDouble(t10.getText().toString());
+                n11 = Double.parseDouble(t11.getText().toString());
+                n12 = Double.parseDouble(t12.getText().toString());
 
 
                 tux = 4 * (n1 + n2 + n3 + n4 + n5);
@@ -410,18 +444,56 @@ public class CalculatorActivity extends Fragment {
 
 
             } else if (s2.getSelectedItem().toString().equals("Sem 4")) {
+
+                n1 = Double.parseDouble(t1.getText().toString());
+                n2 = Double.parseDouble(t2.getText().toString());
+                n3 = Double.parseDouble(t3.getText().toString());
+                n4 = Double.parseDouble(t4.getText().toString());
+                n5 = Double.parseDouble(t5.getText().toString());
+                n6 = Double.parseDouble(t6.getText().toString());
+                n7 = Double.parseDouble(t7.getText().toString());
+                n8 = Double.parseDouble(t8.getText().toString());
+                n9 = Double.parseDouble(t9.getText().toString());
+                n10 = Double.parseDouble(t10.getText().toString());
+                n11 = Double.parseDouble(t11.getText().toString());
+                n12 = Double.parseDouble(t12.getText().toString());
+
                 tux = 4 * (n1 + n2 + n3 + n4 + n5);
                 pux = 2 * (n6 + n7 + n8 + n9 + n10);
                 p = (tux + pux + n11 + n12) / 32;
 
 
             } else if (s2.getSelectedItem().toString().equals("Sem 5")) {
+
+                n1 = Double.parseDouble(t1.getText().toString());
+                n2 = Double.parseDouble(t2.getText().toString());
+                n3 = Double.parseDouble(t3.getText().toString());
+                n4 = Double.parseDouble(t4.getText().toString());
+                n5 = Double.parseDouble(t5.getText().toString());
+                n6 = Double.parseDouble(t6.getText().toString());
+                n7 = Double.parseDouble(t7.getText().toString());
+                n8 = Double.parseDouble(t8.getText().toString());
+                n11 = Double.parseDouble(t11.getText().toString());
+
+
                 tux = 4 * (n1 + n2 + n3 + n4 + n5);
                 pux = 2 * (n6 + n7 + n8);
                 p = (tux + pux + n11) / 27;
 
 
             } else if (s2.getSelectedItem().toString().equals("Sem 6")) {
+
+                n1 = Double.parseDouble(t1.getText().toString());
+                n2 = Double.parseDouble(t2.getText().toString());
+                n3 = Double.parseDouble(t3.getText().toString());
+                n4 = Double.parseDouble(t4.getText().toString());
+                n5 = Double.parseDouble(t5.getText().toString());
+                n6 = Double.parseDouble(t6.getText().toString());
+                n7 = Double.parseDouble(t7.getText().toString());
+                n8 = Double.parseDouble(t8.getText().toString());
+                n11 = Double.parseDouble(t11.getText().toString());
+                n12 = Double.parseDouble(t12.getText().toString());
+
                 tux = 4 * (n1 + n2 + n3 + n4 + n5);
                 pux = 2 * (n6 + n7 + n8 + n12);
                 p = (tux + pux + n11) / 29;
@@ -429,56 +501,167 @@ public class CalculatorActivity extends Fragment {
 
             } else if (s2.getSelectedItem().toString().equals("Sem 7")) {
 
+                n1 = Double.parseDouble(t1.getText().toString());
+                n2 = Double.parseDouble(t2.getText().toString());
+                n3 = Double.parseDouble(t3.getText().toString());
+                n4 = Double.parseDouble(t4.getText().toString());
+                n5 = Double.parseDouble(t5.getText().toString());
+                n6 = Double.parseDouble(t6.getText().toString());
+                n7 = Double.parseDouble(t7.getText().toString());
+                n8 = Double.parseDouble(t8.getText().toString());
+                n9 = Double.parseDouble(t9.getText().toString());
+
+                n11 = Double.parseDouble(t11.getText().toString());
+
+
+
                 tux = 4 * (n1 + n2 + n3 + n4 + n5);
                 pux = 2 * (n6 + n7 + n8) + 3 * n9;
                 p = (tux + pux + n11) / 30;
 
             } else if (s2.getSelectedItem().toString().equals("Sem 8")) {
+
+                n1 = Double.parseDouble(t1.getText().toString());
+                n2 = Double.parseDouble(t2.getText().toString());
+                n3 = Double.parseDouble(t3.getText().toString());
+
+                n6 = Double.parseDouble(t6.getText().toString());
+                n7 = Double.parseDouble(t7.getText().toString());
+                n8 = Double.parseDouble(t8.getText().toString());
+
+                n11 = Double.parseDouble(t11.getText().toString());
+
+
                 tux = 4 * (n1 + n2 + n3);
                 pux = (2 * n6) + (8 * n7) + (4 * n8);
                 p = (tux + pux + n11) / 27;
             }
 
         } else if (s1.getSelectedItem().toString().equals("IT")) {
-
             if (s2.getSelectedItem().toString().equals("Sem 1")) {
+
+                n1 = Double.parseDouble(t1.getText().toString());
+                n2 = Double.parseDouble(t2.getText().toString());
+                n3 = Double.parseDouble(t3.getText().toString());
+                n4 = Double.parseDouble(t4.getText().toString());
+                n5 = Double.parseDouble(t5.getText().toString());
+                n6 = Double.parseDouble(t6.getText().toString());
+                n7 = Double.parseDouble(t7.getText().toString());
+                n8 = Double.parseDouble(t8.getText().toString());
+                n9 = Double.parseDouble(t9.getText().toString());
+
                 tux = 4 * (n1 + n2 + n3 + n4 + n5);
                 pux = (3 * n6) + 2 * (n7 + n8 + n9);
                 p = (tux + pux) / 29;
 
             } else if (s2.getSelectedItem().toString().equals("Sem 2")) {
 
+                n1 = Double.parseDouble(t1.getText().toString());
+                n2 = Double.parseDouble(t2.getText().toString());
+                n3 = Double.parseDouble(t3.getText().toString());
+                n4 = Double.parseDouble(t4.getText().toString());
+                n5 = Double.parseDouble(t5.getText().toString());
+                n6 = Double.parseDouble(t6.getText().toString());
+                n7 = Double.parseDouble(t7.getText().toString());
+                n8 = Double.parseDouble(t8.getText().toString());
+                n9 = Double.parseDouble(t9.getText().toString());
+
                 tux = 4 * (n1 + n2 + n3 + n4 + n5);
                 pux = 2 * (n6 + n7 + n8 + n9);
                 p = (tux + pux) / 28;
 
             } else if (s2.getSelectedItem().toString().equals("Sem 3")) {
+
+                n1 = Double.parseDouble(t1.getText().toString());
+                n2 = Double.parseDouble(t2.getText().toString());
+                n3 = Double.parseDouble(t3.getText().toString());
+                n4 = Double.parseDouble(t4.getText().toString());
+                n5 = Double.parseDouble(t5.getText().toString());
+                n6 = Double.parseDouble(t6.getText().toString());
+                n7 = Double.parseDouble(t7.getText().toString());
+                n8 = Double.parseDouble(t8.getText().toString());
+                n11 = Double.parseDouble(t11.getText().toString());
+
                 tux = 4 * (n1 + n2 + n3 + n4 + n5);
                 pux = 2 * (n6 + n7 + n8);
                 p = (tux + pux + n11) / 27;
 
             } else if (s2.getSelectedItem().toString().equals("Sem 4")) {
 
+                n1 = Double.parseDouble(t1.getText().toString());
+                n2 = Double.parseDouble(t2.getText().toString());
+                n3 = Double.parseDouble(t3.getText().toString());
+                n4 = Double.parseDouble(t4.getText().toString());
+                n5 = Double.parseDouble(t5.getText().toString());
+                n6 = Double.parseDouble(t6.getText().toString());
+                n7 = Double.parseDouble(t7.getText().toString());
+                n8 = Double.parseDouble(t8.getText().toString());
+                n9 = Double.parseDouble(t9.getText().toString());
+                n10 = Double.parseDouble(t10.getText().toString());
+
                 tux = 4 * (n1 + n2 + n3 + n4 + n5);
                 pux = 2 * (n6 + n7 + n8 + n9 + n10);
                 p = (tux + pux) / 30;
             } else if (s2.getSelectedItem().toString().equals("Sem 5")) {
+
+                n1 = Double.parseDouble(t1.getText().toString());
+                n2 = Double.parseDouble(t2.getText().toString());
+                n3 = Double.parseDouble(t3.getText().toString());
+                n4 = Double.parseDouble(t4.getText().toString());
+                n5 = Double.parseDouble(t5.getText().toString());
+                n6 = Double.parseDouble(t6.getText().toString());
+                n7 = Double.parseDouble(t7.getText().toString());
+                n8 = Double.parseDouble(t8.getText().toString());
+                n11 = Double.parseDouble(t11.getText().toString());
+
+
 
                 tux = 4 * (n1 + n2 + n3 + n4 + n5);
                 pux = 2 * (n6 + n7 + n8);
                 p = (tux + pux + n11) / 27;
             } else if (s2.getSelectedItem().toString().equals("Sem 6")) {
 
+                n1 = Double.parseDouble(t1.getText().toString());
+                n2 = Double.parseDouble(t2.getText().toString());
+                n3 = Double.parseDouble(t3.getText().toString());
+                n4 = Double.parseDouble(t4.getText().toString());
+                n5 = Double.parseDouble(t5.getText().toString());
+                n6 = Double.parseDouble(t6.getText().toString());
+                n7 = Double.parseDouble(t7.getText().toString());
+                n8 = Double.parseDouble(t8.getText().toString());
+                n9 = Double.parseDouble(t9.getText().toString());
+                n11 = Double.parseDouble(t11.getText().toString());
+
                 tux = 4 * (n1 + n2 + n3 + n4 + n5);
                 pux = 2 * (n6 + n7 + n8 + n9);
                 p = (tux + pux + n11) / 29;
             } else if (s2.getSelectedItem().toString().equals("Sem 7")) {
+
+                n1 = Double.parseDouble(t1.getText().toString());
+                n2 = Double.parseDouble(t2.getText().toString());
+                n3 = Double.parseDouble(t3.getText().toString());
+                n4 = Double.parseDouble(t4.getText().toString());
+                n5 = Double.parseDouble(t5.getText().toString());
+                n6 = Double.parseDouble(t6.getText().toString());
+                n7 = Double.parseDouble(t7.getText().toString());
+                n8 = Double.parseDouble(t8.getText().toString());
+                n9 = Double.parseDouble(t9.getText().toString());
+                n11 = Double.parseDouble(t11.getText().toString());
+                n12 = Double.parseDouble(t12.getText().toString());
+
                 tux = 4 * (n1 + n2 + n3 + n4 + n5);
                 pux = 2 * (n6 + n7 + n8 + n9 + n12) + (4 * n11);
                 p = (tux + pux) / 34;
 
 
             } else if (s2.getSelectedItem().toString().equals("Sem 8")) {
+                n1 = Double.parseDouble(t1.getText().toString());
+                n2 = Double.parseDouble(t2.getText().toString());
+                n3 = Double.parseDouble(t3.getText().toString());
+                n6 = Double.parseDouble(t6.getText().toString());
+                n7 = Double.parseDouble(t7.getText().toString());
+                n8 = Double.parseDouble(t8.getText().toString());
+                n11 = Double.parseDouble(t11.getText().toString());
 
                 tux = 4 * (n1 + n2 + n3);
                 pux = (2 * n6) + (8 * n7) + (4 * n8) + (2 * n11);
@@ -489,20 +672,67 @@ public class CalculatorActivity extends Fragment {
         } else if (s1.getSelectedItem().toString().equals("MPAE")) {
 
             if (s2.getSelectedItem().toString().equals("Sem 1")) {
+                n1 = Double.parseDouble(t1.getText().toString());
+                n2 = Double.parseDouble(t2.getText().toString());
+                n3 = Double.parseDouble(t3.getText().toString());
+                n4 = Double.parseDouble(t4.getText().toString());
+                n5 = Double.parseDouble(t5.getText().toString());
+                n6 = Double.parseDouble(t6.getText().toString());
+                n7 = Double.parseDouble(t7.getText().toString());
+                n8 = Double.parseDouble(t8.getText().toString());
+                n9 = Double.parseDouble(t9.getText().toString());
+
                 tux = 4 * (n1 + n2 + n3 + n4 + n5);
                 pux = (3 * n6) + 2 * (n7 + n8 + n9);
                 p = (tux + pux) / 29;
             } else if (s2.getSelectedItem().toString().equals("Sem 2")) {
+
+                n1 = Double.parseDouble(t1.getText().toString());
+                n2 = Double.parseDouble(t2.getText().toString());
+                n3 = Double.parseDouble(t3.getText().toString());
+                n4 = Double.parseDouble(t4.getText().toString());
+                n5 = Double.parseDouble(t5.getText().toString());
+                n6 = Double.parseDouble(t6.getText().toString());
+                n7 = Double.parseDouble(t7.getText().toString());
+                n8 = Double.parseDouble(t8.getText().toString());
+                n9 = Double.parseDouble(t9.getText().toString());
+                n11 = Double.parseDouble(t11.getText().toString());
+
                 tux = 4 * (n1 + n2 + n3 + n4 + n5);
                 pux = 2 * (n6 + n7 + n8 + n9);
                 p = (tux + pux + n11) / 29;
 
             } else if (s2.getSelectedItem().toString().equals("Sem 3")) {
+
+                n1 = Double.parseDouble(t1.getText().toString());
+                n2 = Double.parseDouble(t2.getText().toString());
+                n3 = Double.parseDouble(t3.getText().toString());
+                n4 = Double.parseDouble(t4.getText().toString());
+                n5 = Double.parseDouble(t5.getText().toString());
+                n6 = Double.parseDouble(t6.getText().toString());
+                n7 = Double.parseDouble(t7.getText().toString());
+                n8 = Double.parseDouble(t8.getText().toString());
+                n9 = Double.parseDouble(t9.getText().toString());
+                n11 = Double.parseDouble(t11.getText().toString());
+
                 tux = 4 * (n1 + n2 + n3 + n4 + n5);
                 pux = 2 * (n6 + n7 + n8 + n9);
                 p = (tux + pux + n11) / 29;
 
             } else if (s2.getSelectedItem().toString().equals("Sem 4")) {
+
+                n1 = Double.parseDouble(t1.getText().toString());
+                n2 = Double.parseDouble(t2.getText().toString());
+                n3 = Double.parseDouble(t3.getText().toString());
+                n4 = Double.parseDouble(t4.getText().toString());
+                n5 = Double.parseDouble(t5.getText().toString());
+                n6 = Double.parseDouble(t6.getText().toString());
+                n7 = Double.parseDouble(t7.getText().toString());
+                n8 = Double.parseDouble(t8.getText().toString());
+                n9 = Double.parseDouble(t9.getText().toString());
+                n11 = Double.parseDouble(t11.getText().toString());
+                n12 = Double.parseDouble(t12.getText().toString());
+
 
                 tux = 4 * (n1 + n2 + n3 + n4 + n5);
                 pux = 2 * (n6 + n7 + n8 + n9);
@@ -510,21 +740,68 @@ public class CalculatorActivity extends Fragment {
 
             } else if (s2.getSelectedItem().toString().equals("Sem 5")) {
 
+                n1 = Double.parseDouble(t1.getText().toString());
+                n2 = Double.parseDouble(t2.getText().toString());
+                n3 = Double.parseDouble(t3.getText().toString());
+                n4 = Double.parseDouble(t4.getText().toString());
+                n5 = Double.parseDouble(t5.getText().toString());
+                n6 = Double.parseDouble(t6.getText().toString());
+                n7 = Double.parseDouble(t7.getText().toString());
+                n8 = Double.parseDouble(t8.getText().toString());
+                n9 = Double.parseDouble(t9.getText().toString());
+                n11 = Double.parseDouble(t11.getText().toString());
+
                 tux = 4 * (n1 + n2 + n3 + n4 + n5);
                 pux = 2 * (n6 + n7 + n8 + n9);
                 p = (tux + pux + n11) / 29;
 
             } else if (s2.getSelectedItem().toString().equals("Sem 6")) {
+
+                n1 = Double.parseDouble(t1.getText().toString());
+                n2 = Double.parseDouble(t2.getText().toString());
+                n3 = Double.parseDouble(t3.getText().toString());
+                n4 = Double.parseDouble(t4.getText().toString());
+                n5 = Double.parseDouble(t5.getText().toString());
+                n6 = Double.parseDouble(t6.getText().toString());
+                n7 = Double.parseDouble(t7.getText().toString());
+                n8 = Double.parseDouble(t8.getText().toString());
+                n9 = Double.parseDouble(t9.getText().toString());
+                n11 = Double.parseDouble(t11.getText().toString());
+                n12 = Double.parseDouble(t12.getText().toString());
+
+
                 tux = 4 * (n1 + n2 + n3 + n4 + n5);
                 pux = 2 * (n6 + n7 + n8 + n9);
                 p = (tux + pux + n11 + n12) / 30;
 
             } else if (s2.getSelectedItem().toString().equals("Sem 7")) {
+
+                n1 = Double.parseDouble(t1.getText().toString());
+                n2 = Double.parseDouble(t2.getText().toString());
+                n3 = Double.parseDouble(t3.getText().toString());
+                n4 = Double.parseDouble(t4.getText().toString());
+                n5 = Double.parseDouble(t5.getText().toString());
+                n6 = Double.parseDouble(t6.getText().toString());
+                n7 = Double.parseDouble(t7.getText().toString());
+                n8 = Double.parseDouble(t8.getText().toString());
+                n9 = Double.parseDouble(t9.getText().toString());
+                n11 = Double.parseDouble(t11.getText().toString());
+
                 tux = 4 * (n1 + n2 + n3 + n4 + n5);
                 pux = 2 * (n6 + n7 + n8 + n9);
                 p = (tux + pux + n11) / 29;
 
             } else if (s2.getSelectedItem().toString().equals("Sem 8")) {
+
+                n1 = Double.parseDouble(t1.getText().toString());
+                n2 = Double.parseDouble(t2.getText().toString());
+                n3 = Double.parseDouble(t3.getText().toString());
+                n6 = Double.parseDouble(t6.getText().toString());
+                n7 = Double.parseDouble(t7.getText().toString());
+                n8 = Double.parseDouble(t8.getText().toString());
+                n9 = Double.parseDouble(t9.getText().toString());
+                n11 = Double.parseDouble(t11.getText().toString());
+
                 tux = 4 * (n1 + n2 + n3);
                 pux = 2 * (n6 + n7) + (8 * n8) + (2 * n9);
                 p = (tux + pux + n11) / 27;
@@ -534,24 +811,82 @@ public class CalculatorActivity extends Fragment {
         {
 
             if (s2.getSelectedItem().toString().equals("Sem 1")) {
+
+                n1 = Double.parseDouble(t1.getText().toString());
+                n2 = Double.parseDouble(t2.getText().toString());
+                n3 = Double.parseDouble(t3.getText().toString());
+                n4 = Double.parseDouble(t4.getText().toString());
+                n5 = Double.parseDouble(t5.getText().toString());
+                n6 = Double.parseDouble(t6.getText().toString());
+                n7 = Double.parseDouble(t7.getText().toString());
+                n8 = Double.parseDouble(t8.getText().toString());
+                n9 = Double.parseDouble(t9.getText().toString());
+
                 tux = 4 * (n1 + n2 + n3 + n4 + n5);
                 pux = (3 * n6) + 2 * (n7 + n8 + n9);
                 p = (tux + pux) / 29;
             } else if (s2.getSelectedItem().toString().equals("Sem 2")) {
+
+                n1 = Double.parseDouble(t1.getText().toString());
+                n2 = Double.parseDouble(t2.getText().toString());
+                n3 = Double.parseDouble(t3.getText().toString());
+                n4 = Double.parseDouble(t4.getText().toString());
+                n5 = Double.parseDouble(t5.getText().toString());
+                n6 = Double.parseDouble(t6.getText().toString());
+                n7 = Double.parseDouble(t7.getText().toString());
+                n8 = Double.parseDouble(t8.getText().toString());
+                n9 = Double.parseDouble(t9.getText().toString());
+
                 tux = 4 * (n1 + n2 + n3 + n4 + n5 + n8);
                 pux = 2 * (n6 + n7 + n9);
                 p = (tux + pux) / 30;
             } else if (s2.getSelectedItem().toString().equals("Sem 3")) {
+
+                n1 = Double.parseDouble(t1.getText().toString());
+                n2 = Double.parseDouble(t2.getText().toString());
+                n3 = Double.parseDouble(t3.getText().toString());
+                n4 = Double.parseDouble(t4.getText().toString());
+                n5 = Double.parseDouble(t5.getText().toString());
+                n6 = Double.parseDouble(t6.getText().toString());
+                n7 = Double.parseDouble(t7.getText().toString());
+                n8 = Double.parseDouble(t8.getText().toString());
+                n9 = Double.parseDouble(t9.getText().toString());
+                n11 = Double.parseDouble(t11.getText().toString());
+
                 tux = 4 * (n1 + n2 + n3 + n4 + n5);
                 pux = 2 * (n6 + n7 + n8) + 3 * n9;
                 p = (tux + pux + n11) / 30;
             } else if (s2.getSelectedItem().toString().equals("Sem 4")) {
+
+
+                n1 = Double.parseDouble(t1.getText().toString());
+                n2 = Double.parseDouble(t2.getText().toString());
+                n3 = Double.parseDouble(t3.getText().toString());
+                n4 = Double.parseDouble(t4.getText().toString());
+                n5 = Double.parseDouble(t5.getText().toString());
+                n6 = Double.parseDouble(t6.getText().toString());
+                n7 = Double.parseDouble(t7.getText().toString());
+                n8 = Double.parseDouble(t8.getText().toString());
+                n9 = Double.parseDouble(t9.getText().toString());
+                n10 = Double.parseDouble(t10.getText().toString());
+                n11 = Double.parseDouble(t11.getText().toString());
+                n12 = Double.parseDouble(t12.getText().toString());
 
                 tux = 4 * (n1 + n2 + n3 + n4 + n5);
                 pux = 2 * (n6 + n7 + n8 + n9 + n10);
                 p = (tux + pux + n11 + n12) / 32;
 
             } else if (s2.getSelectedItem().toString().equals("Sem 5")) {
+
+                n1 = Double.parseDouble(t1.getText().toString());
+                n2 = Double.parseDouble(t2.getText().toString());
+                n3 = Double.parseDouble(t3.getText().toString());
+                n4 = Double.parseDouble(t4.getText().toString());
+                n5 = Double.parseDouble(t5.getText().toString());
+                n6 = Double.parseDouble(t6.getText().toString());
+                n7 = Double.parseDouble(t7.getText().toString());
+                n8 = Double.parseDouble(t8.getText().toString());
+                n11 = Double.parseDouble(t11.getText().toString());
 
                 tux = 4 * (n1 + n2 + n3 + n4 + n5);
                 pux = 2 * (n6 + n7 + n8);
@@ -587,27 +922,85 @@ public class CalculatorActivity extends Fragment {
 
 
             if (s2.getSelectedItem().toString().equals("Sem 1")) {
+
+                n1 = Double.parseDouble(t1.getText().toString());
+                n2 = Double.parseDouble(t2.getText().toString());
+                n3 = Double.parseDouble(t3.getText().toString());
+                n4 = Double.parseDouble(t4.getText().toString());
+                n5 = Double.parseDouble(t5.getText().toString());
+                n6 = Double.parseDouble(t6.getText().toString());
+                n7 = Double.parseDouble(t7.getText().toString());
+                n8 = Double.parseDouble(t8.getText().toString());
+                n9 = Double.parseDouble(t9.getText().toString());
+
                 tux = 4 * (n1 + n2 + n3 + n4 + n5);
                 pux = (3 * n6) + 2 * (n7 + n8 + n9);
                 p = (tux + pux) / 29;
             } else if (s2.getSelectedItem().toString().equals("Sem 2")) {
+                n1 = Double.parseDouble(t1.getText().toString());
+                n2 = Double.parseDouble(t2.getText().toString());
+                n3 = Double.parseDouble(t3.getText().toString());
+                n4 = Double.parseDouble(t4.getText().toString());
+                n5 = Double.parseDouble(t5.getText().toString());
+                n6 = Double.parseDouble(t6.getText().toString());
+                n7 = Double.parseDouble(t7.getText().toString());
+                n8 = Double.parseDouble(t8.getText().toString());
+                n9 = Double.parseDouble(t9.getText().toString());
+
                 tux = 4 * (n1 + n2 + n3 + n4 + n5);
                 pux = 2 * (n6 + n7 + n8 + n9);
                 p = (tux + pux) / 28;
 
 
             } else if (s2.getSelectedItem().toString().equals("Sem 3")) {
+
+                n1 = Double.parseDouble(t1.getText().toString());
+                n2 = Double.parseDouble(t2.getText().toString());
+                n3 = Double.parseDouble(t3.getText().toString());
+                n4 = Double.parseDouble(t4.getText().toString());
+                n5 = Double.parseDouble(t5.getText().toString());
+                n6 = Double.parseDouble(t6.getText().toString());
+                n7 = Double.parseDouble(t7.getText().toString());
+                n8 = Double.parseDouble(t8.getText().toString());
+                n9 = Double.parseDouble(t9.getText().toString());
+
+                n11 = Double.parseDouble(t11.getText().toString());
+
                 tux = 4 * (n1 + n2 + n3 + n4 + n5);
                 pux = 2 * (n6 + n7 + n8) + 3 * n9;
                 p = (tux + pux + n11) / 30;
 
 
             } else if (s2.getSelectedItem().toString().equals("Sem 4")) {
+
+                n1 = Double.parseDouble(t1.getText().toString());
+                n2 = Double.parseDouble(t2.getText().toString());
+                n3 = Double.parseDouble(t3.getText().toString());
+                n4 = Double.parseDouble(t4.getText().toString());
+                n5 = Double.parseDouble(t5.getText().toString());
+                n6 = Double.parseDouble(t6.getText().toString());
+                n7 = Double.parseDouble(t7.getText().toString());
+                n8 = Double.parseDouble(t8.getText().toString());
+                n9 = Double.parseDouble(t9.getText().toString());
+                n10 = Double.parseDouble(t10.getText().toString());
+                n11 = Double.parseDouble(t11.getText().toString());
+                n12 = Double.parseDouble(t12.getText().toString());
+
                 tux = 4 * (n1 + n2 + n3 + n4 + n5);
                 pux = 2 * (n6 + n7 + n8 + n9 + n10);
                 p = (tux + pux + n11 + n12) / 32;
 
             } else if (s2.getSelectedItem().toString().equals("Sem 5")) {
+
+                n1 = Double.parseDouble(t1.getText().toString());
+                n2 = Double.parseDouble(t2.getText().toString());
+                n3 = Double.parseDouble(t3.getText().toString());
+                n4 = Double.parseDouble(t4.getText().toString());
+                n5 = Double.parseDouble(t5.getText().toString());
+                n6 = Double.parseDouble(t6.getText().toString());
+                n7 = Double.parseDouble(t7.getText().toString());
+                n8 = Double.parseDouble(t8.getText().toString());
+                n11 = Double.parseDouble(t11.getText().toString());
 
                 tux = 4 * (n1 + n2 + n3 + n4 + n5);
                 pux = 2 * (n6 + n7 + n8);
@@ -615,6 +1008,17 @@ public class CalculatorActivity extends Fragment {
 
 
             } else if (s2.getSelectedItem().toString().equals("Sem 6")) {
+                n1 = Double.parseDouble(t1.getText().toString());
+                n2 = Double.parseDouble(t2.getText().toString());
+                n3 = Double.parseDouble(t3.getText().toString());
+                n4 = Double.parseDouble(t4.getText().toString());
+                n5 = Double.parseDouble(t5.getText().toString());
+                n6 = Double.parseDouble(t6.getText().toString());
+                n7 = Double.parseDouble(t7.getText().toString());
+                n8 = Double.parseDouble(t8.getText().toString());
+                n11 = Double.parseDouble(t11.getText().toString());
+                n12 = Double.parseDouble(t12.getText().toString());
+
                 tux = 4 * (n1 + n2 + n3 + n4 + n5);
                 pux = 2 * (n6 + n7 + n8 + n12);
                 p = (tux + pux + n11) / 29;
@@ -632,11 +1036,32 @@ public class CalculatorActivity extends Fragment {
         {
 
             if (s2.getSelectedItem().toString().equals("Sem 1")) {
+
+                n1 = Double.parseDouble(t1.getText().toString());
+                n2 = Double.parseDouble(t2.getText().toString());
+                n3 = Double.parseDouble(t3.getText().toString());
+                n4 = Double.parseDouble(t4.getText().toString());
+                n5 = Double.parseDouble(t5.getText().toString());
+                n6 = Double.parseDouble(t6.getText().toString());
+                n7 = Double.parseDouble(t7.getText().toString());
+                n8 = Double.parseDouble(t8.getText().toString());
+                n9 = Double.parseDouble(t9.getText().toString());
+
                 tux = 4 * (n1 + n2 + n3 + n4 + n5);
                 pux = (3 * n6) + 2 * (n7 + n8 + n9);
                 p = (tux + pux) / 29;
 
             } else if (s2.getSelectedItem().toString().equals("Sem 2")) {
+                n1 = Double.parseDouble(t1.getText().toString());
+                n2 = Double.parseDouble(t2.getText().toString());
+                n3 = Double.parseDouble(t3.getText().toString());
+                n4 = Double.parseDouble(t4.getText().toString());
+                n5 = Double.parseDouble(t5.getText().toString());
+                n6 = Double.parseDouble(t6.getText().toString());
+                n7 = Double.parseDouble(t7.getText().toString());
+                n8 = Double.parseDouble(t8.getText().toString());
+                n9 = Double.parseDouble(t9.getText().toString());
+
                 tux = 4 * (n1 + n2 + n3 + n4 + n5);
                 pux = 2 * (n6 + n7 + n8 + n9);
                 p = (tux + pux) / 28;
@@ -644,6 +1069,15 @@ public class CalculatorActivity extends Fragment {
 
             } else if (s2.getSelectedItem().toString().equals("Sem 3")) {
 
+                n1 = Double.parseDouble(t1.getText().toString());
+                n2 = Double.parseDouble(t2.getText().toString());
+                n3 = Double.parseDouble(t3.getText().toString());
+                n4 = Double.parseDouble(t4.getText().toString());
+                n5 = Double.parseDouble(t5.getText().toString());
+                n6 = Double.parseDouble(t6.getText().toString());
+                n7 = Double.parseDouble(t7.getText().toString());
+                n8 = Double.parseDouble(t8.getText().toString());
+                n9 = Double.parseDouble(t9.getText().toString());
                 tux = 4 * (n1 + n2 + n3 + n4 + n5);
                 pux = 2 * (n6 + n7 + n8 + n9);
                 p = (tux + pux) / 28;
@@ -651,16 +1085,45 @@ public class CalculatorActivity extends Fragment {
 
             } else if (s2.getSelectedItem().toString().equals("Sem 4")) {
 
+                n1 = Double.parseDouble(t1.getText().toString());
+                n2 = Double.parseDouble(t2.getText().toString());
+                n3 = Double.parseDouble(t3.getText().toString());
+                n4 = Double.parseDouble(t4.getText().toString());
+                n5 = Double.parseDouble(t5.getText().toString());
+                n6 = Double.parseDouble(t6.getText().toString());
+                n7 = Double.parseDouble(t7.getText().toString());
+                n8 = Double.parseDouble(t8.getText().toString());
+                n11 = Double.parseDouble(t11.getText().toString());
+
                 tux = 4 * (n1 + n2 + n3 + n4 + n5);
                 pux = 2 * (n6 + n7 + n8 + n11);
                 p = (tux + pux) / 28;
 
             } else if (s2.getSelectedItem().toString().equals("Sem 5")) {
+                n1 = Double.parseDouble(t1.getText().toString());
+                n2 = Double.parseDouble(t2.getText().toString());
+                n3 = Double.parseDouble(t3.getText().toString());
+                n4 = Double.parseDouble(t4.getText().toString());
+                n5 = Double.parseDouble(t5.getText().toString());
+                n6 = Double.parseDouble(t6.getText().toString());
+                n7 = Double.parseDouble(t7.getText().toString());
+                n8 = Double.parseDouble(t8.getText().toString());
+                n11 = Double.parseDouble(t11.getText().toString());
+
                 tux = 4 * (n1 + n2 + n3 + n4 + n5);
                 pux = 2 * (n6 + n7 + n8 + n11);
                 p = (tux + pux) / 30;
 
             } else if (s2.getSelectedItem().toString().equals("Sem 6")) {
+                n1 = Double.parseDouble(t1.getText().toString());
+                n2 = Double.parseDouble(t2.getText().toString());
+                n3 = Double.parseDouble(t3.getText().toString());
+                n4 = Double.parseDouble(t4.getText().toString());
+                n5 = Double.parseDouble(t5.getText().toString());
+                n6 = Double.parseDouble(t6.getText().toString());
+                n7 = Double.parseDouble(t7.getText().toString());
+                n8 = Double.parseDouble(t8.getText().toString());
+                n9 = Double.parseDouble(t9.getText().toString());
 
                 tux = 4 * (n1 + n2 + n3 + n4 + n5);
                 pux = 2 * (n6 + n7 + n8);
@@ -683,4 +1146,4 @@ public class CalculatorActivity extends Fragment {
     }
 
 
-}
+}   

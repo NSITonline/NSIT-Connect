@@ -15,7 +15,7 @@ public class Val {
             id_crosslinks = "184835371535420",
             id_collegespace = "252117054812001",
             id_bullet = "109582689081817";
-    public final static String id_junoon = "481373328585455",
+    public final static String id_junoon = "158168947539641",
             id_rotaract = "604809706256620",
             id_debsoc = "376394819102290",
             id_ieee = "190501900973620",

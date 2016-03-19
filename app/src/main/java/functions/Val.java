@@ -18,7 +18,7 @@ public class Val {
     public final static String id_junoon = "158168947539641",
             id_rotaract = "604809706256620",
             id_debsoc = "376394819102290",
-            id_ieee = "190501900973620",
+            id_ieee = "278952135548721",
             id_csi = "126976547314225", id_quiz = "185960271431856", id_ashwa = "135639763273290",
             id_enactus = "499766883378107",
             id_aagaz = "1457237581165961";

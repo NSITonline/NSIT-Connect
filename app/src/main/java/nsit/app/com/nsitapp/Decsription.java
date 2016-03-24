@@ -7,8 +7,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -56,11 +54,7 @@ public class Decsription extends AppCompatActivity implements Constant{
         setContentView(R.layout.activity_decsription);
         pb=(ProgressBar)findViewById(R.id.progressBar1);
 
-
-
-
-
-
+        
 
         setTitle("Post");
 

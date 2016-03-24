@@ -21,7 +21,6 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:configChanges="orientation|screenSize"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,15 +33,12 @@
             android:label="@string/title_activity_decsription" />
         <activity
             android:name=".ImageAct"
-            android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_image" />
         <activity
             android:name=".LocationMapView"
-            android:configChanges="orientation|screenSize"
             android:label="LocationMapView" />
         <activity
             android:name=".Locations"
-            android:configChanges="orientation|screenSize"
             android:label="LocationMapView" />
         <activity
             android:name=".ChooseClass"
@@ -127,16 +123,21 @@
         <activity
             android:name=".view.contest_reminder"
             android:label="@string/title_activity_contest_reminder"
-            android:theme="@style/AppTheme2"></activity>
+            android:theme="@style/AppTheme2"/>
         <activity
             android:name=".PlaceMapActivity"
             android:label="Place On Map"
-            android:parentActivityName=".HangoutsTypeDisplay"
             android:theme="@style/AppTheme" />
         <activity android:name=".HangoutsTypeDisplay" />
+
+
         <activity
-            android:name=".Calculator"
-            android:label="@string/title_activity_calculator"></activity>
+            android:name=".sub_load"
+            android:theme="@style/AppTheme" >
+        </activity>
+
+
+
     </application>
 
 </manifest>

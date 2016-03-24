@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -41,7 +42,7 @@ public class HangoutsTypeDisplay extends AppCompatActivity {
     private final static String RADIUS = "&radius=";
     private int radius = 500;
     private final static String TYPE = "&types=";
-    private final static String KEY = "&key=AIzaSyBz-tWFzOVJRWUBuF6TYkd5T2SfPOfV-GE";
+    private final static String KEY = "&key=AIzaSyBLSYsHaIe7euGK_glMbU98ZW9SDNBcEkM";
 
     private String[] HangoutPlaces = {"Restaurants","Cafes","Night Clubs","Shopping Malls","Bowling","Movie","Food","Amusement Parks","Park"};
     private String[] searches = {"restaurant","cafe","night_club","shopping_mall","bowling_alley","movie_theater","food","amusement_park","park"};
@@ -183,6 +184,8 @@ public class HangoutsTypeDisplay extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             progressBar.setVisibility(View.GONE);
+
+            Log.e("got responses",text+" ");
 
             try {
                 JSONObject jplaceobject = new JSONObject(text);

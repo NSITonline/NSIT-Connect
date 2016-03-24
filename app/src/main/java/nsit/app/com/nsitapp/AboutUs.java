@@ -51,8 +51,8 @@ public class AboutUs extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //setHasOptionsMenu(false);
         View rootView = inflater.inflate(R.layout.fragment_aboutus, container, false);
-        ImageView s1, s2, s3, s4, s5, s6, s8, s9, s10, s11, namanFB, namanLinkedIn, prabhakrFB, prabhakrLinkedIn;
-        ImageView gitsidharth, gitswati, gitprabhakr, gitnaman, gitsagar, gitsumit,prabhakrim;
+        ImageView s1, s2, s3, s4, s5, s6, s8, s9, s10, s11,s12,s13, namanFB, namanLinkedIn, prabhakrFB, prabhakrLinkedIn;
+        ImageView gitsidharth, gitswati, gitprabhakr, gitnaman, gitsagar, gitsumit,prabhakrim,gitayush;
 
 
         TextView con;
@@ -65,6 +65,9 @@ public class AboutUs extends Fragment {
         s9 = (ImageView) rootView.findViewById(R.id.linked_sumit);
         s5 = (ImageView) rootView.findViewById(R.id.facebook_chetan);
         s6 = (ImageView) rootView.findViewById(R.id.linked_chetan);
+        s12 = (ImageView) rootView.findViewById(R.id.facebook_ayush);
+        s13 = (ImageView) rootView.findViewById(R.id.linked_ayush);
+
 
         prabhakrFB = (ImageView) rootView.findViewById(R.id.facebook_prabhakr);
         prabhakrLinkedIn = (ImageView) rootView.findViewById(R.id.linked_prabhakr);
@@ -75,6 +78,7 @@ public class AboutUs extends Fragment {
         gitsagar = (ImageView) rootView.findViewById(R.id.github_sagar);
         gitnaman = (ImageView) rootView.findViewById(R.id.github_naman);
         gitsumit = (ImageView) rootView.findViewById(R.id.github_sumit);
+        gitayush = (ImageView) rootView.findViewById(R.id.github_ayush);
 
         prabhakrim = (ImageView) rootView.findViewById(R.id.image_prabhakr);
 
@@ -106,6 +110,7 @@ public class AboutUs extends Fragment {
                 startActivity(intent);
             }
         });
+
         s8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -122,6 +127,27 @@ public class AboutUs extends Fragment {
                 ButtonAnimation btnAnimation = new ButtonAnimation();
                 btnAnimation.animateButton(view, activity);
                 Uri uri = Uri.parse("https://in.linkedin.com/in/sumit-vohra-224484a0");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
+
+        s12.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ButtonAnimation btnAnimation = new ButtonAnimation();
+                btnAnimation.animateButton(view, activity);
+                Uri uri = Uri.parse("https://www.facebook.com/ayush.verma.5203");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
+        s13.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ButtonAnimation btnAnimation = new ButtonAnimation();
+                btnAnimation.animateButton(view, activity);
+                Uri uri = Uri.parse("https://in.linkedin.com/in/ayush-verma-210082114");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
             }
@@ -264,6 +290,9 @@ public class AboutUs extends Fragment {
                 startActivity(intent);
             }
         });
+
+
+
         gitnaman.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -284,6 +313,18 @@ public class AboutUs extends Fragment {
                 startActivity(intent);
             }
         });
+
+        gitayush.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ButtonAnimation btnAnimation = new ButtonAnimation();
+                btnAnimation.animateButton(view, getActivity());
+                Uri uri = Uri.parse("https://github.com/Ayush-V1");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
+
         gitsumit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

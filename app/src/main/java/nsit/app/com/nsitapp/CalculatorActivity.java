@@ -1146,4 +1146,4 @@ public class CalculatorActivity extends Fragment {
     }
 
 
-}   
+}

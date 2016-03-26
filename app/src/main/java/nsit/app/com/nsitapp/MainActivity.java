@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private ListView mDrawerList;
     ListView lv;
     private ActionBarDrawerToggle mDrawerToggle;
-    static final String[] sideitems = new String[]{"Home", "My Feed", "Video", "TimeTable", "Locations",
+    static final String[] sideitems = new String[]{"Home", "My Feed", "Video", "TimeTable", "Hangouts",
             "Calculator", "CodeRadar", "Professors", "Feedback", "About Us"};    //items on navigation drawer
     SwipeRefreshLayout swipeLayout;
     Fragment current;

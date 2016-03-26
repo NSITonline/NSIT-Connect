@@ -34,6 +34,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -118,7 +121,6 @@ public class FinalFeed extends Fragment implements Constant{
         return rootView;
     }
 
-    String text;
 
 
     private class DownloadWebPageTask2 extends AsyncTask<String, Void, String> {
@@ -131,18 +133,27 @@ public class FinalFeed extends Fragment implements Constant{
         @Override
         protected String doInBackground(String... urls) {
 
-            String URL;
-            URL = "https://graph.facebook.com/" + id + "/posts?limit=10&fields=picture,shares,message,object_id," +
+
+            String uri = "https://graph.facebook.com/" + id + "/posts?limit=10&fields=picture,shares,message,object_id," +
                     "link,comments.limit(0).summary(true),to,created_time,likes.limit(0).summary(true)&access_token=" + Val.common_access;
-            HttpClient Client = new DefaultHttpClient();
-            HttpGet httpget = new HttpGet(URL);
-            ResponseHandler<String> responseHandler = new BasicResponseHandler();
+
+            java.net.URL url = null;
+            String readStream = null;
             try {
-                text = Client.execute(httpget, responseHandler);
-            } catch (IOException e) {
-                e.printStackTrace();
+                url = new URL(uri);
+                HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                readStream = Utils.readStream(con.getInputStream());
+            } catch (MalformedURLException e1) {
+                e1.printStackTrace();
+            } catch (IOException e1) {
+                e1.printStackTrace();
             }
-            return null;
+
+            return readStream;
+
+
+
+
         }
 
         @Override
@@ -151,7 +162,7 @@ public class FinalFeed extends Fragment implements Constant{
             JSONObject ob;
             JSONArray arr;
             try {
-                ob = new JSONObject(text);
+                ob = new JSONObject(result);
                 arr = ob.getJSONArray("data");
                 if(ob.has("paging")) {
                     ob = ob.getJSONObject("paging");
@@ -287,21 +298,30 @@ public class FinalFeed extends Fragment implements Constant{
 
         @Override
         protected String doInBackground(String... urls) {
-            String URL;
 
             if(next!=null){
+
+
+
                 String[] x = next.split("&__paging_token=");
                 token=x[1];
-
-                URL = next;
-                HttpClient Client = new DefaultHttpClient();
-                HttpGet httpget = new HttpGet(URL);
-                ResponseHandler<String> responseHandler = new BasicResponseHandler();
+                String uri = next;
+                java.net.URL url = null;
+                String readStream = null;
                 try {
-                    text = Client.execute(httpget, responseHandler);
-                } catch (IOException e) {
-                    e.printStackTrace();
+                    url = new URL(uri);
+                    HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                    readStream = Utils.readStream(con.getInputStream());
+                } catch (MalformedURLException e1) {
+                    e1.printStackTrace();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
                 }
+
+                return readStream;
+
+
+
             }
             return null;
         }
@@ -311,9 +331,9 @@ public class FinalFeed extends Fragment implements Constant{
             int j=0;
             JSONObject ob;
             JSONArray arr;
-            if(text!=null)
+            if(result!=null)
                 try {
-                    ob = new JSONObject(text);
+                    ob = new JSONObject(result);
                     arr = ob.getJSONArray("data");
                     if(ob.has("paging")) {
                         ob = ob.getJSONObject("paging");

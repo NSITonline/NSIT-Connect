@@ -32,7 +32,7 @@ import functions.GPSTracker;
 /**
  * Created by Sidharth Patro on 01-Jul-15.
  */
-public class LocationMapView extends Activity implements Constant{
+public class Hangout_CollegeLocationMapView extends Activity implements Constant{
     com.google.android.gms.maps.MapFragment mapFragment;
     String OriginLat;
     String OriginLong;

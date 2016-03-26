@@ -1,6 +1,5 @@
 package nsit.app.com.nsitapp;
 
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -14,17 +13,17 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
 
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.ResponseHandler;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpUriRequest;
-import org.apache.http.impl.client.BasicResponseHandler;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 import adapters.VideoList_Adapter;
 import functions.ButtonAnimation;
+import functions.Utils;
 
 /**
  * Created by Sidharth Patro on 21-Jun-15.
@@ -143,18 +142,33 @@ public class Video extends Fragment {
 
         protected String doInBackground(String... urls) {
             try {
-                String url = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=UUu445B5LTXzkNr5eft8wNHg&key=AIzaSyBgktirlOODUO9zWD-808D7zycmP7smp-Y";
-                if (navigateTo == "next") {
-                    url = url + "&pageToken=" + nextPageToken;
-                } else if (navigateTo == "prev") {
-                    url = url + "&pageToken=" + prevPageToken;
-                }
-                HttpClient client = new DefaultHttpClient();
-                HttpUriRequest request = new HttpGet(url);
-                ResponseHandler<String> responseHandler = new BasicResponseHandler();
-                String Result = client.execute(request, responseHandler);
 
-                return Result;
+
+
+
+
+                String uri = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=UUu445B5LTXzkNr5eft8wNHg&key=AIzaSyBgktirlOODUO9zWD-808D7zycmP7smp-Y";
+                if (navigateTo == "next") {
+                    uri = uri + "&pageToken=" + nextPageToken;
+                } else if (navigateTo == "prev") {
+                    uri = uri + "&pageToken=" + prevPageToken;
+                }
+                java.net.URL url = null;
+                String readStream = null;
+                try {
+                    url = new URL(uri);
+                    HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                    readStream = Utils.readStream(con.getInputStream());
+                } catch (MalformedURLException e1) {
+                    e1.printStackTrace();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+
+                return readStream;
+
+
+
             } catch (Exception e) {
                 e.printStackTrace();
                 return null;

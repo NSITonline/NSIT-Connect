@@ -32,13 +32,13 @@
             android:name=".Decsription"
             android:label="@string/title_activity_decsription" />
         <activity
-            android:name=".ImageAct"
+            android:name=".Description_FullImage"
             android:label="@string/title_activity_image" />
         <activity
-            android:name=".LocationMapView"
+            android:name=".Hangout_CollegeLocationMapView"
             android:label="LocationMapView" />
         <activity
-            android:name=".Locations"
+            android:name=".Hangout_collegeLocations"
             android:label="LocationMapView" />
         <activity
             android:name=".ChooseClass"

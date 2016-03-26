@@ -1,20 +1,12 @@
 package nsit.app.com.nsitapp;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
-import android.view.animation.AnimationUtils;
-import android.view.animation.DecelerateInterpolator;
-import android.widget.AdapterView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 
 /**
  * Created by AGGARWAL'S on 10/11/2015.
@@ -88,7 +80,7 @@ public class Hangouts extends Fragment implements View.OnClickListener {
             intent.putExtra(CHOICE_TYPE, choice-1);
             startActivity(intent);
         } else {
-            Intent intent = new Intent(getActivity(), Locations.class);
+            Intent intent = new Intent(getActivity(), Hangout_collegeLocations.class);
             startActivity(intent);
         }
 

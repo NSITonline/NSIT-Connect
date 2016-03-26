@@ -56,10 +56,10 @@ public class PlaceMapActivity extends FragmentActivity implements OnMapReadyCall
         time = (TextView)findViewById(R.id.time);
         distance= (TextView)findViewById(R.id.distance);
         progressBar = (ProgressBar)findViewById(R.id.progress_path);
-        Lati = Double.parseDouble(getIntent().getStringExtra(HangoutTypeAdapter.INTENT_LATI));
-        Longi = Double.parseDouble(getIntent().getStringExtra(HangoutTypeAdapter.INTENT_LONG));
-        place_name = getIntent().getStringExtra(HangoutTypeAdapter.INTENT_PLACE_NAME);
-        place_id = getIntent().getStringExtra(HangoutTypeAdapter.INTENT_PLACE_ID);
+        Lati = Double.parseDouble(getIntent().getStringExtra(HangoutsTypeDisplay.HangoutTypeAdapter.INTENT_LATI));
+        Longi = Double.parseDouble(getIntent().getStringExtra(HangoutsTypeDisplay.HangoutTypeAdapter.INTENT_LONG));
+        place_name = getIntent().getStringExtra(HangoutsTypeDisplay.HangoutTypeAdapter.INTENT_PLACE_NAME);
+        place_id = getIntent().getStringExtra(HangoutsTypeDisplay.HangoutTypeAdapter.INTENT_PLACE_ID);
         transition.setText("Current Location To "+place_name);
         MapFragment mapFragment = (MapFragment)getFragmentManager().findFragmentById(R.id.place_map);
         mapFragment.getMapAsync(this);

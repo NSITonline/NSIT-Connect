@@ -1,14 +1,10 @@
 package adapters;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 
@@ -18,7 +14,7 @@ import java.util.ArrayList;
 
 import functions.ButtonAnimation;
 import functions.Constant;
-import nsit.app.com.nsitapp.LocationMapView;
+import nsit.app.com.nsitapp.Hangout_CollegeLocationMapView;
 import nsit.app.com.nsitapp.R;
 
 /**
@@ -84,7 +80,7 @@ public class Locations extends AppCompatActivity implements Constant {
             }
         });
 
-        setTitle("College Locations");
+        setTitle("College Hangout_collegeLocations");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
@@ -113,7 +109,7 @@ public class Locations extends AppCompatActivity implements Constant {
 
 
     public void ShowOnMap(View view, Location LocationItem, Integer GroupItem){
-        Intent myIntent = new Intent(view.getContext(),LocationMapView.class);
+        Intent myIntent = new Intent(view.getContext(),Hangout_CollegeLocationMapView.class);
         myIntent.putExtra(LOCATION_NAME, LocationItem.Name);
         myIntent.putExtra(LOCATION_LAT, String.valueOf(LocationItem.Coord.latitude));
         myIntent.putExtra(LOCATION_LON, String.valueOf(LocationItem.Coord.longitude));
@@ -121,7 +117,7 @@ public class Locations extends AppCompatActivity implements Constant {
         Locations.this.startActivity(myIntent);
     }
 
-    // Locations' data and definitions go below...
+    // Hangout_collegeLocations' data and definitions go below...
     class LocationGroup{
         String GroupHeader;
         String GroupType;

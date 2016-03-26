@@ -12,6 +12,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -25,17 +26,15 @@ import android.widget.TextView;
 import com.nispok.snackbar.Snackbar;
 import com.nispok.snackbar.SnackbarManager;
 
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.ResponseHandler;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.BasicResponseHandler;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.lucasr.twowayview.TwoWayView;
 
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import functions.Constant;
 import functions.Utils;
@@ -114,6 +113,11 @@ public class Calender extends Fragment implements Constant {
             load();
         }
 
+        loadingMore = true;
+
+
+
+        new DownloadWebPageTask2().execute();
 
 
 
@@ -139,9 +143,10 @@ public class Calender extends Fragment implements Constant {
     void load() {
         JSONObject ob;
         JSONArray ar, ar2;
-        if (activity == null)
-            return;
 
+
+        loadingMore = true;
+        Log.e("in here","loaqding" + "load");
 
         SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
         timetable = s.getString(GET_TIME_TABLE, null);
@@ -156,30 +161,36 @@ public class Calender extends Fragment implements Constant {
             for (int j = 0; j < ar.length(); j++) {
                 ar2 = ar.getJSONArray(j);
 
-                String a, b, c, d, e, f, g, h;
+             
+                String value,proffh,subfh,roomfh,profsh,subsh,roomsh;
+
+
                 for (int i = 0; i < ar2.length(); i++) {
-                    a = ar2.getJSONObject(i).getString("subject");
+                    value = ar2.getJSONObject(i).getString("value");
 
-                    if (a.contains("break")) {
-                        b = c = d = e = f = g = h = null;
-                    } else {
-                        b = ar2.getJSONObject(i).getString("type");
 
-                        if (b.contains("theory")) {
-                            g = ar2.getJSONObject(i).getString("professor");
-                            h = ar2.getJSONObject(i).getString("room");
-                            c = d = e = f = null;
-                        } else {
-                            g = null;
-                            h = null;
-                            c = ar2.getJSONObject(i).getString("professorFH");
-                            d = ar2.getJSONObject(i).getString("roomFH");
-                            e = ar2.getJSONObject(i).getString("professorSH");
-                            f = ar2.getJSONObject(i).getString("roomSH");
+                   
+                    //break or lunch break
+                    if (value.contains("break")) {
+                        proffh=subfh=roomfh=profsh=subsh=roomsh=null;
+                    } else if (value.contains("theory")) {           //Theory
 
-                        }
+
+                            proffh = ar2.getJSONObject(i).getString("prof");
+                            roomfh = ar2.getJSONObject(i).getString("room");
+                            subfh = ar2.getJSONObject(i).getString("subject");
+                            profsh=subsh=roomsh=null;
+                        } else {        //Lab
+                        proffh = ar2.getJSONObject(i).getString("prof_FH");
+                        roomfh = ar2.getJSONObject(i).getString("room_FH");
+                        subfh = ar2.getJSONObject(i).optString("subject_FH",ar2.getJSONObject(i).getString("subject") );
+                        profsh = ar2.getJSONObject(i).getString("prof_SH");
+                        roomsh = ar2.getJSONObject(i).getString("room_SH");
+                        subsh = ar2.getJSONObject(i).optString("subject_SH",ar2.getJSONObject(i).getString("subject") );
+
                     }
-                    Subject_struct x = new Subject_struct(a, b, c, d, e, f, g, h);
+
+                    Subject_struct x = new Subject_struct(value,proffh,subfh,roomfh,profsh,subsh,roomsh);
                     switch (i - 1) {
                         case -1:
                             p0.add(x);
@@ -216,6 +227,8 @@ public class Calender extends Fragment implements Constant {
                 }
             }
         } catch (Exception e) {
+
+            Log.e("error",e.getMessage()+"  ");
         }
         days.add("Monday");
         days.add("Tuesday");
@@ -225,6 +238,8 @@ public class Calender extends Fragment implements Constant {
         days.add("Saturday");
         days.add("Sunday");
         adapter2.notifyDataSetChanged();
+        loadingMore = false;
+
     }
 
 
@@ -266,6 +281,8 @@ public class Calender extends Fragment implements Constant {
             progress.setTitle("Loading");
             progress.setMessage("Fetching timetable...");
 
+            Log.e("in here","loaqding" + "preexecute");
+
         }
 
         @Override
@@ -275,34 +292,45 @@ public class Calender extends Fragment implements Constant {
             branch = s.getInt(CALENDAR_BRANCH, 1);
             sec = s.getInt(CALENDAR_SECTION, 1);
             sem = s.getInt(CALENDAR_SEM, 1);
-            String text = null;
 
 
 
 
-            String URL;
-            URL = "http://nsitonline.in/NSITconnect/api/get-data.php?branch=" +
+           // String URL;
+            String uri = "http://nsitonline.in/NSITconnect/tt2/api/get-data.php?branch=" +
                     branch +
                     "&semester=" +
                     sem +
                     "&section=" +
                     sec;
-            HttpClient Client = new DefaultHttpClient();
-            HttpGet httpget = new HttpGet(URL);
-            ResponseHandler<String> responseHandler = new BasicResponseHandler();
+
+            Log.e("calling",uri);
+
+            URL url = null;
+            String readStream = null;
             try {
-                text = Client.execute(httpget, responseHandler);
-            } catch (IOException e) {
-                e.printStackTrace();
+                url = new URL(uri);
+                HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                readStream = Utils.readStream(con.getInputStream());
+            } catch (MalformedURLException e1) {
+                e1.printStackTrace();
+            } catch (IOException e1) {
+                e1.printStackTrace();
             }
 
-            return text;
+
+
+
+            return readStream;
 
         }
 
         @Override
         protected void onPostExecute(String result) {
             timetable = result;
+            Log.e("result",timetable+" ");
+            if(timetable == null)
+                return;
             if (activity == null)
                 return;
 
@@ -330,29 +358,13 @@ public class Calender extends Fragment implements Constant {
 
             } catch (JSONException e) {
                 e.printStackTrace();
+                Log.e("error",e.getMessage()+" ");
             }
 
 
             adapter2 = new CustomList_calendar(activity, days, p0, p1, p2, p3, p4, p5, p6, p7, p8, p9);
             load();
             lvTest.setAdapter(adapter2);
-            lvTest.setItemMargin(10);
-            lvTest.setOnScrollListener(new TwoWayView.OnScrollListener() {
-                @Override
-                public void onScrollStateChanged(TwoWayView view, int scrollState) {
-                }
-
-                @Override
-                public void onScroll(TwoWayView view, int firstVisibleItem,
-                                     int visibleItemCount, int totalItemCount) {
-                    int lastInScreen = firstVisibleItem + visibleItemCount;
-                    if ((lastInScreen == totalItemCount) && !(loadingMore)) {
-                        load();
-                    }
-                    adapter2.notifyDataSetChanged();
-                }
-            });
-
             progress.dismiss();
 
         }
@@ -372,7 +384,6 @@ public class Calender extends Fragment implements Constant {
                 if (Utils.isNetworkAvailable(activity))
                     new DownloadWebPageTask2().execute();
                 else {
-                    if (activity != null)
                     SnackbarManager.show(
                             Snackbar.with(activity.getApplicationContext())
                                     .text("Check Your Internet Connection")
@@ -454,7 +465,7 @@ public class Calender extends Fragment implements Constant {
                 view.setTag(holder);
             } else
                 holder = (ViewHolder) view.getTag();
-//mon0 tue1 wed2 thu3 fri4 sat5 sun6
+            //mon0 tue1 wed2 thu3 fri4 sat5 sun6
 
             holder.dat.setText(day.get(position));
             if (position < p1.size()) {
@@ -488,14 +499,14 @@ public class Calender extends Fragment implements Constant {
             t.setText(" ");
             t.setTextSize(TypedValue.COMPLEX_UNIT_SP, 13);
 
-            if (!p.subject.contains("break"))
-                if (p.type.contains("theory"))
-                    t.setText(p.subject + "\n" + p.room);
+            if (!p.value.contains("break"))
+                if (p.value.contains("theory"))
+                    t.setText(p.subfh + "\n" + p.roomfh);
                 else
-                    t.setText(p.subject + "\n" + p.roomfh + "," + p.roomsh);
+                    t.setText(p.subfh + "," + p.subsh + "\n" + p.roomfh + "," + p.roomsh);
 
             else {
-                if (p.subject.contains("lunch")) {
+                if (p.value.contains("lunch")) {
                     t.setTypeface(custom_font);
                     t.setTextSize(TypedValue.COMPLEX_UNIT_SP, 40);
                     t.setText("BOH");

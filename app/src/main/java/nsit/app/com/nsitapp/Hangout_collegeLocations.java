@@ -89,7 +89,7 @@ public class Hangout_collegeLocations extends AppCompatActivity implements Const
             }
         });
 
-        setTitle("College Hangout_collegeLocations");
+        setTitle("College Hangouts");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 

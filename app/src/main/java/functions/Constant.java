@@ -48,7 +48,5 @@ public interface Constant {
 
 
 
-    public static String CALCULATOR_BRANCH = "calculator_branch";
-    public static String CALCULATOR_SEM = "calculator_sem";
 
 }

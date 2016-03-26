@@ -4,10 +4,12 @@ import android.app.Activity;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -35,16 +37,20 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import functions.ButtonAnimation;
+import functions.Constant;
 import functions.DBhelp;
 import functions.TableEntry;
+import functions.Val;
 
 
-public class SubjectsShow extends AppCompatActivity {
+public class SubjectsShow extends AppCompatActivity implements Constant {
     ArrayList<String> list1 = new ArrayList<String>();
     ArrayList<String> list2 = new ArrayList<String>();
     Button b;
     ListView lv;
     CustomList_subjects a;
+    int branch,sem,sec;
+    SharedPreferences s;
 
     @Override
     protected void onResume() {
@@ -59,21 +65,81 @@ public class SubjectsShow extends AppCompatActivity {
         lv = (ListView) findViewById(R.id.list);
 
         setTitle("Attendance");
-        JSONObject ob;
-        JSONArray ar;
 
-        if (Calender.timetable != null)
+
+
+
+        s = PreferenceManager.getDefaultSharedPreferences(this);
+        branch = s.getInt(CALENDAR_BRANCH, 1);
+        sec = s.getInt(CALENDAR_SECTION, 1);
+        sem = s.getInt(CALENDAR_SEM, 1);
+
+
+
+
+
+
+
+        JSONObject ob;
+        JSONArray ar,ar2;
+
             try {
-                ob = new JSONObject(Calender.timetable);
-                ar = ob.getJSONArray("subjects");
-                for (int i = 0; i < ar.length(); i++) {
-                    list1.add(ar.getJSONObject(i).getString("code"));
-                    list2.add(ar.getJSONObject(i).getString("title"));
+
+                ob = new JSONObject(Val.subjects);
+
+                Log.e("p1",ob+" ");
+                switch (branch-1) {
+
+                    case 0 : ar = ob.getJSONArray("coe"); break;
+                    case 1 : ar = ob.getJSONArray("it");break;
+                    case 2 : ar = ob.getJSONArray("ece");break;
+                    case 3 : ar = ob.getJSONArray("ice");break;
+                    case 4 : ar = ob.getJSONArray("mpae");break;
+                    default:  ar = ob.getJSONArray("bt");break;
+
+
+                }
+
+                Log.e("p2",ar+" ");
+                sem--;
+
+                if(sem < ar.length())
+                ob = ar.getJSONObject(sem);
+                else
+                ob = ar.getJSONObject(ar.length()-1);
+
+
+                Log.e("p3",sem + " "+ob);
+                ob = ob.getJSONObject("subjects");
+
+                Log.e("p4",ob+" ");
+
+                if(ob.has("theory")) {
+                    ar2 = ob.getJSONArray("theory");
+                    Log.e("p5",ar2+" ");
+                    for (int i = 0; i < ar2.length(); i++) {
+                        list1.add(ar2.getJSONObject(i).getString("code"));
+                        list2.add(ar2.getJSONObject(i).getString("name"));
+                    }
+                }
+                if(ob.has("practical")) {
+                    ar2 = ob.getJSONArray("practical");
+
+                    Log.e("p6",ar2+" ");
+                    for (int i = 0; i < ar2.length(); i++) {
+                        list1.add(ar2.getJSONObject(i).getString("code"));
+                        list2.add(ar2.getJSONObject(i).getString("name"));
+                    }
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
                 Log.e("error", e.getMessage() + " ");
             }
+
+
+
+
+
 
         a = new CustomList_subjects(this, list1, list2);
         lv.setAdapter(a);

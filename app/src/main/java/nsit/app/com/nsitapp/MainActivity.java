@@ -1,12 +1,18 @@
 package nsit.app.com.nsitapp;
 
 import android.app.Activity;
+import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.database.Cursor;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -14,6 +20,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -26,6 +33,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import nsit.app.com.nsitapp.PushNotification.MyAlarmReceiver;
+import nsit.app.com.nsitapp.PushNotification.NotificationAdapter;
 import nsit.app.com.nsitapp.view.contest_reminder;
 
 
@@ -34,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     private ListView mDrawerList;
     ListView lv;
     private ActionBarDrawerToggle mDrawerToggle;
-    static final String[] sideitems = new String[]{"Home", "My Feed", "Video", "TimeTable", "Hangouts",
+    static final String[] sideitems = new String[]{"Home", "My Feed", "Video", "TimeTable", "Locations",
             "Calculator", "CodeRadar", "Professors", "Feedback", "About Us"};    //items on navigation drawer
     SwipeRefreshLayout swipeLayout;
     Fragment current;
@@ -58,6 +69,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setProgressBarIndeterminateVisibility(false);
+
+        scheduleAlarm();
 
 
         if(savedInstanceState == null) {
@@ -221,6 +234,22 @@ public class MainActivity extends AppCompatActivity {
         }
         current = f;
         ft.commit();
+    }
+
+    public void scheduleAlarm() {
+
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean status = sp.getBoolean("notification_status",true);
+        if (status){
+            int timefactor = Integer.parseInt(sp.getString("notify_sync_settings","5"));
+            Intent intent = new Intent(getApplicationContext(), MyAlarmReceiver.class);
+            final PendingIntent pIntent = PendingIntent.getBroadcast(this, MyAlarmReceiver.REQUEST_CODE,
+                    intent, PendingIntent.FLAG_UPDATE_CURRENT);
+            long firstMillis = System.currentTimeMillis();
+            AlarmManager alarm = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+            alarm.setInexactRepeating(AlarmManager.RTC_WAKEUP, firstMillis,
+                    timefactor*60000L, pIntent);
+        }
     }
 
 

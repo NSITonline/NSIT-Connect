@@ -369,20 +369,6 @@ public class CalculatorActivity extends Fragment {
         EditText t12 = (EditText) a.findViewById(R.id.twelve);
 
 
-       /* n1 = Double.parseDouble(t1.getText().toString());
-        n2 = Double.parseDouble(t2.getText().toString());
-        n3 = Double.parseDouble(t3.getText().toString());
-        n4 = Double.parseDouble(t4.getText().toString());
-        n5 = Double.parseDouble(t5.getText().toString());
-        n6 = Double.parseDouble(t6.getText().toString());
-        n7 = Double.parseDouble(t7.getText().toString());
-        n8 = Double.parseDouble(t8.getText().toString());
-        n9 = Double.parseDouble(t9.getText().toString());
-        n10 = Double.parseDouble(t10.getText().toString());
-        n11 = Double.parseDouble(t11.getText().toString());
-        n12 = Double.parseDouble(t12.getText().toString());
-*/
-
         double tux, pux, p = 0.0;
 
 

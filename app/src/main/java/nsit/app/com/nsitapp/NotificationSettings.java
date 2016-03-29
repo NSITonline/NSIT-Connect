@@ -1,5 +1,6 @@
 package nsit.app.com.nsitapp;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -31,14 +32,17 @@ public class NotificationSettings extends AppCompatActivity {
 
     }
 
+    @SuppressLint("ValidFragment")
     public static class PrefSync extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener {
 
         private Context mContext;
 
+        @SuppressLint("ValidFragment")
         public PrefSync(Context context){
             super();
             mContext = context;
         }
+
 
         @Override
         public void onCreate(Bundle savedInstanceState) {

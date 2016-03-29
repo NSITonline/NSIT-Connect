@@ -19,7 +19,7 @@ android {
         applicationId "nsit.app.com.nsitapp"
         minSdkVersion 12
         targetSdkVersion 22
-        versionCode 20
+        versionCode 21
         versionName "2.3"
     }
   

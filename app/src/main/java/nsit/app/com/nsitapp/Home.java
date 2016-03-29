@@ -6,6 +6,7 @@ package nsit.app.com.nsitapp;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
@@ -23,13 +25,15 @@ import android.widget.ProgressBar;
 import com.nispok.snackbar.Snackbar;
 import com.nispok.snackbar.SnackbarManager;
 
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.ResponseHandler;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.BasicResponseHandler;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -90,6 +94,7 @@ public class Home extends Fragment {
         pb = (ProgressBar) rootView.findViewById(R.id.progressBar1);
         adapter = new CustomList(activity, list6, list, list2, list7, list1, list8);
         footerView = ((LayoutInflater) activity.getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.footer_layout, null, false);
+
 
         lv.setAdapter(adapter);
         if (Utils.isNetworkAvailable(activity)) {
@@ -155,24 +160,22 @@ public class Home extends Fragment {
         @Override
         protected String doInBackground(String... urls) {
 
+            String URL;
 
-            String uri = next;
-            java.net.URL url ;
-            String readStream = null;
-            try {
-                url = new URL(uri);
-                HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                readStream = Utils.readStream(con.getInputStream());
-            } catch (MalformedURLException e1) {
-                e1.printStackTrace();
-            } catch (IOException e1) {
-                e1.printStackTrace();
+            URL = next;
+            String text = "";
+            if (URL != null) {
+                HttpClient Client = new DefaultHttpClient();
+                HttpGet httpget = new HttpGet(URL);
+                ResponseHandler<String> responseHandler = new BasicResponseHandler();
+                try {
+                    text = Client.execute(httpget, responseHandler);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
 
-            return readStream;
-
-
-
+            return text;
         }
 
         @Override
@@ -256,12 +259,22 @@ public class Home extends Fragment {
     }
 
 
+
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        menu.clear();
+        inflater.inflate(R.menu.menu_home_notification,menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.notification_settings){
+            Intent intent = new Intent(getActivity(), NotificationSettings.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     public void show_off() {
 

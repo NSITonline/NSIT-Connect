@@ -56,6 +56,10 @@
             android:name=".ProfList"
             android:label="@string/title_activity_subject_remove" />
 
+        <activity android:name=".NotificationSettings"
+                  android:label="Notifications"
+                  android:parentActivityName=".MainActivity"/>
+
         <!-- For google maps -->
         <meta-data
             android:name="com.google.android.gms.version"
@@ -92,6 +96,17 @@
                 android:name="android.content.SyncAdapter"
                 android:resource="@xml/syncadapter" />
         </service>
+        <receiver
+            android:name=".PushNotification.MyAlarmReceiver"
+            android:process=":remote" >
+            <intent-filter>
+                <action android:name="nsit.app.com.nsitapp.PushNotification.MyAlarmReceiver" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".PushNotification.MyNotifiactionService"
+            android:exported="false" />
 
         <receiver android:name=".BootReceiver">
             <intent-filter>

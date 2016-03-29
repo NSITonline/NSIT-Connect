@@ -12,8 +12,9 @@
         android:layout_height="50dp"
         android:id="@+id/spins"
         android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignBottom="@+id/spinb"
+        android:layout_alignRight="@+id/textView15"
+        android:layout_alignEnd="@+id/textView15" />
 
     <TextView
         android:layout_width="80dp"
@@ -218,12 +219,12 @@
     <Button
         style="?android:attr/buttonStyleSmall"
         android:layout_width="125dp"
-        android:layout_height="50dp"
+        android:layout_height="75dp"
         android:text="Calculate"
         android:background="@color/colorPrimary"
         android:id="@+id/buttC"
         android:onClick="onCalculate"
-        android:textSize="15dp"
+        android:textSize="18dp"
         android:textColor="#ffffff"
         android:layout_above="@+id/per"
         android:layout_alignRight="@+id/textView11"
@@ -241,8 +242,7 @@
         android:layout_alignBottom="@+id/textView11"
         android:textColor="#01b29b"
         android:layout_alignLeft="@+id/five"
-        android:layout_alignStart="@+id/five"
-        android:layout_marginTop="10dp" />
+        android:layout_alignStart="@+id/five" />
 
     <Spinner
         android:layout_width="160dp"
@@ -407,17 +407,18 @@
         android:text="Choose options appropriately"
         android:id="@+id/textView15"
         android:layout_below="@+id/spinb"
+        android:layout_toLeftOf="@+id/textView14"
+        android:layout_above="@+id/six"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textSize="18dp"
+        android:textSize="22dp"
         android:gravity="top|left"
-        android:textColor="#ca969191"
-        android:layout_centerVertical="true" />
+        android:textColor="#ca969191" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
         android:layout_width="125dp"
-        android:layout_height="50dp"
+        android:layout_height="75dp"
         android:background="@color/colorPrimary"
         android:text="View Subjects"
         android:id="@+id/button"
@@ -425,7 +426,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:textColor="#ffffff"
-        android:textSize="15dp"
+        android:textSize="18dp"
         android:layout_alignRight="@+id/twelve"
         android:layout_alignEnd="@+id/twelve" />
 

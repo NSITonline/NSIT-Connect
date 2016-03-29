@@ -1,5 +1,6 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<functions.ZoomableRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/lay"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -27,7 +28,8 @@
             <FrameLayout
                 android:id="@+id/imag_cont"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:background="@drawable/shadow_1"
                 android:orientation="vertical">
 
@@ -39,11 +41,10 @@
 
                     <ImageView
                         android:id="@+id/image"
-                        android:src="@drawable/aagaz"
-                        android:gravity="center"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center" />
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="5dp" />
                 </LinearLayout>
 
                 <ImageView
@@ -126,4 +127,4 @@
 
         </LinearLayout>
     </LinearLayout>
-</RelativeLayout>
+</functions.ZoomableRelativeLayout>

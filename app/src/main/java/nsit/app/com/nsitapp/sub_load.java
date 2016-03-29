@@ -2,12 +2,12 @@ package nsit.app.com.nsitapp;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class sub_load extends AppCompatActivity {
 
@@ -60,7 +60,6 @@ public class sub_load extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 String val = s3.getSelectedItem().toString();
-                Toast.makeText(getApplicationContext(), "Branch selected is " + val, Toast.LENGTH_SHORT).show();
 
             }
 
@@ -79,7 +78,6 @@ public class sub_load extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 String val = s4.getSelectedItem().toString();
-                Toast.makeText(getApplicationContext(), "Semester selected is " + val, Toast.LENGTH_SHORT).show();
 
 
                 if (s3.getSelectedItem().toString().equals("Branch")) {
@@ -1480,7 +1478,16 @@ public class sub_load extends AppCompatActivity {
             }
         });
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+
 
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home)
+            finish();
+        return super.onOptionsItemSelected(item);
+    }
 }

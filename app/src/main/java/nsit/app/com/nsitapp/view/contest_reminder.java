@@ -60,7 +60,8 @@ public class contest_reminder extends FragmentActivity implements ContestListFra
             getActionBar().setElevation(0);
         }*/
 
-        SyncAdapter.initializeSyncAdapter(this);
+        try {SyncAdapter.initializeSyncAdapter(this);} 
+catch (Exception e) {;} 
 
         Log.v("we will win 6","we");
 

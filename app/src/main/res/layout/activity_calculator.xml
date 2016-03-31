@@ -37,7 +37,7 @@
         android:layout_toEndOf="@+id/tv1"
         android:layout_toRightOf="@+id/tv1"
         android:gravity="bottom|center"
-        android:phoneNumber="true"
+        android:inputType="number"
         android:textSize="15dp" />
 
     <EditText
@@ -50,7 +50,7 @@
         android:layout_alignStart="@+id/one"
         android:layout_below="@+id/one"
         android:gravity="bottom|center"
-        android:phoneNumber="true"
+        android:inputType="number"
         android:textSize="15dp" />
 
     <TextView
@@ -78,7 +78,7 @@
         android:layout_alignStart="@+id/two"
         android:layout_below="@+id/two"
         android:gravity="bottom|center"
-        android:phoneNumber="true"
+        android:inputType="number"
         android:textSize="15dp" />
 
     <TextView
@@ -106,7 +106,7 @@
         android:layout_alignStart="@+id/three"
         android:layout_below="@+id/three"
         android:gravity="bottom|center"
-        android:phoneNumber="true"
+        android:inputType="number"
         android:textSize="15dp" />
 
     <TextView
@@ -134,7 +134,7 @@
         android:layout_alignStart="@+id/four"
         android:layout_below="@+id/four"
         android:gravity="bottom|center"
-        android:phoneNumber="true"
+        android:inputType="number"
         android:textSize="15dp" />
 
     <TextView
@@ -160,7 +160,7 @@
         android:layout_alignEnd="@+id/spins"
         android:layout_alignRight="@+id/spins"
         android:gravity="bottom|center"
-        android:phoneNumber="true"
+        android:inputType="number"
         android:textSize="15dp" />
 
     <EditText
@@ -173,7 +173,7 @@
         android:layout_alignStart="@+id/six"
         android:layout_below="@+id/six"
         android:gravity="bottom|center"
-        android:phoneNumber="true"
+        android:inputType="number"
         android:textSize="15dp" />
 
     <EditText
@@ -186,7 +186,7 @@
         android:layout_alignStart="@+id/seven"
         android:layout_below="@+id/seven"
         android:gravity="bottom|center"
-        android:phoneNumber="true"
+        android:inputType="number"
         android:textSize="15dp" />
 
     <EditText
@@ -199,7 +199,7 @@
         android:layout_alignStart="@+id/eight"
         android:layout_below="@+id/eight"
         android:gravity="bottom|center"
-        android:phoneNumber="true"
+        android:inputType="number"
         android:textSize="15dp" />
 
     <EditText
@@ -212,7 +212,7 @@
         android:layout_alignStart="@+id/nine"
         android:layout_below="@+id/nine"
         android:gravity="bottom|center"
-        android:phoneNumber="true"
+        android:inputType="number"
         android:textSize="15dp" />
 
     <Button
@@ -346,7 +346,7 @@
         android:layout_alignStart="@+id/per"
         android:layout_below="@+id/five"
         android:gravity="bottom|center"
-        android:phoneNumber="true"
+        android:inputType="number"
         android:textSize="15dp" />
 
     <EditText
@@ -359,7 +359,7 @@
         android:layout_toEndOf="@+id/tv10"
         android:layout_toRightOf="@+id/tv10"
         android:gravity="bottom|center"
-        android:phoneNumber="true"
+        android:inputType="number"
         android:textSize="15dp" />
 
     <TextView

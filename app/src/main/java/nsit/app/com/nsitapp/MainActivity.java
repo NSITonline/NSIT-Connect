@@ -9,7 +9,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.database.Cursor;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -20,7 +19,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -33,11 +31,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import nsit.app.com.nsitapp.PushNotification.MyAlarmReceiver;
-import nsit.app.com.nsitapp.PushNotification.NotificationAdapter;
-import nsit.app.com.nsitapp.view.contest_reminder;
+import nsit.app.com.nsitapp.view.CodeRadar_MainActivity;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -210,7 +206,7 @@ public class MainActivity extends AppCompatActivity {
                 getSupportActionBar().setTitle("Calculator");
                 break;
             case 7:
-                i = new Intent(this, contest_reminder.class);
+                i = new Intent(this, CodeRadar_MainActivity.class);
                 startActivity(i);
                 break;
             case 8:

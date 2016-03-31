@@ -208,8 +208,8 @@ public class ContestFragment extends Fragment {
                     .setPositiveButton(R.string.filter_dialog_ok, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             saveContestFlagToSharedPreference();
-                            if (getActivity() instanceof contest_reminder) {
-                                ((contest_reminder) getActivity()).onFilterChanged();
+                            if (getActivity() instanceof CodeRadar_MainActivity) {
+                                ((CodeRadar_MainActivity) getActivity()).onFilterChanged();
                             }
                         }
                     })

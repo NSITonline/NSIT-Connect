@@ -108,35 +108,20 @@
             android:name=".PushNotification.MyNotifiactionService"
             android:exported="false" />
 
-        <receiver android:name=".BootReceiver">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-            </intent-filter>
-        </receiver>
-
-        <service android:name=".NotificationService" />
 
         <activity
             android:name=".view.ContestDetailActivity"
             android:label="@string/title_activity_contest_detail"
-            android:parentActivityName=".view.contest_reminder"
+            android:parentActivityName=".view.CodeRadar_MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme2">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="nsit.app.com.nsitapp.view.contest_reminder" />
+                android:value=".view.CodeRadar_MainActivity" />
         </activity>
+
         <activity
-            android:name=".view.SettingsActivity"
-            android:label="@string/title_activity_settings"
-            android:parentActivityName=".view.contest_reminder"
-            android:screenOrientation="portrait">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="nsit.app.com.nsitapp.view.contest_reminder" />
-        </activity>
-        <activity
-            android:name=".view.contest_reminder"
+            android:name=".view.CodeRadar_MainActivity"
             android:label="@string/title_activity_contest_reminder"
             android:theme="@style/AppTheme2"/>
         <activity

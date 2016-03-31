@@ -9,12 +9,9 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatActivity;
 import android.transition.Fade;
 import android.transition.Slide;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.Window;
 import android.widget.ImageView;
 
@@ -22,7 +19,7 @@ import nsit.app.com.nsitapp.R;
 import nsit.app.com.nsitapp.sync.SyncAdapter;
 
 
-public class contest_reminder extends FragmentActivity implements ContestListFragment.Callback{
+public class CodeRadar_MainActivity extends FragmentActivity implements ContestListFragment.Callback{
 
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)

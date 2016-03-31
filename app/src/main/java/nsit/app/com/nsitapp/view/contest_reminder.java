@@ -60,8 +60,8 @@ public class contest_reminder extends FragmentActivity implements ContestListFra
             getActionBar().setElevation(0);
         }*/
 
-        try {SyncAdapter.initializeSyncAdapter(this);} 
-catch (Exception e) {;} 
+        try {SyncAdapter.initializeSyncAdapter(this);}
+        catch (Exception e) {;}
 
         Log.v("we will win 6","we");
 
@@ -80,7 +80,7 @@ catch (Exception e) {;}
         return true;
     }*/
 
-    @Override
+   /* @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
@@ -91,7 +91,7 @@ catch (Exception e) {;}
         }
 
         return false;
-    }
+    }*/
 
     @Override
     public void onItemSelected(Uri contestUri,ImageView logo) {

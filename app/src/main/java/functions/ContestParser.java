@@ -1,4 +1,4 @@
-package nsit.app.com.nsitapp.utility;
+package functions;
 
 import android.util.Log;
 

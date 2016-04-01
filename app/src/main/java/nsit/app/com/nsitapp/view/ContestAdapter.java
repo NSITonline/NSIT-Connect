@@ -11,10 +11,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import nsit.app.com.nsitapp.model.OnlineJudge;
-import nsit.app.com.nsitapp.utility.TimeUtil;
 
 import nsit.app.com.nsitapp.R;
 
+import static functions.Utils.getShortReadableDurationFromMillis;
 
 
 /**
@@ -50,7 +50,7 @@ public class ContestAdapter extends CursorAdapter {
 
         Long startTime = cursor.getLong(ContestListFragment.COL_CONTEST_START_TIME);
         Long timeLeft = startTime - System.currentTimeMillis();
-        viewHolder.mTimeText.setText(TimeUtil.getShortReadableDurationFromMillis(timeLeft));
+        viewHolder.mTimeText.setText(getShortReadableDurationFromMillis(timeLeft));
 
         int themeColorResId = OnlineJudge.getColor(source);
         int themeColor = context.getResources().getColor(themeColorResId);

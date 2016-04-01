@@ -28,11 +28,11 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import functions.Constant;
 import functions.TouchImageView;
 import functions.Utils;
-import functions.Val;
 
-public class Description_FullImage extends AppCompatActivity {
+public class Description_FullImage extends AppCompatActivity implements Constant {
     String img,obid,imglink;
     TouchImageView iv;
     @Override
@@ -152,7 +152,7 @@ public class Description_FullImage extends AppCompatActivity {
 
 
 
-            String uri = "https://graph.facebook.com/"+obid+"?fields=images&access_token="+ Val.common_access;
+            String uri = "https://graph.facebook.com/"+obid+"?fields=images&access_token="+ common_access;
             java.net.URL url = null;
             String readStream = null;
             try {

@@ -25,28 +25,26 @@ import android.widget.ProgressBar;
 import com.nispok.snackbar.Snackbar;
 import com.nispok.snackbar.SnackbarManager;
 
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.ResponseHandler;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.BasicResponseHandler;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 import adapters.CustomList;
+import functions.Constant;
 import functions.Utils;
-import functions.Val;
 import functions.dbAdapter;
 
 
-public class Home extends Fragment {
+public class Home extends Fragment implements Constant {
 
     boolean loadingMore = false;
-    dbAdapter db ;
+    dbAdapter db;
 
     List<String> list = new ArrayList<String>();
     List<String> list1 = new ArrayList<String>();
@@ -58,9 +56,9 @@ public class Home extends Fragment {
     int first = 1;
     SwipeRefreshLayout swipeLayout;
     ProgressBar pb;
-    String next = "https://graph.facebook.com/" + Val.id_nsitonline + "/posts?limit=20&fields=id,picture,from,shares,message," +
-            "object_id,link,created_time,comments.limit(0).summary(true),likes.limit(0).summary(true)"+
-            "&access_token=" + Val.common_access;
+    String next = "https://graph.facebook.com/" + id_nsitonline + "/posts?limit=20&fields=id,picture,from,shares,message," +
+            "object_id,link,created_time,comments.limit(0).summary(true),likes.limit(0).summary(true)" +
+            "&access_token=" + common_access;
     CustomList adapter;
     View footerView;
     int listCount;
@@ -112,13 +110,13 @@ public class Home extends Fragment {
                     if ((lastInScreen == totalItemCount) && !(loadingMore) && first != 1) {
                         loadingMore = true;
                         lv.addFooterView(footerView);
-                        new DownloadWebPageTask3(Val.id_nsitonline).execute();
+                        new DownloadWebPageTask3(id_nsitonline).execute();
                         listCount = lastInScreen;
                     }
 
                 }
             });
-            new DownloadWebPageTask3(Val.id_nsitonline).execute();
+            new DownloadWebPageTask3(id_nsitonline).execute();
         } else {
             show_off();
             SnackbarManager.show(
@@ -131,7 +129,7 @@ public class Home extends Fragment {
         swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                new DownloadWebPageTask3(Val.id_nsitonline).execute();
+                new DownloadWebPageTask3(id_nsitonline).execute();
             }
         });
         swipeLayout.setColorScheme(android.R.color.holo_blue_bright,
@@ -142,7 +140,6 @@ public class Home extends Fragment {
 
         return rootView;
     }
-
 
 
     private class DownloadWebPageTask3 extends AsyncTask<String, Void, String> {
@@ -160,22 +157,23 @@ public class Home extends Fragment {
         @Override
         protected String doInBackground(String... urls) {
 
-            String URL;
 
-            URL = next;
-            String text = "";
-            if (URL != null) {
-                HttpClient Client = new DefaultHttpClient();
-                HttpGet httpget = new HttpGet(URL);
-                ResponseHandler<String> responseHandler = new BasicResponseHandler();
-                try {
-                    text = Client.execute(httpget, responseHandler);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+            String uri = next;
+            java.net.URL url = null;
+            String readStream = null;
+            try {
+                url = new URL(uri);
+                HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                readStream = Utils.readStream(con.getInputStream());
+            } catch (MalformedURLException e1) {
+                e1.printStackTrace();
+            } catch (IOException e1) {
+                e1.printStackTrace();
             }
 
-            return text;
+            return readStream;
+
+
         }
 
         @Override
@@ -220,7 +218,6 @@ public class Home extends Fragment {
                         if (arr.getJSONObject(i).has("likes")) {
                             String s = arr.getJSONObject(i).getString("likes");
                             JSONObject o = new JSONObject(s);
-                            JSONArray a2 = o.getJSONArray("data");
                             String x = o.getString("summary");
                             JSONObject o2 = new JSONObject(x);
 
@@ -234,7 +231,7 @@ public class Home extends Fragment {
                             list8.add(null);
 
 
-                        db.insertRow(list.get(i), list1.get(i), list2.get(i), list6.get(i), list7.get(i), list8.get(i),null, Val.id_nsitonline);
+                        db.insertRow(list.get(i), list1.get(i), list2.get(i), list6.get(i), list7.get(i), list8.get(i), null, id_nsitonline);
 
 
                     }
@@ -259,17 +256,15 @@ public class Home extends Fragment {
     }
 
 
-
-
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_home_notification,menu);
+        inflater.inflate(R.menu.menu_home_notification, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.notification_settings){
+        if (item.getItemId() == R.id.notification_settings) {
             Intent intent = new Intent(getActivity(), NotificationSettings.class);
             startActivity(intent);
         }
@@ -279,7 +274,7 @@ public class Home extends Fragment {
     public void show_off() {
 
         Cursor c = db.getAllnsRows();
-        if(c==null)
+        if (c == null)
             return;
         try {
             do {
@@ -291,7 +286,7 @@ public class Home extends Fragment {
                 list8.add(c.getString(6));
             } while (c.moveToNext());
             pb.setVisibility(View.GONE);
-        }catch (Exception e){
+        } catch (Exception e) {
         }
         adapter.notifyDataSetChanged();
     }

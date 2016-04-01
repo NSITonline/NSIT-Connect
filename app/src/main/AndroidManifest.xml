@@ -132,7 +132,7 @@
 
 
         <activity
-            android:name=".sub_load"
+            android:name=".Sub_load"
             android:theme="@style/AppTheme" >
         </activity>
 

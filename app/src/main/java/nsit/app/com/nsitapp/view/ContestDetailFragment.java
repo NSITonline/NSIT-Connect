@@ -29,7 +29,8 @@ import nsit.app.com.nsitapp.R;
 import nsit.app.com.nsitapp.data.ContestContract;
 import nsit.app.com.nsitapp.model.Contest;
 import nsit.app.com.nsitapp.model.OnlineJudge;
-import nsit.app.com.nsitapp.utility.TimeUtil;
+
+import static functions.Utils.getReadableDurationFromMillis;
 
 
 /**
@@ -195,7 +196,7 @@ public class ContestDetailFragment extends Fragment
             mStartTimeText.setText(sdf.format(date));
 
             Long durationMillis = mContest.getFinishDate() - mContest.getStartDate();
-            mDurationText.setText(TimeUtil.getReadableDurationFromMillis(durationMillis));
+            mDurationText.setText(getReadableDurationFromMillis(durationMillis));
 
             if (mContest.getURL().equals("")) {
                 mURLText.setText("No url available");

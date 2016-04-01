@@ -43,7 +43,6 @@ import java.util.List;
 import adapters.MyFeedList;
 import functions.Constant;
 import functions.Utils;
-import functions.Val;
 import functions.dbAdapter;
 
 
@@ -135,7 +134,7 @@ public class FinalFeed extends Fragment implements Constant{
 
 
             String uri = "https://graph.facebook.com/" + id + "/posts?limit=10&fields=picture,shares,message,object_id," +
-                    "link,comments.limit(0).summary(true),to,created_time,likes.limit(0).summary(true)&access_token=" + Val.common_access;
+                    "link,comments.limit(0).summary(true),to,created_time,likes.limit(0).summary(true)&access_token=" + common_access;
 
             java.net.URL url = null;
             String readStream = null;
@@ -177,40 +176,40 @@ public class FinalFeed extends Fragment implements Constant{
                     nextn = null;
 
                 switch (id) {
-                    case Val.id_collegespace:nextcollegespace=nextn;
+                    case  id_collegespace:nextcollegespace=nextn;
                         Collegespace = false;
                         break;
-                    case Val.id_crosslinks:nextcrosslinks=nextn;
+                    case  id_crosslinks:nextcrosslinks=nextn;
                         Crosslinks = false;
                         break;
-                    case Val.id_bullet:nextbullet=nextn;
+                    case  id_bullet:nextbullet=nextn;
                         Bullet = false;
                         break;
-                    case Val.id_junoon:nextjunoon=nextn;
+                    case  id_junoon:nextjunoon=nextn;
                         Junoon = false;
                         break;
-                    case Val.id_rotaract:nextrotaract=nextn;
+                    case  id_rotaract:nextrotaract=nextn;
                         Rotaract = false;
                         break;
-                    case Val.id_csi:nextcsi=nextn;
+                    case  id_csi:nextcsi=nextn;
                         Csi = false;
                         break;
-                    case Val.id_ieee:nextieee=nextn;
+                    case  id_ieee:nextieee=nextn;
                         Ieee = false;
                         break;
-                    case Val.id_quiz:nextquiz=nextn;
+                    case  id_quiz:nextquiz=nextn;
                         Quiz = false;
                         break;
-                    case Val.id_ashwa:nextashwa=nextn;
+                    case  id_ashwa:nextashwa=nextn;
                         Ashwa = false;
                         break;
-                    case Val.id_debsoc:nextdeb=nextn;
+                    case  id_debsoc:nextdeb=nextn;
                         Deb = false;
                         break;
-                    case Val.id_enactus:nextenactus=nextn;
+                    case  id_enactus:nextenactus=nextn;
                         Enactus = false;
                         break;
-                    case Val.id_aagaz:nextaagaz=nextn;
+                    case  id_aagaz:nextaagaz=nextn;
                         Aagaz = false;
                         break;
 
@@ -412,39 +411,39 @@ public class FinalFeed extends Fragment implements Constant{
 
 
             switch (id) {
-                case Val.id_collegespace: nextcollegespace=nextn;
+                case  id_collegespace: nextcollegespace=nextn;
                     break;
-                case Val.id_crosslinks:nextcrosslinks=nextn;
+                case  id_crosslinks:nextcrosslinks=nextn;
                     Crosslinks = false;
                     break;
-                case Val.id_bullet:nextbullet=nextn;
+                case  id_bullet:nextbullet=nextn;
                     Bullet = false;
                     break;
-                case Val.id_junoon:nextjunoon=nextn;
+                case  id_junoon:nextjunoon=nextn;
                     Junoon = false;
                     break;
-                case Val.id_rotaract:nextrotaract=nextn;
+                case  id_rotaract:nextrotaract=nextn;
                     Rotaract = false;
                     break;
-                case Val.id_csi:nextcsi=nextn;
+                case  id_csi:nextcsi=nextn;
                     Csi = false;
                     break;
-                case Val.id_ieee:nextieee=nextn;
+                case  id_ieee:nextieee=nextn;
                     Ieee = false;
                     break;
-                case Val.id_quiz:nextquiz=nextn;
+                case  id_quiz:nextquiz=nextn;
                     Quiz = false;
                     break;
-                case Val.id_ashwa:nextashwa=nextn;
+                case  id_ashwa:nextashwa=nextn;
                     Ashwa = false;
                     break;
-                case Val.id_debsoc:nextdeb=nextn;
+                case  id_debsoc:nextdeb=nextn;
                     Deb = false;
                     break;
-                case Val.id_enactus:nextenactus=nextn;
+                case  id_enactus:nextenactus=nextn;
                     Enactus = false;
                     break;
-                case Val.id_aagaz:nextaagaz=nextn;
+                case  id_aagaz:nextaagaz=nextn;
                     Aagaz = false;
                     break;
             }
@@ -524,29 +523,29 @@ public class FinalFeed extends Fragment implements Constant{
                 db.close();
 
                 if (Crosslinks)
-                    new DownloadWebPageTask2(Val.id_crosslinks).execute();
+                    new DownloadWebPageTask2( id_crosslinks).execute();
                 if (Collegespace)
-                    new DownloadWebPageTask2(Val.id_collegespace).execute();
+                    new DownloadWebPageTask2( id_collegespace).execute();
                 if (Bullet)
-                    new DownloadWebPageTask2(Val.id_bullet).execute();
+                    new DownloadWebPageTask2( id_bullet).execute();
                 if (Junoon)
-                    new DownloadWebPageTask2(Val.id_junoon).execute();
+                    new DownloadWebPageTask2( id_junoon).execute();
                 if (Rotaract)
-                    new DownloadWebPageTask2(Val.id_rotaract).execute();
+                    new DownloadWebPageTask2( id_rotaract).execute();
                 if (Csi)
-                    new DownloadWebPageTask2(Val.id_csi).execute();
+                    new DownloadWebPageTask2( id_csi).execute();
                 if (Ieee)
-                    new DownloadWebPageTask2(Val.id_ieee).execute();
+                    new DownloadWebPageTask2( id_ieee).execute();
                 if (Ashwa)
-                    new DownloadWebPageTask2(Val.id_ashwa).execute();
+                    new DownloadWebPageTask2( id_ashwa).execute();
                 if (Quiz)
-                    new DownloadWebPageTask2(Val.id_quiz).execute();
+                    new DownloadWebPageTask2( id_quiz).execute();
                 if (Deb)
-                    new DownloadWebPageTask2(Val.id_debsoc).execute();
+                    new DownloadWebPageTask2( id_debsoc).execute();
                 if(Enactus)
-                    new DownloadWebPageTask2(Val.id_enactus).execute();
+                    new DownloadWebPageTask2( id_enactus).execute();
                 if(Aagaz)
-                    new DownloadWebPageTask2(Val.id_aagaz).execute();
+                    new DownloadWebPageTask2( id_aagaz).execute();
 
             } else {
                 SnackbarManager.show(
@@ -605,29 +604,29 @@ public class FinalFeed extends Fragment implements Constant{
                         Enactus = i.getBoolean(ENACTUS, false);
                         Aagaz = i.getBoolean(AAGAZ, false);
                         if (Crosslinks)
-                            new DownloadWebPageTask3(Val.id_crosslinks,nextcrosslinks).execute();
+                            new DownloadWebPageTask3( id_crosslinks,nextcrosslinks).execute();
                         if (Collegespace)
-                            new DownloadWebPageTask3(Val.id_collegespace,nextcollegespace).execute();
+                            new DownloadWebPageTask3( id_collegespace,nextcollegespace).execute();
                         if (Bullet)
-                            new DownloadWebPageTask3(Val.id_bullet,nextbullet).execute();
+                            new DownloadWebPageTask3( id_bullet,nextbullet).execute();
                         if (Junoon)
-                            new DownloadWebPageTask3(Val.id_junoon,nextjunoon).execute();
+                            new DownloadWebPageTask3( id_junoon,nextjunoon).execute();
                         if (Rotaract)
-                            new DownloadWebPageTask3(Val.id_rotaract,nextrotaract).execute();
+                            new DownloadWebPageTask3( id_rotaract,nextrotaract).execute();
                         if (Csi)
-                            new DownloadWebPageTask3(Val.id_csi,nextcsi).execute();
+                            new DownloadWebPageTask3( id_csi,nextcsi).execute();
                         if (Ieee)
-                            new DownloadWebPageTask3(Val.id_ieee,nextieee).execute();
+                            new DownloadWebPageTask3( id_ieee,nextieee).execute();
                         if (Ashwa)
-                            new DownloadWebPageTask3(Val.id_ashwa,nextashwa).execute();
+                            new DownloadWebPageTask3( id_ashwa,nextashwa).execute();
                         if (Quiz)
-                            new DownloadWebPageTask3(Val.id_quiz,nextquiz).execute();
+                            new DownloadWebPageTask3( id_quiz,nextquiz).execute();
                         if (Deb)
-                            new DownloadWebPageTask3(Val.id_debsoc,nextdeb).execute();
+                            new DownloadWebPageTask3( id_debsoc,nextdeb).execute();
                         if(Enactus)
-                            new DownloadWebPageTask3(Val.id_enactus,nextenactus).execute();
+                            new DownloadWebPageTask3( id_enactus,nextenactus).execute();
                         if(Aagaz)
-                            new DownloadWebPageTask3(Val.id_aagaz,nextaagaz).execute();
+                            new DownloadWebPageTask3( id_aagaz,nextaagaz).execute();
 
                     }
                     else {

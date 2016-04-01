@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-public class sub_load extends AppCompatActivity {
+public class Sub_load extends AppCompatActivity {
 
     Spinner s3;
     Spinner s4;

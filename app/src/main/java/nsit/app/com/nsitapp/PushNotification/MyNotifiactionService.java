@@ -1,17 +1,14 @@
 package nsit.app.com.nsitapp.PushNotification;
 
 import android.app.IntentService;
-import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Color;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
-import android.util.Log;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.HttpGet;
@@ -25,18 +22,18 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import functions.Val;
+import functions.Constant;
 import nsit.app.com.nsitapp.MainActivity;
 import nsit.app.com.nsitapp.R;
 
 /**
  * Created by AGGARWAL'S on 3/25/2016.
  */
-public class MyNotifiactionService extends IntentService {
+public class MyNotifiactionService extends IntentService implements Constant {
 
-    public static final String URL = "https://graph.facebook.com/" + Val.id_nsitonline + "/posts?limit=20&fields=id,picture,from,shares,message," +
+    public static final String URL = "https://graph.facebook.com/" + id_nsitonline + "/posts?limit=20&fields=id,picture,from,shares,message," +
             "object_id,link,created_time,comments.limit(0).summary(true),likes.limit(0).summary(true)"+
-            "&access_token=" + Val.common_access;
+            "&access_token=" + common_access;
     private List<String> message = new ArrayList<String>();
     private List<String> object_id = new ArrayList<String>();
     private List<String> time_created = new ArrayList<String>();
@@ -74,7 +71,7 @@ public class MyNotifiactionService extends IntentService {
                     String s2 = arr.getJSONObject(i).getString("from");
                     ob2 = new JSONObject(s2);
                     s2 = ob2.getString("id");
-                    if (!s2.equals(Val.id_nsitonline))
+                    if (!s2.equals(id_nsitonline))
                         continue;
 
                     if (arr.getJSONObject(i).has("message"))

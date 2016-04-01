@@ -30,7 +30,6 @@ import functions.ButtonAnimation;
 import functions.Constant;
 import functions.ImageLoader;
 import functions.Utils;
-import functions.Val;
 
 import static nsit.app.com.nsitapp.R.id.imag_cont;
 
@@ -138,7 +137,7 @@ public class Decsription extends AppCompatActivity implements Constant{
         protected String doInBackground(String... urls) {
 
 
-            String uri = "https://graph.facebook.com/"+obid+"?fields=images&access_token="+ Val.common_access;
+            String uri = "https://graph.facebook.com/"+obid+"?fields=images&access_token="+ common_access;
 
             java.net.URL url = null;
             String readStream = null;

@@ -40,7 +40,6 @@ import functions.ButtonAnimation;
 import functions.Constant;
 import functions.DBhelp;
 import functions.TableEntry;
-import functions.Val;
 
 
 public class SubjectsShow extends AppCompatActivity implements Constant {
@@ -85,7 +84,7 @@ public class SubjectsShow extends AppCompatActivity implements Constant {
 
             try {
 
-                ob = new JSONObject(Val.subjects);
+                ob = new JSONObject(subjects);
 
                 Log.e("p1",ob+" ");
                 switch (branch-1) {

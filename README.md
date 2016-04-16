@@ -13,6 +13,8 @@ But this project is a lot more than an app. This is an initiative that is target
   + [Locations](#5locations)
   + [CodeRadar](#6coderadar)
   + [Calculator](#7calculator)
++ **[APIs Used](https://github.com/Swati4star/NSIT-App-v2/wiki#apis-used)**
++ **[Dependencies](https://github.com/Swati4star/NSIT-App-v2/wiki#dependencies)**
 + **[Contribution](#contribution)**
 + **[Project Maintainers](#project-maintainers)**
 + **[Wiki Page](https://github.com/Swati4star/NSIT-App-v2/wiki)**
@@ -57,7 +59,7 @@ CodeRadar is a Coding Contest Reminder that lets you keep track of all ongoing a
 <img src="/../master/screenshots/10.png" width="120">
 <img src="/../master/screenshots/11.png" width="120">
 
-###6.Calculator 
+###7.Calculator 
 Calculator is a module to calculate your semester percentage. You just need to enter your class and the subjects along with their names, codes and credits wll be displayed. Just enter your marks, and we calculate your percentage. No need to tell anyone about it! ;)
 
 

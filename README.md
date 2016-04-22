@@ -74,7 +74,7 @@ It's very easy to contribute to NSIT App v2. Just follow these steps:
 
 1. Get the prerequisites ready. (learn Java and set up Android Studio)
 2. Fork this project into your own repo.
-3. Make your changes to that repo, and we will pull them when needed.
+3. Make your changes to that repo, and create a pull request.
 
 That's all there is to be a contributor of NSIT App v2. We are looking forward to working together with lots of aspiring developers and maintain this project by collaborating with an open community.
 

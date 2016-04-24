@@ -1,0 +1,24 @@
+language: android
+jdk: oraclejdk7
+env:
+  global:
+    - ANDROID_TARGET=android-22
+    - ANDROID_ABI=armeabi-v7a
+android:
+  components:
+    - platform-tools
+    - tools
+    - build-tools-22.0.1
+    - android-22
+    - extra-android-m2repository
+    # Additional components
+    # - extra-google-google_play_services
+    # - extra-google-m2repository
+    # - addon-google_apis-google-19
+
+    # Specify at least one system image,
+    # if you need to run emulator(s) during your tests
+    # - sys-img-armeabi-v7a-android-19
+    # - sys-img-x86-android-17
+  script:
+    - ./gradlew assembleDebug assembleRelease

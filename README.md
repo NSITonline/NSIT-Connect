@@ -1,4 +1,8 @@
 # NSIT App V2
+
+<a href="https://play.google.com/store/apps/details?id=nsit.app.com.nsitapp"><img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" height=50px/></a>  
+
+
 NSIT App V2 is the official NSITonline app that aims to act as a companion app for NSIT students. The app contains several useful modules like staying up-to-date with all the college news, maintaining a schedule according to the timetable, all the information related to interesting places of the college, and more.
 
 But this project is a lot more than an app. This is an initiative that is targetted at all the emerging developers of NSIT and encourages them to take part in this as a collaborative open-source team effort. So if you are an NSITian and you love developing things and wish to see them used by a large number of people, you have come to the right place. 

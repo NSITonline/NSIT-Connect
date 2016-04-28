@@ -219,7 +219,9 @@ public class FinalFeed extends Fragment implements Constant{
                 dbAdapter db = new dbAdapter(getActivity());
                 db.open();
 
-                for(int i = 0; i < arr.length(); i++){
+
+                int len1 = arr.length();
+                for(int i = 0; i < len1; i++){
 
                     if(arr.getJSONObject(i).has("message"))
                         list.add(arr.getJSONObject(i).getString("message"));
@@ -349,7 +351,10 @@ public class FinalFeed extends Fragment implements Constant{
                     dbAdapter db = new dbAdapter(getActivity());
                     db.open();
 
-                    for(int i = 0; i < arr.length(); i++){
+
+                    int len1 = arr.length();
+
+                    for(int i = 0; i < len1; i++){
 
                         if(arr.getJSONObject(i).has("message")) {
                             list.add(arr.getJSONObject(i).getString("message"));

@@ -80,7 +80,9 @@ public class ProfList extends AppCompatActivity implements Constant {
             ar = new JSONArray(pro);
             ob = ar.getJSONObject(dept);
             ar = ob.getJSONArray("ContentArray");
-            for (int j = 0; j < ar.length(); j++) {
+
+            int len1 = ar.length();
+            for (int j = 0; j < len1; j++) {
 
                 name[k] = ar.getJSONObject(j).getString("Name");
                 if (ar.getJSONObject(j).getString("Designation") != "")

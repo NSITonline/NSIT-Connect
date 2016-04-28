@@ -72,7 +72,9 @@ public class Professors extends Fragment implements
 
 
         rowItems = new ArrayList<RowItem>();
-        for (int i = 0; i < titles.length; i++) {
+
+        int len1 = titles.length;
+        for (int i = 0; i < len1; i++) {
             RowItem item = new RowItem(titles[i].toUpperCase(), full[i]);
             rowItems.add(item);
         }

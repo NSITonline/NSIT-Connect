@@ -158,14 +158,16 @@ public class Calender extends Fragment implements Constant {
             ob = new JSONObject(timetable);
             ar = ob.getJSONArray(GET_TIME_TABLE);
 
-            for (int j = 0; j < ar.length(); j++) {
+            int len1 = ar.length();
+            for (int j = 0; j < len1; j++) {
                 ar2 = ar.getJSONArray(j);
 
              
                 String value,proffh,subfh,roomfh,profsh,subsh,roomsh;
 
+                int len2 = ar2.length();
 
-                for (int i = 0; i < ar2.length(); i++) {
+                for (int i = 0; i < len2; i++) {
                     value = ar2.getJSONObject(i).getString("value");
 
 

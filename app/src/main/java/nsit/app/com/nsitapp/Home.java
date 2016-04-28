@@ -188,8 +188,8 @@ public class Home extends Fragment implements Constant {
                     ob = new JSONObject(result);
                     arr = ob.getJSONArray("data");
 
-
-                    for (int i = 0; i < arr.length(); i++) {
+                    int len  = arr.length();
+                    for (int i = 0; i < len; i++) {
 
                         String s2 = arr.getJSONObject(i).getString("from");
                         ob2 = new JSONObject(s2);

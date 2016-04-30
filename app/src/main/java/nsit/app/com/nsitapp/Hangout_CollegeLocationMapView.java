@@ -18,16 +18,16 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.ResponseHandler;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpUriRequest;
-import org.apache.http.impl.client.BasicResponseHandler;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONObject;
+
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import functions.Constant;
 import functions.GPSTracker;
+import functions.Utils;
 
 /**
  * Created by Sidharth Patro on 01-Jul-15.
@@ -193,21 +193,44 @@ public class Hangout_CollegeLocationMapView extends Activity implements Constant
     public class Location_GetDirections extends AsyncTask<String, Void, String> {
 
         protected String doInBackground(String... Coordinates) {
+
+
+
+
+            String DriveResult="",WalkResult="";
+
+            String uri = "https://maps.googleapis.com/maps/api/directions/json?origin="+OriginLat+"," +
+                    OriginLong+"&destination="+DestinationLat+","+DestinationLong+"&key=AIzaSyBgktirlOODUO9zWD-808D7zycmP7smp-Y&mode=driving";
+            java.net.URL url = null;
+            String readStream = null;
             try {
-                HttpClient client = new DefaultHttpClient();
-
-
-                HttpUriRequest request = new HttpGet("https://maps.googleapis.com/maps/api/directions/json?origin="+OriginLat+","+OriginLong+"&destination="+DestinationLat+","+DestinationLong+"&key=AIzaSyBgktirlOODUO9zWD-808D7zycmP7smp-Y&mode=driving");
-                ResponseHandler<String> responseHandler = new BasicResponseHandler();
-                String DriveResult = client.execute(request, responseHandler);
-                request = new HttpGet("https://maps.googleapis.com/maps/api/directions/json?origin="+OriginLat+","+OriginLong+"&destination="+DestinationLat+","+DestinationLong+"&key=AIzaSyBgktirlOODUO9zWD-808D7zycmP7smp-Y&mode=walking");
-                String WalkResult = client.execute(request, responseHandler);
-
-                return DriveResult+"/NSITAPP/"+WalkResult;
-            } catch (Exception e) {
-                e.printStackTrace();
-                return null;
+                url = new URL(uri);
+                HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                DriveResult = Utils.readStream(con.getInputStream());
+            } catch (MalformedURLException e1) {
+                e1.printStackTrace();
+            } catch (IOException e1) {
+                e1.printStackTrace();
             }
+
+
+
+            uri = "https://maps.googleapis.com/maps/api/directions/json?origin="+OriginLat+","+OriginLong+"&destination="+DestinationLat+","+DestinationLong+
+                    "&key=AIzaSyBgktirlOODUO9zWD-808D7zycmP7smp-Y&mode=walking";
+            try {
+                url = new URL(uri);
+                HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                WalkResult = Utils.readStream(con.getInputStream());
+            } catch (MalformedURLException e1) {
+                e1.printStackTrace();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+
+
+            return DriveResult+"/NSITAPP/"+WalkResult;
+
+
         }
 
         @Override

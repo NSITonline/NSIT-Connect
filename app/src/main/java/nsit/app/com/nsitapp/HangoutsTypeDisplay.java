@@ -30,15 +30,13 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.ResponseHandler;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.BasicResponseHandler;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
 import functions.GPSTracker;
@@ -184,16 +182,22 @@ public class HangoutsTypeDisplay extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... voids) {
 
-            if(URL!=null){
-                HttpClient Client = new DefaultHttpClient();
-                HttpGet httpget = new HttpGet(URL);
-                ResponseHandler<String> responseHandler = new BasicResponseHandler();
-                try {
-                    text = Client.execute(httpget, responseHandler);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }}
+            if(URL == null)
+                return null;
+            String uri = URL;
+            java.net.URL url = null;
+            String readStream = null;
+            try {
+                url = new URL(uri);
+                HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                text = Utils.readStream(con.getInputStream());
+            } catch (MalformedURLException e1) {
+                e1.printStackTrace();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
             return null;
+
         }
 
         @Override

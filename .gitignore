@@ -43,6 +43,8 @@ local.properties
 # Windows thumbnail db
 Thumbs.db
 
+# OSX files
+.DS_Store
 
 # Eclipse project files
 .classpath
@@ -52,6 +54,8 @@ Thumbs.db
 *.iml
 .idea
 #.idea/workspace.xml - remove # and delete .idea if it better suit your needs.
+.gradle
+build/
 
 #NDK
 obj/

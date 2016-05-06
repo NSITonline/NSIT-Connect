@@ -46,6 +46,8 @@ public interface Constant {
     public static String GET_TIME_TABLE = "timetable";
 
 
+    public static String TIMETABLE_API = "http://nsitonline.in/NSITconnect/tt2/api/get-data.php?";
+
 
     public final static String id = "109315262061";
 

@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/interpolator/sb__decelerate_cubic.xml",
+        "source": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.nispok/snackbar/2.10.10/res/interpolator/sb__decelerate_cubic.xml"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/interpolator/sb__accelerate_cubic.xml",
+        "source": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.nispok/snackbar/2.10.10/res/interpolator/sb__accelerate_cubic.xml"
+    }
+]

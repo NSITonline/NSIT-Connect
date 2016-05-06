@@ -299,7 +299,8 @@ public class Calender extends Fragment implements Constant {
 
 
            // String URL;
-            String uri = "http://nsitonline.in/NSITconnect/tt2/api/get-data.php?branch=" +
+            String uri = TIMETABLE_API +
+                    "branch=" +
                     branch +
                     "&semester=" +
                     sem +

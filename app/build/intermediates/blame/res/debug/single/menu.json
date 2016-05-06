@@ -1,0 +1,46 @@
+[
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/menu/menu_hangouts.xml",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/menu/menu_hangouts.xml"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/menu/menu_contest_detail.xml",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/menu/menu_contest_detail.xml"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/menu/menu_final_feed.xml",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/menu/menu_final_feed.xml"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/menu/menu_contest_list.xml",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/menu/menu_contest_list.xml"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/menu/menu_subject_remove.xml",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/menu/menu_subject_remove.xml"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/menu/menu_feed.xml",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/menu/menu_feed.xml"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/menu/menu_home_notification.xml",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/menu/menu_home_notification.xml"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/menu/menu_calender.xml",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/menu/menu_calender.xml"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/menu/menu_image.xml",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/menu/menu_image.xml"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/menu/menu_main.xml",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/menu/menu_main.xml"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/menu/menu2.xml",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/menu/menu2.xml"
+    }
+]

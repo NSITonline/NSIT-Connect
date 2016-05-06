@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+    package="com.nispok.snackbar"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="22" />
+
+    <application />
+
+</manifest>

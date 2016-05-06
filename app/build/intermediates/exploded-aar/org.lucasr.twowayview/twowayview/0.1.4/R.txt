@@ -1,0 +1,5 @@
+int[] styleable TwoWayView { 0x010100c4, 0x010100fb, 0x010100fc, 0x0101012b }
+int styleable TwoWayView_android_choiceMode 3
+int styleable TwoWayView_android_drawSelectorOnTop 2
+int styleable TwoWayView_android_listSelector 1
+int styleable TwoWayView_android_orientation 0

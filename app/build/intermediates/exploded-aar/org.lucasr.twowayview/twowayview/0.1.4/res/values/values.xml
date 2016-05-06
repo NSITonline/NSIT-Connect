@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- From: file:/home/lucasr/Code/twoway-view/library/src/main/res/values/attrs.xml -->
+    <eat-comment />
+
+    <declare-styleable name="TwoWayView">
+        <attr name="android:orientation" />
+        <attr name="android:choiceMode" />
+        <attr name="android:listSelector" />
+        <attr name="android:drawSelectorOnTop" />
+    </declare-styleable>
+
+</resources>

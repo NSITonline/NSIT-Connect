@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/Users/wilmor24/dev/snackbar/lib/src/main/res/values-v11/bools.xml -->
+    <eat-comment/>
+    <bool name="sb__is_swipeable">true</bool>
+</resources>

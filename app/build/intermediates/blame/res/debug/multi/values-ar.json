@@ -1,0 +1,862 @@
+[
+    {
+        "outputFile": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/values-ar/values-ar.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 105,
+                    "endColumn": 116,
+                    "endOffset": 217
+                },
+                "from": {
+                    "file": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values-ar/values-ar.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 291,
+                        "endColumn": 116,
+                        "endOffset": 403
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 222,
+                    "endColumn": 103,
+                    "endOffset": 321
+                },
+                "from": {
+                    "file": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values-ar/values-ar.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 408,
+                        "endColumn": 103,
+                        "endOffset": 507
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 326,
+                    "endColumn": 108,
+                    "endOffset": 430
+                },
+                "from": {
+                    "file": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values-ar/values-ar.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 512,
+                        "endColumn": 108,
+                        "endOffset": 616
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 435,
+                    "endColumn": 81,
+                    "endOffset": 512
+                },
+                "from": {
+                    "file": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values-ar/values-ar.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 621,
+                        "endColumn": 81,
+                        "endOffset": 698
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 517,
+                    "endColumn": 100,
+                    "endOffset": 613
+                },
+                "from": {
+                    "file": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values-ar/values-ar.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 703,
+                        "endColumn": 100,
+                        "endOffset": 799
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 618,
+                    "endColumn": 113,
+                    "endOffset": 727
+                },
+                "from": {
+                    "file": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values-ar/values-ar.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 804,
+                        "endColumn": 113,
+                        "endOffset": 913
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 732,
+                    "endColumn": 104,
+                    "endOffset": 832
+                },
+                "from": {
+                    "file": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values-ar/values-ar.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 918,
+                        "endColumn": 104,
+                        "endOffset": 1018
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 837,
+                    "endColumn": 100,
+                    "endOffset": 933
+                },
+                "from": {
+                    "file": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values-ar/values-ar.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 1023,
+                        "endColumn": 100,
+                        "endOffset": 1119
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 938,
+                    "endColumn": 95,
+                    "endOffset": 1029
+                },
+                "from": {
+                    "file": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values-ar/values-ar.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 1124,
+                        "endColumn": 95,
+                        "endOffset": 1215
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 1034,
+                    "endColumn": 107,
+                    "endOffset": 1137
+                },
+                "from": {
+                    "file": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values-ar/values-ar.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 4,
+                        "startOffset": 1220,
+                        "endColumn": 107,
+                        "endOffset": 1323
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 1142,
+                    "endColumn": 102,
+                    "endOffset": 1240
+                },
+                "from": {
+                    "file": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values-ar/values-ar.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 1328,
+                        "endColumn": 102,
+                        "endOffset": 1426
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 1245,
+                    "endColumn": 102,
+                    "endOffset": 1343
+                },
+                "from": {
+                    "file": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values-ar/values-ar.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 1431,
+                        "endColumn": 102,
+                        "endOffset": 1529
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 1348,
+                    "endColumn": 118,
+                    "endOffset": 1462
+                },
+                "from": {
+                    "file": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values-ar/values-ar.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 1534,
+                        "endColumn": 118,
+                        "endOffset": 1648
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 1467,
+                    "endColumn": 180,
+                    "endOffset": 1643
+                },
+                "from": {
+                    "file": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-ar/common_strings.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 466,
+                        "endColumn": 184,
+                        "endOffset": 646
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 1648,
+                    "endColumn": 170,
+                    "endOffset": 1814
+                },
+                "from": {
+                    "file": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-ar/common_strings.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 4,
+                        "startOffset": 2507,
+                        "endColumn": 174,
+                        "endOffset": 2677
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 17,
+                    "startColumn": 4,
+                    "startOffset": 1819,
+                    "endColumn": 110,
+                    "endOffset": 1925
+                },
+                "from": {
+                    "file": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-ar/common_strings.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 2211,
+                        "endColumn": 110,
+                        "endOffset": 2317
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 18,
+                    "startColumn": 4,
+                    "startOffset": 1930,
+                    "endColumn": 252,
+                    "endOffset": 2178
+                },
+                "from": {
+                    "file": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-ar/common_strings.xml",
+                    "position": {
+                        "startLine": 32,
+                        "startColumn": 4,
+                        "startOffset": 4513,
+                        "endColumn": 256,
+                        "endOffset": 4765
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 19,
+                    "startColumn": 4,
+                    "startOffset": 2183,
+                    "endColumn": 124,
+                    "endOffset": 2303
+                },
+                "from": {
+                    "file": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-ar/common_strings.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 1962,
+                        "endColumn": 124,
+                        "endOffset": 2082
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 20,
+                    "startColumn": 4,
+                    "startOffset": 2308,
+                    "endColumn": 175,
+                    "endOffset": 2479
+                },
+                "from": {
+                    "file": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-ar/common_strings.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 4,
+                        "startOffset": 1782,
+                        "endColumn": 179,
+                        "endOffset": 1957
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 21,
+                    "startColumn": 4,
+                    "startOffset": 2484,
+                    "endColumn": 122,
+                    "endOffset": 2602
+                },
+                "from": {
+                    "file": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-ar/common_strings.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 1659,
+                        "endColumn": 122,
+                        "endOffset": 1777
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 22,
+                    "startColumn": 4,
+                    "startOffset": 2607,
+                    "endColumn": 172,
+                    "endOffset": 2775
+                },
+                "from": {
+                    "file": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-ar/common_strings.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 804,
+                        "endColumn": 176,
+                        "endOffset": 976
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 23,
+                    "startColumn": 4,
+                    "startOffset": 2780,
+                    "endColumn": 130,
+                    "endOffset": 2906
+                },
+                "from": {
+                    "file": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-ar/common_strings.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 1528,
+                        "endColumn": 130,
+                        "endOffset": 1654
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 24,
+                    "startColumn": 4,
+                    "startOffset": 2911,
+                    "endColumn": 201,
+                    "endOffset": 3108
+                },
+                "from": {
+                    "file": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-ar/common_strings.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 1109,
+                        "endColumn": 205,
+                        "endOffset": 1310
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 25,
+                    "startColumn": 4,
+                    "startOffset": 3113,
+                    "endColumn": 208,
+                    "endOffset": 3317
+                },
+                "from": {
+                    "file": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-ar/common_strings.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 1315,
+                        "endColumn": 212,
+                        "endOffset": 1523
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 26,
+                    "startColumn": 4,
+                    "startOffset": 3322,
+                    "endColumn": 127,
+                    "endOffset": 3445
+                },
+                "from": {
+                    "file": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-ar/common_strings.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 981,
+                        "endColumn": 127,
+                        "endOffset": 1104
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 27,
+                    "startColumn": 4,
+                    "startOffset": 3450,
+                    "endColumn": 174,
+                    "endOffset": 3620
+                },
+                "from": {
+                    "file": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-ar/common_strings.xml",
+                    "position": {
+                        "startLine": 24,
+                        "startColumn": 4,
+                        "startOffset": 3417,
+                        "endColumn": 174,
+                        "endOffset": 3587
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 28,
+                    "startColumn": 4,
+                    "startOffset": 3625,
+                    "endColumn": 121,
+                    "endOffset": 3742
+                },
+                "from": {
+                    "file": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-ar/common_strings.xml",
+                    "position": {
+                        "startLine": 23,
+                        "startColumn": 4,
+                        "startOffset": 3295,
+                        "endColumn": 121,
+                        "endOffset": 3412
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 29,
+                    "startColumn": 4,
+                    "startOffset": 3747,
+                    "endColumn": 152,
+                    "endOffset": 3895
+                },
+                "from": {
+                    "file": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-ar/common_strings.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 651,
+                        "endColumn": 152,
+                        "endOffset": 799
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 30,
+                    "startColumn": 4,
+                    "startOffset": 3900,
+                    "endColumn": 157,
+                    "endOffset": 4053
+                },
+                "from": {
+                    "file": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-ar/common_strings.xml",
+                    "position": {
+                        "startLine": 22,
+                        "startColumn": 4,
+                        "startOffset": 3137,
+                        "endColumn": 157,
+                        "endOffset": 3290
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 31,
+                    "startColumn": 4,
+                    "startOffset": 4058,
+                    "endColumn": 119,
+                    "endOffset": 4173
+                },
+                "from": {
+                    "file": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-ar/common_strings.xml",
+                    "position": {
+                        "startLine": 21,
+                        "startColumn": 4,
+                        "startOffset": 3017,
+                        "endColumn": 119,
+                        "endOffset": 3132
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 32,
+                    "startColumn": 4,
+                    "startOffset": 4178,
+                    "endColumn": 163,
+                    "endOffset": 4337
+                },
+                "from": {
+                    "file": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-ar/common_strings.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 302,
+                        "endColumn": 163,
+                        "endOffset": 461
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 33,
+                    "startColumn": 4,
+                    "startOffset": 4342,
+                    "endColumn": 131,
+                    "endOffset": 4469
+                },
+                "from": {
+                    "file": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-ar/common_strings.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 170,
+                        "endColumn": 131,
+                        "endOffset": 297
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 34,
+                    "startColumn": 4,
+                    "startOffset": 4474,
+                    "endColumn": 177,
+                    "endOffset": 4647
+                },
+                "from": {
+                    "file": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-ar/common_strings.xml",
+                    "position": {
+                        "startLine": 34,
+                        "startColumn": 4,
+                        "startOffset": 4895,
+                        "endColumn": 177,
+                        "endOffset": 5068
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 35,
+                    "startColumn": 4,
+                    "startOffset": 4652,
+                    "endColumn": 124,
+                    "endOffset": 4772
+                },
+                "from": {
+                    "file": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-ar/common_strings.xml",
+                    "position": {
+                        "startLine": 33,
+                        "startColumn": 4,
+                        "startOffset": 4770,
+                        "endColumn": 124,
+                        "endOffset": 4890
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 36,
+                    "startColumn": 4,
+                    "startOffset": 4777,
+                    "endColumn": 144,
+                    "endOffset": 4917
+                },
+                "from": {
+                    "file": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-ar/common_strings.xml",
+                    "position": {
+                        "startLine": 25,
+                        "startColumn": 4,
+                        "startOffset": 3592,
+                        "endColumn": 144,
+                        "endOffset": 3732
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 37,
+                    "startColumn": 4,
+                    "startOffset": 4922,
+                    "endColumn": 233,
+                    "endOffset": 5151
+                },
+                "from": {
+                    "file": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-ar/common_strings.xml",
+                    "position": {
+                        "startLine": 27,
+                        "startColumn": 4,
+                        "startOffset": 3860,
+                        "endColumn": 237,
+                        "endOffset": 4093
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 38,
+                    "startColumn": 4,
+                    "startOffset": 5156,
+                    "endColumn": 122,
+                    "endOffset": 5274
+                },
+                "from": {
+                    "file": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-ar/common_strings.xml",
+                    "position": {
+                        "startLine": 26,
+                        "startColumn": 4,
+                        "startOffset": 3737,
+                        "endColumn": 122,
+                        "endOffset": 3855
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 39,
+                    "startColumn": 4,
+                    "startOffset": 5279,
+                    "endColumn": 105,
+                    "endOffset": 5380
+                },
+                "from": {
+                    "file": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-ar/common_strings.xml",
+                    "position": {
+                        "startLine": 28,
+                        "startColumn": 4,
+                        "startOffset": 4098,
+                        "endColumn": 105,
+                        "endOffset": 4199
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 40,
+                    "startColumn": 4,
+                    "startOffset": 5385,
+                    "endColumn": 180,
+                    "endOffset": 5561
+                },
+                "from": {
+                    "file": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-ar/common_strings.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 2322,
+                        "endColumn": 184,
+                        "endOffset": 2502
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 41,
+                    "startColumn": 4,
+                    "startOffset": 5566,
+                    "endColumn": 123,
+                    "endOffset": 5685
+                },
+                "from": {
+                    "file": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-ar/common_strings.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 2087,
+                        "endColumn": 123,
+                        "endOffset": 2206
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 42,
+                    "startColumn": 4,
+                    "startOffset": 5690,
+                    "endColumn": 195,
+                    "endOffset": 5881
+                },
+                "from": {
+                    "file": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-ar/common_strings.xml",
+                    "position": {
+                        "startLine": 20,
+                        "startColumn": 4,
+                        "startOffset": 2817,
+                        "endColumn": 199,
+                        "endOffset": 3012
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 43,
+                    "startColumn": 4,
+                    "startOffset": 5886,
+                    "endColumn": 134,
+                    "endOffset": 6016
+                },
+                "from": {
+                    "file": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-ar/common_strings.xml",
+                    "position": {
+                        "startLine": 19,
+                        "startColumn": 4,
+                        "startOffset": 2682,
+                        "endColumn": 134,
+                        "endOffset": 2812
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 44,
+                    "startColumn": 4,
+                    "startOffset": 6021,
+                    "endColumn": 92,
+                    "endOffset": 6109
+                },
+                "from": {
+                    "file": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-ar/common_strings.xml",
+                    "position": {
+                        "startLine": 31,
+                        "startColumn": 4,
+                        "startOffset": 4420,
+                        "endColumn": 92,
+                        "endOffset": 4508
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 45,
+                    "startColumn": 4,
+                    "startOffset": 6114,
+                    "endColumn": 96,
+                    "endOffset": 6206
+                },
+                "from": {
+                    "file": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-ar/common_strings.xml",
+                    "position": {
+                        "startLine": 29,
+                        "startColumn": 4,
+                        "startOffset": 4204,
+                        "endColumn": 96,
+                        "endOffset": 4296
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 46,
+                    "startColumn": 4,
+                    "startOffset": 6211,
+                    "endColumn": 118,
+                    "endOffset": 6325
+                },
+                "from": {
+                    "file": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-ar/common_strings.xml",
+                    "position": {
+                        "startLine": 30,
+                        "startColumn": 4,
+                        "startOffset": 4301,
+                        "endColumn": 118,
+                        "endOffset": 4415
+                    }
+                }
+            }
+        ]
+    }
+]

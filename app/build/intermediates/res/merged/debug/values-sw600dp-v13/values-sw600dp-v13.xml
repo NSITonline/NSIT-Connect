@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <bool name="sb__is_phone">false</bool>
+    <dimen name="abc_action_bar_content_inset_material">24dp</dimen>
+    <dimen name="abc_action_bar_default_height_material">64dp</dimen>
+    <dimen name="abc_action_bar_default_padding_material">4dp</dimen>
+    <dimen name="abc_action_bar_navigation_padding_start_material">8dp</dimen>
+    <dimen name="abc_action_bar_overflow_padding_end_material">18dp</dimen>
+    <dimen name="abc_config_prefDialogWidth">580dp</dimen>
+    <dimen name="abc_text_size_subtitle_material_toolbar">16dp</dimen>
+    <dimen name="abc_text_size_title_material_toolbar">20dp</dimen>
+    <dimen name="sb__bg_corner_radius">2dp</dimen>
+    <dimen name="sb__max_width">568dp</dimen>
+    <dimen name="sb__min_width">288dp</dimen>
+    <integer name="abc_max_action_buttons">5</integer>
+</resources>

@@ -1,0 +1,48 @@
+ <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        tools:context=".MainActivity">
+
+
+
+        <android.support.v4.widget.DrawerLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/drawer_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <FrameLayout
+                android:id="@+id/content_frame"
+                android:background="@color/universalBackground"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:animateLayoutChanges="true"   >
+
+            </FrameLayout>
+
+
+            <!-- The left navigation drawer -->
+
+            <LinearLayout
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_gravity="start" >
+
+
+
+                <ListView android:id="@+id/left_drawer"
+                    android:layout_width="240sp"
+                    android:paddingTop="5sp"
+                    android:layout_height="match_parent"
+                    android:background="#ffffff"
+                    android:divider="#ffffff"
+                    android:dividerHeight="10dp"/>
+            </LinearLayout>
+        </android.support.v4.widget.DrawerLayout>
+
+
+
+    </RelativeLayout>
+

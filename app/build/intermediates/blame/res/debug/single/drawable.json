@@ -1,0 +1,422 @@
+[
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/saisumit_vohra.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/saisumit_vohra.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/shadow_1.9.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/shadow_1.9.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/codeforces.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/codeforces.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/codechef_cover.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/codechef_cover.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/rotaract.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/rotaract.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/ic_feedback_black_24dp.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/ic_feedback_black_24dp.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/codechef_logo.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/codechef_logo.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/aagaz.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/aagaz.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/facebook.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/facebook.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/grad_dark.xml",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/grad_dark.xml"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/abc_tab_indicator_material.xml",
+        "source": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/drawable/abc_tab_indicator_material.xml"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/collegespace.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/collegespace.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/abc_item_background_holo_dark.xml",
+        "source": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/drawable/abc_item_background_holo_dark.xml"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/abc_btn_radio_material.xml",
+        "source": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/drawable/abc_btn_radio_material.xml"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/ashwamedh.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/ashwamedh.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/abc_dialog_material_background_light.xml",
+        "source": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/drawable/abc_dialog_material_background_light.xml"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/ayush_verma.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/ayush_verma.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/abc_dialog_material_background_dark.xml",
+        "source": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/drawable/abc_dialog_material_background_dark.xml"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/ic_settings_white.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/ic_settings_white.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/ic_action_list.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/ic_action_list.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/nsit_online.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/nsit_online.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/abc_ratingbar_full_material.xml",
+        "source": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/drawable/abc_ratingbar_full_material.xml"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/abc_edit_text_material.xml",
+        "source": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/drawable/abc_edit_text_material.xml"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/abc_btn_check_material.xml",
+        "source": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/drawable/abc_btn_check_material.xml"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/nightclubs.jpg",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/nightclubs.jpg"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/ieee.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/ieee.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/sb__btn_bg.xml",
+        "source": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.nispok/snackbar/2.10.10/res/drawable/sb__btn_bg.xml"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/uri_logo.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/uri_logo.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/cafe_hangout.jpg",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/cafe_hangout.jpg"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/bullethawk.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/bullethawk.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/topcoder_logo.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/topcoder_logo.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/food.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/food.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/github1.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/github1.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/ic_action_calendar_month.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/ic_action_calendar_month.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/park_hangout.jpg",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/park_hangout.jpg"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/shoppingmall.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/shoppingmall.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/abc_list_selector_background_transition_holo_light.xml",
+        "source": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/drawable/abc_list_selector_background_transition_holo_light.xml"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/ic_action_home.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/ic_action_home.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/amusment_park.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/amusment_park.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/csi.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/csi.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/common_signin_btn_icon_dark.xml",
+        "source": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/drawable/common_signin_btn_icon_dark.xml"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/shadow_small.9.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/shadow_small.9.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/ic_action_info.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/ic_action_info.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/abc_btn_default_mtrl_shape.xml",
+        "source": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/drawable/abc_btn_default_mtrl_shape.xml"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/nightclub_hangout.jpg",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/nightclub_hangout.jpg"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/unknown_logo.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/unknown_logo.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/enactus.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/enactus.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/food_hangout.jpg",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/food_hangout.jpg"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/sagar_aggarwal.jpg",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/sagar_aggarwal.jpg"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/trans.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/trans.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/sidharth_patro.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/sidharth_patro.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/github_logo.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/github_logo.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/park.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/park.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/codeforces_logo.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/codeforces_logo.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/card.xml",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/card.xml"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/bowling.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/bowling.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/amuse_hangout.jpg",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/amuse_hangout.jpg"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/ic_action_user.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/ic_action_user.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/college_hangout.jpg",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/college_hangout.jpg"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/movie.jpg",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/movie.jpg"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/topcoder_cover.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/topcoder_cover.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/button.xml",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/button.xml"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/abc_list_selector_background_transition_holo_dark.xml",
+        "source": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/drawable/abc_list_selector_background_transition_holo_dark.xml"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/ic_action_video.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/ic_action_video.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/chetan.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/chetan.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/abc_cab_background_top_material.xml",
+        "source": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/drawable/abc_cab_background_top_material.xml"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/ic_action_time.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/ic_action_time.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/ic_action_tiles_large.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/ic_action_tiles_large.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/common_signin_btn_text_light.xml",
+        "source": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/drawable/common_signin_btn_text_light.xml"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/bowling_hangout.jpg",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/bowling_hangout.jpg"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/abc_cab_background_internal_bg.xml",
+        "source": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/drawable/abc_cab_background_internal_bg.xml"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/shoppingmall_hangout.jpg",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/shoppingmall_hangout.jpg"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/github.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/github.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/hackerrank_cover.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/hackerrank_cover.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/hackerearth_logo.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/hackerearth_logo.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/abc_item_background_holo_light.xml",
+        "source": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/drawable/abc_item_background_holo_light.xml"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/coffee.jpg",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/coffee.jpg"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/sb__bg.xml",
+        "source": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.nispok/snackbar/2.10.10/res/drawable/sb__bg.xml"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/ic_laptop_mac_black_24dp.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/ic_laptop_mac_black_24dp.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/common_signin_btn_text_dark.xml",
+        "source": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/drawable/common_signin_btn_text_dark.xml"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/prabhakar.jpg",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/prabhakar.jpg"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/naman_maheshwari.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/naman_maheshwari.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/abc_spinner_textfield_background_material.xml",
+        "source": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/drawable/abc_spinner_textfield_background_material.xml"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/debsoc.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/debsoc.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/linkedin.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/linkedin.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/abc_btn_borderless_material.xml",
+        "source": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/drawable/abc_btn_borderless_material.xml"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/quiz.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/quiz.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/swati_garg.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/swati_garg.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/abc_list_selector_holo_dark.xml",
+        "source": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/drawable/abc_list_selector_holo_dark.xml"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/movie_hangout.jpg",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/movie_hangout.jpg"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/abc_list_selector_holo_light.xml",
+        "source": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/drawable/abc_list_selector_holo_light.xml"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/junoon.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/junoon.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/rest_hangout2.jpg",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/rest_hangout2.jpg"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/ic_action_save.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/ic_action_save.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/common_signin_btn_icon_light.xml",
+        "source": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/drawable/common_signin_btn_icon_light.xml"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/crosslinks.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/crosslinks.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/ic_action_camera.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/ic_action_camera.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/shadow_arkalt2.9.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/shadow_arkalt2.9.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/ic_action_location.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/ic_action_location.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/abc_switch_thumb_material.xml",
+        "source": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/drawable/abc_switch_thumb_material.xml"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/ic_action_calendar_day.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/ic_action_calendar_day.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/hackerearth_cover.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/hackerearth_cover.png"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/abc_textfield_search_material.xml",
+        "source": "/home/swati/NSIT-App-v2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/drawable/abc_textfield_search_material.xml"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/restauarnts.jpg",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/restauarnts.jpg"
+    },
+    {
+        "merged": "/home/swati/NSIT-App-v2/app/build/intermediates/res/merged/debug/drawable/hackerrank_logo.png",
+        "source": "/home/swati/NSIT-App-v2/app/src/main/res/drawable/hackerrank_logo.png"
+    }
+]

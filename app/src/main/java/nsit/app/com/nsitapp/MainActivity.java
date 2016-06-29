@@ -1,12 +1,17 @@
 package nsit.app.com.nsitapp;
 
 import android.app.Activity;
+import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -26,7 +31,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import nsit.app.com.nsitapp.view.contest_reminder;
+
+import nsit.app.com.nsitapp.PushNotification.MyAlarmReceiver;
+import nsit.app.com.nsitapp.view.CodeRadar_MainActivity;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -58,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setProgressBarIndeterminateVisibility(false);
+
+        scheduleAlarm();
 
 
         if(savedInstanceState == null) {
@@ -197,7 +206,7 @@ public class MainActivity extends AppCompatActivity {
                 getSupportActionBar().setTitle("Calculator");
                 break;
             case 7:
-                i = new Intent(this, contest_reminder.class);
+                i = new Intent(this, CodeRadar_MainActivity.class);
                 startActivity(i);
                 break;
             case 8:
@@ -221,6 +230,22 @@ public class MainActivity extends AppCompatActivity {
         }
         current = f;
         ft.commit();
+    }
+
+    public void scheduleAlarm() {
+
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean status = sp.getBoolean("notification_status",true);
+        if (status){
+            int timefactor = Integer.parseInt(sp.getString("notify_sync_settings","5"));
+            Intent intent = new Intent(getApplicationContext(), MyAlarmReceiver.class);
+            final PendingIntent pIntent = PendingIntent.getBroadcast(this, MyAlarmReceiver.REQUEST_CODE,
+                    intent, PendingIntent.FLAG_UPDATE_CURRENT);
+            long firstMillis = System.currentTimeMillis();
+            AlarmManager alarm = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+            alarm.setInexactRepeating(AlarmManager.RTC_WAKEUP, firstMillis,
+                    timefactor*60000L, pIntent);
+        }
     }
 
 

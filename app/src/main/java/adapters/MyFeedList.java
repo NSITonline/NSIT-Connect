@@ -4,10 +4,6 @@ package adapters;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.os.AsyncTask;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -34,7 +30,7 @@ import java.util.TimeZone;
 import functions.Constant;
 import functions.ImageLoader;
 import nsit.app.com.nsitapp.Decsription;
-import nsit.app.com.nsitapp.ImageAct;
+import nsit.app.com.nsitapp.Description_FullImage;
 import nsit.app.com.nsitapp.R;
 
 
@@ -153,7 +149,7 @@ public class MyFeedList extends ArrayAdapter<String> implements Constant{
                 @Override
                 public void onClick(View v) {
                     Context c = getContext();
-                    Intent i = new Intent(getContext(), ImageAct.class);
+                    Intent i = new Intent(getContext(), Description_FullImage.class);
                     i.putExtra(IMAGE, img.get(position));
                     i.putExtra(OBID, obid.get(position));
                     c.startActivity(i);

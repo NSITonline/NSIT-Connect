@@ -7,18 +7,20 @@ import android.util.Log;
  */
 public class Subject_struct {
 
-    public String subject, type, professorfh, roomfh, professorsh, roomsh, professor, room;
+    public String value,proffh,subfh,roomfh,profsh,subsh,roomsh;
 
     // constructor
-    public Subject_struct(String a, String b, String c, String d, String e, String f, String g, String h) {
-        subject = a;
-        type = b;
-        professorfh = c;
-        roomfh = d;
-        professorsh = e;
-        roomsh = f;
-        professor = g;
-        room = h;
+    public Subject_struct(String value,String proffh,String subfh,String roomfh,String profsh,String subsh,String roomsh) {
+
+        this.value = value;
+
+        this.proffh = proffh;
+        this.subfh = subfh;
+        this.roomfh = roomfh;
+
+        this.profsh = profsh;
+        this.subsh = subsh;
+        this.roomsh = roomsh;
 
     }
 

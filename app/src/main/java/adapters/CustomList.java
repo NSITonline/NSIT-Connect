@@ -33,7 +33,7 @@ import java.util.TimeZone;
 
 import functions.ImageLoader;
 import nsit.app.com.nsitapp.Decsription;
-import nsit.app.com.nsitapp.ImageAct;
+import nsit.app.com.nsitapp.Description_FullImage;
 import nsit.app.com.nsitapp.R;
 
 
@@ -145,7 +145,7 @@ public class CustomList extends ArrayAdapter<String> {
                 @Override
                 public void onClick(View v) {
                     Context c = getContext();
-                    Intent i = new Intent(getContext(), ImageAct.class);
+                    Intent i = new Intent(getContext(), Description_FullImage.class);
                     i.putExtra("img", img.get(position));
                     i.putExtra("oid", obid.get(position));
                     ButtonAnimation btnAnimation = new ButtonAnimation();

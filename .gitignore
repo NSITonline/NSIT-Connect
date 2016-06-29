@@ -60,3 +60,5 @@ build/
 #NDK
 obj/
 
+/app/src/main/java/functions/Constant.java
+

@@ -116,29 +116,29 @@ public class dbAdapter implements  Constant {
         String whereArgs = " IN (  ";
 
         if(pref.getBoolean(CROSSLINKS, false))
-            whereArgs+= (Val.id_crosslinks + ", ");
+            whereArgs+= ( id_crosslinks + ", ");
         if(pref.getBoolean(COLLEGESPACE, false))
-            whereArgs+= (Val.id_collegespace+ ", ");
+            whereArgs+= ( id_collegespace+ ", ");
         if(pref.getBoolean(BULLET, false))
-            whereArgs+= (Val.id_bullet+ ", ");
+            whereArgs+= ( id_bullet+ ", ");
         if(pref.getBoolean(ASHWA, false))
-            whereArgs+=(Val.id_ashwa+ ", ");
+            whereArgs+=( id_ashwa+ ", ");
         if(pref.getBoolean(JUNOON, false))
-            whereArgs+=(Val.id_junoon + ", ");
+            whereArgs+=( id_junoon + ", ");
         if(pref.getBoolean(ROTARACT, false))
-            whereArgs+=(Val.id_rotaract + ", ");
+            whereArgs+=( id_rotaract + ", ");
         if(pref.getBoolean(CSI, false))
-            whereArgs+=(Val.id_csi + ", ");
+            whereArgs+=( id_csi + ", ");
         if(pref.getBoolean(IEEE, false))
-            whereArgs+= (Val.id_ieee + ", ");
+            whereArgs+= ( id_ieee + ", ");
         if(pref.getBoolean(DEB, false))
-            whereArgs+= (Val.id_debsoc + ", ");
+            whereArgs+= ( id_debsoc + ", ");
         if(pref.getBoolean(QUIZ, false))
-            whereArgs+= (Val.id_quiz + ", ");
+            whereArgs+= ( id_quiz + ", ");
         if(pref.getBoolean(AAGAZ, false))
-            whereArgs+= (Val.id_aagaz + ", ");
+            whereArgs+= ( id_aagaz + ", ");
         if(pref.getBoolean(ENACTUS, false))
-            whereArgs+= (Val.id_enactus + ", ");
+            whereArgs+= ( id_enactus + ", ");
 
         whereArgs = whereArgs.substring(0,whereArgs.length()-2);
         whereArgs += " ) ";
@@ -152,7 +152,7 @@ public class dbAdapter implements  Constant {
 
 
     public Cursor getAllnsRows() {
-        String whereArgs = " IN (  "+Val.id_nsitonline +" )";
+        String whereArgs = " IN (  "+ id_nsitonline +" )";
         Cursor c = db.rawQuery("SELECT * FROM " + DATABASE_TABLE + " WHERE " + KEY_SOC + whereArgs, null);
         c.moveToFirst();
         return c;

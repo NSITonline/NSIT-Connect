@@ -7,8 +7,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -20,21 +18,18 @@ import android.widget.FrameLayout;
 import com.nispok.snackbar.Snackbar;
 import com.nispok.snackbar.SnackbarManager;
 
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.ResponseHandler;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.BasicResponseHandler;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import functions.ButtonAnimation;
 import functions.Constant;
 import functions.ImageLoader;
 import functions.Utils;
-import functions.Val;
 
 import static nsit.app.com.nsitapp.R.id.imag_cont;
 
@@ -55,10 +50,6 @@ public class Decsription extends AppCompatActivity implements Constant{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_decsription);
         pb=(ProgressBar)findViewById(R.id.progressBar1);
-
-
-
-
 
 
 
@@ -127,7 +118,7 @@ public class Decsription extends AppCompatActivity implements Constant{
         else imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(Decsription.this,ImageAct.class);
+                Intent i = new Intent(Decsription.this,Description_FullImage.class);
                 i.putExtra(IMAGE,img);
                 i.putExtra(OBID,obid);
                 startActivity(i);
@@ -140,37 +131,39 @@ public class Decsription extends AppCompatActivity implements Constant{
 
     }
 
-String text;
     private class DownloadWebPageTask extends AsyncTask<String, Void, String> {
 
         @Override
         protected String doInBackground(String... urls) {
 
 
-            String URL = "https://graph.facebook.com/"+obid+"?fields=images&access_token="+ Val.common_access;
-            HttpClient Client = new DefaultHttpClient();
-            HttpGet httpget = new HttpGet(URL);
-            ResponseHandler<String> responseHandler = new BasicResponseHandler();
+            String uri = "https://graph.facebook.com/"+obid+"?fields=images&access_token="+ common_access;
+
+            java.net.URL url = null;
+            String readStream = null;
             try {
-                text = Client.execute(httpget, responseHandler);
-            } catch (IOException e) {
-                e.printStackTrace();
-                Log.e("eroore",e.getMessage()+" ");
+                url = new URL(uri);
+                HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                readStream = Utils.readStream(con.getInputStream());
+            } catch (MalformedURLException e1) {
+                e1.printStackTrace();
+            } catch (IOException e1) {
+                e1.printStackTrace();
             }
 
-            return null;
+            return readStream;
         }
 
         @Override
         protected void onPostExecute(String result) {
-            Log.e("YO", "Done" + obid + text);
+            Log.e("YO", "Done" + obid + result);
             JSONObject ob;
             JSONArray arr;
-            if(text==null){
+            if(result==null){
                 imageLoader.DisplayImage(img, imageView,pb);
             }else {
                 try {
-                    ob = new JSONObject(text);
+                    ob = new JSONObject(result);
 
                     arr = ob.getJSONArray("images");
 

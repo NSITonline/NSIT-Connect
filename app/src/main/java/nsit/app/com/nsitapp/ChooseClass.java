@@ -18,7 +18,6 @@ import com.nispok.snackbar.SnackbarManager;
 
 import functions.ButtonAnimation;
 import functions.Constant;
-import functions.Val;
 
 public class ChooseClass extends AppCompatActivity implements AdapterView.OnItemSelectedListener, Constant {
 

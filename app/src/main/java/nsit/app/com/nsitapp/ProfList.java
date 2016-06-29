@@ -31,16 +31,11 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import functions.Val;
+import functions.Constant;
 
 
-public class ProfList extends AppCompatActivity {
+public class ProfList extends AppCompatActivity implements Constant {
     EditText s;
-    public static final String[] titles = new String[]{"DM", "DC", "DP",
-            "DM", "H&M",
-            "ECE",
-            "COE", "ICE", "MPAE", "IT", "BT", "SAS"};
-
     public static final String[] full = new String[]{
             "DEPARTMENT OF MANAGEMENT", "DEPARTMENT OF CHEMISTRY", "DEPARTMENT OF PHYSICS",
             "DEPARTMENT OF MATHS", "School Of Humanities & Management",
@@ -82,10 +77,12 @@ public class ProfList extends AppCompatActivity {
         JSONObject ob;
 
         try {
-            ar = new JSONArray(Val.pro);
+            ar = new JSONArray(pro);
             ob = ar.getJSONObject(dept);
             ar = ob.getJSONArray("ContentArray");
-            for (int j = 0; j < ar.length(); j++) {
+
+            int len1 = ar.length();
+            for (int j = 0; j < len1; j++) {
 
                 name[k] = ar.getJSONObject(j).getString("Name");
                 if (ar.getJSONObject(j).getString("Designation") != "")

@@ -19,15 +19,13 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.ResponseHandler;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.BasicResponseHandler;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,10 +54,10 @@ public class PlaceMapActivity extends FragmentActivity implements OnMapReadyCall
         time = (TextView)findViewById(R.id.time);
         distance= (TextView)findViewById(R.id.distance);
         progressBar = (ProgressBar)findViewById(R.id.progress_path);
-        Lati = Double.parseDouble(getIntent().getStringExtra(HangoutTypeAdapter.INTENT_LATI));
-        Longi = Double.parseDouble(getIntent().getStringExtra(HangoutTypeAdapter.INTENT_LONG));
-        place_name = getIntent().getStringExtra(HangoutTypeAdapter.INTENT_PLACE_NAME);
-        place_id = getIntent().getStringExtra(HangoutTypeAdapter.INTENT_PLACE_ID);
+        Lati = Double.parseDouble(getIntent().getStringExtra(HangoutsTypeDisplay.HangoutTypeAdapter.INTENT_LATI));
+        Longi = Double.parseDouble(getIntent().getStringExtra(HangoutsTypeDisplay.HangoutTypeAdapter.INTENT_LONG));
+        place_name = getIntent().getStringExtra(HangoutsTypeDisplay.HangoutTypeAdapter.INTENT_PLACE_NAME);
+        place_id = getIntent().getStringExtra(HangoutsTypeDisplay.HangoutTypeAdapter.INTENT_PLACE_ID);
         transition.setText("Current Location To "+place_name);
         MapFragment mapFragment = (MapFragment)getFragmentManager().findFragmentById(R.id.place_map);
         mapFragment.getMapAsync(this);
@@ -86,14 +84,12 @@ public class PlaceMapActivity extends FragmentActivity implements OnMapReadyCall
     }
 
 
-    private class HttpGetDirections extends AsyncTask<Void,Void,Void> {
+    private class HttpGetDirections extends AsyncTask<Void,Void,String> {
 
-        private String text;
         private String URL;
         private GoogleMap googleMap;
 
         HttpGetDirections(GoogleMap map){
-            text = null;
             GPSTracker gpsGetLocation = new GPSTracker(PlaceMapActivity.this);
             URL = "https://maps.googleapis.com/maps/api/directions/json?origin="+
                     gpsGetLocation.getLatitude()+","+gpsGetLocation.getLongitude()+"&destination=place_id:"
@@ -107,23 +103,32 @@ public class PlaceMapActivity extends FragmentActivity implements OnMapReadyCall
         }
 
         @Override
-        protected Void doInBackground(Void... voids) {
-            if(URL!=null){
-                HttpClient Client = new DefaultHttpClient();
-                HttpGet httpget = new HttpGet(URL);
-                ResponseHandler<String> responseHandler = new BasicResponseHandler();
-                try {
-                    text = Client.execute(httpget, responseHandler);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }}
-            return null;
+        protected String doInBackground(Void... voids) {
+
+
+
+
+
+            String uri = URL;
+            java.net.URL url = null;
+            String readStream = null;
+            try {
+                url = new URL(uri);
+                HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                readStream = Utils.readStream(con.getInputStream());
+            } catch (MalformedURLException e1) {
+                e1.printStackTrace();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+
+            return readStream;
         }
 
         @Override
-        protected void onPostExecute(Void aVoid) {
+        protected void onPostExecute(String res) {
             try{
-                JSONObject jdirectionsobject = new JSONObject(text);
+                JSONObject jdirectionsobject = new JSONObject(res);
                 JSONArray jroutesarray = jdirectionsobject.getJSONArray("routes");
                 main_polylinrobject = jroutesarray.getJSONObject(0).getJSONObject("overview_polyline").getString("points");
                 distance.setText(jroutesarray.getJSONObject(0).getJSONArray("legs").getJSONObject(0).getJSONObject("distance").getString("text"));

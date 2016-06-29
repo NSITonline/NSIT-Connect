@@ -20,7 +20,7 @@ import nsit.app.com.nsitapp.R;
 import nsit.app.com.nsitapp.data.ContestContract;
 import nsit.app.com.nsitapp.model.Contest;
 import nsit.app.com.nsitapp.network.StringDownloader;
-import nsit.app.com.nsitapp.utility.ContestParser;
+import functions.ContestParser;
 
 
 public class SyncAdapter extends AbstractThreadedSyncAdapter{

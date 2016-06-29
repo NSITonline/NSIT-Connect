@@ -32,13 +32,13 @@
             android:name=".Decsription"
             android:label="@string/title_activity_decsription" />
         <activity
-            android:name=".ImageAct"
+            android:name=".Description_FullImage"
             android:label="@string/title_activity_image" />
         <activity
-            android:name=".LocationMapView"
+            android:name=".Hangout_CollegeLocationMapView"
             android:label="LocationMapView" />
         <activity
-            android:name=".Locations"
+            android:name=".Hangout_collegeLocations"
             android:label="LocationMapView" />
         <activity
             android:name=".ChooseClass"
@@ -55,6 +55,10 @@
         <activity
             android:name=".ProfList"
             android:label="@string/title_activity_subject_remove" />
+
+        <activity android:name=".NotificationSettings"
+                  android:label="Notifications"
+                  android:parentActivityName=".MainActivity"/>
 
         <!-- For google maps -->
         <meta-data
@@ -92,36 +96,32 @@
                 android:name="android.content.SyncAdapter"
                 android:resource="@xml/syncadapter" />
         </service>
-
-        <receiver android:name=".BootReceiver">
+        <receiver
+            android:name=".PushNotification.MyAlarmReceiver"
+            android:process=":remote" >
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="nsit.app.com.nsitapp.PushNotification.MyAlarmReceiver" />
             </intent-filter>
         </receiver>
 
-        <service android:name=".NotificationService" />
+        <service
+            android:name=".PushNotification.MyNotifiactionService"
+            android:exported="false" />
+
 
         <activity
             android:name=".view.ContestDetailActivity"
             android:label="@string/title_activity_contest_detail"
-            android:parentActivityName=".view.contest_reminder"
+            android:parentActivityName=".view.CodeRadar_MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme2">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="nsit.app.com.nsitapp.view.contest_reminder" />
+                android:value=".view.CodeRadar_MainActivity" />
         </activity>
+
         <activity
-            android:name=".view.SettingsActivity"
-            android:label="@string/title_activity_settings"
-            android:parentActivityName=".view.contest_reminder"
-            android:screenOrientation="portrait">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="nsit.app.com.nsitapp.view.contest_reminder" />
-        </activity>
-        <activity
-            android:name=".view.contest_reminder"
+            android:name=".view.CodeRadar_MainActivity"
             android:label="@string/title_activity_contest_reminder"
             android:theme="@style/AppTheme2"/>
         <activity
@@ -132,7 +132,7 @@
 
 
         <activity
-            android:name=".sub_load"
+            android:name=".Sub_load"
             android:theme="@style/AppTheme" >
         </activity>
 

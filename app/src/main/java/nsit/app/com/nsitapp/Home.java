@@ -121,7 +121,7 @@ public class Home extends Fragment implements Constant {
             show_off();
             SnackbarManager.show(
                     Snackbar.with(activity.getApplicationContext())
-                            .text("No Your Internet Connection")
+                            .text(R.string.internet_error)
                             .duration(Snackbar.SnackbarDuration.LENGTH_SHORT), activity);
 
         }

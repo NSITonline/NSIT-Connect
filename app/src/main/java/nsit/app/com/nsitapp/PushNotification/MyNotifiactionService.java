@@ -5,10 +5,13 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -134,8 +137,10 @@ public class MyNotifiactionService extends IntentService implements Constant {
             Intent notificationIntent = new Intent(this, MainActivity.class);
             PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
             Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+            Bitmap notifIcon = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
             NotificationCompat.Builder notification = new NotificationCompat.Builder(this)
                     .setSmallIcon(R.drawable.ic_launcher)
+                    .setLargeIcon(notifIcon)
                     .setContentTitle("NSIT Connect")
                     .setContentText(" You Have "+ newmessage.size()+" Notifications")
                     .setVibrate(new long[]{500L, 500L, 500L, 500L})

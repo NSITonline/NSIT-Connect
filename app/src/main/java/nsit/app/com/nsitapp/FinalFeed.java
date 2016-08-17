@@ -550,7 +550,7 @@ public class FinalFeed extends Fragment implements Constant{
             } else {
                 SnackbarManager.show(
                         Snackbar.with(activity.getApplicationContext())
-                                .text("No Internet Connection")
+                                .text(R.string.internet_error)
                                 .duration(Snackbar.SnackbarDuration.LENGTH_SHORT), activity);
                 db.open();
                 Cursor c = db.getAllRows();
@@ -632,7 +632,7 @@ public class FinalFeed extends Fragment implements Constant{
                     else {
                         SnackbarManager.show(
                                 Snackbar.with(activity.getApplicationContext())
-                                        .text("No Internet Connection")
+                                        .text(R.string.internet_error)
                                         .duration(Snackbar.SnackbarDuration.LENGTH_SHORT), activity);
 
                         db.open();

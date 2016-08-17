@@ -39,8 +39,7 @@
     <string name="title_activity_subjects_show">SubjectsShow</string>
     <string name="title_activity_subject_remove">SubjectRemove</string>
     <string name="title_activity_feedback">Feedback</string>
-
-
+    <string name="internet_error">No Internet Connection</string>
     <string name="codeforces">Codeforces</string>
     <string name="hackerrank">Hackerrank</string>
     <string name="topcoder">TopCoder</string>

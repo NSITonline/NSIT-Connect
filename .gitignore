@@ -10,6 +10,7 @@ app/build.gradle
 .idea/ app/build.gradle
 /app/src/main/AndroidManifest.xml
 
+.idea
 
 app/src/main/res/drawable/1.png
 app/src/main/res/drawable/2.png

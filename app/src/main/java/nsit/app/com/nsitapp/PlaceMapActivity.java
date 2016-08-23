@@ -2,7 +2,6 @@ package nsit.app.com.nsitapp;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -42,7 +41,8 @@ public class PlaceMapActivity extends FragmentActivity implements OnMapReadyCall
     private String place_name;
     private String place_id;
     private String main_polylinrobject;
-    private TextView transition,time,distance;
+    private TextView time;
+    private TextView distance;
     private ProgressBar progressBar;
 
     @Override
@@ -50,7 +50,7 @@ public class PlaceMapActivity extends FragmentActivity implements OnMapReadyCall
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_place_maps);
-        transition = (TextView)findViewById(R.id.destination);
+        TextView transition = (TextView) findViewById(R.id.destination);
         time = (TextView)findViewById(R.id.time);
         distance= (TextView)findViewById(R.id.distance);
         progressBar = (ProgressBar)findViewById(R.id.progress_path);

@@ -24,7 +24,8 @@
             android:orientation="horizontal"
 
             android:descendantFocusability="afterDescendants"
-            android:background="#ffffff">
+            android:background="#ffffff"
+            android:baselineAligned="false">
 
             <FrameLayout
                 android:layout_weight="0.2"
@@ -62,7 +63,7 @@
                         android:layout_width="2dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="right"
-                        android:background="@color/colorAccent"></LinearLayout>
+                        android:background="@color/colorAccent"/>
 
                 </FrameLayout>
 

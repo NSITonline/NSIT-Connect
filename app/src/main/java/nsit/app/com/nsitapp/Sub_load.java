@@ -11,10 +11,8 @@ import android.widget.TextView;
 
 public class Sub_load extends AppCompatActivity {
 
-    Spinner s3;
-    Spinner s4;
-    ArrayAdapter<CharSequence> adapter2;
-    ArrayAdapter<CharSequence> adapter3;
+    private Spinner s3;
+    private Spinner s4;
 
 
     @Override
@@ -51,7 +49,7 @@ public class Sub_load extends AppCompatActivity {
 
 
         s3 = (Spinner) findViewById(R.id.spinB);
-        adapter2 = ArrayAdapter.createFromResource(this, R.array.branch, android.R.layout.simple_list_item_1);
+        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this, R.array.branch, android.R.layout.simple_list_item_1);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         s3.setAdapter(adapter2);
         s3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -70,7 +68,7 @@ public class Sub_load extends AppCompatActivity {
         });
 
         s4 = (Spinner) findViewById(R.id.spinS);
-        adapter3 = ArrayAdapter.createFromResource(this, R.array.semester, android.R.layout.simple_list_item_1);
+        ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(this, R.array.semester, android.R.layout.simple_list_item_1);
         adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         s4.setAdapter(adapter3);
         s4.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

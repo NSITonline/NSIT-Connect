@@ -7,10 +7,10 @@ import java.net.URL;
 
 
 public abstract class Downloader {
-    public boolean download (String targetURL) throws IOException {
+    public boolean download() throws IOException {
         boolean isSuccess = true;
         InputStream inputStream = null;
-        URL url = new URL(targetURL);
+        URL url = new URL("https://www.hackerrank.com/calendar/feed.rss");
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         try {
             inputStream = conn.getInputStream();

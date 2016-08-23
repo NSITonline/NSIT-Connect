@@ -10,8 +10,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 import android.widget.Button;
+import android.widget.Spinner;
 
 import com.nispok.snackbar.Snackbar;
 import com.nispok.snackbar.SnackbarManager;
@@ -23,29 +23,28 @@ public class ChooseClass extends AppCompatActivity implements AdapterView.OnItem
 
 
 
-    String[] sem={"Semester","Sem 1","Sem 2","Sem 3","Sem 4","Sem 5","Sem 6","Sem 7","Sem 8"};
-    String[] branch={"Branch","COE","IT","ECE","ICE","MPAE","BT","ME"};
-    String[] section={"Section","Sec 1","Sec 2","Sec 3"};
-    String[] section1={"Section","Sec 1","Sec 2"};
-    String[] section2={"Section","Sec 1"};
+    private String[] sem={"Semester","Sem 1","Sem 2","Sem 3","Sem 4","Sem 5","Sem 6","Sem 7","Sem 8"};
+    private String[] branch={"Branch","COE","IT","ECE","ICE","MPAE","BT","ME"};
+    private String[] section={"Section","Sec 1","Sec 2","Sec 3"};
+    private String[] section1={"Section","Sec 1","Sec 2"};
+    private String[] section2={"Section","Sec 1"};
 
-    String[] x ={"Section"};
-    Spinner Sem,Branch,Sec;
-    Boolean s,b,sect;
-    Button set;
-    int se,br,sec;
-    SharedPreferences sh;
-    SharedPreferences.Editor e;
+    private String[] x ={"Section"};
+    private Spinner Sec;
+    private Boolean s, b, sect;
+    private int se, br, sec;
+    private SharedPreferences sh;
+    private SharedPreferences.Editor e;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose);
 
-        Sem = (Spinner) findViewById(R.id.sem);
-        Branch = (Spinner) findViewById(R.id.branch);
+        Spinner sem1 = (Spinner) findViewById(R.id.sem);
+        Spinner branch1 = (Spinner) findViewById(R.id.branch);
         Sec = (Spinner) findViewById(R.id.sec);
-        set = (Button) findViewById(R.id.set);
+        Button set = (Button) findViewById(R.id.set);
 
         ArrayAdapter adapte = new ArrayAdapter(this,android.R.layout.simple_spinner_dropdown_item,x);
         Sec.setAdapter(adapte);
@@ -53,12 +52,12 @@ public class ChooseClass extends AppCompatActivity implements AdapterView.OnItem
 
 
         ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_dropdown_item,sem);
-        Sem.setAdapter(adapter);
-        Sem.setOnItemSelectedListener(this);
+        sem1.setAdapter(adapter);
+        sem1.setOnItemSelectedListener(this);
 
         ArrayAdapter adapter2 = new ArrayAdapter(this,android.R.layout.simple_spinner_dropdown_item,branch);
-        Branch.setAdapter(adapter2);
-        Branch.setOnItemSelectedListener(this);
+        branch1.setAdapter(adapter2);
+        branch1.setOnItemSelectedListener(this);
 
 
 
@@ -83,7 +82,6 @@ public class ChooseClass extends AppCompatActivity implements AdapterView.OnItem
                 } else {
 
                     Log.e("here", se + "\n" + sec + "\n" + br + "\n" + "  ");
-                    String timetableid = null;
                     sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                     e = sh.edit();
                     e.putInt(CALENDAR_SEM, se);

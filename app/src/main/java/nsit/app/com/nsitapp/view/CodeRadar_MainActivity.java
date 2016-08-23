@@ -58,7 +58,8 @@ public class CodeRadar_MainActivity extends FragmentActivity implements ContestL
         }*/
 
         try {SyncAdapter.initializeSyncAdapter(this);}
-        catch (Exception e) {;}
+        catch (Exception e) {
+        }
 
         Log.v("we will win 6","we");
 

@@ -14,24 +14,21 @@ import android.view.animation.AnimationSet;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
+import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Button;
 
-import functions.ButtonAnimation;
-
-
-import java.util.List;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
-import java.util.TimeZone;
 
+import functions.ButtonAnimation;
 import functions.ImageLoader;
+import functions.Utils;
 import nsit.app.com.nsitapp.Decsription;
 import nsit.app.com.nsitapp.Description_FullImage;
 import nsit.app.com.nsitapp.R;
@@ -40,10 +37,10 @@ import nsit.app.com.nsitapp.R;
 public class CustomList extends ArrayAdapter<String> {
     private final Activity context;
     private final List<String> img, des, lik, link, obid, date;
-    public ImageLoader imageLoader;
-    ProgressBar p;
+    private final ImageLoader imageLoader;
 
-    public CustomList(Activity context, List<String> image, List<String> desc, List<String> like, List<String> links, List<String> oid, List<String> d) {
+    public CustomList(Activity context, List<String> image, List<String> desc, List<String> like, List<String> links,
+                      List<String> oid, List<String> dates) {
         super(context, R.layout.message_layout, desc);
         this.context = context;
         img = image;
@@ -51,25 +48,21 @@ public class CustomList extends ArrayAdapter<String> {
         lik = like;
         obid = oid;
         link = links;
-        date = d;
+        date = dates;
         imageLoader = new ImageLoader(context.getApplicationContext());
     }
 
     private class ViewHolder {
 
-        TextView Des;
-        TextView likes;
-        TextView dates;
-        TextView read;
-        ImageView imag;
-        FrameLayout f;
-        Button b;
+        TextView Des, likes,dates,read;
+        ImageView imageView;
+        FrameLayout frameLayout;
+        Button button;
     }
 
     @Override
     public View getView(final int position, View view, ViewGroup parent) {
-        ViewHolder holder = null;
-
+        ViewHolder holder;
         LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         if (view == null) {
             view = mInflater.inflate(R.layout.message_layout, null);
@@ -79,18 +72,18 @@ public class CustomList extends ArrayAdapter<String> {
             holder.likes = (TextView) view.findViewById(R.id.likes);
             holder.dates = (TextView) view.findViewById(R.id.date);
             holder.read = (TextView) view.findViewById(R.id.read);
-            holder.imag = (ImageView) view.findViewById(R.id.image);
-            holder.f = (FrameLayout) view.findViewById(R.id.frame);
-            holder.b = (Button) view.findViewById(R.id.show);
+            holder.imageView = (ImageView) view.findViewById(R.id.image);
+            holder.frameLayout = (FrameLayout) view.findViewById(R.id.frame);
+            holder.button = (Button) view.findViewById(R.id.show);
             view.setTag(holder);
         } else
             holder = (ViewHolder) view.getTag();
 
-        p = (ProgressBar) view.findViewById(R.id.progressBar1);
+        ProgressBar progressBar = (ProgressBar) view.findViewById(R.id.progressBar1);
 
 
         if (des.get(position) == null)
-            holder.Des.setText("No description");
+            holder.Des.setText(R.string.no_description);
         else
             holder.Des.setText(des.get(position));
 
@@ -103,7 +96,7 @@ public class CustomList extends ArrayAdapter<String> {
 
         holder.dates.setVisibility(View.VISIBLE);
         if (date.get(position) != null) {
-            String x = GetLocalDateStringFromUTCString(date.get(position));
+            String x = Utils.GetLocalDateStringFromUTCString(date.get(position));
             String formattedDate = x;
             try {
 
@@ -136,11 +129,11 @@ public class CustomList extends ArrayAdapter<String> {
             }
         });
 
-        holder.f.setVisibility(View.VISIBLE);
+        holder.frameLayout.setVisibility(View.VISIBLE);
         if (img.get(position) != null) {
 
-            imageLoader.DisplayImage(img.get(position), holder.imag, p);
-            holder.b.setOnClickListener(new OnClickListener() {
+            imageLoader.DisplayImage(img.get(position), holder.imageView, progressBar);
+            holder.button.setOnClickListener(new OnClickListener() {
 
                 @Override
                 public void onClick(View v) {
@@ -155,7 +148,7 @@ public class CustomList extends ArrayAdapter<String> {
             });
 
         } else {
-            holder.f.setVisibility(View.GONE);
+            holder.frameLayout.setVisibility(View.GONE);
         }
 
         AnimationSet set = new AnimationSet(true);
@@ -169,21 +162,6 @@ public class CustomList extends ArrayAdapter<String> {
         set.addAnimation(fade);
         view.startAnimation(set);
         return view;
-    }
-
-    public String GetLocalDateStringFromUTCString(String utcLongDateTime) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss+SSSS");
-        String localDateString = null;
-
-        long when = 0;
-        try {
-            when = dateFormat.parse(utcLongDateTime).getTime();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        localDateString = dateFormat.format(new Date(when + TimeZone.getDefault().getRawOffset() +
-                (TimeZone.getDefault().inDaylightTime(new Date()) ? TimeZone.getDefault().getDSTSavings() : 0)));
-        return localDateString;
     }
 
 }

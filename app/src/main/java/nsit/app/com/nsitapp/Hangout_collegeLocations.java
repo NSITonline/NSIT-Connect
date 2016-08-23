@@ -31,9 +31,8 @@ import functions.Constant;
  */
 public class Hangout_collegeLocations extends AppCompatActivity implements Constant {
 
-    ArrayList<LocationGroup> LocationsGroupsList = new ArrayList<>();
-    public ExpandableListView listView;
-    ExpandableListAdapter listAdapter;
+    private ArrayList<LocationGroup> LocationsGroupsList = new ArrayList<>();
+    private ExpandableListView listView;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -107,9 +106,9 @@ public class Hangout_collegeLocations extends AppCompatActivity implements Const
     }
 
 
-    public void populateList(ArrayList<LocationGroup> Items){
+    private void populateList(ArrayList<LocationGroup> Items){
         FillGroupsList();
-        listAdapter = new LocationsList_Adapter(this,Items,null);
+        ExpandableListAdapter listAdapter = new LocationsList_Adapter(this, Items);
         listView.setAdapter(listAdapter);
     }
 
@@ -117,7 +116,7 @@ public class Hangout_collegeLocations extends AppCompatActivity implements Const
 
 
 
-    public void ShowOnMap(View view, Location LocationItem, Integer GroupItem){
+    private void ShowOnMap(View view, Location LocationItem, Integer GroupItem){
         Intent myIntent = new Intent(view.getContext(),Hangout_CollegeLocationMapView.class);
         myIntent.putExtra(LOCATION_NAME, LocationItem.Name);
         myIntent.putExtra(LOCATION_LAT, String.valueOf(LocationItem.Coord.latitude));
@@ -149,7 +148,7 @@ public class Hangout_collegeLocations extends AppCompatActivity implements Const
         }
     }
 
-    public void FillGroupsList(){
+    private void FillGroupsList(){
         ArrayList<Location> NSIT_locations = new ArrayList<>();
         NSIT_locations.add(new Location("North Gate",new LatLng(28.613156, 77.033553)));
         NSIT_locations.add(new Location("South Gate",new LatLng(28.608464, 77.035069)));
@@ -240,10 +239,10 @@ public class Hangout_collegeLocations extends AppCompatActivity implements Const
             groupClicked = groupPosition;
         }
 
-        public LocationsList_Adapter(Context context, ArrayList<Hangout_collegeLocations.LocationGroup> LocationItems, ArrayList<Hangout_collegeLocations.Location> LocationGroupItems) {
+        public LocationsList_Adapter(Context context, ArrayList<LocationGroup> LocationItems) {
             this.context = context;
             this.LocationItems = LocationItems;
-            this.LocationGroupItems = LocationGroupItems;
+            this.LocationGroupItems = null;
             inflater = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         }

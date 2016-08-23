@@ -15,7 +15,6 @@ public class Hangouts extends Fragment implements View.OnClickListener {
 
     public static final String CHOICE_TYPE  = "Choice";
     private int choice = -1;
-    private LinearLayout hcollege,hresturant,hcafes,hnightclub,hmalls,hbowling,hmovies,hfood,hapark,hpark;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -25,16 +24,16 @@ public class Hangouts extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rooview = inflater.inflate(R.layout.fragment_hangouts,container,false);
-        hcollege = (LinearLayout)rooview.findViewById(R.id.hang_college);
-        hresturant = (LinearLayout)rooview.findViewById(R.id.hang_restaurant);
-        hcafes = (LinearLayout)rooview.findViewById(R.id.hang_cafe);
-        hnightclub = (LinearLayout)rooview.findViewById(R.id.hang_nightclub);
-        hmalls = (LinearLayout)rooview.findViewById(R.id.hang_shoppingmalls);
-        hbowling = (LinearLayout)rooview.findViewById(R.id.hang_bowling);
-        hmovies = (LinearLayout)rooview.findViewById(R.id.hang_movies);
-        hfood = (LinearLayout)rooview.findViewById(R.id.hang_food);
-        hapark = (LinearLayout)rooview.findViewById(R.id.hang_amusment);
-        hpark = (LinearLayout)rooview.findViewById(R.id.hang_park);
+        LinearLayout hcollege = (LinearLayout) rooview.findViewById(R.id.hang_college);
+        LinearLayout hresturant = (LinearLayout) rooview.findViewById(R.id.hang_restaurant);
+        LinearLayout hcafes = (LinearLayout) rooview.findViewById(R.id.hang_cafe);
+        LinearLayout hnightclub = (LinearLayout) rooview.findViewById(R.id.hang_nightclub);
+        LinearLayout hmalls = (LinearLayout) rooview.findViewById(R.id.hang_shoppingmalls);
+        LinearLayout hbowling = (LinearLayout) rooview.findViewById(R.id.hang_bowling);
+        LinearLayout hmovies = (LinearLayout) rooview.findViewById(R.id.hang_movies);
+        LinearLayout hfood = (LinearLayout) rooview.findViewById(R.id.hang_food);
+        LinearLayout hapark = (LinearLayout) rooview.findViewById(R.id.hang_amusment);
+        LinearLayout hpark = (LinearLayout) rooview.findViewById(R.id.hang_park);
 
         hcollege.setOnClickListener(this);
         hresturant.setOnClickListener(this);

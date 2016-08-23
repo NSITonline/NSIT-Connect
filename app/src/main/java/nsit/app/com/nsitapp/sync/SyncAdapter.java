@@ -16,19 +16,19 @@ import android.util.Log;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import functions.ContestParser;
 import nsit.app.com.nsitapp.R;
 import nsit.app.com.nsitapp.data.ContestContract;
 import nsit.app.com.nsitapp.model.Contest;
 import nsit.app.com.nsitapp.network.StringDownloader;
-import functions.ContestParser;
 
 
 public class SyncAdapter extends AbstractThreadedSyncAdapter{
 
-    public static final int SYNC_INTERVAL = 3 * 60 * 60;
-    public static final int SYNC_FLEXTIME = SYNC_INTERVAL/2;
-    public SyncAdapter(Context context, boolean autoInitialize) {
-        super(context, autoInitialize);
+    private static final int SYNC_INTERVAL = 3 * 60 * 60;
+    private static final int SYNC_FLEXTIME = SYNC_INTERVAL/2;
+    public SyncAdapter(Context context) {
+        super(context, true);
     }
 
     @Override
@@ -36,14 +36,13 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter{
         Log.d("DEBUG","onPerformSync");
         StringDownloader downloader = new StringDownloader();
         try {
-            downloader.download("https://www.hackerrank.com/calendar/feed.rss");
+            downloader.download();
         } catch (IOException e) {
             e.printStackTrace();
         }
         String rssString = downloader.getString();
 
         ContestParser parser = new ContestParser();
-        Log.d("DEBUG",rssString);
         ArrayList<Contest> contests = parser.parse(rssString);
 
         ContentValues[] cvArray = new ContentValues[contests.size()];
@@ -58,10 +57,9 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter{
         getContext().getContentResolver().bulkInsert(ContestContract.ContestEntry.CONTENT_URI,
                 cvArray);
 
-        return;
     }
 
-    public static Account getSyncAccount(Context context) {
+    private static Account getSyncAccount(Context context) {
 
         AccountManager accountManager =
                 (AccountManager) context.getSystemService(Context.ACCOUNT_SERVICE);
@@ -84,7 +82,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter{
         return newAccount;
     }
 
-    public static void syncImmediately(Context context) {
+    private static void syncImmediately(Context context) {
         Bundle bundle = new Bundle();
         bundle.putBoolean(ContentResolver.SYNC_EXTRAS_EXPEDITED, true);
         bundle.putBoolean(ContentResolver.SYNC_EXTRAS_MANUAL, true);
@@ -94,25 +92,25 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter{
 
     private static void onAccountCreated(Account newAccount, Context context) {
 
-        SyncAdapter.configurePeriodicSync(context, SYNC_INTERVAL, SYNC_FLEXTIME);
+        SyncAdapter.configurePeriodicSync(context);
 
         ContentResolver.setSyncAutomatically(newAccount, context.getString(R.string.content_authority), true);
 
         syncImmediately(context);
     }
 
-    public static void configurePeriodicSync(Context context, int syncInterval, int flexTime) {
+    private static void configurePeriodicSync(Context context) {
         Account account = getSyncAccount(context);
         String authority = context.getString(R.string.content_authority);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             SyncRequest request = new SyncRequest.Builder().
-                    syncPeriodic(syncInterval, flexTime).
+                    syncPeriodic(SyncAdapter.SYNC_INTERVAL, SyncAdapter.SYNC_FLEXTIME).
                     setSyncAdapter(account, authority).
                     setExtras(new Bundle()).build();
             ContentResolver.requestSync(request);
         } else {
             ContentResolver.addPeriodicSync(account,
-                    authority, new Bundle(), syncInterval);
+                    authority, new Bundle(), SyncAdapter.SYNC_INTERVAL);
         }
     }
 

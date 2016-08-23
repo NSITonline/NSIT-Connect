@@ -3,7 +3,6 @@ package functions;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
-import android.view.ScaleGestureDetector;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
 import android.widget.RelativeLayout;
@@ -11,10 +10,11 @@ import android.widget.RelativeLayout;
 /**
  * Created by swati on 16/12/15.
  */public class ZoomableRelativeLayout extends RelativeLayout {
-    float mScaleFactor = 1;
-    float mPivotX;
-    float mPivotY;
-    float MIN_SCALE = 1.0f , MAX_SCALE = 20.0f;
+    private float mScaleFactor = 1;
+    private float mPivotX;
+    private float mPivotY;
+    private float MIN_SCALE = 1.0f;
+    private float MAX_SCALE = 20.0f;
 
     public ZoomableRelativeLayout(Context context) {
         super(context);
@@ -39,7 +39,7 @@ import android.widget.RelativeLayout;
         canvas.restore();
     }
 
-    public void scale(float scaleFactor, float pivotX, float pivotY) {
+    private void scale(float scaleFactor, float pivotX, float pivotY) {
         mScaleFactor = scaleFactor;
         mPivotX = pivotX;
         mPivotY = pivotY;

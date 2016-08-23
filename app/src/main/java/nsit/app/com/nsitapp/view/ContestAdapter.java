@@ -10,9 +10,8 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import nsit.app.com.nsitapp.model.OnlineJudge;
-
 import nsit.app.com.nsitapp.R;
+import nsit.app.com.nsitapp.model.OnlineJudge;
 
 import static functions.Utils.getShortReadableDurationFromMillis;
 
@@ -20,10 +19,10 @@ import static functions.Utils.getShortReadableDurationFromMillis;
 /**
  * Created by saisumit on 5/22/15.
  */
-public class ContestAdapter extends CursorAdapter {
+class ContestAdapter extends CursorAdapter {
 
-    public ContestAdapter(Context context,Cursor cursor,int flags) {
-        super(context,cursor,flags);
+    public ContestAdapter(Context context) {
+        super(context, null, 0);
     }
 
     @Override
@@ -60,11 +59,11 @@ public class ContestAdapter extends CursorAdapter {
     }
 
     public static class ViewHolder {
-        public ImageView mOJImage;
-        public TextView mTitleText;
-        public TextView mSourceText;
-        public TextView mTimeText;
-        public FrameLayout mItemContainer;
+        public final ImageView mOJImage;
+        public final TextView mTitleText;
+        public final TextView mSourceText;
+        public final TextView mTimeText;
+        public final FrameLayout mItemContainer;
 
         public ViewHolder(View view) {
             mOJImage = (ImageView) view.findViewById(R.id.onlineJudge_image);

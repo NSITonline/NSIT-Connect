@@ -3,20 +3,20 @@ package nsit.app.com.nsitapp;
 /**
  * Created by AGGARWAL'S on 10/21/2015.
  */
-public class HangoutTypeObject {
+class HangoutTypeObject {
 
-    boolean opennow;
-    float photowidth;
-    float photoheight;
-    float rating;
+    private boolean opennow;
+    private float photowidth;
+    private float photoheight;
+    private float rating;
 
-    String name;
-    String icon;
-    String place_id;
+    private String name;
+    private String icon;
+    private String place_id;
     String phtotref;
-    String longi;
-    String latti;
-    String vicinity;
+    private String longi;
+    private String latti;
+    private String vicinity;
 
 
     HangoutTypeObject(String name,

@@ -8,12 +8,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-
-import nsit.app.com.nsitapp.R;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -32,11 +29,11 @@ import java.util.concurrent.Executors;
 
 public class ImageLoader {
 
-    MemoryCache memoryCache = new MemoryCache();
-    FileCache fileCache;
-    ProgressBar p;
+    private MemoryCache memoryCache = new MemoryCache();
+    private FileCache fileCache;
+    private ProgressBar p;
     private Map<ImageView, String> imageViews = Collections.synchronizedMap(new WeakHashMap<ImageView, String>());
-    ExecutorService executorService;
+    private ExecutorService executorService;
 
     public ImageLoader(Context context) {
         fileCache = new FileCache(context);
@@ -155,11 +152,9 @@ public class ImageLoader {
         }
     }
 
-    boolean imageViewReused(PhotoToLoad photoToLoad) {
+    private boolean imageViewReused(PhotoToLoad photoToLoad) {
         String tag = imageViews.get(photoToLoad.imageView);
-        if (tag == null || !tag.equals(photoToLoad.url))
-            return true;
-        return false;
+        return tag == null || !tag.equals(photoToLoad.url);
     }
 
     //Used to display bitmap in the UI thread

@@ -3,6 +3,7 @@ package nsit.app.com.nsitapp;
 /**
  * Created by Swati garg on 28-06-2015.
  */
+
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -36,29 +37,30 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+
 import functions.Constant;
 import functions.Utils;
 
 public class Calender extends Fragment implements Constant {
 
-    static String timetable = null;
-    boolean loadingMore = false;
-    static ArrayList<String> days = new ArrayList<String>();
-    static ArrayList<Subject_struct> p0 = new ArrayList<Subject_struct>();
-    static ArrayList<Subject_struct> p1 = new ArrayList<Subject_struct>();
-    static ArrayList<Subject_struct> p2 = new ArrayList<Subject_struct>();
-    static ArrayList<Subject_struct> p3 = new ArrayList<Subject_struct>();
-    static ArrayList<Subject_struct> p4 = new ArrayList<Subject_struct>();
-    static ArrayList<Subject_struct> p5 = new ArrayList<Subject_struct>();
-    static ArrayList<Subject_struct> p6 = new ArrayList<Subject_struct>();
-    static ArrayList<Subject_struct> p7 = new ArrayList<Subject_struct>();
-    static ArrayList<Subject_struct> p8 = new ArrayList<Subject_struct>();
-    static ArrayList<Subject_struct> p9 = new ArrayList<Subject_struct>();
-    CustomList_calendar adapter2;
-    TwoWayView lvTest;
-    SharedPreferences s;
-    SharedPreferences.Editor e;
-    static Activity activity;
+    private static String timetable = null;
+    private boolean loadingMore = false;
+    private static ArrayList<String> days = new ArrayList<String>();
+    private static ArrayList<Subject_struct> p0 = new ArrayList<Subject_struct>();
+    private static ArrayList<Subject_struct> p1 = new ArrayList<Subject_struct>();
+    private static ArrayList<Subject_struct> p2 = new ArrayList<Subject_struct>();
+    private static ArrayList<Subject_struct> p3 = new ArrayList<Subject_struct>();
+    private static ArrayList<Subject_struct> p4 = new ArrayList<Subject_struct>();
+    private static ArrayList<Subject_struct> p5 = new ArrayList<Subject_struct>();
+    private static ArrayList<Subject_struct> p6 = new ArrayList<Subject_struct>();
+    private static ArrayList<Subject_struct> p7 = new ArrayList<Subject_struct>();
+    private static ArrayList<Subject_struct> p8 = new ArrayList<Subject_struct>();
+    private static ArrayList<Subject_struct> p9 = new ArrayList<Subject_struct>();
+    private CustomList_calendar adapter2;
+    private TwoWayView lvTest;
+    private SharedPreferences s;
+    private SharedPreferences.Editor e;
+    private static Activity activity;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -70,8 +72,7 @@ public class Calender extends Fragment implements Constant {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        this.activity = activity;
-
+        Calender.activity = activity;
     }
 
     @Override
@@ -81,11 +82,10 @@ public class Calender extends Fragment implements Constant {
         if (activity == null)
             return rootView;
 
-
         s = PreferenceManager.getDefaultSharedPreferences(activity);
         e = s.edit();
-        Boolean b = s.getBoolean(IS_CLASS_SET, false);
-        if (!b) {
+        Boolean is_class_already_set = s.getBoolean(IS_CLASS_SET, false);
+        if (!is_class_already_set) {
             Intent i = new Intent(activity, ChooseClass.class);
             startActivity(i);
         }
@@ -99,10 +99,9 @@ public class Calender extends Fragment implements Constant {
         lvTest.setItemMargin(10);
 
 
-
-        if (a == true || timetable == null) {
+        if (a || timetable == null) {
             if (Utils.isNetworkAvailable(activity))
-                new DownloadWebPageTask2().execute();
+                new DownloadTimeTable().execute();
             else {
                 SnackbarManager.show(
                         Snackbar.with(activity.getApplicationContext())
@@ -116,9 +115,7 @@ public class Calender extends Fragment implements Constant {
         loadingMore = true;
 
 
-
-        new DownloadWebPageTask2().execute();
-
+        new DownloadTimeTable().execute();
 
 
         lvTest.setOnScrollListener(new TwoWayView.OnScrollListener() {
@@ -131,7 +128,7 @@ public class Calender extends Fragment implements Constant {
                                  int visibleItemCount, int totalItemCount) {
                 int lastInScreen = firstVisibleItem + visibleItemCount;
                 if ((lastInScreen == totalItemCount) && !(loadingMore)) {
-                    load();
+                    load(); // infinite scrolling
                 }
                 adapter2.notifyDataSetChanged();
             }
@@ -140,15 +137,13 @@ public class Calender extends Fragment implements Constant {
     }
 
 
-    void load() {
+    private void load() {
         JSONObject ob;
         JSONArray ar, ar2;
 
 
         loadingMore = true;
-        Log.e("in here","loaqding" + "load");
 
-        SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
         timetable = s.getString(GET_TIME_TABLE, null);
 
         if (timetable == null)
@@ -162,8 +157,8 @@ public class Calender extends Fragment implements Constant {
             for (int j = 0; j < len1; j++) {
                 ar2 = ar.getJSONArray(j);
 
-             
-                String value,proffh,subfh,roomfh,profsh,subsh,roomsh;
+
+                String value, proffh, subfh, roomfh, profsh, subsh, roomsh;
 
                 int len2 = ar2.length();
 
@@ -171,28 +166,27 @@ public class Calender extends Fragment implements Constant {
                     value = ar2.getJSONObject(i).getString("value");
 
 
-                   
                     //break or lunch break
                     if (value.contains("break")) {
-                        proffh=subfh=roomfh=profsh=subsh=roomsh=null;
+                        proffh = subfh = roomfh = profsh = subsh = roomsh = null;
                     } else if (value.contains("theory")) {           //Theory
 
 
-                            proffh = ar2.getJSONObject(i).getString("prof");
-                            roomfh = ar2.getJSONObject(i).getString("room");
-                            subfh = ar2.getJSONObject(i).getString("subject");
-                            profsh=subsh=roomsh=null;
-                        } else {        //Lab
+                        proffh = ar2.getJSONObject(i).getString("prof");
+                        roomfh = ar2.getJSONObject(i).getString("room");
+                        subfh = ar2.getJSONObject(i).getString("subject");
+                        profsh = subsh = roomsh = null;
+                    } else {        //Lab
                         proffh = ar2.getJSONObject(i).getString("prof_FH");
                         roomfh = ar2.getJSONObject(i).getString("room_FH");
-                        subfh = ar2.getJSONObject(i).optString("subject_FH",ar2.getJSONObject(i).getString("subject") );
+                        subfh = ar2.getJSONObject(i).optString("subject_FH", ar2.getJSONObject(i).getString("subject"));
                         profsh = ar2.getJSONObject(i).getString("prof_SH");
                         roomsh = ar2.getJSONObject(i).getString("room_SH");
-                        subsh = ar2.getJSONObject(i).optString("subject_SH",ar2.getJSONObject(i).getString("subject") );
+                        subsh = ar2.getJSONObject(i).optString("subject_SH", ar2.getJSONObject(i).getString("subject"));
 
                     }
 
-                    Subject_struct x = new Subject_struct(value,proffh,subfh,roomfh,profsh,subsh,roomsh);
+                    Subject_struct x = new Subject_struct(value, proffh, subfh, roomfh, profsh, subsh, roomsh);
                     switch (i - 1) {
                         case -1:
                             p0.add(x);
@@ -228,9 +222,8 @@ public class Calender extends Fragment implements Constant {
                     }
                 }
             }
-        } catch (Exception e) {
-
-            Log.e("error",e.getMessage()+"  ");
+        } catch (JSONException e) {
+            Log.e("error", e.getMessage() + "  ");
         }
         days.add("Monday");
         days.add("Tuesday");
@@ -259,8 +252,7 @@ public class Calender extends Fragment implements Constant {
     }
 
 
-
-    private class DownloadWebPageTask2 extends AsyncTask<String, Void, String> {
+    private class DownloadTimeTable extends AsyncTask<String, Void, String> {
 
         ProgressDialog progress;
 
@@ -283,22 +275,18 @@ public class Calender extends Fragment implements Constant {
             progress.setTitle("Loading");
             progress.setMessage("Fetching timetable...");
 
-            Log.e("in here","loaqding" + "preexecute");
-
         }
 
         @Override
         protected String doInBackground(String... urls) {
 
-            int branch,sem,sec;
+            int branch, sem, sec;
             branch = s.getInt(CALENDAR_BRANCH, 1);
             sec = s.getInt(CALENDAR_SECTION, 1);
             sem = s.getInt(CALENDAR_SEM, 1);
 
 
-
-
-           // String URL;
+            // String URL;
             String uri = TIMETABLE_API +
                     "branch=" +
                     branch +
@@ -307,7 +295,7 @@ public class Calender extends Fragment implements Constant {
                     "&section=" +
                     sec;
 
-            Log.e("calling",uri);
+            Log.e("calling", uri);
 
             URL url = null;
             String readStream = null;
@@ -322,8 +310,6 @@ public class Calender extends Fragment implements Constant {
             }
 
 
-
-
             return readStream;
 
         }
@@ -331,8 +317,8 @@ public class Calender extends Fragment implements Constant {
         @Override
         protected void onPostExecute(String result) {
             timetable = result;
-            Log.e("result",timetable+" ");
-            if(timetable == null)
+            Log.e("result", timetable + " ");
+            if (timetable == null)
                 return;
             if (activity == null)
                 return;
@@ -350,7 +336,7 @@ public class Calender extends Fragment implements Constant {
             try {
                 ob = new JSONObject(timetable);
                 ob = ob.getJSONObject("metadata");
-                String s2 = ob.optString("last_updated","null");
+                String s2 = ob.optString("last_updated", "null");
                 if (s2.equals("null")) {
                     SnackbarManager.show(
                             Snackbar.with(activity.getApplicationContext())
@@ -361,7 +347,7 @@ public class Calender extends Fragment implements Constant {
 
             } catch (JSONException e) {
                 e.printStackTrace();
-                Log.e("error",e.getMessage()+" ");
+                Log.e("error", e.getMessage() + " ");
             }
 
 
@@ -385,7 +371,7 @@ public class Calender extends Fragment implements Constant {
 
             if (a || timetable == null) {
                 if (Utils.isNetworkAvailable(activity))
-                    new DownloadWebPageTask2().execute();
+                    new DownloadTimeTable().execute();
                 else {
                     SnackbarManager.show(
                             Snackbar.with(activity.getApplicationContext())
@@ -414,7 +400,7 @@ public class Calender extends Fragment implements Constant {
         public CustomList_calendar(Activity context, ArrayList d, ArrayList<Subject_struct> b0, ArrayList<Subject_struct> b1, ArrayList<Subject_struct> b2, ArrayList<Subject_struct> b3, ArrayList<Subject_struct> b4,
                                    ArrayList<Subject_struct> b5, ArrayList<Subject_struct> b6, ArrayList<Subject_struct> b7
                 , ArrayList<Subject_struct> b8, ArrayList<Subject_struct> b9) {
-            super(context, R.layout.message, d);
+            super(context, R.layout.message, b0);
             this.context = context;
             day = d;
             p0 = b0;
@@ -433,16 +419,7 @@ public class Calender extends Fragment implements Constant {
         private class ViewHolder {
 
             TextView dat;
-            TextView t0;
-            TextView t1;
-            TextView t2;
-            TextView t3;
-            TextView t4;
-            TextView t5;
-            TextView t6;
-            TextView t7;
-            TextView t8;
-            TextView t9;
+            TextView t0, t1, t2, t3, t4, t5, t6, t7, t8, t9;
 
         }
 

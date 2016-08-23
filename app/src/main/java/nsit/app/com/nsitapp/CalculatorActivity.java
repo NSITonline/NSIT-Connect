@@ -16,14 +16,8 @@ import android.widget.Toast;
 
 public class CalculatorActivity extends Fragment {
 
-    Spinner s1;
-    Spinner s2;
-    ArrayAdapter<CharSequence> adapter;
-    ArrayAdapter<CharSequence> adapter1;
-    Button b;
-    TextView c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12;
-    TextView tc10, tc11, tc12, tc9, tc4, tc5;
-
+    private Spinner s1,s2;
+    private TextView tc10, tc11, tc12, tc9, tc4, tc5;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,10 +29,10 @@ public class CalculatorActivity extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View rooview = inflater.inflate(R.layout.activity_calculator, container, false);
         s1 = (Spinner) rooview.findViewById(R.id.spinb);
-        adapter = ArrayAdapter.createFromResource(getActivity(), R.array.branch, android.R.layout.simple_list_item_1);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.branch, android.R.layout.simple_list_item_1);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         s1.setAdapter(adapter);
-        b = (Button) rooview.findViewById(R.id.button);
+        Button b = (Button) rooview.findViewById(R.id.button);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,7 +59,7 @@ public class CalculatorActivity extends Fragment {
         tc4 = (TextView) rooview.findViewById(R.id.tv4);
         tc5 = (TextView) rooview.findViewById(R.id.tv5);
         s2 = (Spinner) rooview.findViewById(R.id.spins);
-        adapter1 = ArrayAdapter.createFromResource(getActivity(), R.array.semester, android.R.layout.simple_list_item_1);
+        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(getActivity(), R.array.semester, android.R.layout.simple_list_item_1);
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 
@@ -321,20 +315,20 @@ public class CalculatorActivity extends Fragment {
     }
 
 
-    public void cc(View rv) {
+    private void cc(View rv) {
 
-        c1 = (TextView) rv.findViewById(R.id.tv1);
-        c2 = (TextView) rv.findViewById(R.id.tv2);
-        c3 = (TextView) rv.findViewById(R.id.tv3);
-        c4 = (TextView) rv.findViewById(R.id.tv4);
-        c5 = (TextView) rv.findViewById(R.id.tv5);
-        c6 = (TextView) rv.findViewById(R.id.tv6);
-        c7 = (TextView) rv.findViewById(R.id.tv7);
-        c8 = (TextView) rv.findViewById(R.id.tv8);
-        c9 = (TextView) rv.findViewById(R.id.tv9);
-        c10 = (TextView) rv.findViewById(R.id.tv10);
-        c11 = (TextView) rv.findViewById(R.id.tv11);
-        c12 = (TextView) rv.findViewById(R.id.tv12);
+        TextView c1 = (TextView) rv.findViewById(R.id.tv1);
+        TextView c2 = (TextView) rv.findViewById(R.id.tv2);
+        TextView c3 = (TextView) rv.findViewById(R.id.tv3);
+        TextView c4 = (TextView) rv.findViewById(R.id.tv4);
+        TextView c5 = (TextView) rv.findViewById(R.id.tv5);
+        TextView c6 = (TextView) rv.findViewById(R.id.tv6);
+        TextView c7 = (TextView) rv.findViewById(R.id.tv7);
+        TextView c8 = (TextView) rv.findViewById(R.id.tv8);
+        TextView c9 = (TextView) rv.findViewById(R.id.tv9);
+        TextView c10 = (TextView) rv.findViewById(R.id.tv10);
+        TextView c11 = (TextView) rv.findViewById(R.id.tv11);
+        TextView c12 = (TextView) rv.findViewById(R.id.tv12);
 
         c1.setTextColor(getResources().getColor(R.color.calculator_selected));
         c2.setTextColor(getResources().getColor(R.color.calculator_selected));
@@ -353,7 +347,7 @@ public class CalculatorActivity extends Fragment {
     }
 
 
-    public void onCalculate(View a) {
+    private void onCalculate(View a) {
 
         double n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12;
         EditText t1 = (EditText) a.findViewById(R.id.one);

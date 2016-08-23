@@ -11,7 +11,7 @@ import android.provider.BaseColumns;
 public class ContestContract {
 
     public static final String CONTENT_AUTHORITY = "nsit.app.com.nsitapp";
-    public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
+    private static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
 
     public static final String PATH_CONTEST = "contest";
 
@@ -43,8 +43,7 @@ public class ContestContract {
         }
 
         public static String getSourceFromUri(Uri uri) {
-            String source = uri.getLastPathSegment();
-            return source;
+            return uri.getLastPathSegment();
         }
 
         public static int getIDFromUri(Uri uri) {

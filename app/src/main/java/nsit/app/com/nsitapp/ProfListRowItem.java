@@ -3,7 +3,7 @@ package nsit.app.com.nsitapp;
 /**
  * Created by dhruvmullick on 09/07/14.
  */
-public class ProfListRowItem {
+class ProfListRowItem {
 
     private String name;
     private String room;

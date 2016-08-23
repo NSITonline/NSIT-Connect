@@ -29,13 +29,13 @@ import functions.Utils;
  * Created by Sidharth Patro on 21-Jun-15.
  */
 public class Video extends Fragment {
-    ListView listview;
-    String nextPageToken = "";
-    String prevPageToken = "";
-    String navigateTo = "next";
-    Button btnNextPage;
-    Button btnPrevPage;
-    View Spinner;
+    private ListView listview;
+    private String nextPageToken = "";
+    private String prevPageToken = "";
+    private String navigateTo = "next";
+    private Button btnNextPage;
+    private Button btnPrevPage;
+    private View Spinner;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,12 +43,12 @@ public class Video extends Fragment {
 
     }
 
-    public void populateList(JSONArray Items) {
-        listview.setAdapter(new VideoList_Adapter(getActivity(), Items));
+    private void populateList(JSONArray Items) {
+        listview.setAdapter(new VideoList_Adapter(activity, Items));
     }
 
 
-    Activity activity;
+    private Activity activity;
 
     @Override
     public void onAttach(Activity activity) {
@@ -66,7 +66,7 @@ public class Video extends Fragment {
         try {
             new Video_RetrieveFeed().execute();
         } catch (Exception e) {
-            AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
+            AlertDialog alertDialog = new AlertDialog.Builder(activity).create();
             alertDialog.setTitle("Can't connect.");
             alertDialog.setMessage("We cannot connect to the internet right now. Please try again later. Exception e: " + e.toString());
             alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
@@ -90,11 +90,11 @@ public class Video extends Fragment {
                         Spinner.setVisibility(View.VISIBLE);
                         navigateTo = "next";
                         ButtonAnimation btnAnimation = new ButtonAnimation();
-                        btnAnimation.animateButton(v, getActivity());
+                        btnAnimation.animateButton(v, activity);
                         new Video_RetrieveFeed().execute();
                     }
                 } catch (Exception e) {
-                    AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
+                    AlertDialog alertDialog = new AlertDialog.Builder(activity).create();
                     alertDialog.setTitle("Can't connect.");
                     alertDialog.setMessage("We cannot connect to the internet right now. Please try again later. Exception e: " + e.toString());
                     alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
@@ -116,11 +116,11 @@ public class Video extends Fragment {
                         Spinner.setVisibility(View.VISIBLE);
                         navigateTo = "prev";
                         ButtonAnimation btnAnimation = new ButtonAnimation();
-                        btnAnimation.animateButton(v, getActivity());
+                        btnAnimation.animateButton(v, activity);
                         new Video_RetrieveFeed().execute();
                     }
                 } catch (Exception e) {
-                    AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
+                    AlertDialog alertDialog = new AlertDialog.Builder(activity).create();
                     alertDialog.setTitle("Can't connect.");
                     alertDialog.setMessage("We cannot connect to the internet right now. Please try again later. Exception e: " + e.toString());
                     alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
@@ -138,7 +138,7 @@ public class Video extends Fragment {
         return rootView;
     }
 
-    public class Video_RetrieveFeed extends AsyncTask<String, Void, String> {
+    private class Video_RetrieveFeed extends AsyncTask<String, Void, String> {
 
         protected String doInBackground(String... urls) {
             try {

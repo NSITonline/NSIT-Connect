@@ -9,11 +9,11 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.LinearLayout;
-import android.widget.FrameLayout;
 
 import com.nispok.snackbar.Snackbar;
 import com.nispok.snackbar.SnackbarManager;
@@ -35,15 +35,14 @@ import static nsit.app.com.nsitapp.R.id.imag_cont;
 
 
 public class Decsription extends AppCompatActivity implements Constant{
-    ProgressBar pb;
-    public ImageLoader imageLoader;
-    String img,des,like,link;
-    TextView Des,Like;
-    Button Link;
-    ImageView imageView;
-    String imglink,obid;
-    FrameLayout img_cont;
-    LinearLayout but_con;
+    private ProgressBar pb;
+    private ImageLoader imageLoader;
+    private String img;
+    private String link;
+    private ImageView imageView;
+    private String imglink;
+    private String obid;
+    private FrameLayout img_cont;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,42 +50,38 @@ public class Decsription extends AppCompatActivity implements Constant{
         setContentView(R.layout.activity_decsription);
         pb=(ProgressBar)findViewById(R.id.progressBar1);
 
-
-
         setTitle("Post");
 
         Intent i = getIntent();
         img = i.getStringExtra(IMAGE);
-        des = i.getStringExtra(DES);
-        like = i.getStringExtra(LIKE);
+        String des = i.getStringExtra(DES);
+        String like = i.getStringExtra(LIKE);
         link = i.getStringExtra(LINK);
         imageLoader=new ImageLoader(this);
         obid = i.getStringExtra(OBID);
 
         imageView = (ImageView) findViewById(R.id.image);
-        Like = (TextView) findViewById(R.id.likes);
-        Link = (Button) findViewById(R.id.link);
-        Des = (TextView) findViewById(R.id.des);
+        TextView like1 = (TextView) findViewById(R.id.likes);
+        Button link1 = (Button) findViewById(R.id.link);
+        TextView des1 = (TextView) findViewById(R.id.des);
         img_cont = (FrameLayout) findViewById(imag_cont);
-        but_con = (LinearLayout) findViewById(R.id.but_con);
+        LinearLayout but_con = (LinearLayout) findViewById(R.id.but_con);
 
-
-
-        if(like==null)
-            Like.setText("0");
+        if(like ==null)
+            like1.setText("0");
         else
-            Like.setText(like);
+            like1.setText(like);
 
 
-        if(des==null)
-            Des.setText("No description");
+        if(des ==null)
+            des1.setText(R.string.no_description);
         else
-            Des.setText(des);
+            des1.setText(des);
 
         if(link==null)
             but_con.setVisibility(View.GONE);
         else
-        Link.setOnClickListener(new View.OnClickListener() {
+        link1.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
                                         Uri uri = Uri.parse(link);

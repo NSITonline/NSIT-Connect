@@ -13,39 +13,39 @@ import android.preference.PreferenceManager;
  */
 public class dbAdapter implements  Constant {
 
-    public static final String KEY_ROWID = "_id";
+    private static final String KEY_ROWID = "_id";
     public static final int COL_ROWID = 0;
 
-    public static final String KEY_LIST = "list";
+    private static final String KEY_LIST = "list";
     public static final int COL_LIST = 1;
 
-    public static final String KEY_LIST1 = "list1";
+    private static final String KEY_LIST1 = "list1";
     public static final int COL_LIST1 = 2;
 
-    public static final String KEY_LIST2 = "list2";
+    private static final String KEY_LIST2 = "list2";
     public static final int COL_LIST2 = 3;
 
-    public static final String KEY_LIST6 = "list6";
+    private static final String KEY_LIST6 = "list6";
     public static final int COL_LIST6 = 4;
 
-    public static final String KEY_LIST7 = "list7";
+    private static final String KEY_LIST7 = "list7";
     public static final int COL_LIST7 = 5;
 
-    public static final String KEY_LIST8 = "list8";
+    private static final String KEY_LIST8 = "list8";
     public static final int COL_LIST8 = 6;
 
-    public static final String KEY_LIST9 = "list9";
+    private static final String KEY_LIST9 = "list9";
     public static final int COL_LIST9 = 7;
 
-    public static final String KEY_SOC = "socName";
+    private static final String KEY_SOC = "socName";
     public static final int COL_SOC = 8;
 
     public static final String[] ALL_KEYS = new String[] {KEY_ROWID, KEY_LIST, KEY_LIST1, KEY_LIST2, KEY_LIST6, KEY_LIST7, KEY_LIST8, KEY_LIST9, KEY_SOC };
 
-    public static final String DATABASE_NAME = "NSITConnect";
-    public static final String DATABASE_TABLE = "myFeed";
+    private static final String DATABASE_NAME = "NSITConnect";
+    private static final String DATABASE_TABLE = "myFeed";
 
-    public static final long DATABASE_VERSION = 3;
+    private static final long DATABASE_VERSION = 3;
 
     private static final String DATABASE_CREATE_SQL =
             "create table " + DATABASE_TABLE

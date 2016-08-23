@@ -32,11 +32,18 @@ import functions.Utils;
 
 
 public class ChooseFeedItems extends AppCompatActivity implements Constant {
-    CheckBox collegespace, crosslinks, junoon, bullet, rotaract, quiz, ieee, csi, ashwa, deb, enactus, aagaz;
-    Boolean Collegespace = false, Crosslinks = false, Junoon = false, Bullet = false, Rotaract = false, Quiz = false, Ieee = false,
-            Csi = false, Ashwa = false, Deb = false, Enactus = false, Aagaz = false;
-    TextView tCollegespace, tCrosslinks, tJunoon, tBullet, tRotaract, tQuiz, tIeee, tCsi, tAshwa, tDeb, tEnactus, tAagaz;
-    Button next;
+    private Boolean Collegespace = false;
+    private Boolean Crosslinks = false;
+    private Boolean Junoon = false;
+    private Boolean Bullet = false;
+    private Boolean Rotaract = false;
+    private Boolean Quiz = false;
+    private Boolean Ieee = false;
+    private Boolean Csi = false;
+    private Boolean Ashwa = false;
+    private Boolean Deb = false;
+    private Boolean Enactus = false;
+    private Boolean Aagaz = false;
     List<String> list = new ArrayList<String>();
 
     @Override
@@ -46,34 +53,34 @@ public class ChooseFeedItems extends AppCompatActivity implements Constant {
 
         setTitle("My Feed Items");
 
-        next = (Button) findViewById(R.id.next);
+        Button next = (Button) findViewById(R.id.next);
 
-        collegespace = (CheckBox) findViewById(R.id.check_collegespace);
-        crosslinks = (CheckBox) findViewById(R.id.check_crosslinks);
-        junoon = (CheckBox) findViewById(R.id.check_junoon);
-        rotaract = (CheckBox) findViewById(R.id.check_rotaract);
-        bullet = (CheckBox) findViewById(R.id.check_bullet);
-        csi = (CheckBox) findViewById(R.id.check_csi);
-        ieee = (CheckBox) findViewById(R.id.check_ieee);
-        deb = (CheckBox) findViewById(R.id.check_debsoc);
-        quiz = (CheckBox) findViewById(R.id.check_quiz);
-        ashwa = (CheckBox) findViewById(R.id.check_ashwa);
-        enactus = (CheckBox) findViewById(R.id.check_enactus);
-        aagaz = (CheckBox) findViewById(R.id.check_aagaz);
+        CheckBox collegespace = (CheckBox) findViewById(R.id.check_collegespace);
+        CheckBox crosslinks = (CheckBox) findViewById(R.id.check_crosslinks);
+        CheckBox junoon = (CheckBox) findViewById(R.id.check_junoon);
+        CheckBox rotaract = (CheckBox) findViewById(R.id.check_rotaract);
+        CheckBox bullet = (CheckBox) findViewById(R.id.check_bullet);
+        CheckBox csi = (CheckBox) findViewById(R.id.check_csi);
+        CheckBox ieee = (CheckBox) findViewById(R.id.check_ieee);
+        CheckBox deb = (CheckBox) findViewById(R.id.check_debsoc);
+        CheckBox quiz = (CheckBox) findViewById(R.id.check_quiz);
+        CheckBox ashwa = (CheckBox) findViewById(R.id.check_ashwa);
+        CheckBox enactus = (CheckBox) findViewById(R.id.check_enactus);
+        CheckBox aagaz = (CheckBox) findViewById(R.id.check_aagaz);
 
 
-        tCollegespace = (TextView) findViewById(R.id.stars_collegespace);
-        tCrosslinks = (TextView) findViewById(R.id.stars_crosslinks);
-        tJunoon = (TextView) findViewById(R.id.stars_junoon);
-        tRotaract = (TextView) findViewById(R.id.stars_rotaract);
-        tBullet = (TextView) findViewById(R.id.stars_bullethawk);
-        tCsi = (TextView) findViewById(R.id.stars_csi);
-        tIeee = (TextView) findViewById(R.id.stars_ieee);
-        tDeb = (TextView) findViewById(R.id.stars_debsoc);
-        tQuiz = (TextView) findViewById(R.id.stars_quiz);
-        tAshwa = (TextView) findViewById(R.id.stars_ashwa);
-        tEnactus = (TextView) findViewById(R.id.stars_enactus);
-        tAagaz = (TextView) findViewById(R.id.stars_aagaz);
+        TextView tCollegespace = (TextView) findViewById(R.id.stars_collegespace);
+        TextView tCrosslinks = (TextView) findViewById(R.id.stars_crosslinks);
+        TextView tJunoon = (TextView) findViewById(R.id.stars_junoon);
+        TextView tRotaract = (TextView) findViewById(R.id.stars_rotaract);
+        TextView tBullet = (TextView) findViewById(R.id.stars_bullethawk);
+        TextView tCsi = (TextView) findViewById(R.id.stars_csi);
+        TextView tIeee = (TextView) findViewById(R.id.stars_ieee);
+        TextView tDeb = (TextView) findViewById(R.id.stars_debsoc);
+        TextView tQuiz = (TextView) findViewById(R.id.stars_quiz);
+        TextView tAshwa = (TextView) findViewById(R.id.stars_ashwa);
+        TextView tEnactus = (TextView) findViewById(R.id.stars_enactus);
+        TextView tAagaz = (TextView) findViewById(R.id.stars_aagaz);
 
 
         SharedPreferences i = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
@@ -198,8 +205,6 @@ public class ChooseFeedItems extends AppCompatActivity implements Constant {
                 e.putBoolean(AAGAZ, Aagaz);
                 e.putBoolean(SOCIETY_SET, true);
                 e.putBoolean(SOCIETY_ITEM_CHANGED, true);
-
-
                 e.commit();
 
                 Log.e("society changed", " " + p.getBoolean(AAGAZ, false) + " ");
@@ -231,7 +236,7 @@ public class ChooseFeedItems extends AppCompatActivity implements Constant {
 
     }
 
-    String text;
+    private String text;
 
     private class Calclike extends AsyncTask<String, Void, String> {
         TextView bmImage;

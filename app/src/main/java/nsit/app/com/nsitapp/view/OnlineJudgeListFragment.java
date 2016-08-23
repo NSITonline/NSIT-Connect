@@ -12,20 +12,20 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import nsit.app.com.nsitapp.R;
 import nsit.app.com.nsitapp.model.OJManager;
 import nsit.app.com.nsitapp.model.OnlineJudge;
-
-import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class OnlineJudgeListFragment extends Fragment {
 
-    RecyclerView mOnlineJudgesList;
-    RecyclerView.LayoutManager mLayoutManager;
-    RecyclerView.Adapter mOnlineJudgeListAdapter;
+    private RecyclerView mOnlineJudgesList;
+    private RecyclerView.LayoutManager mLayoutManager;
+    private RecyclerView.Adapter mOnlineJudgeListAdapter;
 
     private ArrayList<OnlineJudge> mOnlineJudges;
 
@@ -76,8 +76,7 @@ public class OnlineJudgeListFragment extends Fragment {
             View v = LayoutInflater.from(parent.getContext()).
                     inflate(R.layout.onlinejudge_list_item, parent, false);
 
-            ViewHolder viewHolder = new ViewHolder(v);
-            return viewHolder;
+            return new ViewHolder(v);
         }
 
         @Override

@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
@@ -33,14 +32,13 @@ import functions.Utils;
  * Created by Sidharth Patro on 01-Jul-15.
  */
 public class Hangout_CollegeLocationMapView extends Activity implements Constant{
-    com.google.android.gms.maps.MapFragment mapFragment;
-    String OriginLat;
-    String OriginLong;
-    String DestinationLat;
-    String DestinationLong;
-    ProgressBar MapSpinner;
-    Integer LocationIcon;
-    String des;
+    private com.google.android.gms.maps.MapFragment mapFragment;
+    private String OriginLat;
+    private String OriginLong;
+    private String DestinationLat;
+    private String DestinationLong;
+    private ProgressBar MapSpinner;
+    private String des;
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
@@ -138,15 +136,9 @@ public class Hangout_CollegeLocationMapView extends Activity implements Constant
                 des =  getResources().getString(R.string.shoppingcomplex);
 
 
-
-
-
-
-
-
             TextView desc = (TextView) findViewById(R.id.LocDescription);
             desc.setText(des);
-            this.LocationIcon = extras.getInt(LOCATION_ICON);
+            Integer locationIcon = extras.getInt(LOCATION_ICON);
             TextView txtHeader = (TextView)findViewById(R.id.LocationTitle);
             this.DestinationLat = LocationLat;
             this.DestinationLong = LocationLong;
@@ -159,14 +151,14 @@ public class Hangout_CollegeLocationMapView extends Activity implements Constant
             }
 
             txtHeader.setText(LocationName);
-            ShowMarker(Double.parseDouble(LocationLat), Double.parseDouble(LocationLong), LocationName, LocationIcon);
+            ShowMarker(Double.parseDouble(LocationLat), Double.parseDouble(LocationLong), LocationName, locationIcon);
         }
 
         final Location_GetDirections getDirections = new Location_GetDirections();
 
 
         GPSTracker tracker = new GPSTracker(this);
-        if (tracker.canGetLocation() == false) {
+        if (!tracker.canGetLocation()) {
             tracker.showSettingsAlert();
         } else {
             OriginLat = Double.toString(tracker.getLatitude());
@@ -175,7 +167,7 @@ public class Hangout_CollegeLocationMapView extends Activity implements Constant
         }
     }
 
-    public void ShowMarker(Double LocationLat, Double LocationLong, String LocationName, Integer LocationIcon){
+    private void ShowMarker(Double LocationLat, Double LocationLong, String LocationName, Integer LocationIcon){
         GoogleMap map = mapFragment.getMap();
         LatLng Coord = new LatLng(LocationLat, LocationLong);
 
@@ -190,19 +182,15 @@ public class Hangout_CollegeLocationMapView extends Activity implements Constant
         }
     }
 
-    public class Location_GetDirections extends AsyncTask<String, Void, String> {
+    private class Location_GetDirections extends AsyncTask<String, Void, String> {
 
         protected String doInBackground(String... Coordinates) {
-
-
-
 
             String DriveResult="",WalkResult="";
 
             String uri = "https://maps.googleapis.com/maps/api/directions/json?origin="+OriginLat+"," +
                     OriginLong+"&destination="+DestinationLat+","+DestinationLong+"&key=AIzaSyBgktirlOODUO9zWD-808D7zycmP7smp-Y&mode=driving";
-            java.net.URL url = null;
-            String readStream = null;
+            java.net.URL url;
             try {
                 url = new URL(uri);
                 HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -212,7 +200,6 @@ public class Hangout_CollegeLocationMapView extends Activity implements Constant
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
-
 
 
             uri = "https://maps.googleapis.com/maps/api/directions/json?origin="+OriginLat+","+OriginLong+"&destination="+DestinationLat+","+DestinationLong+

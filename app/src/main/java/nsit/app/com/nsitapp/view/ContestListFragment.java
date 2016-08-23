@@ -19,13 +19,11 @@ import nsit.app.com.nsitapp.data.ContestContract;
 
 public abstract class ContestListFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    //private OnFragmentInteractionListener mListener;
-    private ListView mContestListView;
     private ContestAdapter mContestAdapter;
 
     private static final int CONTEST_LOADER_ID = 0;
 
-    protected static final String[] CONTEST_SUMMARY_COLUMNS = {
+    static final String[] CONTEST_SUMMARY_COLUMNS = {
             ContestContract.ContestEntry._ID,
             ContestContract.ContestEntry.COLUMN_TITLE,
             ContestContract.ContestEntry.COLUMN_SOURCE,
@@ -33,13 +31,13 @@ public abstract class ContestListFragment extends Fragment implements LoaderMana
     };
 
 
-    static final int COL_CONTEST_ID = 0;
+    private static final int COL_CONTEST_ID = 0;
     static final int COL_CONTEST_TITLE = 1;
     static final int COL_CONTEST_SOURCE = 2;
     static final int COL_CONTEST_START_TIME = 3;
 
     public interface Callback {
-        public void onItemSelected(Uri contestUri, ImageView logo);
+        void onItemSelected(Uri contestUri, ImageView logo);
     }
 
     // TODO: Rename and change types and number of parameters
@@ -58,9 +56,9 @@ public abstract class ContestListFragment extends Fragment implements LoaderMana
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_contest_list, container, false);
 
-        mContestAdapter = new ContestAdapter(getActivity(),null,0);
+        mContestAdapter = new ContestAdapter(getActivity());
 
-        mContestListView = (ListView) view.findViewById(R.id.contest_listView);
+        ListView mContestListView = (ListView) view.findViewById(R.id.contest_listView);
         mContestListView.setAdapter(mContestAdapter);
 
         mContestListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

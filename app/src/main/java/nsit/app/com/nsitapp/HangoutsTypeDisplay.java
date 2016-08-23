@@ -62,10 +62,8 @@ public class HangoutsTypeDisplay extends AppCompatActivity {
     private int choice = -1;
     private int progress = 0;
     private ProgressBar progressBar;
-    private ListView display_list;
     private ArrayList<HangoutTypeObject> objects ;
     private HangoutTypeAdapter displayAdapter;
-    private SeekBar radiusSeekBar;
     private TextView radiusTextView;
 
 
@@ -79,7 +77,7 @@ public class HangoutsTypeDisplay extends AppCompatActivity {
         getSupportActionBar().setIcon(R.drawable.ic_people_white_36dp);
         objects = new ArrayList<HangoutTypeObject>();
 
-        display_list = (ListView)findViewById(R.id.hangout_type_display_list);
+        ListView display_list = (ListView) findViewById(R.id.hangout_type_display_list);
         displayAdapter = new HangoutTypeAdapter(this,objects);
         display_list.setAdapter(displayAdapter);
 
@@ -119,10 +117,10 @@ public class HangoutsTypeDisplay extends AppCompatActivity {
         return  super.onOptionsItemSelected(item);
     }
 
-    public void setradiusvalue(){
+    private void setradiusvalue(){
         AlertDialog.Builder alert = new AlertDialog.Builder(HangoutsTypeDisplay.this);
         final View radiusview = getLayoutInflater().inflate(R.layout.raduis_layout,null);
-        radiusSeekBar = (SeekBar)radiusview.findViewById(R.id.radius_seek);
+        SeekBar radiusSeekBar = (SeekBar) radiusview.findViewById(R.id.radius_seek);
         radiusTextView = (TextView)radiusview.findViewById(R.id.radius_display);
         radiusSeekBar.setProgress(radius);
         radiusTextView.setText("Radius :"+radius+"(m)");
@@ -168,7 +166,7 @@ public class HangoutsTypeDisplay extends AppCompatActivity {
         HttpGetInfo(){
             text = null;
            GPSTracker gpsGetLocation = new GPSTracker(HangoutsTypeDisplay.this);
-            if (gpsGetLocation.canGetLocation() == true)
+            if (gpsGetLocation.canGetLocation())
                 URL = MAIN_HTTP + NEARBYPLACES +LOCATION + gpsGetLocation.getLatitude() + "," + gpsGetLocation.getLongitude()
                         + RADIUS + String.valueOf(radius) + TYPE + searches[choice] + KEY;
         }
@@ -185,8 +183,7 @@ public class HangoutsTypeDisplay extends AppCompatActivity {
             if(URL == null)
                 return null;
             String uri = URL;
-            java.net.URL url = null;
-            String readStream = null;
+            java.net.URL url;
             try {
                 url = new URL(uri);
                 HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -274,10 +271,7 @@ public class HangoutsTypeDisplay extends AppCompatActivity {
 
                         if (jplacearray.getJSONObject(i).has("opening_hours")){
                             String bool = jplacearray.getJSONObject(i).getJSONObject("opening_hours").getString("open_now");
-                            if (bool.equals("false"))
-                                opennow = false;
-                            else
-                                opennow = true;
+                            opennow = !bool.equals("false");
                         }
 
                         objects.add(new HangoutTypeObject(name, icon, place_id, phtotref, longi, latti,vicinity, opennow, photowidth, photoheight, rating));

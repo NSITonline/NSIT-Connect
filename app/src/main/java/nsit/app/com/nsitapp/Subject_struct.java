@@ -1,13 +1,17 @@
 package nsit.app.com.nsitapp;
 
-import android.util.Log;
-
 /**
  * Created by Swati garg on 29-06-2015.
  */
-public class Subject_struct {
+class Subject_struct {
 
-    public String value,proffh,subfh,roomfh,profsh,subsh,roomsh;
+    public String value;
+    private String proffh;
+    public String subfh;
+    public String roomfh;
+    private String profsh;
+    public String subsh;
+    public String roomsh;
 
     // constructor
     public Subject_struct(String value,String proffh,String subfh,String roomfh,String profsh,String subsh,String roomsh) {

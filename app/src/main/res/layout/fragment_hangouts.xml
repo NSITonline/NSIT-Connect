@@ -1,11 +1,9 @@
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/content_frame"
     android:background="#ffffff"
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
-    android:animateLayoutChanges="true"   >
+    android:animateLayoutChanges="true">
 
     <ScrollView
         android:layout_width="fill_parent"
@@ -23,7 +21,8 @@
                 android:layout_width="fill_parent"
                 android:orientation="horizontal"
                 android:layout_height="wrap_content"
-                android:paddingBottom="10dp">
+                android:paddingBottom="10dp"
+                android:baselineAligned="false">
 
                 <LinearLayout
                     android:layout_gravity="center"

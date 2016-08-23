@@ -7,10 +7,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 /**
  * Created by AGGARWAL'S on 3/26/2016.
  */
-public class DBHelper extends SQLiteOpenHelper {
+class DBHelper extends SQLiteOpenHelper {
 
-    public static final int DATABASE_VERSION = 1;
-    public static final String DATABASE_NAME ="NSITConnectFeed.db";
+    private static final int DATABASE_VERSION = 1;
+    private static final String DATABASE_NAME ="NSITConnectFeed.db";
     public static final String TABLE_NAME = "myNotificationFeed";
 
     private static final String INT_TYPE = " INT";

@@ -4,17 +4,17 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import nsit.app.com.nsitapp.data.ContestContract.*;
+import nsit.app.com.nsitapp.data.ContestContract.ContestEntry;
 
 /**
  * Created by saisumit on 5/19/15.
  */
-public class ContestDBHelper extends SQLiteOpenHelper {
+class ContestDBHelper extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
 
 
-    public static final String DATABASE_NAME = "contest.db";
+    private static final String DATABASE_NAME = "contest.db";
 
     public ContestDBHelper(Context context) {
         super(context,DATABASE_NAME,null,DATABASE_VERSION);

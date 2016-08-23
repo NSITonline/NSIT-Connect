@@ -6,7 +6,6 @@
     android:layout_marginLeft="5dp"
     android:layout_marginRight="5dp"
     android:layout_marginTop="5dp"
-    android:backgroundTint="#ff000000"
     android:descendantFocusability="beforeDescendants">
 
     <LinearLayout
@@ -23,7 +22,8 @@
             android:descendantFocusability="afterDescendants"
             android:gravity="center"
             android:orientation="horizontal"
-            android:padding="10dp">
+            android:padding="10dp"
+            android:baselineAligned="false">
 
             <FrameLayout
                 android:id="@+id/frame"

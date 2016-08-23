@@ -38,16 +38,13 @@ import nsit.app.com.nsitapp.view.CodeRadar_MainActivity;
 
 public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
-    private ListView mDrawerList;
-    ListView lv;
     private ActionBarDrawerToggle mDrawerToggle;
-    static final String[] sideitems = new String[]{"Home", "My Feed", "Video", "TimeTable", "Locations",
+    private static final String[] sideitems = new String[]{"Home", "My Feed", "Video", "TimeTable", "Locations",
             "Calculator", "CodeRadar", "Professors", "Feedback", "About Us"};    //items on navigation drawer
-    SwipeRefreshLayout swipeLayout;
-    Fragment current;
+    private Fragment current;
 
 
-    Integer[] imageId = {
+    private Integer[] imageId = {
             R.drawable.ic_action_home,
             R.drawable.ic_action_tiles_large,
             R.drawable.ic_action_video,
@@ -77,15 +74,15 @@ public class MainActivity extends AppCompatActivity {
             getSupportActionBar().setTitle("Home");
             ft.commit();
         }
-        lv = (ListView) findViewById(R.id.list);
+        ListView lv = (ListView) findViewById(R.id.list);
         android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerList = (ListView) findViewById(R.id.left_drawer);
-        swipeLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_container);
+        ListView mDrawerList = (ListView) findViewById(R.id.left_drawer);
+        SwipeRefreshLayout swipeLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_container);
 
 
         //All for navigation drawer
-        DrawerList_Adapter adapter2 = new DrawerList_Adapter(this, sideitems, imageId);
+        DrawerList_Adapter adapter2 = new DrawerList_Adapter(this, imageId);
         mDrawerList.setAdapter(adapter2);
         try {
             mDrawerToggle = new ActionBarDrawerToggle(
@@ -232,7 +229,7 @@ public class MainActivity extends AppCompatActivity {
         ft.commit();
     }
 
-    public void scheduleAlarm() {
+    private void scheduleAlarm() {
 
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
         boolean status = sp.getBoolean("notification_status",true);
@@ -255,10 +252,10 @@ public class MainActivity extends AppCompatActivity {
         private boolean isSpeakButtonLongPressed;
         private final Integer[] imageId;
 
-        public DrawerList_Adapter(Activity context, String[] web, Integer[] imageId) {
-            super(context, R.layout.message, web);
+        public DrawerList_Adapter(Activity context, Integer[] imageId) {
+            super(context, R.layout.message, MainActivity.sideitems);
             this.context = context;
-            this.web = web;
+            this.web = MainActivity.sideitems;
             this.imageId = imageId;
         }
 

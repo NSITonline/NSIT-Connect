@@ -1,13 +1,9 @@
 package nsit.app.com.nsitapp;
 
 import android.app.Activity;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
@@ -21,14 +17,14 @@ import functions.Utils;
 
 
 public class Feedback extends Fragment {
-    ProgressBar pb;
+    private ProgressBar pb;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
     }
 
-    Activity activity;
+    private Activity activity;
     @Override
     public void onAttach(Activity activity)
     {

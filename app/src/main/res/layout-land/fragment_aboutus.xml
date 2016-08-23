@@ -1,5 +1,4 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal">
@@ -12,7 +11,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:baselineAligned="false">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -332,7 +332,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:baselineAligned="false">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -609,7 +610,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:baselineAligned="false">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -925,7 +927,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:baselineAligned="false">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -1249,14 +1252,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:baselineAligned="false">
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
                 android:background="@drawable/shadow_1"
-                android:backgroundTint="#000000"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
                 android:showDividers="none">
@@ -1302,14 +1305,15 @@
 
                                 <TextView
                                     android:id="@+id/GoToRepo"
-                                    android:layout_width="96dp"
+                                    android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_vertical"
                                     android:layout_marginLeft="10dp"
+                                    android:layout_marginStart="10dp"
                                     android:layout_weight="0.57"
                                     android:background="#ffededed"
                                     android:padding="10dp"
-                                    android:text="Go to NSIT App v2 repository"
+                                    android:text="@string/repository_text"
                                     android:textAppearance="?android:attr/textAppearanceSmall" />
                             </LinearLayout>
 
@@ -1321,10 +1325,11 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_gravity="left"
+                                    android:layout_gravity="start"
+                                    android:layout_marginStart="10dp"
                                     android:layout_marginLeft="10dp"
                                     android:padding="10dp"
-                                    android:text="Dear user, let&apos;s work on this app together."
+                                    android:text="@string/contribute_message"
                                     android:textAppearance="?android:attr/textAppearanceLarge"
                                     android:textColor="#ffffff"
                                     android:textSize="17sp" />
@@ -1340,13 +1345,11 @@
 
                                     <TextView
                                         android:id="@+id/cont"
-                                        android:layout_width="wrap_content"
+                                        android:layout_width="0dp"
                                         android:layout_height="wrap_content"
                                         android:layout_gravity="center_horizontal"
                                         android:layout_weight="2.24"
-                                        android:text="I WANT TO CONTRIBUTE"
-                                        android:textAlignment="center"
-                                        android:textAllCaps="false"
+                                        android:text="@string/contribute_text"
                                         android:textSize="12sp"
                                         android:textStyle="bold" />
 

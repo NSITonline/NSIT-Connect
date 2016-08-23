@@ -22,9 +22,8 @@ import nsit.app.com.nsitapp.R;
  */
 public class Locations extends AppCompatActivity implements Constant {
 
-    ArrayList<LocationGroup> LocationsGroupsList = new ArrayList<>();
-    public ExpandableListView listView;
-    ExpandableListAdapter listAdapter;
+    private ArrayList<LocationGroup> LocationsGroupsList = new ArrayList<>();
+    private ExpandableListView listView;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -33,8 +32,6 @@ public class Locations extends AppCompatActivity implements Constant {
         setContentView(R.layout.fragment_locations);
         listView = (ExpandableListView) findViewById(R.id.locations_list);
         populateList(LocationsGroupsList);
-
-
 
         this.listView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
 
@@ -98,17 +95,13 @@ public class Locations extends AppCompatActivity implements Constant {
     }
 
 
-    public void populateList(ArrayList<LocationGroup> Items){
+    private void populateList(ArrayList<LocationGroup> Items){
         FillGroupsList();
-        listAdapter = new LocationsList_Adapter(this,Items,null);
-        listView.setAdapter(listAdapter);
+        listView.setAdapter(new LocationsList_Adapter(this,Items));
     }
 
 
-
-
-
-    public void ShowOnMap(View view, Location LocationItem, Integer GroupItem){
+    private void ShowOnMap(View view, Location LocationItem, Integer GroupItem){
         Intent myIntent = new Intent(view.getContext(),Hangout_CollegeLocationMapView.class);
         myIntent.putExtra(LOCATION_NAME, LocationItem.Name);
         myIntent.putExtra(LOCATION_LAT, String.valueOf(LocationItem.Coord.latitude));
@@ -140,7 +133,7 @@ public class Locations extends AppCompatActivity implements Constant {
         }
     }
 
-    public void FillGroupsList(){
+    private void FillGroupsList(){
         ArrayList<Location> NSIT_locations = new ArrayList<>();
         NSIT_locations.add(new Location("North Gate",new LatLng(28.613156, 77.033553)));
         NSIT_locations.add(new Location("South Gate",new LatLng(28.608464, 77.035069)));
@@ -214,6 +207,5 @@ public class Locations extends AppCompatActivity implements Constant {
         this.LocationsGroupsList.add(SportsGroup);
         this.LocationsGroupsList.add(MiscGroup);
     }
-
 
 }

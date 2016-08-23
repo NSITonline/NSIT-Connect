@@ -5,62 +5,53 @@ package functions;
  */
 public interface Constant {
 
+    String CROSSLINKS = "crosslinks";
+    String COLLEGESPACE = "collegespace";
+    String BULLET = "bullet";
+    String JUNOON = "junoon";
+    String ROTARACT = "rotaract";
+    String CSI = "csi";
+    String IEEE = "ieee";
+    String DEB = "debsoc";
+    String QUIZ = "quiz";
+    String ASHWA = "ashwa";
+    String ENACTUS = "enactus";
+    String AAGAZ = "aagaz";
+
+    String SOCIETY_SET = "set";
+    String SOCIETY_ITEM_CHANGED = "item_changed";
+
+    String IMAGE = "img";
+    String DES = "dec";
+    String LIKE = "like";
+    String LINK = "link";
+    String OBID = "oid";
+
+    String LOCATION_LAT = "LocationLat";
+    String LOCATION_LON = "LocationLong";
+    String LOCATION_NAME = "LocationName";
+    String LOCATION_ICON = "LocationIcon";
+
+    String CALENDAR_BRANCH = "cal_branch";
+    String CALENDAR_SEM = "cal_sem";
+    String CALENDAR_SECTION = "cal_sec";
+    String IS_CLASS_SET = "classset";
+    String IS_TIME_TABLE_CHANGED = "timetablechanged";
+    String GET_TIME_TABLE = "timetable";
+
+    String TIMETABLE_API = "*******";
+
+    String id = "109315262061";
 
 
-    public static String CROSSLINKS = "crosslinks";
-    public static String COLLEGESPACE = "collegespace";
-    public static String BULLET = "bullet";
-    public static String JUNOON = "junoon";
-    public static String ROTARACT = "rotaract";
-    public static String CSI = "csi";
-    public static String IEEE = "ieee";
-    public static String DEB = "debsoc";
-    public static String QUIZ = "quiz";
-    public static String ASHWA = "ashwa";
-    public static String ENACTUS = "enactus";
-    public static String AAGAZ = "aagaz";
-
-
-    public static String SOCIETY_SET = "set";
-    public static String SOCIETY_ITEM_CHANGED = "item_changed";
-
-    public static String IMAGE = "img";
-    public static String DES = "dec";
-    public static String LIKE = "like";
-    public static String LINK = "link";
-    public static String OBID = "oid";
-
-
-    public static String LOCATION_LAT = "LocationLat";
-    public static String LOCATION_LON = "LocationLong";
-    public static String LOCATION_NAME = "LocationName";
-    public static String LOCATION_ICON = "LocationIcon";
-
-
-
-    public static String CALENDAR_BRANCH = "cal_branch";
-    public static String CALENDAR_SEM = "cal_sem";
-    public static String CALENDAR_SECTION = "cal_sec";
-    public static String IS_CLASS_SET = "classset";
-    public static String IS_TIME_TABLE_CHANGED = "timetablechanged";
-    public static String GET_TIME_TABLE = "timetable";
-
-
-
-    public static String TIMETABLE_API = "*******";
-
-
-    public final static String id = "109315262061";
-
-
-    public final static String common_access = "CAAGZAwVFNCKgBAANhEYok6Xh7Q7UZBeTZCUqwPDLYhRZCmNn0igI8SE339jSn2zjxCpA1JUmXH" +
+    String common_access = "CAAGZAwVFNCKgBAANhEYok6Xh7Q7UZBeTZCUqwPDLYhRZCmNn0igI8SE339jSn2zjxCpA1JUmXH" +
             "m55XKVXslhdKKoTF3b5sLsiZBVd0ylYwX3MIGOnRyzn0T2XVywwoPKP7ML9WZCqELGRuIGxoM8ia05CiUiqcbgsb4wzTuBKkvKaqb7TPt2VnPtpr" +
             "RZBWda4kZD";
-    public final static String id_nsitonline = "109315262061",
+    String id_nsitonline = "109315262061",
             id_crosslinks = "184835371535420",
             id_collegespace = "252117054812001",
             id_bullet = "109582689081817";
-    public final static String id_junoon = "158168947539641",
+    String id_junoon = "158168947539641",
             id_rotaract = "604809706256620",
             id_debsoc = "376394819102290",
             id_ieee = "278952135548721",
@@ -70,10 +61,10 @@ public interface Constant {
             id_enactus = "499766883378107",
             id_aagaz = "1457237581165961";
 
-    public static final String[] sem = {"Semester", "Sem 1", "Sem 2", "Sem 3", "Sem 4", "Sem 5", "Sem 6", "Sem 7", "Sem 8"};
-    public static final String[] branch = {"Branch", "COE", "IT", "ECE", "ICE", "MPAE", "BT"};
+    String[] sem = {"Semester", "Sem 1", "Sem 2", "Sem 3", "Sem 4", "Sem 5", "Sem 6", "Sem 7", "Sem 8"};
+    String[] branch = {"Branch", "COE", "IT", "ECE", "ICE", "MPAE", "BT"};
 
-    public static final String subjects = "{\n" +
+    String subjects = "{\n" +
             "\t\"it\" : [\n" +
             "\t{\n" +
             "\t\t\"subjects\" : {\n" +
@@ -1000,7 +991,7 @@ public interface Constant {
             "}";
 
 
-    public static final String pro = "[\n" +
+    String pro = "[\n" +
             "  {\n" +
             "    \"Header\": \"DEPARTMENT OF MANAGEMENT\",\n" +
             "    \"ContentArray\": [\n" +
@@ -1794,7 +1785,5 @@ public interface Constant {
             "    ]\n" +
             "  }\n" +
             "]";
-
-
 
 }

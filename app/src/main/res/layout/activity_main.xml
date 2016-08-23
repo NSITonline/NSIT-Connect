@@ -1,48 +1,46 @@
- <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#ffffff"
-        tools:context=".MainActivity">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context=".MainActivity">
 
 
+    <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <android.support.v4.widget.DrawerLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/drawer_layout"
+        <FrameLayout
+            android:id="@+id/content_frame"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            android:background="@color/universalBackground">
 
-            <FrameLayout
-                android:id="@+id/content_frame"
-                android:background="@color/universalBackground"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:animateLayoutChanges="true"   >
-
-            </FrameLayout>
+        </FrameLayout>
 
 
-            <!-- The left navigation drawer -->
+        <!-- The left navigation drawer -->
 
-            <LinearLayout
-                android:layout_width="200dp"
+        <LinearLayout
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:orientation="vertical">
+
+
+            <ListView
+                android:id="@+id/left_drawer"
+                android:layout_width="240sp"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_gravity="start" >
+                android:background="#ffffff"
+                android:divider="#ffffff"
+                android:dividerHeight="10dp"
+                android:paddingTop="5sp" />
+        </LinearLayout>
+    </android.support.v4.widget.DrawerLayout>
 
 
-
-                <ListView android:id="@+id/left_drawer"
-                    android:layout_width="240sp"
-                    android:paddingTop="5sp"
-                    android:layout_height="match_parent"
-                    android:background="#ffffff"
-                    android:divider="#ffffff"
-                    android:dividerHeight="10dp"/>
-            </LinearLayout>
-        </android.support.v4.widget.DrawerLayout>
-
-
-
-    </RelativeLayout>
+</RelativeLayout>
 

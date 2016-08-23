@@ -43,7 +43,7 @@ public  class ContestDetailActivity extends FragmentActivity  {
 
 
         if (savedInstanceState == null) {
-            Uri contestUri = (Uri) getIntent().getData();
+            Uri contestUri = getIntent().getData();
             Fragment fragment = ContestDetailFragment.newInstance(contestUri);
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.contest_detail_container,fragment)
@@ -65,12 +65,12 @@ public  class ContestDetailActivity extends FragmentActivity  {
         return bitmap;
     }
 
-    private static File saveBitmap(Bitmap bm, String fileName){
+    private static File saveBitmap(Bitmap bm){
         final String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Screenshots";
         File dir = new File(path);
         if(!dir.exists())
             dir.mkdirs();
-        File file = new File(dir, fileName);
+        File file = new File(dir, "mantis_image.png");
         try {
             FileOutputStream fOut = new FileOutputStream(file);
             bm.compress(Bitmap.CompressFormat.PNG, 90, fOut);
@@ -89,7 +89,7 @@ public  class ContestDetailActivity extends FragmentActivity  {
         if(item.getItemId()==R.id.share_item)
         { Log.v("helloooo","i am here");
             Bitmap bm = screenShot(this.getWindow().getDecorView().findViewById(android.R.id.content));
-            File file = saveBitmap(bm, "mantis_image.png");
+            File file = saveBitmap(bm);
             Log.i("chase", "filepath: " + file.getAbsolutePath());
             Uri uri = Uri.fromFile(new File(file.getAbsolutePath()));
             Intent shareIntent = new Intent();

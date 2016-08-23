@@ -37,20 +37,18 @@ import functions.TableEntry;
 
 public class SubjectRemove extends AppCompatActivity {
 
-    ArrayList<String> list1 = new ArrayList<String>();
-    ArrayList<String> list2 = new ArrayList<String>();
-    ArrayList<String> list3 = new ArrayList<String>();
+    private ArrayList<String> list1 = new ArrayList<String>();
+    private ArrayList<String> list2 = new ArrayList<String>();
+    private ArrayList<String> list3 = new ArrayList<String>();
     Button b;
-    String code;
-    ListView lv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subjects_show);
-        lv = (ListView) findViewById(R.id.list);
+        ListView lv = (ListView) findViewById(R.id.list);
         Intent i = getIntent();
-        code = i.getStringExtra("code");
+        String code = i.getStringExtra("code");
 
         setTitle("Attendance Pattern");
         DBhelp mDbHelper = new DBhelp(this);
@@ -85,6 +83,7 @@ public class SubjectRemove extends AppCompatActivity {
             } while (c.moveToNext());
         }
 
+        c.close();
 
         CustomList_subjects_remove a = new CustomList_subjects_remove(this, list1, list2, list3);
         lv.addHeaderView(new View(this));
@@ -150,7 +149,7 @@ public class SubjectRemove extends AppCompatActivity {
                 holder.stat.setTextColor(Color.parseColor("#33cc00"));
             holder.stat.setText(status.get(position));
 
-            String s = getDate(Long.parseLong(date.get(position)), "dd MMMM yyyy");        //Convert date format
+            String s = getDate(Long.parseLong(date.get(position)));        //Convert date format
             holder.dat.setText(s);
             DBhelp mDbHelper = new DBhelp(getContext());
             final SQLiteDatabase db = mDbHelper.getReadableDatabase();
@@ -194,9 +193,9 @@ public class SubjectRemove extends AppCompatActivity {
         }
 
 
-        public  String getDate(long milliSeconds, String dateFormat) {
+        public  String getDate(long milliSeconds) {
             // Create a DateFormatter object for displaying date in specified format.
-            SimpleDateFormat formatter = new SimpleDateFormat(dateFormat);
+            SimpleDateFormat formatter = new SimpleDateFormat("dd MMMM yyyy");
             Calendar calendar = Calendar.getInstance();
             calendar.setTimeInMillis(milliSeconds);
             return formatter.format(calendar.getTime());

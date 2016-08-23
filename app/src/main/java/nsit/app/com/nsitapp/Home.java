@@ -43,25 +43,25 @@ import functions.dbAdapter;
 
 public class Home extends Fragment implements Constant {
 
-    boolean loadingMore = false;
-    dbAdapter db;
+    private boolean loadingMore = false;
+    private dbAdapter db;
 
-    List<String> list = new ArrayList<String>();
-    List<String> list1 = new ArrayList<String>();
-    List<String> list2 = new ArrayList<String>();
-    List<String> list6 = new ArrayList<String>();
-    List<String> list7 = new ArrayList<String>();
-    List<String> list8 = new ArrayList<String>();
-    ListView lv;
-    int first = 1;
-    SwipeRefreshLayout swipeLayout;
-    ProgressBar pb;
-    String next = "https://graph.facebook.com/" + id_nsitonline + "/posts?limit=20&fields=id,picture,from,shares,message," +
+    private List<String> list = new ArrayList<String>();
+    private List<String> list1 = new ArrayList<String>();
+    private List<String> list2 = new ArrayList<String>();
+    private List<String> list6 = new ArrayList<String>();
+    private List<String> list7 = new ArrayList<String>();
+    private List<String> list8 = new ArrayList<String>();
+    private ListView lv;
+    private int first = 1;
+    private SwipeRefreshLayout swipeLayout;
+    private ProgressBar pb;
+    private String next = "https://graph.facebook.com/" + id_nsitonline + "/posts?limit=20&fields=id,picture,from,shares,message," +
             "object_id,link,created_time,comments.limit(0).summary(true),likes.limit(0).summary(true)" +
             "&access_token=" + common_access;
-    CustomList adapter;
-    View footerView;
-    int listCount;
+    private CustomList adapter;
+    private View footerView;
+    private int listCount;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -69,7 +69,7 @@ public class Home extends Fragment implements Constant {
         super.onCreate(savedInstanceState);
     }
 
-    Activity activity;
+    private Activity activity;
 
     @Override
     public void onAttach(Activity activity) {
@@ -110,13 +110,13 @@ public class Home extends Fragment implements Constant {
                     if ((lastInScreen == totalItemCount) && !(loadingMore) && first != 1) {
                         loadingMore = true;
                         lv.addFooterView(footerView);
-                        new DownloadWebPageTask3(id_nsitonline).execute();
+                        new DownloadWebPageTask3().execute();
                         listCount = lastInScreen;
                     }
 
                 }
             });
-            new DownloadWebPageTask3(id_nsitonline).execute();
+            new DownloadWebPageTask3().execute();
         } else {
             show_off();
             SnackbarManager.show(
@@ -129,7 +129,7 @@ public class Home extends Fragment implements Constant {
         swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                new DownloadWebPageTask3(id_nsitonline).execute();
+                new DownloadWebPageTask3().execute();
             }
         });
         swipeLayout.setColorScheme(android.R.color.holo_blue_bright,
@@ -145,8 +145,8 @@ public class Home extends Fragment implements Constant {
     private class DownloadWebPageTask3 extends AsyncTask<String, Void, String> {
         String id;
 
-        public DownloadWebPageTask3(String id) {
-            this.id = id;
+        public DownloadWebPageTask3() {
+            this.id = Constant.id_nsitonline;
         }
 
         @Override
@@ -271,7 +271,7 @@ public class Home extends Fragment implements Constant {
         return super.onOptionsItemSelected(item);
     }
 
-    public void show_off() {
+    private void show_off() {
 
         Cursor c = db.getAllnsRows();
         if (c == null)

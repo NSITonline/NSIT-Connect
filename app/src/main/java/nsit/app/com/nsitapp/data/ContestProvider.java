@@ -14,9 +14,9 @@ public class ContestProvider extends ContentProvider {
 
     private static final UriMatcher sUriMatcher = buildUriMatcher();
 
-    public static final int CONTEST = 100;
-    public static final int CONTEST_WITH_ID = 101;
-    public static final int CONTEST_WITH_SOURCE = 200;
+    private static final int CONTEST = 100;
+    private static final int CONTEST_WITH_ID = 101;
+    private static final int CONTEST_WITH_SOURCE = 200;
 
     private static final SQLiteQueryBuilder sQueryBuilder;
 
@@ -28,7 +28,7 @@ public class ContestProvider extends ContentProvider {
     private ContestDBHelper mOpenHelper;
 
 
-    public static UriMatcher buildUriMatcher() {
+    private static UriMatcher buildUriMatcher() {
         final UriMatcher matcher = new UriMatcher(UriMatcher.NO_MATCH);
         final String authority = ContestContract.CONTENT_AUTHORITY;
 
@@ -68,7 +68,7 @@ public class ContestProvider extends ContentProvider {
         Cursor retCursor;
         switch (match) {
             case CONTEST:
-                retCursor = getContest(uri,projection,selection,selectionArgs,sortOrder);
+                retCursor = getContest(projection,selection,selectionArgs,sortOrder);
                 break;
             case CONTEST_WITH_SOURCE:
                 retCursor = getContestWithSource(uri,projection,sortOrder);
@@ -83,7 +83,7 @@ public class ContestProvider extends ContentProvider {
         return retCursor;
     }
 
-    private Cursor getContest(Uri uri,String[] projection,String selection,
+    private Cursor getContest(String[] projection, String selection,
                               String[] selectionArgs, String sortOrder) {
 
         return sQueryBuilder.query(mOpenHelper.getReadableDatabase(),

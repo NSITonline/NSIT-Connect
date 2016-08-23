@@ -8,15 +8,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import functions.ButtonAnimation;
-import functions.ZoomableRelativeLayout;
 
 /**
  * Created by Swati garg on 21-06-2015.
@@ -32,7 +29,7 @@ public class AboutUs extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
-    Activity activity;
+    private Activity activity;
 
     @Override
     public void onAttach(Activity activity) {
@@ -85,7 +82,6 @@ public class AboutUs extends Fragment {
         s10 = (ImageView) rootView.findViewById(R.id.linked_sagar);
         s11 = (ImageView) rootView.findViewById(R.id.facebook_sagar);
 
-        rep = (TextView) rootView.findViewById(R.id.GoToRepo);
         con = (TextView) rootView.findViewById(R.id.cont);
         namanFB = (ImageView) rootView.findViewById(R.id.facebook_naman);
         namanLinkedIn = (ImageView) rootView.findViewById(R.id.linked_naman);

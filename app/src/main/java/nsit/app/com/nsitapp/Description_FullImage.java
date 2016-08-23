@@ -33,8 +33,8 @@ import functions.TouchImageView;
 import functions.Utils;
 
 public class Description_FullImage extends AppCompatActivity implements Constant {
-    String img,obid,imglink;
-    TouchImageView iv;
+    private String img, obid;
+    private TouchImageView iv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -150,10 +150,8 @@ public class Description_FullImage extends AppCompatActivity implements Constant
         @Override
         protected String doInBackground(String... urls) {
 
-
-
             String uri = "https://graph.facebook.com/"+obid+"?fields=images&access_token="+ common_access;
-            java.net.URL url = null;
+            java.net.URL url;
             String readStream = null;
             try {
                 url = new URL(uri);
@@ -182,7 +180,7 @@ public class Description_FullImage extends AppCompatActivity implements Constant
                     ob = new JSONObject(result);
                     arr = ob.getJSONArray("images");
 
-                    imglink = arr.getJSONObject(0).getString("source");
+                    String imglink = arr.getJSONObject(0).getString("source");
                     if (imglink != null)
                         if (Utils.isNetworkAvailable(Description_FullImage.this))
                             new DownloadImageTask(iv).execute(imglink);

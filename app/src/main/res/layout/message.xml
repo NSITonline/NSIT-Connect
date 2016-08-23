@@ -20,7 +20,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_marginLeft="5dp"
-        android:layout_toRightOf="@id/imageView1"
         android:focusable="false"
         android:focusableInTouchMode="false"
         android:gravity="center_vertical"

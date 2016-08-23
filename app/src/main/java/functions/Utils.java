@@ -5,6 +5,7 @@ package functions;
  */
 
 import android.app.Activity;
+import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
@@ -13,6 +14,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
 
 public class Utils {
     public static void CopyStream(InputStream is, OutputStream os) {
@@ -31,7 +36,7 @@ public class Utils {
 
     public static boolean isNetworkAvailable(Activity a) {
         ConnectivityManager connectivityManager
-                = (ConnectivityManager) a.getSystemService(a.CONNECTIVITY_SERVICE);
+                = (ConnectivityManager) a.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
@@ -39,7 +44,7 @@ public class Utils {
 
     public static String readStream(InputStream in) {
         StringBuilder sb = new StringBuilder();
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(in));) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(in))) {
 
             String nextLine = "";
             while ((nextLine = reader.readLine()) != null) {
@@ -52,33 +57,49 @@ public class Utils {
     }
 
 
+    public static String GetLocalDateStringFromUTCString(String utcLongDateTime) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss+SSSS");
+        String localDateString;
+
+        long when = 0;
+        try {
+            when = dateFormat.parse(utcLongDateTime).getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        localDateString = dateFormat.format(new Date(when + TimeZone.getDefault().getRawOffset() +
+                (TimeZone.getDefault().inDaylightTime(new Date()) ? TimeZone.getDefault().getDSTSavings() : 0)));
+        return localDateString;
+    }
+
+
     public static String getReadableDurationFromMillis(Long millis) {
         Long seconds = millis / 1000;
 
         long days = (seconds / 86400);
         seconds = seconds - (days * 86400);
 
-        long hours = seconds/3600;
+        long hours = seconds / 3600;
         seconds = seconds - (hours * 3600);
 
-        long minutes = seconds /60;
+        long minutes = seconds / 60;
         seconds = seconds - (minutes * 60);
 
         String readableDuration = "";
 
-        if (days!=0) {
+        if (days != 0) {
             readableDuration += (days + " days ");
         }
 
-        if (hours!=0) {
+        if (hours != 0) {
             readableDuration += (hours + " hours ");
         }
 
-        if (minutes!=0) {
+        if (minutes != 0) {
             readableDuration += (minutes + " minutes ");
         }
 
-        if (seconds!=0) {
+        if (seconds != 0) {
             readableDuration += (seconds + " seconds ");
         }
 
@@ -95,25 +116,25 @@ public class Utils {
         long days = (seconds / 86400);
         seconds = seconds - (days * 86400);
 
-        long hours = seconds/3600;
+        long hours = seconds / 3600;
         seconds = seconds - (hours * 3600);
 
-        long minutes = seconds /60;
+        long minutes = seconds / 60;
         seconds = seconds - (minutes * 60);
 
-        if (days!=0) {
+        if (days != 0) {
             return days + " days";
         }
 
-        if (hours!=0) {
-            return (hours+1) + " hrs";
+        if (hours != 0) {
+            return (hours + 1) + " hrs";
         }
 
-        if (minutes!=0) {
-            return (minutes+1) + " mins";
+        if (minutes != 0) {
+            return (minutes + 1) + " mins";
         }
 
-        if (seconds!=0) {
+        if (seconds != 0) {
             return "1 mins";
         }
 

@@ -62,7 +62,7 @@
                     android:id="@+id/one"
                     android:layout_marginTop="12dp"
                     android:layout_marginLeft="7dp"
-                    android:phoneNumber="true" />
+                    android:inputType="number" />
 
                 <TextView
                     android:layout_width="50dp"
@@ -81,7 +81,7 @@
                     android:id="@+id/six"
                     android:layout_marginTop="12dp"
                     android:layout_marginLeft="7dp"
-                    android:phoneNumber="true"/>
+                    android:inputType="number"/>
 
             </LinearLayout>
             <LinearLayout
@@ -105,7 +105,7 @@
                     android:id="@+id/two"
                     android:layout_marginTop="12dp"
                     android:layout_marginLeft="7dp"
-                    android:phoneNumber="true"/>
+                    android:inputType="number"/>
 
                 <TextView
                     android:layout_width="50dp"
@@ -124,7 +124,7 @@
                     android:id="@+id/seven"
                     android:layout_marginTop="12dp"
                     android:layout_marginLeft="7dp"
-                    android:phoneNumber="true"/>
+                    android:inputType="number"/>
 
             </LinearLayout>
             <LinearLayout
@@ -148,7 +148,7 @@
                     android:id="@+id/three"
                     android:layout_marginTop="12dp"
                     android:layout_marginLeft="7dp"
-                    android:phoneNumber="true"/>
+                    android:inputType="number"/>
 
                 <TextView
                     android:layout_width="50dp"
@@ -167,7 +167,7 @@
                     android:id="@+id/eight"
                     android:layout_marginTop="12dp"
                     android:layout_marginLeft="7dp"
-                    android:phoneNumber="true"/>
+                    android:inputType="number"/>
 
             </LinearLayout>
             <LinearLayout
@@ -191,7 +191,7 @@
                     android:id="@+id/four"
                     android:layout_marginTop="12dp"
                     android:layout_marginLeft="7dp"
-                    android:phoneNumber="true"/>
+                    android:inputType="number"/>
 
                 <TextView
                     android:layout_width="50dp"
@@ -210,7 +210,7 @@
                     android:id="@+id/nine"
                     android:layout_marginTop="12dp"
                     android:layout_marginLeft="7dp"
-                    android:phoneNumber="true"/>
+                    android:inputType="number"/>
 
             </LinearLayout>
 
@@ -235,7 +235,7 @@
                     android:id="@+id/five"
                     android:layout_marginTop="12dp"
                     android:layout_marginLeft="7dp"
-                    android:phoneNumber="true"/>
+                    android:inputType="number"/>
 
                 <TextView
                     android:layout_width="50dp"
@@ -254,7 +254,7 @@
                     android:id="@+id/ten"
                     android:layout_marginTop="12dp"
                     android:layout_marginLeft="7dp"
-                    android:phoneNumber="true"/>
+                    android:inputType="number"/>
 
             </LinearLayout>
             <LinearLayout
@@ -278,7 +278,7 @@
                     android:id="@+id/twelve"
                     android:layout_marginTop="12dp"
                     android:layout_marginLeft="7dp"
-                    android:phoneNumber="true"/>
+                    android:inputType="number"/>
 
                 <TextView
                     android:layout_width="50dp"
@@ -297,7 +297,7 @@
                     android:id="@+id/eleven"
                     android:layout_marginTop="12dp"
                     android:layout_marginLeft="7dp"
-                    android:phoneNumber="true"/>
+                    android:inputType="number"/>
 
             </LinearLayout>
 

@@ -13,7 +13,8 @@
         android:layout_height="wrap_content"
         android:background="#ffffff"
         android:orientation="horizontal"
-        android:padding="8dp">
+        android:padding="8dp"
+        android:baselineAligned="false">
 
         <FrameLayout
             android:layout_width="0dp"

@@ -33,7 +33,7 @@ import nsit.app.com.nsitapp.R;
  */
 public class MyNotifiactionService extends IntentService implements Constant {
 
-    public static final String URL = "https://graph.facebook.com/" + id_nsitonline + "/posts?limit=20&fields=id,picture,from,shares,message," +
+    private static final String URL = "https://graph.facebook.com/" + id_nsitonline + "/posts?limit=20&fields=id,picture,from,shares,message," +
             "object_id,link,created_time,comments.limit(0).summary(true),likes.limit(0).summary(true)"+
             "&access_token=" + common_access;
     private List<String> message = new ArrayList<String>();

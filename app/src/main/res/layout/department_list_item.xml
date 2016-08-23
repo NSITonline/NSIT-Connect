@@ -32,7 +32,7 @@
         android:layout_height="2dp"
         android:background="#d3d3d3"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"></LinearLayout>
+        android:layout_marginBottom="10dp"/>
     <TextView
         android:id="@+id/desc"
         android:text = "Description"
@@ -40,9 +40,6 @@
         android:layout_height="wrap_content"
         android:textColor="#ff797979"
         android:textSize="12sp"
-        android:layout_alignBottom="@+id/icon"
-        android:layout_below="@+id/title"
-        android:layout_toRightOf="@+id/title"
         android:textAllCaps="false"/>
 </LinearLayout>
     <LinearLayout

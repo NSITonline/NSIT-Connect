@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteException;
 
 import java.sql.SQLException;
 
@@ -13,17 +12,16 @@ import java.sql.SQLException;
  */
 public class NotificationAdapter {
 
-    private final Context mContext;
     private DBHelper dbHelper;
     private SQLiteDatabase database;
 
 
     public NotificationAdapter(Context mContext) throws SQLException{
-        this.mContext = mContext;
+        Context mContext1 = mContext;
         dbHelper = new DBHelper(mContext);
     }
 
-    public NotificationAdapter connect() throws SQLException{
+    private NotificationAdapter connect() throws SQLException{
         database = dbHelper.getWritableDatabase();
         return  this;
     }
@@ -61,7 +59,7 @@ public class NotificationAdapter {
         return false;
     }
 
-    public int getProfilesCount() throws SQLException{
+    private int getProfilesCount() throws SQLException{
         this.connect();
         String countQuery = "SELECT  * FROM " + DBHelper.TABLE_NAME;
         Cursor cursor = database.rawQuery(countQuery, null);

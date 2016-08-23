@@ -1,24 +1,18 @@
 package nsit.app.com.nsitapp;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Toast;
 
 import nsit.app.com.nsitapp.PushNotification.MyAlarmReceiver;
-import nsit.app.com.nsitapp.R;
 
 /**
  * Created by AGGARWAL'S on 3/27/2016.

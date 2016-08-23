@@ -20,9 +20,9 @@ import android.view.animation.AnimationSet;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.EditText;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -36,7 +36,7 @@ import functions.Constant;
 
 public class ProfList extends AppCompatActivity implements Constant {
     EditText s;
-    public static final String[] full = new String[]{
+    private static final String[] full = new String[]{
             "DEPARTMENT OF MANAGEMENT", "DEPARTMENT OF CHEMISTRY", "DEPARTMENT OF PHYSICS",
             "DEPARTMENT OF MATHS", "School Of Humanities & Management",
             "Division Of Electronics & Communication Engg",
@@ -101,7 +101,7 @@ public class ProfList extends AppCompatActivity implements Constant {
 
         }
 
-        adapter = new ProfListCustomListViewAdapter(this, R.layout.prof_list_item, profe);
+        adapter = new ProfListCustomListViewAdapter(this, profe);
         listView.setAdapter(adapter);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -122,9 +122,9 @@ public class ProfList extends AppCompatActivity implements Constant {
         List<ProfListRowItem> it;
 
         //private ProfFilter filter;
-        public ProfListCustomListViewAdapter(Context context, int resourceId,
+        public ProfListCustomListViewAdapter(Context context,
                                              List<ProfListRowItem> items) {
-            super(context, resourceId, items);
+            super(context, R.layout.prof_list_item, items);
             this.context = context;
             it = items;
         }

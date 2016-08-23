@@ -46,33 +46,52 @@ import functions.dbAdapter;
  */
 
 public class FinalFeed extends Fragment implements Constant{
-    Boolean Collegespace=false,Crosslinks=false,Junoon=false,Bullet=false,
-            Rotaract=false,Quiz=false,Ieee=false,Csi=false,Ashwa=false,Deb=false,
-            Enactus=false,Aagaz=false;
-    boolean loadingMore=false;
-    ProgressBar pb;
-    SwipeRefreshLayout swipeLayout;
-    String nextn;
-    MyFeedList adapter;
-    int first;
-    String nextcollegespace,nextcrosslinks,nextjunoon,nextbullet,nextrotaract,nextquiz,nextieee,nextcsi,nextashwa,nextdeb, nextaagaz, nextecell, nextenactus;
-    List<String> list = new ArrayList<String>();
-    List<String> list1 = new ArrayList<String>();
-    List<String> list2 = new ArrayList<String>();
-    List<String> list5 = new ArrayList<String>();
-    List<String> list6 = new ArrayList<String>();
-    List<String> list7 = new ArrayList<String>();
-    List<String> list8 = new ArrayList<String>();
-    List<String> list9 = new ArrayList<String>();
-    View footerView;
-    SharedPreferences i;
-    ListView lv;
+    private Boolean Collegespace=false;
+    private Boolean Crosslinks=false;
+    private Boolean Junoon=false;
+    private Boolean Bullet=false;
+    private Boolean Rotaract=false;
+    private Boolean Quiz=false;
+    private Boolean Ieee=false;
+    private Boolean Csi=false;
+    private Boolean Ashwa=false;
+    private Boolean Deb=false;
+    private Boolean Enactus=false;
+    private Boolean Aagaz=false;
+    private boolean loadingMore=false;
+    private ProgressBar pb;
+    private SwipeRefreshLayout swipeLayout;
+    private String nextn;
+    private MyFeedList adapter;
+    private int first;
+    private String nextcollegespace;
+    private String nextcrosslinks;
+    private String nextjunoon;
+    private String nextbullet;
+    private String nextrotaract;
+    private String nextquiz;
+    private String nextieee;
+    private String nextcsi;
+    private String nextashwa;
+    private String nextdeb;
+    private String nextaagaz;
+    private String nextenactus;
+    private List<String> list = new ArrayList<String>();
+    private List<String> list1 = new ArrayList<String>();
+    private List<String> list2 = new ArrayList<String>();
+    private List<String> list6 = new ArrayList<String>();
+    private List<String> list7 = new ArrayList<String>();
+    private List<String> list8 = new ArrayList<String>();
+    private List<String> list9 = new ArrayList<String>();
+    private View footerView;
+    private SharedPreferences i;
+    private ListView lv;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState); setHasOptionsMenu(true);
     }
 
-    Activity activity;
+    private Activity activity;
     @Override
     public void onAttach(Activity activity)
     {
@@ -95,7 +114,7 @@ public class FinalFeed extends Fragment implements Constant{
         if(activity!=null) {
             SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
             Boolean set = s.getBoolean(SOCIETY_SET, false);
-            if (set == false) {
+            if (!set) {
                 Intent i = new Intent(getActivity(), ChooseFeedItems.class);
                 startActivity(i);
             }
@@ -107,10 +126,6 @@ public class FinalFeed extends Fragment implements Constant{
                 swipeLayout.setRefreshing(false);
             }
         });
-        swipeLayout.setColorScheme(android.R.color.holo_blue_bright,
-                android.R.color.holo_green_light,
-                android.R.color.holo_orange_light,
-                android.R.color.holo_red_light);
         load();
         return rootView;
     }
@@ -126,7 +141,6 @@ public class FinalFeed extends Fragment implements Constant{
 
         @Override
         protected String doInBackground(String... urls) {
-
 
             String uri = "https://graph.facebook.com/" + id + "/posts?limit=10&fields=picture,shares,message,object_id," +
                     "link,comments.limit(0).summary(true),to,created_time,likes.limit(0).summary(true)&access_token=" + common_access;
@@ -243,7 +257,6 @@ public class FinalFeed extends Fragment implements Constant{
                     if(arr.getJSONObject(i).has("likes")) {
                         String s = arr.getJSONObject(i).getString("likes");
                         JSONObject o = new JSONObject(s);
-                        JSONArray a2 = o.getJSONArray("data");
                         String x = o.getString("summary");
                         JSONObject o2 = new JSONObject(x);
 
@@ -297,8 +310,6 @@ public class FinalFeed extends Fragment implements Constant{
 
             if(next!=null){
 
-
-
                 String[] x = next.split("&__paging_token=");
                 token=x[1];
                 String uri = next;
@@ -315,9 +326,6 @@ public class FinalFeed extends Fragment implements Constant{
                 }
 
                 return readStream;
-
-
-
             }
             return null;
         }
@@ -454,7 +462,7 @@ public class FinalFeed extends Fragment implements Constant{
     }
 
 
-    public void done()
+    private void done()
     {
         if(!Csi && !Collegespace && !Crosslinks && !Bullet && !Junoon && !Ieee&& !Ashwa&& !Quiz&& !Deb &&!Rotaract && !Enactus && !Aagaz) {
 
@@ -489,7 +497,7 @@ public class FinalFeed extends Fragment implements Constant{
 
     }
 
-    public void load(){
+    private void load(){
         i = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
         Crosslinks = i.getBoolean(CROSSLINKS, false);
         Collegespace = i.getBoolean(COLLEGESPACE, false);

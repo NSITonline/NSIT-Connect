@@ -12,7 +12,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-public class MemoryCache {
+class MemoryCache {
 
     private static final String TAG = "MemoryCache";
     private Map<String, Bitmap> cache = Collections.synchronizedMap(
@@ -25,7 +25,7 @@ public class MemoryCache {
         setLimit(Runtime.getRuntime().maxMemory() / 4);
     }
 
-    public void setLimit(long new_limit) {
+    private void setLimit(long new_limit) {
         limit = new_limit;
     }
 
@@ -76,7 +76,7 @@ public class MemoryCache {
         }
     }
 
-    long getSizeInBytes(Bitmap bitmap) {
+    private long getSizeInBytes(Bitmap bitmap) {
         if (bitmap == null)
             return 0;
         return bitmap.getRowBytes() * bitmap.getHeight();

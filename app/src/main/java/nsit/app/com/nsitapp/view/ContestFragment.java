@@ -29,8 +29,6 @@ import nsit.app.com.nsitapp.view.widget.SlidingTabLayout;
 public class ContestFragment extends Fragment {
 
 
-    private SectionPagerAdapter mSectionPagerAdapter;
-    private SlidingTabLayout mSlidingTabLayout;
     private ViewPager mContestPager;
 
     private ContestListFragment mRunningContestFragment = new RunningContestFragment();
@@ -48,8 +46,7 @@ public class ContestFragment extends Fragment {
      */
     // TODO: Rename and change types and number of parameters
     public static ContestFragment newInstance() {
-        ContestFragment fragment = new ContestFragment();
-        return fragment;
+        return new ContestFragment();
     }
 
     public ContestFragment() {
@@ -69,13 +66,13 @@ public class ContestFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_contest, container, false);
         Log.v("we will win","we1");
-        mSectionPagerAdapter = new SectionPagerAdapter(getChildFragmentManager());
+        SectionPagerAdapter mSectionPagerAdapter = new SectionPagerAdapter(getChildFragmentManager());
 
         mContestPager = (ViewPager) view.findViewById(R.id.contest_pager);
         mContestPager.setAdapter(mSectionPagerAdapter);
 
-        mSlidingTabLayout = (SlidingTabLayout) view.findViewById(R.id.sliding_tabs);
-        mSlidingTabLayout.setDistributeEvenly(true);
+        SlidingTabLayout mSlidingTabLayout = (SlidingTabLayout) view.findViewById(R.id.sliding_tabs);
+        mSlidingTabLayout.setDistributeEvenly();
         mSlidingTabLayout.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
             @Override
             public int getIndicatorColor(int position) {
@@ -135,7 +132,7 @@ public class ContestFragment extends Fragment {
         }
     }
 
-    public void showFilterDialog() {
+    private void showFilterDialog() {
         FilterContestDialogFragment filterContestDialogFragment = new FilterContestDialogFragment();
         filterContestDialogFragment.show(getFragmentManager(),"filter");
     }

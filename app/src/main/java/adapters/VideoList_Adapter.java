@@ -121,7 +121,7 @@ public class VideoList_Adapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View vi = convertView;
         if (vi == null)
-            vi = inflater.inflate(R.layout.video_listitem, null);
+            vi = inflater.inflate(R.layout.video_listitem, parent,false);
 
         TextView Title = (TextView) vi.findViewById(R.id.VideoTitle);
         TextView Description = (TextView) vi.findViewById(R.id.VideoDescription);

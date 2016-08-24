@@ -44,8 +44,8 @@ public class Utils {
 
     public static String readStream(InputStream in) {
         StringBuilder sb = new StringBuilder();
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(in))) {
-
+        try {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
             String nextLine = "";
             while ((nextLine = reader.readLine()) != null) {
                 sb.append(nextLine);

@@ -65,7 +65,7 @@ public class CustomList extends ArrayAdapter<String> {
         ViewHolder holder;
         LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         if (view == null) {
-            view = mInflater.inflate(R.layout.message_layout, null);
+            view = mInflater.inflate(R.layout.message_layout, parent,false);
 
             holder = new ViewHolder();
             holder.Des = (TextView) view.findViewById(R.id.des);

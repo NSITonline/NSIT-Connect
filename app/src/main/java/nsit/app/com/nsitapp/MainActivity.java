@@ -269,7 +269,7 @@ public class MainActivity extends AppCompatActivity {
             ViewHolder holder = null;
             LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
             if (view == null) {
-                view = mInflater.inflate(R.layout.message, null);
+                view = mInflater.inflate(R.layout.message, parent, false);
                 holder = new ViewHolder();
                 holder.t1 = (TextView) view.findViewById(R.id.textView1);
                 holder.imag = (ImageView) view.findViewById(R.id.imageView1);

@@ -7,7 +7,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         tools:context="nsit.app.com.nsitapp.view.ContestDetailActivity">
 
 
@@ -58,8 +58,7 @@
                 android:layout_marginTop="-24dp"
                 android:padding="4dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/hackerrank_logo"
-                android:transitionName="logo" />
+                android:src="@drawable/hackerrank_logo" />
 
         </RelativeLayout>
 

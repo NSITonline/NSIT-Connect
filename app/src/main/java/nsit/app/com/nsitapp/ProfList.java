@@ -144,7 +144,7 @@ public class ProfList extends AppCompatActivity implements Constant {
                     .getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
             if (convertView == null) {
 //            System.out.println("Convert View is Null");
-                convertView = mInflater.inflate(R.layout.prof_list_item, null);
+                convertView = mInflater.inflate(R.layout.prof_list_item, parent, false);
                 holder = new ViewHolder();
                 holder.txtName = (TextView) convertView.findViewById(R.id.tvname);
                 holder.txtPhone = (TextView) convertView.findViewById(R.id.tvphone);

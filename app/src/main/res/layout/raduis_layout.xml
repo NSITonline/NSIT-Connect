@@ -16,7 +16,7 @@
         android:gravity="center"
         android:id="@+id/radius_display"
         android:text="Radius :500 (m)"
-        android:textSize="25dp"
+        android:textSize="25sp"
         android:textColor="@color/colorPrimary"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />

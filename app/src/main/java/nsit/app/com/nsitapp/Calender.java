@@ -429,7 +429,7 @@ public class Calender extends Fragment implements Constant {
             LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
             ViewHolder holder = null;
             if (view == null) {
-                view = mInflater.inflate(R.layout.timetable_row_layout, null);
+                view = mInflater.inflate(R.layout.timetable_row_layout, parent, false);
                 holder = new ViewHolder();
                 holder.dat = (TextView) view.findViewById(R.id.day);
                 holder.t0 = (TextView) view.findViewById(R.id.p0);

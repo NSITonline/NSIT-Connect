@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
@@ -45,11 +46,12 @@
                 android:layout_height="wrap_content"
                 android:text="Subject Name"
                 android:id="@+id/textView2"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:gravity="center"
 
                 android:textColor="#01b29b"
-                android:layout_marginLeft="50dp" />
+                android:layout_marginLeft="50dp"
+                tools:ignore="SpUsage" />
 
         </LinearLayout>
 
@@ -165,7 +167,7 @@
                         android:layout_height="35dp"
                         android:text="TH 4"
                         android:id="@+id/textView6"
-                        android:textSize="20dp"
+                        android:textSize="20sp"
                         android:gravity="center_vertical|center"
                         android:textColor="#01b29b" />
                     <TextView
@@ -412,7 +414,7 @@
                         android:layout_height="35dp"
                         android:text="VS 2"
                         android:id="@+id/textView17"
-                        android:textSize="20dp"
+                        android:textSize="20sp"
                         android:textColor="#01b29b" />
                     <TextView
                         android:layout_width="120dp"
@@ -422,7 +424,7 @@
                         android:id="@+id/co12"
                         android:gravity="center_vertical|center"
                         android:textColor="#7c7c7c"
-                        android:textSize="18dp" />
+                        android:textSize="18sp" />
                     <TextView
                         android:layout_width="250dp"
                         android:layout_height="30dp"

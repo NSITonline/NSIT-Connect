@@ -20,7 +20,6 @@
         <ImageView
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:transitionName="logo"
             android:padding="4dp"
             android:id="@+id/onlineJudge_image"
             android:layout_alignParentTop="true"

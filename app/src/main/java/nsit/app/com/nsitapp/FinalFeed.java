@@ -105,7 +105,7 @@ public class FinalFeed extends Fragment implements Constant{
         pb=(ProgressBar)rootView.findViewById(R.id.progressBar1);
         lv = (ListView) rootView.findViewById(R.id.list);
         swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
-        footerView = ((LayoutInflater)activity.getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.footer_layout, null, false);
+        footerView = ((LayoutInflater)activity.getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.footer_layout, container, false);
 
 
         first=1;

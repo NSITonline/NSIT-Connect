@@ -6,7 +6,6 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
     android:background="@drawable/shadow_1"
-    android:backgroundTint="#ff000000"
     android:gravity="center_horizontal">
 
     <LinearLayout
@@ -58,7 +57,6 @@
                     android:layout_marginRight="10dp"
                     android:adjustViewBounds="false"
                     android:background="@drawable/ic_play_arrow_white_24dp"
-                    android:backgroundTint="#ffffffff"
                     android:clickable="false"
                     android:duplicateParentState="true"
                     android:focusable="false"

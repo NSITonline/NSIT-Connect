@@ -319,7 +319,7 @@ public class HangoutsTypeDisplay extends AppCompatActivity {
 
             if (convertview == null){
                 LayoutInflater inflater = (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                convertview = inflater.inflate(R.layout.hangouttype_listitem,null);
+                convertview = inflater.inflate(R.layout.hangouttype_listitem,viewGroup, false);
                 holder.placephoto = (ImageView)convertview.findViewById(R.id.hangottype_photo);
                 holder.placename = (TextView)convertview.findViewById(R.id.title_hangout_type);
                 holder.vicinity = (TextView)convertview.findViewById(R.id.vicinity);

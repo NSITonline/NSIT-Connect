@@ -91,7 +91,7 @@ public class Home extends Fragment implements Constant {
         swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
         pb = (ProgressBar) rootView.findViewById(R.id.progressBar1);
         adapter = new CustomList(activity, list6, list, list2, list7, list1, list8);
-        footerView = ((LayoutInflater) activity.getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.footer_layout, null, false);
+        footerView = ((LayoutInflater) activity.getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.footer_layout, container, false);
 
 
         lv.setAdapter(adapter);

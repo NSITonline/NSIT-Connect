@@ -26,7 +26,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.TimeZone;
 
 import functions.Constant;
 import functions.ImageLoader;
@@ -71,7 +70,7 @@ public class MyFeedList extends ArrayAdapter<String> implements Constant{
 
         LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         if (view == null) {
-            view = mInflater.inflate(R.layout.myfeed_listitem, null);
+            view = mInflater.inflate(R.layout.myfeed_listitem, parent, false);
             holder = new ViewHolder();
             holder.Des = (TextView) view.findViewById(R.id.des);
             holder.likes = (TextView) view.findViewById(R.id.likes);

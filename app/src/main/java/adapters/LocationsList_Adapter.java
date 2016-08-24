@@ -10,7 +10,6 @@ import android.view.animation.AnimationSet;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.BaseExpandableListAdapter;
-import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -80,7 +79,7 @@ class LocationsList_Adapter extends BaseExpandableListAdapter {
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this.context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = infalInflater.inflate(R.layout.location_listitem, null);
+            convertView = infalInflater.inflate(R.layout.location_listitem, parent, false);
         }
 
         TextView GroupHeader = (TextView) convertView
@@ -128,7 +127,7 @@ class LocationsList_Adapter extends BaseExpandableListAdapter {
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this.context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = infalInflater.inflate(R.layout.locationgroup_listitem, null);
+            convertView = infalInflater.inflate(R.layout.locationgroup_listitem, parent, false);
         }
 
         TextView txtHeader = (TextView) convertView.findViewById(R.id.LocationItem);

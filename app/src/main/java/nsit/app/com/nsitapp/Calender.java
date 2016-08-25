@@ -72,7 +72,7 @@ public class Calender extends Fragment implements Constant {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        Calender.activity = activity;
+        this.activity = activity;
     }
 
     @Override
@@ -274,6 +274,7 @@ public class Calender extends Fragment implements Constant {
             progress = new ProgressDialog(activity);
             progress.setTitle("Loading");
             progress.setMessage("Fetching timetable...");
+            progress.show();
 
         }
 
@@ -317,6 +318,7 @@ public class Calender extends Fragment implements Constant {
         @Override
         protected void onPostExecute(String result) {
             timetable = result;
+            progress.dismiss();
             Log.e("result", timetable + " ");
             if (timetable == null)
                 return;
@@ -354,7 +356,6 @@ public class Calender extends Fragment implements Constant {
             adapter2 = new CustomList_calendar(activity, days, p0, p1, p2, p3, p4, p5, p6, p7, p8, p9);
             load();
             lvTest.setAdapter(adapter2);
-            progress.dismiss();
 
         }
     }

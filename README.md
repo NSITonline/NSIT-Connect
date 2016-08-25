@@ -23,6 +23,9 @@ But this project is a lot more than an app. This is an initiative that is target
 + **[APIs Used](https://github.com/Swati4star/NSIT-App-v2/wiki#apis-used)**
 + **[Dependencies](https://github.com/Swati4star/NSIT-App-v2/wiki#dependencies)**
 + **[Building](#building)**
++ **[Other repositories](#other-repositories)**
+  + [Windows](https://github.com/sgaggarwal2009/NSIT-Connect-Microsoft-App)
+  + [iOS](https://github.com/Swapnil52/NSIT-Connect)
 + **[Contribution](#contribution)**
 + **[Project Maintainers](#project-maintainers)**
 + **[Wiki Page](https://github.com/Swati4star/NSIT-App-v2/wiki)**
@@ -75,6 +78,7 @@ Calculator is a module to calculate your semester percentage. You just need to e
 <img src="/../master/screenshots/cal2.png" width="120">
 <img src="/../master/screenshots/cal3.png" width="120">
 
+
 ##Building
 
 To build, use the gradle wrapper scripts provided in the top level directory of the project. The following will
@@ -89,6 +93,11 @@ Windows:
 ```
 ./gradlew.bat build
 ```
+
+##Other Repositories
+####[iOS](https://github.com/Swapnil52/NSIT-Connect)
+####[Windows](https://github.com/sgaggarwal2009/NSIT-Connect-Microsoft-App)
+
 
 
 ##Contribution

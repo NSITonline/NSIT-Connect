@@ -219,7 +219,7 @@ public class MainActivity extends AppCompatActivity {
                 getSupportActionBar().setTitle("Feedback");
                 break;
             case 10:
-                f = new AboutUs();
+                f = new AboutUsFragment();
                 getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 ft.replace(R.id.content_frame, f);
                 getSupportActionBar().setTitle("About Us");

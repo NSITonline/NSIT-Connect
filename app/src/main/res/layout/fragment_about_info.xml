@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@android:color/transparent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <nsit.app.com.nsitapp.view.FontTextView
+        style="@style/TextView.Nickname"
+        android:id="@+id/nickname" />
+
+    <LinearLayout
+        android:layout_below="@+id/nickname"
+        android:id="@+id/interestsPrimary"
+        style="@style/LinearLayout.Interests">
+
+        <nsit.app.com.nsitapp.view.FontTextView
+            style="@style/TextView.Interest"
+            android:clickable="true"
+            android:focusable="false"
+            android:id="@+id/interest_1" />
+
+        <nsit.app.com.nsitapp.view.FontTextView
+            style="@style/TextView.Interest"
+            android:clickable="true"
+            android:focusableInTouchMode="false"
+            android:id="@+id/interest_2" />
+
+        <nsit.app.com.nsitapp.view.FontTextView
+            style="@style/TextView.Interest"
+            android:focusableInTouchMode="false"
+            android:clickable="true"
+            android:id="@+id/interest_3" />
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_below="@+id/interestsPrimary"
+        android:id="@+id/interestsSecondary"
+        android:layout_marginTop="5dp"
+        style="@style/LinearLayout.Interests">
+
+        <nsit.app.com.nsitapp.view.FontTextView
+            android:id="@+id/interest_4"
+            android:clickable="true"
+            android:focusableInTouchMode="false"
+            style="@style/TextView.Interest" />
+
+        <nsit.app.com.nsitapp.view.FontTextView
+            android:id="@+id/interest_5"
+            android:clickable="true"
+            android:focusableInTouchMode="false"
+            style="@style/TextView.Interest" />
+    </LinearLayout>
+
+</RelativeLayout>

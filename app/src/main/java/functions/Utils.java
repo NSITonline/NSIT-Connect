@@ -16,8 +16,13 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.TimeZone;
+
+import nsit.app.com.nsitapp.R;
+import nsit.app.com.nsitapp.model.Friend;
 
 public class Utils {
     public static void CopyStream(InputStream is, OutputStream os) {
@@ -139,6 +144,59 @@ public class Utils {
         }
 
         return "0 secs";
+    }
+
+    public static final List<Friend> friends = new ArrayList<>();
+
+    static {
+        friends.add(new Friend(R.drawable.sidharth_patro, "SIDHARTH PATRO"
+                ,"https://in.linkedin.com/in/sdpatro"
+                , "https://www.facebook.com/sidharth.patro.39?fref=ts"
+                , "https://github.com/sdpatro"
+                ,R.color.sienna
+                , "LinkedIn", "Facebook", "Github", "Developer", "UI Designer"));
+        friends.add(new Friend(R.drawable.swati_garg, "SWATI GARG"
+                , "https://in.linkedin.com/pub/swati-garg/b9/371/a79"
+                ,"https://www.facebook.com/swati.garg.1690"
+                ,"https://github.com/Swati4star"
+                , R.color.saffron
+                , "LinkedIn", "Facebook", "Github", "Developer", "Tester"));
+        friends.add(new Friend(R.drawable.prabhakar, "PRABHAKAR GUPTA"
+                ,"https://www.linkedin.com/in/prabhakargupta267"
+                ,"https://www.facebook.com/prabhakar267"
+                ,"https://github.com/prabhakar267"
+                ,R.color.green
+                , "LinkedIn", "Facebook", "Github", "Backend Developer", null));
+        friends.add(new Friend(R.drawable.chetan, "CHETAN SHUKLA"
+                ,"https://in.linkedin.com/pub/chetan-shukla/100/415/455"
+                ,"https://www.facebook.com/chetan.shukla.5205?fref=ts"
+                ,null
+                ,R.color.pink
+                ,"LinkedIn", "Facebook", "Github", "Content Writer", null));
+        friends.add(new Friend(R.drawable.sagar_aggarwal, "SAGAR AGGARWAL"
+                ,"https://in.linkedin.com/in/sagar-aggarwal-9319b3110"
+                ,"https://web.facebook.com/sagar.aggarwal.773"
+                ,"https://github.com/sgaggarwal2009"
+                ,R.color.orange
+                ,"LinkedIn", "Facebook", "Github", "Developer", "Tester"));
+        friends.add(new Friend(R.drawable.naman_maheshwari, "NAMAN MAHESHWARI"
+                ,"https://in.linkedin.com/in/naman1901"
+                ,"https://www.facebook.com/naman1901"
+                ,"https://github.com/naman1901"
+                ,R.color.saffron
+                ,"LinkedIn", "Facebook", "Github", "Developer", "Tester"));
+        friends.add(new Friend(R.drawable.ayush_verma, "AYUSH VERMA"
+                ,"https://in.linkedin.com/in/ayush-verma-210082114"
+                ,"https://www.facebook.com/ayush.verma.5203"
+                ,"https://github.com/Ayush-V1"
+                ,R.color.green
+                ,"LinkedIn", "Facebook", "Github","Developer", "Tester"));
+        friends.add(new Friend(R.drawable.saisumit_vohra, "SAISUMIT VOHRA"
+                ,"https://in.linkedin.com/in/sumit-vohra-224484a0"
+                ,"https://www.facebook.com/sumit.vohra.353?ref=br_rs"
+                ,"https://github.com/saisumit"
+                ,R.color.purple
+                ,"LinkedIn", "Facebook", "Github", "Developer", "Tester"));
     }
 
     /* private class OnPinchListener extends ScaleGestureDetector.SimpleOnScaleGestureListener

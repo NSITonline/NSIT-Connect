@@ -24,7 +24,7 @@
             android:text=" Day"
             android:textAllCaps="true"
             android:textColor="@color/colorPrimary"
-            android:textSize="10sp"
+            android:textSize="13sp"
             android:textStyle="bold" />
 
         <View
@@ -39,7 +39,7 @@
             android:layout_weight="1.0"
             android:paddingTop="5dp"
             android:text=""
-            android:textSize="10sp" />
+            android:textSize="13sp" />
 
         <View
             android:layout_width="fill_parent"
@@ -54,7 +54,7 @@
             android:layout_weight="1.0"
             android:paddingTop="5dp"
             android:text=""
-            android:textSize="10sp" />
+            android:textSize="13sp" />
 
         <View
             android:layout_width="fill_parent"
@@ -69,7 +69,7 @@
             android:layout_weight="1.0"
             android:paddingTop="5dp"
             android:text=""
-            android:textSize="10sp" />
+            android:textSize="13sp" />
 
         <View
             android:layout_width="fill_parent"
@@ -84,7 +84,7 @@
             android:layout_weight="1.0"
             android:paddingTop="5dp"
             android:text=""
-            android:textSize="10sp" />
+            android:textSize="13sp" />
 
         <View
             android:layout_width="fill_parent"
@@ -99,7 +99,7 @@
             android:layout_weight="1.0"
             android:paddingTop="5dp"
             android:text=""
-            android:textSize="10sp" />
+            android:textSize="13sp" />
 
         <View
             android:layout_width="fill_parent"
@@ -114,7 +114,7 @@
             android:layout_weight="1.0"
             android:paddingTop="5dp"
             android:text=""
-            android:textSize="10sp" />
+            android:textSize="13sp" />
 
         <View
             android:layout_width="fill_parent"
@@ -129,7 +129,7 @@
             android:layout_weight="1.0"
             android:paddingTop="5dp"
             android:text=""
-            android:textSize="10sp" />
+            android:textSize="13sp" />
 
         <View
             android:layout_width="fill_parent"
@@ -144,7 +144,7 @@
             android:layout_weight="1.0"
             android:paddingTop="5dp"
             android:text=""
-            android:textSize="10sp" />
+            android:textSize="13sp" />
 
         <View
             android:layout_width="fill_parent"
@@ -159,7 +159,7 @@
             android:layout_weight="1.0"
             android:paddingTop="5dp"
             android:text=""
-            android:textSize="10sp" />
+            android:textSize="13sp" />
 
         <View
             android:layout_width="fill_parent"
@@ -174,7 +174,7 @@
             android:layout_weight="1.0"
             android:paddingTop="5dp"
             android:text=""
-            android:textSize="10sp" />
+            android:textSize="13sp" />
 
         <View
             android:layout_width="fill_parent"

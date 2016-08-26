@@ -1,12 +1,13 @@
 package nsit.app.com.nsitapp;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -25,6 +26,7 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 
 import functions.ButtonAnimation;
 import functions.Constant;
@@ -43,6 +45,7 @@ public class Decsription extends AppCompatActivity implements Constant{
     private String imglink;
     private String obid;
     private FrameLayout img_cont;
+    private ArrayList<Bitmap> images;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,12 +55,13 @@ public class Decsription extends AppCompatActivity implements Constant{
 
         setTitle("Post");
 
+        images = new ArrayList<>();
         Intent i = getIntent();
         img = i.getStringExtra(IMAGE);
         String des = i.getStringExtra(DES);
         String like = i.getStringExtra(LIKE);
         link = i.getStringExtra(LINK);
-        imageLoader=new ImageLoader(this);
+        imageLoader = new ImageLoader(this);
         obid = i.getStringExtra(OBID);
 
         imageView = (ImageView) findViewById(R.id.image);
@@ -113,12 +117,19 @@ public class Decsription extends AppCompatActivity implements Constant{
         else imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(Decsription.this,Description_FullImage.class);
-                i.putExtra(IMAGE,img);
-                i.putExtra(OBID,obid);
-                startActivity(i);
-                ButtonAnimation btnAnimation = new ButtonAnimation();
-                btnAnimation.animateButton(view, getApplicationContext());
+//                Intent i = new Intent(Decsription.this, Description_FullImage.class);
+//                i.putExtra(IMAGE,img);
+//                i.putExtra(OBID,obid);
+//                startActivity(i);
+//                ButtonAnimation btnAnimation = new ButtonAnimation();
+//                btnAnimation.animateButton(view, getApplicationContext());
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("images", images);
+
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                ImageSlideshowFragment f = new ImageSlideshowFragment();
+                f.setArguments(bundle);
+                f.show(ft, "slideshow");
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -155,7 +166,7 @@ public class Decsription extends AppCompatActivity implements Constant{
             JSONObject ob;
             JSONArray arr;
             if(result==null){
-                imageLoader.DisplayImage(img, imageView,pb);
+                imageLoader.DisplayImage(img, imageView, pb);
             }else {
                 try {
                     ob = new JSONObject(result);
@@ -166,7 +177,7 @@ public class Decsription extends AppCompatActivity implements Constant{
                         imglink = arr.getJSONObject(0).getString("source");
                     if (imglink != null) {
                         if (Utils.isNetworkAvailable(Decsription.this)) {
-                            imageLoader.DisplayImage(imglink, imageView,pb);
+                            imageLoader.DisplayImage(imglink, imageView, pb);
                             pb.setVisibility(View.GONE);
                         }
                     } else {
@@ -185,11 +196,4 @@ public class Decsription extends AppCompatActivity implements Constant{
         }
     }
 
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId()==android.R.id.home)
-            finish();
-        return super.onOptionsItemSelected(item);
-    }
 }

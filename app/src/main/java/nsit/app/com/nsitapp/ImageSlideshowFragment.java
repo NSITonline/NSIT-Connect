@@ -69,6 +69,9 @@ public class ImageSlideshowFragment extends DialogFragment {
         return view;
     }
 
+    public void notifyDataSetChanged() {
+        imageViewPagerAdapter.notifyDataSetChanged();
+    }
 
     @Override
     public void onAttach(Context context) {

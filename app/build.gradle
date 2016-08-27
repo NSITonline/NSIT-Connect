@@ -40,12 +40,12 @@ dependencies {
     compile project(':YouTubeAndroidPlayerApi')
 
 
-
     compile 'org.lucasr.twowayview:twowayview:0.1.4'
     compile 'com.android.support:appcompat-v7:23.3.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.google.android.gms:play-services-maps:8.4.0'
-    compile 'com.google.android.gms:play-services-location:7.5.0'
+    compile 'com.google.android.gms:play-services-location:8.4.0'
     compile 'com.nispok:snackbar:2.10.+'
     compile 'com.android.support:support-v4:23.3.0'
+    compile 'com.koushikdutta.ion:ion:2.+'
 }

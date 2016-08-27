@@ -16,6 +16,8 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.koushikdutta.async.future.FutureCallback;
+import com.koushikdutta.ion.Ion;
 import com.nispok.snackbar.Snackbar;
 import com.nispok.snackbar.SnackbarManager;
 
@@ -46,6 +48,7 @@ public class Decsription extends AppCompatActivity implements Constant{
     private String obid;
     private FrameLayout img_cont;
     private ArrayList<Bitmap> images;
+    private ImageSlideshowFragment f;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,7 +130,7 @@ public class Decsription extends AppCompatActivity implements Constant{
                 bundle.putSerializable("images", images);
 
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                ImageSlideshowFragment f = new ImageSlideshowFragment();
+                f = new ImageSlideshowFragment();
                 f.setArguments(bundle);
                 f.show(ft, "slideshow");
             }
@@ -166,7 +169,18 @@ public class Decsription extends AppCompatActivity implements Constant{
             JSONObject ob;
             JSONArray arr;
             if(result==null){
-                imageLoader.DisplayImage(img, imageView, pb);
+                Ion.with(Decsription.this)
+                        .load(img)
+                        .withBitmap()
+                        .asBitmap()
+                        .setCallback(new FutureCallback<Bitmap>() {
+                            @Override
+                            public void onCompleted(Exception e, Bitmap result) {
+                                imageView.setImageBitmap(result);
+                                f.notifyDataSetChanged();
+                                images.add(result);
+                            }
+                        });
             }else {
                 try {
                     ob = new JSONObject(result);
@@ -176,15 +190,31 @@ public class Decsription extends AppCompatActivity implements Constant{
                     if (arr.getJSONObject(0).has("source"))
                         imglink = arr.getJSONObject(0).getString("source");
                     if (imglink != null) {
-                        if (Utils.isNetworkAvailable(Decsription.this)) {
-                            imageLoader.DisplayImage(imglink, imageView, pb);
-                            pb.setVisibility(View.GONE);
-                        }
+                        Ion.with(imageView)
+                                .load(imglink);
                     } else {
                         img_cont.setVisibility(View.GONE);
                         pb.setVisibility(View.GONE);
                     }
                     Log.e("yrs", "Image Link is : " + imglink);
+                    for(int i=0;i<arr.length();i++) {
+                        JSONObject x = arr.getJSONObject(i);
+                        if(x.has("source")) {
+                            String URL = x.getString("source");
+                            Log.e("Hey", "URL:" + URL);
+                            Ion.with(Decsription.this)
+                                    .load(URL)
+                                    .withBitmap()
+                                    .asBitmap()
+                                    .setCallback(new FutureCallback<Bitmap>() {
+                                        @Override
+                                        public void onCompleted(Exception e, Bitmap result) {
+                                            f.notifyDataSetChanged();
+                                            images.add(result);
+                                        }
+                                    });
+                        }
+                    }
 
                 } catch (Exception e) {
                     Log.e("yo", "" + e.getMessage()+" ");

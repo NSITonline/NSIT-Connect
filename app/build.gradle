@@ -22,29 +22,23 @@ android {
         versionCode 23
         versionName "2.3"
     }
-  
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
-  
 }
-
 
 dependencies {
     compile 'org.lucasr.twowayview:twowayview:0.1.4'
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:22.2.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
-    compile group:'org.jsoup',name:'jsoup',version:'1.8.3'
-    compile project(':YouTubeAndroidPlayerApi')
+    compile group: 'org.jsoup', name: 'jsoup', version: '1.8.3'
     compile 'com.google.android.gms:play-services-maps:7.5.0'
     compile 'com.google.android.gms:play-services-location:7.5.0'
     compile 'com.nispok:snackbar:2.10.+'
-
-
-
+    compile files('libs/YouTubeAndroidPlayerApi.jar')
 }

@@ -88,7 +88,7 @@ public class Decsription extends AppCompatActivity implements Constant{
         if(link==null)
             but_con.setVisibility(View.GONE);
         else
-        link1.setOnClickListener(new View.OnClickListener() {
+            link1.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
                                         Uri uri = Uri.parse(link);
@@ -98,22 +98,7 @@ public class Decsription extends AppCompatActivity implements Constant{
                                         btnAnimation.animateButton(view, getApplicationContext());
                                     }
                                 }
-        );
-        if(Utils.isNetworkAvailable(Decsription.this)) {
-            if (img == null) {
-                img_cont.setVisibility(View.GONE);
-                pb.setVisibility(View.GONE);
-            }
-            else if (obid == null) {
-                imageLoader.DisplayImage(img, imageView,pb);
-            }
-            else
-                new DownloadWebPageTask().execute();
-        } else
-            SnackbarManager.show(
-                    Snackbar.with(getApplicationContext())
-                            .text("Check You Internet Connection")
-                            .duration(Snackbar.SnackbarDuration.LENGTH_SHORT), this);
+            );
 
         if (img == null)
             img_cont.setVisibility(View.GONE);
@@ -135,25 +120,45 @@ public class Decsription extends AppCompatActivity implements Constant{
                 f.show(ft, "slideshow");
             }
         });
+        if(Utils.isNetworkAvailable(Decsription.this)) {
+            if (img == null) {
+                img_cont.setVisibility(View.GONE);
+                pb.setVisibility(View.GONE);
+            }
+            else if (obid == null) {
+                imageLoader.DisplayImage(img, imageView,pb);
+            }
+            else
+                new DownloadWebPageTask().execute();
+        } else
+            SnackbarManager.show(
+                    Snackbar.with(getApplicationContext())
+                            .text("Check You Internet Connection")
+                            .duration(Snackbar.SnackbarDuration.LENGTH_SHORT), this);
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
     }
 
-    private class DownloadWebPageTask extends AsyncTask<String, Void, String> {
+    private class DownloadWebPageTask extends AsyncTask<String, Void, String[]> {
 
         @Override
-        protected String doInBackground(String... urls) {
+        protected String[] doInBackground(String... urls) {
 
 
             String uri = "https://graph.facebook.com/"+obid+"?fields=images&access_token="+ common_access;
+            String uri2 = "https://graph.facebook.com/"+obid+"?fields=attachments&access_token="+ common_access;
 
             java.net.URL url = null;
-            String readStream = null;
+            String[] readStream = {null, null};
             try {
                 url = new URL(uri);
                 HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                readStream = Utils.readStream(con.getInputStream());
+                readStream[0] = Utils.readStream(con.getInputStream());
+                url = new URL(uri2);
+                con = (HttpURLConnection) url.openConnection();
+                readStream[1] = Utils.readStream(con.getInputStream());
             } catch (MalformedURLException e1) {
                 e1.printStackTrace();
             } catch (IOException e1) {
@@ -164,62 +169,64 @@ public class Decsription extends AppCompatActivity implements Constant{
         }
 
         @Override
-        protected void onPostExecute(String result) {
+        protected void onPostExecute(String[] result) {
             Log.e("YO", "Done" + obid + result);
             JSONObject ob;
             JSONArray arr;
-            if(result==null){
-                Ion.with(Decsription.this)
-                        .load(img)
-                        .withBitmap()
-                        .asBitmap()
-                        .setCallback(new FutureCallback<Bitmap>() {
-                            @Override
-                            public void onCompleted(Exception e, Bitmap result) {
-                                imageView.setImageBitmap(result);
-                                f.notifyDataSetChanged();
-                                images.add(result);
-                            }
-                        });
-            }else {
+            imglink = img;
+            if(result[0]!=null) {
                 try {
-                    ob = new JSONObject(result);
+                    ob = new JSONObject(result[0]);
 
                     arr = ob.getJSONArray("images");
 
                     if (arr.getJSONObject(0).has("source"))
                         imglink = arr.getJSONObject(0).getString("source");
-                    if (imglink != null) {
-                        Ion.with(imageView)
-                                .load(imglink);
-                    } else {
-                        img_cont.setVisibility(View.GONE);
-                        pb.setVisibility(View.GONE);
-                    }
-                    Log.e("yrs", "Image Link is : " + imglink);
-                    for(int i=0;i<arr.length();i++) {
-                        JSONObject x = arr.getJSONObject(i);
-                        if(x.has("source")) {
-                            String URL = x.getString("source");
-                            Log.e("Hey", "URL:" + URL);
-                            Ion.with(Decsription.this)
-                                    .load(URL)
-                                    .withBitmap()
-                                    .asBitmap()
-                                    .setCallback(new FutureCallback<Bitmap>() {
-                                        @Override
-                                        public void onCompleted(Exception e, Bitmap result) {
-                                            f.notifyDataSetChanged();
-                                            images.add(result);
-                                        }
-                                    });
-                        }
-                    }
 
                 } catch (Exception e) {
                     Log.e("yo", "" + e.getMessage()+" ");
                 }
             }
+
+            Ion.with(Decsription.this)
+                .load(imglink)
+                .withBitmap()
+                .asBitmap()
+                .setCallback(new FutureCallback<Bitmap>() {
+                    @Override
+                    public void onCompleted(Exception e, Bitmap bitmap) {
+                        imageView.setImageBitmap(bitmap);
+                        f.notifyDataSetChanged(1);
+                        images.add(bitmap);
+                        f.notifyDataSetChanged(2);
+                    }
+                });
+
+            if(result[1]!=null) {
+                try {
+                    ob = new JSONObject(result[1]);
+                    arr = ob.getJSONArray("attachments");
+                    for(int i=0;i<arr.length();i++) {
+                        if (arr.getJSONObject(i).has("source"))
+                            Ion.with(Decsription.this)
+                                .load(arr.getJSONObject(0).getString("source"))
+                                .withBitmap()
+                                .asBitmap()
+                                .setCallback(new FutureCallback<Bitmap>() {
+                                    @Override
+                                    public void onCompleted(Exception e, Bitmap bitmap) {
+                                        f.notifyDataSetChanged(3);
+                                        images.add(bitmap);
+                                        f.notifyDataSetChanged(4);
+                                    }
+                                });
+                    }
+                } catch (Exception e) {
+                    Log.e("yo", "" + e.getMessage()+" ");
+                }
+
+            }
+
             pb.setVisibility(View.GONE);
 
             Log.e("Yo", imglink+"");

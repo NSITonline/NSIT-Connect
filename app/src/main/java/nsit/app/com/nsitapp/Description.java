@@ -34,7 +34,7 @@ import functions.Utils;
 import static nsit.app.com.nsitapp.R.id.imag_cont;
 
 
-public class Decsription extends AppCompatActivity implements Constant{
+public class Description extends AppCompatActivity implements Constant{
     private ProgressBar pb;
     private ImageLoader imageLoader;
     private String img;
@@ -92,7 +92,7 @@ public class Decsription extends AppCompatActivity implements Constant{
                                     }
                                 }
         );
-        if(Utils.isNetworkAvailable(Decsription.this)) {
+        if(Utils.isNetworkAvailable(Description.this)) {
             if (img == null) {
                 img_cont.setVisibility(View.GONE);
                 pb.setVisibility(View.GONE);
@@ -113,7 +113,7 @@ public class Decsription extends AppCompatActivity implements Constant{
         else imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(Decsription.this,Description_FullImage.class);
+                Intent i = new Intent(Description.this,Description_FullImage.class);
                 i.putExtra(IMAGE,img);
                 i.putExtra(OBID,obid);
                 startActivity(i);
@@ -165,7 +165,7 @@ public class Decsription extends AppCompatActivity implements Constant{
                     if (arr.getJSONObject(0).has("source"))
                         imglink = arr.getJSONObject(0).getString("source");
                     if (imglink != null) {
-                        if (Utils.isNetworkAvailable(Decsription.this)) {
+                        if (Utils.isNetworkAvailable(Description.this)) {
                             imageLoader.DisplayImage(imglink, imageView,pb);
                             pb.setVisibility(View.GONE);
                         }

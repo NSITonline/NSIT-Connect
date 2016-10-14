@@ -1,8 +1,11 @@
 package nsit.app.com.nsitapp;
 
-import android.os.AsyncTask;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -22,14 +25,16 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 import functions.GPSTracker;
 import functions.Utils;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 /**
  * Created by AGGARWAL'S on 10/21/2015.
@@ -38,45 +43,57 @@ public class PlaceMapActivity extends FragmentActivity implements OnMapReadyCall
 
     private double Lati;
     private double Longi;
-    private String place_name;
-    private String place_id;
-    private String main_polylinrobject;
-    private TextView time;
-    private TextView distance;
+    private String place_name, place_id, main_polylinrobject;
+    private TextView time, transition, distance;
     private ProgressBar progressBar;
+    private Handler mHandler;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_place_maps);
-        TextView transition = (TextView) findViewById(R.id.destination);
-        time = (TextView)findViewById(R.id.time);
-        distance= (TextView)findViewById(R.id.distance);
-        progressBar = (ProgressBar)findViewById(R.id.progress_path);
-        Lati = Double.parseDouble(getIntent().getStringExtra(HangoutsTypeDisplay.HangoutTypeAdapter.INTENT_LATI));
-        Longi = Double.parseDouble(getIntent().getStringExtra(HangoutsTypeDisplay.HangoutTypeAdapter.INTENT_LONG));
-        place_name = getIntent().getStringExtra(HangoutsTypeDisplay.HangoutTypeAdapter.INTENT_PLACE_NAME);
-        place_id = getIntent().getStringExtra(HangoutsTypeDisplay.HangoutTypeAdapter.INTENT_PLACE_ID);
-        transition.setText("Current Location To "+place_name);
-        MapFragment mapFragment = (MapFragment)getFragmentManager().findFragmentById(R.id.place_map);
+
+        // Initialize variables
+        transition = (TextView) findViewById(R.id.destination);
+        time = (TextView) findViewById(R.id.time);
+        distance = (TextView) findViewById(R.id.distance);
+        progressBar = (ProgressBar) findViewById(R.id.progress_path);
+
+        // Get data from previous activity
+        Intent intent = getIntent();
+        Lati = Double.parseDouble(intent.getStringExtra(HangoutsTypeDisplay.HangoutTypeAdapter.INTENT_LATI));
+        Longi = Double.parseDouble(intent.getStringExtra(HangoutsTypeDisplay.HangoutTypeAdapter.INTENT_LONG));
+        place_name = intent.getStringExtra(HangoutsTypeDisplay.HangoutTypeAdapter.INTENT_PLACE_NAME);
+        place_id = intent.getStringExtra(HangoutsTypeDisplay.HangoutTypeAdapter.INTENT_PLACE_ID);
+
+        mHandler = new Handler(Looper.getMainLooper());
+        transition.setText("Current Location To " + place_name);
+
+        // Initialize map
+        MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.place_map);
         mapFragment.getMapAsync(this);
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        if(Utils.isNetworkAvailable(this))
-            new HttpGetDirections(googleMap).execute();
+
+        //If internet is available
+        if (Utils.isNetworkAvailable(this))
+            getDirections(googleMap);
         else
             Toast.makeText(getApplicationContext(), "Cannot connect to Internet" + "\n" + "Path Not Displayed", Toast.LENGTH_LONG).show();
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         googleMap.setMyLocationEnabled(true);
+
         UiSettings settings = googleMap.getUiSettings();
         settings.setZoomControlsEnabled(true);
         settings.setZoomGesturesEnabled(true);
         settings.setCompassEnabled(true);
         settings.setRotateGesturesEnabled(true);
-        LatLng place = new LatLng(Lati,Longi);
+
+        LatLng place = new LatLng(Lati, Longi);
         googleMap.addMarker(new MarkerOptions().position(place).title(place_name));
         CameraPosition position = new CameraPosition.Builder().target(place).zoom(15).build();
         googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(position));
@@ -84,64 +101,56 @@ public class PlaceMapActivity extends FragmentActivity implements OnMapReadyCall
     }
 
 
-    private class HttpGetDirections extends AsyncTask<Void,Void,String> {
+    private void getDirections(final GoogleMap googleMap) {
 
-        private String URL;
-        private GoogleMap googleMap;
+        GPSTracker gpsGetLocation = new GPSTracker(PlaceMapActivity.this);
+        String URL = "https://maps.googleapis.com/maps/api/directions/json?origin=" +
+                gpsGetLocation.getLatitude() + "," + gpsGetLocation.getLongitude() + "&destination=place_id:"
+                + place_id + "&key=AIzaSyBgktirlOODUO9zWD-808D7zycmP7smp-Y";
 
-        HttpGetDirections(GoogleMap map){
-            GPSTracker gpsGetLocation = new GPSTracker(PlaceMapActivity.this);
-            URL = "https://maps.googleapis.com/maps/api/directions/json?origin="+
-                    gpsGetLocation.getLatitude()+","+gpsGetLocation.getLongitude()+"&destination=place_id:"
-                    + place_id+"&key=AIzaSyBgktirlOODUO9zWD-808D7zycmP7smp-Y";
-            googleMap = map;
-        }
+        progressBar.setVisibility(View.VISIBLE);
 
-        @Override
-        protected void onPreExecute() {
-            progressBar.setVisibility(View.VISIBLE);
-        }
-
-        @Override
-        protected String doInBackground(Void... voids) {
-
-
-
-
-
-            String uri = URL;
-            java.net.URL url = null;
-            String readStream = null;
-            try {
-                url = new URL(uri);
-                HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                readStream = Utils.readStream(con.getInputStream());
-            } catch (MalformedURLException e1) {
-                e1.printStackTrace();
-            } catch (IOException e1) {
-                e1.printStackTrace();
+        //Set up client
+        OkHttpClient client = new OkHttpClient();
+        //Execute request
+        Request request = new Request.Builder()
+                .url(URL)
+                .build();
+        //Setup callback
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e("Request Failed", "Message : " + e.getMessage());
             }
 
-            return readStream;
-        }
+            @Override
+            public void onResponse(Call call, final Response response) throws IOException {
 
-        @Override
-        protected void onPostExecute(String res) {
-            try{
-                JSONObject jdirectionsobject = new JSONObject(res);
-                JSONArray jroutesarray = jdirectionsobject.getJSONArray("routes");
-                main_polylinrobject = jroutesarray.getJSONObject(0).getJSONObject("overview_polyline").getString("points");
-                distance.setText(jroutesarray.getJSONObject(0).getJSONArray("legs").getJSONObject(0).getJSONObject("distance").getString("text"));
-                time.setText(jroutesarray.getJSONObject(0).getJSONArray("legs").getJSONObject(0).getJSONObject("duration").getString("text"));
-            }catch (Exception e){}
-            List<LatLng> polydeodedpoints = decodePoly(main_polylinrobject);
-            PolylineOptions options = new PolylineOptions().addAll(polydeodedpoints);
-            options.color(getResources().getColor(R.color.colorPrimaryDark)).width(7);
-            googleMap.addPolyline(options);
-            progressBar.setVisibility(View.GONE);
-        }
+                mHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        try {
+                            JSONObject jdirectionsobject = new JSONObject(response.body().string());
+                            JSONArray jroutesarray = jdirectionsobject.getJSONArray("routes");
+                            main_polylinrobject = jroutesarray.getJSONObject(0).getJSONObject("overview_polyline").getString("points");
+                            distance.setText(jroutesarray.getJSONObject(0).getJSONArray("legs").getJSONObject(0).getJSONObject("distance").getString("text"));
+                            time.setText(jroutesarray.getJSONObject(0).getJSONArray("legs").getJSONObject(0).getJSONObject("duration").getString("text"));
+                        } catch (Exception e) {
+                        }
+                        List<LatLng> polydeodedpoints = decodePoly(main_polylinrobject);
+                        PolylineOptions options = new PolylineOptions().addAll(polydeodedpoints);
+                        options.color(getResources().getColor(R.color.colorPrimaryDark)).width(7);
+                        googleMap.addPolyline(options);
+                        progressBar.setVisibility(View.GONE);
+                    }
+                });
+            }
+
+        });
     }
 
+    // Plot points on map from encoded string
     private List<LatLng> decodePoly(String encoded) {
 
         List<LatLng> poly = new ArrayList<LatLng>();

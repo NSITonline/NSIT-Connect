@@ -249,7 +249,6 @@ public class MainActivity extends AppCompatActivity {
     public class DrawerList_Adapter extends ArrayAdapter<String> {
         private final Activity context;
         private final String[] web;
-        private boolean isSpeakButtonLongPressed;
         private final Integer[] imageId;
 
         public DrawerList_Adapter(Activity context, Integer[] imageId) {

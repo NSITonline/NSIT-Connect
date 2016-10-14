@@ -30,7 +30,7 @@ import java.util.Locale;
 import functions.Constant;
 import functions.ImageLoader;
 import functions.Utils;
-import nsit.app.com.nsitapp.Decsription;
+import nsit.app.com.nsitapp.Description;
 import nsit.app.com.nsitapp.Description_FullImage;
 import nsit.app.com.nsitapp.R;
 
@@ -70,7 +70,7 @@ public class MyFeedList extends ArrayAdapter<String> implements Constant{
 
         LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         if (view == null) {
-            view = mInflater.inflate(R.layout.myfeed_listitem, parent, false);
+            view = mInflater.inflate(R.layout.myfeed_listitem, null);
             holder = new ViewHolder();
             holder.Des = (TextView) view.findViewById(R.id.des);
             holder.likes = (TextView) view.findViewById(R.id.likes);
@@ -131,7 +131,7 @@ public class MyFeedList extends ArrayAdapter<String> implements Constant{
             public void onClick(View view) {
                 // TODO Auto-generated method stub
                 Context c = getContext();
-                Intent i = new Intent(getContext(), Decsription.class);
+                Intent i = new Intent(getContext(), Description.class);
                 i.putExtra(DES, des.get(position));
                 i.putExtra(LIKE, lik.get(position));
                 i.putExtra(IMAGE, img.get(position));

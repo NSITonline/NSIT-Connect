@@ -29,7 +29,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Decsription"
+            android:name=".Description"
             android:label="@string/title_activity_decsription" />
         <activity
             android:name=".Description_FullImage"

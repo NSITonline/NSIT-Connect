@@ -39,7 +39,7 @@ public interface Constant {
     String IS_TIME_TABLE_CHANGED = "timetablechanged";
     String GET_TIME_TABLE = "timetable";
 
-    String TIMETABLE_API = "****";
+    String TIMETABLE_API = "*******";
 
     String id = "109315262061";
 

@@ -17,7 +17,12 @@
     <color name="urioj">#7991b0</color>
     <color name="hackerearth">#EF9A9A</color>
     <color name="codechef">#cfce56</color>
-
+    <color name="saffron">#F4B63E</color>
+    <color name="sienna">#EB6460</color>
+    <color name="green">#10b4a5</color>
+    <color name="purple">#7c57e4</color>
+    <color name="pink">#ff4284</color>
+    <color name="orange">#ff8c6a</color>
     <color name="calculator_selected">#01b29b</color>
     <color name="calculator_notselected">#b3b3b3</color>
 

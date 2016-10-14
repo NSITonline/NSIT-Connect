@@ -249,7 +249,6 @@ public class MainActivity extends AppCompatActivity {
     public class DrawerList_Adapter extends ArrayAdapter<String> {
         private final Activity context;
         private final String[] web;
-        private boolean isSpeakButtonLongPressed;
         private final Integer[] imageId;
 
         public DrawerList_Adapter(Activity context, Integer[] imageId) {
@@ -269,7 +268,7 @@ public class MainActivity extends AppCompatActivity {
             ViewHolder holder = null;
             LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
             if (view == null) {
-                view = mInflater.inflate(R.layout.message, null);
+                view = mInflater.inflate(R.layout.message, parent, false);
                 holder = new ViewHolder();
                 holder.t1 = (TextView) view.findViewById(R.id.textView1);
                 holder.imag = (ImageView) view.findViewById(R.id.imageView1);

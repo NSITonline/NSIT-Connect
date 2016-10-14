@@ -64,7 +64,6 @@
                         android:layout_marginRight="10dp"
                         android:adjustViewBounds="false"
                         android:background="@drawable/ic_play_arrow_white_24dp"
-                        android:backgroundTint="#ffffffff"
                         android:clickable="false"
                         android:duplicateParentState="true"
                         android:focusable="false"

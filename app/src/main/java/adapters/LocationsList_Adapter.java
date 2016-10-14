@@ -79,7 +79,7 @@ class LocationsList_Adapter extends BaseExpandableListAdapter {
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this.context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = infalInflater.inflate(R.layout.location_listitem, null);
+            convertView = infalInflater.inflate(R.layout.location_listitem, parent, false);
         }
 
         TextView GroupHeader = (TextView) convertView
@@ -127,7 +127,7 @@ class LocationsList_Adapter extends BaseExpandableListAdapter {
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this.context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = infalInflater.inflate(R.layout.locationgroup_listitem, null);
+            convertView = infalInflater.inflate(R.layout.locationgroup_listitem, parent, false);
         }
 
         TextView txtHeader = (TextView) convertView.findViewById(R.id.LocationItem);

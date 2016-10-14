@@ -29,7 +29,7 @@ import java.util.Locale;
 import functions.ButtonAnimation;
 import functions.ImageLoader;
 import functions.Utils;
-import nsit.app.com.nsitapp.Decsription;
+import nsit.app.com.nsitapp.Description;
 import nsit.app.com.nsitapp.Description_FullImage;
 import nsit.app.com.nsitapp.R;
 
@@ -65,7 +65,7 @@ public class CustomList extends ArrayAdapter<String> {
         ViewHolder holder;
         LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         if (view == null) {
-            view = mInflater.inflate(R.layout.message_layout, null);
+            view = mInflater.inflate(R.layout.message_layout, parent,false);
 
             holder = new ViewHolder();
             holder.Des = (TextView) view.findViewById(R.id.des);
@@ -117,7 +117,7 @@ public class CustomList extends ArrayAdapter<String> {
             @Override
             public void onClick(View view) {
                 Context c = getContext();
-                Intent i = new Intent(getContext(), Decsription.class);
+                Intent i = new Intent(getContext(), Description.class);
                 i.putExtra("dec", des.get(position));
                 i.putExtra("like", lik.get(position));
                 i.putExtra("img", img.get(position));

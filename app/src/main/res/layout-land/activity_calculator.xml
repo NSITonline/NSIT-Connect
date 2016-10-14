@@ -27,7 +27,7 @@
         android:text="Choose things appropriately and dont bother to fill boxes which isn&apos;t required."
         android:id="@+id/textView15"
         android:layout_gravity="center_horizontal"
-        android:textSize="17dp"
+        android:textSize="17sp"
         android:textColor="#ca969191"/>
 
 
@@ -93,7 +93,7 @@
                     android:layout_height="30dp"
                     android:text="TH 2"
                     android:id="@+id/tv2"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
 
                     android:textColor="#01b29b"
                     android:layout_marginLeft="50dp"
@@ -155,7 +155,7 @@
                     android:layout_height="30dp"
                     android:text="PR 3"
                     android:id="@+id/tv8"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
 
                     android:textColor="#01b29b"
                     android:layout_marginLeft="200dp"

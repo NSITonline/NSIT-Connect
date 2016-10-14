@@ -133,7 +133,7 @@ public class SubjectRemove extends AppCompatActivity {
             ViewHolder holder = null;
             LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
             if (view == null) {
-                view = mInflater.inflate(R.layout.subject_list_item_remove, null);
+                view = mInflater.inflate(R.layout.subject_list_item_remove, parent, false);
                 holder = new ViewHolder();
                 holder.stat = (TextView) view.findViewById(R.id.status);
                 holder.dat = (TextView) view.findViewById(R.id.date);

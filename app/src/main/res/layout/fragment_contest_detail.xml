@@ -6,7 +6,7 @@
     tools:context="nsit.app.com.nsitapp.view.ContestDetailActivity">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         tools:context="nsit.app.com.nsitapp.view.ContestDetailActivity">
 
 
@@ -50,7 +50,6 @@
             <ImageView
                 android:id="@+id/onlineJudge_icon"
                 android:layout_alignTop="@id/banner"
-                android:transitionName="logo"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginLeft="16dp"

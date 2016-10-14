@@ -18,6 +18,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.Objects;
 
 import adapters.VideoList_Adapter;
 import functions.ButtonAnimation;
@@ -76,7 +77,7 @@ public class Video extends Fragment {
         btnNextPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (nextPageToken != "") {
+                if (!Objects.equals(nextPageToken, "")) {
                     Spinner.setVisibility(View.VISIBLE);
                     navigateTo = "next";
                     ButtonAnimation btnAnimation = new ButtonAnimation();
@@ -89,7 +90,7 @@ public class Video extends Fragment {
         btnPrevPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (prevPageToken != "") {
+                if (!Objects.equals(prevPageToken, "")) {
                     Spinner.setVisibility(View.VISIBLE);
                     navigateTo = "prev";
                     ButtonAnimation btnAnimation = new ButtonAnimation();
@@ -102,14 +103,13 @@ public class Video extends Fragment {
         return rootView;
     }
 
-
     private void loadFeed() {
 
         // Youtube URI to fetch requests
         String uri = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=UUu445B5LTXzkNr5eft8wNHg&key=AIzaSyBgktirlOODUO9zWD-808D7zycmP7smp-Y";
-        if (navigateTo == "next") {
+        if (Objects.equals(navigateTo, "next")) {
             uri = uri + "&pageToken=" + nextPageToken;
-        } else if (navigateTo == "prev") {
+        } else if (Objects.equals(navigateTo, "prev")) {
             uri = uri + "&pageToken=" + prevPageToken;
         }
 

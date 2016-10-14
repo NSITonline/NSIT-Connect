@@ -134,7 +134,7 @@ public class Description extends AppCompatActivity implements Constant{
 
             String uri = "https://graph.facebook.com/"+obid+"?fields=images&access_token="+ common_access;
 
-            java.net.URL url = null;
+            java.net.URL url;
             String readStream = null;
             try {
                 url = new URL(uri);

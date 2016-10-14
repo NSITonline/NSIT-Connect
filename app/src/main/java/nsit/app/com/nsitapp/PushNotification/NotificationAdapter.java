@@ -17,7 +17,6 @@ public class NotificationAdapter {
 
 
     public NotificationAdapter(Context mContext) throws SQLException{
-        Context mContext1 = mContext;
         dbHelper = new DBHelper(mContext);
     }
 

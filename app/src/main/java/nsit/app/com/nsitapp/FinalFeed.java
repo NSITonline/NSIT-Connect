@@ -430,7 +430,7 @@ public class FinalFeed extends Fragment implements Constant {
             }
         } catch (JSONException e) {
             e.printStackTrace();
-            Log.e("ERROR : ", e.getMessage().toString());
+            Log.e("ERROR : ", e.getMessage());
         }
         db.close();
 

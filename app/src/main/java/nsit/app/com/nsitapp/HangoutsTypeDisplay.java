@@ -215,17 +215,17 @@ public class HangoutsTypeDisplay extends AppCompatActivity {
                     try {
 
 
-                        String name = null;
-                        String icon = null;
-                        String place_id = null;
-                        String phtotref = null;
+                        String name;
+                        String icon;
+                        String place_id;
+                        String phtotref;
                         String longi = null;
                         String latti = null;
-                        String vicinity = null;
+                        String vicinity;
                         boolean opennow = false;
-                        float photowidth = 0;
-                        float photoheight = 0;
-                        float rating = -1;
+                        float photowidth;
+                        float photoheight;
+                        float rating;
 
                         if (jplacearray.getJSONObject(i).has("icon"))
                             icon = jplacearray.getJSONObject(i).getString("icon");

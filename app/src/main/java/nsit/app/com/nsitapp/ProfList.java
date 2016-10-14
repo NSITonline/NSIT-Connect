@@ -30,6 +30,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import functions.Constant;
 
@@ -85,7 +86,7 @@ public class ProfList extends AppCompatActivity implements Constant {
             for (int j = 0; j < len1; j++) {
 
                 name[k] = ar.getJSONObject(j).getString("Name");
-                if (ar.getJSONObject(j).getString("Designation") != "")
+                if (!Objects.equals(ar.getJSONObject(j).getString("Designation"), ""))
                     name[k] = name[k] + " , " + ar.getJSONObject(j).getString("Designation");
                 ids[k] = ar.getJSONObject(j).getString("Email");
                 contact[k] = ar.getJSONObject(j).getString("ContactNo");
@@ -137,7 +138,7 @@ public class ProfList extends AppCompatActivity implements Constant {
         }
 
         public View getView(int position, View convertView, ViewGroup parent) {
-            ViewHolder holder = null;
+            ViewHolder holder;
             final ProfListRowItem rowItem = getItem(position);
 
             LayoutInflater mInflater = (LayoutInflater) context

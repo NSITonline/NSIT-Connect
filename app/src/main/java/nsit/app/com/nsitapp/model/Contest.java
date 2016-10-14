@@ -77,7 +77,7 @@ public class Contest {
             Contest contest = (Contest) o;
             boolean isMatch = true;
 
-            isMatch = isMatch && (mTitle.equals(contest.getTitle()));
+            isMatch = mTitle.equals(contest.getTitle());
             isMatch = isMatch && (mDescription.equals(contest.getDescription()));
             isMatch = isMatch && (mSource.equals(contest.getSource()));
             isMatch = isMatch && (mURL.equals(contest.getURL()));

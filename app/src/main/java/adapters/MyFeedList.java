@@ -66,7 +66,7 @@ public class MyFeedList extends ArrayAdapter<String> implements Constant{
 
     @Override
     public View getView(final int position, View view, ViewGroup parent) {
-        ViewHolder holder = null;
+        ViewHolder holder;
 
         LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         if (view == null) {

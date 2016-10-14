@@ -6,10 +6,10 @@ package nsit.app.com.nsitapp;
 class Subject_struct {
 
     public String value;
-    private String proffh;
+    public String proffh;
     public String subfh;
     public String roomfh;
-    private String profsh;
+    public String profsh;
     public String subsh;
     public String roomsh;
 

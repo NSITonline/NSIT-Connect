@@ -65,7 +65,6 @@ public class SubjectsShow extends AppCompatActivity implements Constant {
 
         SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(this);
         int branch = s.getInt(CALENDAR_BRANCH, 1);
-        int sec = s.getInt(CALENDAR_SECTION, 1);
         int sem = s.getInt(CALENDAR_SEM, 1);
 
 

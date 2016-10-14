@@ -159,7 +159,7 @@ public class ContestProvider extends ContentProvider {
         final SQLiteDatabase db = mOpenHelper.getWritableDatabase();
 
         int match = sUriMatcher.match(uri);
-        int rowsDeleted = 0;
+        int rowsDeleted;
         switch(match) {
             case CONTEST: {
 
@@ -185,7 +185,7 @@ public class ContestProvider extends ContentProvider {
         final SQLiteDatabase db = mOpenHelper.getWritableDatabase();
 
         int match = sUriMatcher.match(uri);
-        int rowsUpdated = 0;
+        int rowsUpdated;
         switch(match) {
             case CONTEST: {
 

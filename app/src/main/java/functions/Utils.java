@@ -46,7 +46,7 @@ public class Utils {
         StringBuilder sb = new StringBuilder();
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-            String nextLine = "";
+            String nextLine;
             while ((nextLine = reader.readLine()) != null) {
                 sb.append(nextLine);
             }

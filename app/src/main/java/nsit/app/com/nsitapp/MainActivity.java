@@ -74,12 +74,9 @@ public class MainActivity extends AppCompatActivity {
             getSupportActionBar().setTitle("Home");
             ft.commit();
         }
-        ListView lv = (ListView) findViewById(R.id.list);
         android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         ListView mDrawerList = (ListView) findViewById(R.id.left_drawer);
-        SwipeRefreshLayout swipeLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_container);
-
 
         //All for navigation drawer
         DrawerList_Adapter adapter2 = new DrawerList_Adapter(this, imageId);
@@ -249,7 +246,6 @@ public class MainActivity extends AppCompatActivity {
     public class DrawerList_Adapter extends ArrayAdapter<String> {
         private final Activity context;
         private final String[] web;
-        private boolean isSpeakButtonLongPressed;
         private final Integer[] imageId;
 
         public DrawerList_Adapter(Activity context, Integer[] imageId) {
@@ -266,7 +262,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public View getView(int position, View view, ViewGroup parent) {
-            ViewHolder holder = null;
+            ViewHolder holder;
             LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
             if (view == null) {
                 view = mInflater.inflate(R.layout.message, parent, false);

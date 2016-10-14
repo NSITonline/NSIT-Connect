@@ -25,6 +25,8 @@ import com.google.android.youtube.player.YouTubeStandalonePlayer;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import java.util.Objects;
+
 import functions.ButtonAnimation;
 import functions.ImageLoader;
 import nsit.app.com.nsitapp.R;
@@ -39,7 +41,6 @@ public class VideoList_Adapter extends BaseAdapter {
     private static LayoutInflater inflater = null;
 
     public VideoList_Adapter(Context context, JSONArray FeedItems) {
-        Context context1 = context;
         this.FeedItems = FeedItems;
         imageLoader = new ImageLoader(context.getApplicationContext());
 
@@ -133,7 +134,7 @@ public class VideoList_Adapter extends BaseAdapter {
         try {
             Title.setText(FeedItems.getJSONObject(position).getJSONObject("snippet").getString("title"));
             String DescriptionText = FeedItems.getJSONObject(position).getJSONObject("snippet").getString("description");
-            if (DescriptionText == "") {
+            if (Objects.equals(DescriptionText, "")) {
                 Description.setText(R.string.no_description);
             }
             String publishedAt = processDate(FeedItems.getJSONObject(position).getJSONObject("snippet").getString("publishedAt"));

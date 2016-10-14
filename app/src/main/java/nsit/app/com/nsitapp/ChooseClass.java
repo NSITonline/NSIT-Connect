@@ -21,8 +21,6 @@ import functions.Constant;
 
 public class ChooseClass extends AppCompatActivity implements AdapterView.OnItemSelectedListener, Constant {
 
-
-
     private String[] sem={"Semester","Sem 1","Sem 2","Sem 3","Sem 4","Sem 5","Sem 6","Sem 7","Sem 8"};
     private String[] branch={"Branch","COE","IT","ECE","ICE","MPAE","BT","ME"};
     private String[] section={"Section","Sec 1","Sec 2","Sec 3"};

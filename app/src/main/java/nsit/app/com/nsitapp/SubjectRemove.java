@@ -130,7 +130,7 @@ public class SubjectRemove extends AppCompatActivity {
 
         @Override
         public View getView(final int position, View view, ViewGroup parent) {
-            ViewHolder holder = null;
+            ViewHolder holder;
             LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
             if (view == null) {
                 view = mInflater.inflate(R.layout.subject_list_item_remove, parent, false);

@@ -31,8 +31,6 @@ class LocationsList_Adapter extends BaseExpandableListAdapter {
     public LocationsList_Adapter(Context context, ArrayList<Locations.LocationGroup> LocationItems) {
         this.context = context;
         this.LocationItems = LocationItems;
-        LayoutInflater inflater = (LayoutInflater) context
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
 

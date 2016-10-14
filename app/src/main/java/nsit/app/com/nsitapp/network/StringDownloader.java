@@ -19,7 +19,7 @@ public class StringDownloader extends Downloader{
         try {
             final BufferedReader in = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
             try {
-                String line = null;
+                String line;
                 while ((line=in.readLine())!=null) {
                     out.append(line);
                 }

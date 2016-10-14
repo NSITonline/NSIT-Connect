@@ -49,68 +49,63 @@ public class MyNotifiactionService extends IntentService implements Constant {
     @Override
     protected void onHandleIntent(Intent intent) {
         String text = "";
-        if (URL != null) {
-            String uri = URL;
-            java.net.URL url = null;
-            try {
-                url = new URL(uri);
-                HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                text = Utils.readStream(con.getInputStream());
-            } catch (MalformedURLException e1) {
-                e1.printStackTrace();
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
-
+        String uri = URL;
+        java.net.URL url = null;
+        try {
+            url = new URL(uri);
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            text = Utils.readStream(con.getInputStream());
+        } catch (MalformedURLException e1) {
+            e1.printStackTrace();
+        } catch (IOException e1) {
+            e1.printStackTrace();
         }
-        int j = 0;
+
         JSONObject ob, ob2;
         JSONArray arr;
-        if (text != null)
-            try {
-                ob = new JSONObject(text);
-                arr = ob.getJSONArray("data");
+        try {
+            ob = new JSONObject(text);
+            arr = ob.getJSONArray("data");
 
 
-                for (int i = 0; i < arr.length(); i++) {
+            for (int i = 0; i < arr.length(); i++) {
 
-                    String s2 = arr.getJSONObject(i).getString("from");
-                    ob2 = new JSONObject(s2);
-                    s2 = ob2.getString("id");
-                    if (!s2.equals(id_nsitonline))
-                        continue;
+                String s2 = arr.getJSONObject(i).getString("from");
+                ob2 = new JSONObject(s2);
+                s2 = ob2.getString("id");
+                if (!s2.equals(id_nsitonline))
+                    continue;
 
-                    if (arr.getJSONObject(i).has("message"))
-                        message.add(arr.getJSONObject(i).getString("message"));
-                    else
-                        message.add(null);
+                if (arr.getJSONObject(i).has("message"))
+                    message.add(arr.getJSONObject(i).getString("message"));
+                else
+                    message.add(null);
 
-                    if (!(arr.getJSONObject(i).has("object_id")))
-                        object_id.add(null);
-                    else
-                        object_id.add(arr.getJSONObject(i).getString("object_id"));
+                if (!(arr.getJSONObject(i).has("object_id")))
+                    object_id.add(null);
+                else
+                    object_id.add(arr.getJSONObject(i).getString("object_id"));
 
-                    if (arr.getJSONObject(i).has("likes")) {
-                        String s = arr.getJSONObject(i).getString("likes");
-                        JSONObject o = new JSONObject(s);
-                        JSONArray a2 = o.getJSONArray("data");
-                        String x = o.getString("summary");
-                        JSONObject o2 = new JSONObject(x);
+                if (arr.getJSONObject(i).has("likes")) {
+                    String s = arr.getJSONObject(i).getString("likes");
+                    JSONObject o = new JSONObject(s);
+                    String x = o.getString("summary");
+                    JSONObject o2 = new JSONObject(x);
 
-                        likes.add(o2.getString("total_count"));   //No of likes
-                    } else
-                        likes.add("0");
+                    likes.add(o2.getString("total_count"));   //No of likes
+                } else
+                    likes.add("0");
 
-                    if (arr.getJSONObject(i).has("created_time"))
-                        time_created.add(arr.getJSONObject(i).getString("created_time"));
-                    else
-                        time_created.add(null);
+                if (arr.getJSONObject(i).has("created_time"))
+                    time_created.add(arr.getJSONObject(i).getString("created_time"));
+                else
+                    time_created.add(null);
 
-                }
-
-            } catch (Exception e) {
-                e.printStackTrace();
             }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         ArrayList<String> newmessage = new ArrayList<String>();
         try {

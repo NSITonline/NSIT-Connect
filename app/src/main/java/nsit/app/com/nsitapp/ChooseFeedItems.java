@@ -1,8 +1,9 @@
 package nsit.app.com.nsitapp;
 
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -21,15 +22,16 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 import functions.Constant;
 import functions.Utils;
-
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class ChooseFeedItems extends AppCompatActivity implements Constant {
     private Boolean Collegespace = false;
@@ -44,7 +46,9 @@ public class ChooseFeedItems extends AppCompatActivity implements Constant {
     private Boolean Deb = false;
     private Boolean Enactus = false;
     private Boolean Aagaz = false;
-    List<String> list = new ArrayList<String>();
+    private Handler mHandler;
+    String likes;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +58,7 @@ public class ChooseFeedItems extends AppCompatActivity implements Constant {
         setTitle("My Feed Items");
 
         Button next = (Button) findViewById(R.id.next);
+        mHandler = new Handler(Looper.getMainLooper());
 
         CheckBox collegespace = (CheckBox) findViewById(R.id.check_collegespace);
         CheckBox crosslinks = (CheckBox) findViewById(R.id.check_crosslinks);
@@ -114,14 +119,12 @@ public class ChooseFeedItems extends AppCompatActivity implements Constant {
 
         crosslinks.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                Crosslinks = b;
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {Crosslinks = b;
             }
         });
         collegespace.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                Collegespace = b;
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {Collegespace = b;
             }
         });
         bullet.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -138,8 +141,7 @@ public class ChooseFeedItems extends AppCompatActivity implements Constant {
         });
         rotaract.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                Rotaract = b;
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {Rotaract = b;
             }
         });
         csi.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -205,27 +207,26 @@ public class ChooseFeedItems extends AppCompatActivity implements Constant {
                 e.putBoolean(AAGAZ, Aagaz);
                 e.putBoolean(SOCIETY_SET, true);
                 e.putBoolean(SOCIETY_ITEM_CHANGED, true);
-                e.commit();
-
-                Log.e("society changed", " " + p.getBoolean(AAGAZ, false) + " ");
+                e.apply();
                 finish();
             }
         });
 
         if (Utils.isNetworkAvailable(ChooseFeedItems.this)) {
 
-            new Calclike(tCrosslinks, id_crosslinks).execute();
-            new Calclike(tCollegespace, id_collegespace).execute();
-            new Calclike(tJunoon, id_junoon).execute();
-            new Calclike(tBullet, id_bullet).execute();
-            new Calclike(tRotaract, id_rotaract).execute();
-            new Calclike(tCsi, id_csi).execute();
-            new Calclike(tIeee, id_ieee).execute();
-            new Calclike(tDeb, id_debsoc).execute();
-            new Calclike(tQuiz, id_quiz).execute();
-            new Calclike(tAshwa, id_ashwa).execute();
-            new Calclike(tAagaz, id_aagaz).execute();
-            new Calclike(tEnactus, id_enactus).execute();
+            caculateLikes(tCrosslinks, id_crosslinks);
+            caculateLikes(tCrosslinks, id_crosslinks);
+            caculateLikes(tCollegespace, id_collegespace);
+            caculateLikes(tJunoon, id_junoon);
+            caculateLikes(tBullet, id_bullet);
+            caculateLikes(tRotaract, id_rotaract);
+            caculateLikes(tCsi, id_csi);
+            caculateLikes(tIeee, id_ieee);
+            caculateLikes(tDeb, id_debsoc);
+            caculateLikes(tQuiz, id_quiz);
+            caculateLikes(tAshwa, id_ashwa);
+            caculateLikes(tAagaz, id_aagaz);
+            caculateLikes(tEnactus, id_enactus);
         } else
             SnackbarManager.show(
                     Snackbar.with(getApplicationContext())
@@ -236,59 +237,51 @@ public class ChooseFeedItems extends AppCompatActivity implements Constant {
 
     }
 
-    private String text;
 
-    private class Calclike extends AsyncTask<String, Void, String> {
-        TextView bmImage;
-        String id;
+    private void caculateLikes(final TextView bmImage, String id) {
 
-        public Calclike(TextView bmImage, String id) {
-            this.bmImage = bmImage;
-            this.id = id;
-        }
+        // Facebook URI to fetch likes
+        String uri = "https://graph.facebook.com/" + id + "?access_token=" + common_access;
 
-        @Override
-        protected String doInBackground(String... urls) {
-
-
-            String uri = "https://graph.facebook.com/" + id + "?access_token=" + common_access;
-            java.net.URL url = null;
-            String readStream = null;
-            try {
-                url = new URL(uri);
-                HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                readStream = Utils.readStream(con.getInputStream());
-            } catch (MalformedURLException e1) {
-                e1.printStackTrace();
-            } catch (IOException e1) {
-                e1.printStackTrace();
+        //Set up client
+        OkHttpClient client = new OkHttpClient();
+        //Execute request
+        Request request = new Request.Builder()
+                .url(uri)
+                .build();
+        //Setup callback
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e("Request Failed", "Message : " + e.getMessage());
             }
 
-            return readStream;
-
-
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-
-            try {
-                JSONObject ob;
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
                 try {
-                    ob = new JSONObject(text);
-                    if (ob.has("likes"))
-                        text = ob.getString("likes");
-                    else
-                        text = "1000";
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                    JSONObject ob;
+                    try {
+                        ob = new JSONObject(response.body().string());
+                        if (ob.has("likes"))
+                            likes = ob.getString("likes");
+                        else
+                            likes = "1000";
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    mHandler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            bmImage.setText(likes);
+                        }
+                    });
+                } catch (Exception e) {
+                    Log.e("ERROR : ", e.getMessage());
                 }
-                bmImage.setText(text);
-            } catch (Exception e) {
-
             }
-        }
+        });
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -318,10 +311,10 @@ public class ChooseFeedItems extends AppCompatActivity implements Constant {
             e.putBoolean(AAGAZ, Aagaz);
             e.putBoolean(SOCIETY_SET, true);
             e.putBoolean(SOCIETY_ITEM_CHANGED, true);
-            e.commit();
+            e.apply();
             finish();
-
         }
+
         return super.onOptionsItemSelected(item);
     }
 }

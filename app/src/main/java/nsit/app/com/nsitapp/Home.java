@@ -159,7 +159,7 @@ public class Home extends Fragment implements Constant {
 
 
             String uri = next;
-            java.net.URL url = null;
+            java.net.URL url;
             String readStream = null;
             try {
                 url = new URL(uri);
@@ -179,7 +179,6 @@ public class Home extends Fragment implements Constant {
         @Override
         protected void onPostExecute(String result) {
             pb.setVisibility(View.GONE);
-            int j = 0;
             JSONObject ob, ob2;
             JSONArray arr;
             db.deleteAll();

@@ -57,8 +57,6 @@ public class Sub_load extends AppCompatActivity {
 
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                String val = s3.getSelectedItem().toString();
-
             }
 
             @Override
@@ -74,9 +72,6 @@ public class Sub_load extends AppCompatActivity {
         s4.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                String val = s4.getSelectedItem().toString();
-
 
                 if (s3.getSelectedItem().toString().equals("Branch")) {
                     if (s4.getSelectedItem().toString().equals("Semester")) {

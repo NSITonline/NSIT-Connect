@@ -148,7 +148,7 @@
                     android:layout_height="2dp"
                     android:layout_marginTop="10dp"
                     android:background="#c7cfcecf"
-                    android:orientation="horizontal"></LinearLayout>
+                    android:orientation="horizontal" />
 
                 <TextView
                     android:id="@+id/VideoDescription"

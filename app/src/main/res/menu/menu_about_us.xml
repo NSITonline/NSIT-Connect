@@ -5,6 +5,7 @@
 
     <item android:id="@+id/about_github"
         android:title="Github"
+        android:icon="@drawable/github_white"
         android:theme="@style/AppTheme"
         app:showAsAction="always|withText"/>
 

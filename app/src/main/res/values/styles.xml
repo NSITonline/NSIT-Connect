@@ -46,6 +46,13 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="TextView.Interest.White" parent="TextView">
+        <item name="android:background">@drawable/round_textview_white</item>
+        <item name="android:layout_margin">3dp</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="TextView.Nickname" parent="TextView">
         <item name="android:textSize">30sp</item>
         <item name="android:layout_marginTop">30dp</item>

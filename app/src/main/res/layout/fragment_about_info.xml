@@ -15,21 +15,27 @@
         style="@style/LinearLayout.Interests">
 
         <nsit.app.com.nsitapp.view.FontTextView
-            style="@style/TextView.Interest"
+            style="@style/TextView.Interest.White"
             android:clickable="true"
             android:focusable="false"
+            android:textStyle="bold"
+            android:textColor="#000000"
             android:id="@+id/interest_1" />
 
         <nsit.app.com.nsitapp.view.FontTextView
-            style="@style/TextView.Interest"
+            style="@style/TextView.Interest.White"
             android:clickable="true"
             android:focusableInTouchMode="false"
+            android:textStyle="bold"
+            android:textColor="#000000"
             android:id="@+id/interest_2" />
 
         <nsit.app.com.nsitapp.view.FontTextView
-            style="@style/TextView.Interest"
+            style="@style/TextView.Interest.White"
             android:focusableInTouchMode="false"
             android:clickable="true"
+            android:textStyle="bold"
+            android:textColor="#000000"
             android:id="@+id/interest_3" />
     </LinearLayout>
 

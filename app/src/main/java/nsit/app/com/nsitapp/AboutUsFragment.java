@@ -61,6 +61,7 @@ public class AboutUsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_about_us, container, false);
         final ListView friends = (ListView)root.findViewById(R.id.friends);
+        Toast.makeText(getActivity(),"Flip Image To View Details",Toast.LENGTH_SHORT).show();
         FlipSettings settings = new FlipSettings.Builder().defaultPage(1).build();
         friends.setAdapter(new AboutUsAdapter(activity, Utils.friends, settings));
         return root;

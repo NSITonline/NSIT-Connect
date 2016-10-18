@@ -74,18 +74,18 @@ public class ChooseFeedItems extends AppCompatActivity implements Constant {
         CheckBox aagaz = (CheckBox) findViewById(R.id.check_aagaz);
 
 
-        TextView tCollegespace = (TextView) findViewById(R.id.stars_collegespace);
-        TextView tCrosslinks = (TextView) findViewById(R.id.stars_crosslinks);
-        TextView tJunoon = (TextView) findViewById(R.id.stars_junoon);
-        TextView tRotaract = (TextView) findViewById(R.id.stars_rotaract);
-        TextView tBullet = (TextView) findViewById(R.id.stars_bullethawk);
-        TextView tCsi = (TextView) findViewById(R.id.stars_csi);
-        TextView tIeee = (TextView) findViewById(R.id.stars_ieee);
-        TextView tDeb = (TextView) findViewById(R.id.stars_debsoc);
-        TextView tQuiz = (TextView) findViewById(R.id.stars_quiz);
-        TextView tAshwa = (TextView) findViewById(R.id.stars_ashwa);
-        TextView tEnactus = (TextView) findViewById(R.id.stars_enactus);
-        TextView tAagaz = (TextView) findViewById(R.id.stars_aagaz);
+        TextView tCollegespace = (TextView) findViewById(R.id.likes_collegespace);
+        TextView tCrosslinks = (TextView) findViewById(R.id.likes_crosslinks);
+        TextView tJunoon = (TextView) findViewById(R.id.likes_junoon);
+        TextView tRotaract = (TextView) findViewById(R.id.likes_rotaract);
+        TextView tBullet = (TextView) findViewById(R.id.likes_bullethawk);
+        TextView tCsi = (TextView) findViewById(R.id.likes_csi);
+        TextView tIeee = (TextView) findViewById(R.id.likes_ieee);
+        TextView tDeb = (TextView) findViewById(R.id.likes_debsoc);
+        TextView tQuiz = (TextView) findViewById(R.id.likes_quiz);
+        TextView tAshwa = (TextView) findViewById(R.id.likes_ashwa);
+        TextView tEnactus = (TextView) findViewById(R.id.likes_enactus);
+        TextView tAagaz = (TextView) findViewById(R.id.likes_aagaz);
 
 
         SharedPreferences i = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());

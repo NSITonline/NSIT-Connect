@@ -20,8 +20,8 @@ android {
         applicationId "nsit.app.com.nsitapp"
         minSdkVersion 14
         targetSdkVersion 22
-        versionCode 23
-        versionName "2.3"
+        versionCode 26
+        versionName "2.5"
     }
 
     buildTypes {

@@ -19,7 +19,7 @@ android {
     defaultConfig {
         applicationId "nsit.app.com.nsitapp"
         minSdkVersion 14
-        targetSdkVersion 22
+        targetSdkVersion 23
         versionCode 26
         versionName "2.5"
     }
@@ -36,7 +36,7 @@ dependencies {
     compile 'org.lucasr.twowayview:twowayview:0.1.4'
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.squareup.okhttp3:okhttp:3.4.1'
-    compile 'com.android.support:appcompat-v7:22.2.0'
+    compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile group: 'org.jsoup', name: 'jsoup', version: '1.8.3'
     compile 'com.google.android.gms:play-services-maps:7.5.0'

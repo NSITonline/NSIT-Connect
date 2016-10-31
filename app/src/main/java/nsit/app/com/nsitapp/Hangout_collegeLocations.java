@@ -1,9 +1,10 @@
 package nsit.app.com.nsitapp;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,12 +26,14 @@ import java.util.ArrayList;
 
 import functions.ButtonAnimation;
 import functions.Constant;
+import nsit.app.com.nsitapp.helper.AppPermissionChecker;
 
 /**
  * Created by Sidharth Patro on 21-Jun-15.
  */
-public class Hangout_collegeLocations extends AppCompatActivity implements Constant {
+public class Hangout_collegeLocations extends BaseActivity implements Constant {
 
+    public static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
     private ArrayList<LocationGroup> LocationsGroupsList = new ArrayList<>();
     private ExpandableListView listView;
 
@@ -47,8 +50,8 @@ public class Hangout_collegeLocations extends AppCompatActivity implements Const
         this.listView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
 
             @Override
-            public boolean onChildClick(ExpandableListView parent, View v,
-                                        int groupPosition, int childPosition, long id) {
+            public boolean onChildClick(ExpandableListView parent, final View v,
+                                        final int groupPosition, final int childPosition, long id) {
                 ButtonAnimation btnAnimation = new ButtonAnimation();
                 btnAnimation.animateButton(v, Hangout_collegeLocations.this);
                 String groupType = LocationsGroupsList.get(groupPosition).GroupType;
@@ -91,6 +94,17 @@ public class Hangout_collegeLocations extends AppCompatActivity implements Const
         setTitle("College Hangouts");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+        appPermissionChecker.handlePermission(Manifest.permission.ACCESS_FINE_LOCATION, LOCATION_PERMISSION_REQUEST_CODE, new AppPermissionChecker.PermissionRequestCallBack() {
+            @Override
+            public void permissionGranted() {
+                Log.d("DEBUG", "Location permission granted");
+            }
+
+            @Override
+            public void permissionDenied() {
+                Log.d("DEBUG", "Location permission denied");
+            }
+        });
 
 
     }

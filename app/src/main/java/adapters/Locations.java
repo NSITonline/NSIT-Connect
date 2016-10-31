@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 import functions.ButtonAnimation;
 import functions.Constant;
-import nsit.app.com.nsitapp.Hangout_CollegeLocationMapView;
+import nsit.app.com.nsitapp.HangoutCollegeLocationMapView;
 import nsit.app.com.nsitapp.R;
 
 /**
@@ -76,14 +76,11 @@ public class Locations extends AppCompatActivity implements Constant {
             }
         });
 
-        setTitle("College Hangout_collegeLocations");
+        setTitle(R.string.location_title);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-
     }
-
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -93,15 +90,13 @@ public class Locations extends AppCompatActivity implements Constant {
         return super.onOptionsItemSelected(item);
     }
 
-
     private void populateList(ArrayList<LocationGroup> Items){
         FillGroupsList();
-        listView.setAdapter(new LocationsList_Adapter(this,Items));
+        listView.setAdapter(new LocationsListAdapter(this,Items));
     }
 
-
     private void ShowOnMap(View view, Location LocationItem, Integer GroupItem){
-        Intent myIntent = new Intent(view.getContext(),Hangout_CollegeLocationMapView.class);
+        Intent myIntent = new Intent(view.getContext(),HangoutCollegeLocationMapView.class);
         myIntent.putExtra(LOCATION_NAME, LocationItem.Name);
         myIntent.putExtra(LOCATION_LAT, String.valueOf(LocationItem.Coord.latitude));
         myIntent.putExtra(LOCATION_LON, String.valueOf(LocationItem.Coord.longitude));
@@ -109,7 +104,7 @@ public class Locations extends AppCompatActivity implements Constant {
         Locations.this.startActivity(myIntent);
     }
 
-    // Hangout_collegeLocations' data and definitions go below...
+    // HangoutCollegeLocations' data and definitions go below...
     class LocationGroup{
         String GroupHeader;
         String GroupType;
@@ -126,7 +121,7 @@ public class Locations extends AppCompatActivity implements Constant {
         String Name;
         LatLng Coord;
 
-        public Location(String Name, LatLng Coord) {
+        Location(String Name, LatLng Coord) {
             this.Name = Name;
             this.Coord = Coord;
         }
@@ -206,5 +201,4 @@ public class Locations extends AppCompatActivity implements Constant {
         this.LocationsGroupsList.add(SportsGroup);
         this.LocationsGroupsList.add(MiscGroup);
     }
-
 }

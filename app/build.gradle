@@ -19,7 +19,7 @@ android {
     defaultConfig {
         applicationId "nsit.app.com.nsitapp"
         minSdkVersion 14
-        targetSdkVersion 23
+        targetSdkVersion 24
         versionCode 26
         versionName "2.5"
     }

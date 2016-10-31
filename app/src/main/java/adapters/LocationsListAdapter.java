@@ -17,22 +17,19 @@ import java.util.ArrayList;
 
 import nsit.app.com.nsitapp.R;
 
-
 /**
  * Created by Sidharth Patro on 22-Jun-15.
  */
-class LocationsList_Adapter extends BaseExpandableListAdapter {
+class LocationsListAdapter extends BaseExpandableListAdapter {
 
     private Context context;
     private ArrayList<Locations.LocationGroup> LocationItems = new ArrayList<>();
     private static int lastExpandedGroupPosition = -1;
 
-
-    public LocationsList_Adapter(Context context, ArrayList<Locations.LocationGroup> LocationItems) {
+    LocationsListAdapter(Context context, ArrayList<Locations.LocationGroup> LocationItems) {
         this.context = context;
         this.LocationItems = LocationItems;
     }
-
 
     @Override
     public int getGroupCount() {

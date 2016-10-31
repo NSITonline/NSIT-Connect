@@ -20,7 +20,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.Objects;
 
-import adapters.VideoList_Adapter;
+import adapters.VideoListAdapter;
 import functions.ButtonAnimation;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -48,7 +48,7 @@ public class Video extends Fragment {
     }
 
     private void populateList(JSONArray Items) {
-        listview.setAdapter(new VideoList_Adapter(activity, Items));
+        listview.setAdapter(new VideoListAdapter(activity, Items));
     }
 
     private Activity activity;

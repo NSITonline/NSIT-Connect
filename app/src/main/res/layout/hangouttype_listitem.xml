@@ -1,194 +1,199 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="5dp"
-    android:layout_marginRight="5dp"
     android:layout_marginBottom="5dp"
     android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginTop="5dp"
     android:descendantFocusability="beforeDescendants">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/shadow_arkalt2">
+        android:background="@drawable/shadow_arkalt2"
+        android:orientation="vertical">
 
         <LinearLayout
-            android:layout_gravity="center"
-            android:gravity="center"
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+
+            android:layout_gravity="center"
+            android:background="#ffffff"
+            android:baselineAligned="false"
 
             android:descendantFocusability="afterDescendants"
-            android:background="#ffffff"
-            android:baselineAligned="false">
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <FrameLayout
-                android:layout_weight="0.2"
-                android:layout_width="0dp"
                 android:id="@+id/frame"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="#ffe5e5e5"
-                >
-                <ProgressBar android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:background="#ffe5e5e5">
+
+                <ProgressBar
+                    android:id="@+id/progressBar1"
                     android:layout_width="wrap_content"
-                    android:layout_gravity="center" android:id="@+id/progressBar1"
-                    />
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center" />
+
                 <FrameLayout
-                    android:background="@drawable/grad_dark"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:layout_gravity="bottom">
+                    android:layout_gravity="bottom"
+                    android:background="@drawable/grad_dark">
+
                     <ImageView
                         android:id="@+id/image2"
-                        android:layout_gravity="center"
-                        android:scaleType="centerCrop"
                         android:layout_width="170dp"
-                        android:layout_height="0dp"/>
+                        android:layout_height="0dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/default_content_des"
+                        android:scaleType="centerCrop" />
 
                     <ImageView
                         android:id="@+id/hangottype_photo"
-                        android:layout_gravity="center"
                         android:layout_width="match_parent"
                         android:layout_height="100dp"
-
-                        />
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/default_content_des" />
 
                     <LinearLayout
-                        android:orientation="vertical"
                         android:layout_width="2dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="right"
-                        android:background="@color/colorAccent"/>
+                        android:background="@color/colorAccent"
+                        android:orientation="vertical" />
 
                 </FrameLayout>
 
                 <Button
+                    android:id="@+id/show"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="bottom"
-                    android:id="@+id/show"
-                    android:background="@drawable/ic_photo_library_white_24dp"
+                    android:layout_marginBottom="5dp"
                     android:layout_marginLeft="5dp"
                     android:alpha="0.5"
-                    android:layout_marginBottom="5dp" />
+                    android:background="@drawable/ic_photo_library_white_24dp" />
 
             </FrameLayout>
+
             <LinearLayout
                 android:id="@+id/data"
-                android:layout_weight="0.4"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="0.4"
                 android:orientation="vertical"
+                android:paddingBottom="10dp"
                 android:paddingLeft="10dp"
-                android:paddingTop="10dp"
                 android:paddingRight="5dp"
-                android:paddingBottom="10dp">
+                android:paddingTop="10dp">
 
 
                 <TextView
                     android:id="@+id/title_hangout_type"
-                    android:maxLines="3"
-                    android:ellipsize="end"
-                    android:textStyle="bold"
-                    android:text="FOOD HERE"
-                    android:textColor="@color/colorPrimary"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:lineSpacingExtra="2dp"
-                    android:textSize="15sp"
                     android:layout_gravity="top"
                     android:layout_margin="5dp"
-                    />
-
+                    android:ellipsize="end"
+                    android:lineSpacingExtra="2dp"
+                    android:maxLines="3"
+                    android:text="FOOD HERE"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
 
 
                 <TextView
                     android:id="@+id/vicinity"
-                    android:maxLines="3"
-                    android:ellipsize="end"
-                    android:text="NSIT Online Blog NSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online Blog"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:lineSpacingExtra="2dp"
-                    android:textSize="15sp"
                     android:layout_gravity="top"
                     android:layout_margin="5dp"
-                    />
+                    android:ellipsize="end"
+                    android:lineSpacingExtra="2dp"
+                    android:maxLines="3"
+                    android:text="NSIT Online Blog NSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online BlogNSIT Online Blog"
+                    android:textSize="15sp" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
-                    android:background="@color/colorPrimary"
                     android:layout_marginRight="5dp"
-                    android:layout_marginTop="5dp"/>
+                    android:layout_marginTop="5dp"
+                    android:background="@color/colorPrimary" />
 
                 <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:layout_marginBottom="3dp"
                     android:layout_marginTop="8dp"
-                    android:layout_marginBottom="3dp">
+                    android:orientation="horizontal">
 
                     <RatingBar
+                        android:id="@+id/rating_bar"
+                        style="?android:attr/ratingBarStyleSmall"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        style="?android:attr/ratingBarStyleSmall"
                         android:numStars="5"
-                        android:stepSize="0.1"
-                        android:id="@+id/rating_bar" />
+                        android:stepSize="0.1" />
 
                 </LinearLayout>
+
                 <TextView
+                    android:id="@+id/open_close"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="OPEN NOW"
-                    android:id="@+id/open_close"
-                    android:textStyle="bold"
-                    android:textColor="#ff686868"
-                    android:textSize="19sp"
+                    android:layout_gravity="left"
                     android:clickable="false"
+                    android:duplicateParentState="false"
                     android:focusable="false"
                     android:padding="5dp"
-                    android:duplicateParentState="false"
-                    android:layout_gravity="left" />
+                    android:text="OPEN NOW"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="#ff686868"
+                    android:textSize="19sp"
+                    android:textStyle="bold" />
+
                 <FrameLayout
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
                     <LinearLayout
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/shadow_small">
+
                         <LinearLayout
-                            android:orientation="horizontal"
+                            android:id="@+id/locate_button"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:background="@color/colorPrimary"
                             android:clickable="true"
-                            android:id="@+id/locate_button"
                             android:focusable="true"
                             android:gravity="center"
+                            android:orientation="horizontal"
                             android:paddingLeft="3dp"
                             android:paddingRight="3dp">
+
                             <TextView
+                                android:id="@+id/read"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:text="LOCATE"
-                                android:id="@+id/read"
-                                android:textStyle="bold"
-                                android:textColor="#ffffffff"
-                                android:textSize="15sp"
                                 android:clickable="false"
+                                android:duplicateParentState="true"
                                 android:focusable="false"
                                 android:padding="5dp"
-                                android:duplicateParentState="true" />
+                                android:text="LOCATE"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:textColor="#ffffffff"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
 
                         </LinearLayout>
                     </LinearLayout>

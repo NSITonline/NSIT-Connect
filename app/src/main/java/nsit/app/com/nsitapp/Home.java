@@ -8,10 +8,12 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -29,29 +31,32 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 import adapters.CustomList;
 import functions.Constant;
+import functions.DbAdapter;
 import functions.Utils;
-import functions.dbAdapter;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 
 public class Home extends Fragment implements Constant {
 
     private boolean loadingMore = false;
-    private dbAdapter db;
+    private DbAdapter db;
+    private Handler mHandler;
 
-    private List<String> list = new ArrayList<String>();
-    private List<String> list1 = new ArrayList<String>();
-    private List<String> list2 = new ArrayList<String>();
-    private List<String> list6 = new ArrayList<String>();
-    private List<String> list7 = new ArrayList<String>();
-    private List<String> list8 = new ArrayList<String>();
+    private List<String> list = new ArrayList<>();
+    private List<String> list1 = new ArrayList<>();
+    private List<String> list2 = new ArrayList<>();
+    private List<String> list6 = new ArrayList<>();
+    private List<String> list7 = new ArrayList<>();
+    private List<String> list8 = new ArrayList<>();
     private ListView lv;
     private int first = 1;
     private SwipeRefreshLayout swipeLayout;
@@ -84,7 +89,7 @@ public class Home extends Fragment implements Constant {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
-        db = new dbAdapter(activity);
+        db = new DbAdapter(activity);
         db.open();
 
         lv = (ListView) rootView.findViewById(R.id.list);
@@ -92,6 +97,7 @@ public class Home extends Fragment implements Constant {
         pb = (ProgressBar) rootView.findViewById(R.id.progressBar1);
         adapter = new CustomList(activity, list6, list, list2, list7, list1, list8);
         footerView = ((LayoutInflater) activity.getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.footer_layout, container, false);
+        mHandler = new Handler(Looper.getMainLooper());
 
 
         lv.setAdapter(adapter);
@@ -110,13 +116,13 @@ public class Home extends Fragment implements Constant {
                     if ((lastInScreen == totalItemCount) && !(loadingMore) && first != 1) {
                         loadingMore = true;
                         lv.addFooterView(footerView);
-                        new DownloadWebPageTask3().execute();
+                        loadFeed();
                         listCount = lastInScreen;
                     }
 
                 }
             });
-            new DownloadWebPageTask3().execute();
+            loadFeed();
         } else {
             show_off();
             SnackbarManager.show(
@@ -129,129 +135,118 @@ public class Home extends Fragment implements Constant {
         swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                new DownloadWebPageTask3().execute();
+                loadFeed();
             }
         });
-        swipeLayout.setColorScheme(android.R.color.holo_blue_bright,
-                android.R.color.holo_green_light,
-                android.R.color.holo_orange_light,
-                android.R.color.holo_red_light);
-
-
         return rootView;
     }
 
 
-    private class DownloadWebPageTask3 extends AsyncTask<String, Void, String> {
-        String id;
+    // Make http call
+    private void loadFeed() {
 
-        public DownloadWebPageTask3() {
-            this.id = Constant.id_nsitonline;
-        }
+        String uri = next;
+        final String id = id_nsitonline;
 
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected String doInBackground(String... urls) {
-
-
-            String uri = next;
-            java.net.URL url;
-            String readStream = null;
-            try {
-                url = new URL(uri);
-                HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                readStream = Utils.readStream(con.getInputStream());
-            } catch (MalformedURLException e1) {
-                e1.printStackTrace();
-            } catch (IOException e1) {
-                e1.printStackTrace();
+        //Set up client
+        OkHttpClient client = new OkHttpClient();
+        //Execute request
+        Request request = new Request.Builder()
+                .url(uri)
+                .build();
+        //Setup callback
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e("Request Failed", "Message : " + e.getMessage());
             }
 
-            return readStream;
-
-
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            pb.setVisibility(View.GONE);
-            JSONObject ob, ob2;
-            JSONArray arr;
-            db.deleteAll();
-            if (result != null)
+            @Override
+            public void onResponse(Call call, final Response response) throws IOException {
                 try {
-                    ob = new JSONObject(result);
-                    arr = ob.getJSONArray("data");
+                    final String result = response.body().string();
+                    mHandler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            pb.setVisibility(View.GONE);
+                            JSONObject ob, ob2;
+                            JSONArray arr;
+                            db.deleteAll();
+                            try {
+                                ob = new JSONObject(result);
+                                arr = ob.getJSONArray("data");
 
-                    int len  = arr.length();
-                    for (int i = 0; i < len; i++) {
+                                int len = arr.length();
+                                for (int i = 0; i < len; i++) {
 
-                        String s2 = arr.getJSONObject(i).getString("from");
-                        ob2 = new JSONObject(s2);
-                        s2 = ob2.getString("id");
-                        if (!s2.equals(id))
-                            continue;
+                                    String s2 = arr.getJSONObject(i).getString("from");
+                                    ob2 = new JSONObject(s2);
+                                    s2 = ob2.getString("id");
+                                    if (!s2.equals(id))
+                                        continue;
 
-                        if (arr.getJSONObject(i).has("message"))
-                            list.add(arr.getJSONObject(i).getString("message"));
-                        else
-                            list.add(null);
+                                    if (arr.getJSONObject(i).has("message"))
+                                        list.add(arr.getJSONObject(i).getString("message"));
+                                    else
+                                        list.add(null);
 
-                        if (!(arr.getJSONObject(i).has("object_id")))
-                            list1.add(null);
-                        else
-                            list1.add(arr.getJSONObject(i).getString("object_id"));
+                                    if (!(arr.getJSONObject(i).has("object_id")))
+                                        list1.add(null);
+                                    else
+                                        list1.add(arr.getJSONObject(i).getString("object_id"));
 
-                        if (arr.getJSONObject(i).has("picture")) {
-                            list6.add(arr.getJSONObject(i).getString("picture"));
-                        } else
-                            list6.add(null);
-                        if (arr.getJSONObject(i).has("link")) {
-                            list7.add(arr.getJSONObject(i).getString("link"));
-                        } else
-                            list7.add(null);
-                        if (arr.getJSONObject(i).has("likes")) {
-                            String s = arr.getJSONObject(i).getString("likes");
-                            JSONObject o = new JSONObject(s);
-                            String x = o.getString("summary");
-                            JSONObject o2 = new JSONObject(x);
+                                    if (arr.getJSONObject(i).has("picture")) {
+                                        list6.add(arr.getJSONObject(i).getString("picture"));
+                                    } else
+                                        list6.add(null);
+                                    if (arr.getJSONObject(i).has("link")) {
+                                        list7.add(arr.getJSONObject(i).getString("link"));
+                                    } else
+                                        list7.add(null);
+                                    if (arr.getJSONObject(i).has("likes")) {
+                                        String s = arr.getJSONObject(i).getString("likes");
+                                        JSONObject o = new JSONObject(s);
+                                        String x = o.getString("summary");
+                                        JSONObject o2 = new JSONObject(x);
 
-                            list2.add(o2.getString("total_count"));   //No of likes
-                        } else
-                            list2.add("0");
+                                        list2.add(o2.getString("total_count"));   //No of likes
+                                    } else
+                                        list2.add("0");
 
-                        if (arr.getJSONObject(i).has("created_time"))
-                            list8.add(arr.getJSONObject(i).getString("created_time"));
-                        else
-                            list8.add(null);
-
-
-                        db.insertRow(list.get(i), list1.get(i), list2.get(i), list6.get(i), list7.get(i), list8.get(i), null, id_nsitonline);
+                                    if (arr.getJSONObject(i).has("created_time"))
+                                        list8.add(arr.getJSONObject(i).getString("created_time"));
+                                    else
+                                        list8.add(null);
 
 
-                    }
+                                    db.insertRow(list.get(i), list1.get(i), list2.get(i), list6.get(i), list7.get(i), list8.get(i), null, id_nsitonline);
 
-                    ob = ob.getJSONObject("paging");
-                    next = ob.getString("next");
-                    first = 0;
 
+                                }
+
+                                ob = ob.getJSONObject("paging");
+                                next = ob.getString("next");
+                                first = 0;
+
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            swipeLayout.setRefreshing(false);
+                            loadingMore = false;
+                            lv.removeFooterView(footerView);
+                            adapter.notifyDataSetChanged();
+                            try {
+                                lv.smoothScrollToPosition(listCount + 1);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-            swipeLayout.setRefreshing(false);
-            loadingMore = false;
-            lv.removeFooterView(footerView);
-            adapter.notifyDataSetChanged();
-            try {
-                lv.smoothScrollToPosition(listCount + 1);
-            } catch (Exception e) {
-                e.printStackTrace();
             }
-        }
+        });
     }
 
 
@@ -286,6 +281,7 @@ public class Home extends Fragment implements Constant {
             } while (c.moveToNext());
             pb.setVisibility(View.GONE);
         } catch (Exception e) {
+            Log.e("ERROR ", e.getMessage());
         }
         adapter.notifyDataSetChanged();
     }

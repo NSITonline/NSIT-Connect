@@ -12,7 +12,6 @@
     <item
         android:id="@+id/action_browse"
         android:icon="@drawable/ic_action_web_site"
-
         android:showAsAction="always"
         android:title="@string/action_browse"
         app:showAsAction="always" />

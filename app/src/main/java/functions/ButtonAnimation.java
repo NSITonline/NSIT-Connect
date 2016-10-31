@@ -9,9 +9,10 @@ import nsit.app.com.nsitapp.R;
 
 /**
  * Created by Sidharth Patro on 21-Jul-15.
+ * Set button animation on click
  */
 public class ButtonAnimation {
-    public void animateButton(View v, Context context){
+    public void animateButton(View v, Context context) {
         Animation pressAnim = AnimationUtils.loadAnimation(context, R.anim.button_press_anim);
         v.startAnimation(pressAnim);
     }

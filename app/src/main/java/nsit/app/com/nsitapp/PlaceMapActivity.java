@@ -137,6 +137,7 @@ public class PlaceMapActivity extends FragmentActivity implements OnMapReadyCall
                             distance.setText(jroutesarray.getJSONObject(0).getJSONArray("legs").getJSONObject(0).getJSONObject("distance").getString("text"));
                             time.setText(jroutesarray.getJSONObject(0).getJSONArray("legs").getJSONObject(0).getJSONObject("duration").getString("text"));
                         } catch (Exception e) {
+                            Log.e("ERROR ", e.getMessage());
                         }
                         List<LatLng> polydeodedpoints = decodePoly(main_polylinrobject);
                         PolylineOptions options = new PolylineOptions().addAll(polydeodedpoints);
@@ -153,7 +154,7 @@ public class PlaceMapActivity extends FragmentActivity implements OnMapReadyCall
     // Plot points on map from encoded string
     private List<LatLng> decodePoly(String encoded) {
 
-        List<LatLng> poly = new ArrayList<LatLng>();
+        List<LatLng> poly = new ArrayList<>();
         int index = 0, len = encoded.length();
         int lat = 0, lng = 0;
 

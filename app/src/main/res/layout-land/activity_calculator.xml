@@ -34,7 +34,7 @@
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp">
+        android:layout_marginLeft="20sp">
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -49,7 +49,7 @@
                     android:layout_height="30dp"
                     android:text="TH 1"
                     android:id="@+id/tv1"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
 
                     android:textColor="#01b29b"
                     android:layout_marginLeft="50dp"
@@ -69,7 +69,7 @@
                     android:layout_height="30dp"
                     android:text="PR 1"
                     android:id="@+id/tv6"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
 
                     android:textColor="#01b29b"
                     android:layout_marginLeft="200dp"
@@ -112,7 +112,7 @@
                     android:layout_height="30dp"
                     android:text="PR 2"
                     android:id="@+id/tv7"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
 
                     android:textColor="#01b29b"
                     android:layout_marginLeft="200dp"
@@ -136,7 +136,7 @@
                     android:layout_height="30dp"
                     android:text="TH 3"
                     android:id="@+id/tv3"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
 
                     android:textColor="#01b29b"
                     android:layout_marginLeft="50dp"
@@ -179,7 +179,7 @@
                     android:layout_height="30dp"
                     android:text="TH 4"
                     android:id="@+id/tv4"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
 
                     android:textColor="#01b29b"
                     android:layout_marginLeft="50dp"
@@ -198,7 +198,7 @@
                     android:layout_height="30dp"
                     android:text="PR 4"
                     android:id="@+id/tv9"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
 
                     android:textColor="#01b29b"
                     android:layout_marginLeft="200dp"
@@ -223,7 +223,7 @@
                     android:layout_height="wrap_content"
                     android:text="TH 5"
                     android:id="@+id/tv5"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
 
                     android:textColor="#01b29b"
                     android:layout_marginLeft="50dp"
@@ -242,7 +242,7 @@
                     android:layout_height="wrap_content"
                     android:text="PR 5"
                     android:id="@+id/tv10"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
 
                     android:textColor="#01b29b"
                     android:layout_marginLeft="200dp"
@@ -266,7 +266,7 @@
                     android:layout_height="wrap_content"
                     android:text="VS 2"
                     android:id="@+id/tv12"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
 
                     android:textColor="#01b29b"
                     android:layout_marginLeft="50dp"
@@ -285,7 +285,7 @@
                     android:layout_height="wrap_content"
                     android:text="VS 1"
                     android:id="@+id/tv11"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
 
                     android:textColor="#01b29b"
                     android:layout_marginLeft="200dp"
@@ -313,7 +313,7 @@
                     android:text="View Subjects"
                     android:id="@+id/button"
                     android:textColor="#ffffff"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:onClick="onSub"
                     android:clickable="true"
                     android:layout_marginLeft="50dp"
@@ -328,7 +328,7 @@
                     android:id="@+id/buttC"
                     android:clickable="true"
                     android:onClick="onCalculate"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:textColor="#ffffff"
                     android:layout_marginTop="15dp"
                     android:layout_marginLeft="140dp" />
@@ -341,7 +341,7 @@
                     android:layout_height="50dp"
                     android:text="@string/percentage"
                     android:id="@+id/per"
-                    android:textSize="25dp"
+                    android:textSize="25sp"
                     android:layout_marginLeft="190dp"
                     android:layout_marginTop="12dp"
                     android:textColor="#01b29b"
@@ -354,7 +354,7 @@
                     android:id="@+id/textView11"
                     android:gravity="center|fill_vertical"
                     android:layout_marginTop="16dp"
-                    android:textSize="30dp"
+                    android:textSize="30sp"
 
                     android:textColor="#008978" />
             </LinearLayout>

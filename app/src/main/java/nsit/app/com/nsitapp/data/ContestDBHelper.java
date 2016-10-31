@@ -16,7 +16,7 @@ class ContestDBHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "contest.db";
 
-    public ContestDBHelper(Context context) {
+    ContestDBHelper(Context context) {
         super(context,DATABASE_NAME,null,DATABASE_VERSION);
     }
 

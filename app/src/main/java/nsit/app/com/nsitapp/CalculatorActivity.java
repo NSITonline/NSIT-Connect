@@ -36,7 +36,7 @@ public class CalculatorActivity extends Fragment {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(), Sub_load.class);
+                Intent i = new Intent(getActivity(), SubLoad.class);
                 startActivity(i);
 
             }

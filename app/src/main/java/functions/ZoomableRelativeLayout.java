@@ -9,7 +9,8 @@ import android.widget.RelativeLayout;
 
 /**
  * Created by swati on 16/12/15.
- */public class ZoomableRelativeLayout extends RelativeLayout {
+ */
+public class ZoomableRelativeLayout extends RelativeLayout {
     private float mScaleFactor = 1;
     private float mPivotX;
     private float mPivotY;
@@ -51,19 +52,15 @@ import android.widget.RelativeLayout;
         this.invalidate();
     }
 
-    public void relativeScale(float scaleFactor, float pivotX, float pivotY)
-    {
+    public void relativeScale(float scaleFactor, float pivotX, float pivotY) {
         mScaleFactor *= scaleFactor;
 
-        if(scaleFactor >= 1)
-        {
+        if (scaleFactor >= 1) {
             mPivotX = mPivotX + (pivotX - mPivotX) * (1 - 1 / scaleFactor);
             mPivotY = mPivotY + (pivotY - mPivotY) * (1 - 1 / scaleFactor);
-        }
-        else
-        {
-            pivotX = getWidth()/2;
-            pivotY = getHeight()/2;
+        } else {
+            pivotX = getWidth() / 2;
+            pivotY = getHeight() / 2;
 
             mPivotX = mPivotX + (pivotX - mPivotX) * (1 - scaleFactor);
             mPivotY = mPivotY + (pivotY - mPivotY) * (1 - scaleFactor);
@@ -72,34 +69,26 @@ import android.widget.RelativeLayout;
         this.invalidate();
     }
 
-    public void release()
-    {
-        if(mScaleFactor < MIN_SCALE)
-        {
+    public void release() {
+        if (mScaleFactor < MIN_SCALE) {
             final float startScaleFactor = mScaleFactor;
 
-            Animation a = new Animation()
-            {
+            Animation a = new Animation() {
                 @Override
-                protected void applyTransformation(float interpolatedTime, Transformation t)
-                {
-                    scale(startScaleFactor + (MIN_SCALE - startScaleFactor)*interpolatedTime,mPivotX,mPivotY);
+                protected void applyTransformation(float interpolatedTime, Transformation t) {
+                    scale(startScaleFactor + (MIN_SCALE - startScaleFactor) * interpolatedTime, mPivotX, mPivotY);
                 }
             };
 
             a.setDuration(300);
             startAnimation(a);
-        }
-        else if(mScaleFactor > MAX_SCALE)
-        {
+        } else if (mScaleFactor > MAX_SCALE) {
             final float startScaleFactor = mScaleFactor;
 
-            Animation a = new Animation()
-            {
+            Animation a = new Animation() {
                 @Override
-                protected void applyTransformation(float interpolatedTime, Transformation t)
-                {
-                    scale(startScaleFactor + (MAX_SCALE - startScaleFactor)*interpolatedTime,mPivotX,mPivotY);
+                protected void applyTransformation(float interpolatedTime, Transformation t) {
+                    scale(startScaleFactor + (MAX_SCALE - startScaleFactor) * interpolatedTime, mPivotX, mPivotY);
                 }
             };
 

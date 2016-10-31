@@ -53,7 +53,7 @@
         android:layout_height="35dp"
         android:text="TH 1"
         android:id="@+id/textView3"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:gravity="center_vertical|center"
         android:layout_below="@+id/textView"
         android:layout_alignParentLeft="true"
@@ -72,7 +72,7 @@
         android:layout_alignParentStart="true"
         android:layout_toLeftOf="@+id/textView"
         android:layout_toStartOf="@+id/textView"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:gravity="center_vertical|center"
         android:textColor="#01b29b" />
 
@@ -114,7 +114,7 @@
         android:layout_alignParentStart="true"
         android:layout_toLeftOf="@+id/textView"
         android:layout_toStartOf="@+id/textView"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:gravity="center_vertical|center"
         android:textColor="#01b29b" />
 
@@ -126,7 +126,7 @@
         android:layout_below="@+id/textView7"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:layout_toStartOf="@+id/textView"
         android:layout_toLeftOf="@+id/textView"
         android:gravity="center_vertical|center"
@@ -140,7 +140,7 @@
         android:layout_below="@+id/textView8"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:layout_toLeftOf="@+id/textView"
         android:layout_toStartOf="@+id/textView"
         android:gravity="center_vertical|center"
@@ -154,7 +154,7 @@
         android:layout_below="@+id/textView9"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:layout_toLeftOf="@+id/textView"
         android:layout_toStartOf="@+id/textView"
         android:gravity="center_vertical|center"
@@ -168,7 +168,7 @@
         android:layout_below="@+id/textView10"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:layout_toLeftOf="@+id/textView"
         android:layout_toStartOf="@+id/textView"
         android:gravity="center_vertical|center"
@@ -182,7 +182,7 @@
         android:layout_below="@+id/textView12"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:layout_toLeftOf="@+id/textView"
         android:layout_toStartOf="@+id/textView"
         android:gravity="center_vertical|center"
@@ -196,7 +196,7 @@
         android:layout_below="@+id/textView13"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:layout_toLeftOf="@+id/textView"
         android:layout_toStartOf="@+id/textView"
         android:gravity="center_vertical|center"
@@ -210,7 +210,7 @@
         android:layout_below="@+id/textView16"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:layout_toLeftOf="@+id/textView"
         android:layout_toStartOf="@+id/textView"
         android:gravity="center_vertical|center"
@@ -229,7 +229,7 @@
         android:layout_above="@+id/textView4"
         android:gravity="center_vertical|center"
         android:textColor="#7c7c7c"
-        android:textSize="18dp" />
+        android:textSize="18sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -244,7 +244,7 @@
         android:layout_alignStart="@+id/co1"
         android:gravity="center_vertical|center"
         android:textColor="#7c7c7c"
-        android:textSize="18dp" />
+        android:textSize="18sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -259,7 +259,7 @@
         android:layout_alignStart="@+id/co2"
         android:gravity="center_vertical|center"
         android:textColor="#7c7c7c"
-        android:textSize="18dp" />
+        android:textSize="18sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -274,7 +274,7 @@
         android:layout_alignStart="@+id/co3"
         android:gravity="center_vertical|center"
         android:textColor="#7c7c7c"
-        android:textSize="18dp" />
+        android:textSize="18sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -289,7 +289,7 @@
         android:layout_alignEnd="@+id/co4"
         android:gravity="center_vertical|center"
         android:textColor="#7c7c7c"
-        android:textSize="18dp" />
+        android:textSize="18sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -304,7 +304,7 @@
         android:layout_alignStart="@+id/co5"
         android:gravity="center_vertical|center"
         android:textColor="#7c7c7c"
-        android:textSize="18dp" />
+        android:textSize="18sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -318,7 +318,7 @@
         android:layout_alignEnd="@+id/co6"
         android:gravity="center_vertical|center"
         android:textColor="#7c7c7c"
-        android:textSize="18dp" />
+        android:textSize="18sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -332,7 +332,7 @@
         android:layout_alignEnd="@+id/co7"
         android:gravity="center_vertical|center"
         android:textColor="#7c7c7c"
-        android:textSize="18dp" />
+        android:textSize="18sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -346,7 +346,7 @@
         android:layout_alignEnd="@+id/co8"
         android:gravity="center_vertical|center"
         android:textColor="#7c7c7c"
-        android:textSize="18dp" />
+        android:textSize="18sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -360,7 +360,7 @@
         android:layout_alignEnd="@+id/co9"
         android:gravity="center_vertical|center"
         android:textColor="#7c7c7c"
-        android:textSize="18dp" />
+        android:textSize="18sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -388,7 +388,7 @@
         android:layout_alignEnd="@+id/co11"
         android:gravity="center_vertical|center"
         android:textColor="#7c7c7c"
-        android:textSize="18dp" />
+        android:textSize="18sp" />
 
     <TextView
         android:layout_width="wrap_content"

@@ -1,60 +1,26 @@
 .gradle
 /local.properties
-/.idea/workspace.xml
-/.idea/libraries
-.DS_Store
 /build
-/captures
 build.gradle
-app/build.gradle
-.idea/ app/build.gradle
 /app/src/main/AndroidManifest.xml
 /app/src/main/java/functions/Constant.java
-
+/app/build/
 .idea
 
-app/src/main/res/drawable/1.png
-app/src/main/res/drawable/2.png
-app/src/main/res/drawable/3.png
-app/src/main/res/drawable/4.png
-app/src/main/res/drawable/5.png
-app/src/main/res/drawable/6.png
-app/src/main/res/drawable/7.png
-app/src/main/res/drawable/8.png
-app/src/main/res/drawable/9.png
-app/src/main/res/drawable/10.png
-app/src/main/res/drawable/11.png
 
 #built application files
 *.apk
-*.ap_
-
 # files for the dex VM
-*.dex
-
 # Java class files
-*.class
-
 # generated files
-bin/
-gen/
-
 # Local configuration file (sdk path, etc)
-local.properties
-
 # Windows thumbnail db
 Thumbs.db
 
 # Eclipse project files
-.classpath
-.project
-
 # Android Studio
 *.iml
 #.idea/workspace.xml - remove # and delete .idea if it better suit your needs.
-build/
-
 #NDK
-obj/
 
 

@@ -6,23 +6,23 @@
         android:id="@+id/progressBar1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:baselineAligned="false"
         android:orientation="horizontal"
         android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        android:baselineAligned="false">
+        android:paddingTop="@dimen/activity_vertical_margin">
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="vertical">
 
             <FrameLayout
                 android:id="@+id/imag_cont"
@@ -43,7 +43,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:layout_margin="5dp" />
+                        android:layout_margin="5dp"
+                        android:contentDescription="@string/default_content_des" />
                 </LinearLayout>
 
                 <ImageView
@@ -51,6 +52,7 @@
                     android:layout_height="25dp"
                     android:layout_gravity="bottom"
                     android:layout_margin="10dp"
+                    android:contentDescription="@string/default_content_des"
                     android:src="@drawable/ic_photo_library_white_24dp" />
             </FrameLayout>
         </LinearLayout>
@@ -59,8 +61,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/des"
@@ -97,6 +99,7 @@
                     android:layout_gravity="center"
                     android:layout_marginLeft="5dp"
                     android:alpha="0.4"
+                    android:contentDescription="@string/default_content_des"
                     android:src="@drawable/ic_thumb_up_black_24dp" />
             </LinearLayout>
 

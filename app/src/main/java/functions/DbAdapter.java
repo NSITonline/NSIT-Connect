@@ -7,11 +7,12 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.preference.PreferenceManager;
+import android.util.Log;
 
 /**
  * Created by Naman Maheshwari on 11-10-15.
  */
-public class dbAdapter implements  Constant {
+public class DbAdapter implements  Constant {
 
     private static final String KEY_ROWID = "_id";
     public static final int COL_ROWID = 0;
@@ -65,16 +66,16 @@ public class dbAdapter implements  Constant {
     private DatabaseHelper NSITConnectHelper;
     private SQLiteDatabase db;
 
-    public dbAdapter(Context ctx) {
+    public DbAdapter(Context ctx) {
         this.context = ctx;
         NSITConnectHelper = new DatabaseHelper(context);
     }
 
-    public dbAdapter open() {
+    public DbAdapter open() {
         try {
             db = NSITConnectHelper.getWritableDatabase();
         }catch(Exception e){
-
+            Log.e("ERROR ", e.getMessage());
         }
         return this;
     }
@@ -173,15 +174,10 @@ public class dbAdapter implements  Constant {
         @Override
         public void onUpgrade (SQLiteDatabase _db, int oldVersion, int newVersion) {
             _db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE);
-
             onCreate(_db);
         }
 
     }
-
-
-
-
 
     /*
 
@@ -203,7 +199,5 @@ public class dbAdapter implements  Constant {
         }
     }
 */
-
-
 
 }

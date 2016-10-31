@@ -30,15 +30,27 @@ import functions.ButtonAnimation;
 import functions.ImageLoader;
 import functions.Utils;
 import nsit.app.com.nsitapp.Description;
-import nsit.app.com.nsitapp.Description_FullImage;
+import nsit.app.com.nsitapp.DescriptionFullImage;
 import nsit.app.com.nsitapp.R;
 
-
+/**
+ * Adapter for Home page showing NSITOnline feed
+ */
 public class CustomList extends ArrayAdapter<String> {
     private final Activity context;
     private final List<String> img, des, lik, link, obid, date;
     private final ImageLoader imageLoader;
 
+    /**
+     * Returns instance of CustomList adapter
+     * @param context   reference
+     * @param image     Image link
+     * @param desc      Post description
+     * @param like      Number of likes
+     * @param links     Facebook link
+     * @param oid       Object Id for image
+     * @param dates     Post date
+     */
     public CustomList(Activity context, List<String> image, List<String> desc, List<String> like, List<String> links,
                       List<String> oid, List<String> dates) {
         super(context, R.layout.message_layout, desc);
@@ -53,8 +65,7 @@ public class CustomList extends ArrayAdapter<String> {
     }
 
     private class ViewHolder {
-
-        TextView Des, likes,dates,read;
+        TextView Des, likes, dates, read;
         ImageView imageView;
         FrameLayout frameLayout;
         Button button;
@@ -65,8 +76,7 @@ public class CustomList extends ArrayAdapter<String> {
         ViewHolder holder;
         LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         if (view == null) {
-            view = mInflater.inflate(R.layout.message_layout, parent,false);
-
+            view = mInflater.inflate(R.layout.message_layout, parent, false);
             holder = new ViewHolder();
             holder.Des = (TextView) view.findViewById(R.id.des);
             holder.likes = (TextView) view.findViewById(R.id.likes);
@@ -81,38 +91,35 @@ public class CustomList extends ArrayAdapter<String> {
 
         ProgressBar progressBar = (ProgressBar) view.findViewById(R.id.progressBar1);
 
-
+        // Post description
         if (des.get(position) == null)
             holder.Des.setText(R.string.no_description);
         else
             holder.Des.setText(des.get(position));
 
-
+        // Number of likes
         if (lik.get(position) == null)
             holder.likes.setText("0");
         else
             holder.likes.setText(lik.get(position));
 
-
+        // Post date
         holder.dates.setVisibility(View.VISIBLE);
         if (date.get(position) != null) {
-            String x = Utils.GetLocalDateStringFromUTCString(date.get(position));
-            String formattedDate = x;
+            String formattedDate = Utils.GetLocalDateStringFromUTCString(date.get(position));
             try {
-
-
                 DateFormat originalFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss+SSSS", Locale.ENGLISH);
                 DateFormat targetFormat = new SimpleDateFormat("dd MMMM , hh:mm a");
-                Date date2 = originalFormat.parse(x);
-                formattedDate = targetFormat.format(date2);
+                Date date = originalFormat.parse(formattedDate);
+                formattedDate = targetFormat.format(date);
             } catch (Exception e) {
-                Log.e("error", e.getMessage() + " ");
+                Log.e("ERROR ", e.getMessage() + " ");
             }
-
             holder.dates.setText(formattedDate);
         } else
             holder.dates.setVisibility(View.INVISIBLE);
 
+        // Read more
         holder.read.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -130,15 +137,16 @@ public class CustomList extends ArrayAdapter<String> {
         });
 
         holder.frameLayout.setVisibility(View.VISIBLE);
-        if (img.get(position) != null) {
 
+        // Display Image
+        if (img.get(position) != null) {
             imageLoader.DisplayImage(img.get(position), holder.imageView, progressBar);
             holder.button.setOnClickListener(new OnClickListener() {
 
                 @Override
                 public void onClick(View v) {
                     Context c = getContext();
-                    Intent i = new Intent(getContext(), Description_FullImage.class);
+                    Intent i = new Intent(getContext(), DescriptionFullImage.class);
                     i.putExtra("img", img.get(position));
                     i.putExtra("oid", obid.get(position));
                     ButtonAnimation btnAnimation = new ButtonAnimation();
@@ -151,6 +159,7 @@ public class CustomList extends ArrayAdapter<String> {
             holder.frameLayout.setVisibility(View.GONE);
         }
 
+        // Scrolling animations
         AnimationSet set = new AnimationSet(true);
         TranslateAnimation slide = new TranslateAnimation(-100, 0, -100, 0);
         slide.setInterpolator(new DecelerateInterpolator(5.0f));

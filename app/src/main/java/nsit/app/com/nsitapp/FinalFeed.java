@@ -35,8 +35,8 @@ import java.util.List;
 
 import adapters.MyFeedList;
 import functions.Constant;
+import functions.DbAdapter;
 import functions.Utils;
-import functions.dbAdapter;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
@@ -70,13 +70,13 @@ public class FinalFeed extends Fragment implements Constant {
     private int first = 1;  // Implies loading data for first time
     private Handler mHandler;
 
-    private List<String> list = new ArrayList<String>();
-    private List<String> list1 = new ArrayList<String>();
-    private List<String> list2 = new ArrayList<String>();
-    private List<String> list6 = new ArrayList<String>();
-    private List<String> list7 = new ArrayList<String>();
-    private List<String> list8 = new ArrayList<String>();
-    private List<String> list9 = new ArrayList<String>();
+    private List<String> list = new ArrayList<>();
+    private List<String> list1 = new ArrayList<>();
+    private List<String> list2 = new ArrayList<>();
+    private List<String> list6 = new ArrayList<>();
+    private List<String> list7 = new ArrayList<>();
+    private List<String> list8 = new ArrayList<>();
+    private List<String> list9 = new ArrayList<>();
 
     private View footerView;
     private SharedPreferences sharedPreferences;
@@ -142,7 +142,7 @@ public class FinalFeed extends Fragment implements Constant {
 
         fetchSocietyValues();
 
-        dbAdapter db = new dbAdapter(getActivity());
+        DbAdapter db = new DbAdapter(getActivity());
 
         listView.addFooterView(footerView);
 
@@ -204,7 +204,7 @@ public class FinalFeed extends Fragment implements Constant {
                                  int visibleItemCount, int totalItemCount) {
                 int lastInScreen = firstVisibleItem + visibleItemCount;
 
-                dbAdapter db = new dbAdapter(getActivity());
+                DbAdapter db = new DbAdapter(getActivity());
 
                 if ((lastInScreen == totalItemCount) && !(loadingMore) && first != 1) {
                     loadingMore = true;
@@ -300,9 +300,7 @@ public class FinalFeed extends Fragment implements Constant {
                                 populateListViewAndDatabase(arr);
 
 
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            } catch (IOException e) {
+                            } catch (JSONException | IOException e) {
                                 e.printStackTrace();
                             }
                             if (first == 1) {
@@ -374,7 +372,7 @@ public class FinalFeed extends Fragment implements Constant {
     // Populate data to list and add to database
     private void populateListViewAndDatabase(JSONArray arr) {
         // Open connection to database
-        dbAdapter db = new dbAdapter(getActivity());
+        DbAdapter db = new DbAdapter(getActivity());
         db.open();
 
         int lenght = arr.length();
@@ -426,7 +424,7 @@ public class FinalFeed extends Fragment implements Constant {
                     list9.add(null);
 
                 db.insertRow(list.get(list.size() - 1), list1.get(list1.size() - 1), list2.get(list2.size() - 1), list6.get(list6.size() - 1),
-                        list7.get(list7.size() - 1), list8.get(list8.size() - 1), list9.get(list9.size() - 1), id);
+                        list7.get(list7.size() - 1), list8.get(list8.size() - 1), list9.get(list9.size() - 1), id_nsitonline);
             }
         } catch (JSONException e) {
             e.printStackTrace();

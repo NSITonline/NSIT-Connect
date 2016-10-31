@@ -3,7 +3,7 @@ package nsit.app.com.nsitapp;
 /**
  * Created by Swati garg on 29-06-2015.
  */
-class Subject_struct {
+class SubjectStruct {
 
     public String value;
     public String proffh;
@@ -14,7 +14,7 @@ class Subject_struct {
     public String roomsh;
 
     // constructor
-    public Subject_struct(String value,String proffh,String subfh,String roomfh,String profsh,String subsh,String roomsh) {
+    public SubjectStruct(String value, String proffh, String subfh, String roomfh, String profsh, String subsh, String roomsh) {
 
         this.value = value;
 

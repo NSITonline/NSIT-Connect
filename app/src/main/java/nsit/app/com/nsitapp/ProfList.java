@@ -65,7 +65,7 @@ public class ProfList extends AppCompatActivity implements Constant {
         TextView tv = (TextView) findViewById(R.id.textView);
 
 
-        List<ProfListRowItem> profe = new ArrayList<ProfListRowItem>();
+        List<ProfListRowItem> profe = new ArrayList<>();
 
         tv.setText(full[dept]);
 

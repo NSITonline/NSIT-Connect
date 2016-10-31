@@ -1,77 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <fragment
-        android:layout_weight="2"
+        android:id="@+id/place_map"
+        android:name="com.google.android.gms.maps.MapFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:id="@+id/place_map"
-        android:name="com.google.android.gms.maps.MapFragment">
-    </fragment>
+        android:layout_weight="2"/>
 
     <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
         android:layout_weight="0.65"
         android:background="@android:drawable/dialog_holo_light_frame"
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="0dp">
+        android:orientation="vertical">
 
         <TextView
-            android:textStyle="bold|italic"
+            android:id="@+id/destination"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
-            android:textSize="15sp"
-            android:text="Current Location To Destinantion"
-            android:layout_width="fill_parent"
-            android:singleLine="true"
             android:ellipsize="end"
-            android:layout_height="wrap_content"
-            android:id="@+id/destination" />
+            android:singleLine="true"
+            android:text="Current Location To Destinantion"
+            android:textSize="15sp"
+            android:textStyle="bold|italic" />
 
         <TextView
-            android:textStyle="bold|italic"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:textSize="15sp"
-            android:text="Distance"
+            android:id="@+id/distance"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/distance" />
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:text="Distance"
+            android:textSize="15sp"
+            android:textStyle="bold|italic" />
 
 
         <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="10dp"
-            android:layout_width="fill_parent"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
+            android:orientation="horizontal">
 
             <ImageView
-                android:layout_marginLeft="10dp"
-                android:src="@drawable/ic_drive_eta_black_48dp"
-                android:layout_weight="1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:contentDescription="@string/default_content_des"
+                android:src="@drawable/ic_drive_eta_black_48dp" />
 
             <TextView
-                android:textStyle="bold|italic"
-                android:textSize="15dp"
-                android:text="Time "
-                android:layout_gravity="center"
-                android:layout_weight="2"
+                android:id="@+id/time"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/time" />
+                android:layout_gravity="center"
+                android:layout_weight="2"
+                android:text="Time "
+                android:textSize="15sp"
+                android:textStyle="bold|italic" />
 
             <ProgressBar
-                android:visibility="gone"
                 android:id="@+id/progress_path"
-                android:layout_weight="0.1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1"
+                android:visibility="gone" />
 
         </LinearLayout>
 

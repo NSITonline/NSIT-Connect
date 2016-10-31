@@ -12,7 +12,7 @@ class FileCache {
 
     private File cacheDir;
 
-    public FileCache(Context context) {
+    FileCache(Context context) {
         //Find the dir to save cached images
         if (android.os.Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED))
             cacheDir = new File(android.os.Environment.getExternalStorageDirectory(), "TTImages_cache");
@@ -22,7 +22,7 @@ class FileCache {
             cacheDir.mkdirs();
     }
 
-    public File getFile(String url) {
+    File getFile(String url) {
         //I identify images by hashcode. Not a perfect solution, good for the demo.
         String filename = String.valueOf(url.hashCode());
         //Another possible solution (thanks to grantland)

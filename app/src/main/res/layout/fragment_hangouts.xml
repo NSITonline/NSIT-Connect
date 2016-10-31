@@ -1,9 +1,9 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/content_frame"
-    android:background="#ffffff"
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
-    android:animateLayoutChanges="true">
+    android:animateLayoutChanges="true"
+    android:background="#ffffff">
 
     <ScrollView
         android:layout_width="fill_parent"
@@ -12,55 +12,59 @@
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:orientation="vertical"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:paddingTop="30dp">
 
 
             <LinearLayout
                 android:layout_width="fill_parent"
-                android:orientation="horizontal"
                 android:layout_height="wrap_content"
-                android:paddingBottom="10dp"
-                android:baselineAligned="false">
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp">
 
                 <LinearLayout
+                    android:id="@+id/hang_college"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
                     android:layout_weight="0.5"
-                    android:orientation="vertical"
                     android:background="@drawable/shadow_1"
-                    android:id="@+id/hang_college"
-                    android:clickable="true">
+                    android:clickable="true"
+                    android:orientation="vertical">
+
                     <LinearLayout
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:background="#ff2c2c2c"
                         android:gravity="center_horizontal">
+
                         <ImageView
-                            android:scaleType="fitXY"
                             android:layout_width="wrap_content"
                             android:layout_height="140dp"
-                            android:src="@drawable/college_hangout"
+                            android:layout_gravity="center"
                             android:adjustViewBounds="false"
-                            android:layout_gravity="center" />
+                            android:contentDescription="@string/default_content_des"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/college_hangout" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
-                        android:padding="10dp"
-                        android:background="@color/colorPrimary">
+                        android:background="@color/colorPrimary"
+                        android:padding="10dp">
+
                         <TextView
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
+                            android:gravity="center"
                             android:text="Explore the hotspots of NSIT..."
-                            android:textSize="17sp"
                             android:textColor="#ffffff"
-                            android:gravity="center"/>
+                            android:textSize="17sp" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -71,346 +75,387 @@
             <HorizontalScrollView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:focusableInTouchMode="false"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                android:focusableInTouchMode="false">
 
                 <LinearLayout
                     android:layout_width="1600dp"
-                    android:orientation="horizontal"
                     android:layout_height="200dp"
-                    android:paddingTop="10dp"
+                    android:background="#ff8b8b8b"
+                    android:orientation="horizontal"
                     android:paddingBottom="20dp"
-                    android:background="#ff8b8b8b">
+                    android:paddingTop="10dp">
 
                     <TextView
+                        android:id="@+id/textView3"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Find interesting places around you..."
-                        android:id="@+id/textView3"
-                        android:layout_marginTop="20dp"
-                        android:textSize="20sp"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="10dp"
-                        android:textColor="#ffd2d2d2" />
+                        android:layout_marginTop="20dp"
+                        android:text="Find interesting places around you..."
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="#ffd2d2d2"
+                        android:textSize="20sp" />
 
                     <LinearLayout
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="0dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:background="@drawable/shadow_1"
                         android:id="@+id/hang_cafe"
-                        android:clickable="true">
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="0dp"
+                        android:background="@drawable/shadow_1"
+                        android:clickable="true"
+                        android:orientation="vertical">
+
                         <LinearLayout
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content">
+
                             <ImageView
-                                android:scaleType="fitXY"
                                 android:layout_width="wrap_content"
                                 android:layout_height="100dp"
-                                android:src="@drawable/cafe_hangout"
-                                android:adjustViewBounds="true"/>
+                                android:adjustViewBounds="true"
+                                android:contentDescription="@string/default_content_des"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/cafe_hangout" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:padding="10dp"
-                            android:background="#ff545454">
+                            android:background="#ff545454"
+                            android:padding="10dp">
+
                             <TextView
                                 android:layout_width="fill_parent"
                                 android:layout_height="fill_parent"
-                                android:text="CAFES"
-                                android:textSize="12sp"
-                                android:textColor="#ffffff"
                                 android:gravity="center"
-                                android:textIsSelectable="false" />
+                                android:text="CAFES"
+                                android:textColor="#ffffff"
+                                android:textIsSelectable="false"
+                                android:textSize="12sp" />
                         </LinearLayout>
 
                     </LinearLayout>
 
 
                     <LinearLayout
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="0dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:background="@drawable/shadow_1"
                         android:id="@+id/hang_nightclub"
-                        android:clickable="true">
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="0dp"
+                        android:background="@drawable/shadow_1"
+                        android:clickable="true"
+                        android:orientation="vertical">
+
                         <LinearLayout
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content">
+
                             <ImageView
-                                android:scaleType="fitXY"
                                 android:layout_width="wrap_content"
                                 android:layout_height="100dp"
-                                android:src="@drawable/nightclub_hangout"
-                                android:adjustViewBounds="true"/>
+                                android:adjustViewBounds="true"
+                                android:contentDescription="@string/default_content_des"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/nightclub_hangout" />
                         </LinearLayout>
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:padding="10dp"
-                            android:background="#ff545454">
+                            android:background="#ff545454"
+                            android:padding="10dp">
+
                             <TextView
                                 android:layout_width="fill_parent"
                                 android:layout_height="fill_parent"
+                                android:gravity="center"
                                 android:text="NIGHTCLUB"
-                                android:textSize="12sp"
                                 android:textColor="#ffffff"
-                                android:gravity="center"/>
+                                android:textSize="12sp" />
                         </LinearLayout>
 
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="0dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:background="@drawable/shadow_1"
                         android:id="@+id/hang_restaurant"
-                        android:clickable="true">
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="0dp"
+                        android:background="@drawable/shadow_1"
+                        android:clickable="true"
+                        android:orientation="vertical">
+
                         <LinearLayout
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content">
+
                             <ImageView
-                                android:scaleType="fitXY"
                                 android:layout_width="wrap_content"
                                 android:layout_height="100dp"
-                                android:src="@drawable/rest_hangout2"
-                                android:adjustViewBounds="true"/>
+                                android:adjustViewBounds="true"
+                                android:contentDescription="@string/default_content_des"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/rest_hangout2" />
                         </LinearLayout>
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:padding="10dp"
-                            android:background="#ff545454">
+                            android:background="#ff545454"
+                            android:padding="10dp">
+
                             <TextView
                                 android:layout_width="fill_parent"
                                 android:layout_height="fill_parent"
+                                android:gravity="center"
                                 android:text="RESTAURANT"
-                                android:textSize="12sp"
                                 android:textColor="#ffffff"
-                                android:gravity="center"/>
+                                android:textSize="12sp" />
                         </LinearLayout>
 
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="0dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:background="@drawable/shadow_1"
                         android:id="@+id/hang_shoppingmalls"
-                        android:clickable="true">
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="0dp"
+                        android:background="@drawable/shadow_1"
+                        android:clickable="true"
+                        android:orientation="vertical">
+
                         <LinearLayout
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content">
+
                             <ImageView
-                                android:scaleType="fitXY"
                                 android:layout_width="wrap_content"
                                 android:layout_height="100dp"
-                                android:src="@drawable/shoppingmall_hangout"
-                                android:adjustViewBounds="true"/>
+                                android:adjustViewBounds="true"
+                                android:contentDescription="@string/default_content_des"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/shoppingmall_hangout" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:padding="10dp"
-                            android:background="#ff545454">
+                            android:background="#ff545454"
+                            android:padding="10dp">
+
                             <TextView
                                 android:layout_width="fill_parent"
                                 android:layout_height="fill_parent"
+                                android:gravity="center"
                                 android:text="MALLS"
-                                android:textSize="12sp"
                                 android:textColor="#ffffff"
-                                android:gravity="center"/>
+                                android:textSize="12sp" />
                         </LinearLayout>
 
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="0dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:background="@drawable/shadow_1"
                         android:id="@+id/hang_bowling"
-                        android:clickable="true">
-                        <LinearLayout
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content">
-                            <ImageView
-                                android:scaleType="fitXY"
-                                android:layout_width="fill_parent"
-                                android:layout_height="100dp"
-                                android:src="@drawable/bowling_hangout"
-                                android:adjustViewBounds="true"/>
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:padding="10dp"
-                            android:background="#ff545454">
-                            <TextView
-                                android:layout_width="fill_parent"
-                                android:layout_height="fill_parent"
-                                android:text="BOWLING"
-                                android:textSize="12sp"
-                                android:textColor="#ffffff"
-                                android:gravity="center"/>
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:layout_marginRight="0dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
                         android:background="@drawable/shadow_1"
+                        android:clickable="true"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:layout_width="fill_parent"
+                                android:layout_height="100dp"
+                                android:adjustViewBounds="true"
+                                android:contentDescription="@string/default_content_des"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/bowling_hangout" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#ff545454"
+                            android:padding="10dp">
+
+                            <TextView
+                                android:layout_width="fill_parent"
+                                android:layout_height="fill_parent"
+                                android:gravity="center"
+                                android:text="BOWLING"
+                                android:textColor="#ffffff"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:id="@+id/hang_food"
-                        android:clickable="true">
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="0dp"
+                        android:background="@drawable/shadow_1"
+                        android:clickable="true"
+                        android:orientation="vertical">
+
                         <LinearLayout
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content">
+
                             <ImageView
-                                android:scaleType="fitXY"
                                 android:layout_width="fill_parent"
                                 android:layout_height="100dp"
-                                android:src="@drawable/food_hangout"
-                                android:adjustViewBounds="true"/>
+                                android:adjustViewBounds="true"
+                                android:contentDescription="@string/default_content_des"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/food_hangout" />
                         </LinearLayout>
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:padding="10dp"
-                            android:background="#ff545454">
+                            android:background="#ff545454"
+                            android:padding="10dp">
+
                             <TextView
                                 android:layout_width="fill_parent"
                                 android:layout_height="fill_parent"
+                                android:gravity="center"
                                 android:text="FOOD"
-                                android:textSize="12sp"
                                 android:textColor="#ffffff"
-                                android:gravity="center"/>
+                                android:textSize="12sp" />
                         </LinearLayout>
 
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:background="@drawable/shadow_1"
                         android:id="@+id/hang_movies"
-                        android:clickable="true">
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/shadow_1"
+                        android:clickable="true"
+                        android:orientation="vertical">
+
                         <LinearLayout
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content">
+
                             <ImageView
-                                android:scaleType="fitXY"
                                 android:layout_width="wrap_content"
                                 android:layout_height="100dp"
-                                android:src="@drawable/movie_hangout"
-                                android:adjustViewBounds="true"/>
+                                android:adjustViewBounds="true"
+                                android:contentDescription="@string/default_content_des"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/movie_hangout" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:padding="10dp"
-                            android:background="#ff545454">
+                            android:background="#ff545454"
+                            android:padding="10dp">
+
                             <TextView
                                 android:layout_width="fill_parent"
                                 android:layout_height="fill_parent"
+                                android:gravity="center"
                                 android:text="MOVIES"
-                                android:textSize="12sp"
                                 android:textColor="#ffffff"
-                                android:gravity="center"/>
+                                android:textSize="12sp" />
                         </LinearLayout>
 
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
+                        android:id="@+id/hang_amusment"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
                         android:background="@drawable/shadow_1"
-                        android:id="@+id/hang_amusment"
-                        android:clickable="true">
+                        android:clickable="true"
+                        android:orientation="vertical">
+
                         <LinearLayout
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content">
+
                             <ImageView
-                                android:scaleType="fitXY"
                                 android:layout_width="wrap_content"
                                 android:layout_height="100dp"
-                                android:src="@drawable/amuse_hangout"
-                                android:adjustViewBounds="true"/>
+                                android:adjustViewBounds="true"
+                                android:contentDescription="@string/default_content_des"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/amuse_hangout" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:padding="10dp"
-                            android:background="#ff545454">
+                            android:background="#ff545454"
+                            android:padding="10dp">
+
                             <TextView
                                 android:layout_width="fill_parent"
                                 android:layout_height="fill_parent"
+                                android:gravity="center"
                                 android:text="AMUSEMENT"
-                                android:textSize="12sp"
                                 android:textColor="#ffffff"
-                                android:gravity="center"/>
+                                android:textSize="12sp" />
                         </LinearLayout>
 
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
+                        android:id="@+id/hang_park"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
                         android:background="@drawable/shadow_1"
-                        android:id="@+id/hang_park"
-                        android:clickable="true">
+                        android:clickable="true"
+                        android:orientation="vertical">
+
                         <LinearLayout
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content">
+
                             <ImageView
-                                android:scaleType="fitXY"
                                 android:layout_width="fill_parent"
                                 android:layout_height="100dp"
-                                android:src="@drawable/park_hangout"
-                                android:adjustViewBounds="true"/>
+                                android:adjustViewBounds="true"
+                                android:contentDescription="@string/default_content_des"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/park_hangout" />
                         </LinearLayout>
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:padding="10dp"
-                            android:background="#ff545454">
+                            android:background="#ff545454"
+                            android:padding="10dp">
+
                             <TextView
                                 android:layout_width="fill_parent"
                                 android:layout_height="fill_parent"
+                                android:gravity="center"
                                 android:text="PARK"
-                                android:textSize="12sp"
                                 android:textColor="#ffffff"
-                                android:gravity="center"/>
+                                android:textSize="12sp" />
                         </LinearLayout>
 
                     </LinearLayout>

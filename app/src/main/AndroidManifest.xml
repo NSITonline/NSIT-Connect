@@ -32,13 +32,13 @@
             android:name=".Description"
             android:label="@string/title_activity_decsription" />
         <activity
-            android:name=".Description_FullImage"
+            android:name=".DescriptionFullImage"
             android:label="@string/title_activity_image" />
         <activity
-            android:name=".Hangout_CollegeLocationMapView"
+            android:name=".HangoutCollegeLocationMapView"
             android:label="LocationMapView" />
         <activity
-            android:name=".Hangout_collegeLocations"
+            android:name=".HangoutCollegeLocations"
             android:label="LocationMapView" />
         <activity
             android:name=".ChooseClass"
@@ -132,7 +132,7 @@
 
 
         <activity
-            android:name=".Sub_load"
+            android:name=".SubLoad"
             android:theme="@style/AppTheme" >
         </activity>
 

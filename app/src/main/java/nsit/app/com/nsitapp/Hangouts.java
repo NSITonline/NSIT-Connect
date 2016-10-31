@@ -79,7 +79,7 @@ public class Hangouts extends Fragment implements View.OnClickListener {
             intent.putExtra(CHOICE_TYPE, choice-1);
             startActivity(intent);
         } else {
-            Intent intent = new Intent(getActivity(), Hangout_collegeLocations.class);
+            Intent intent = new Intent(getActivity(), HangoutCollegeLocations.class);
             startActivity(intent);
         }
 

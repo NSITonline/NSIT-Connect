@@ -11,6 +11,7 @@
         android:layout_height="35dp"
         android:layout_marginLeft="5dp"
         android:alpha="0.7"
+        android:contentDescription="@string/default_content_des"
         android:focusable="false"
         android:focusableInTouchMode="false" />
 

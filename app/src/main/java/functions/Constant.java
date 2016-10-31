@@ -41,17 +41,14 @@ public interface Constant {
 
     String TIMETABLE_API = "http://nsitonline.in/NSITconnect/tt2/api/get-data.php?";
 
-    String id = "109315262061";
-
-
     String common_access = "CAAGZAwVFNCKgBAANhEYok6Xh7Q7UZBeTZCUqwPDLYhRZCmNn0igI8SE339jSn2zjxCpA1JUmXH" +
             "m55XKVXslhdKKoTF3b5sLsiZBVd0ylYwX3MIGOnRyzn0T2XVywwoPKP7ML9WZCqELGRuIGxoM8ia05CiUiqcbgsb4wzTuBKkvKaqb7TPt2VnPtpr" +
             "RZBWda4kZD";
     String id_nsitonline = "109315262061",
             id_crosslinks = "184835371535420",
             id_collegespace = "252117054812001",
-            id_bullet = "109582689081817";
-    String id_junoon = "158168947539641",
+            id_bullet = "109582689081817",
+            id_junoon = "158168947539641",
             id_rotaract = "604809706256620",
             id_debsoc = "376394819102290",
             id_ieee = "278952135548721",

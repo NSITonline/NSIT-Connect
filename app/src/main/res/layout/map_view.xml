@@ -67,6 +67,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center_vertical"
+                    android:contentDescription="@string/default_content_des"
                     android:src="@drawable/ic_drive_eta_black_24dp" />
 
                 <TextView
@@ -83,6 +84,7 @@
                     android:layout_height="20dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="30dp"
+                    android:contentDescription="@string/default_content_des"
                     android:src="@drawable/ic_directions_walk_black_24dp" />
 
                 <TextView

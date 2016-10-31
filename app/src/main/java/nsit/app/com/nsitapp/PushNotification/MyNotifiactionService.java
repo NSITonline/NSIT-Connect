@@ -17,7 +17,6 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -36,10 +35,10 @@ public class MyNotifiactionService extends IntentService implements Constant {
     private static final String URL = "https://graph.facebook.com/" + id_nsitonline + "/posts?limit=20&fields=id,picture,from,shares,message," +
             "object_id,link,created_time,comments.limit(0).summary(true),likes.limit(0).summary(true)"+
             "&access_token=" + common_access;
-    private List<String> message = new ArrayList<String>();
-    private List<String> object_id = new ArrayList<String>();
-    private List<String> time_created = new ArrayList<String>();
-    private List<String> likes = new ArrayList<String>();
+    private List<String> message = new ArrayList<>();
+    private List<String> object_id = new ArrayList<>();
+    private List<String> time_created = new ArrayList<>();
+    private List<String> likes = new ArrayList<>();
 
 
     public MyNotifiactionService() {
@@ -55,8 +54,6 @@ public class MyNotifiactionService extends IntentService implements Constant {
             url = new URL(uri);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             text = Utils.readStream(con.getInputStream());
-        } catch (MalformedURLException e1) {
-            e1.printStackTrace();
         } catch (IOException e1) {
             e1.printStackTrace();
         }
@@ -107,7 +104,7 @@ public class MyNotifiactionService extends IntentService implements Constant {
             e.printStackTrace();
         }
 
-        ArrayList<String> newmessage = new ArrayList<String>();
+        ArrayList<String> newmessage = new ArrayList<>();
         try {
             NotificationAdapter notify = new NotificationAdapter(this);
             for (int i=time_created.size()-1;i>=0;i--){
@@ -125,8 +122,6 @@ public class MyNotifiactionService extends IntentService implements Constant {
         }catch (Exception e){
             e.printStackTrace();
         }
-
-
 
         if (newmessage.size()>0){
             Intent notificationIntent = new Intent(this, MainActivity.class);

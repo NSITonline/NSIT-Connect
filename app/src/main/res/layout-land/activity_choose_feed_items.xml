@@ -21,8 +21,8 @@
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:baselineAligned="false">
+                android:baselineAligned="false"
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -42,6 +42,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:adjustViewBounds="true"
+                            android:contentDescription="@string/default_content_des"
                             android:src="@drawable/collegespace" />
                     </LinearLayout>
 
@@ -85,6 +86,7 @@
                             android:layout_weight="0.8"
                             android:adjustViewBounds="true"
                             android:alpha="0.5"
+                            android:contentDescription="@string/default_content_des"
                             android:src="@drawable/ic_likes_black_24dp" />
 
                         <View
@@ -124,6 +126,7 @@
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:adjustViewBounds="true"
+                            android:contentDescription="@string/default_content_des"
                             android:src="@drawable/crosslinks" />
                     </LinearLayout>
 
@@ -167,6 +170,7 @@
                             android:layout_weight="0.8"
                             android:adjustViewBounds="true"
                             android:alpha="0.5"
+                            android:contentDescription="@string/default_content_des"
                             android:src="@drawable/ic_likes_black_24dp" />
 
                         <View
@@ -205,6 +209,7 @@
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:adjustViewBounds="true"
+                            android:contentDescription="@string/default_content_des"
                             android:src="@drawable/csi" />
                     </LinearLayout>
 
@@ -248,6 +253,7 @@
                             android:layout_weight="0.8"
                             android:adjustViewBounds="true"
                             android:alpha="0.5"
+                            android:contentDescription="@string/default_content_des"
                             android:src="@drawable/ic_likes_black_24dp" />
 
                         <View
@@ -287,6 +293,7 @@
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:adjustViewBounds="true"
+                            android:contentDescription="@string/default_content_des"
                             android:src="@drawable/ieee" />
                     </LinearLayout>
 
@@ -330,6 +337,7 @@
                             android:layout_weight="0.8"
                             android:adjustViewBounds="true"
                             android:alpha="0.5"
+                            android:contentDescription="@string/default_content_des"
                             android:src="@drawable/ic_likes_black_24dp" />
 
                         <View
@@ -358,8 +366,8 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:orientation="horizontal"
-                android:baselineAligned="false">
+                android:baselineAligned="false"
+                android:orientation="horizontal">
 
 
                 <LinearLayout
@@ -377,6 +385,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:adjustViewBounds="true"
+                        android:contentDescription="@string/default_content_des"
                         android:src="@drawable/ashwamedh" />
 
                     <LinearLayout
@@ -419,6 +428,7 @@
                             android:layout_weight="0.8"
                             android:adjustViewBounds="true"
                             android:alpha="0.5"
+                            android:contentDescription="@string/default_content_des"
                             android:src="@drawable/ic_likes_black_24dp" />
 
                         <View
@@ -455,6 +465,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:adjustViewBounds="true"
+                        android:contentDescription="@string/default_content_des"
                         android:src="@drawable/junoon" />
 
                     <LinearLayout
@@ -497,6 +508,7 @@
                             android:layout_weight="0.8"
                             android:adjustViewBounds="true"
                             android:alpha="0.5"
+                            android:contentDescription="@string/default_content_des"
                             android:src="@drawable/ic_likes_black_24dp" />
 
                         <View
@@ -532,6 +544,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:adjustViewBounds="true"
+                        android:contentDescription="@string/default_content_des"
                         android:src="@drawable/debsoc" />
 
                     <LinearLayout
@@ -574,6 +587,7 @@
                             android:layout_weight="0.8"
                             android:adjustViewBounds="true"
                             android:alpha="0.5"
+                            android:contentDescription="@string/default_content_des"
                             android:src="@drawable/ic_likes_black_24dp" />
 
                         <View
@@ -610,6 +624,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:adjustViewBounds="true"
+                        android:contentDescription="@string/default_content_des"
                         android:src="@drawable/quiz" />
 
                     <LinearLayout
@@ -652,6 +667,7 @@
                             android:layout_weight="0.8"
                             android:adjustViewBounds="true"
                             android:alpha="0.5"
+                            android:contentDescription="@string/default_content_des"
                             android:src="@drawable/ic_likes_black_24dp" />
 
                         <View
@@ -678,8 +694,8 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:orientation="horizontal"
-                android:baselineAligned="false">
+                android:baselineAligned="false"
+                android:orientation="horizontal">
 
 
                 <LinearLayout
@@ -697,6 +713,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:adjustViewBounds="true"
+                        android:contentDescription="@string/default_content_des"
                         android:src="@drawable/bullethawk" />
 
                     <LinearLayout
@@ -739,6 +756,7 @@
                             android:layout_weight="0.8"
                             android:adjustViewBounds="true"
                             android:alpha="0.5"
+                            android:contentDescription="@string/default_content_des"
                             android:src="@drawable/ic_likes_black_24dp" />
 
                         <View
@@ -775,6 +793,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:adjustViewBounds="true"
+                        android:contentDescription="@string/default_content_des"
                         android:src="@drawable/rotaract" />
 
                     <LinearLayout
@@ -817,6 +836,7 @@
                             android:layout_weight="0.8"
                             android:adjustViewBounds="true"
                             android:alpha="0.5"
+                            android:contentDescription="@string/default_content_des"
                             android:src="@drawable/ic_likes_black_24dp" />
 
                         <View
@@ -855,6 +875,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:adjustViewBounds="true"
+                            android:contentDescription="@string/default_content_des"
                             android:src="@drawable/enactus" />
                     </LinearLayout>
 
@@ -898,6 +919,7 @@
                             android:layout_weight="0.8"
                             android:adjustViewBounds="true"
                             android:alpha="0.5"
+                            android:contentDescription="@string/default_content_des"
                             android:src="@drawable/ic_likes_black_24dp" />
 
                         <View
@@ -937,6 +959,7 @@
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:adjustViewBounds="true"
+                            android:contentDescription="@string/default_content_des"
                             android:src="@drawable/aagaz" />
                     </LinearLayout>
 
@@ -980,6 +1003,7 @@
                             android:layout_weight="0.8"
                             android:adjustViewBounds="true"
                             android:alpha="0.5"
+                            android:contentDescription="@string/default_content_des"
                             android:src="@drawable/ic_likes_black_24dp" />
 
                         <View

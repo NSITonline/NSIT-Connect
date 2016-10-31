@@ -8,10 +8,10 @@ import android.database.sqlite.SQLiteOpenHelper;
  * Created by Swati garg on 30-06-2015.
  */
 public class DBhelp extends SQLiteOpenHelper {
+
     // If you change the database schema, you must increment the database version.
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "Attendance.db";
-
 
     private static final String INT_TYPE = " INT";
     private static final String TEXT_TYPE = " TEXT";
@@ -28,7 +28,6 @@ public class DBhelp extends SQLiteOpenHelper {
 
     private static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + TableEntry.TABLE_NAME;
-
 
     public DBhelp(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

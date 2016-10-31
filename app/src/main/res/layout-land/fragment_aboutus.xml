@@ -11,8 +11,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:baselineAligned="false">
+            android:baselineAligned="false"
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -51,6 +51,7 @@
                                 <ImageView
                                     android:layout_width="120dp"
                                     android:layout_height="120dp"
+                                    android:contentDescription="@string/default_content_des"
                                     android:src="@drawable/sidharth_patro" />
                             </FrameLayout>
 
@@ -86,6 +87,7 @@
                                         android:layout_height="20dp"
                                         android:layout_gravity="bottom"
                                         android:layout_marginTop="5dp"
+                                        android:contentDescription="@string/default_content_des"
                                         android:src="@drawable/linkedin" />
 
                                     <ImageView
@@ -95,6 +97,7 @@
                                         android:layout_gravity="bottom"
                                         android:layout_marginLeft="10dp"
                                         android:layout_marginTop="5dp"
+                                        android:contentDescription="@string/default_content_des"
                                         android:src="@drawable/facebook" />
 
                                     <ImageView
@@ -104,6 +107,7 @@
                                         android:layout_gravity="bottom"
                                         android:layout_marginLeft="10dp"
                                         android:layout_marginTop="5dp"
+                                        android:contentDescription="@string/default_content_des"
                                         android:src="@drawable/github1" />
                                 </LinearLayout>
 
@@ -129,6 +133,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginRight="5dp"
                                 android:alpha="0.6"
+                                android:contentDescription="@string/default_content_des"
                                 android:src="@drawable/ic_settings_black_24dp" />
 
                             <TextView
@@ -145,6 +150,7 @@
                                 android:layout_marginLeft="30dp"
                                 android:layout_marginRight="5dp"
                                 android:alpha="0.6"
+                                android:contentDescription="@string/default_content_des"
                                 android:src="@drawable/ic_brush_black_24dp" />
 
                             <TextView
@@ -206,6 +212,7 @@
                                 <ImageView
                                     android:layout_width="120dp"
                                     android:layout_height="120dp"
+                                    android:contentDescription="@string/default_content_des"
                                     android:src="@drawable/swati_garg" />
                             </FrameLayout>
 
@@ -242,6 +249,7 @@
                                         android:layout_height="20dp"
                                         android:layout_gravity="bottom"
                                         android:layout_marginTop="5dp"
+                                        android:contentDescription="@string/default_content_des"
                                         android:src="@drawable/linkedin" />
 
                                     <ImageView
@@ -251,6 +259,7 @@
                                         android:layout_gravity="bottom"
                                         android:layout_marginLeft="10dp"
                                         android:layout_marginTop="5dp"
+                                        android:contentDescription="@string/default_content_des"
                                         android:src="@drawable/facebook" />
 
 
@@ -261,6 +270,7 @@
                                         android:layout_gravity="bottom"
                                         android:layout_marginLeft="10dp"
                                         android:layout_marginTop="5dp"
+                                        android:contentDescription="@string/default_content_des"
                                         android:src="@drawable/github1" />
                                 </LinearLayout>
                             </LinearLayout>
@@ -285,6 +295,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginRight="5dp"
                                 android:alpha="0.6"
+                                android:contentDescription="@string/default_content_des"
                                 android:src="@drawable/ic_settings_black_24dp" />
 
                             <TextView
@@ -303,6 +314,7 @@
                                 android:layout_marginRight="5dp"
                                 android:alpha="0.6"
                                 android:baselineAlignBottom="false"
+                                android:contentDescription="@string/default_content_des"
                                 android:src="@drawable/ic_build_black_24dp" />
 
                             <TextView
@@ -332,8 +344,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:baselineAligned="false">
+            android:baselineAligned="false"
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -374,6 +386,7 @@
                                     android:id="@+id/image_prabhakr"
                                     android:layout_width="120dp"
                                     android:layout_height="120dp"
+                                    android:contentDescription="@string/default_content_des"
                                     android:src="@drawable/prabhakar" />
                             </FrameLayout>
 
@@ -409,6 +422,7 @@
                                         android:layout_height="20dp"
                                         android:layout_gravity="bottom"
                                         android:layout_marginTop="5dp"
+                                        android:contentDescription="@string/default_content_des"
                                         android:src="@drawable/linkedin" />
 
                                     <ImageView
@@ -418,6 +432,7 @@
                                         android:layout_gravity="bottom"
                                         android:layout_marginLeft="10dp"
                                         android:layout_marginTop="5dp"
+                                        android:contentDescription="@string/default_content_des"
                                         android:src="@drawable/facebook" />
 
 
@@ -428,6 +443,7 @@
                                         android:layout_gravity="bottom"
                                         android:layout_marginLeft="10dp"
                                         android:layout_marginTop="5dp"
+                                        android:contentDescription="@string/default_content_des"
                                         android:src="@drawable/github1" />
                                 </LinearLayout>
                             </LinearLayout>
@@ -452,6 +468,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginRight="5dp"
                                 android:alpha="0.6"
+                                android:contentDescription="@string/default_content_des"
                                 android:src="@drawable/ic_settings_black_24dp" />
 
                             <TextView
@@ -514,6 +531,7 @@
                                 <ImageView
                                     android:layout_width="120dp"
                                     android:layout_height="120dp"
+                                    android:contentDescription="@string/default_content_des"
                                     android:src="@drawable/chetan" />
                             </FrameLayout>
 
@@ -550,6 +568,7 @@
                                         android:layout_height="20dp"
                                         android:layout_gravity="bottom"
                                         android:layout_marginTop="5dp"
+                                        android:contentDescription="@string/default_content_des"
                                         android:src="@drawable/linkedin" />
 
                                     <ImageView
@@ -559,6 +578,7 @@
                                         android:layout_gravity="bottom"
                                         android:layout_marginLeft="10dp"
                                         android:layout_marginTop="5dp"
+                                        android:contentDescription="@string/default_content_des"
                                         android:src="@drawable/facebook" />
                                 </LinearLayout>
                             </LinearLayout>
@@ -583,6 +603,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginRight="5dp"
                                 android:alpha="0.6"
+                                android:contentDescription="@string/default_content_des"
                                 android:src="@drawable/ic_settings_black_24dp" />
 
                             <TextView
@@ -610,8 +631,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:baselineAligned="false">
+            android:baselineAligned="false"
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -650,6 +671,7 @@
                                 <ImageView
                                     android:layout_width="120dp"
                                     android:layout_height="120dp"
+                                    android:contentDescription="@string/default_content_des"
                                     android:src="@drawable/naman_maheshwari" />
                             </FrameLayout>
 
@@ -685,6 +707,7 @@
                                         android:layout_height="20dp"
                                         android:layout_gravity="bottom"
                                         android:layout_marginTop="5dp"
+                                        android:contentDescription="@string/default_content_des"
                                         android:src="@drawable/linkedin" />
 
                                     <ImageView
@@ -694,6 +717,7 @@
                                         android:layout_gravity="bottom"
                                         android:layout_marginLeft="10dp"
                                         android:layout_marginTop="5dp"
+                                        android:contentDescription="@string/default_content_des"
                                         android:src="@drawable/facebook" />
 
                                     <ImageView
@@ -703,6 +727,7 @@
                                         android:layout_gravity="bottom"
                                         android:layout_marginLeft="10dp"
                                         android:layout_marginTop="5dp"
+                                        android:contentDescription="@string/default_content_des"
                                         android:src="@drawable/github1" />
                                 </LinearLayout>
                             </LinearLayout>
@@ -727,6 +752,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginRight="5dp"
                                 android:alpha="0.6"
+                                android:contentDescription="@string/default_content_des"
                                 android:src="@drawable/ic_settings_black_24dp" />
 
                             <TextView
@@ -745,6 +771,7 @@
                                 android:layout_marginRight="5dp"
                                 android:alpha="0.6"
                                 android:baselineAlignBottom="false"
+                                android:contentDescription="@string/default_content_des"
                                 android:src="@drawable/ic_build_black_24dp" />
 
                             <TextView
@@ -805,6 +832,7 @@
                                 <ImageView
                                     android:layout_width="120dp"
                                     android:layout_height="120dp"
+                                    android:contentDescription="@string/default_content_des"
                                     android:src="@drawable/sagar_aggarwal" />
                             </FrameLayout>
 
@@ -840,6 +868,7 @@
                                         android:layout_height="20dp"
                                         android:layout_gravity="bottom"
                                         android:layout_marginTop="5dp"
+                                        android:contentDescription="@string/default_content_des"
                                         android:src="@drawable/linkedin" />
 
                                     <ImageView
@@ -849,6 +878,7 @@
                                         android:layout_gravity="bottom"
                                         android:layout_marginLeft="10dp"
                                         android:layout_marginTop="5dp"
+                                        android:contentDescription="@string/default_content_des"
                                         android:src="@drawable/facebook" />
 
                                     <ImageView
@@ -858,6 +888,7 @@
                                         android:layout_gravity="bottom"
                                         android:layout_marginLeft="10dp"
                                         android:layout_marginTop="5dp"
+                                        android:contentDescription="@string/default_content_des"
                                         android:src="@drawable/github1" />
                                 </LinearLayout>
                             </LinearLayout>
@@ -882,6 +913,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginRight="5dp"
                                 android:alpha="0.6"
+                                android:contentDescription="@string/default_content_des"
                                 android:src="@drawable/ic_settings_black_24dp" />
 
                             <TextView
@@ -900,6 +932,7 @@
                                 android:layout_marginRight="5dp"
                                 android:alpha="0.6"
                                 android:baselineAlignBottom="false"
+                                android:contentDescription="@string/default_content_des"
                                 android:src="@drawable/ic_build_black_24dp" />
 
                             <TextView
@@ -927,8 +960,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:baselineAligned="false">
+            android:baselineAligned="false"
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -969,6 +1002,7 @@
                                 <ImageView
                                     android:layout_width="120dp"
                                     android:layout_height="120dp"
+                                    android:contentDescription="@string/default_content_des"
                                     android:src="@drawable/saisumit_vohra" />
                             </FrameLayout>
 
@@ -1004,6 +1038,7 @@
                                         android:layout_height="20dp"
                                         android:layout_gravity="bottom"
                                         android:layout_marginTop="5dp"
+                                        android:contentDescription="@string/default_content_des"
                                         android:src="@drawable/linkedin" />
 
                                     <ImageView
@@ -1013,6 +1048,7 @@
                                         android:layout_gravity="bottom"
                                         android:layout_marginLeft="10dp"
                                         android:layout_marginTop="5dp"
+                                        android:contentDescription="@string/default_content_des"
                                         android:src="@drawable/facebook" />
 
                                     <ImageView
@@ -1022,6 +1058,7 @@
                                         android:layout_gravity="bottom"
                                         android:layout_marginLeft="10dp"
                                         android:layout_marginTop="5dp"
+                                        android:contentDescription="@string/default_content_des"
                                         android:src="@drawable/github1" />
                                 </LinearLayout>
                             </LinearLayout>
@@ -1046,6 +1083,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginRight="5dp"
                                 android:alpha="0.6"
+                                android:contentDescription="@string/default_content_des"
                                 android:src="@drawable/ic_settings_black_24dp" />
 
                             <TextView
@@ -1064,6 +1102,7 @@
                                 android:layout_marginRight="5dp"
                                 android:alpha="0.6"
                                 android:baselineAlignBottom="false"
+                                android:contentDescription="@string/default_content_des"
                                 android:src="@drawable/ic_build_black_24dp" />
 
                             <TextView
@@ -1126,6 +1165,7 @@
                                 <ImageView
                                     android:layout_width="120dp"
                                     android:layout_height="120dp"
+                                    android:contentDescription="@string/default_content_des"
                                     android:src="@drawable/ayush_verma" />
                             </FrameLayout>
 
@@ -1161,6 +1201,7 @@
                                         android:layout_height="20dp"
                                         android:layout_gravity="bottom"
                                         android:layout_marginTop="5dp"
+                                        android:contentDescription="@string/default_content_des"
                                         android:src="@drawable/linkedin" />
 
                                     <ImageView
@@ -1170,6 +1211,7 @@
                                         android:layout_gravity="bottom"
                                         android:layout_marginLeft="10dp"
                                         android:layout_marginTop="5dp"
+                                        android:contentDescription="@string/default_content_des"
                                         android:src="@drawable/facebook" />
 
                                     <ImageView
@@ -1179,6 +1221,7 @@
                                         android:layout_gravity="bottom"
                                         android:layout_marginLeft="10dp"
                                         android:layout_marginTop="5dp"
+                                        android:contentDescription="@string/default_content_des"
                                         android:src="@drawable/github1" />
                                 </LinearLayout>
                             </LinearLayout>
@@ -1203,6 +1246,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginRight="5dp"
                                 android:alpha="0.6"
+                                android:contentDescription="@string/default_content_des"
                                 android:src="@drawable/ic_settings_black_24dp" />
 
                             <TextView
@@ -1221,6 +1265,7 @@
                                 android:layout_marginRight="5dp"
                                 android:alpha="0.6"
                                 android:baselineAlignBottom="false"
+                                android:contentDescription="@string/default_content_des"
                                 android:src="@drawable/ic_build_black_24dp" />
 
                             <TextView
@@ -1252,8 +1297,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:baselineAligned="false">
+            android:baselineAligned="false"
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -1294,6 +1339,7 @@
                                 <ImageView
                                     android:layout_width="100dp"
                                     android:layout_height="100dp"
+                                    android:contentDescription="@string/default_content_des"
                                     android:src="@drawable/github_logo" />
 
                                 <ImageView
@@ -1301,6 +1347,7 @@
                                     android:layout_width="30dp"
                                     android:layout_height="30dp"
                                     android:layout_gravity="center_vertical"
+                                    android:contentDescription="@string/default_content_des"
                                     android:src="@drawable/github" />
 
                                 <TextView
@@ -1326,8 +1373,8 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="start"
-                                    android:layout_marginStart="10dp"
                                     android:layout_marginLeft="10dp"
+                                    android:layout_marginStart="10dp"
                                     android:padding="10dp"
                                     android:text="@string/contribute_message"
                                     android:textAppearance="?android:attr/textAppearanceLarge"

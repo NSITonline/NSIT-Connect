@@ -31,7 +31,7 @@ import nsit.app.com.nsitapp.helper.AppPermissionChecker;
 /**
  * Created by Sidharth Patro on 21-Jun-15.
  */
-public class Hangout_collegeLocations extends BaseActivity implements Constant {
+public class HangoutCollegeLocations extends BaseActivity implements Constant {
 
     public static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
     private ArrayList<LocationGroup> LocationsGroupsList = new ArrayList<>();
@@ -53,7 +53,7 @@ public class Hangout_collegeLocations extends BaseActivity implements Constant {
             public boolean onChildClick(ExpandableListView parent, final View v,
                                         final int groupPosition, final int childPosition, long id) {
                 ButtonAnimation btnAnimation = new ButtonAnimation();
-                btnAnimation.animateButton(v, Hangout_collegeLocations.this);
+                btnAnimation.animateButton(v, HangoutCollegeLocations.this);
                 String groupType = LocationsGroupsList.get(groupPosition).GroupType;
                 Integer IconId = null;
                 switch (groupType) {
@@ -131,15 +131,15 @@ public class Hangout_collegeLocations extends BaseActivity implements Constant {
 
 
     private void ShowOnMap(View view, Location LocationItem, Integer GroupItem){
-        Intent myIntent = new Intent(view.getContext(),Hangout_CollegeLocationMapView.class);
+        Intent myIntent = new Intent(view.getContext(),HangoutCollegeLocationMapView.class);
         myIntent.putExtra(LOCATION_NAME, LocationItem.Name);
         myIntent.putExtra(LOCATION_LAT, String.valueOf(LocationItem.Coord.latitude));
         myIntent.putExtra(LOCATION_LON, String.valueOf(LocationItem.Coord.longitude));
         myIntent.putExtra(LOCATION_ICON, GroupItem);
-        Hangout_collegeLocations.this.startActivity(myIntent);
+        HangoutCollegeLocations.this.startActivity(myIntent);
     }
 
-    // Hangout_collegeLocations' data and definitions go below...
+    // HangoutCollegeLocations' data and definitions go below...
     class LocationGroup{
         String GroupHeader;
         String GroupType;
@@ -240,8 +240,8 @@ public class Hangout_collegeLocations extends BaseActivity implements Constant {
     public class LocationsList_Adapter extends BaseExpandableListAdapter {
 
         Context context;
-        ArrayList<Hangout_collegeLocations.LocationGroup> LocationItems = new ArrayList<>();
-        ArrayList<Hangout_collegeLocations.Location> LocationGroupItems = new ArrayList<>();
+        ArrayList<HangoutCollegeLocations.LocationGroup> LocationItems = new ArrayList<>();
+        ArrayList<HangoutCollegeLocations.Location> LocationGroupItems = new ArrayList<>();
         public int groupClicked;
 
         private  LayoutInflater inflater = null;
@@ -273,7 +273,7 @@ public class Hangout_collegeLocations extends BaseActivity implements Constant {
         }
 
         @Override
-        public Hangout_collegeLocations.LocationGroup getGroup(int groupPosition) {
+        public HangoutCollegeLocations.LocationGroup getGroup(int groupPosition) {
             return LocationItems.get(groupPosition);
         }
 
@@ -299,7 +299,7 @@ public class Hangout_collegeLocations extends BaseActivity implements Constant {
 
         @Override
         public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
-            Hangout_collegeLocations.LocationGroup LocGroup = getGroup(groupPosition);
+            HangoutCollegeLocations.LocationGroup LocGroup = getGroup(groupPosition);
             String headerTitle = LocGroup.GroupHeader;
             String groupType = LocGroup.GroupType;
             listView = (ExpandableListView) parent;
@@ -350,7 +350,7 @@ public class Hangout_collegeLocations extends BaseActivity implements Constant {
 
         @Override
         public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
-            final String childText = ((Hangout_collegeLocations.Location) getChild(groupPosition, childPosition)).Name;
+            final String childText = ((HangoutCollegeLocations.Location) getChild(groupPosition, childPosition)).Name;
 
             if (convertView == null) {
                 LayoutInflater infalInflater = (LayoutInflater) this.context

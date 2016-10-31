@@ -71,7 +71,7 @@ public class Professors extends Fragment implements
         View rootView = inflater.inflate(R.layout.fragment_prof, container, false);
 
 
-        rowItems = new ArrayList<RowItem>();
+        rowItems = new ArrayList<>();
 
         int len1 = titles.length;
         for (int i = 0; i < len1; i++) {

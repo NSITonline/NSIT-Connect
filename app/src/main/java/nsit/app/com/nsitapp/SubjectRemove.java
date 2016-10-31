@@ -37,9 +37,9 @@ import functions.TableEntry;
 
 public class SubjectRemove extends AppCompatActivity {
 
-    private ArrayList<String> list1 = new ArrayList<String>();
-    private ArrayList<String> list2 = new ArrayList<String>();
-    private ArrayList<String> list3 = new ArrayList<String>();
+    private ArrayList<String> list1 = new ArrayList<>();
+    private ArrayList<String> list2 = new ArrayList<>();
+    private ArrayList<String> list3 = new ArrayList<>();
     Button b;
 
     @Override

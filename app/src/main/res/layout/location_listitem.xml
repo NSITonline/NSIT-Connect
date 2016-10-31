@@ -1,52 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:layout_gravity="center_horizontal"
-android:background="@drawable/shadow_1"
-xmlns:android="http://schemas.android.com/apk/res/android"
-android:gravity="center_horizontal"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:background="@drawable/shadow_1"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
     android:showDividers="none">
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_gravity="center_horizontal"
         android:background="#ffffffff"
+        android:orientation="horizontal"
         android:paddingLeft="10dp"
-        android:paddingTop="20dp"
         android:paddingRight="10dp"
+        android:paddingTop="20dp"
 
         >
 
 
         <TextView
+            android:id="@+id/LocationsGroupHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="10dp"
+            android:text="Location group"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textSize="17sp"
-            android:layout_gravity="left"
-            android:text="Location group"
-            android:textStyle="bold"
-            android:layout_marginBottom="30dp"
-            android:id="@+id/LocationsGroupHeader"
-            android:layout_marginLeft="10dp" />
+            android:textStyle="bold" />
 
 
         <ImageView
+            android:id="@+id/GroupTypeImage"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:id="@+id/GroupTypeImage"
+            android:layout_gravity="right"
             android:layout_marginRight="20dp"
             android:alpha="0.5"
-            android:layout_gravity="right"
-            />
+            android:contentDescription="@string/default_content_des" />
 
 
     </FrameLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="5dp"
-        android:background="@color/colorPrimary"/>
+        android:background="@color/colorPrimary" />
 </LinearLayout>

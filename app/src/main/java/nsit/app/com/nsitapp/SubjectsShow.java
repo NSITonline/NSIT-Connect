@@ -43,8 +43,8 @@ import functions.TableEntry;
 
 
 public class SubjectsShow extends AppCompatActivity implements Constant {
-    private ArrayList<String> list1 = new ArrayList<String>();
-    private ArrayList<String> list2 = new ArrayList<String>();
+    private ArrayList<String> list1 = new ArrayList<>();
+    private ArrayList<String> list2 = new ArrayList<>();
     Button b;
     private CustomList_subjects a;
 

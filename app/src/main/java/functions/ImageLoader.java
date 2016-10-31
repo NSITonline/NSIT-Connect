@@ -2,12 +2,14 @@ package functions;
 
 /**
  * Created by Swati garg on 04-06-2015.
+ * Displayimages in imageView and create a cahced copy
  */
 
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -26,7 +28,6 @@ import java.util.WeakHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-
 public class ImageLoader {
 
     private MemoryCache memoryCache = new MemoryCache();
@@ -40,6 +41,12 @@ public class ImageLoader {
         executorService = Executors.newFixedThreadPool(5);
     }
 
+    /**
+     * Display image in imageView
+     * @param url           URL of image to be displayed
+     * @param imageView     ImageView in which imageview is displayed
+     * @param p2            progress bar to hide afterimage is loaded
+     */
     public void DisplayImage(String url, ImageView imageView, ProgressBar p2) {
         p = p2;
         imageViews.put(imageView, url);
@@ -114,6 +121,7 @@ public class ImageLoader {
             o2.inSampleSize = scale;
             return BitmapFactory.decodeStream(new FileInputStream(f), null, o2);
         } catch (FileNotFoundException e) {
+            Log.e("ERROR ", e.getMessage());
         }
         return null;
     }
@@ -121,17 +129,17 @@ public class ImageLoader {
     //Task for the queue
     private class PhotoToLoad {
         public String url;
-        public ImageView imageView;
+        ImageView imageView;
         ProgressBar p;
 
-        public PhotoToLoad(String u, ImageView i, ProgressBar p2) {
+        PhotoToLoad(String u, ImageView i, ProgressBar p2) {
             url = u;
             imageView = i;
             p = p2;
         }
     }
 
-    class PhotosLoader implements Runnable {
+    private class PhotosLoader implements Runnable {
         PhotoToLoad photoToLoad;
 
         PhotosLoader(PhotoToLoad photoToLoad) {
@@ -158,11 +166,11 @@ public class ImageLoader {
     }
 
     //Used to display bitmap in the UI thread
-    class BitmapDisplayer implements Runnable {
+    private class BitmapDisplayer implements Runnable {
         Bitmap bitmap;
         PhotoToLoad photoToLoad;
 
-        public BitmapDisplayer(Bitmap b, PhotoToLoad p) {
+        BitmapDisplayer(Bitmap b, PhotoToLoad p) {
             bitmap = b;
             photoToLoad = p;
         }

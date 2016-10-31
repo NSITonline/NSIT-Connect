@@ -16,9 +16,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -90,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
                     R.string.app_name  /* "close drawer" description */
             );
         } catch (Exception e) {
+            Log.e("ERROR ", e.getMessage());
         }
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -103,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             mDrawerLayout.setDrawerListener(mDrawerToggle);
         } catch (Exception e) {
-
+            Log.e("ERROR ", e.getMessage());
         }
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -133,10 +134,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (mDrawerToggle.onOptionsItemSelected(item)) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+        return mDrawerToggle.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -182,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
                 getSupportActionBar().setTitle("Video");
                 break;
             case 4:
-                f = new Calender();
+                f = new Calendar();
                 getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 ft.replace(R.id.content_frame, f);
                 getSupportActionBar().setTitle("Time Table");

@@ -12,18 +12,18 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="#ffffff"
+        android:baselineAligned="false"
         android:orientation="horizontal"
-        android:padding="8dp"
-        android:baselineAligned="false">
+        android:padding="8dp">
 
         <FrameLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginBottom="10dp"
             android:layout_weight="1"
             android:background="#ffffff"
             android:orientation="horizontal"
-            android:layout_gravity="center"
             android:padding="5dp">
 
             <LinearLayout
@@ -134,6 +134,7 @@
                             android:layout_width="20dp"
                             android:layout_height="20dp"
                             android:layout_marginRight="5dp"
+                            android:contentDescription="@string/default_content_des"
                             android:src="@drawable/ic_add_white_24dp" />
 
                         <TextView
@@ -172,6 +173,7 @@
                             android:layout_width="20dp"
                             android:layout_height="20dp"
                             android:layout_marginRight="5dp"
+                            android:contentDescription="@string/default_content_des"
                             android:src="@drawable/ic_subject_white_24dp" />
 
                         <TextView
@@ -197,5 +199,5 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="5dp"
-        android:background="@color/colorPrimary"/>
+        android:background="@color/colorPrimary" />
 </LinearLayout>

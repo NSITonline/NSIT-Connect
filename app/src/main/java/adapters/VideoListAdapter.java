@@ -34,13 +34,13 @@ import nsit.app.com.nsitapp.R;
 /**
  * Created by Sidharth Patro on 22-Jun-15.
  */
-public class VideoList_Adapter extends BaseAdapter {
+public class VideoListAdapter extends BaseAdapter {
 
     private JSONArray FeedItems;
     private ImageLoader imageLoader;
     private static LayoutInflater inflater = null;
 
-    public VideoList_Adapter(Context context, JSONArray FeedItems) {
+    public VideoListAdapter(Context context, JSONArray FeedItems) {
         this.FeedItems = FeedItems;
         imageLoader = new ImageLoader(context.getApplicationContext());
 
@@ -50,13 +50,11 @@ public class VideoList_Adapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        // TODO Auto-generated method stub
         return FeedItems.length();
     }
 
     @Override
     public Object getItem(int position) {
-        // TODO Auto-generated method stub
         try {
             return FeedItems.getJSONObject(position);
         } catch (JSONException e) {
@@ -202,8 +200,6 @@ public class VideoList_Adapter extends BaseAdapter {
         set.addAnimation(fade);
         vi.startAnimation(set);
 
-
         return vi;
     }
-
 }

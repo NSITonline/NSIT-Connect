@@ -38,33 +38,60 @@ public class OnlineJudge {
     };
 
     public static int getIcon(String source) {
-        if (source.equals(CODEFORCES)) return R.drawable.codeforces_logo;
-        else if (source.equals(TOPCODER)) return R.drawable.topcoder_logo;
-        else if (source.equals(CODECHEF)) return R.drawable.codechef_logo;
-        else if (source.equals(HACKERRANK)) return R.drawable.hackerrank_logo;
-        else if (source.equals(URIOJ)) return R.drawable.uri_logo;
-        else if (source.equals(HACKEREARTH)) return R.drawable.hackerearth_logo;
-        else return R.drawable.unknown_logo;
+        switch (source) {
+            case CODEFORCES:
+                return R.drawable.codeforces_logo;
+            case TOPCODER:
+                return R.drawable.topcoder_logo;
+            case CODECHEF:
+                return R.drawable.codechef_logo;
+            case HACKERRANK:
+                return R.drawable.hackerrank_logo;
+            case URIOJ:
+                return R.drawable.uri_logo;
+            case HACKEREARTH:
+                return R.drawable.hackerearth_logo;
+            default:
+                return R.drawable.unknown_logo;
+        }
     }
 
     public static int getCover(String source) {
-        if (source.equals(CODEFORCES)) return R.drawable.hackerrank_cover;
-        else if (source.equals(TOPCODER)) return R.drawable.topcoder_cover;
-        else if (source.equals(CODECHEF)) return R.drawable.codechef_cover;
-        else if (source.equals(HACKERRANK)) return R.drawable.hackerrank_cover;
-        else if (source.equals(URIOJ)) return R.drawable.hackerrank_cover;
-        else if (source.equals(HACKEREARTH)) return R.drawable.hackerearth_cover;
-        else return R.drawable.hackerrank_cover;
+        switch (source) {
+            case CODEFORCES:
+                return R.drawable.hackerrank_cover;
+            case TOPCODER:
+                return R.drawable.topcoder_cover;
+            case CODECHEF:
+                return R.drawable.codechef_cover;
+            case HACKERRANK:
+                return R.drawable.hackerrank_cover;
+            case URIOJ:
+                return R.drawable.hackerrank_cover;
+            case HACKEREARTH:
+                return R.drawable.hackerearth_cover;
+            default:
+                return R.drawable.hackerrank_cover;
+        }
     }
 
     public static int getColor(String source) {
-        if (source.equals(CODEFORCES)) return R.color.codeforces;
-        else if (source.equals(TOPCODER)) return R.color.topcoder;
-        else if (source.equals(CODECHEF)) return R.color.codechef;
-        else if (source.equals(HACKERRANK)) return R.color.hackerrank;
-        else if (source.equals(URIOJ)) return R.color.urioj;
-        else if (source.equals(HACKEREARTH)) return R.color.hackerearth;
-        else return R.color.hackerrank;
+        switch (source) {
+            case CODEFORCES:
+                return R.color.codeforces;
+            case TOPCODER:
+                return R.color.topcoder;
+            case CODECHEF:
+                return R.color.codechef;
+            case HACKERRANK:
+                return R.color.hackerrank;
+            case URIOJ:
+                return R.color.urioj;
+            case HACKEREARTH:
+                return R.color.hackerearth;
+            default:
+                return R.color.hackerrank;
+        }
     }
 
     private String mName;

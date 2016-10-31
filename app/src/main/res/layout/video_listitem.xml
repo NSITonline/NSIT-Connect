@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
@@ -27,7 +26,8 @@
                 android:id="@+id/VideoThumbnail"
                 android:layout_width="match_parent"
                 android:layout_height="175dp"
-                android:background="#000000" />
+                android:background="#000000"
+                android:contentDescription="@string/default_content_des" />
         </FrameLayout>
 
 
@@ -58,6 +58,7 @@
                     android:adjustViewBounds="false"
                     android:background="@drawable/ic_play_arrow_white_24dp"
                     android:clickable="false"
+                    android:contentDescription="@string/default_content_des"
                     android:duplicateParentState="true"
                     android:focusable="false"
                     android:scaleType="fitXY" />

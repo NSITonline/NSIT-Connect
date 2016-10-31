@@ -1,9 +1,9 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/content_frame"
-    android:background="#ffffff"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:animateLayoutChanges="true">
+    android:animateLayoutChanges="true"
+    android:background="#ffffff">
 
 
     <ScrollView
@@ -11,338 +11,357 @@
         android:layout_height="wrap_content">
 
 
-
         <LinearLayout
             android:layout_width="fill_parent"
-            android:orientation="vertical"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:paddingTop="30dp">
 
 
             <LinearLayout
                 android:layout_width="fill_parent"
-                android:orientation="horizontal"
                 android:layout_height="wrap_content"
-                android:baselineAligned="false">
+                android:baselineAligned="false"
+                android:orientation="horizontal">
 
                 <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
                     android:layout_weight="0.5"
-                    android:orientation="vertical"
-                    android:background="@drawable/shadow_1">
+                    android:background="@drawable/shadow_1"
+                    android:orientation="vertical">
+
                     <LinearLayout
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content">
+
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/collegespace"
-                            android:adjustViewBounds="true"/>
+                            android:adjustViewBounds="true"
+                            android:contentDescription="@string/default_content_des"
+                            android:src="@drawable/collegespace" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="10dp"
-                        android:background="@color/colorPrimary">
+                        android:background="@color/colorPrimary"
+                        android:padding="10dp">
+
                         <TextView
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
+                            android:gravity="center"
                             android:text="COLLEGESPACE"
-                            android:textStyle="bold"
-                            android:textSize="15sp"
                             android:textColor="#ffffff"
-                            android:gravity="center"/>
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:paddingTop="10dp"
                         android:paddingBottom="10dp"
-                        >
+                        android:paddingTop="10dp">
 
                         <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:textSize="15sp"
-                            android:layout_marginLeft="10dp"
-                            android:layout_weight="1.2"
                             android:id="@+id/likes_collegespace"
-                            android:text="..." />
-                        <ImageView
-                            android:layout_width="0dp"
-                            android:layout_weight="0.8"
-                            android:layout_height="20dp"
-                            android:layout_gravity="center"
-                            android:adjustViewBounds="true"
-                            android:src="@drawable/ic_likes_black_24dp"
-                            android:alpha="0.5"/>
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content"
-                            />
-
-                        <CheckBox
-
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_gravity="center"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/check_collegespace"/>
-
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:orientation="vertical"
-                    android:background="@drawable/shadow_1">
-                    <LinearLayout
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content">
-                        <ImageView
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/crosslinks"
-                            android:adjustViewBounds="true"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="10dp"
-                        android:background="@color/colorPrimary">
-                        <TextView
-                            android:layout_width="fill_parent"
-                            android:layout_height="fill_parent"
-                            android:text="CROSSLINKS"
-                            android:textSize="15sp"
-                            android:textStyle="bold"
-                            android:textColor="#ffffff"
-                            android:gravity="center"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:paddingTop="10dp"
-                        android:paddingBottom="10dp"
-                        >
-
-                        <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textSize="15sp"
                             android:layout_marginLeft="10dp"
                             android:layout_weight="1.2"
-                            android:id="@+id/likes_crosslinks"
-                            android:text="..." />
+                            android:text="..."
+                            android:textSize="15sp" />
+
                         <ImageView
                             android:layout_width="0dp"
-                            android:layout_weight="0.8"
                             android:layout_height="20dp"
                             android:layout_gravity="center"
-                            android:adjustViewBounds="true"
-                            android:src="@drawable/ic_likes_black_24dp"
-                            android:alpha="0.5"/>
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content"
-                            />
-
-                        <CheckBox
-
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_gravity="center"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/check_crosslinks"/>
-
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp"
-                android:layout_height="wrap_content"
-                android:baselineAligned="false">
-
-                <LinearLayout
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:orientation="vertical"
-                    android:background="@drawable/shadow_1">
-                    <LinearLayout
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content">
-                        <ImageView
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/csi"
-                            android:adjustViewBounds="true"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="10dp"
-                        android:background="@color/colorPrimary">
-                        <TextView
-                            android:layout_width="fill_parent"
-                            android:layout_height="fill_parent"
-                            android:text="CSI NSIT"
-                            android:textStyle="bold"
-                            android:textSize="15sp"
-                            android:textColor="#ffffff"
-                            android:gravity="center"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:paddingTop="10dp"
-                        android:paddingBottom="10dp"
-                        >
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:textSize="15sp"
-                            android:layout_marginLeft="10dp"
-                            android:layout_weight="1.2"
-                            android:id="@+id/likes_csi"
-                            android:text="..." />
-                        <ImageView
-                            android:layout_width="0dp"
                             android:layout_weight="0.8"
-                            android:layout_height="20dp"
-                            android:layout_gravity="center"
                             android:adjustViewBounds="true"
-                            android:src="@drawable/ic_likes_black_24dp"
                             android:alpha="0.5"
-                            />
+                            android:contentDescription="@string/default_content_des"
+                            android:src="@drawable/ic_likes_black_24dp" />
+
                         <View
                             android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="match_parent"
-                            />
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
 
                         <CheckBox
 
+                            android:id="@+id/check_collegespace"
                             android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_gravity="center"
                             android:layout_height="wrap_content"
-                            android:id="@+id/check_csi"/>
+                            android:layout_gravity="center"
+                            android:layout_weight="1" />
 
 
                     </LinearLayout>
 
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/shadow_1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:adjustViewBounds="true"
+                            android:contentDescription="@string/default_content_des"
+                            android:src="@drawable/crosslinks" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorPrimary"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:gravity="center"
+                            android:text="CROSSLINKS"
+                            android:textColor="#ffffff"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp">
+
+                        <TextView
+                            android:id="@+id/likes_crosslinks"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1.2"
+                            android:text="..."
+                            android:textSize="15sp" />
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.8"
+                            android:adjustViewBounds="true"
+                            android:alpha="0.5"
+                            android:contentDescription="@string/default_content_des"
+                            android:src="@drawable/ic_likes_black_24dp" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+
+                        <CheckBox
+
+                            android:id="@+id/check_crosslinks"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1" />
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/shadow_1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:adjustViewBounds="true"
+                            android:contentDescription="@string/default_content_des"
+                            android:src="@drawable/csi" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorPrimary"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:gravity="center"
+                            android:text="CSI NSIT"
+                            android:textColor="#ffffff"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp">
+
+                        <TextView
+                            android:id="@+id/likes_csi"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1.2"
+                            android:text="..."
+                            android:textSize="15sp" />
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.8"
+                            android:adjustViewBounds="true"
+                            android:alpha="0.5"
+                            android:contentDescription="@string/default_content_des"
+                            android:src="@drawable/ic_likes_black_24dp" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1" />
+
+                        <CheckBox
+
+                            android:id="@+id/check_csi"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1" />
+
+
+                    </LinearLayout>
 
 
                 </LinearLayout>
 
                 <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
                     android:layout_weight="0.5"
-                    android:orientation="vertical"
-                    android:background="@drawable/shadow_1">
+                    android:background="@drawable/shadow_1"
+                    android:orientation="vertical">
+
                     <LinearLayout
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content">
+
                         <ImageView
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/ieee"
-                            android:adjustViewBounds="true"/>
+                            android:adjustViewBounds="true"
+                            android:contentDescription="@string/default_content_des"
+                            android:src="@drawable/ieee" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="10dp"
-                        android:background="@color/colorPrimary">
+                        android:background="@color/colorPrimary"
+                        android:padding="10dp">
+
                         <TextView
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
+                            android:gravity="center"
                             android:text="IEEE NSIT"
-                            android:textSize="15sp"
-                            android:textStyle="bold"
                             android:textColor="#ffffff"
-                            android:gravity="center"/>
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:paddingTop="10dp"
                         android:paddingBottom="10dp"
-                        >
+                        android:paddingTop="10dp">
 
                         <TextView
+                            android:id="@+id/likes_ieee"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:text="..."
-                            android:textSize="15sp"
                             android:layout_marginLeft="10dp"
                             android:layout_weight="1.2"
-                            android:id="@+id/likes_ieee"/>
+                            android:text="..."
+                            android:textSize="15sp" />
+
                         <ImageView
                             android:layout_width="0dp"
-                            android:layout_weight="0.8"
                             android:layout_height="20dp"
                             android:layout_gravity="center"
+                            android:layout_weight="0.8"
                             android:adjustViewBounds="true"
-                            android:src="@drawable/ic_likes_black_24dp"
-                            android:alpha="0.5"/>
+                            android:alpha="0.5"
+                            android:contentDescription="@string/default_content_des"
+                            android:src="@drawable/ic_likes_black_24dp" />
+
                         <View
                             android:layout_width="0dp"
-                            android:layout_weight="1"
                             android:layout_height="match_parent"
-                            />
+                            android:layout_weight="1" />
 
                         <CheckBox
 
+                            android:id="@+id/check_ieee"
                             android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_gravity="center"
                             android:layout_height="wrap_content"
-                            android:id="@+id/check_ieee"/>
+                            android:layout_gravity="center"
+                            android:layout_weight="1" />
 
 
                     </LinearLayout>
@@ -350,87 +369,90 @@
                 </LinearLayout>
 
 
-
-
             </LinearLayout>
 
 
             <LinearLayout
                 android:layout_width="fill_parent"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp"
                 android:layout_height="wrap_content"
-                android:baselineAligned="false">
+                android:layout_marginTop="10dp"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
 
 
                 <LinearLayout
-                    android:layout_gravity="center"
-                    android:gravity="center"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:layout_height="wrap_content"
                     android:layout_weight="0.5"
-                    android:orientation="vertical"
-                    android:background="@drawable/shadow_1">
+                    android:background="@drawable/shadow_1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:adjustViewBounds="true"
-                        android:src="@drawable/ashwamedh"/>
+                        android:contentDescription="@string/default_content_des"
+                        android:src="@drawable/ashwamedh" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="10dp"
-                        android:background="@color/colorPrimary">
+                        android:background="@color/colorPrimary"
+                        android:padding="10dp">
+
                         <TextView
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
+                            android:gravity="center"
                             android:text="ASHWAMEDH"
-                            android:textStyle="bold"
-                            android:textSize="15sp"
                             android:textColor="#ffffff"
-                            android:gravity="center"/>
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:paddingTop="10dp"
                         android:paddingBottom="10dp"
-                        >
+                        android:paddingTop="10dp">
 
                         <TextView
+                            android:id="@+id/likes_ashwa"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:text="..."
-                            android:textSize="15sp"
                             android:layout_marginLeft="10dp"
                             android:layout_weight="1.2"
-                            android:id="@+id/likes_ashwa"/>
+                            android:text="..."
+                            android:textSize="15sp" />
+
                         <ImageView
                             android:layout_width="0dp"
-                            android:layout_weight="0.8"
                             android:layout_height="20dp"
                             android:layout_gravity="center"
+                            android:layout_weight="0.8"
                             android:adjustViewBounds="true"
-                            android:src="@drawable/ic_likes_black_24dp"
-                            android:alpha="0.5"/>
+                            android:alpha="0.5"
+                            android:contentDescription="@string/default_content_des"
+                            android:src="@drawable/ic_likes_black_24dp" />
+
                         <View
                             android:layout_width="0dp"
-                            android:layout_weight="1"
                             android:layout_height="wrap_content"
-                            />
+                            android:layout_weight="1" />
 
                         <CheckBox
 
+                            android:id="@+id/check_ashwa"
                             android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_gravity="center"
                             android:layout_height="wrap_content"
-                            android:id="@+id/check_ashwa"/>
+                            android:layout_gravity="center"
+                            android:layout_weight="1" />
 
 
                     </LinearLayout>
@@ -438,75 +460,79 @@
                 </LinearLayout>
 
 
-
                 <LinearLayout
-                    android:layout_gravity="center"
-                    android:gravity="center"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:layout_height="wrap_content"
                     android:layout_weight="0.5"
-                    android:orientation="vertical"
-                    android:background="@drawable/shadow_1">
+                    android:background="@drawable/shadow_1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:adjustViewBounds="true"
-                        android:src="@drawable/junoon"/>
+                        android:contentDescription="@string/default_content_des"
+                        android:src="@drawable/junoon" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="10dp"
-                        android:background="@color/colorPrimary">
+                        android:background="@color/colorPrimary"
+                        android:padding="10dp">
+
                         <TextView
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
+                            android:gravity="center"
                             android:text="JUNOON"
-                            android:textStyle="bold"
-                            android:textSize="15sp"
                             android:textColor="#ffffff"
-                            android:gravity="center"/>
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:paddingTop="10dp"
                         android:paddingBottom="10dp"
-                        >
+                        android:paddingTop="10dp">
 
                         <TextView
+                            android:id="@+id/likes_junoon"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1.2"
                             android:text="2,123"
-                            android:textSize="15sp"
-                            android:layout_marginLeft="10dp"
-                            android:layout_weight="1.2"
-                            android:id="@+id/likes_junoon"/>
+                            android:textSize="15sp" />
+
                         <ImageView
                             android:layout_width="0dp"
-                            android:layout_weight="0.8"
                             android:layout_height="20dp"
                             android:layout_gravity="center"
+                            android:layout_weight="0.8"
                             android:adjustViewBounds="true"
-                            android:src="@drawable/ic_likes_black_24dp"
-                            android:alpha="0.5"/>
+                            android:alpha="0.5"
+                            android:contentDescription="@string/default_content_des"
+                            android:src="@drawable/ic_likes_black_24dp" />
+
                         <View
                             android:layout_width="0dp"
-                            android:layout_weight="1"
                             android:layout_height="wrap_content"
-                            />
+                            android:layout_weight="1" />
 
                         <CheckBox
 
+                            android:id="@+id/check_junoon"
                             android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_gravity="center"
                             android:layout_height="wrap_content"
-                            android:id="@+id/check_junoon"/>
+                            android:layout_gravity="center"
+                            android:layout_weight="1" />
 
 
                     </LinearLayout>
@@ -517,80 +543,85 @@
 
             <LinearLayout
                 android:layout_width="fill_parent"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp"
                 android:layout_height="wrap_content"
-                android:baselineAligned="false">
+                android:layout_marginTop="10dp"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
 
 
                 <LinearLayout
-                    android:layout_gravity="center"
-                    android:gravity="center"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:layout_height="wrap_content"
                     android:layout_weight="0.5"
-                    android:orientation="vertical"
-                    android:background="@drawable/shadow_1">
+                    android:background="@drawable/shadow_1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:adjustViewBounds="true"
-                        android:src="@drawable/debsoc"/>
+                        android:contentDescription="@string/default_content_des"
+                        android:src="@drawable/debsoc" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="10dp"
-                        android:background="@color/colorPrimary">
+                        android:background="@color/colorPrimary"
+                        android:padding="10dp">
+
                         <TextView
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
+                            android:gravity="center"
                             android:text="DEBSOC"
-                            android:textStyle="bold"
-                            android:textSize="15sp"
                             android:textColor="#ffffff"
-                            android:gravity="center"/>
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:paddingTop="10dp"
                         android:paddingBottom="10dp"
-                        >
+                        android:paddingTop="10dp">
 
                         <TextView
+                            android:id="@+id/likes_debsoc"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:text="..."
-                            android:textSize="15sp"
                             android:layout_marginLeft="10dp"
                             android:layout_weight="1.2"
-                            android:id="@+id/likes_debsoc"/>
+                            android:text="..."
+                            android:textSize="15sp" />
+
                         <ImageView
                             android:layout_width="0dp"
-                            android:layout_weight="0.8"
                             android:layout_height="20dp"
                             android:layout_gravity="center"
+                            android:layout_weight="0.8"
                             android:adjustViewBounds="true"
-                            android:src="@drawable/ic_likes_black_24dp"
-                            android:alpha="0.5"/>
+                            android:alpha="0.5"
+                            android:contentDescription="@string/default_content_des"
+                            android:src="@drawable/ic_likes_black_24dp" />
+
                         <View
                             android:layout_width="0dp"
-                            android:layout_weight="1"
                             android:layout_height="wrap_content"
-                            />
+                            android:layout_weight="1" />
 
                         <CheckBox
 
+                            android:id="@+id/check_debsoc"
                             android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_gravity="center"
                             android:layout_height="wrap_content"
-                            android:id="@+id/check_debsoc"/>
+                            android:layout_gravity="center"
+                            android:layout_weight="1" />
 
 
                     </LinearLayout>
@@ -598,75 +629,79 @@
                 </LinearLayout>
 
 
-
                 <LinearLayout
-                    android:layout_gravity="center"
-                    android:gravity="center"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:layout_height="wrap_content"
                     android:layout_weight="0.5"
-                    android:orientation="vertical"
-                    android:background="@drawable/shadow_1">
+                    android:background="@drawable/shadow_1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:adjustViewBounds="true"
-                        android:src="@drawable/quiz"/>
+                        android:contentDescription="@string/default_content_des"
+                        android:src="@drawable/quiz" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="10dp"
-                        android:background="@color/colorPrimary">
+                        android:background="@color/colorPrimary"
+                        android:padding="10dp">
+
                         <TextView
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
+                            android:gravity="center"
                             android:text="QUIZ CLUB"
-                            android:textStyle="bold"
-                            android:textSize="15sp"
                             android:textColor="#ffffff"
-                            android:gravity="center"/>
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:paddingTop="10dp"
                         android:paddingBottom="10dp"
-                        >
+                        android:paddingTop="10dp">
 
                         <TextView
+                            android:id="@+id/likes_quiz"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:text="..."
-                            android:textSize="15sp"
                             android:layout_marginLeft="10dp"
                             android:layout_weight="1.2"
-                            android:id="@+id/likes_quiz"/>
+                            android:text="..."
+                            android:textSize="15sp" />
+
                         <ImageView
                             android:layout_width="0dp"
-                            android:layout_weight="0.8"
                             android:layout_height="20dp"
                             android:layout_gravity="center"
+                            android:layout_weight="0.8"
                             android:adjustViewBounds="true"
-                            android:src="@drawable/ic_likes_black_24dp"
-                            android:alpha="0.5"/>
+                            android:alpha="0.5"
+                            android:contentDescription="@string/default_content_des"
+                            android:src="@drawable/ic_likes_black_24dp" />
+
                         <View
                             android:layout_width="0dp"
-                            android:layout_weight="1"
                             android:layout_height="wrap_content"
-                            />
+                            android:layout_weight="1" />
 
                         <CheckBox
 
+                            android:id="@+id/check_quiz"
                             android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_gravity="center"
                             android:layout_height="wrap_content"
-                            android:id="@+id/check_quiz"/>
+                            android:layout_gravity="center"
+                            android:layout_weight="1" />
 
 
                     </LinearLayout>
@@ -677,80 +712,85 @@
 
             <LinearLayout
                 android:layout_width="fill_parent"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp"
                 android:layout_height="wrap_content"
-                android:baselineAligned="false">
+                android:layout_marginTop="10dp"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
 
 
                 <LinearLayout
-                    android:layout_gravity="center"
-                    android:gravity="center"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:layout_height="wrap_content"
                     android:layout_weight="0.5"
-                    android:orientation="vertical"
-                    android:background="@drawable/shadow_1">
+                    android:background="@drawable/shadow_1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:adjustViewBounds="true"
-                        android:src="@drawable/bullethawk"/>
+                        android:contentDescription="@string/default_content_des"
+                        android:src="@drawable/bullethawk" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="10dp"
-                        android:background="@color/colorPrimary">
+                        android:background="@color/colorPrimary"
+                        android:padding="10dp">
+
                         <TextView
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
+                            android:gravity="center"
                             android:text="BULLETHAWK"
-                            android:textStyle="bold"
-                            android:textSize="15sp"
                             android:textColor="#ffffff"
-                            android:gravity="center"/>
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:paddingTop="10dp"
                         android:paddingBottom="10dp"
-                        >
+                        android:paddingTop="10dp">
 
                         <TextView
+                            android:id="@+id/likes_bullethawk"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:text="..."
-                            android:textSize="15sp"
                             android:layout_marginLeft="10dp"
                             android:layout_weight="1.2"
-                            android:id="@+id/likes_bullethawk"/>
+                            android:text="..."
+                            android:textSize="15sp" />
+
                         <ImageView
                             android:layout_width="0dp"
-                            android:layout_weight="0.8"
                             android:layout_height="20dp"
                             android:layout_gravity="center"
+                            android:layout_weight="0.8"
                             android:adjustViewBounds="true"
-                            android:src="@drawable/ic_likes_black_24dp"
-                            android:alpha="0.5"/>
+                            android:alpha="0.5"
+                            android:contentDescription="@string/default_content_des"
+                            android:src="@drawable/ic_likes_black_24dp" />
+
                         <View
                             android:layout_width="0dp"
-                            android:layout_weight="1"
                             android:layout_height="wrap_content"
-                            />
+                            android:layout_weight="1" />
 
                         <CheckBox
 
+                            android:id="@+id/check_bullet"
                             android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_gravity="center"
                             android:layout_height="wrap_content"
-                            android:id="@+id/check_bullet"/>
+                            android:layout_gravity="center"
+                            android:layout_weight="1" />
 
 
                     </LinearLayout>
@@ -758,75 +798,79 @@
                 </LinearLayout>
 
 
-
                 <LinearLayout
-                    android:layout_gravity="center"
-                    android:gravity="center"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:layout_height="wrap_content"
                     android:layout_weight="0.5"
-                    android:orientation="vertical"
-                    android:background="@drawable/shadow_1">
+                    android:background="@drawable/shadow_1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:adjustViewBounds="true"
-                        android:src="@drawable/rotaract"/>
+                        android:contentDescription="@string/default_content_des"
+                        android:src="@drawable/rotaract" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="10dp"
-                        android:background="@color/colorPrimary">
+                        android:background="@color/colorPrimary"
+                        android:padding="10dp">
+
                         <TextView
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
+                            android:gravity="center"
                             android:text="ROTARACT"
-                            android:textStyle="bold"
-                            android:textSize="15sp"
                             android:textColor="#ffffff"
-                            android:gravity="center"/>
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:paddingTop="10dp"
                         android:paddingBottom="10dp"
-                        >
+                        android:paddingTop="10dp">
 
                         <TextView
+                            android:id="@+id/likes_rotaract"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:text="..."
-                            android:textSize="15sp"
                             android:layout_marginLeft="10dp"
                             android:layout_weight="1.2"
-                            android:id="@+id/likes_rotaract"/>
+                            android:text="..."
+                            android:textSize="15sp" />
+
                         <ImageView
                             android:layout_width="0dp"
-                            android:layout_weight="0.8"
                             android:layout_height="20dp"
                             android:layout_gravity="center"
+                            android:layout_weight="0.8"
                             android:adjustViewBounds="true"
-                            android:src="@drawable/ic_likes_black_24dp"
-                            android:alpha="0.5"/>
+                            android:alpha="0.5"
+                            android:contentDescription="@string/default_content_des"
+                            android:src="@drawable/ic_likes_black_24dp" />
+
                         <View
                             android:layout_width="0dp"
-                            android:layout_weight="1"
                             android:layout_height="wrap_content"
-                            />
+                            android:layout_weight="1" />
 
                         <CheckBox
 
+                            android:id="@+id/check_rotaract"
                             android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_gravity="center"
                             android:layout_height="wrap_content"
-                            android:id="@+id/check_rotaract"/>
+                            android:layout_gravity="center"
+                            android:layout_weight="1" />
 
 
                     </LinearLayout>
@@ -837,83 +881,88 @@
 
             <LinearLayout
                 android:layout_width="fill_parent"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp"
                 android:layout_height="wrap_content"
-                android:baselineAligned="false">
+                android:layout_marginTop="10dp"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
 
                 <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
                     android:layout_weight="0.5"
-                    android:orientation="vertical"
-                    android:background="@drawable/shadow_1">
+                    android:background="@drawable/shadow_1"
+                    android:orientation="vertical">
+
                     <LinearLayout
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content">
+
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/enactus"
-                            android:adjustViewBounds="true"/>
+                            android:adjustViewBounds="true"
+                            android:contentDescription="@string/default_content_des"
+                            android:src="@drawable/enactus" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="10dp"
-                        android:background="@color/colorPrimary">
+                        android:background="@color/colorPrimary"
+                        android:padding="10dp">
+
                         <TextView
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
+                            android:gravity="center"
                             android:text="ENACTUS"
-                            android:textStyle="bold"
-                            android:textSize="15sp"
                             android:textColor="#ffffff"
-                            android:gravity="center"/>
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:paddingTop="10dp"
                         android:paddingBottom="10dp"
-                        >
+                        android:paddingTop="10dp">
 
                         <TextView
+                            android:id="@+id/likes_enactus"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textSize="15sp"
                             android:layout_marginLeft="10dp"
                             android:layout_weight="1.2"
-                            android:id="@+id/likes_enactus"
-                            android:text="..." />
+                            android:text="..."
+                            android:textSize="15sp" />
+
                         <ImageView
                             android:layout_width="0dp"
-                            android:layout_weight="0.8"
                             android:layout_height="20dp"
                             android:layout_gravity="center"
+                            android:layout_weight="0.8"
                             android:adjustViewBounds="true"
-                            android:src="@drawable/ic_likes_black_24dp"
-                            android:alpha="0.5"/>
+                            android:alpha="0.5"
+                            android:contentDescription="@string/default_content_des"
+                            android:src="@drawable/ic_likes_black_24dp" />
+
                         <View
                             android:layout_width="0dp"
-                            android:layout_weight="1"
                             android:layout_height="wrap_content"
-                            />
+                            android:layout_weight="1" />
 
                         <CheckBox
 
+                            android:id="@+id/check_enactus"
                             android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_gravity="center"
                             android:layout_height="wrap_content"
-                            android:id="@+id/check_enactus"/>
+                            android:layout_gravity="center"
+                            android:layout_weight="1" />
 
 
                     </LinearLayout>
@@ -922,77 +971,82 @@
 
 
                 <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
                     android:layout_weight="0.5"
-                    android:orientation="vertical"
-                    android:background="@drawable/shadow_1">
+                    android:background="@drawable/shadow_1"
+                    android:orientation="vertical">
+
                     <LinearLayout
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content">
+
                         <ImageView
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/aagaz"
-                            android:adjustViewBounds="true"/>
+                            android:adjustViewBounds="true"
+                            android:contentDescription="@string/default_content_des"
+                            android:src="@drawable/aagaz" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="10dp"
-                        android:background="@color/colorPrimary">
+                        android:background="@color/colorPrimary"
+                        android:padding="10dp">
+
                         <TextView
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
+                            android:gravity="center"
                             android:text="AAGAZ"
-                            android:textSize="15sp"
-                            android:textStyle="bold"
                             android:textColor="#ffffff"
-                            android:gravity="center"/>
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:paddingTop="10dp"
                         android:paddingBottom="10dp"
-                        >
+                        android:paddingTop="10dp">
 
                         <TextView
+                            android:id="@+id/likes_aagaz"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textSize="15sp"
                             android:layout_marginLeft="10dp"
                             android:layout_weight="1.2"
-                            android:id="@+id/likes_aagaz"
-                            android:text="..." />
+                            android:text="..."
+                            android:textSize="15sp" />
+
                         <ImageView
                             android:layout_width="0dp"
-                            android:layout_weight="0.8"
                             android:layout_height="20dp"
                             android:layout_gravity="center"
+                            android:layout_weight="0.8"
                             android:adjustViewBounds="true"
-                            android:src="@drawable/ic_likes_black_24dp"
-                            android:alpha="0.5"/>
+                            android:alpha="0.5"
+                            android:contentDescription="@string/default_content_des"
+                            android:src="@drawable/ic_likes_black_24dp" />
+
                         <View
                             android:layout_width="0dp"
-                            android:layout_weight="1"
                             android:layout_height="wrap_content"
-                            />
+                            android:layout_weight="1" />
 
                         <CheckBox
 
+                            android:id="@+id/check_aagaz"
                             android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_gravity="center"
                             android:layout_height="wrap_content"
-                            android:id="@+id/check_aagaz"/>
+                            android:layout_gravity="center"
+                            android:layout_weight="1" />
 
 
                     </LinearLayout>
@@ -1002,12 +1056,12 @@
             </LinearLayout>
 
             <Button
+                android:id="@+id/next"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/colorPrimary"
-                android:id="@+id/next"
-                android:textColor="#ffffff"
-                android:text="View My Feed"/>
+                android:text="View My Feed"
+                android:textColor="#ffffff" />
 
 
         </LinearLayout>

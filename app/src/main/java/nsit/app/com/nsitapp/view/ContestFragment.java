@@ -231,10 +231,9 @@ public class ContestFragment extends Fragment {
         private void saveContestFlagToSharedPreference() {
             Context context = getActivity();
             SharedPreferences sharedPreferences = context.getSharedPreferences(FILTER_PREFERENCE_FILE_KEY,Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
 
             for (int i=0;i<OnlineJudge.OJ_NUMBER;i++) {
-                editor.putBoolean(OnlineJudge.OJ_NAME[i],mContestFlag[i]);
+                sharedPreferences.edit().putBoolean(OnlineJudge.OJ_NAME[i],mContestFlag[i]).apply();
             }
             sharedPreferences.edit()
                     .putBoolean(OnlineJudge.CODEFORCES, mContestFlag[OnlineJudge.CODEFORCES_ID])
@@ -244,7 +243,7 @@ public class ContestFragment extends Fragment {
                     .putBoolean(OnlineJudge.TOPCODER, mContestFlag[OnlineJudge.TOPCODER_ID])
                     .putBoolean(OnlineJudge.URIOJ, mContestFlag[OnlineJudge.URIOJ_ID])
                     .putBoolean(OnlineJudge.UNKNOWN, mContestFlag[OnlineJudge.UNKNOWN_ID])
-                    .commit();
+                    .apply();
         }
 
         @Override

@@ -20,11 +20,11 @@
 
             android:layout_gravity="center"
             android:background="#ffffff"
-            android:descendantFocusability="afterDescendants"
+            android:baselineAligned="false"
 
+            android:descendantFocusability="afterDescendants"
             android:gravity="center"
-            android:orientation="horizontal"
-            android:baselineAligned="false">
+            android:orientation="horizontal">
 
             <FrameLayout
                 android:id="@+id/frame"
@@ -49,6 +49,7 @@
                         android:layout_width="170dp"
                         android:layout_height="0dp"
                         android:layout_gravity="center"
+                        android:contentDescription="@string/default_content_des"
                         android:scaleType="centerCrop" />
 
                     <ImageView
@@ -56,15 +57,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="100dp"
                         android:layout_gravity="center"
-
-                        />
+                        android:contentDescription="@string/default_content_des" />
 
                     <LinearLayout
                         android:layout_width="2dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="right"
                         android:background="@color/colorAccent"
-                        android:orientation="vertical"/>
+                        android:orientation="vertical" />
 
                 </FrameLayout>
 
@@ -109,7 +109,7 @@
                     android:layout_height="2dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="5dp"
-                    android:background="@color/colorPrimary"/>
+                    android:background="@color/colorPrimary" />
 
                 <LinearLayout
                     android:layout_width="fill_parent"
@@ -138,6 +138,7 @@
                             android:layout_gravity="center"
                             android:layout_marginLeft="5dp"
                             android:alpha="0.4"
+                            android:contentDescription="@string/default_content_des"
                             android:src="@drawable/ic_thumb_up_black_24dp" />
                     </LinearLayout>
 
@@ -207,11 +208,7 @@
                         </LinearLayout>
                     </LinearLayout>
                 </FrameLayout>
-
-
             </LinearLayout>
-
-
         </LinearLayout>
     </LinearLayout>
 </FrameLayout>

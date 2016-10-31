@@ -10,22 +10,22 @@ import android.provider.BaseColumns;
  */
 public class ContestContract {
 
-    public static final String CONTENT_AUTHORITY = "nsit.app.com.nsitapp";
+    static final String CONTENT_AUTHORITY = "nsit.app.com.nsitapp";
     private static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
 
-    public static final String PATH_CONTEST = "contest";
+    static final String PATH_CONTEST = "contest";
 
     public static final class ContestEntry implements BaseColumns {
 
         public static final Uri CONTENT_URI =
                 BASE_CONTENT_URI.buildUpon().appendPath(PATH_CONTEST).build();
 
-        public static final String CONTENT_DIR_TYPE =
+        static final String CONTENT_DIR_TYPE =
                 ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_CONTEST;
-        public static final String CONTENT_ITEM_TYPE =
+        static final String CONTENT_ITEM_TYPE =
                 ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_CONTEST;
 
-        public static final String TABLE_NAME = "contest";
+        static final String TABLE_NAME = "contest";
 
         public static final String COLUMN_TITLE = "title";
         public static final String COLUMN_DESCRIPTION = "description";
@@ -35,18 +35,18 @@ public class ContestContract {
         public static final String COLUMN_SOURCE = "source";
 
         public static Uri buildContestUriWithId(long id) {
-            return ContentUris.withAppendedId(CONTENT_URI,id);
+            return ContentUris.withAppendedId(CONTENT_URI, id);
         }
 
         public static Uri buildContestWithSource(String source) {
             return CONTENT_URI.buildUpon().appendPath(source).build();
         }
 
-        public static String getSourceFromUri(Uri uri) {
+        static String getSourceFromUri(Uri uri) {
             return uri.getLastPathSegment();
         }
 
-        public static int getIDFromUri(Uri uri) {
+        static int getIDFromUri(Uri uri) {
             String id = uri.getLastPathSegment();
             return Integer.parseInt(id);
         }

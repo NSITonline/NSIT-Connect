@@ -46,27 +46,26 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class Calender extends Fragment implements Constant {
+public class Calendar extends Fragment implements Constant {
 
     private static String timetable = null;
     private boolean loadingMore = false;
 
-    private static ArrayList<String> days = new ArrayList<String>();
-    private static ArrayList<Subject_struct> p0 = new ArrayList<Subject_struct>();
-    private static ArrayList<Subject_struct> p1 = new ArrayList<Subject_struct>();
-    private static ArrayList<Subject_struct> p2 = new ArrayList<Subject_struct>();
-    private static ArrayList<Subject_struct> p3 = new ArrayList<Subject_struct>();
-    private static ArrayList<Subject_struct> p4 = new ArrayList<Subject_struct>();
-    private static ArrayList<Subject_struct> p5 = new ArrayList<Subject_struct>();
-    private static ArrayList<Subject_struct> p6 = new ArrayList<Subject_struct>();
-    private static ArrayList<Subject_struct> p7 = new ArrayList<Subject_struct>();
-    private static ArrayList<Subject_struct> p8 = new ArrayList<Subject_struct>();
-    private static ArrayList<Subject_struct> p9 = new ArrayList<Subject_struct>();
+    private static ArrayList<String> days = new ArrayList<>();
+    private static ArrayList<SubjectStruct> p0 = new ArrayList<>();
+    private static ArrayList<SubjectStruct> p1 = new ArrayList<>();
+    private static ArrayList<SubjectStruct> p2 = new ArrayList<>();
+    private static ArrayList<SubjectStruct> p3 = new ArrayList<>();
+    private static ArrayList<SubjectStruct> p4 = new ArrayList<>();
+    private static ArrayList<SubjectStruct> p5 = new ArrayList<>();
+    private static ArrayList<SubjectStruct> p6 = new ArrayList<>();
+    private static ArrayList<SubjectStruct> p7 = new ArrayList<>();
+    private static ArrayList<SubjectStruct> p8 = new ArrayList<>();
+    private static ArrayList<SubjectStruct> p9 = new ArrayList<>();
 
     private CustomList_calendar adapter;
     private TwoWayView lvTest;
     private SharedPreferences sharedPreferences;
-    private SharedPreferences.Editor editor;
     private Activity activity;
     private Handler mHandler;
 
@@ -94,7 +93,6 @@ public class Calender extends Fragment implements Constant {
             return rootView;
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
-        editor = sharedPreferences.edit();
 
         // If class is not selected, open activity
         Boolean is_class_already_set = sharedPreferences.getBoolean(IS_CLASS_SET, false);
@@ -199,19 +197,39 @@ public class Calender extends Fragment implements Constant {
                     }
 
                     // Create new subject object
-                    Subject_struct x = new Subject_struct(value, proffh, subfh, roomfh, profsh, subsh, roomsh);
+                    SubjectStruct x = new SubjectStruct(value, proffh, subfh, roomfh, profsh, subsh, roomsh);
                     // Assign it to particular period
                     switch (i - 1) {
-                        case -1: p0.add(x); break;
-                        case 0: p1.add(x); break;
-                        case 1: p2.add(x); break;
-                        case 2: p3.add(x); break;
-                        case 3: p4.add(x); break;
-                        case 4: p5.add(x); break;
-                        case 5: p6.add(x); break;
-                        case 6: p7.add(x); break;
-                        case 7: p8.add(x); break;
-                        case 8: p9.add(x); break;
+                        case -1:
+                            p0.add(x);
+                            break;
+                        case 0:
+                            p1.add(x);
+                            break;
+                        case 1:
+                            p2.add(x);
+                            break;
+                        case 2:
+                            p3.add(x);
+                            break;
+                        case 3:
+                            p4.add(x);
+                            break;
+                        case 4:
+                            p5.add(x);
+                            break;
+                        case 5:
+                            p6.add(x);
+                            break;
+                        case 6:
+                            p7.add(x);
+                            break;
+                        case 7:
+                            p8.add(x);
+                            break;
+                        case 8:
+                            p9.add(x);
+                            break;
                     }
                 }
             }
@@ -248,9 +266,16 @@ public class Calender extends Fragment implements Constant {
 
     private void downloadTimeTable() {
 
-        p0.clear(); p1.clear(); p2.clear();
-        p3.clear(); p4.clear(); p5.clear();
-        p6.clear(); p7.clear(); p8.clear(); p9.clear();
+        p0.clear();
+        p1.clear();
+        p2.clear();
+        p3.clear();
+        p4.clear();
+        p5.clear();
+        p6.clear();
+        p7.clear();
+        p8.clear();
+        p9.clear();
 
         //Scroll to first column
         lvTest.scrollTo(0, 0);
@@ -292,9 +317,10 @@ public class Calender extends Fragment implements Constant {
             public void onResponse(Call call, Response response) throws IOException {
                 try {
                     timetable = response.body().string();
-                    editor.putBoolean(IS_TIME_TABLE_CHANGED, false);
-                    editor.putString(GET_TIME_TABLE, response.body().string());
-                    editor.apply();
+                    sharedPreferences.edit()
+                            .putBoolean(IS_TIME_TABLE_CHANGED, false)
+                            .putString(GET_TIME_TABLE, response.body().string())
+                            .apply();
 
 
                     JSONObject ob;
@@ -349,7 +375,6 @@ public class Calender extends Fragment implements Constant {
     }
 
 
-
     @Override
     public void onResume() {
         if (activity != null) {
@@ -382,14 +407,14 @@ public class Calender extends Fragment implements Constant {
         super.onCreateOptionsMenu(menu, inflater);
     }
 
-    public class CustomList_calendar extends ArrayAdapter<Subject_struct> {
+    public class CustomList_calendar extends ArrayAdapter<SubjectStruct> {
         private final Activity context;
         ArrayList<String> day;
-        private final ArrayList<Subject_struct> p0, p1, p2, p3, p4, p5, p6, p7, p8, p9;
+        private final ArrayList<SubjectStruct> p0, p1, p2, p3, p4, p5, p6, p7, p8, p9;
 
-        public CustomList_calendar(Activity context, ArrayList d, ArrayList<Subject_struct> b0, ArrayList<Subject_struct> b1, ArrayList<Subject_struct> b2, ArrayList<Subject_struct> b3, ArrayList<Subject_struct> b4,
-                                   ArrayList<Subject_struct> b5, ArrayList<Subject_struct> b6, ArrayList<Subject_struct> b7
-                , ArrayList<Subject_struct> b8, ArrayList<Subject_struct> b9) {
+        public CustomList_calendar(Activity context, ArrayList d, ArrayList<SubjectStruct> b0, ArrayList<SubjectStruct> b1, ArrayList<SubjectStruct> b2, ArrayList<SubjectStruct> b3, ArrayList<SubjectStruct> b4,
+                                   ArrayList<SubjectStruct> b5, ArrayList<SubjectStruct> b6, ArrayList<SubjectStruct> b7
+                , ArrayList<SubjectStruct> b8, ArrayList<SubjectStruct> b9) {
             super(context, R.layout.message, b0);
             this.context = context;
             day = d;
@@ -458,7 +483,7 @@ public class Calender extends Fragment implements Constant {
         }
 
 
-        public void add(Subject_struct p, TextView t) {
+        public void add(SubjectStruct p, TextView t) {
             Typeface custom_font = Typeface.createFromAsset(context.getAssets(), "fonts/food_icons.ttf");
             t.setTypeface(Typeface.DEFAULT);
             t.setText(" ");

@@ -43,45 +43,40 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-
 /**
  * Created by Swati garg on 21-06-2015.
+ * <p>
+ * Displays final customised feed of user
  */
 
 public class FinalFeed extends Fragment implements Constant {
 
-    //Variables for different socities
-    private Boolean Collegespace = false, Crosslinks = false;
-    private Boolean Junoon = false, Bullet = false;
-    private Boolean Rotaract = false, Quiz = false;
-    private Boolean Ieee = false, Csi = false;
-    private Boolean Ashwa = false, Deb = false;
-    private Boolean Enactus = false, Aagaz = false;
+    private int NUMBER_OF_SOCITIES = 12;
+    private ArrayList<Boolean> is_society_checked = new ArrayList<>();
+    private ArrayList<String> society_id = new ArrayList<>();
+    private ArrayList<String> society_name = new ArrayList<>();
+    private ArrayList<String> society_next_link = new ArrayList<>();
+
     private Boolean loadingMore = false;
-    private String nextcollegespace, nextcrosslinks, nextjunoon;
-    private String nextbullet, nextrotaract;
-    private String nextquiz, nextieee, nextcsi, nextashwa;
-    private String nextdeb, nextaagaz, nextenactus;
     private String nextn;
+    private int first = 1;  // Implies loading data for first time
 
     private ProgressBar progressBar;
     private SwipeRefreshLayout swipeLayout;
     private MyFeedList adapter;
-    private int first = 1;  // Implies loading data for first time
     private Handler mHandler;
-
-    private List<String> list = new ArrayList<>();
-    private List<String> list1 = new ArrayList<>();
-    private List<String> list2 = new ArrayList<>();
-    private List<String> list6 = new ArrayList<>();
-    private List<String> list7 = new ArrayList<>();
-    private List<String> list8 = new ArrayList<>();
-    private List<String> list9 = new ArrayList<>();
-
     private View footerView;
-    private SharedPreferences sharedPreferences;
-    private SharedPreferences.Editor editor;
     private ListView listView;
+    private SharedPreferences sharedPreferences;
+    private Activity activity;
+
+    private List<String> list = new ArrayList<>();  //description
+    private List<String> list1 = new ArrayList<>(); //Object id
+    private List<String> list2 = new ArrayList<>(); //likes
+    private List<String> list6 = new ArrayList<>(); //image
+    private List<String> list7 = new ArrayList<>(); //link
+    private List<String> list8 = new ArrayList<>(); //time
+    private List<String> list9 = new ArrayList<>(); //post by
 
 
     @Override
@@ -90,12 +85,10 @@ public class FinalFeed extends Fragment implements Constant {
         setHasOptionsMenu(true);
     }
 
-    private Activity activity;
-
     @Override
-    public void onAttach(Activity activity) {
+    public void onAttach(Context activity) {
         super.onAttach(activity);
-        this.activity = activity;
+        this.activity = (Activity) activity;
     }
 
     @Override
@@ -103,25 +96,25 @@ public class FinalFeed extends Fragment implements Constant {
         View rootView = inflater.inflate(R.layout.fragment_feedfinal, container, false);
 
         // Initialize variables
+        mHandler = new Handler(Looper.getMainLooper());
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
         progressBar = (ProgressBar) rootView.findViewById(R.id.progressBar1);
         listView = (ListView) rootView.findViewById(R.id.list);
         swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
         footerView = ((LayoutInflater) activity.getApplicationContext()
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.footer_layout, null, false);
-        mHandler = new Handler(Looper.getMainLooper());
+        setSocietyVariables();
 
         // Open up choose socities screen, if no society selected
-        if (activity != null) {
-            sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
-            Boolean is_societies_selected = sharedPreferences.getBoolean(SOCIETY_SET, false);
-            if (!is_societies_selected) {
-                Intent i = new Intent(getActivity(), ChooseFeedItems.class);
-                startActivity(i);
-            }
+        Boolean is_societies_selected = sharedPreferences.getBoolean(SOCIETY_SET, false);
+        if (!is_societies_selected) {
+            Intent i = new Intent(getActivity(), ChooseFeedItems.class);
+            startActivity(i);
         }
 
-        // Set adapter
+        // Initialise adapter
         adapter = new MyFeedList(activity, list6, list, list2, list7, list1, list8, list9);
+
         // fetch data for selected societies
         fetchFeed();
 
@@ -140,14 +133,14 @@ public class FinalFeed extends Fragment implements Constant {
     // else load from database
     private void fetchFeed() {
 
+        // Fetch selected society values
         fetchSocietyValues();
 
         DbAdapter db = new DbAdapter(getActivity());
 
         listView.addFooterView(footerView);
 
-        if (!Csi && !Collegespace && !Crosslinks && !Bullet && !Junoon && !Ieee && !Ashwa && !Quiz && !Deb
-                && !Rotaract && !Enactus && !Aagaz) {
+        if (!checkIfSomeSocietyIsChecked()) {
             SnackbarManager.show(
                     Snackbar.with(activity.getApplicationContext())
                             .text("No item Selected")
@@ -161,7 +154,7 @@ public class FinalFeed extends Fragment implements Constant {
                 db.deleteAll();
                 db.close();
 
-                // Download feed
+                // Download feed : true indicates first time
                 downloadFeedForSociety(true);
             }
             // Internet not available Fetch data from database
@@ -191,7 +184,6 @@ public class FinalFeed extends Fragment implements Constant {
 
             // Populate listview
             listView.setAdapter(adapter);
-
         }
 
         listView.setOnScrollListener(new AbsListView.OnScrollListener() {
@@ -210,9 +202,9 @@ public class FinalFeed extends Fragment implements Constant {
                     loadingMore = true;
                     listView.addFooterView(footerView);
                     if (Utils.isNetworkAvailable(activity)) {
-
                         fetchSocietyValues();
 
+                        // Download feed : false means not first time
                         downloadFeedForSociety(false);
                     } else {
                         SnackbarManager.show(
@@ -237,18 +229,24 @@ public class FinalFeed extends Fragment implements Constant {
                         db.close();
                         progressBar.setVisibility(View.GONE);
                         adapter.notifyDataSetChanged();
-
                     }
-
                 }
-
             }
         });
     }
 
+    // Download feed for particular society
+    private void downloadFeedForSociety(Boolean first) {
+        for (int i = 0; i < NUMBER_OF_SOCITIES; i++) {
+            if (is_society_checked.get(i)) {
+                loadFeed(society_id.get(i), first, society_next_link.get(i));
+            }
+        }
+
+    }
+
     // Make http call
     private void loadFeed(final String id, Boolean isFirst, String next) {
-
 
         // Facebook URI to fetch requests
         String uri;
@@ -259,6 +257,9 @@ public class FinalFeed extends Fragment implements Constant {
         } else {
             uri = next;
         }
+
+        Log.d("calling", uri);
+
         //Set up client
         OkHttpClient client = new OkHttpClient();
         //Execute request
@@ -297,14 +298,20 @@ public class FinalFeed extends Fragment implements Constant {
                                 assignNextLinkToSociety(id, nextn);
 
                                 // Populate data into lists and database
-                                populateListViewAndDatabase(arr);
+                                populateListViewAndDatabase(arr, id);
 
+                                // If feed is loaded, society checked is set false
+                                for (int i = 0; i < NUMBER_OF_SOCITIES; i++)
+                                    if (society_id.get(i).equals(id))
+                                        is_society_checked.set(i, false);
+
+                                // Update values if all societies are done
+                                if (first == 1) {
+                                    done();
+                                }
 
                             } catch (JSONException | IOException e) {
                                 e.printStackTrace();
-                            }
-                            if (first == 1) {
-                                done();
                             }
                         }
                     });
@@ -317,68 +324,26 @@ public class FinalFeed extends Fragment implements Constant {
 
     // Assign next link to particular society
     private void assignNextLinkToSociety(String id, String nextn) {
-        switch (id) {
-            case id_collegespace:
-                nextcollegespace = nextn;
-                Collegespace = false;
+
+        for (int i = 0; i < NUMBER_OF_SOCITIES; i++) {
+            if (id.equals(society_id.get(i))) {
+                society_next_link.set(i, nextn);
                 break;
-            case id_crosslinks:
-                nextcrosslinks = nextn;
-                Crosslinks = false;
-                break;
-            case id_bullet:
-                nextbullet = nextn;
-                Bullet = false;
-                break;
-            case id_junoon:
-                nextjunoon = nextn;
-                Junoon = false;
-                break;
-            case id_rotaract:
-                nextrotaract = nextn;
-                Rotaract = false;
-                break;
-            case id_csi:
-                nextcsi = nextn;
-                Csi = false;
-                break;
-            case id_ieee:
-                nextieee = nextn;
-                Ieee = false;
-                break;
-            case id_quiz:
-                nextquiz = nextn;
-                Quiz = false;
-                break;
-            case id_ashwa:
-                nextashwa = nextn;
-                Ashwa = false;
-                break;
-            case id_debsoc:
-                nextdeb = nextn;
-                Deb = false;
-                break;
-            case id_enactus:
-                nextenactus = nextn;
-                Enactus = false;
-                break;
-            case id_aagaz:
-                nextaagaz = nextn;
-                Aagaz = false;
-                break;
+            }
         }
     }
 
     // Populate data to list and add to database
-    private void populateListViewAndDatabase(JSONArray arr) {
+    private void populateListViewAndDatabase(JSONArray arr, String id) {
+
         // Open connection to database
         DbAdapter db = new DbAdapter(getActivity());
         db.open();
 
-        int lenght = arr.length();
+        int length = arr.length();
         try {
             //Fetch data from JSON
-            for (int i = 0; i < lenght; i++) {
+            for (int i = 0; i < length; i++) {
 
                 if (arr.getJSONObject(i).has("message"))
                     list.add(arr.getJSONObject(i).getString("message"));
@@ -414,7 +379,6 @@ public class FinalFeed extends Fragment implements Constant {
                 else
                     list8.add(null);
 
-
                 if (arr.getJSONObject(i).has("to")) {
                     JSONObject o = new JSONObject(arr.getJSONObject(i).getString("to"));
                     JSONArray a2 = o.getJSONArray("data");
@@ -424,19 +388,19 @@ public class FinalFeed extends Fragment implements Constant {
                     list9.add(null);
 
                 db.insertRow(list.get(list.size() - 1), list1.get(list1.size() - 1), list2.get(list2.size() - 1), list6.get(list6.size() - 1),
-                        list7.get(list7.size() - 1), list8.get(list8.size() - 1), list9.get(list9.size() - 1), id_nsitonline);
+                        list7.get(list7.size() - 1), list8.get(list8.size() - 1), list9.get(list9.size() - 1), id);
             }
         } catch (JSONException e) {
             e.printStackTrace();
             Log.e("ERROR : ", e.getMessage());
         }
         db.close();
-
+        adapter.notifyDataSetChanged();
     }
 
     // Checks if all socities's feed is loaded
     private void done() {
-        if (!Csi && !Collegespace && !Crosslinks && !Bullet && !Junoon && !Ieee && !Ashwa && !Quiz && !Deb && !Rotaract && !Enactus && !Aagaz) {
+        if (!checkIfSomeSocietyIsChecked()) {
 
             adapter.notifyDataSetChanged();
             progressBar.setVisibility(View.GONE);
@@ -451,49 +415,59 @@ public class FinalFeed extends Fragment implements Constant {
     // Assigns value to society
     private void fetchSocietyValues() {
         // Check which socities are selected
-        Crosslinks = sharedPreferences.getBoolean(CROSSLINKS, false);
-        Collegespace = sharedPreferences.getBoolean(COLLEGESPACE, false);
-        Bullet = sharedPreferences.getBoolean(BULLET, false);
-        Junoon = sharedPreferences.getBoolean(JUNOON, false);
-        Rotaract = sharedPreferences.getBoolean(ROTARACT, false);
-        Csi = sharedPreferences.getBoolean(CSI, false);
-        Ieee = sharedPreferences.getBoolean(IEEE, false);
-        Deb = sharedPreferences.getBoolean(DEB, false);
-        Quiz = sharedPreferences.getBoolean(QUIZ, false);
-        Ashwa = sharedPreferences.getBoolean(ASHWA, false);
-        Enactus = sharedPreferences.getBoolean(ENACTUS, false);
-        Aagaz = sharedPreferences.getBoolean(AAGAZ, false);
-
+        for (int i = 0; i < NUMBER_OF_SOCITIES; i++)
+            is_society_checked.set(i, sharedPreferences.getBoolean(society_name.get(i), false));
     }
 
-    // Download feed for particular society
-    private void downloadFeedForSociety(Boolean first) {
-        if (Crosslinks)
-            loadFeed(id_crosslinks, first, nextcrosslinks);
-        if (Collegespace)
-            loadFeed(id_collegespace, first, nextcollegespace);
-        if (Bullet)
-            loadFeed(id_bullet, first, nextbullet);
-        if (Junoon)
-            loadFeed(id_junoon, first, nextjunoon);
-        if (Rotaract)
-            loadFeed(id_rotaract, first, nextrotaract);
-        if (Csi)
-            loadFeed(id_csi, first, nextcsi);
-        if (Ieee)
-            loadFeed(id_ieee, first, nextieee);
-        if (Ashwa)
-            loadFeed(id_ashwa, first, nextashwa);
-        if (Quiz)
-            loadFeed(id_quiz, first, nextquiz);
-        if (Deb)
-            loadFeed(id_debsoc, first, nextdeb);
-        if (Enactus)
-            loadFeed(id_enactus, first, nextenactus);
-        if (Aagaz)
-            loadFeed(id_aagaz, first, nextaagaz);
+    /**
+     * Checks if some or more societies are selected
+     *
+     * @return Returns true if any one of the society is selected
+     */
+    private Boolean checkIfSomeSocietyIsChecked() {
 
+        for (int i = 0; i < NUMBER_OF_SOCITIES; i++)
+            if (is_society_checked.get(i))
+                return true;
+        return false;
     }
+
+
+    // Set facebook page id, names of societies
+    private void setSocietyVariables() {
+
+        for (int i = 0; i < NUMBER_OF_SOCITIES; i++) {
+            is_society_checked.add(false);
+            society_next_link.add(null);
+        }
+
+        society_id.add(id_collegespace);
+        society_id.add(id_crosslinks);
+        society_id.add(id_junoon);
+        society_id.add(id_bullet);
+        society_id.add(id_rotaract);
+        society_id.add(id_quiz);
+        society_id.add(id_ieee);
+        society_id.add(id_csi);
+        society_id.add(id_ashwa);
+        society_id.add(id_debsoc);
+        society_id.add(id_enactus);
+        society_id.add(id_aagaz);
+
+        society_name.add(COLLEGESPACE);
+        society_name.add(CROSSLINKS);
+        society_name.add(JUNOON);
+        society_name.add(BULLET);
+        society_name.add(ROTARACT);
+        society_name.add(QUIZ);
+        society_name.add(IEEE);
+        society_name.add(CSI);
+        society_name.add(ASHWA);
+        society_name.add(DEB);
+        society_name.add(ENACTUS);
+        society_name.add(AAGAZ);
+    }
+
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -523,8 +497,7 @@ public class FinalFeed extends Fragment implements Constant {
             list7.clear();
             list8.clear();
             adapter.notifyDataSetChanged();
-            editor.putBoolean("item_changed", false);
-            editor.apply();
+            sharedPreferences.edit().putBoolean("item_changed", false).apply();
             // Reload data
             fetchFeed();
         }

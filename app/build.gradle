@@ -1,11 +1,12 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'com.jakewharton.butterknife'
 buildscript {
     repositories {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.0.0'
+        classpath 'com.android.tools.build:gradle:2.2.3'
+        classpath 'com.jakewharton:butterknife-gradle-plugin:8.5.1'
     }
 }
 
@@ -43,4 +44,7 @@ dependencies {
     compile 'com.google.android.gms:play-services-location:7.5.0'
     compile 'com.nispok:snackbar:2.10.+'
     compile files('libs/YouTubeAndroidPlayerApi.jar')
+    compile 'com.jakewharton:butterknife:8.5.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+
 }

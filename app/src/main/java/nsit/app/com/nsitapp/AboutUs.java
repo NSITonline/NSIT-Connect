@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import functions.ButtonAnimation;
 
 /**
@@ -21,6 +23,32 @@ import functions.ButtonAnimation;
 
 
 public class AboutUs extends Fragment {
+    @BindView(R.id.linked_sidharth)ImageView s1;
+    @BindView(R.id.linked_swati)ImageView s2;
+    @BindView(R.id.facebook_sidharth)ImageView s3;
+    @BindView(R.id.facebook_swati)ImageView s4;
+    @BindView(R.id.facebook_chetan)ImageView s5;
+    @BindView(R.id.linked_chetan)ImageView s6;
+    @BindView(R.id.facebook_sumit)ImageView s8;
+    @BindView(R.id.linked_sumit)ImageView s9;
+    @BindView(R.id.facebook_ayush)ImageView s12;
+    @BindView(R.id.linked_ayush)ImageView s13;
+    @BindView(R.id.facebook_prabhakr)ImageView prabhakrFB;
+    @BindView(R.id.linked_prabhakr)ImageView prabhakrLinkedIn;
+    @BindView(R.id.linked_sagar)ImageView s10;
+    @BindView(R.id.facebook_sagar)ImageView s11;
+    @BindView(R.id.facebook_naman)ImageView namanFB;
+    @BindView(R.id.linked_naman)ImageView namanLinkedIn;
+    @BindView(R.id.github_sidharth)ImageView gitsidharth;
+    @BindView(R.id.github_swati)ImageView gitswati;
+    @BindView(R.id.github_prabhakr)ImageView gitprabhakr;
+    @BindView(R.id.github_naman)ImageView gitnaman;
+    @BindView(R.id.github_sagar)ImageView gitsagar;
+    @BindView(R.id.github_sumit)ImageView gitsumit;
+    @BindView(R.id.image_prabhakr)ImageView prabhakrim;
+    @BindView(R.id.github_ayush)ImageView gitayush;
+    @BindView(R.id.cont)TextView con;
+    @BindView(R.id.GoToRepo)TextView rep;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,32 +71,14 @@ public class AboutUs extends Fragment {
         menu.clear();
         super.onCreateOptionsMenu(menu, inflater);
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //setHasOptionsMenu(false);
         View rootView = inflater.inflate(R.layout.fragment_aboutus, container, false);
-        ImageView s1, s2, s3, s4, s5, s6, s8, s9, s10, s11,s12,s13, namanFB, namanLinkedIn, prabhakrFB, prabhakrLinkedIn;
-        ImageView gitsidharth, gitswati, gitprabhakr, gitnaman, gitsagar, gitsumit,prabhakrim,gitayush;
-
-
-        TextView con;
-        TextView rep;
-        s1 = (ImageView) rootView.findViewById(R.id.linked_sidharth);
-        s2 = (ImageView) rootView.findViewById(R.id.linked_swati);
-        s3 = (ImageView) rootView.findViewById(R.id.facebook_sidharth);
-        s4 = (ImageView) rootView.findViewById(R.id.facebook_swati);
-        s8 = (ImageView) rootView.findViewById(R.id.facebook_sumit);
-        s9 = (ImageView) rootView.findViewById(R.id.linked_sumit);
-        s5 = (ImageView) rootView.findViewById(R.id.facebook_chetan);
-        s6 = (ImageView) rootView.findViewById(R.id.linked_chetan);
-        s12 = (ImageView) rootView.findViewById(R.id.facebook_ayush);
-        s13 = (ImageView) rootView.findViewById(R.id.linked_ayush);
-
+        ButterKnife.bind(this,rootView);
 
         prabhakrFB = (ImageView) rootView.findViewById(R.id.facebook_prabhakr);
         prabhakrLinkedIn = (ImageView) rootView.findViewById(R.id.linked_prabhakr);
-
         gitsidharth = (ImageView) rootView.findViewById(R.id.github_sidharth);
         gitswati = (ImageView) rootView.findViewById(R.id.github_swati);
         gitprabhakr = (ImageView) rootView.findViewById(R.id.github_prabhakr);
@@ -76,16 +86,14 @@ public class AboutUs extends Fragment {
         gitnaman = (ImageView) rootView.findViewById(R.id.github_naman);
         gitsumit = (ImageView) rootView.findViewById(R.id.github_sumit);
         gitayush = (ImageView) rootView.findViewById(R.id.github_ayush);
-
         prabhakrim = (ImageView) rootView.findViewById(R.id.image_prabhakr);
-
         s10 = (ImageView) rootView.findViewById(R.id.linked_sagar);
         s11 = (ImageView) rootView.findViewById(R.id.facebook_sagar);
-
         con = (TextView) rootView.findViewById(R.id.cont);
         namanFB = (ImageView) rootView.findViewById(R.id.facebook_naman);
         namanLinkedIn = (ImageView) rootView.findViewById(R.id.linked_naman);
         rep = (TextView) rootView.findViewById(R.id.GoToRepo);
+
         s1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -1,5 +1,6 @@
 package nsit.app.com.nsitapp;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -60,6 +61,7 @@ public class Video extends Fragment {
     }
 
     @Override
+    @TargetApi(19)
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_video, container, false);
         listview = (ListView) rootView.findViewById(R.id.videos_list);
@@ -102,7 +104,7 @@ public class Video extends Fragment {
 
         return rootView;
     }
-
+    @TargetApi(19)
     private void loadFeed() {
 
         // Youtube URI to fetch requests

@@ -14,10 +14,19 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class CalculatorActivity extends Fragment {
 
-    private Spinner s1,s2;
-    private TextView tc10, tc11, tc12, tc9, tc4, tc5;
+    @BindView(R.id.spinb)Spinner s1;
+    @BindView(R.id.spins)Spinner s2;
+    @BindView(R.id.tv10) TextView tc10;
+    @BindView(R.id.tv11) TextView tc11;
+    @BindView(R.id.tv12) TextView tc12;
+    @BindView(R.id.tv9) TextView tc9;
+    @BindView(R.id.tv4) TextView tc4;
+    @BindView(R.id.tv5)TextView tc5;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -28,7 +37,7 @@ public class CalculatorActivity extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View rooview = inflater.inflate(R.layout.activity_calculator, container, false);
-        s1 = (Spinner) rooview.findViewById(R.id.spinb);
+        ButterKnife.bind(this,rooview);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.branch, android.R.layout.simple_list_item_1);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         s1.setAdapter(adapter);
@@ -51,14 +60,6 @@ public class CalculatorActivity extends Fragment {
             }
         });
 
-
-        tc10 = (TextView) rooview.findViewById(R.id.tv10);
-        tc11 = (TextView) rooview.findViewById(R.id.tv11);
-        tc12 = (TextView) rooview.findViewById(R.id.tv12);
-        tc9 = (TextView) rooview.findViewById(R.id.tv9);
-        tc4 = (TextView) rooview.findViewById(R.id.tv4);
-        tc5 = (TextView) rooview.findViewById(R.id.tv5);
-        s2 = (Spinner) rooview.findViewById(R.id.spins);
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(getActivity(), R.array.semester, android.R.layout.simple_list_item_1);
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
@@ -314,58 +315,52 @@ public class CalculatorActivity extends Fragment {
         return rooview;
     }
 
+    @BindView(R.id.tv1)TextView c1;
+    @BindView(R.id.tv2)TextView c2;
+    @BindView(R.id.tv3)TextView c3;
+    //@BindView(R.id.tv4)TextView tc4;
+    //@BindView(R.id.tv5)TextView tc5;
+    @BindView(R.id.tv6)TextView c6;
+    @BindView(R.id.tv7)TextView c7;
+    @BindView(R.id.tv8)TextView c8;
+    //@BindView(R.id.tv9)TextView tc9;
+    //@BindView(R.id.tv10)TextView tc10;
+    //@BindView(R.id.tv11)TextView tc11;
+    //@BindView(R.id.tv12)TextView tc12;
 
     private void cc(View rv) {
-
-        TextView c1 = (TextView) rv.findViewById(R.id.tv1);
-        TextView c2 = (TextView) rv.findViewById(R.id.tv2);
-        TextView c3 = (TextView) rv.findViewById(R.id.tv3);
-        TextView c4 = (TextView) rv.findViewById(R.id.tv4);
-        TextView c5 = (TextView) rv.findViewById(R.id.tv5);
-        TextView c6 = (TextView) rv.findViewById(R.id.tv6);
-        TextView c7 = (TextView) rv.findViewById(R.id.tv7);
-        TextView c8 = (TextView) rv.findViewById(R.id.tv8);
-        TextView c9 = (TextView) rv.findViewById(R.id.tv9);
-        TextView c10 = (TextView) rv.findViewById(R.id.tv10);
-        TextView c11 = (TextView) rv.findViewById(R.id.tv11);
-        TextView c12 = (TextView) rv.findViewById(R.id.tv12);
-
+        ButterKnife.bind(this,rv);
         c1.setTextColor(getResources().getColor(R.color.calculator_selected));
         c2.setTextColor(getResources().getColor(R.color.calculator_selected));
         c3.setTextColor(getResources().getColor(R.color.calculator_selected));
-        c4.setTextColor(getResources().getColor(R.color.calculator_selected));
-        c5.setTextColor(getResources().getColor(R.color.calculator_selected));
+        tc4.setTextColor(getResources().getColor(R.color.calculator_selected));
+        tc5.setTextColor(getResources().getColor(R.color.calculator_selected));
         c6.setTextColor(getResources().getColor(R.color.calculator_selected));
         c7.setTextColor(getResources().getColor(R.color.calculator_selected));
         c8.setTextColor(getResources().getColor(R.color.calculator_selected));
-        c9.setTextColor(getResources().getColor(R.color.calculator_selected));
-        c10.setTextColor(getResources().getColor(R.color.calculator_selected));
-        c11.setTextColor(getResources().getColor(R.color.calculator_selected));
-        c12.setTextColor(getResources().getColor(R.color.calculator_selected));
-
-
+        tc9.setTextColor(getResources().getColor(R.color.calculator_selected));
+        tc10.setTextColor(getResources().getColor(R.color.calculator_selected));
+        tc11.setTextColor(getResources().getColor(R.color.calculator_selected));
+        tc12.setTextColor(getResources().getColor(R.color.calculator_selected));
     }
 
+    @BindView(R.id.one)EditText t1;
+    @BindView(R.id.two)EditText t2;
+    @BindView(R.id.three)EditText t3;
+    @BindView(R.id.four)EditText t4;
+    @BindView(R.id.five)EditText t5;
+    @BindView(R.id.six)EditText t6;
+    @BindView(R.id.seven)EditText t7;
+    @BindView(R.id.eight)EditText t8;
+    @BindView(R.id.nine)EditText t9;
+    @BindView(R.id.ten)EditText t10;
+    @BindView(R.id.eleven)EditText t11;
+    @BindView(R.id.twelve)EditText t12;
 
     private void onCalculate(View a) {
 
         double n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12;
-        EditText t1 = (EditText) a.findViewById(R.id.one);
-        EditText t2 = (EditText) a.findViewById(R.id.two);
-        EditText t3 = (EditText) a.findViewById(R.id.three);
-        EditText t4 = (EditText) a.findViewById(R.id.four);
-        EditText t5 = (EditText) a.findViewById(R.id.five);
-        EditText t6 = (EditText) a.findViewById(R.id.six);
-        EditText t7 = (EditText) a.findViewById(R.id.seven);
-        EditText t8 = (EditText) a.findViewById(R.id.eight);
-        EditText t9 = (EditText) a.findViewById(R.id.nine);
-        EditText t10 = (EditText) a.findViewById(R.id.ten);
-        EditText t11 = (EditText) a.findViewById(R.id.eleven);
-        EditText t12 = (EditText) a.findViewById(R.id.twelve);
-
-
         double tux, pux, p = 0.0;
-
 
         if (s1.getSelectedItem().toString().equals("COE")) {
             if (s2.getSelectedItem().toString().equals("Sem 1")) {

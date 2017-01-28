@@ -22,9 +22,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import functions.Constant;
 import functions.Utils;
 import okhttp3.Call;
@@ -49,44 +49,40 @@ public class ChooseFeedItems extends AppCompatActivity implements Constant {
     private Handler mHandler;
     String likes;
 
+      @BindView(R.id.check_collegespace)CheckBox collegespace;
+      @BindView(R.id.check_crosslinks)CheckBox crosslinks;
+      @BindView(R.id.check_junoon)CheckBox junoon;
+      @BindView(R.id.check_rotaract)CheckBox rotaract;
+      @BindView(R.id.check_bullet)CheckBox bullet;
+      @BindView(R.id.check_csi)CheckBox csi;
+      @BindView(R.id.check_ieee)CheckBox ieee;
+      @BindView(R.id.check_debsoc)CheckBox deb;
+      @BindView(R.id.check_quiz)CheckBox quiz;
+      @BindView(R.id.check_ashwa)CheckBox ashwa;
+      @BindView(R.id.check_enactus)CheckBox enactus;
+      @BindView(R.id.check_aagaz)CheckBox aagaz;
+      @BindView(R.id.likes_collegespace)TextView tCollegespace ;
+      @BindView(R.id.likes_crosslinks)TextView tCrosslinks;
+      @BindView(R.id.likes_junoon)TextView tJunoon;
+      @BindView(R.id.likes_rotaract)TextView tRotaract;
+      @BindView(R.id.likes_bullethawk)TextView tBullet;
+      @BindView(R.id.likes_csi)TextView tCsi;
+      @BindView(R.id.likes_ieee)TextView tIeee;
+      @BindView(R.id.likes_debsoc)TextView tDeb;
+      @BindView(R.id.likes_quiz)TextView tQuiz;
+      @BindView(R.id.likes_ashwa)TextView tAshwa;
+      @BindView(R.id.likes_enactus)TextView tEnactus;
+      @BindView(R.id.likes_aagaz)TextView tAagaz;
+      @BindView(R.id.next)Button next;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_feed_items);
-
+        ButterKnife.bind(this);
         setTitle("My Feed Items");
 
-        Button next = (Button) findViewById(R.id.next);
         mHandler = new Handler(Looper.getMainLooper());
-
-        CheckBox collegespace = (CheckBox) findViewById(R.id.check_collegespace);
-        CheckBox crosslinks = (CheckBox) findViewById(R.id.check_crosslinks);
-        CheckBox junoon = (CheckBox) findViewById(R.id.check_junoon);
-        CheckBox rotaract = (CheckBox) findViewById(R.id.check_rotaract);
-        CheckBox bullet = (CheckBox) findViewById(R.id.check_bullet);
-        CheckBox csi = (CheckBox) findViewById(R.id.check_csi);
-        CheckBox ieee = (CheckBox) findViewById(R.id.check_ieee);
-        CheckBox deb = (CheckBox) findViewById(R.id.check_debsoc);
-        CheckBox quiz = (CheckBox) findViewById(R.id.check_quiz);
-        CheckBox ashwa = (CheckBox) findViewById(R.id.check_ashwa);
-        CheckBox enactus = (CheckBox) findViewById(R.id.check_enactus);
-        CheckBox aagaz = (CheckBox) findViewById(R.id.check_aagaz);
-
-
-        TextView tCollegespace = (TextView) findViewById(R.id.likes_collegespace);
-        TextView tCrosslinks = (TextView) findViewById(R.id.likes_crosslinks);
-        TextView tJunoon = (TextView) findViewById(R.id.likes_junoon);
-        TextView tRotaract = (TextView) findViewById(R.id.likes_rotaract);
-        TextView tBullet = (TextView) findViewById(R.id.likes_bullethawk);
-        TextView tCsi = (TextView) findViewById(R.id.likes_csi);
-        TextView tIeee = (TextView) findViewById(R.id.likes_ieee);
-        TextView tDeb = (TextView) findViewById(R.id.likes_debsoc);
-        TextView tQuiz = (TextView) findViewById(R.id.likes_quiz);
-        TextView tAshwa = (TextView) findViewById(R.id.likes_ashwa);
-        TextView tEnactus = (TextView) findViewById(R.id.likes_enactus);
-        TextView tAagaz = (TextView) findViewById(R.id.likes_aagaz);
-
 
         SharedPreferences i = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         Crosslinks = i.getBoolean(CROSSLINKS, false);

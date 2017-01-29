@@ -9,46 +9,42 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import butterknife.BindView;
+
 public class Sub_load extends AppCompatActivity {
 
-    private Spinner s3;
-    private Spinner s4;
+    @BindView(R.id.spinB) Spinner s3;
+    @BindView(R.id.spinS) Spinner s4;
+    @BindView(R.id.co1)TextView t1;
+    @BindView(R.id.co2)TextView t2 ;
+    @BindView(R.id.co3)TextView t3 ;
+    @BindView(R.id.co4)TextView t4 ;
+    @BindView(R.id.co5)TextView t5;
+    @BindView(R.id.co6)TextView t6;
+    @BindView(R.id.co7)TextView t7;
+    @BindView(R.id.co8)TextView t8;
+    @BindView(R.id.co9)TextView t9;
+    @BindView(R.id.co10)TextView t10;
+    @BindView(R.id.co11)TextView t11;
+    @BindView(R.id.co12)TextView t12;
 
+    @BindView(R.id.su1)TextView n1;
+    @BindView(R.id.su2)TextView n2;
+    @BindView(R.id.su3)TextView n3;
+    @BindView(R.id.su4)TextView n4;
+    @BindView(R.id.su5)TextView n5;
+    @BindView(R.id.su6)TextView n6;
+    @BindView(R.id.su7)TextView n7;
+    @BindView(R.id.su8)TextView n8;
+    @BindView(R.id.su9)TextView n9;
+    @BindView(R.id.su10)TextView n10;
+    @BindView(R.id.su11)TextView n11;
+    @BindView(R.id.su12)TextView n12;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sub_load);
-
-
-        final TextView t1 = (TextView) findViewById(R.id.co1);
-        final TextView t2 = (TextView) findViewById(R.id.co2);
-        final TextView t3 = (TextView) findViewById(R.id.co3);
-        final TextView t4 = (TextView) findViewById(R.id.co4);
-        final TextView t5 = (TextView) findViewById(R.id.co5);
-        final TextView t6 = (TextView) findViewById(R.id.co6);
-        final TextView t7 = (TextView) findViewById(R.id.co7);
-        final TextView t8 = (TextView) findViewById(R.id.co8);
-        final TextView t9 = (TextView) findViewById(R.id.co9);
-        final TextView t10 = (TextView) findViewById(R.id.co10);
-        final TextView t11 = (TextView) findViewById(R.id.co11);
-        final TextView t12 = (TextView) findViewById(R.id.co12);
-
-        final TextView n1 = (TextView) findViewById(R.id.su1);
-        final TextView n2 = (TextView) findViewById(R.id.su2);
-        final TextView n3 = (TextView) findViewById(R.id.su3);
-        final TextView n4 = (TextView) findViewById(R.id.su4);
-        final TextView n5 = (TextView) findViewById(R.id.su5);
-        final TextView n6 = (TextView) findViewById(R.id.su6);
-        final TextView n7 = (TextView) findViewById(R.id.su7);
-        final TextView n8 = (TextView) findViewById(R.id.su8);
-        final TextView n9 = (TextView) findViewById(R.id.su9);
-        final TextView n10 = (TextView) findViewById(R.id.su10);
-        final TextView n11 = (TextView) findViewById(R.id.su11);
-        final TextView n12 = (TextView) findViewById(R.id.su12);
-
-
-        s3 = (Spinner) findViewById(R.id.spinB);
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this, R.array.branch, android.R.layout.simple_list_item_1);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         s3.setAdapter(adapter2);
@@ -65,7 +61,6 @@ public class Sub_load extends AppCompatActivity {
             }
         });
 
-        s4 = (Spinner) findViewById(R.id.spinS);
         ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(this, R.array.semester, android.R.layout.simple_list_item_1);
         adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         s4.setAdapter(adapter3);

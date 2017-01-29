@@ -24,6 +24,8 @@ import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import functions.ButtonAnimation;
 import functions.Constant;
 import nsit.app.com.nsitapp.helper.AppPermissionChecker;
@@ -35,18 +37,15 @@ public class Hangout_collegeLocations extends BaseActivity implements Constant {
 
     public static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
     private ArrayList<LocationGroup> LocationsGroupsList = new ArrayList<>();
-    private ExpandableListView listView;
+    @BindView(R.id.locations_list) ExpandableListView listView;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_locations);
-        listView = (ExpandableListView) findViewById(R.id.locations_list);
         populateList(LocationsGroupsList);
-
-
-
+        ButterKnife.bind(this);
         this.listView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
 
             @Override

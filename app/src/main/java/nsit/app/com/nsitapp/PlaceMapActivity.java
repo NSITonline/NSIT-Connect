@@ -28,6 +28,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import functions.GPSTracker;
 import functions.Utils;
 import okhttp3.Call;
@@ -44,8 +46,10 @@ public class PlaceMapActivity extends FragmentActivity implements OnMapReadyCall
     private double Lati;
     private double Longi;
     private String place_name, place_id, main_polylinrobject;
-    private TextView time, transition, distance;
-    private ProgressBar progressBar;
+    @BindView(R.id.time) TextView time;
+    @BindView(R.id.destination)TextView transition;
+    @BindView(R.id.distance)TextView distance;
+    @BindView(R.id.progress_path)ProgressBar progressBar;
     private Handler mHandler;
 
 
@@ -54,12 +58,7 @@ public class PlaceMapActivity extends FragmentActivity implements OnMapReadyCall
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_place_maps);
-
-        // Initialize variables
-        transition = (TextView) findViewById(R.id.destination);
-        time = (TextView) findViewById(R.id.time);
-        distance = (TextView) findViewById(R.id.distance);
-        progressBar = (ProgressBar) findViewById(R.id.progress_path);
+        ButterKnife.bind(this);
 
         // Get data from previous activity
         Intent intent = getIntent();

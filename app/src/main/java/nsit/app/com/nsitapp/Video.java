@@ -4,9 +4,11 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,6 +24,9 @@ import java.io.IOException;
 import java.util.Objects;
 
 import adapters.VideoList_Adapter;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import functions.ButtonAnimation;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -33,13 +38,13 @@ import okhttp3.Response;
  * Created by Sidharth Patro on 21-Jun-15.
  */
 public class Video extends Fragment {
-    private ListView listview;
+    @BindView(R.id.videos_list) ListView listview;
     private String nextPageToken = "";
     private String prevPageToken = "";
     private String navigateTo = "next";
-    private Button btnNextPage;
-    private Button btnPrevPage;
-    private View Spinner;
+    @BindView(R.id.NextPageButton)Button btnNextPage;
+    @BindView(R.id.PrevPageButton)Button btnPrevPage;
+    @BindView(R.id.VideoProgressSpinner)View Spinner;
     private Handler mHandler;
 
 
@@ -64,46 +69,39 @@ public class Video extends Fragment {
     @TargetApi(19)
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_video, container, false);
-        listview = (ListView) rootView.findViewById(R.id.videos_list);
-        Spinner = rootView.findViewById(R.id.VideoProgressSpinner);
+        ButterKnife.bind(this,rootView);
         Spinner.setVisibility(View.VISIBLE);
         mHandler = new Handler(Looper.getMainLooper());
 
         // Loading videos initially
         loadFeed();
-
-        // Set up buttons for next and previous page
-        btnNextPage = (Button) rootView.findViewById(R.id.NextPageButton);
-        btnPrevPage = (Button) rootView.findViewById(R.id.PrevPageButton);
-
-        btnNextPage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!Objects.equals(nextPageToken, "")) {
-                    Spinner.setVisibility(View.VISIBLE);
-                    navigateTo = "next";
-                    ButtonAnimation btnAnimation = new ButtonAnimation();
-                    btnAnimation.animateButton(v, activity);
-                    loadFeed();
-                }
-
-            }
-        });
-        btnPrevPage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!Objects.equals(prevPageToken, "")) {
-                    Spinner.setVisibility(View.VISIBLE);
-                    navigateTo = "prev";
-                    ButtonAnimation btnAnimation = new ButtonAnimation();
-                    btnAnimation.animateButton(v, activity);
-                    loadFeed();
-                }
-            }
-        });
-
         return rootView;
     }
+    @TargetApi(Build.VERSION_CODES.KITKAT)
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    @OnClick(R.id.NextPageButton)
+    public void btnNextPage(View view){
+        if (!Objects.equals(nextPageToken, "")) {
+            Spinner.setVisibility(View.VISIBLE);
+            navigateTo = "next";
+            ButtonAnimation btnAnimation = new ButtonAnimation();
+            btnAnimation.animateButton(view, activity);
+            loadFeed();
+        }
+    }
+    @TargetApi(Build.VERSION_CODES.KITKAT)
+    @OnClick(R.id.NextPageButton)
+    public void btnPrevPage(View view){
+        if (!Objects.equals(nextPageToken, "")) {
+            Spinner.setVisibility(View.VISIBLE);
+            navigateTo = "next";
+            ButtonAnimation btnAnimation = new ButtonAnimation();
+            btnAnimation.animateButton(view, activity);
+            loadFeed();
+        }
+    }
+
+
     @TargetApi(19)
     private void loadFeed() {
 

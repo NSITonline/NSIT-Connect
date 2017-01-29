@@ -26,6 +26,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import functions.ButtonAnimation;
 import functions.Constant;
 import functions.ImageLoader;
@@ -35,21 +37,23 @@ import static nsit.app.com.nsitapp.R.id.imag_cont;
 
 
 public class Description extends AppCompatActivity implements Constant{
-    private ProgressBar pb;
     private ImageLoader imageLoader;
     private String img;
     private String link;
-    private ImageView imageView;
     private String imglink;
     private String obid;
     private FrameLayout img_cont;
-
+    @BindView(R.id.image) ImageView imageView;
+    @BindView(R.id.progressBar1)ProgressBar pb;
+    @BindView(R.id.likes)TextView like1;
+    @BindView(R.id.link)Button link1;
+    @BindView(R.id.des)TextView des1;
+    @BindView(R.id.but_con)LinearLayout but_con;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_decsription);
-        pb=(ProgressBar)findViewById(R.id.progressBar1);
-
+        ButterKnife.bind(this);
         setTitle("Post");
 
         Intent i = getIntent();
@@ -59,13 +63,7 @@ public class Description extends AppCompatActivity implements Constant{
         link = i.getStringExtra(LINK);
         imageLoader=new ImageLoader(this);
         obid = i.getStringExtra(OBID);
-
-        imageView = (ImageView) findViewById(R.id.image);
-        TextView like1 = (TextView) findViewById(R.id.likes);
-        Button link1 = (Button) findViewById(R.id.link);
-        TextView des1 = (TextView) findViewById(R.id.des);
         img_cont = (FrameLayout) findViewById(imag_cont);
-        LinearLayout but_con = (LinearLayout) findViewById(R.id.but_con);
 
         if(like ==null)
             like1.setText("0");

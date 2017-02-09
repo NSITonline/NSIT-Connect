@@ -19,14 +19,14 @@ import butterknife.ButterKnife;
 
 public class CalculatorActivity extends Fragment {
 
-    @BindView(R.id.spinb)Spinner s1;
-    @BindView(R.id.spins)Spinner s2;
-    @BindView(R.id.tv10) TextView tc10;
-    @BindView(R.id.tv11) TextView tc11;
-    @BindView(R.id.tv12) TextView tc12;
-    @BindView(R.id.tv9) TextView tc9;
-    @BindView(R.id.tv4) TextView tc4;
-    @BindView(R.id.tv5)TextView tc5;
+    @BindView(R.id.spinb)   Spinner     s1;
+    @BindView(R.id.spins)   Spinner     s2;
+    @BindView(R.id.tv10)    TextView    tc10;
+    @BindView(R.id.tv11)    TextView    tc11;
+    @BindView(R.id.tv12)    TextView    tc12;
+    @BindView(R.id.tv9)     TextView    tc9;
+    @BindView(R.id.tv4)     TextView    tc4;
+    @BindView(R.id.tv5)     TextView    tc5;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,10 +37,13 @@ public class CalculatorActivity extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View rooview = inflater.inflate(R.layout.activity_calculator, container, false);
+        
         ButterKnife.bind(this,rooview);
+        
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.branch, android.R.layout.simple_list_item_1);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         s1.setAdapter(adapter);
+        
         Button b = (Button) rooview.findViewById(R.id.button);
         b.setOnClickListener(new View.OnClickListener() {
             @Override

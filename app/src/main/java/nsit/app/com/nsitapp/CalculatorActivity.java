@@ -3,7 +3,11 @@ package nsit.app.com.nsitapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -14,14 +18,27 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import static nsit.app.com.nsitapp.R.id.per;
+
 public class CalculatorActivity extends Fragment {
 
     private Spinner s1,s2;
-    private TextView tc10, tc11, tc12, tc9, tc4, tc5;
+    private TextView tc10, tc11, tc12, tc9, tc4, tc5, tc1,tc2,tc3,tc8,tc7,tc6,rs;
+    private double n1=-1.0, n2=-1.0, n3=-1.0, n4=-1.0, n5=-1.0, n6=-1.0, n7=-1.0, n8=-1.0, n9=-1.0, n10=-1.0, n11=-1.0, n12=-1.0;
+    private EditText t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11,t12;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
     }
 
 
@@ -32,6 +49,19 @@ public class CalculatorActivity extends Fragment {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.branch, android.R.layout.simple_list_item_1);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         s1.setAdapter(adapter);
+        t1 = (EditText) rooview.findViewById(R.id.one);
+        t2 = (EditText) rooview.findViewById(R.id.two);
+        t3 = (EditText) rooview.findViewById(R.id.three);
+        t4 = (EditText) rooview.findViewById(R.id.four);
+        t5 = (EditText) rooview.findViewById(R.id.five);
+        t6 = (EditText) rooview.findViewById(R.id.six);
+        t7 = (EditText) rooview.findViewById(R.id.seven);
+        t8 = (EditText) rooview.findViewById(R.id.eight);
+        t9 = (EditText) rooview.findViewById(R.id.nine);
+        t10 = (EditText) rooview.findViewById(R.id.ten);
+        t11 = (EditText) rooview.findViewById(R.id.eleven);
+        t12 = (EditText) rooview.findViewById(R.id.twelve);
+        rs = (TextView) rooview.findViewById(per);
         Button b = (Button) rooview.findViewById(R.id.button);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +88,12 @@ public class CalculatorActivity extends Fragment {
         tc9 = (TextView) rooview.findViewById(R.id.tv9);
         tc4 = (TextView) rooview.findViewById(R.id.tv4);
         tc5 = (TextView) rooview.findViewById(R.id.tv5);
+        tc1 = (TextView) rooview.findViewById(R.id.tv1);
+        tc2 = (TextView) rooview.findViewById(R.id.tv2);
+        tc3 = (TextView) rooview.findViewById(R.id.tv3);
+        tc8 = (TextView) rooview.findViewById(R.id.tv8);
+        tc7 = (TextView) rooview.findViewById(R.id.tv7);
+        tc6 = (TextView) rooview.findViewById(R.id.tv6);
         s2 = (Spinner) rooview.findViewById(R.id.spins);
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(getActivity(), R.array.semester, android.R.layout.simple_list_item_1);
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -74,156 +110,163 @@ public class CalculatorActivity extends Fragment {
                     if (s2.getSelectedItem().toString().equals("Sem 1")) {
 
 
-                        tc10.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc11.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc12.setTextColor(getResources().getColor(R.color.calculator_notselected));
+                        //tc10.setTextColor(getResources().getColor(R.color.calculator_notselected));
+                        tc10.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        //tc11.setTextColor(getResources().getColor(R.color.calculator_notselected));
+                        tc11.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        //tc12.setTextColor(getResources().getColor(R.color.calculator_notselected));
+                        tc12.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
                     } else if (s2.getSelectedItem().toString().equals("Sem 2")) {
 
 
-                        tc10.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc11.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc12.setTextColor(getResources().getColor(R.color.calculator_notselected));
+                        //tc10.setTextColor(getResources().getColor(R.color.calculator_notselected));
+                        tc10.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        //tc11.setTextColor(getResources().getColor(R.color.calculator_notselected));
+                        tc11.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        //tc12.setTextColor(getResources().getColor(R.color.calculator_notselected));
+                        tc12.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
                     } else if (s2.getSelectedItem().toString().equals("Sem 3")) {
 
 
-                        tc11.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc12.setTextColor(getResources().getColor(R.color.calculator_notselected));
+                        tc11.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        //tc12.setTextColor(getResources().getColor(R.color.calculator_notselected));
+                        tc12.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
                     } else if (s2.getSelectedItem().toString().equals("Sem 4")) {
 
                     } else if (s2.getSelectedItem().toString().equals("Sem 5")) {
 
-                        tc10.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc9.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc12.setTextColor(getResources().getColor(R.color.calculator_notselected));
+                        tc10.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc9.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc12.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
                     } else if (s2.getSelectedItem().toString().equals("Sem 6")) {
 
 
-                        tc10.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc9.setTextColor(getResources().getColor(R.color.calculator_notselected));
+                        tc10.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc9.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
 
                     } else if (s2.getSelectedItem().toString().equals("Sem 7")) {
 
 
-                        tc10.setTextColor(getResources().getColor(R.color.calculator_notselected));
+                        tc10.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
 
-                        tc12.setTextColor(getResources().getColor(R.color.calculator_notselected));
+                        tc12.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
                     } else if (s2.getSelectedItem().toString().equals("Sem 8")) {
 
 
-                        tc9.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc5.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc4.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc10.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc12.setTextColor(getResources().getColor(R.color.calculator_notselected));
+                        tc9.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc5.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc4.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc10.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc12.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
                     }
                 } else if (s1.getSelectedItem().toString().equals("IT")) {
 
                     if (s2.getSelectedItem().toString().equals("Sem 1")) {
 
 
-                        tc10.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc11.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc12.setTextColor(getResources().getColor(R.color.calculator_notselected));
+                        tc10.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc11.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc12.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
                     } else if (s2.getSelectedItem().toString().equals("Sem 2")) {
 
 
-                        tc10.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc11.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc12.setTextColor(getResources().getColor(R.color.calculator_notselected));
+                        tc10.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc11.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc12.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
                     } else if (s2.getSelectedItem().toString().equals("Sem 3")) {
 
 
-                        tc10.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc9.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc12.setTextColor(getResources().getColor(R.color.calculator_notselected));
+                        tc10.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc9.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc12.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
                     } else if (s2.getSelectedItem().toString().equals("Sem 4")) {
 
 
-                        tc11.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc12.setTextColor(getResources().getColor(R.color.calculator_notselected));
+                        tc11.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc12.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
                     } else if (s2.getSelectedItem().toString().equals("Sem 5")) {
 
-                        tc10.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc9.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc12.setTextColor(getResources().getColor(R.color.calculator_notselected));
+                        tc10.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc9.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc12.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
                     } else if (s2.getSelectedItem().toString().equals("Sem 6")) {
 
-                        tc10.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc12.setTextColor(getResources().getColor(R.color.calculator_notselected));
+                        tc10.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc12.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
                     } else if (s2.getSelectedItem().toString().equals("Sem 7")) {
 
                     } else if (s2.getSelectedItem().toString().equals("Sem 8")) {
 
 
-                        tc9.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc5.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc4.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc10.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc12.setTextColor(getResources().getColor(R.color.calculator_notselected));
+                        tc9.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc5.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc4.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc10.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc12.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
                     }
                 } else if (s1.getSelectedItem().toString().equals("MPAE")) {
 
                     if (s2.getSelectedItem().toString().equals("Sem 1")) {
 
 
-                        tc10.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc11.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc12.setTextColor(getResources().getColor(R.color.calculator_notselected));
+                        tc10.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc11.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc12.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
                     } else if (s2.getSelectedItem().toString().equals("Sem 2")) {
 
 
-                        tc10.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc12.setTextColor(getResources().getColor(R.color.calculator_notselected));
+                        tc10.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc12.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
                     } else if (s2.getSelectedItem().toString().equals("Sem 3")) {
 
-                        tc10.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc12.setTextColor(getResources().getColor(R.color.calculator_notselected));
+                        tc10.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc12.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
                     } else if (s2.getSelectedItem().toString().equals("Sem 4")) {
 
-                        tc10.setTextColor(getResources().getColor(R.color.calculator_notselected));
+                        tc10.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
                     } else if (s2.getSelectedItem().toString().equals("Sem 5")) {
-                        tc10.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc12.setTextColor(getResources().getColor(R.color.calculator_notselected));
+                        tc10.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc12.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
                     } else if (s2.getSelectedItem().toString().equals("Sem 6")) {
-                        tc10.setTextColor(getResources().getColor(R.color.calculator_notselected));
+                        tc10.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
 
                     } else if (s2.getSelectedItem().toString().equals("Sem 7")) {
 
 
-                        tc10.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc12.setTextColor(getResources().getColor(R.color.calculator_notselected));
+                        tc10.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc12.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
                     } else if (s2.getSelectedItem().toString().equals("Sem 8")) {
 
-                        tc10.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc4.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc5.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc12.setTextColor(getResources().getColor(R.color.calculator_notselected));
+                        tc10.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc4.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc5.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc12.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
                     }
                 } else if (s1.getSelectedItem().toString().equals("ECE")) {
 
                     if (s2.getSelectedItem().toString().equals("Sem 1")) {
 
-                        tc10.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc11.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc12.setTextColor(getResources().getColor(R.color.calculator_notselected));
+                        tc10.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc11.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc12.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
                     } else if (s2.getSelectedItem().toString().equals("Sem 2")) {
 
 
-                        tc10.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc12.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc11.setTextColor(getResources().getColor(R.color.calculator_notselected));
+                        tc10.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc12.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc11.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
 
                     } else if (s2.getSelectedItem().toString().equals("Sem 3")) {
 
-                        tc10.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc12.setTextColor(getResources().getColor(R.color.calculator_notselected));
+                        tc10.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc12.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
                     } else if (s2.getSelectedItem().toString().equals("Sem 4")) {
 
                     } else if (s2.getSelectedItem().toString().equals("Sem 5")) {
 
-                        tc9.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc10.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc12.setTextColor(getResources().getColor(R.color.calculator_notselected));
+                        tc9.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc10.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc12.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
                     } else if (s2.getSelectedItem().toString().equals("Sem 6")) {
 
                     } else if (s2.getSelectedItem().toString().equals("Sem 7")) {
@@ -236,31 +279,31 @@ public class CalculatorActivity extends Fragment {
                     if (s2.getSelectedItem().toString().equals("Sem 1")) {
 
 
-                        tc10.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc11.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc12.setTextColor(getResources().getColor(R.color.calculator_notselected));
+                        tc10.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc11.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc12.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
                     } else if (s2.getSelectedItem().toString().equals("Sem 2")) {
 
-                        tc10.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc11.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc12.setTextColor(getResources().getColor(R.color.calculator_notselected));
+                        tc10.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc11.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc12.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
                     } else if (s2.getSelectedItem().toString().equals("Sem 3")) {
 
-                        tc10.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc11.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc12.setTextColor(getResources().getColor(R.color.calculator_notselected));
+                        tc10.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc11.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc12.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
                     } else if (s2.getSelectedItem().toString().equals("Sem 4")) {
-                        tc9.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc12.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc10.setTextColor(getResources().getColor(R.color.calculator_notselected));
+                        tc9.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc12.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc10.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
                     } else if (s2.getSelectedItem().toString().equals("Sem 5")) {
-                        tc10.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc12.setTextColor(getResources().getColor(R.color.calculator_notselected));
+                        tc10.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc12.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
                     } else if (s2.getSelectedItem().toString().equals("Sem 6")) {
 
-                        tc10.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc11.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc12.setTextColor(getResources().getColor(R.color.calculator_notselected));
+                        tc10.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc11.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc12.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
 
                     } else if (s2.getSelectedItem().toString().equals("Sem 7")) {
 
@@ -272,29 +315,29 @@ public class CalculatorActivity extends Fragment {
 
                     if (s2.getSelectedItem().toString().equals("Sem 1")) {
 
-                        tc10.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc11.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc12.setTextColor(getResources().getColor(R.color.calculator_notselected));
+                        tc10.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc11.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc12.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
                     } else if (s2.getSelectedItem().toString().equals("Sem 2")) {
 
-                        tc10.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc11.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc12.setTextColor(getResources().getColor(R.color.calculator_notselected));
+                        tc10.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc11.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc12.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
                     } else if (s2.getSelectedItem().toString().equals("Sem 3")) {
 
-                        tc10.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc12.setTextColor(getResources().getColor(R.color.calculator_notselected));
+                        tc10.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc12.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
                     } else if (s2.getSelectedItem().toString().equals("Sem 4")) {
 
                     } else if (s2.getSelectedItem().toString().equals("Sem 5")) {
 
 
-                        tc9.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc10.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc12.setTextColor(getResources().getColor(R.color.calculator_notselected));
+                        tc9.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc10.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc12.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
                     } else if (s2.getSelectedItem().toString().equals("Sem 6")) {
-                        tc9.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        tc10.setTextColor(getResources().getColor(R.color.calculator_notselected));
+                        tc9.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        tc10.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
 
                     } else if (s2.getSelectedItem().toString().equals("Sem 7")) {
 
@@ -330,18 +373,18 @@ public class CalculatorActivity extends Fragment {
         TextView c11 = (TextView) rv.findViewById(R.id.tv11);
         TextView c12 = (TextView) rv.findViewById(R.id.tv12);
 
-        c1.setTextColor(getResources().getColor(R.color.calculator_selected));
-        c2.setTextColor(getResources().getColor(R.color.calculator_selected));
-        c3.setTextColor(getResources().getColor(R.color.calculator_selected));
-        c4.setTextColor(getResources().getColor(R.color.calculator_selected));
-        c5.setTextColor(getResources().getColor(R.color.calculator_selected));
-        c6.setTextColor(getResources().getColor(R.color.calculator_selected));
-        c7.setTextColor(getResources().getColor(R.color.calculator_selected));
-        c8.setTextColor(getResources().getColor(R.color.calculator_selected));
-        c9.setTextColor(getResources().getColor(R.color.calculator_selected));
-        c10.setTextColor(getResources().getColor(R.color.calculator_selected));
-        c11.setTextColor(getResources().getColor(R.color.calculator_selected));
-        c12.setTextColor(getResources().getColor(R.color.calculator_selected));
+        c1.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_selected));
+        c2.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_selected));
+        c3.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_selected));
+        c4.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_selected));
+        c5.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_selected));
+        c6.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_selected));
+        c7.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_selected));
+        c8.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_selected));
+        c9.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_selected));
+        c10.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_selected));
+        c11.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_selected));
+        c12.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_selected));
 
 
     }
@@ -349,19 +392,7 @@ public class CalculatorActivity extends Fragment {
 
     private void onCalculate(View a) {
 
-        double n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12;
-        EditText t1 = (EditText) a.findViewById(R.id.one);
-        EditText t2 = (EditText) a.findViewById(R.id.two);
-        EditText t3 = (EditText) a.findViewById(R.id.three);
-        EditText t4 = (EditText) a.findViewById(R.id.four);
-        EditText t5 = (EditText) a.findViewById(R.id.five);
-        EditText t6 = (EditText) a.findViewById(R.id.six);
-        EditText t7 = (EditText) a.findViewById(R.id.seven);
-        EditText t8 = (EditText) a.findViewById(R.id.eight);
-        EditText t9 = (EditText) a.findViewById(R.id.nine);
-        EditText t10 = (EditText) a.findViewById(R.id.ten);
-        EditText t11 = (EditText) a.findViewById(R.id.eleven);
-        EditText t12 = (EditText) a.findViewById(R.id.twelve);
+
 
 
         double tux, pux, p = 0.0;
@@ -1165,7 +1196,6 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + n11) / 29;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-
                 }
 
 
@@ -1314,10 +1344,135 @@ public class CalculatorActivity extends Fragment {
 
         }
 
-        TextView rs = (TextView) a.findViewById(R.id.per);
         rs.setText(String.format("%.2f ", p));
+        addToStorage();
 
     }
 
+    public void addToStorage() {
+        File root = android.os.Environment.getExternalStorageDirectory();
+        File dir = new File (root.getAbsolutePath() + "/NSITConnect");
+        dir.mkdirs();
+        File file = new File(dir, s1.getSelectedItem().toString()+"_"+s2.getSelectedItem().toString()+".txt");
+        PrintWriter pw = null;
+        FileOutputStream f = null;
+        try{
+            f = new FileOutputStream(file);
+            pw = new PrintWriter(f);
+            pw.println(tc1.getText()+"="+n1);
+            pw.println(tc2.getText()+"="+n2);
+            pw.println(tc3.getText()+"="+n3);
+            pw.println(tc4.getText()+"="+n4);
+            pw.println(tc5.getText()+"="+n5);
+            pw.println(tc6.getText()+"="+n6);
+            pw.println(tc7.getText()+"="+n7);
+            pw.println(tc8.getText()+"="+n8);
+            pw.println(tc9.getText()+"="+n9);
+            pw.println(tc10.getText()+"="+n10);
+            pw.println(tc11.getText()+"="+n11);
+            pw.println(tc12.getText()+"="+n12);
+            pw.flush();
+            file.setReadOnly();
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally {
+            if(pw!=null)
+                pw.close();
+            if(f!=null)
+                try {
+                    f.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+        }
+    }
 
+
+    public void readFileFromStorage(){
+        //InputStream is = this.getResources().openRawResource(R.raw.marksfile);
+        File root = android.os.Environment.getExternalStorageDirectory();
+        File dir = new File (root.getAbsolutePath() + "/NSITConnect");
+        File file = new File(dir, s1.getSelectedItem().toString()+"_"+s2.getSelectedItem().toString()+".txt");
+        if(!file.exists()){
+            Toast.makeText(getContext(),"Marks not available",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        BufferedReader reader = null;
+        String s="";
+        try {
+            reader = new BufferedReader(new FileReader(file));
+            while ((s=reader.readLine())!=null){
+                String[] splits = s.split("=");
+                if(splits[0].equals("TH 1")&&!splits[1].equals("-1.0"))
+                    t1.setText(""+(int)(Double.parseDouble(splits[1])));
+                if(splits[0].equals("TH 2")&&!splits[1].equals("-1.0"))
+                    t2.setText(""+(int)(Double.parseDouble(splits[1])));
+                if(splits[0].equals("TH 3")&&!splits[1].equals("-1.0"))
+                    t3.setText(""+(int)(Double.parseDouble(splits[1])));
+                if(splits[0].equals("TH 4")&&!splits[1].equals("-1.0"))
+                    t4.setText(""+(int)(Double.parseDouble(splits[1])));
+                if(splits[0].equals("TH 5")&&!splits[1].equals("-1.0"))
+                    t5.setText(""+(int)(Double.parseDouble(splits[1])));
+                if(splits[0].equals("PR 1")&&!splits[1].equals("-1.0"))
+                    t6.setText(""+(int)(Double.parseDouble(splits[1])));
+                if(splits[0].equals("PR 2")&&!splits[1].equals("-1.0"))
+                    t7.setText(""+(int)(Double.parseDouble(splits[1])));
+                if(splits[0].equals("PR 3")&&!splits[1].equals("-1.0"))
+                    t8.setText(""+(int)(Double.parseDouble(splits[1])));
+                if(splits[0].equals("PR 4")&&!splits[1].equals("-1.0"))
+                    t9.setText(""+(int)(Double.parseDouble(splits[1])));
+                if(splits[0].equals("PR 5")&&!splits[1].equals("-1.0"))
+                    t10.setText(""+(int)(Double.parseDouble(splits[1])));
+                if(splits[0].equals("VS 1")&&!splits[1].equals("-1.0"))
+                    t11.setText(""+(int)(Double.parseDouble(splits[1])));
+                if(splits[0].equals("VS 2")&&!splits[1].equals("-1.0"))
+                    t12.setText(""+(int)(Double.parseDouble(splits[1])));
+                //Toast.makeText(getContext(),splits[0]+splits[1],Toast.LENGTH_SHORT).show();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                reader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        getActivity().getMenuInflater().inflate(R.menu.menu_calculator,menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+
+            case R.id.clear:
+                t1.setText("");
+                t2.setText("");
+                t3.setText("");
+                t4.setText("");
+                t5.setText("");
+                t6.setText("");
+                t7.setText("");
+                t8.setText("");
+                t9.setText("");
+                t10.setText("");
+                t11.setText("");
+                t12.setText("");
+                rs.setText("");
+                return true;
+
+            case R.id.show_previous_marks:
+                readFileFromStorage();
+                return true;
+            default:
+                break;
+        }
+
+        return false;
+    }
 }

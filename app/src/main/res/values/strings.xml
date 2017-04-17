@@ -154,6 +154,8 @@
     <string name="st11" />
     <string name="st12" />
     <string name="percentage" />
+    <string name="action_show_previous_marks">show previous marks</string>
+    <string name="action_clear">clear</string>
 
 </resources>
 

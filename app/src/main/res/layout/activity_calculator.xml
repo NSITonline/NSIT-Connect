@@ -364,18 +364,6 @@
                     android:textColor="#ffffff"
                     android:textSize="15dp" />
             </LinearLayout>
-            <Button
-                android:id="@+id/store_button"
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="125dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="60dp"
-                android:layout_marginTop="15dp"
-                android:background="@color/colorPrimary"
-                android:clickable="true"
-                android:text="get previous"
-                android:textColor="#ffffff"
-                android:textSize="15dp" />
 
             <LinearLayout
                 android:layout_width="fill_parent"

@@ -1389,7 +1389,6 @@ public class CalculatorActivity extends Fragment {
 
 
     public void readFileFromStorage(){
-        //InputStream is = this.getResources().openRawResource(R.raw.marksfile);
         File root = android.os.Environment.getExternalStorageDirectory();
         File dir = new File (root.getAbsolutePath() + "/NSITConnect");
         File file = new File(dir, s1.getSelectedItem().toString()+"_"+s2.getSelectedItem().toString()+".txt");

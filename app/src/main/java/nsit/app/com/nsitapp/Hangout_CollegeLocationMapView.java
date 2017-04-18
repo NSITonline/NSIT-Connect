@@ -1,11 +1,14 @@
 package nsit.app.com.nsitapp;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -24,6 +27,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import butterknife.BindView;
 import functions.Constant;
 import functions.GPSTracker;
 import functions.Utils;
@@ -31,118 +35,125 @@ import functions.Utils;
 /**
  * Created by Sidharth Patro on 01-Jul-15.
  */
-public class Hangout_CollegeLocationMapView extends Activity implements Constant{
+public class Hangout_CollegeLocationMapView extends Activity implements Constant {
     private com.google.android.gms.maps.MapFragment mapFragment;
     private String OriginLat;
     private String OriginLong;
     private String DestinationLat;
     private String DestinationLong;
-    private ProgressBar MapSpinner;
+    @BindView(R.id.MapProgressBar)
+    ProgressBar MapSpinner;
     private String des;
+
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.map_view);
-        MapSpinner = (ProgressBar)findViewById(R.id.MapProgressBar);
         MapSpinner.setVisibility(View.VISIBLE);
         this.mapFragment = (com.google.android.gms.maps.MapFragment) getFragmentManager()
                 .findFragmentById(R.id.map);
         Bundle extras = getIntent().getExtras();
-        Log.e("extras",extras.toString()+" ");
+        Log.e("extras", extras.toString() + " ");
         String LocationLat = extras.getString(LOCATION_LAT);
         String LocationLong = extras.getString(LOCATION_LON);
         String LocationName = extras.getString(LOCATION_NAME);
-        Log.e("here",LocationName);
-        if(LocationName.contains("North Gate"))
-            des =  getResources().getString(R.string.north_gate_desc);
-        if(LocationName.contains("South Gate"))
-            des =  getResources().getString(R.string.south_gate_desc);
-        if(LocationName.contains("Administrative Block"))
-            des =  getResources().getString(R.string.admin_block_desc);
-        if(LocationName.contains("Block VI"))
-            des =  getResources().getString(R.string.block6_desc);
-        else if(LocationName.contains("Block V"))
-            des =  getResources().getString(R.string.block5_desc);
-        if(LocationName.contains("Block IV"))
-            des =  getResources().getString(R.string.block4_desc);
-        if(LocationName.contains("Main Auditorium"))
-            des =  getResources().getString(R.string.main_audi_desc);
-        if(LocationName.contains("Mini Auditorium"))
-            des =  getResources().getString(R.string.mini_audi_desc);
+        Log.e("here", LocationName);
+        if (LocationName.contains("North Gate"))
+            des = getResources().getString(R.string.north_gate_desc);
+        if (LocationName.contains("South Gate"))
+            des = getResources().getString(R.string.south_gate_desc);
+        if (LocationName.contains("Administrative Block"))
+            des = getResources().getString(R.string.admin_block_desc);
+        if (LocationName.contains("Block VI"))
+            des = getResources().getString(R.string.block6_desc);
+        else if (LocationName.contains("Block V"))
+            des = getResources().getString(R.string.block5_desc);
+        if (LocationName.contains("Block IV"))
+            des = getResources().getString(R.string.block4_desc);
+        if (LocationName.contains("Main Auditorium"))
+            des = getResources().getString(R.string.main_audi_desc);
+        if (LocationName.contains("Mini Auditorium"))
+            des = getResources().getString(R.string.mini_audi_desc);
 
 
-        if(LocationName.contains("Boys' Hostel IV")) {
+        if (LocationName.contains("Boys' Hostel IV")) {
             des = getResources().getString(R.string.bh4_desc);
-         }
-        else  if(LocationName.contains("Boys' Hostel III")) {
+        } else if (LocationName.contains("Boys' Hostel III")) {
             des = getResources().getString(R.string.bh3_desc);
-        }
-        else if(LocationName.contains("Boys' Hostel II")) {
+        } else if (LocationName.contains("Boys' Hostel II")) {
             des = getResources().getString(R.string.bh2_desc);
-        }
-        else if(LocationName.contains("Boys' Hostel I")) {
+        } else if (LocationName.contains("Boys' Hostel I")) {
             des = getResources().getString(R.string.bh1_desc);
         }
-        if(LocationName.contains("Girls' Hostel II"))
-            des =  getResources().getString(R.string.gh2_desc);
-        else  if(LocationName.contains("Girls' Hostel"))
-            des =  getResources().getString(R.string.gh1_desc);
+        if (LocationName.contains("Girls' Hostel II"))
+            des = getResources().getString(R.string.gh2_desc);
+        else if (LocationName.contains("Girls' Hostel"))
+            des = getResources().getString(R.string.gh1_desc);
 
-        if(LocationName.contains("Mini Zayca"))
-            des =  getResources().getString(R.string.mini_zayca);
-        else  if(LocationName.contains("Zayca"))
-            des =  getResources().getString(R.string.main_zayca);
-        if(LocationName.contains("Just Cafe"))
-            des =  getResources().getString(R.string.just_cafe);
-        if(LocationName.contains("McCain"))
-            des =  getResources().getString(R.string.McCain);
-        if(LocationName.contains("Babloo"))
-            des =  getResources().getString(R.string.babloo);
-        if(LocationName.contains("Radha"))
-            des =  getResources().getString(R.string.radha);
-        if(LocationName.contains("Admin ATM"))
-            des =  getResources().getString(R.string.admin_atm);
-        if(LocationName.contains("North Gate ATM"))
-            des =  getResources().getString(R.string.northgate_atm);
-        if(LocationName.contains("South Gate ATM"))
-            des =  getResources().getString(R.string.southgate_atm);
-        if(LocationName.contains("CADLAB"))
-            des =  getResources().getString(R.string.cad_lab);
-        if(LocationName.contains("GCLAB"))
-            des =  getResources().getString(R.string.gc_lab);
-        if(LocationName.contains("KHUSHIL"))
-            des =  getResources().getString(R.string.khushil);
-        if(LocationName.contains("Pavilion"))
-            des =  getResources().getString(R.string.pavillion);
-        if(LocationName.contains("Tennis"))
-            des =  getResources().getString(R.string.tennis);
-        if(LocationName.contains("Basketball"))
-            des =  getResources().getString(R.string.basketball);
-        if(LocationName.contains("Volleyball"))
-            des =  getResources().getString(R.string.volleyball);
-        if(LocationName.contains("Cricket"))
-            des =  getResources().getString(R.string.cricket);
-        if(LocationName.contains("Football"))
-            des =  getResources().getString(R.string.football);
-        if(LocationName.contains("Library"))
-            des =  getResources().getString(R.string.library);
-        if(LocationName.contains("Garage"))
-            des =  getResources().getString(R.string.garage);
-        if(LocationName.contains("Lawns"))
-            des =  getResources().getString(R.string.nescii);
-        if(LocationName.contains("Shopping"))
-            des =  getResources().getString(R.string.shoppingcomplex);
+        if (LocationName.contains("Mini Zayca"))
+            des = getResources().getString(R.string.mini_zayca);
+        else if (LocationName.contains("Zayca"))
+            des = getResources().getString(R.string.main_zayca);
+        if (LocationName.contains("Just Cafe"))
+            des = getResources().getString(R.string.just_cafe);
+        if (LocationName.contains("McCain"))
+            des = getResources().getString(R.string.McCain);
+        if (LocationName.contains("Babloo"))
+            des = getResources().getString(R.string.babloo);
+        if (LocationName.contains("Radha"))
+            des = getResources().getString(R.string.radha);
+        if (LocationName.contains("Admin ATM"))
+            des = getResources().getString(R.string.admin_atm);
+        if (LocationName.contains("North Gate ATM"))
+            des = getResources().getString(R.string.northgate_atm);
+        if (LocationName.contains("South Gate ATM"))
+            des = getResources().getString(R.string.southgate_atm);
+        if (LocationName.contains("CADLAB"))
+            des = getResources().getString(R.string.cad_lab);
+        if (LocationName.contains("GCLAB"))
+            des = getResources().getString(R.string.gc_lab);
+        if (LocationName.contains("KHUSHIL"))
+            des = getResources().getString(R.string.khushil);
+        if (LocationName.contains("Pavilion"))
+            des = getResources().getString(R.string.pavillion);
+        if (LocationName.contains("Tennis"))
+            des = getResources().getString(R.string.tennis);
+        if (LocationName.contains("Basketball"))
+            des = getResources().getString(R.string.basketball);
+        if (LocationName.contains("Volleyball"))
+            des = getResources().getString(R.string.volleyball);
+        if (LocationName.contains("Cricket"))
+            des = getResources().getString(R.string.cricket);
+        if (LocationName.contains("Football"))
+            des = getResources().getString(R.string.football);
+        if (LocationName.contains("Library"))
+            des = getResources().getString(R.string.library);
+        if (LocationName.contains("Garage"))
+            des = getResources().getString(R.string.garage);
+        if (LocationName.contains("Lawns"))
+            des = getResources().getString(R.string.nescii);
+        if (LocationName.contains("Shopping"))
+            des = getResources().getString(R.string.shoppingcomplex);
 
 
         TextView desc = (TextView) findViewById(R.id.LocDescription);
         desc.setText(des);
         Integer locationIcon = extras.getInt(LOCATION_ICON);
-        TextView txtHeader = (TextView)findViewById(R.id.LocationTitle);
+        TextView txtHeader = (TextView) findViewById(R.id.LocationTitle);
         this.DestinationLat = LocationLat;
         this.DestinationLong = LocationLong;
-        LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+        LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         try {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return;
+            }
             Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
             this.OriginLong = String.valueOf(location.getLongitude());
             this.OriginLat = String.valueOf(location.getLatitude());

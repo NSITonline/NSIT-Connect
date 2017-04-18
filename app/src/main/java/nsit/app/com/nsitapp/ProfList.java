@@ -4,10 +4,12 @@ package nsit.app.com.nsitapp;
  * Created by Swati garg on 22-06-2015.
  */
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -48,6 +50,7 @@ public class ProfList extends AppCompatActivity implements Constant {
     };
 
 
+    @TargetApi(Build.VERSION_CODES.KITKAT)
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

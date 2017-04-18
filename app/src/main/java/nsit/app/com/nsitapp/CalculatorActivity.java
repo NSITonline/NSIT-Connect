@@ -1394,7 +1394,7 @@ public class CalculatorActivity extends Fragment {
         File dir = new File (root.getAbsolutePath() + "/NSITConnect");
         File file = new File(dir, s1.getSelectedItem().toString()+"_"+s2.getSelectedItem().toString()+".txt");
         if(!file.exists()){
-            Toast.makeText(getContext(),"Marks not available",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(),"Marks for "+s1.getSelectedItem().toString()+" "+s2.getSelectedItem().toString()+" not available",Toast.LENGTH_SHORT).show();
             return;
         }
         BufferedReader reader = null;

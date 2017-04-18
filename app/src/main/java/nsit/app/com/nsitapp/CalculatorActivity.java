@@ -396,6 +396,7 @@ public class CalculatorActivity extends Fragment {
 
 
         double tux, pux, p = 0.0;
+        int f=1;
 
 
         if (s1.getSelectedItem().toString().equals("COE")) {
@@ -418,7 +419,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux) / 29;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-
+                    f=0;
                 }
 
             } else if (s2.getSelectedItem().toString().equals("Sem 2")) {
@@ -439,7 +440,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux) / 28;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-
+                    f=0;
                 }
 
 
@@ -463,7 +464,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + n10) / 30;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-
+                    f=0;
                 }
 
 
@@ -488,7 +489,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + n11 + n12) / 32;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-
+                    f=0;
                 }
 
             } else if (s2.getSelectedItem().toString().equals("Sem 5")) {
@@ -510,7 +511,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + n11) / 27;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-
+                    f=0;
                 }
 
             } else if (s2.getSelectedItem().toString().equals("Sem 6")) {
@@ -532,7 +533,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + n11) / 29;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-
+                    f=0;
                 }
 
             } else if (s2.getSelectedItem().toString().equals("Sem 7")) {
@@ -556,7 +557,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + n11) / 30;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-
+                    f=0;
                 }
             } else if (s2.getSelectedItem().toString().equals("Sem 8")) {
 
@@ -577,7 +578,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + n11) / 27;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-
+                    f=0;
                 }
             }
 
@@ -600,7 +601,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux) / 29;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-
+                    f=0;
                 }
 
             } else if (s2.getSelectedItem().toString().equals("Sem 2")) {
@@ -621,7 +622,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux) / 28;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-
+                    f=0;
                 }
 
             } else if (s2.getSelectedItem().toString().equals("Sem 3")) {
@@ -642,7 +643,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + n11) / 27;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-
+                    f=0;
                 }
             } else if (s2.getSelectedItem().toString().equals("Sem 4")) {
 
@@ -663,7 +664,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux) / 30;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-
+                    f=0;
                 }
             } else if (s2.getSelectedItem().toString().equals("Sem 5")) {
 
@@ -684,7 +685,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + n11) / 27;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-
+                    f=0;
                 }
             } else if (s2.getSelectedItem().toString().equals("Sem 6")) {
 
@@ -705,7 +706,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + n11) / 29;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-
+                    f=0;
                 }
             } else if (s2.getSelectedItem().toString().equals("Sem 7")) {
 
@@ -727,7 +728,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux) / 34;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-
+                    f=0;
                 }
 
 
@@ -746,7 +747,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux) / 28;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-
+                    f=0;
                 }
 
             }
@@ -770,7 +771,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux) / 29;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-
+                    f=0;
                 }
             } else if (s2.getSelectedItem().toString().equals("Sem 2")) {
 
@@ -791,7 +792,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + n11) / 29;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-
+                    f=0;
                 }
 
             } else if (s2.getSelectedItem().toString().equals("Sem 3")) {
@@ -813,7 +814,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + n11) / 29;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-
+                    f=0;
                 }
 
             } else if (s2.getSelectedItem().toString().equals("Sem 4")) {
@@ -837,7 +838,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + n11 + n12) / 30;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-
+                    f=0;
                 }
 
             } else if (s2.getSelectedItem().toString().equals("Sem 5")) {
@@ -859,7 +860,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + n11) / 29;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-
+                    f=0;
                 }
 
             } else if (s2.getSelectedItem().toString().equals("Sem 6")) {
@@ -882,7 +883,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + n11 + n12) / 30;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-
+                    f=0;
                 }
 
             } else if (s2.getSelectedItem().toString().equals("Sem 7")) {
@@ -904,7 +905,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + n11) / 29;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-
+                    f=0;
                 }
 
             } else if (s2.getSelectedItem().toString().equals("Sem 8")) {
@@ -924,7 +925,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + n11) / 27;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-
+                    f=0;
                 }
             }
 
@@ -949,7 +950,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux) / 29;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-
+                    f=0;
                 }
             } else if (s2.getSelectedItem().toString().equals("Sem 2")) {
                 try {
@@ -969,7 +970,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux) / 30;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-
+                    f=0;
                 }
             } else if (s2.getSelectedItem().toString().equals("Sem 3")) {
                 try {
@@ -990,7 +991,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + n11) / 30;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-
+                    f=0;
                 }
             } else if (s2.getSelectedItem().toString().equals("Sem 4")) {
 
@@ -1014,7 +1015,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + n11 + n12) / 32;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-
+                    f=0;
                 }
 
             } else if (s2.getSelectedItem().toString().equals("Sem 5")) {
@@ -1035,13 +1036,13 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + n11) / 27;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-
+                    f=0;
                 }
 
 
             } else if (s2.getSelectedItem().toString().equals("Sem 6")) {
                 Toast.makeText(getActivity(), "Sem 6 ECE credits not found. Can't calculate result", Toast.LENGTH_LONG).show();
-
+                f=0;
                     /* EditText t1 = (EditText)a.a.findViewById(R.id.one);
 
                      tux = 4*(n1+n2+n3+n4+n5);
@@ -1054,10 +1055,11 @@ public class CalculatorActivity extends Fragment {
                 Toast.makeText(getActivity(), "Sem 7 ECE credits not found. Can't calculate result", Toast.LENGTH_LONG).show();
                     /* EditText t1 = (EditText)findViewById(R.id.one);
                      rs.setText(String.format("%.2f ",p));*/
+                f=0;
 
             } else if (s2.getSelectedItem().toString().equals("Sem 8")) {
                 Toast.makeText(getActivity(), "Sem 8 ECE credits not found. Can't calculate result", Toast.LENGTH_LONG).show();
-
+                f=0;
                     /* EditText t1 = (EditText)findViewById(R.id.one);
                      rs.setText(String.format("%.2f ",p));*/
 
@@ -1085,7 +1087,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux) / 29;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-
+                    f=0;
                 }
             } else if (s2.getSelectedItem().toString().equals("Sem 2")) {
                 try {
@@ -1104,7 +1106,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux) / 28;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-
+                    f=0;
                 }
 
 
@@ -1128,7 +1130,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + n11) / 30;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-
+                    f=0;
                 }
 
 
@@ -1153,7 +1155,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + n11 + n12) / 32;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-
+                    f=0;
                 }
 
             } else if (s2.getSelectedItem().toString().equals("Sem 5")) {
@@ -1174,7 +1176,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + n11) / 27;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-
+                    f=0;
                 }
 
 
@@ -1196,15 +1198,16 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + n11) / 29;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
+                    f=0;
                 }
 
 
             } else if (s2.getSelectedItem().toString().equals("Sem 7")) {
                 Toast.makeText(getActivity(), "Sem 7 ICE credits not found. Can't calculate result", Toast.LENGTH_LONG).show();
-
+                f=0;
             } else if (s2.getSelectedItem().toString().equals("Sem 8")) {
                 Toast.makeText(getActivity(), "Sem 8 ICE credits not found. Can't calculate result", Toast.LENGTH_LONG).show();
-
+                f=0;
             }
 
         } else if (s1.getSelectedItem().toString().equals("BT")) // 7,8 Credits not found false data taken
@@ -1228,7 +1231,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux) / 29;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-
+                    f=0;
                 }
 
             } else if (s2.getSelectedItem().toString().equals("Sem 2")) {
@@ -1248,7 +1251,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux) / 28;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-
+                    f=0;
                 }
 
 
@@ -1269,7 +1272,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux) / 28;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-
+                    f=0;
                 }
 
 
@@ -1290,7 +1293,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux) / 28;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-
+                    f=0;
                 }
 
             } else if (s2.getSelectedItem().toString().equals("Sem 5")) {
@@ -1310,7 +1313,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux) / 30;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-
+                    f=0;
                 }
 
             } else if (s2.getSelectedItem().toString().equals("Sem 6")) {
@@ -1330,22 +1333,23 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + n9) / 28;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-
+                    f=0;
                 }
 
 
             } else if (s2.getSelectedItem().toString().equals("Sem 7")) {
                 Toast.makeText(getActivity(), "Sem 7 BT credits not found. Can't calculate result", Toast.LENGTH_LONG).show();
-
+                f=0;
             } else if (s2.getSelectedItem().toString().equals("Sem 8")) {
                 Toast.makeText(getActivity(), "Sem 8 BT credits not found. Can't calculate result", Toast.LENGTH_LONG).show();
-
+                f=0;
             }
 
         }
 
         rs.setText(String.format("%.2f ", p));
-        addToStorage();
+        if(f==1)
+            addToStorage();
 
     }
 

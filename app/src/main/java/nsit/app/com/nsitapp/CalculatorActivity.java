@@ -94,6 +94,18 @@ public class CalculatorActivity extends Fragment {
         PR3textView = (TextView) rootView.findViewById(R.id.tv8);
         PR2textView = (TextView) rootView.findViewById(R.id.tv7);
         PR1textView = (TextView) rootView.findViewById(R.id.tv6);
+        setColoredTextView(PR1textView,R.color.calculator_selected);
+        setColoredTextView(PR2textView,R.color.calculator_selected);
+        setColoredTextView(PR3textView,R.color.calculator_selected);
+        setColoredTextView(PR4textView,R.color.calculator_selected);
+        setColoredTextView(PR5textView,R.color.calculator_selected);
+        setColoredTextView(TH1textView,R.color.calculator_selected);
+        setColoredTextView(TH2textView,R.color.calculator_selected);
+        setColoredTextView(TH3textView,R.color.calculator_selected);
+        setColoredTextView(TH4textView,R.color.calculator_selected);
+        setColoredTextView(TH5textView,R.color.calculator_selected);
+        setColoredTextView(VS1textView,R.color.calculator_selected);
+        setColoredTextView(VS2textView,R.color.calculator_selected);
         semSpinner = (Spinner) rootView.findViewById(R.id.spins);
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(getActivity(), R.array.semester, android.R.layout.simple_list_item_1);
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -105,168 +117,118 @@ public class CalculatorActivity extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
 
-                cc(rootView);
+                //cc(rootView);
                 if (branchSpinner.getSelectedItem().toString().equals("COE")) {
                     if (semSpinner.getSelectedItem().toString().equals("Sem 1")) {
-
-
-                        //PR5textView.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        PR5textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        //VS1textView.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        VS1textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        //VS2textView.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        VS2textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        setColoredTextView(PR5textView,R.color.calculator_notselected);
+                        setColoredTextView(VS1textView,R.color.calculator_notselected);
+                        setColoredTextView(VS2textView,R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 2")) {
-
-
-                        //PR5textView.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        PR5textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        //VS1textView.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        VS1textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        //VS2textView.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        VS2textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        setColoredTextView(PR5textView,R.color.calculator_notselected);
+                        setColoredTextView(VS1textView,R.color.calculator_notselected);
+                        setColoredTextView(VS2textView,R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 3")) {
-
-
-                        VS1textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        //VS2textView.setTextColor(getResources().getColor(R.color.calculator_notselected));
-                        VS2textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        setColoredTextView(VS1textView,R.color.calculator_notselected);
+                        setColoredTextView(VS2textView,R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 4")) {
 
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 5")) {
-
-                        PR5textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        PR4textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        VS2textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        setColoredTextView(PR5textView,R.color.calculator_notselected);
+                        setColoredTextView(PR4textView,R.color.calculator_notselected);
+                        setColoredTextView(VS2textView,R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 6")) {
-
-
-                        PR5textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        PR4textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-
+                        setColoredTextView(PR5textView,R.color.calculator_notselected);
+                        setColoredTextView(PR4textView,R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 7")) {
-
-
-                        PR5textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-
-                        VS2textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        setColoredTextView(PR5textView,R.color.calculator_notselected);
+                        setColoredTextView(VS2textView,R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 8")) {
-
-
-                        PR4textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        TH5textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        TH4textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        PR5textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        VS2textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        setColoredTextView(PR4textView,R.color.calculator_notselected);
+                        setColoredTextView(TH5textView,R.color.calculator_notselected);
+                        setColoredTextView(TH4textView,R.color.calculator_notselected);
+                        setColoredTextView(PR5textView,R.color.calculator_notselected);
+                        setColoredTextView(VS2textView,R.color.calculator_notselected);
                     }
                 } else if (branchSpinner.getSelectedItem().toString().equals("IT")) {
 
                     if (semSpinner.getSelectedItem().toString().equals("Sem 1")) {
-
-
-                        PR5textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        VS1textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        VS2textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        setColoredTextView(PR5textView,R.color.calculator_notselected);
+                        setColoredTextView(VS1textView,R.color.calculator_notselected);
+                        setColoredTextView(VS2textView,R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 2")) {
-
-
-                        PR5textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        VS1textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        VS2textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        setColoredTextView(PR5textView,R.color.calculator_notselected);
+                        setColoredTextView(VS1textView,R.color.calculator_notselected);
+                        setColoredTextView(VS2textView,R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 3")) {
-
-
-                        PR5textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        PR4textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        VS2textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        setColoredTextView(PR5textView,R.color.calculator_notselected);
+                        setColoredTextView(PR4textView,R.color.calculator_notselected);
+                        setColoredTextView(VS2textView,R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 4")) {
-
-
-                        VS1textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        VS2textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        setColoredTextView(VS1textView,R.color.calculator_notselected);
+                        setColoredTextView(VS2textView,R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 5")) {
-
-                        PR5textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        PR4textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        VS2textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        setColoredTextView(PR5textView,R.color.calculator_notselected);
+                        setColoredTextView(PR4textView,R.color.calculator_notselected);
+                        setColoredTextView(VS2textView,R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 6")) {
-
-                        PR5textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        VS2textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        setColoredTextView(PR5textView,R.color.calculator_notselected);
+                        setColoredTextView(VS2textView,R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 7")) {
 
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 8")) {
-
-
-                        PR4textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        TH5textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        TH4textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        PR5textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        VS2textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        setColoredTextView(PR4textView,R.color.calculator_notselected);
+                        setColoredTextView(TH5textView,R.color.calculator_notselected);
+                        setColoredTextView(TH4textView,R.color.calculator_notselected);
+                        setColoredTextView(PR5textView,R.color.calculator_notselected);
+                        setColoredTextView(VS2textView,R.color.calculator_notselected);
                     }
                 } else if (branchSpinner.getSelectedItem().toString().equals("MPAE")) {
 
                     if (semSpinner.getSelectedItem().toString().equals("Sem 1")) {
-
-
-                        PR5textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        VS1textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        VS2textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        setColoredTextView(PR5textView,R.color.calculator_notselected);
+                        setColoredTextView(VS1textView,R.color.calculator_notselected);
+                        setColoredTextView(VS2textView,R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 2")) {
-
-
-                        PR5textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        VS2textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        setColoredTextView(PR5textView,R.color.calculator_notselected);
+                        setColoredTextView(VS2textView,R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 3")) {
-
-                        PR5textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        VS2textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        setColoredTextView(PR5textView,R.color.calculator_notselected);
+                        setColoredTextView(VS2textView,R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 4")) {
-
-                        PR5textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        setColoredTextView(PR5textView,R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 5")) {
-                        PR5textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        VS2textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        setColoredTextView(PR5textView,R.color.calculator_notselected);
+                        setColoredTextView(VS2textView,R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 6")) {
-                        PR5textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-
+                        setColoredTextView(PR5textView,R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 7")) {
-
-
-                        PR5textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        VS2textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        setColoredTextView(PR5textView,R.color.calculator_notselected);
+                        setColoredTextView(VS2textView,R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 8")) {
-
-                        PR5textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        TH4textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        TH5textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        VS2textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        setColoredTextView(PR5textView,R.color.calculator_notselected);
+                        setColoredTextView(TH4textView,R.color.calculator_notselected);
+                        setColoredTextView(TH5textView,R.color.calculator_notselected);
+                        setColoredTextView(VS2textView,R.color.calculator_notselected);
                     }
                 } else if (branchSpinner.getSelectedItem().toString().equals("ECE")) {
 
                     if (semSpinner.getSelectedItem().toString().equals("Sem 1")) {
-
-                        PR5textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        VS1textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        VS2textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        setColoredTextView(PR5textView,R.color.calculator_notselected);
+                        setColoredTextView(VS1textView,R.color.calculator_notselected);
+                        setColoredTextView(VS2textView,R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 2")) {
-
-
-                        PR5textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        VS2textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        VS1textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-
+                        setColoredTextView(PR5textView,R.color.calculator_notselected);
+                        setColoredTextView(VS1textView,R.color.calculator_notselected);
+                        setColoredTextView(VS2textView,R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 3")) {
-
-                        PR5textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        VS2textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        setColoredTextView(PR5textView,R.color.calculator_notselected);
+                        setColoredTextView(VS2textView,R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 4")) {
 
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 5")) {
-
-                        PR4textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        PR5textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        VS2textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        setColoredTextView(PR4textView,R.color.calculator_notselected);
+                        setColoredTextView(PR5textView,R.color.calculator_notselected);
+                        setColoredTextView(VS2textView,R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 6")) {
 
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 7")) {
@@ -277,34 +239,28 @@ public class CalculatorActivity extends Fragment {
                 } else if (branchSpinner.getSelectedItem().toString().equals("BT")) {
 
                     if (semSpinner.getSelectedItem().toString().equals("Sem 1")) {
-
-
-                        PR5textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        VS1textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        VS2textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        setColoredTextView(PR5textView,R.color.calculator_notselected);
+                        setColoredTextView(VS1textView,R.color.calculator_notselected);
+                        setColoredTextView(VS2textView,R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 2")) {
-
-                        PR5textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        VS1textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        VS2textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        setColoredTextView(PR5textView,R.color.calculator_notselected);
+                        setColoredTextView(VS1textView,R.color.calculator_notselected);
+                        setColoredTextView(VS2textView,R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 3")) {
-
-                        PR5textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        VS1textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        VS2textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        setColoredTextView(PR5textView,R.color.calculator_notselected);
+                        setColoredTextView(VS1textView,R.color.calculator_notselected);
+                        setColoredTextView(VS2textView,R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 4")) {
-                        PR4textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        VS2textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        PR5textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        setColoredTextView(PR4textView,R.color.calculator_notselected);
+                        setColoredTextView(VS2textView,R.color.calculator_notselected);
+                        setColoredTextView(PR5textView,R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 5")) {
-                        PR5textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        VS2textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        setColoredTextView(PR5textView,R.color.calculator_notselected);
+                        setColoredTextView(VS2textView,R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 6")) {
-
-                        PR5textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        VS1textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        VS2textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-
+                        setColoredTextView(PR5textView,R.color.calculator_notselected);
+                        setColoredTextView(VS1textView,R.color.calculator_notselected);
+                        setColoredTextView(VS2textView,R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 7")) {
 
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 8")) {
@@ -314,31 +270,25 @@ public class CalculatorActivity extends Fragment {
                 } else if (branchSpinner.getSelectedItem().toString().equals("ICE")) {
 
                     if (semSpinner.getSelectedItem().toString().equals("Sem 1")) {
-
-                        PR5textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        VS1textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        VS2textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        setColoredTextView(PR5textView,R.color.calculator_notselected);
+                        setColoredTextView(VS1textView,R.color.calculator_notselected);
+                        setColoredTextView(VS2textView,R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 2")) {
-
-                        PR5textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        VS1textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        VS2textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        setColoredTextView(PR5textView,R.color.calculator_notselected);
+                        setColoredTextView(VS1textView,R.color.calculator_notselected);
+                        setColoredTextView(VS2textView,R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 3")) {
-
-                        PR5textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        VS2textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        setColoredTextView(PR5textView,R.color.calculator_notselected);
+                        setColoredTextView(VS2textView,R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 4")) {
 
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 5")) {
-
-
-                        PR4textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        PR5textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        VS2textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
+                        setColoredTextView(PR4textView,R.color.calculator_notselected);
+                        setColoredTextView(PR5textView,R.color.calculator_notselected);
+                        setColoredTextView(VS2textView,R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 6")) {
-                        PR4textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-                        PR5textView.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_notselected));
-
+                        setColoredTextView(PR4textView,R.color.calculator_notselected);
+                        setColoredTextView(PR5textView,R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 7")) {
 
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 8")) {
@@ -358,7 +308,7 @@ public class CalculatorActivity extends Fragment {
     }
 
 
-    private void cc(View rv) {
+    /*private void cc(View rv) {
 
         TextView c1 = (TextView) rv.findViewById(R.id.tv1);
         TextView c2 = (TextView) rv.findViewById(R.id.tv2);
@@ -387,7 +337,7 @@ public class CalculatorActivity extends Fragment {
         c12.setTextColor(ContextCompat.getColor(getContext(),R.color.calculator_selected));
 
 
-    }
+    }*/
 
 
     private void onCalculate(View a) {
@@ -1351,6 +1301,10 @@ public class CalculatorActivity extends Fragment {
         if(f==1)
             addToStorage();
 
+    }
+
+    private void setColoredTextView(TextView textView, int color){
+        textView.setTextColor(ContextCompat.getColor(getContext(),color));
     }
 
     public void addToStorage() {

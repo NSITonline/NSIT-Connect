@@ -65,14 +65,14 @@ public abstract class ContestListFragment extends Fragment implements LoaderMana
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 
-                Cursor cursor = (Cursor)adapterView.getItemAtPosition(position);
+                Cursor cursor = (Cursor) adapterView.getItemAtPosition(position);
 
                 ImageView logo = (ImageView) view.findViewById(R.id.onlineJudge_image);
 
-                if (cursor!=null) {
+                if (cursor != null) {
                     Long contestId = cursor.getLong(COL_CONTEST_ID);
                     ((Callback) getActivity())
-                            .onItemSelected(ContestContract.ContestEntry.buildContestUriWithId(contestId),logo);
+                            .onItemSelected(ContestContract.ContestEntry.buildContestUriWithId(contestId), logo);
                 }
 
             }
@@ -91,7 +91,7 @@ public abstract class ContestListFragment extends Fragment implements LoaderMana
     @Override
     public void onResume() {
         super.onResume();
-        getLoaderManager().restartLoader(CONTEST_LOADER_ID,null,this);
+        getLoaderManager().restartLoader(CONTEST_LOADER_ID, null, this);
     }
 
     public void onFilterChanged() {
@@ -101,7 +101,7 @@ public abstract class ContestListFragment extends Fragment implements LoaderMana
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        getLoaderManager().initLoader(CONTEST_LOADER_ID,null,this);
+        getLoaderManager().initLoader(CONTEST_LOADER_ID, null, this);
     }
 
 

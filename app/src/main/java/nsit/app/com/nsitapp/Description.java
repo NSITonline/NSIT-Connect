@@ -34,7 +34,7 @@ import functions.Utils;
 import static nsit.app.com.nsitapp.R.id.imag_cont;
 
 
-public class Description extends AppCompatActivity implements Constant{
+public class Description extends AppCompatActivity implements Constant {
     private ProgressBar pb;
     private ImageLoader imageLoader;
     private String img;
@@ -48,7 +48,7 @@ public class Description extends AppCompatActivity implements Constant{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_decsription);
-        pb=(ProgressBar)findViewById(R.id.progressBar1);
+        pb = (ProgressBar) findViewById(R.id.progressBar1);
 
         setTitle("Post");
 
@@ -57,7 +57,7 @@ public class Description extends AppCompatActivity implements Constant{
         String des = i.getStringExtra(DES);
         String like = i.getStringExtra(LIKE);
         link = i.getStringExtra(LINK);
-        imageLoader=new ImageLoader(this);
+        imageLoader = new ImageLoader(this);
         obid = i.getStringExtra(OBID);
 
         imageView = (ImageView) findViewById(R.id.image);
@@ -67,40 +67,38 @@ public class Description extends AppCompatActivity implements Constant{
         img_cont = (FrameLayout) findViewById(imag_cont);
         LinearLayout but_con = (LinearLayout) findViewById(R.id.but_con);
 
-        if(like ==null)
+        if (like == null)
             like1.setText("0");
         else
             like1.setText(like);
 
 
-        if(des ==null)
+        if (des == null)
             des1.setText(R.string.no_description);
         else
             des1.setText(des);
 
-        if(link==null)
+        if (link == null)
             but_con.setVisibility(View.GONE);
         else
-        link1.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View view) {
-                                        Uri uri = Uri.parse(link);
-                                        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                                        startActivity(intent);
-                                        ButtonAnimation btnAnimation = new ButtonAnimation();
-                                        btnAnimation.animateButton(view, getApplicationContext());
-                                    }
-                                }
-        );
-        if(Utils.isNetworkAvailable(Description.this)) {
+            link1.setOnClickListener(new View.OnClickListener() {
+                                         @Override
+                                         public void onClick(View view) {
+                                             Uri uri = Uri.parse(link);
+                                             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                                             startActivity(intent);
+                                             ButtonAnimation btnAnimation = new ButtonAnimation();
+                                             btnAnimation.animateButton(view, getApplicationContext());
+                                         }
+                                     }
+            );
+        if (Utils.isNetworkAvailable(Description.this)) {
             if (img == null) {
                 img_cont.setVisibility(View.GONE);
                 pb.setVisibility(View.GONE);
-            }
-            else if (obid == null) {
-                imageLoader.DisplayImage(img, imageView,pb);
-            }
-            else
+            } else if (obid == null) {
+                imageLoader.DisplayImage(img, imageView, pb);
+            } else
                 new DownloadWebPageTask().execute();
         } else
             SnackbarManager.show(
@@ -113,9 +111,9 @@ public class Description extends AppCompatActivity implements Constant{
         else imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(Description.this,Description_FullImage.class);
-                i.putExtra(IMAGE,img);
-                i.putExtra(OBID,obid);
+                Intent i = new Intent(Description.this, Description_FullImage.class);
+                i.putExtra(IMAGE, img);
+                i.putExtra(OBID, obid);
                 startActivity(i);
                 ButtonAnimation btnAnimation = new ButtonAnimation();
                 btnAnimation.animateButton(view, getApplicationContext());
@@ -132,7 +130,7 @@ public class Description extends AppCompatActivity implements Constant{
         protected String doInBackground(String... urls) {
 
 
-            String uri = "https://graph.facebook.com/"+obid+"?fields=images&access_token="+ common_access;
+            String uri = "https://graph.facebook.com/" + obid + "?fields=images&access_token=" + common_access;
 
             java.net.URL url;
             String readStream = null;
@@ -154,9 +152,9 @@ public class Description extends AppCompatActivity implements Constant{
             Log.e("YO", "Done" + obid + result);
             JSONObject ob;
             JSONArray arr;
-            if(result==null){
-                imageLoader.DisplayImage(img, imageView,pb);
-            }else {
+            if (result == null) {
+                imageLoader.DisplayImage(img, imageView, pb);
+            } else {
                 try {
                     ob = new JSONObject(result);
 
@@ -166,7 +164,7 @@ public class Description extends AppCompatActivity implements Constant{
                         imglink = arr.getJSONObject(0).getString("source");
                     if (imglink != null) {
                         if (Utils.isNetworkAvailable(Description.this)) {
-                            imageLoader.DisplayImage(imglink, imageView,pb);
+                            imageLoader.DisplayImage(imglink, imageView, pb);
                             pb.setVisibility(View.GONE);
                         }
                     } else {
@@ -176,19 +174,19 @@ public class Description extends AppCompatActivity implements Constant{
                     Log.e("yrs", "Image Link is : " + imglink);
 
                 } catch (Exception e) {
-                    Log.e("yo", "" + e.getMessage()+" ");
+                    Log.e("yo", "" + e.getMessage() + " ");
                 }
             }
             pb.setVisibility(View.GONE);
 
-            Log.e("Yo", imglink+"");
+            Log.e("Yo", imglink + "");
         }
     }
 
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId()==android.R.id.home)
+        if (item.getItemId() == android.R.id.home)
             finish();
         return super.onOptionsItemSelected(item);
     }

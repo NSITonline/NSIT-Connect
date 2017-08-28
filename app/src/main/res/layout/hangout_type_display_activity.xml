@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:padding="5dp"
     android:background="@color/universalBackground"
@@ -19,9 +18,7 @@
         android:id="@+id/hangout_type_display_list"
         android:layout_width="fill_parent"
         android:dividerHeight="0.5dp"
-        android:layout_height="fill_parent">
-    </ListView>
-
+        android:layout_height="fill_parent"></ListView>
 
 
 </RelativeLayout>

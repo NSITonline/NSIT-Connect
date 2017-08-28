@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
+
         <Spinner
             android:layout_width="250dp"
             android:layout_height="wrap_content"
@@ -28,13 +30,14 @@
         android:id="@+id/textView15"
         android:layout_gravity="center_horizontal"
         android:textSize="17sp"
-        android:textColor="#ca969191"/>
+        android:textColor="#ca969191" />
 
 
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp">
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -53,8 +56,7 @@
 
                     android:textColor="#01b29b"
                     android:layout_marginLeft="50dp"
-                    android:layout_marginTop="12dp"
-                    />
+                    android:layout_marginTop="12dp" />
 
                 <EditText
                     android:layout_width="70dp"
@@ -81,9 +83,10 @@
                     android:id="@+id/six"
                     android:layout_marginTop="12dp"
                     android:layout_marginLeft="7dp"
-                    android:inputType="number"/>
+                    android:inputType="number" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content">
@@ -105,7 +108,7 @@
                     android:id="@+id/two"
                     android:layout_marginTop="12dp"
                     android:layout_marginLeft="7dp"
-                    android:inputType="number"/>
+                    android:inputType="number" />
 
                 <TextView
                     android:layout_width="50dp"
@@ -124,9 +127,10 @@
                     android:id="@+id/seven"
                     android:layout_marginTop="12dp"
                     android:layout_marginLeft="7dp"
-                    android:inputType="number"/>
+                    android:inputType="number" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content">
@@ -148,7 +152,7 @@
                     android:id="@+id/three"
                     android:layout_marginTop="12dp"
                     android:layout_marginLeft="7dp"
-                    android:inputType="number"/>
+                    android:inputType="number" />
 
                 <TextView
                     android:layout_width="50dp"
@@ -167,9 +171,10 @@
                     android:id="@+id/eight"
                     android:layout_marginTop="12dp"
                     android:layout_marginLeft="7dp"
-                    android:inputType="number"/>
+                    android:inputType="number" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content">
@@ -191,7 +196,7 @@
                     android:id="@+id/four"
                     android:layout_marginTop="12dp"
                     android:layout_marginLeft="7dp"
-                    android:inputType="number"/>
+                    android:inputType="number" />
 
                 <TextView
                     android:layout_width="50dp"
@@ -210,7 +215,7 @@
                     android:id="@+id/nine"
                     android:layout_marginTop="12dp"
                     android:layout_marginLeft="7dp"
-                    android:inputType="number"/>
+                    android:inputType="number" />
 
             </LinearLayout>
 
@@ -235,7 +240,7 @@
                     android:id="@+id/five"
                     android:layout_marginTop="12dp"
                     android:layout_marginLeft="7dp"
-                    android:inputType="number"/>
+                    android:inputType="number" />
 
                 <TextView
                     android:layout_width="50dp"
@@ -254,9 +259,10 @@
                     android:id="@+id/ten"
                     android:layout_marginTop="12dp"
                     android:layout_marginLeft="7dp"
-                    android:inputType="number"/>
+                    android:inputType="number" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content">
@@ -278,7 +284,7 @@
                     android:id="@+id/twelve"
                     android:layout_marginTop="12dp"
                     android:layout_marginLeft="7dp"
-                    android:inputType="number"/>
+                    android:inputType="number" />
 
                 <TextView
                     android:layout_width="50dp"
@@ -297,7 +303,7 @@
                     android:id="@+id/eleven"
                     android:layout_marginTop="12dp"
                     android:layout_marginLeft="7dp"
-                    android:inputType="number"/>
+                    android:inputType="number" />
 
             </LinearLayout>
 
@@ -333,9 +339,11 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginLeft="140dp" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content">
+
                 <TextView
                     android:layout_width="200dp"
                     android:layout_height="50dp"
@@ -345,8 +353,8 @@
                     android:layout_marginLeft="190dp"
                     android:layout_marginTop="12dp"
                     android:textColor="#01b29b"
-                    android:gravity="center_vertical|center"
-                    />
+                    android:gravity="center_vertical|center" />
+
                 <TextView
                     android:layout_width="50dp"
                     android:layout_height="50dp"

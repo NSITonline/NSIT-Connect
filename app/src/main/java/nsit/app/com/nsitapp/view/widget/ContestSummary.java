@@ -20,7 +20,7 @@ public class ContestSummary extends View {
         int width = MeasureSpec.getSize(widthMeasureSpec);
         int height = MeasureSpec.getSize(heightMeasureSpec);
 
-        setMeasuredDimension(width,height);
+        setMeasuredDimension(width, height);
     }
 
     @Override

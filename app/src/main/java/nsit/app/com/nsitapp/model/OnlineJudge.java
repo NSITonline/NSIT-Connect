@@ -15,8 +15,7 @@ public class OnlineJudge {
     public static final int HACKEREARTH_ID = 3;
     public static final int CODECHEF_ID = 4;
     public static final int URIOJ_ID = 5;
-    public static final int  UNKNOWN_ID = 6;
-
+    public static final int UNKNOWN_ID = 6;
 
 
     public static final String CODEFORCES = "Codeforces";
@@ -72,7 +71,7 @@ public class OnlineJudge {
     private int mCover;
     private String mDescription;
 
-    public OnlineJudge(String name,int icon,int cover) {
+    public OnlineJudge(String name, int icon, int cover) {
         mName = name;
         mIcon = icon;
         mCover = cover;

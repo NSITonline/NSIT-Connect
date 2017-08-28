@@ -23,17 +23,18 @@ import nsit.app.com.nsitapp.model.Contest;
 import nsit.app.com.nsitapp.network.StringDownloader;
 
 
-public class SyncAdapter extends AbstractThreadedSyncAdapter{
+public class SyncAdapter extends AbstractThreadedSyncAdapter {
 
     private static final int SYNC_INTERVAL = 3 * 60 * 60;
-    private static final int SYNC_FLEXTIME = SYNC_INTERVAL/2;
+    private static final int SYNC_FLEXTIME = SYNC_INTERVAL / 2;
+
     public SyncAdapter(Context context) {
         super(context, true);
     }
 
     @Override
     public void onPerformSync(Account account, Bundle bundle, String s, ContentProviderClient contentProviderClient, SyncResult syncResult) {
-        Log.d("DEBUG","onPerformSync");
+        Log.d("DEBUG", "onPerformSync");
         StringDownloader downloader = new StringDownloader();
         try {
             downloader.download();
@@ -46,14 +47,14 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter{
         ArrayList<Contest> contests = parser.parse(rssString);
 
         ContentValues[] cvArray = new ContentValues[contests.size()];
-        for (int i=0;i<contests.size();i++) {
+        for (int i = 0; i < contests.size(); i++) {
             cvArray[i] = contests.get(i).toContentValues();
         }
 
         String[] deleteSelectionArgs = new String[1];
         deleteSelectionArgs[0] = "0";
         getContext().getContentResolver().delete(ContestContract.ContestEntry.CONTENT_URI,
-                ContestContract.ContestEntry.COLUMN_START_TIME + " >= ?",deleteSelectionArgs);
+                ContestContract.ContestEntry.COLUMN_START_TIME + " >= ?", deleteSelectionArgs);
         getContext().getContentResolver().bulkInsert(ContestContract.ContestEntry.CONTENT_URI,
                 cvArray);
 
@@ -65,20 +66,19 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter{
                 (AccountManager) context.getSystemService(Context.ACCOUNT_SERVICE);
 
         Account newAccount = new Account(
-               context.getString(R.string.app_name), context.getString(R.string.sync_account_type));
+                context.getString(R.string.app_name), context.getString(R.string.sync_account_type));
 
 
-        if ( null == accountManager.getPassword(newAccount) ) {
-                      if (!accountManager.addAccountExplicitly(newAccount, "", null))
-                      {
+        if (null == accountManager.getPassword(newAccount)) {
+            if (!accountManager.addAccountExplicitly(newAccount, "", null)) {
 
-                             return null;
-                      }
-            Log.v("i will win","5504");
-            onAccountCreated(newAccount,context);
-            Log.v("i will win","5505");
+                return null;
+            }
+            Log.v("i will win", "5504");
+            onAccountCreated(newAccount, context);
+            Log.v("i will win", "5505");
         }
-        Log.v("i will win","5506");
+        Log.v("i will win", "5506");
         return newAccount;
     }
 

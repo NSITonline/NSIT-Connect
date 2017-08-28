@@ -13,7 +13,7 @@ import android.widget.LinearLayout;
  */
 public class Hangouts extends Fragment implements View.OnClickListener {
 
-    public static final String CHOICE_TYPE  = "Choice";
+    public static final String CHOICE_TYPE = "Choice";
     private int choice = -1;
 
     @Override
@@ -23,7 +23,7 @@ public class Hangouts extends Fragment implements View.OnClickListener {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rooview = inflater.inflate(R.layout.fragment_hangouts,container,false);
+        View rooview = inflater.inflate(R.layout.fragment_hangouts, container, false);
         LinearLayout hcollege = (LinearLayout) rooview.findViewById(R.id.hang_college);
         LinearLayout hresturant = (LinearLayout) rooview.findViewById(R.id.hang_restaurant);
         LinearLayout hcafes = (LinearLayout) rooview.findViewById(R.id.hang_cafe);
@@ -49,34 +49,43 @@ public class Hangouts extends Fragment implements View.OnClickListener {
     }
 
 
-
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.hang_college: choice = 0;
-                        break;
-            case R.id.hang_restaurant: choice = 1;
+        switch (v.getId()) {
+            case R.id.hang_college:
+                choice = 0;
                 break;
-            case R.id.hang_cafe: choice = 2;
+            case R.id.hang_restaurant:
+                choice = 1;
                 break;
-            case R.id.hang_nightclub: choice = 3;
+            case R.id.hang_cafe:
+                choice = 2;
                 break;
-            case R.id.hang_shoppingmalls: choice = 4;
+            case R.id.hang_nightclub:
+                choice = 3;
                 break;
-            case R.id.hang_bowling: choice = 5;
+            case R.id.hang_shoppingmalls:
+                choice = 4;
                 break;
-            case R.id.hang_movies: choice = 6;
+            case R.id.hang_bowling:
+                choice = 5;
                 break;
-            case R.id.hang_food: choice = 7;
+            case R.id.hang_movies:
+                choice = 6;
                 break;
-            case R.id.hang_amusment: choice = 8;
+            case R.id.hang_food:
+                choice = 7;
                 break;
-            case R.id.hang_park: choice = 9;
+            case R.id.hang_amusment:
+                choice = 8;
+                break;
+            case R.id.hang_park:
+                choice = 9;
                 break;
         }
         if (choice != 0) {
             Intent intent = new Intent(getActivity(), HangoutsTypeDisplay.class);
-            intent.putExtra(CHOICE_TYPE, choice-1);
+            intent.putExtra(CHOICE_TYPE, choice - 1);
             startActivity(intent);
         } else {
             Intent intent = new Intent(getActivity(), Hangout_collegeLocations.class);

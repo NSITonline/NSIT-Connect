@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="nsit.app.com.nsitapp.view.ContestDetailActivity">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:paddingTop="16dp"
-                android:paddingLeft = "72dp"
+                android:paddingLeft="72dp"
                 android:paddingBottom="16dp"
                 android:paddingRight="16dp">
 
@@ -35,7 +36,7 @@
                     android:textSize="@dimen/abc_text_size_subhead_material"
                     android:textColor="@android:color/white"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content" />
 
                 <TextView
                     android:id="@+id/source_text"
@@ -43,7 +44,7 @@
                     android:textColor="@android:color/white"
                     android:alpha="0.54"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
 
@@ -57,7 +58,7 @@
                 android:padding="4dp"
                 android:layout_alignParentLeft="true"
                 android:src="@drawable/hackerrank_logo"
-                android:scaleType="centerCrop"/>
+                android:scaleType="centerCrop" />
 
         </RelativeLayout>
 
@@ -68,7 +69,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="16dp"
-            android:paddingLeft = "72dp"
+            android:paddingLeft="72dp"
             android:paddingBottom="16dp"
             android:paddingRight="16dp">
 
@@ -78,14 +79,14 @@
                 android:textColor="#4CAF50"
                 android:textSize="@dimen/abc_text_size_subhead_material"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/description_body_text"
                 android:textSize="@dimen/abc_text_size_body_1_material"
                 android:alpha="0.87"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/start_time_header_text"
@@ -94,14 +95,14 @@
                 android:textColor="#4CAF50"
                 android:textSize="@dimen/abc_text_size_subhead_material"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/start_time_body_text"
                 android:textSize="@dimen/abc_text_size_body_1_material"
                 android:alpha="0.87"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/duration_header_text"
@@ -110,14 +111,14 @@
                 android:textColor="#4CAF50"
                 android:textSize="@dimen/abc_text_size_subhead_material"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/duration_body_text"
                 android:textSize="@dimen/abc_text_size_body_1_material"
                 android:alpha="0.87"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/url_header_text"
@@ -126,14 +127,14 @@
                 android:textColor="#4CAF50"
                 android:textSize="@dimen/abc_text_size_subhead_material"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/url_body_text"
                 android:textSize="@dimen/abc_text_size_body_1_material"
                 android:alpha="0.87"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
     </RelativeLayout>

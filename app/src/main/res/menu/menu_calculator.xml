@@ -6,9 +6,9 @@
     <item
         android:id="@+id/show_previous_marks"
         android:title="@string/action_show_previous_marks"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
     <item
         android:id="@+id/clear"
         android:title="@string/action_clear"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
 </menu>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:layout_gravity="center_horizontal"
-android:background="@drawable/shadow_1"
-xmlns:android="http://schemas.android.com/apk/res/android"
-android:gravity="center_horizontal"
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:background="@drawable/shadow_1"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
     android:showDividers="none">
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -40,13 +40,13 @@ android:gravity="center_horizontal"
             android:id="@+id/GroupTypeImage"
             android:layout_marginRight="20dp"
             android:alpha="0.5"
-            android:layout_gravity="right"
-            />
+            android:layout_gravity="right" />
 
 
     </FrameLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="5dp"
-        android:background="@color/colorPrimary"/>
+        android:background="@color/colorPrimary" />
 </LinearLayout>

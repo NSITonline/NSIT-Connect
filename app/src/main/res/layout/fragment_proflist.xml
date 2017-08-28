@@ -6,7 +6,8 @@
     android:animateLayoutChanges="true">
 
     <LinearLayout
-        android:orientation="vertical" android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <TextView
@@ -32,7 +33,6 @@
             android:focusable="false"
             android:fastScrollEnabled="false"
             android:focusableInTouchMode="false"
-            android:id="@+id/profListView"
-            />
+            android:id="@+id/profListView" />
     </LinearLayout>
 </merge>

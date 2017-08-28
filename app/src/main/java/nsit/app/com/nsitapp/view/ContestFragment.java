@@ -37,7 +37,8 @@ public class ContestFragment extends Fragment {
 
     public static final String FILTER_PREFERENCE_FILE_KEY = "nsit.app.com.nsitapp.FILTER_PREFERENCE_FILE_KEY";
 
-    private static final String VIEW_PAGER_CURRENT_ITEM = ContestFragment.class.getCanonicalName()+".viewpager";
+    private static final String VIEW_PAGER_CURRENT_ITEM = ContestFragment.class.getCanonicalName() + ".viewpager";
+
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -56,7 +57,7 @@ public class ContestFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.v("we will win","we1");
+        Log.v("we will win", "we1");
         setRetainInstance(true);
     }
 
@@ -65,7 +66,7 @@ public class ContestFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_contest, container, false);
-        Log.v("we will win","we1");
+        Log.v("we will win", "we1");
         SectionPagerAdapter mSectionPagerAdapter = new SectionPagerAdapter(getChildFragmentManager());
 
         mContestPager = (ViewPager) view.findViewById(R.id.contest_pager);
@@ -81,12 +82,12 @@ public class ContestFragment extends Fragment {
         });
         mSlidingTabLayout.setViewPager(mContestPager);
 
-        Log.d("DEBUG","onCreateView()");
-        if (savedInstanceState!=null) {
-            Log.d("DEBUG","setCurrentItem");
+        Log.d("DEBUG", "onCreateView()");
+        if (savedInstanceState != null) {
+            Log.d("DEBUG", "setCurrentItem");
 
             mCurrentItem = savedInstanceState.getInt(VIEW_PAGER_CURRENT_ITEM);
-            Log.d("DEBUG",Integer.toString(mCurrentItem));
+            Log.d("DEBUG", Integer.toString(mCurrentItem));
         } else {
             mCurrentItem = 0;
         }
@@ -99,13 +100,13 @@ public class ContestFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        mContestPager.setCurrentItem(mCurrentItem,false);
+        mContestPager.setCurrentItem(mCurrentItem, false);
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
         mCurrentItem = mContestPager.getCurrentItem();
-        outState.putInt(VIEW_PAGER_CURRENT_ITEM,mCurrentItem);
+        outState.putInt(VIEW_PAGER_CURRENT_ITEM, mCurrentItem);
     }
 
     public void onFilterChanged() {
@@ -115,26 +116,26 @@ public class ContestFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_contest_list,menu);
-        super.onCreateOptionsMenu(menu,inflater);
+        inflater.inflate(R.menu.menu_contest_list, menu);
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        switch(id) {
-            case R.id.action_fitler :
+        switch (id) {
+            case R.id.action_fitler:
                 showFilterDialog();
                 return true;
-            default :
+            default:
                 return false;
         }
     }
 
     private void showFilterDialog() {
         FilterContestDialogFragment filterContestDialogFragment = new FilterContestDialogFragment();
-        filterContestDialogFragment.show(getFragmentManager(),"filter");
+        filterContestDialogFragment.show(getFragmentManager(), "filter");
     }
 
     private class SectionPagerAdapter extends FragmentPagerAdapter {
@@ -149,7 +150,7 @@ public class ContestFragment extends Fragment {
 
         @Override
         public Fragment getItem(int position) {
-            switch(position) {
+            switch (position) {
                 case TAB_RUNNING:
                     return mRunningContestFragment;
                 case TAB_UPCOMING:
@@ -177,13 +178,13 @@ public class ContestFragment extends Fragment {
     }
 
     public static class FilterContestDialogFragment extends DialogFragment {
-        private boolean [] mContestFlag;
+        private boolean[] mContestFlag;
         private static final String CONTEST_FLAG_KEY = FilterContestDialogFragment.class.getCanonicalName();
 
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            if (savedInstanceState!=null) {
+            if (savedInstanceState != null) {
                 mContestFlag = savedInstanceState.getBooleanArray(CONTEST_FLAG_KEY);
             } else {
                 loadContestFlagFromSharedPreference();
@@ -221,20 +222,20 @@ public class ContestFragment extends Fragment {
         private void loadContestFlagFromSharedPreference() {
             mContestFlag = new boolean[OnlineJudge.OJ_NUMBER];
             Context context = getActivity();
-            SharedPreferences sharedPreferences = context.getSharedPreferences(FILTER_PREFERENCE_FILE_KEY,Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences = context.getSharedPreferences(FILTER_PREFERENCE_FILE_KEY, Context.MODE_PRIVATE);
 
-            for (int i=0;i<OnlineJudge.OJ_NUMBER;i++) {
-                mContestFlag[i] = sharedPreferences.getBoolean(OnlineJudge.OJ_NAME[i],true);
+            for (int i = 0; i < OnlineJudge.OJ_NUMBER; i++) {
+                mContestFlag[i] = sharedPreferences.getBoolean(OnlineJudge.OJ_NAME[i], true);
             }
         }
 
         private void saveContestFlagToSharedPreference() {
             Context context = getActivity();
-            SharedPreferences sharedPreferences = context.getSharedPreferences(FILTER_PREFERENCE_FILE_KEY,Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences = context.getSharedPreferences(FILTER_PREFERENCE_FILE_KEY, Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
 
-            for (int i=0;i<OnlineJudge.OJ_NUMBER;i++) {
-                editor.putBoolean(OnlineJudge.OJ_NAME[i],mContestFlag[i]);
+            for (int i = 0; i < OnlineJudge.OJ_NUMBER; i++) {
+                editor.putBoolean(OnlineJudge.OJ_NAME[i], mContestFlag[i]);
             }
             sharedPreferences.edit()
                     .putBoolean(OnlineJudge.CODEFORCES, mContestFlag[OnlineJudge.CODEFORCES_ID])
@@ -250,7 +251,7 @@ public class ContestFragment extends Fragment {
         @Override
         public void onSaveInstanceState(Bundle outState) {
             super.onSaveInstanceState(outState);
-            outState.putBooleanArray(CONTEST_FLAG_KEY,mContestFlag);
+            outState.putBooleanArray(CONTEST_FLAG_KEY, mContestFlag);
         }
 
         @Override

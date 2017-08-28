@@ -193,7 +193,7 @@ public class SubjectRemove extends AppCompatActivity {
         }
 
 
-        public  String getDate(long milliSeconds) {
+        public String getDate(long milliSeconds) {
             // Create a DateFormatter object for displaying date in specified format.
             SimpleDateFormat formatter = new SimpleDateFormat("dd MMMM yyyy");
             Calendar calendar = Calendar.getInstance();

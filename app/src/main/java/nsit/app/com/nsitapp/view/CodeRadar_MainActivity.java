@@ -19,12 +19,12 @@ import nsit.app.com.nsitapp.R;
 import nsit.app.com.nsitapp.sync.SyncAdapter;
 
 
-public class CodeRadar_MainActivity extends FragmentActivity implements ContestListFragment.Callback{
+public class CodeRadar_MainActivity extends FragmentActivity implements ContestListFragment.Callback {
 
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     protected void onCreate(Bundle savedInstanceState) {
-             getIntent();
+        getIntent();
         setTitle("Code Radar");
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             // inside your activity (if you did not enable transitions in your theme)
@@ -45,23 +45,24 @@ public class CodeRadar_MainActivity extends FragmentActivity implements ContestL
         if (savedInstanceState == null) {
             Fragment fragment = new ContestFragment();
 
-            FragmentManager fragmentManager= getSupportFragmentManager();
+            FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.
                     beginTransaction().
-                    replace(R.id.content_frame,fragment).
+                    replace(R.id.content_frame, fragment).
                     commit();
-            Log.v("we will win 44","we");
+            Log.v("we will win 44", "we");
         }
 
         /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getActionBar().setElevation(0);
         }*/
 
-        try {SyncAdapter.initializeSyncAdapter(this);}
-        catch (Exception e) {
+        try {
+            SyncAdapter.initializeSyncAdapter(this);
+        } catch (Exception e) {
         }
 
-        Log.v("we will win 6","we");
+        Log.v("we will win 6", "we");
 
 
       /*  boolean isReminderOn = PreferenceUtil.isReminderOn(this);
@@ -92,7 +93,7 @@ public class CodeRadar_MainActivity extends FragmentActivity implements ContestL
     }*/
 
     @Override
-    public void onItemSelected(Uri contestUri,ImageView logo) {
+    public void onItemSelected(Uri contestUri, ImageView logo) {
         Intent intent = new Intent(this, ContestDetailActivity.class);
         intent.setData(contestUri);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -107,7 +108,7 @@ public class CodeRadar_MainActivity extends FragmentActivity implements ContestL
     public void onFilterChanged() {
         Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.content_frame);
         if (fragment instanceof ContestFragment) {
-            ((ContestFragment)fragment).onFilterChanged();
+            ((ContestFragment) fragment).onFilterChanged();
         }
     }
 }

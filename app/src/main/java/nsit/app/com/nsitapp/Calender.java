@@ -202,16 +202,36 @@ public class Calender extends Fragment implements Constant {
                     Subject_struct x = new Subject_struct(value, proffh, subfh, roomfh, profsh, subsh, roomsh);
                     // Assign it to particular period
                     switch (i - 1) {
-                        case -1: p0.add(x); break;
-                        case 0: p1.add(x); break;
-                        case 1: p2.add(x); break;
-                        case 2: p3.add(x); break;
-                        case 3: p4.add(x); break;
-                        case 4: p5.add(x); break;
-                        case 5: p6.add(x); break;
-                        case 6: p7.add(x); break;
-                        case 7: p8.add(x); break;
-                        case 8: p9.add(x); break;
+                        case -1:
+                            p0.add(x);
+                            break;
+                        case 0:
+                            p1.add(x);
+                            break;
+                        case 1:
+                            p2.add(x);
+                            break;
+                        case 2:
+                            p3.add(x);
+                            break;
+                        case 3:
+                            p4.add(x);
+                            break;
+                        case 4:
+                            p5.add(x);
+                            break;
+                        case 5:
+                            p6.add(x);
+                            break;
+                        case 6:
+                            p7.add(x);
+                            break;
+                        case 7:
+                            p8.add(x);
+                            break;
+                        case 8:
+                            p9.add(x);
+                            break;
                     }
                 }
             }
@@ -248,9 +268,16 @@ public class Calender extends Fragment implements Constant {
 
     private void downloadTimeTable() {
 
-        p0.clear(); p1.clear(); p2.clear();
-        p3.clear(); p4.clear(); p5.clear();
-        p6.clear(); p7.clear(); p8.clear(); p9.clear();
+        p0.clear();
+        p1.clear();
+        p2.clear();
+        p3.clear();
+        p4.clear();
+        p5.clear();
+        p6.clear();
+        p7.clear();
+        p8.clear();
+        p9.clear();
 
         //Scroll to first column
         lvTest.scrollTo(0, 0);
@@ -347,7 +374,6 @@ public class Calender extends Fragment implements Constant {
             }
         });
     }
-
 
 
     @Override

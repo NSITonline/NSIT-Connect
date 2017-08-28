@@ -35,17 +35,18 @@ import functions.Utils;
 public class Description_FullImage extends AppCompatActivity implements Constant {
     private String img, obid;
     private TouchImageView iv;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image);
-       Intent i = getIntent();
+        Intent i = getIntent();
         img = i.getStringExtra("img");
         obid = i.getStringExtra("oid");
-        iv  = (TouchImageView) findViewById(R.id.iv);
-         setTitle("Image");
+        iv = (TouchImageView) findViewById(R.id.iv);
+        setTitle("Image");
 
-        if(Utils.isNetworkAvailable(this)) {
+        if (Utils.isNetworkAvailable(this)) {
             if (img == null)
                 iv.setVisibility(View.GONE);
             else if (obid == null)
@@ -72,31 +73,29 @@ public class Description_FullImage extends AppCompatActivity implements Constant
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        if(id == android.R.id.home)
+        if (id == android.R.id.home)
             finish();
 
-        if(id== R.id.save)
-        {
+        if (id == R.id.save) {
             iv.setDrawingCacheEnabled(true);
             Bitmap b = iv.getDrawingCache();
 
             File root = Environment.getExternalStorageDirectory();
-            File dir = new File(root.getAbsolutePath() +"/NSIT Online");
-            try{
-                if(dir.mkdir()) {
+            File dir = new File(root.getAbsolutePath() + "/NSIT Online");
+            try {
+                if (dir.mkdir()) {
                     System.out.println("Directory created");
                     Log.e("yo", "Directory created");
                 } else {
                     System.out.println("Directory is not created");
                     Log.e("yo", "Directory not created");
                 }
-            }catch(Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
-            File cachePath = new File(root.getAbsolutePath() + "/NSIT Online/image_"+ System.currentTimeMillis()+ ".jpg");
-            try
-            {
+            File cachePath = new File(root.getAbsolutePath() + "/NSIT Online/image_" + System.currentTimeMillis() + ".jpg");
+            try {
                 cachePath.createNewFile();
                 FileOutputStream ostream = new FileOutputStream(cachePath);
                 b.compress(Bitmap.CompressFormat.JPEG, 100, ostream);
@@ -107,11 +106,9 @@ public class Description_FullImage extends AppCompatActivity implements Constant
                                 .duration(Snackbar.SnackbarDuration.LENGTH_SHORT), Description_FullImage.this);
 
 
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 e.printStackTrace();
-                Log.e("Error","Error : " + e.getMessage());
+                Log.e("Error", "Error : " + e.getMessage());
             }
 
         }
@@ -134,15 +131,15 @@ public class Description_FullImage extends AppCompatActivity implements Constant
                 InputStream in = new java.net.URL(urldisplay).openStream();
                 mIcon11 = BitmapFactory.decodeStream(in);
             } catch (Exception e) {
-                Log.e("Error", ""+e.getMessage());
+                Log.e("Error", "" + e.getMessage());
                 e.printStackTrace();
             }
             return mIcon11;
         }
 
         protected void onPostExecute(Bitmap result) {
-         bmImage.setImageBitmap(result);
-           // pb.setVisibility(View.INVISIBLE);
+            bmImage.setImageBitmap(result);
+            // pb.setVisibility(View.INVISIBLE);
         }
     }
 
@@ -150,7 +147,7 @@ public class Description_FullImage extends AppCompatActivity implements Constant
         @Override
         protected String doInBackground(String... urls) {
 
-            String uri = "https://graph.facebook.com/"+obid+"?fields=images&access_token="+ common_access;
+            String uri = "https://graph.facebook.com/" + obid + "?fields=images&access_token=" + common_access;
             java.net.URL url;
             String readStream = null;
             try {
@@ -171,11 +168,11 @@ public class Description_FullImage extends AppCompatActivity implements Constant
         protected void onPostExecute(String result) {
             JSONObject ob;
             JSONArray arr;
-            if(result==null){
+            if (result == null) {
 
                 new DownloadImageTask(iv).execute(img);
 
-            }else {
+            } else {
                 try {
                     ob = new JSONObject(result);
                     arr = ob.getJSONArray("images");

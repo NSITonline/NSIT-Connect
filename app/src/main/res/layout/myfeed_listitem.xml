@@ -64,7 +64,7 @@
                         android:layout_height="match_parent"
                         android:layout_gravity="right"
                         android:background="@color/colorAccent"
-                        android:orientation="vertical"/>
+                        android:orientation="vertical" />
 
                 </FrameLayout>
 
@@ -109,7 +109,7 @@
                     android:layout_height="2dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="5dp"
-                    android:background="@color/colorPrimary"/>
+                    android:background="@color/colorPrimary" />
 
                 <LinearLayout
                     android:layout_width="fill_parent"

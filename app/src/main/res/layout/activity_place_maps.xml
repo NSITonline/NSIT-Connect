@@ -9,8 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:id="@+id/place_map"
-        android:name="com.google.android.gms.maps.MapFragment">
-    </fragment>
+        android:name="com.google.android.gms.maps.MapFragment"></fragment>
 
     <LinearLayout
         android:layout_weight="0.65"

@@ -17,7 +17,7 @@ class ContestDBHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "contest.db";
 
     public ContestDBHelper(Context context) {
-        super(context,DATABASE_NAME,null,DATABASE_VERSION);
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
@@ -27,12 +27,12 @@ class ContestDBHelper extends SQLiteOpenHelper {
 
                 ContestEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
 
-                ContestEntry.COLUMN_TITLE + " TEXT NOT NULL, "+
-                ContestEntry.COLUMN_DESCRIPTION + " TEXT ,"+
-                ContestEntry.COLUMN_URL + "  TEXT ,"+
+                ContestEntry.COLUMN_TITLE + " TEXT NOT NULL, " +
+                ContestEntry.COLUMN_DESCRIPTION + " TEXT ," +
+                ContestEntry.COLUMN_URL + "  TEXT ," +
                 ContestEntry.COLUMN_START_TIME + " INTEGER NOT NULL ," +
                 ContestEntry.COLUMN_END_TIME + " INTEGER NOT NULL ," +
-                ContestEntry.COLUMN_SOURCE + " TEXT ,"+
+                ContestEntry.COLUMN_SOURCE + " TEXT ," +
 
                 "UNIQUE (" + ContestEntry.COLUMN_TITLE + ") ON CONFLICT REPLACE );";
 

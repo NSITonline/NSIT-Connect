@@ -32,7 +32,7 @@ public class NotificationSettings extends AppCompatActivity {
         private Context mContext;
 
         @SuppressLint("ValidFragment")
-        public PrefSync(Context context){
+        public PrefSync(Context context) {
             super();
             mContext = context;
         }
@@ -45,27 +45,28 @@ public class NotificationSettings extends AppCompatActivity {
             PreferenceManager.getDefaultSharedPreferences(getActivity()).registerOnSharedPreferenceChangeListener(this);
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
             boolean status = sharedPreferences.getBoolean("notification_status", false);
-            ListPreference p = (ListPreference)findPreference("notify_sync_settings");
-            if (!status){
+            ListPreference p = (ListPreference) findPreference("notify_sync_settings");
+            if (!status) {
                 p.setEnabled(false);
-            }else
+            } else
                 p.setEnabled(true);
         }
 
         @Override
         public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-            switch (key){
-                case "notification_status":boolean status = sharedPreferences.getBoolean(key,false);
-                    ListPreference p = (ListPreference)findPreference("notify_sync_settings");
-                                           if (!status){
-                                               p.setEnabled(false);
-                                               Intent intent = new Intent(mContext, MyAlarmReceiver.class);
-                                               final PendingIntent pIntent = PendingIntent.getBroadcast(mContext, MyAlarmReceiver.REQUEST_CODE,
-                                                       intent, PendingIntent.FLAG_UPDATE_CURRENT);
-                                               AlarmManager alarm = (AlarmManager) mContext.getSystemService(Context.ALARM_SERVICE);
-                                               alarm.cancel(pIntent);
-                                           }else
-                                               p.setEnabled(true);
+            switch (key) {
+                case "notification_status":
+                    boolean status = sharedPreferences.getBoolean(key, false);
+                    ListPreference p = (ListPreference) findPreference("notify_sync_settings");
+                    if (!status) {
+                        p.setEnabled(false);
+                        Intent intent = new Intent(mContext, MyAlarmReceiver.class);
+                        final PendingIntent pIntent = PendingIntent.getBroadcast(mContext, MyAlarmReceiver.REQUEST_CODE,
+                                intent, PendingIntent.FLAG_UPDATE_CURRENT);
+                        AlarmManager alarm = (AlarmManager) mContext.getSystemService(Context.ALARM_SERVICE);
+                        alarm.cancel(pIntent);
+                    } else
+                        p.setEnabled(true);
                     break;
             }
         }

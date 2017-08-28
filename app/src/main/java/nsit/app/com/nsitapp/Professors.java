@@ -28,7 +28,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
 public class Professors extends Fragment implements
         AdapterView.OnItemClickListener {
 
@@ -102,6 +101,7 @@ public class Professors extends Fragment implements
         menu.clear();
         super.onCreateOptionsMenu(menu, inflater);
     }
+
     public class CustomListViewAdapter extends ArrayAdapter<RowItem> {
 
         Context context;

@@ -32,9 +32,9 @@ public class ContestProvider extends ContentProvider {
         final UriMatcher matcher = new UriMatcher(UriMatcher.NO_MATCH);
         final String authority = ContestContract.CONTENT_AUTHORITY;
 
-        matcher.addURI(authority,ContestContract.PATH_CONTEST,CONTEST);
-        matcher.addURI(authority,ContestContract.PATH_CONTEST + "/#",CONTEST_WITH_ID);
-        matcher.addURI(authority,ContestContract.PATH_CONTEST + "/*",CONTEST_WITH_SOURCE);
+        matcher.addURI(authority, ContestContract.PATH_CONTEST, CONTEST);
+        matcher.addURI(authority, ContestContract.PATH_CONTEST + "/#", CONTEST_WITH_ID);
+        matcher.addURI(authority, ContestContract.PATH_CONTEST + "/*", CONTEST_WITH_SOURCE);
 
         return matcher;
     }
@@ -68,18 +68,18 @@ public class ContestProvider extends ContentProvider {
         Cursor retCursor;
         switch (match) {
             case CONTEST:
-                retCursor = getContest(projection,selection,selectionArgs,sortOrder);
+                retCursor = getContest(projection, selection, selectionArgs, sortOrder);
                 break;
             case CONTEST_WITH_SOURCE:
-                retCursor = getContestWithSource(uri,projection,sortOrder);
+                retCursor = getContestWithSource(uri, projection, sortOrder);
                 break;
             case CONTEST_WITH_ID:
-                retCursor = getContestWithID(uri,projection,sortOrder);
+                retCursor = getContestWithID(uri, projection, sortOrder);
                 break;
             default:
-                throw  new UnsupportedOperationException("Unknown uri : " + uri);
+                throw new UnsupportedOperationException("Unknown uri : " + uri);
         }
-        retCursor.setNotificationUri(getContext().getContentResolver(),uri);
+        retCursor.setNotificationUri(getContext().getContentResolver(), uri);
         return retCursor;
     }
 
@@ -96,11 +96,11 @@ public class ContestProvider extends ContentProvider {
         );
     }
 
-    private Cursor getContestWithSource(Uri uri,String[] projection, String sortOrder) {
+    private Cursor getContestWithSource(Uri uri, String[] projection, String sortOrder) {
         String source = ContestContract.ContestEntry.getSourceFromUri(uri);
 
         String selection = ContestContract.ContestEntry.COLUMN_SOURCE + " = ? ";
-        String[] selectionArgs = new String[] {source};
+        String[] selectionArgs = new String[]{source};
 
         return sQueryBuilder.query(mOpenHelper.getReadableDatabase(),
                 projection,
@@ -111,11 +111,11 @@ public class ContestProvider extends ContentProvider {
                 sortOrder);
     }
 
-    private Cursor getContestWithID(Uri uri,String[] projection, String sortOrder) {
+    private Cursor getContestWithID(Uri uri, String[] projection, String sortOrder) {
         int id = ContestContract.ContestEntry.getIDFromUri(uri);
 
         String selection = ContestContract.ContestEntry._ID + " = ? ";
-        String[] selectionArgs = new String[] {Integer.toString(id)};
+        String[] selectionArgs = new String[]{Integer.toString(id)};
 
         return sQueryBuilder.query(mOpenHelper.getReadableDatabase(),
                 projection,
@@ -132,15 +132,14 @@ public class ContestProvider extends ContentProvider {
 
         int match = sUriMatcher.match(uri);
         Uri returnUri;
-        switch(match) {
+        switch (match) {
             case CONTEST: {
 
-                long _id = db.insert(ContestContract.ContestEntry.TABLE_NAME,null,contentValues);
-                if (_id>0) {
+                long _id = db.insert(ContestContract.ContestEntry.TABLE_NAME, null, contentValues);
+                if (_id > 0) {
                     returnUri = ContestContract.ContestEntry.buildContestUriWithId(_id);
-                }
-                else {
-                    throw new SQLException("Failed to insert row into + "+uri);
+                } else {
+                    throw new SQLException("Failed to insert row into + " + uri);
                 }
                 break;
 
@@ -149,7 +148,7 @@ public class ContestProvider extends ContentProvider {
                 throw new UnsupportedOperationException("Unknown uri : " + uri);
         }
 
-        getContext().getContentResolver().notifyChange(uri,null);
+        getContext().getContentResolver().notifyChange(uri, null);
 
         return returnUri;
     }
@@ -160,7 +159,7 @@ public class ContestProvider extends ContentProvider {
 
         int match = sUriMatcher.match(uri);
         int rowsDeleted;
-        switch(match) {
+        switch (match) {
             case CONTEST: {
 
 
@@ -174,8 +173,8 @@ public class ContestProvider extends ContentProvider {
                 throw new UnsupportedOperationException("Unknown uri : " + uri);
         }
 
-        if (rowsDeleted!=0)
-            getContext().getContentResolver().notifyChange(uri,null);
+        if (rowsDeleted != 0)
+            getContext().getContentResolver().notifyChange(uri, null);
 
         return rowsDeleted;
     }
@@ -186,7 +185,7 @@ public class ContestProvider extends ContentProvider {
 
         int match = sUriMatcher.match(uri);
         int rowsUpdated;
-        switch(match) {
+        switch (match) {
             case CONTEST: {
 
                 rowsUpdated = db.update(ContestContract.ContestEntry.TABLE_NAME,
@@ -200,8 +199,8 @@ public class ContestProvider extends ContentProvider {
                 throw new UnsupportedOperationException("Unknown uri : " + uri);
         }
 
-        if (rowsUpdated!=0)
-            getContext().getContentResolver().notifyChange(uri,null);
+        if (rowsUpdated != 0)
+            getContext().getContentResolver().notifyChange(uri, null);
 
         return rowsUpdated;
     }

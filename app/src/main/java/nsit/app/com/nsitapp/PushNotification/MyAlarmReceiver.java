@@ -18,7 +18,7 @@ public class MyAlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        Log.d("Alarm Manger","Service About To start");
+        Log.d("Alarm Manger", "Service About To start");
         Intent i = new Intent(context, MyNotifiactionService.class);
         ConnectivityManager connectivityManager
                 = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);

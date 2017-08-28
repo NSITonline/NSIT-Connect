@@ -35,7 +35,7 @@ public class ContestContract {
         public static final String COLUMN_SOURCE = "source";
 
         public static Uri buildContestUriWithId(long id) {
-            return ContentUris.withAppendedId(CONTENT_URI,id);
+            return ContentUris.withAppendedId(CONTENT_URI, id);
         }
 
         public static Uri buildContestWithSource(String source) {

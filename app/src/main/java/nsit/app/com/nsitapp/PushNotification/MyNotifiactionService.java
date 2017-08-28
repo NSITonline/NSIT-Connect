@@ -34,7 +34,7 @@ import nsit.app.com.nsitapp.R;
 public class MyNotifiactionService extends IntentService implements Constant {
 
     private static final String URL = "https://graph.facebook.com/" + id_nsitonline + "/posts?limit=20&fields=id,picture,from,shares,message," +
-            "object_id,link,created_time,comments.limit(0).summary(true),likes.limit(0).summary(true)"+
+            "object_id,link,created_time,comments.limit(0).summary(true),likes.limit(0).summary(true)" +
             "&access_token=" + common_access;
     private List<String> message = new ArrayList<String>();
     private List<String> object_id = new ArrayList<String>();
@@ -110,25 +110,24 @@ public class MyNotifiactionService extends IntentService implements Constant {
         ArrayList<String> newmessage = new ArrayList<String>();
         try {
             NotificationAdapter notify = new NotificationAdapter(this);
-            for (int i=time_created.size()-1;i>=0;i--){
-                if (notify.CheckIsDataAlreadyInDBorNot(String.valueOf(time_created.get(i)))){
+            for (int i = time_created.size() - 1; i >= 0; i--) {
+                if (notify.CheckIsDataAlreadyInDBorNot(String.valueOf(time_created.get(i)))) {
                     newmessage.add(message.get(i));
                     notify.insertNotification(String.valueOf(time_created.get(i)),
-                                              String.valueOf(message.get(i)),
-                                              String.valueOf(time_created.get(i)),
-                                              String.valueOf(likes.get(i)));
+                            String.valueOf(message.get(i)),
+                            String.valueOf(time_created.get(i)),
+                            String.valueOf(likes.get(i)));
                 }
             }
             notify.deletefirsthalf();
             notify.disconnect();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
 
-
-        if (newmessage.size()>0){
+        if (newmessage.size() > 0) {
             Intent notificationIntent = new Intent(this, MainActivity.class);
             PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
             Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
@@ -137,7 +136,7 @@ public class MyNotifiactionService extends IntentService implements Constant {
                     .setSmallIcon(R.drawable.ic_launcher)
                     .setLargeIcon(notifIcon)
                     .setContentTitle("NSIT Connect")
-                    .setContentText(" You Have "+ newmessage.size()+" Notifications")
+                    .setContentText(" You Have " + newmessage.size() + " Notifications")
                     .setVibrate(new long[]{500L, 500L, 500L, 500L})
                     .setLights(Color.BLUE, 500, 500)
                     .setSound(alarmSound)
@@ -145,9 +144,9 @@ public class MyNotifiactionService extends IntentService implements Constant {
                     .setAutoCancel(true);
             NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
             Collections.reverse(newmessage);
-            for (int i=0;i<newmessage.size();i++) {
-               if (newmessage.get(i)==null)
-                   continue;
+            for (int i = 0; i < newmessage.size(); i++) {
+                if (newmessage.get(i) == null)
+                    continue;
                 inboxStyle.addLine("@ " + newmessage.get(i));
             }
             notification.setStyle(inboxStyle);

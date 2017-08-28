@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 class DBHelper extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
-    private static final String DATABASE_NAME ="NSITConnectFeed.db";
+    private static final String DATABASE_NAME = "NSITConnectFeed.db";
     public static final String TABLE_NAME = "myNotificationFeed";
 
     private static final String INT_TYPE = " INT";
@@ -21,20 +21,20 @@ class DBHelper extends SQLiteOpenHelper {
     public static final String KEY_MESSAGE = "message";
     public static final String KEY_TIME_CREATED = "time_created";
     public static final String KEY_LIKES = "likes";
-    private static final String SQL_CREATE_ENTRIES_FEED=
-            "CREATE TABLE " + TABLE_NAME  + " (" +
+    private static final String SQL_CREATE_ENTRIES_FEED =
+            "CREATE TABLE " + TABLE_NAME + " (" +
                     KEY_ROWID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                     KEY_OBJECT_ID + TEXT_TYPE + COMMA_SEP +
-                    KEY_MESSAGE+ TEXT_TYPE + COMMA_SEP +
+                    KEY_MESSAGE + TEXT_TYPE + COMMA_SEP +
                     KEY_TIME_CREATED + TEXT_TYPE + COMMA_SEP +
                     KEY_LIKES + TEXT_TYPE +
                     " )";
 
-    private static final String SQL_DELETE_ENTRIES_FEED=
+    private static final String SQL_DELETE_ENTRIES_FEED =
             "DROP TABLE IF EXISTS " + TABLE_NAME;
 
     public DBHelper(Context context) {
-        super(context,DATABASE_NAME,null,DATABASE_VERSION);
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override

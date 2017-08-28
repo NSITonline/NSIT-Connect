@@ -38,13 +38,11 @@ public class Hangout_collegeLocations extends BaseActivity implements Constant {
     private ExpandableListView listView;
 
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_locations);
         listView = (ExpandableListView) findViewById(R.id.locations_list);
         populateList(LocationsGroupsList);
-
 
 
         this.listView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
@@ -110,7 +108,6 @@ public class Hangout_collegeLocations extends BaseActivity implements Constant {
     }
 
 
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
@@ -120,18 +117,15 @@ public class Hangout_collegeLocations extends BaseActivity implements Constant {
     }
 
 
-    private void populateList(ArrayList<LocationGroup> Items){
+    private void populateList(ArrayList<LocationGroup> Items) {
         FillGroupsList();
         ExpandableListAdapter listAdapter = new LocationsList_Adapter(this, Items);
         listView.setAdapter(listAdapter);
     }
 
 
-
-
-
-    private void ShowOnMap(View view, Location LocationItem, Integer GroupItem){
-        Intent myIntent = new Intent(view.getContext(),Hangout_CollegeLocationMapView.class);
+    private void ShowOnMap(View view, Location LocationItem, Integer GroupItem) {
+        Intent myIntent = new Intent(view.getContext(), Hangout_CollegeLocationMapView.class);
         myIntent.putExtra(LOCATION_NAME, LocationItem.Name);
         myIntent.putExtra(LOCATION_LAT, String.valueOf(LocationItem.Coord.latitude));
         myIntent.putExtra(LOCATION_LON, String.valueOf(LocationItem.Coord.longitude));
@@ -140,19 +134,19 @@ public class Hangout_collegeLocations extends BaseActivity implements Constant {
     }
 
     // Hangout_collegeLocations' data and definitions go below...
-    class LocationGroup{
+    class LocationGroup {
         String GroupHeader;
         String GroupType;
         ArrayList<Location> Locations;
 
-        LocationGroup(String GroupHeader, String GroupType, ArrayList<Location> Locations){
+        LocationGroup(String GroupHeader, String GroupType, ArrayList<Location> Locations) {
             this.GroupHeader = GroupHeader;
             this.GroupType = GroupType;
             this.Locations = Locations;
         }
     }
 
-    class Location{
+    class Location {
         String Name;
         LatLng Coord;
 
@@ -162,11 +156,11 @@ public class Hangout_collegeLocations extends BaseActivity implements Constant {
         }
     }
 
-    private void FillGroupsList(){
+    private void FillGroupsList() {
         ArrayList<Location> NSIT_locations = new ArrayList<>();
-        NSIT_locations.add(new Location("North Gate",new LatLng(28.613156, 77.033553)));
-        NSIT_locations.add(new Location("South Gate",new LatLng(28.608464, 77.035069)));
-        LocationGroup NSITGroup = new LocationGroup("NSIT","College",NSIT_locations);
+        NSIT_locations.add(new Location("North Gate", new LatLng(28.613156, 77.033553)));
+        NSIT_locations.add(new Location("South Gate", new LatLng(28.608464, 77.035069)));
+        LocationGroup NSITGroup = new LocationGroup("NSIT", "College", NSIT_locations);
 
         ArrayList<Location> Campus_locations = new ArrayList<>();
         Campus_locations.add(new Location("Administrative Block", new LatLng(28.609790, 77.036969)));
@@ -175,7 +169,7 @@ public class Hangout_collegeLocations extends BaseActivity implements Constant {
         Campus_locations.add(new Location("Block IV - ECE/BT", new LatLng(28.609706, 77.037629)));
         Campus_locations.add(new Location("Main Auditorium", new LatLng(28.609687, 77.037034)));
         Campus_locations.add(new Location("Mini Auditorium", new LatLng(28.609623, 77.038056)));
-        LocationGroup CampusGroup = new LocationGroup("Main Campus","Campus",Campus_locations);
+        LocationGroup CampusGroup = new LocationGroup("Main Campus", "Campus", Campus_locations);
 
         ArrayList<Location> Hostel_locations = new ArrayList<>();
         Hostel_locations.add(new Location("Boys' Hostel I", new LatLng(28.612252, 77.035054)));
@@ -184,31 +178,31 @@ public class Hangout_collegeLocations extends BaseActivity implements Constant {
         Hostel_locations.add(new Location("Boys' Hostel IV - Ramanujam", new LatLng(28.613081, 77.034587)));
         Hostel_locations.add(new Location("Girls' Hostel", new LatLng(28.607378, 77.039520)));
         Hostel_locations.add(new Location("Girls' Hostel II", new LatLng(28.613694, 77.038296)));
-        LocationGroup HostelGroup = new LocationGroup("Hostels","Hostel",Hostel_locations);
+        LocationGroup HostelGroup = new LocationGroup("Hostels", "Hostel", Hostel_locations);
 
         ArrayList<Location> Canteens_locations = new ArrayList<>();
         Canteens_locations.add(new Location("Zayca", new LatLng(28.611066, 77.039385)));
         Canteens_locations.add(new Location("Mini Zayca", new LatLng(28.610205, 77.036651)));
         Canteens_locations.add(new Location("Just Cafe", new LatLng(28.612243, 77.036523)));
         Canteens_locations.add(new Location("McCain", new LatLng(28.612177, 77.036346)));
-        LocationGroup CanteensGroup = new LocationGroup("Canteens","Canteen",Canteens_locations);
+        LocationGroup CanteensGroup = new LocationGroup("Canteens", "Canteen", Canteens_locations);
 
         ArrayList<Location> Stationery_locations = new ArrayList<>();
         Stationery_locations.add(new Location("Babloo Stationery", new LatLng(28.611066, 77.039385)));
         Stationery_locations.add(new Location("Radha Stationery", new LatLng(28.610205, 77.036651)));
-        LocationGroup StationeryGroup = new LocationGroup("Stationery Stores","Stationery",Stationery_locations);
+        LocationGroup StationeryGroup = new LocationGroup("Stationery Stores", "Stationery", Stationery_locations);
 
         ArrayList<Location> ATM_locations = new ArrayList<>();
         ATM_locations.add(new Location("Admin ATM", new LatLng(28.609541, 77.037096)));
         ATM_locations.add(new Location("North Gate ATM", new LatLng(28.613142, 77.033563)));
         ATM_locations.add(new Location("South Gate ATM", new LatLng(28.608451, 77.035091)));
-        LocationGroup ATMGroup = new LocationGroup("ATMs","ATM",ATM_locations);
+        LocationGroup ATMGroup = new LocationGroup("ATMs", "ATM", ATM_locations);
 
         ArrayList<Location> WiFi_locations = new ArrayList<>();
         WiFi_locations.add(new Location("CADLAB", new LatLng(28.609862, 77.038545)));
         WiFi_locations.add(new Location("GCLAB", new LatLng(28.609907, 77.038720)));
         WiFi_locations.add(new Location("KHUSHIL", new LatLng(28.609903, 77.038745)));
-        LocationGroup WiFiGroup = new LocationGroup("WiFi Hotspots","WiFi",WiFi_locations);
+        LocationGroup WiFiGroup = new LocationGroup("WiFi Hotspots", "WiFi", WiFi_locations);
 
         ArrayList<Location> Sports_locations = new ArrayList<>();
         Sports_locations.add(new Location("Pavilion", new LatLng(28.608879, 77.040770)));
@@ -217,14 +211,14 @@ public class Hangout_collegeLocations extends BaseActivity implements Constant {
         Sports_locations.add(new Location("Volleyball Courts", new LatLng(28.609712, 77.040389)));
         Sports_locations.add(new Location("Cricket Field", new LatLng(28.610056, 77.041441)));
         Sports_locations.add(new Location("Football Field", new LatLng(28.608709, 77.041505)));
-        LocationGroup SportsGroup = new LocationGroup("Sports Ground","Sports",Sports_locations);
+        LocationGroup SportsGroup = new LocationGroup("Sports Ground", "Sports", Sports_locations);
 
         ArrayList<Location> Misc_locations = new ArrayList<>();
         Misc_locations.add(new Location("Central Library", new LatLng(28.610287, 77.039059)));
         Misc_locations.add(new Location("Motorsports Garage", new LatLng(28.611212, 77.039334)));
         Misc_locations.add(new Location("Nescii Lawns", new LatLng(28.609595, 77.035431)));
         Misc_locations.add(new Location("Shopping Complex", new LatLng(28.612351, 77.037615)));
-        LocationGroup MiscGroup = new LocationGroup("Others","Miscellaneous",Misc_locations);
+        LocationGroup MiscGroup = new LocationGroup("Others", "Miscellaneous", Misc_locations);
 
         this.LocationsGroupsList.add(NSITGroup);
         this.LocationsGroupsList.add(CampusGroup);
@@ -244,9 +238,9 @@ public class Hangout_collegeLocations extends BaseActivity implements Constant {
         ArrayList<Hangout_collegeLocations.Location> LocationGroupItems = new ArrayList<>();
         public int groupClicked;
 
-        private  LayoutInflater inflater = null;
+        private LayoutInflater inflater = null;
         ExpandableListView listView;
-        public  int lastExpandedGroupPosition = -1;
+        public int lastExpandedGroupPosition = -1;
 
 
         public void setGroupClicked(int groupPosition) {

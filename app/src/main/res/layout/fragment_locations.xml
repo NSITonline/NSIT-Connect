@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:animateLayoutChanges="true"
     android:layout_height="match_parent"
     android:showDividers="none"
@@ -14,6 +15,5 @@
         android:id="@+id/locations_list"
         android:background="@color/universalBackground"
         android:dividerHeight="0dp"
-        android:childDivider="#00000000"
-        />
+        android:childDivider="#00000000" />
 </LinearLayout>

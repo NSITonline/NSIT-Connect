@@ -57,12 +57,12 @@ public class HangoutsTypeDisplay extends AppCompatActivity {
     private final static String TYPE = "&types=";
     private final static String KEY = "&key=AIzaSyBLSYsHaIe7euGK_glMbU98ZW9SDNBcEkM";
 
-    private String[] HangoutPlaces = {"Restaurants","Cafes","Night Clubs","Shopping Malls","Bowling","Movie","Food","Amusement Parks","Park"};
-    private String[] searches = {"restaurant","cafe","night_club","shopping_mall","bowling_alley","movie_theater","food","amusement_park","park"};
+    private String[] HangoutPlaces = {"Restaurants", "Cafes", "Night Clubs", "Shopping Malls", "Bowling", "Movie", "Food", "Amusement Parks", "Park"};
+    private String[] searches = {"restaurant", "cafe", "night_club", "shopping_mall", "bowling_alley", "movie_theater", "food", "amusement_park", "park"};
     private int choice = -1;
     private int progress = 0;
     private ProgressBar progressBar;
-    private ArrayList<HangoutTypeObject> objects ;
+    private ArrayList<HangoutTypeObject> objects;
     private HangoutTypeAdapter displayAdapter;
     private TextView radiusTextView;
 
@@ -71,22 +71,22 @@ public class HangoutsTypeDisplay extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.hangout_type_display_activity);
-        choice = getIntent().getIntExtra(Hangouts.CHOICE_TYPE,0);
+        choice = getIntent().getIntExtra(Hangouts.CHOICE_TYPE, 0);
         getSupportActionBar().setTitle("   " + HangoutPlaces[choice]);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.drawable.ic_people_white_36dp);
         objects = new ArrayList<HangoutTypeObject>();
 
         ListView display_list = (ListView) findViewById(R.id.hangout_type_display_list);
-        displayAdapter = new HangoutTypeAdapter(this,objects);
+        displayAdapter = new HangoutTypeAdapter(this, objects);
         display_list.setAdapter(displayAdapter);
 
-        progressBar = (ProgressBar)findViewById(R.id.progress);
+        progressBar = (ProgressBar) findViewById(R.id.progress);
 
-        if(Utils.isNetworkAvailable(this))
+        if (Utils.isNetworkAvailable(this))
             new HttpGetInfo().execute();
         else
-            Toast.makeText(getApplicationContext(),"Cannot connect to Internet",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Cannot connect to Internet", Toast.LENGTH_LONG).show();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -102,33 +102,36 @@ public class HangoutsTypeDisplay extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId()){
-            case R.id.refresh :      if(Utils.isNetworkAvailable(this))
-                new HttpGetInfo().execute();
-            else
-                Toast.makeText(getApplicationContext(),"Cannot connect to Internet",Toast.LENGTH_LONG).show();
+        switch (item.getItemId()) {
+            case R.id.refresh:
+                if (Utils.isNetworkAvailable(this))
+                    new HttpGetInfo().execute();
+                else
+                    Toast.makeText(getApplicationContext(), "Cannot connect to Internet", Toast.LENGTH_LONG).show();
                 break;
-            case R.id.change_radius :   setradiusvalue();
+            case R.id.change_radius:
+                setradiusvalue();
                 break;
 
-            case android.R.id.home : finish();
+            case android.R.id.home:
+                finish();
                 break;
         }
-        return  super.onOptionsItemSelected(item);
+        return super.onOptionsItemSelected(item);
     }
 
-    private void setradiusvalue(){
+    private void setradiusvalue() {
         AlertDialog.Builder alert = new AlertDialog.Builder(HangoutsTypeDisplay.this);
-        final View radiusview = getLayoutInflater().inflate(R.layout.raduis_layout,null);
+        final View radiusview = getLayoutInflater().inflate(R.layout.raduis_layout, null);
         SeekBar radiusSeekBar = (SeekBar) radiusview.findViewById(R.id.radius_seek);
-        radiusTextView = (TextView)radiusview.findViewById(R.id.radius_display);
+        radiusTextView = (TextView) radiusview.findViewById(R.id.radius_display);
         radiusSeekBar.setProgress(radius);
-        radiusTextView.setText("Radius :"+radius+"(m)");
+        radiusTextView.setText("Radius :" + radius + "(m)");
         radiusSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 progress = i;
-                radiusTextView.setText("Radius :"+progress+"(m)");
+                radiusTextView.setText("Radius :" + progress + "(m)");
             }
 
             @Override
@@ -158,18 +161,19 @@ public class HangoutsTypeDisplay extends AppCompatActivity {
 
     }
 
-    private class HttpGetInfo extends AsyncTask<Void,Void,Void> {
+    private class HttpGetInfo extends AsyncTask<Void, Void, Void> {
 
         private String text;
         private String URL;
 
-        HttpGetInfo(){
+        HttpGetInfo() {
             text = null;
-           GPSTracker gpsGetLocation = new GPSTracker(HangoutsTypeDisplay.this);
+            GPSTracker gpsGetLocation = new GPSTracker(HangoutsTypeDisplay.this);
             if (gpsGetLocation.canGetLocation())
-                URL = MAIN_HTTP + NEARBYPLACES +LOCATION + gpsGetLocation.getLatitude() + "," + gpsGetLocation.getLongitude()
+                URL = MAIN_HTTP + NEARBYPLACES + LOCATION + gpsGetLocation.getLatitude() + "," + gpsGetLocation.getLongitude()
                         + RADIUS + String.valueOf(radius) + TYPE + searches[choice] + KEY;
         }
+
         @Override
         protected void onPreExecute() {
             progressBar.setVisibility(View.VISIBLE);
@@ -180,7 +184,7 @@ public class HangoutsTypeDisplay extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... voids) {
 
-            if(URL == null)
+            if (URL == null)
                 return null;
             String uri = URL;
             java.net.URL url;
@@ -201,17 +205,17 @@ public class HangoutsTypeDisplay extends AppCompatActivity {
         protected void onPostExecute(Void aVoid) {
             progressBar.setVisibility(View.GONE);
 
-            Log.e("got responses",text+" ");
+            Log.e("got responses", text + " ");
 
             try {
                 JSONObject jplaceobject = new JSONObject(text);
                 JSONArray jplacearray = jplaceobject.getJSONArray("results");
 
                 if (jplaceobject.getString("status").equals("ZERO_RESULTS"))
-                    Toast.makeText(getApplicationContext(),"No "+HangoutPlaces[choice]+ " Present in Current Radius",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "No " + HangoutPlaces[choice] + " Present in Current Radius", Toast.LENGTH_SHORT).show();
 
                 int i;
-                for (i=0;i<jplacearray.length();i++){
+                for (i = 0; i < jplacearray.length(); i++) {
                     try {
 
 
@@ -262,24 +266,25 @@ public class HangoutsTypeDisplay extends AppCompatActivity {
                             phtotref = obj.getString("photo_reference");
                             photoheight = Float.parseFloat(obj.getString("height"));
                             photowidth = Float.parseFloat(obj.getString("width"));
-                        }
-                        else {
+                        } else {
                             phtotref = null;
                             photoheight = 0;
                             photowidth = 0;
                         }
 
-                        if (jplacearray.getJSONObject(i).has("opening_hours")){
+                        if (jplacearray.getJSONObject(i).has("opening_hours")) {
                             String bool = jplacearray.getJSONObject(i).getJSONObject("opening_hours").getString("open_now");
                             opennow = !bool.equals("false");
                         }
 
-                        objects.add(new HangoutTypeObject(name, icon, place_id, phtotref, longi, latti,vicinity, opennow, photowidth, photoheight, rating));
+                        objects.add(new HangoutTypeObject(name, icon, place_id, phtotref, longi, latti, vicinity, opennow, photowidth, photoheight, rating));
 
-                    }catch (Exception e){}
+                    } catch (Exception e) {
+                    }
                 }
 
-            }catch (Exception e){}
+            } catch (Exception e) {
+            }
             displayAdapter.notifyDataSetChanged();
         }
     }
@@ -293,7 +298,7 @@ public class HangoutsTypeDisplay extends AppCompatActivity {
         private Context mContext;
         private ArrayList<HangoutTypeObject> hangoutObjects;
 
-        public HangoutTypeAdapter(Context context,ArrayList<HangoutTypeObject> object){
+        public HangoutTypeAdapter(Context context, ArrayList<HangoutTypeObject> object) {
             mContext = context;
             hangoutObjects = object;
         }
@@ -317,18 +322,18 @@ public class HangoutsTypeDisplay extends AppCompatActivity {
         public View getView(int i, View convertview, ViewGroup viewGroup) {
             ViewHolder holder = new ViewHolder();
 
-            if (convertview == null){
-                LayoutInflater inflater = (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                convertview = inflater.inflate(R.layout.hangouttype_listitem,viewGroup, false);
-                holder.placephoto = (ImageView)convertview.findViewById(R.id.hangottype_photo);
-                holder.placename = (TextView)convertview.findViewById(R.id.title_hangout_type);
-                holder.vicinity = (TextView)convertview.findViewById(R.id.vicinity);
-                holder.rating = (RatingBar)convertview.findViewById(R.id.rating_bar);
-                holder.placeopen = (TextView)convertview.findViewById(R.id.open_close);
-                holder.placelocate = (LinearLayout)convertview.findViewById(R.id.locate_button);
+            if (convertview == null) {
+                LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                convertview = inflater.inflate(R.layout.hangouttype_listitem, viewGroup, false);
+                holder.placephoto = (ImageView) convertview.findViewById(R.id.hangottype_photo);
+                holder.placename = (TextView) convertview.findViewById(R.id.title_hangout_type);
+                holder.vicinity = (TextView) convertview.findViewById(R.id.vicinity);
+                holder.rating = (RatingBar) convertview.findViewById(R.id.rating_bar);
+                holder.placeopen = (TextView) convertview.findViewById(R.id.open_close);
+                holder.placelocate = (LinearLayout) convertview.findViewById(R.id.locate_button);
                 convertview.setTag(holder);
-            }else
-                holder = (ViewHolder)convertview.getTag();
+            } else
+                holder = (ViewHolder) convertview.getTag();
 
             holder.placename.setText(hangoutObjects.get(i).getName());
             holder.placename.setId(i);
@@ -340,7 +345,7 @@ public class HangoutsTypeDisplay extends AppCompatActivity {
             holder.rating.setId(i);
 
             if (hangoutObjects.get(i).phtotref != null)
-                Picasso.with(mContext).load("https://maps.googleapis.com/maps/api/place/photo?maxheight=145&photoreference="+hangoutObjects.get(i).phtotref+"&key=AIzaSyBz-tWFzOVJRWUBuF6TYkd5T2SfPOfV-GE").into(holder.placephoto);
+                Picasso.with(mContext).load("https://maps.googleapis.com/maps/api/place/photo?maxheight=145&photoreference=" + hangoutObjects.get(i).phtotref + "&key=AIzaSyBz-tWFzOVJRWUBuF6TYkd5T2SfPOfV-GE").into(holder.placephoto);
             else
                 Picasso.with(mContext).load(R.drawable.imagenotavailable).into(holder.placephoto);
 
@@ -365,10 +370,10 @@ public class HangoutsTypeDisplay extends AppCompatActivity {
             });
 
             AnimationSet set = new AnimationSet(true);
-            TranslateAnimation slide = new TranslateAnimation(-200,0,-200,0);
+            TranslateAnimation slide = new TranslateAnimation(-200, 0, -200, 0);
             slide.setInterpolator(new DecelerateInterpolator(5.0f));
             slide.setDuration(300);
-            Animation fade = new AlphaAnimation(0,1.0f);
+            Animation fade = new AlphaAnimation(0, 1.0f);
             fade.setInterpolator(new DecelerateInterpolator(5.0f));
             fade.setDuration(300);
             set.addAnimation(slide);

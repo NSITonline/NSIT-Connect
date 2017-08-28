@@ -93,12 +93,12 @@ public class Contest {
     public ContentValues toContentValues() {
         ContentValues contentValues = new ContentValues();
 
-        contentValues.put(ContestContract.ContestEntry.COLUMN_TITLE,mTitle);
-        contentValues.put(ContestContract.ContestEntry.COLUMN_DESCRIPTION,mDescription);
-        contentValues.put(ContestContract.ContestEntry.COLUMN_SOURCE,mSource);
-        contentValues.put(ContestContract.ContestEntry.COLUMN_URL,mURL);
-        contentValues.put(ContestContract.ContestEntry.COLUMN_START_TIME,mStartDate);
-        contentValues.put(ContestContract.ContestEntry.COLUMN_END_TIME,mFinishDate);
+        contentValues.put(ContestContract.ContestEntry.COLUMN_TITLE, mTitle);
+        contentValues.put(ContestContract.ContestEntry.COLUMN_DESCRIPTION, mDescription);
+        contentValues.put(ContestContract.ContestEntry.COLUMN_SOURCE, mSource);
+        contentValues.put(ContestContract.ContestEntry.COLUMN_URL, mURL);
+        contentValues.put(ContestContract.ContestEntry.COLUMN_START_TIME, mStartDate);
+        contentValues.put(ContestContract.ContestEntry.COLUMN_END_TIME, mFinishDate);
 
         return contentValues;
     }

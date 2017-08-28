@@ -16,7 +16,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
@@ -43,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
             "Calculator", "CodeRadar", "Professors", "Feedback", "About Us"};    //items on navigation drawer
     private Fragment current;
 
-
+    public static Context appContext;
     private Integer[] imageId = {
             R.drawable.ic_action_home,
             R.drawable.ic_action_tiles_large,
@@ -62,11 +61,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setProgressBarIndeterminateVisibility(false);
-
+        appContext = getApplicationContext();
         scheduleAlarm();
 
 
-        if(savedInstanceState == null) {
+        if (savedInstanceState == null) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             Fragment f = new Home();
             current = f;
@@ -216,7 +215,7 @@ public class MainActivity extends AppCompatActivity {
                 getSupportActionBar().setTitle("Feedback");
                 break;
             case 10:
-                f = new AboutUs();
+                f = new AboutUs2();
                 getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 ft.replace(R.id.content_frame, f);
                 getSupportActionBar().setTitle("About Us");
@@ -229,16 +228,16 @@ public class MainActivity extends AppCompatActivity {
     private void scheduleAlarm() {
 
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-        boolean status = sp.getBoolean("notification_status",true);
-        if (status){
-            int timefactor = Integer.parseInt(sp.getString("notify_sync_settings","5"));
+        boolean status = sp.getBoolean("notification_status", true);
+        if (status) {
+            int timefactor = Integer.parseInt(sp.getString("notify_sync_settings", "5"));
             Intent intent = new Intent(getApplicationContext(), MyAlarmReceiver.class);
             final PendingIntent pIntent = PendingIntent.getBroadcast(this, MyAlarmReceiver.REQUEST_CODE,
                     intent, PendingIntent.FLAG_UPDATE_CURRENT);
             long firstMillis = System.currentTimeMillis();
             AlarmManager alarm = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
             alarm.setInexactRepeating(AlarmManager.RTC_WAKEUP, firstMillis,
-                    timefactor*60000L, pIntent);
+                    timefactor * 60000L, pIntent);
         }
     }
 

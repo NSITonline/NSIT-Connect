@@ -24,25 +24,25 @@
             android:id="@+id/onlineJudge_image"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
-            android:scaleType="centerCrop"/>
+            android:scaleType="centerCrop" />
 
 
         <TextView
             android:id="@+id/onlineJudge_textView"
-            android:layout_marginLeft = "16dp"
+            android:layout_marginLeft="16dp"
             android:layout_marginTop="8dp"
             android:layout_toRightOf="@id/onlineJudge_image"
             android:text="Codeforces"
             android:textSize="@dimen/abc_text_size_caption_material"
             android:textColor="@android:color/white"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/contestName_textView"
             android:textColor="@android:color/white"
             android:alpha="0.87"
-            android:layout_marginLeft = "16dp"
+            android:layout_marginLeft="16dp"
             android:maxLines="1"
             android:ellipsize="end"
             android:textSize="@dimen/abc_text_size_subhead_material"
@@ -51,7 +51,7 @@
             android:layout_below="@id/onlineJudge_textView"
             android:layout_width="match_parent"
             android:paddingRight="16dp"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
 
 
         <ImageView
@@ -59,7 +59,7 @@
             android:layout_width="16dp"
             android:layout_height="16dp"
             android:src="@drawable/ic_action_time"
-            android:layout_alignParentRight="true"/>
+            android:layout_alignParentRight="true" />
 
         <TextView
             android:id="@+id/timeBeforeContest_textView"

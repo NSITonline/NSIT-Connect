@@ -68,70 +68,73 @@ public class SubjectsShow extends AppCompatActivity implements Constant {
         int sem = s.getInt(CALENDAR_SEM, 1);
 
 
-
-
-
-
-
         JSONObject ob;
-        JSONArray ar,ar2;
+        JSONArray ar, ar2;
 
-            try {
+        try {
 
-                ob = new JSONObject(subjects);
+            ob = new JSONObject(subjects);
 
-                Log.e("p1",ob+" ");
-                switch (branch -1) {
+            Log.e("p1", ob + " ");
+            switch (branch - 1) {
 
-                    case 0 : ar = ob.getJSONArray("coe"); break;
-                    case 1 : ar = ob.getJSONArray("it");break;
-                    case 2 : ar = ob.getJSONArray("ece");break;
-                    case 3 : ar = ob.getJSONArray("ice");break;
-                    case 4 : ar = ob.getJSONArray("mpae");break;
-                    default:  ar = ob.getJSONArray("bt");break;
+                case 0:
+                    ar = ob.getJSONArray("coe");
+                    break;
+                case 1:
+                    ar = ob.getJSONArray("it");
+                    break;
+                case 2:
+                    ar = ob.getJSONArray("ece");
+                    break;
+                case 3:
+                    ar = ob.getJSONArray("ice");
+                    break;
+                case 4:
+                    ar = ob.getJSONArray("mpae");
+                    break;
+                default:
+                    ar = ob.getJSONArray("bt");
+                    break;
 
 
-                }
-
-                Log.e("p2",ar+" ");
-                sem--;
-
-                if(sem < ar.length())
-                ob = ar.getJSONObject(sem);
-                else
-                ob = ar.getJSONObject(ar.length()-1);
-
-
-                Log.e("p3", sem + " "+ob);
-                ob = ob.getJSONObject("subjects");
-
-                Log.e("p4",ob+" ");
-
-                if(ob.has("theory")) {
-                    ar2 = ob.getJSONArray("theory");
-                    Log.e("p5",ar2+" ");
-                    for (int i = 0; i < ar2.length(); i++) {
-                        list1.add(ar2.getJSONObject(i).getString("code"));
-                        list2.add(ar2.getJSONObject(i).getString("name"));
-                    }
-                }
-                if(ob.has("practical")) {
-                    ar2 = ob.getJSONArray("practical");
-
-                    Log.e("p6",ar2+" ");
-                    for (int i = 0; i < ar2.length(); i++) {
-                        list1.add(ar2.getJSONObject(i).getString("code"));
-                        list2.add(ar2.getJSONObject(i).getString("name"));
-                    }
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-                Log.e("error", e.getMessage() + " ");
             }
 
+            Log.e("p2", ar + " ");
+            sem--;
+
+            if (sem < ar.length())
+                ob = ar.getJSONObject(sem);
+            else
+                ob = ar.getJSONObject(ar.length() - 1);
 
 
+            Log.e("p3", sem + " " + ob);
+            ob = ob.getJSONObject("subjects");
 
+            Log.e("p4", ob + " ");
+
+            if (ob.has("theory")) {
+                ar2 = ob.getJSONArray("theory");
+                Log.e("p5", ar2 + " ");
+                for (int i = 0; i < ar2.length(); i++) {
+                    list1.add(ar2.getJSONObject(i).getString("code"));
+                    list2.add(ar2.getJSONObject(i).getString("name"));
+                }
+            }
+            if (ob.has("practical")) {
+                ar2 = ob.getJSONArray("practical");
+
+                Log.e("p6", ar2 + " ");
+                for (int i = 0; i < ar2.length(); i++) {
+                    list1.add(ar2.getJSONObject(i).getString("code"));
+                    list2.add(ar2.getJSONObject(i).getString("name"));
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+            Log.e("error", e.getMessage() + " ");
+        }
 
 
         a = new CustomList_subjects(this, list1, list2);
@@ -147,24 +150,25 @@ public class SubjectsShow extends AppCompatActivity implements Constant {
             finish();
         return super.onOptionsItemSelected(item);
     }
+
     public class CustomList_subjects extends ArrayAdapter<String> {
         private final Activity context;
-        private final ArrayList<String> code,title;
-        TextView cod,tit,att,msg;
-        LinearLayout add,rem;
+        private final ArrayList<String> code, title;
+        TextView cod, tit, att, msg;
+        LinearLayout add, rem;
 
         public CustomList_subjects(Activity context, ArrayList<String> a, ArrayList<String> b) {
             super(context, R.layout.subject_list_item, a);
             this.context = context;
-            code=a;
-            title=b;
+            code = a;
+            title = b;
         }
 
 
         @Override
         public View getView(final int position, View view2, ViewGroup parent) {
             LayoutInflater inflater = context.getLayoutInflater();
-            View view= inflater.inflate(R.layout.subject_list_item, null, true);
+            View view = inflater.inflate(R.layout.subject_list_item, null, true);
             cod = (TextView) view.findViewById(R.id.code);
             tit = (TextView) view.findViewById(R.id.title);
             att = (TextView) view.findViewById(R.id.attendance);
@@ -190,7 +194,6 @@ public class SubjectsShow extends AppCompatActivity implements Constant {
 
                 }
             });
-
 
 
             add.setOnClickListener(new View.OnClickListener() {
@@ -278,7 +281,7 @@ public class SubjectsShow extends AppCompatActivity implements Constant {
         }
 
 
-        void refresh(int position){
+        void refresh(int position) {
             DBhelp mDbHelper = new DBhelp(getContext());
             SQLiteDatabase db = mDbHelper.getReadableDatabase();
 
@@ -287,7 +290,7 @@ public class SubjectsShow extends AppCompatActivity implements Constant {
             String[] projection = {
                     TableEntry._ID,
                     TableEntry.COLUMN_NAME_SUBJECT,
-                    TableEntry.COLUMN_NAME_DATE ,
+                    TableEntry.COLUMN_NAME_DATE,
                     TableEntry.COLUMN_NAME_STATUS,
                     TableEntry.COLUMN_NAME_NUMBER
             };
@@ -295,7 +298,7 @@ public class SubjectsShow extends AppCompatActivity implements Constant {
 // How you want the results sorted in the resulting Cursor
             String sortOrder =
                     TableEntry.COLUMN_NAME_SUBJECT + " ASC";
-            String[] whereArgs = new String[] {
+            String[] whereArgs = new String[]{
                     code.get(position)};
             Cursor c = db.query(
                     TableEntry.TABLE_NAME,  // The table to query
@@ -309,38 +312,36 @@ public class SubjectsShow extends AppCompatActivity implements Constant {
 
 
             float total = c.getCount();
-            float attended=0;
+            float attended = 0;
 
-            if (c.moveToFirst()){
-                do{
+            if (c.moveToFirst()) {
+                do {
                     Log.e("Date", c.getString(c.getColumnIndex(TableEntry.COLUMN_NAME_SUBJECT)));
-                    if(c.getString(c.getColumnIndex(TableEntry.COLUMN_NAME_STATUS)).equals("Attended"))
+                    if (c.getString(c.getColumnIndex(TableEntry.COLUMN_NAME_STATUS)).equals("Attended"))
                         attended++;
-                }while(c.moveToNext());
+                } while (c.moveToNext());
             }
 
             c.close();
 
 
-
-            if(total==0)
+            if (total == 0)
                 att.setText("?");
             else {
-                float x = attended/total*100;
-                float missed = total-attended;
-                if(x<75) {
+                float x = attended / total * 100;
+                float missed = total - attended;
+                if (x < 75) {
 
-                    float m =(3*missed- attended);
-                    int  n = (int)Math.floor(m);
+                    float m = (3 * missed - attended);
+                    int n = (int) Math.floor(m);
                     msg.setTextColor(Color.parseColor("#ff3300"));
                     msg.setText("Your attendance is short. You need to attend the next " + n + " classes to be safe");
-                }
-                else {
-                    float m = (attended -3*missed)/3;
-                    int n = (int)Math.floor(m);
+                } else {
+                    float m = (attended - 3 * missed) / 3;
+                    int n = (int) Math.floor(m);
                     msg.setTextColor(Color.parseColor("#33cc00"));
-                    if(n!=0)
-                        msg.setText("You are safe. You can leave "+n+" classes and still be safe.");
+                    if (n != 0)
+                        msg.setText("You are safe. You can leave " + n + " classes and still be safe.");
                     else
                         msg.setText("You are safe, but you should not leave any class.");
 
@@ -350,15 +351,14 @@ public class SubjectsShow extends AppCompatActivity implements Constant {
         }
 
         // Reduces number of decimal places for a float number
-        public String reducePlaces(Float f){
+        public String reducePlaces(Float f) {
             String pString = Float.toString(f);
             String[] parts = pString.split("\\.");
 
-            if(parts.length>1){
-                if(parts[1].length() > 2)
-                {
-                    parts[1] = parts[1].substring(0,2);
-                    parts[0] = parts[0]+"."+parts[1];
+            if (parts.length > 1) {
+                if (parts[1].length() > 2) {
+                    parts[1] = parts[1].substring(0, 2);
+                    parts[0] = parts[0] + "." + parts[1];
                 }
             }
 

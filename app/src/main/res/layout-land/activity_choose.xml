@@ -13,7 +13,7 @@
         android:layout_marginBottom="30dp"
         android:layout_marginTop="30dp"
         android:text="Tell us your class so we can fetch your time-table for you."
-        android:textSize="20sp"/>
+        android:textSize="20sp" />
 
     <Spinner
         android:id="@+id/sem"
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginRight="4dp"
-            android:layout_marginEnd="4dp"/>
+            android:layout_marginEnd="4dp" />
 
         <Spinner
             android:id="@+id/sec"
@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginLeft="4dp"
-            android:layout_marginStart="4dp"/>
+            android:layout_marginStart="4dp" />
 
     </LinearLayout>
 

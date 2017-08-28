@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:background="@drawable/shadow_1"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:showDividers="none">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="#ffffffff"
+        android:orientation="horizontal"
+        android:paddingBottom="20dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="20dp">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/memberImage"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/memberName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textSize="15sp"
+                        tools:hint="Name" />
+
+                    <TextView
+                        android:id="@+id/batch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_marginTop="5dp"
+                        android:textSize="15sp"
+                        tools:hint="Branch and Batch" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/linkedIn_image"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="bottom"
+                            android:layout_marginTop="5dp"
+                            android:src="@drawable/linkedin"
+                            android:visibility="gone" />
+
+                        <ImageView
+                            android:id="@+id/facebook_image"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="bottom"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:src="@drawable/facebook" />
+
+                        <ImageView
+                            android:id="@+id/github_image"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="bottom"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:src="@drawable/github1"
+                            android:visibility="gone" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="15dp"
+                android:background="@color/colorPrimary" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/role1image"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="5dp"
+                    android:alpha="0.6"
+                    android:src="@drawable/ic_settings_black_24dp" />
+
+                <TextView
+                    android:id="@+id/role1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:textSize="15sp"
+                    tools:hint="role1" />
+
+                <ImageView
+                    android:id="@+id/role2image"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="5dp"
+                    android:alpha="0.6" />
+
+                <TextView
+                    android:id="@+id/role2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginRight="20dp"
+                    android:textSize="15sp"
+                    tools:hint="role2" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/colorPrimary"></LinearLayout>
+
+</LinearLayout>

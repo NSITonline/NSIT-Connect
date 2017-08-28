@@ -14,7 +14,7 @@ class Subject_struct {
     public String roomsh;
 
     // constructor
-    public Subject_struct(String value,String proffh,String subfh,String roomfh,String profsh,String subsh,String roomsh) {
+    public Subject_struct(String value, String proffh, String subfh, String roomfh, String profsh, String subsh, String roomsh) {
 
         this.value = value;
 

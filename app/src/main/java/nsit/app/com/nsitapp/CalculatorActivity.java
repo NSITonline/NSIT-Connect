@@ -31,7 +31,7 @@ public class CalculatorActivity extends Fragment {
 
     private Spinner branchSpinner, semSpinner;
     private TextView PR5textView, VS1textView, VS2textView, PR4textView, TH4textView, TH5textView, TH1textView, TH2textView, TH3textView, PR3textView, PR2textView, PR1textView, resultTextView;
-    private double TH1=-1.0, TH2=-1.0, TH3=-1.0, TH4=-1.0, TH5=-1.0, PR1=-1.0, PR2=-1.0, PR3=-1.0, PR4=-1.0, PR5=-1.0, VS1=-1.0, VS2=-1.0;
+    private double TH1 = -1.0, TH2 = -1.0, TH3 = -1.0, TH4 = -1.0, TH5 = -1.0, PR1 = -1.0, PR2 = -1.0, PR3 = -1.0, PR4 = -1.0, PR5 = -1.0, VS1 = -1.0, VS2 = -1.0;
     private EditText TH1editText, TH2editText, TH3editText, TH4editText, TH5editText, PR1editText, PR2editText, PR3editText, PR4editText, PR5editText, VS1editText, VS2editText;
 
 
@@ -94,18 +94,18 @@ public class CalculatorActivity extends Fragment {
         PR3textView = (TextView) rootView.findViewById(R.id.tv8);
         PR2textView = (TextView) rootView.findViewById(R.id.tv7);
         PR1textView = (TextView) rootView.findViewById(R.id.tv6);
-        setColoredTextView(PR1textView,R.color.calculator_selected);
-        setColoredTextView(PR2textView,R.color.calculator_selected);
-        setColoredTextView(PR3textView,R.color.calculator_selected);
-        setColoredTextView(PR4textView,R.color.calculator_selected);
-        setColoredTextView(PR5textView,R.color.calculator_selected);
-        setColoredTextView(TH1textView,R.color.calculator_selected);
-        setColoredTextView(TH2textView,R.color.calculator_selected);
-        setColoredTextView(TH3textView,R.color.calculator_selected);
-        setColoredTextView(TH4textView,R.color.calculator_selected);
-        setColoredTextView(TH5textView,R.color.calculator_selected);
-        setColoredTextView(VS1textView,R.color.calculator_selected);
-        setColoredTextView(VS2textView,R.color.calculator_selected);
+        setColoredTextView(PR1textView, R.color.calculator_selected);
+        setColoredTextView(PR2textView, R.color.calculator_selected);
+        setColoredTextView(PR3textView, R.color.calculator_selected);
+        setColoredTextView(PR4textView, R.color.calculator_selected);
+        setColoredTextView(PR5textView, R.color.calculator_selected);
+        setColoredTextView(TH1textView, R.color.calculator_selected);
+        setColoredTextView(TH2textView, R.color.calculator_selected);
+        setColoredTextView(TH3textView, R.color.calculator_selected);
+        setColoredTextView(TH4textView, R.color.calculator_selected);
+        setColoredTextView(TH5textView, R.color.calculator_selected);
+        setColoredTextView(VS1textView, R.color.calculator_selected);
+        setColoredTextView(VS2textView, R.color.calculator_selected);
         semSpinner = (Spinner) rootView.findViewById(R.id.spins);
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(getActivity(), R.array.semester, android.R.layout.simple_list_item_1);
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -120,115 +120,115 @@ public class CalculatorActivity extends Fragment {
                 //cc(rootView);
                 if (branchSpinner.getSelectedItem().toString().equals("COE")) {
                     if (semSpinner.getSelectedItem().toString().equals("Sem 1")) {
-                        setColoredTextView(PR5textView,R.color.calculator_notselected);
-                        setColoredTextView(VS1textView,R.color.calculator_notselected);
-                        setColoredTextView(VS2textView,R.color.calculator_notselected);
+                        setColoredTextView(PR5textView, R.color.calculator_notselected);
+                        setColoredTextView(VS1textView, R.color.calculator_notselected);
+                        setColoredTextView(VS2textView, R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 2")) {
-                        setColoredTextView(PR5textView,R.color.calculator_notselected);
-                        setColoredTextView(VS1textView,R.color.calculator_notselected);
-                        setColoredTextView(VS2textView,R.color.calculator_notselected);
+                        setColoredTextView(PR5textView, R.color.calculator_notselected);
+                        setColoredTextView(VS1textView, R.color.calculator_notselected);
+                        setColoredTextView(VS2textView, R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 3")) {
-                        setColoredTextView(VS1textView,R.color.calculator_notselected);
-                        setColoredTextView(VS2textView,R.color.calculator_notselected);
+                        setColoredTextView(VS1textView, R.color.calculator_notselected);
+                        setColoredTextView(VS2textView, R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 4")) {
 
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 5")) {
-                        setColoredTextView(PR5textView,R.color.calculator_notselected);
-                        setColoredTextView(PR4textView,R.color.calculator_notselected);
-                        setColoredTextView(VS2textView,R.color.calculator_notselected);
+                        setColoredTextView(PR5textView, R.color.calculator_notselected);
+                        setColoredTextView(PR4textView, R.color.calculator_notselected);
+                        setColoredTextView(VS2textView, R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 6")) {
-                        setColoredTextView(PR5textView,R.color.calculator_notselected);
-                        setColoredTextView(PR4textView,R.color.calculator_notselected);
+                        setColoredTextView(PR5textView, R.color.calculator_notselected);
+                        setColoredTextView(PR4textView, R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 7")) {
-                        setColoredTextView(PR5textView,R.color.calculator_notselected);
-                        setColoredTextView(VS2textView,R.color.calculator_notselected);
+                        setColoredTextView(PR5textView, R.color.calculator_notselected);
+                        setColoredTextView(VS2textView, R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 8")) {
-                        setColoredTextView(PR4textView,R.color.calculator_notselected);
-                        setColoredTextView(TH5textView,R.color.calculator_notselected);
-                        setColoredTextView(TH4textView,R.color.calculator_notselected);
-                        setColoredTextView(PR5textView,R.color.calculator_notselected);
-                        setColoredTextView(VS2textView,R.color.calculator_notselected);
+                        setColoredTextView(PR4textView, R.color.calculator_notselected);
+                        setColoredTextView(TH5textView, R.color.calculator_notselected);
+                        setColoredTextView(TH4textView, R.color.calculator_notselected);
+                        setColoredTextView(PR5textView, R.color.calculator_notselected);
+                        setColoredTextView(VS2textView, R.color.calculator_notselected);
                     }
                 } else if (branchSpinner.getSelectedItem().toString().equals("IT")) {
 
                     if (semSpinner.getSelectedItem().toString().equals("Sem 1")) {
-                        setColoredTextView(PR5textView,R.color.calculator_notselected);
-                        setColoredTextView(VS1textView,R.color.calculator_notselected);
-                        setColoredTextView(VS2textView,R.color.calculator_notselected);
+                        setColoredTextView(PR5textView, R.color.calculator_notselected);
+                        setColoredTextView(VS1textView, R.color.calculator_notselected);
+                        setColoredTextView(VS2textView, R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 2")) {
-                        setColoredTextView(PR5textView,R.color.calculator_notselected);
-                        setColoredTextView(VS1textView,R.color.calculator_notselected);
-                        setColoredTextView(VS2textView,R.color.calculator_notselected);
+                        setColoredTextView(PR5textView, R.color.calculator_notselected);
+                        setColoredTextView(VS1textView, R.color.calculator_notselected);
+                        setColoredTextView(VS2textView, R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 3")) {
-                        setColoredTextView(PR5textView,R.color.calculator_notselected);
-                        setColoredTextView(PR4textView,R.color.calculator_notselected);
-                        setColoredTextView(VS2textView,R.color.calculator_notselected);
+                        setColoredTextView(PR5textView, R.color.calculator_notselected);
+                        setColoredTextView(PR4textView, R.color.calculator_notselected);
+                        setColoredTextView(VS2textView, R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 4")) {
-                        setColoredTextView(VS1textView,R.color.calculator_notselected);
-                        setColoredTextView(VS2textView,R.color.calculator_notselected);
+                        setColoredTextView(VS1textView, R.color.calculator_notselected);
+                        setColoredTextView(VS2textView, R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 5")) {
-                        setColoredTextView(PR5textView,R.color.calculator_notselected);
-                        setColoredTextView(PR4textView,R.color.calculator_notselected);
-                        setColoredTextView(VS2textView,R.color.calculator_notselected);
+                        setColoredTextView(PR5textView, R.color.calculator_notselected);
+                        setColoredTextView(PR4textView, R.color.calculator_notselected);
+                        setColoredTextView(VS2textView, R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 6")) {
-                        setColoredTextView(PR5textView,R.color.calculator_notselected);
-                        setColoredTextView(VS2textView,R.color.calculator_notselected);
+                        setColoredTextView(PR5textView, R.color.calculator_notselected);
+                        setColoredTextView(VS2textView, R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 7")) {
 
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 8")) {
-                        setColoredTextView(PR4textView,R.color.calculator_notselected);
-                        setColoredTextView(TH5textView,R.color.calculator_notselected);
-                        setColoredTextView(TH4textView,R.color.calculator_notselected);
-                        setColoredTextView(PR5textView,R.color.calculator_notselected);
-                        setColoredTextView(VS2textView,R.color.calculator_notselected);
+                        setColoredTextView(PR4textView, R.color.calculator_notselected);
+                        setColoredTextView(TH5textView, R.color.calculator_notselected);
+                        setColoredTextView(TH4textView, R.color.calculator_notselected);
+                        setColoredTextView(PR5textView, R.color.calculator_notselected);
+                        setColoredTextView(VS2textView, R.color.calculator_notselected);
                     }
                 } else if (branchSpinner.getSelectedItem().toString().equals("MPAE")) {
 
                     if (semSpinner.getSelectedItem().toString().equals("Sem 1")) {
-                        setColoredTextView(PR5textView,R.color.calculator_notselected);
-                        setColoredTextView(VS1textView,R.color.calculator_notselected);
-                        setColoredTextView(VS2textView,R.color.calculator_notselected);
+                        setColoredTextView(PR5textView, R.color.calculator_notselected);
+                        setColoredTextView(VS1textView, R.color.calculator_notselected);
+                        setColoredTextView(VS2textView, R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 2")) {
-                        setColoredTextView(PR5textView,R.color.calculator_notselected);
-                        setColoredTextView(VS2textView,R.color.calculator_notselected);
+                        setColoredTextView(PR5textView, R.color.calculator_notselected);
+                        setColoredTextView(VS2textView, R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 3")) {
-                        setColoredTextView(PR5textView,R.color.calculator_notselected);
-                        setColoredTextView(VS2textView,R.color.calculator_notselected);
+                        setColoredTextView(PR5textView, R.color.calculator_notselected);
+                        setColoredTextView(VS2textView, R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 4")) {
-                        setColoredTextView(PR5textView,R.color.calculator_notselected);
+                        setColoredTextView(PR5textView, R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 5")) {
-                        setColoredTextView(PR5textView,R.color.calculator_notselected);
-                        setColoredTextView(VS2textView,R.color.calculator_notselected);
+                        setColoredTextView(PR5textView, R.color.calculator_notselected);
+                        setColoredTextView(VS2textView, R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 6")) {
-                        setColoredTextView(PR5textView,R.color.calculator_notselected);
+                        setColoredTextView(PR5textView, R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 7")) {
-                        setColoredTextView(PR5textView,R.color.calculator_notselected);
-                        setColoredTextView(VS2textView,R.color.calculator_notselected);
+                        setColoredTextView(PR5textView, R.color.calculator_notselected);
+                        setColoredTextView(VS2textView, R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 8")) {
-                        setColoredTextView(PR5textView,R.color.calculator_notselected);
-                        setColoredTextView(TH4textView,R.color.calculator_notselected);
-                        setColoredTextView(TH5textView,R.color.calculator_notselected);
-                        setColoredTextView(VS2textView,R.color.calculator_notselected);
+                        setColoredTextView(PR5textView, R.color.calculator_notselected);
+                        setColoredTextView(TH4textView, R.color.calculator_notselected);
+                        setColoredTextView(TH5textView, R.color.calculator_notselected);
+                        setColoredTextView(VS2textView, R.color.calculator_notselected);
                     }
                 } else if (branchSpinner.getSelectedItem().toString().equals("ECE")) {
 
                     if (semSpinner.getSelectedItem().toString().equals("Sem 1")) {
-                        setColoredTextView(PR5textView,R.color.calculator_notselected);
-                        setColoredTextView(VS1textView,R.color.calculator_notselected);
-                        setColoredTextView(VS2textView,R.color.calculator_notselected);
+                        setColoredTextView(PR5textView, R.color.calculator_notselected);
+                        setColoredTextView(VS1textView, R.color.calculator_notselected);
+                        setColoredTextView(VS2textView, R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 2")) {
-                        setColoredTextView(PR5textView,R.color.calculator_notselected);
-                        setColoredTextView(VS1textView,R.color.calculator_notselected);
-                        setColoredTextView(VS2textView,R.color.calculator_notselected);
+                        setColoredTextView(PR5textView, R.color.calculator_notselected);
+                        setColoredTextView(VS1textView, R.color.calculator_notselected);
+                        setColoredTextView(VS2textView, R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 3")) {
-                        setColoredTextView(PR5textView,R.color.calculator_notselected);
-                        setColoredTextView(VS2textView,R.color.calculator_notselected);
+                        setColoredTextView(PR5textView, R.color.calculator_notselected);
+                        setColoredTextView(VS2textView, R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 4")) {
 
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 5")) {
-                        setColoredTextView(PR4textView,R.color.calculator_notselected);
-                        setColoredTextView(PR5textView,R.color.calculator_notselected);
-                        setColoredTextView(VS2textView,R.color.calculator_notselected);
+                        setColoredTextView(PR4textView, R.color.calculator_notselected);
+                        setColoredTextView(PR5textView, R.color.calculator_notselected);
+                        setColoredTextView(VS2textView, R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 6")) {
 
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 7")) {
@@ -239,28 +239,28 @@ public class CalculatorActivity extends Fragment {
                 } else if (branchSpinner.getSelectedItem().toString().equals("BT")) {
 
                     if (semSpinner.getSelectedItem().toString().equals("Sem 1")) {
-                        setColoredTextView(PR5textView,R.color.calculator_notselected);
-                        setColoredTextView(VS1textView,R.color.calculator_notselected);
-                        setColoredTextView(VS2textView,R.color.calculator_notselected);
+                        setColoredTextView(PR5textView, R.color.calculator_notselected);
+                        setColoredTextView(VS1textView, R.color.calculator_notselected);
+                        setColoredTextView(VS2textView, R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 2")) {
-                        setColoredTextView(PR5textView,R.color.calculator_notselected);
-                        setColoredTextView(VS1textView,R.color.calculator_notselected);
-                        setColoredTextView(VS2textView,R.color.calculator_notselected);
+                        setColoredTextView(PR5textView, R.color.calculator_notselected);
+                        setColoredTextView(VS1textView, R.color.calculator_notselected);
+                        setColoredTextView(VS2textView, R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 3")) {
-                        setColoredTextView(PR5textView,R.color.calculator_notselected);
-                        setColoredTextView(VS1textView,R.color.calculator_notselected);
-                        setColoredTextView(VS2textView,R.color.calculator_notselected);
+                        setColoredTextView(PR5textView, R.color.calculator_notselected);
+                        setColoredTextView(VS1textView, R.color.calculator_notselected);
+                        setColoredTextView(VS2textView, R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 4")) {
-                        setColoredTextView(PR4textView,R.color.calculator_notselected);
-                        setColoredTextView(VS2textView,R.color.calculator_notselected);
-                        setColoredTextView(PR5textView,R.color.calculator_notselected);
+                        setColoredTextView(PR4textView, R.color.calculator_notselected);
+                        setColoredTextView(VS2textView, R.color.calculator_notselected);
+                        setColoredTextView(PR5textView, R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 5")) {
-                        setColoredTextView(PR5textView,R.color.calculator_notselected);
-                        setColoredTextView(VS2textView,R.color.calculator_notselected);
+                        setColoredTextView(PR5textView, R.color.calculator_notselected);
+                        setColoredTextView(VS2textView, R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 6")) {
-                        setColoredTextView(PR5textView,R.color.calculator_notselected);
-                        setColoredTextView(VS1textView,R.color.calculator_notselected);
-                        setColoredTextView(VS2textView,R.color.calculator_notselected);
+                        setColoredTextView(PR5textView, R.color.calculator_notselected);
+                        setColoredTextView(VS1textView, R.color.calculator_notselected);
+                        setColoredTextView(VS2textView, R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 7")) {
 
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 8")) {
@@ -270,25 +270,25 @@ public class CalculatorActivity extends Fragment {
                 } else if (branchSpinner.getSelectedItem().toString().equals("ICE")) {
 
                     if (semSpinner.getSelectedItem().toString().equals("Sem 1")) {
-                        setColoredTextView(PR5textView,R.color.calculator_notselected);
-                        setColoredTextView(VS1textView,R.color.calculator_notselected);
-                        setColoredTextView(VS2textView,R.color.calculator_notselected);
+                        setColoredTextView(PR5textView, R.color.calculator_notselected);
+                        setColoredTextView(VS1textView, R.color.calculator_notselected);
+                        setColoredTextView(VS2textView, R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 2")) {
-                        setColoredTextView(PR5textView,R.color.calculator_notselected);
-                        setColoredTextView(VS1textView,R.color.calculator_notselected);
-                        setColoredTextView(VS2textView,R.color.calculator_notselected);
+                        setColoredTextView(PR5textView, R.color.calculator_notselected);
+                        setColoredTextView(VS1textView, R.color.calculator_notselected);
+                        setColoredTextView(VS2textView, R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 3")) {
-                        setColoredTextView(PR5textView,R.color.calculator_notselected);
-                        setColoredTextView(VS2textView,R.color.calculator_notselected);
+                        setColoredTextView(PR5textView, R.color.calculator_notselected);
+                        setColoredTextView(VS2textView, R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 4")) {
 
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 5")) {
-                        setColoredTextView(PR4textView,R.color.calculator_notselected);
-                        setColoredTextView(PR5textView,R.color.calculator_notselected);
-                        setColoredTextView(VS2textView,R.color.calculator_notselected);
+                        setColoredTextView(PR4textView, R.color.calculator_notselected);
+                        setColoredTextView(PR5textView, R.color.calculator_notselected);
+                        setColoredTextView(VS2textView, R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 6")) {
-                        setColoredTextView(PR4textView,R.color.calculator_notselected);
-                        setColoredTextView(PR5textView,R.color.calculator_notselected);
+                        setColoredTextView(PR4textView, R.color.calculator_notselected);
+                        setColoredTextView(PR5textView, R.color.calculator_notselected);
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 7")) {
 
                     } else if (semSpinner.getSelectedItem().toString().equals("Sem 8")) {
@@ -343,10 +343,8 @@ public class CalculatorActivity extends Fragment {
     private void onCalculate(View a) {
 
 
-
-
         double tux, pux, p = 0.0;
-        int f=1;
+        int f = 1;
 
 
         if (branchSpinner.getSelectedItem().toString().equals("COE")) {
@@ -369,7 +367,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux) / 29;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-                    f=0;
+                    f = 0;
                 }
 
             } else if (semSpinner.getSelectedItem().toString().equals("Sem 2")) {
@@ -390,7 +388,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux) / 28;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-                    f=0;
+                    f = 0;
                 }
 
 
@@ -414,7 +412,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + PR5) / 30;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-                    f=0;
+                    f = 0;
                 }
 
 
@@ -439,7 +437,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + VS1 + VS2) / 32;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-                    f=0;
+                    f = 0;
                 }
 
             } else if (semSpinner.getSelectedItem().toString().equals("Sem 5")) {
@@ -461,7 +459,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + VS1) / 27;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-                    f=0;
+                    f = 0;
                 }
 
             } else if (semSpinner.getSelectedItem().toString().equals("Sem 6")) {
@@ -483,7 +481,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + VS1) / 29;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-                    f=0;
+                    f = 0;
                 }
 
             } else if (semSpinner.getSelectedItem().toString().equals("Sem 7")) {
@@ -507,7 +505,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + VS1) / 30;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-                    f=0;
+                    f = 0;
                 }
             } else if (semSpinner.getSelectedItem().toString().equals("Sem 8")) {
 
@@ -528,7 +526,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + VS1) / 27;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-                    f=0;
+                    f = 0;
                 }
             }
 
@@ -551,7 +549,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux) / 29;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-                    f=0;
+                    f = 0;
                 }
 
             } else if (semSpinner.getSelectedItem().toString().equals("Sem 2")) {
@@ -572,7 +570,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux) / 28;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-                    f=0;
+                    f = 0;
                 }
 
             } else if (semSpinner.getSelectedItem().toString().equals("Sem 3")) {
@@ -593,7 +591,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + VS1) / 27;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-                    f=0;
+                    f = 0;
                 }
             } else if (semSpinner.getSelectedItem().toString().equals("Sem 4")) {
 
@@ -614,7 +612,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux) / 30;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-                    f=0;
+                    f = 0;
                 }
             } else if (semSpinner.getSelectedItem().toString().equals("Sem 5")) {
 
@@ -635,7 +633,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + VS1) / 27;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-                    f=0;
+                    f = 0;
                 }
             } else if (semSpinner.getSelectedItem().toString().equals("Sem 6")) {
 
@@ -656,7 +654,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + VS1) / 29;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-                    f=0;
+                    f = 0;
                 }
             } else if (semSpinner.getSelectedItem().toString().equals("Sem 7")) {
 
@@ -678,7 +676,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux) / 34;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-                    f=0;
+                    f = 0;
                 }
 
 
@@ -697,7 +695,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux) / 28;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-                    f=0;
+                    f = 0;
                 }
 
             }
@@ -721,7 +719,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux) / 29;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-                    f=0;
+                    f = 0;
                 }
             } else if (semSpinner.getSelectedItem().toString().equals("Sem 2")) {
 
@@ -742,7 +740,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + VS1) / 29;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-                    f=0;
+                    f = 0;
                 }
 
             } else if (semSpinner.getSelectedItem().toString().equals("Sem 3")) {
@@ -764,7 +762,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + VS1) / 29;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-                    f=0;
+                    f = 0;
                 }
 
             } else if (semSpinner.getSelectedItem().toString().equals("Sem 4")) {
@@ -788,7 +786,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + VS1 + VS2) / 30;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-                    f=0;
+                    f = 0;
                 }
 
             } else if (semSpinner.getSelectedItem().toString().equals("Sem 5")) {
@@ -810,7 +808,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + VS1) / 29;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-                    f=0;
+                    f = 0;
                 }
 
             } else if (semSpinner.getSelectedItem().toString().equals("Sem 6")) {
@@ -833,7 +831,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + VS1 + VS2) / 30;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-                    f=0;
+                    f = 0;
                 }
 
             } else if (semSpinner.getSelectedItem().toString().equals("Sem 7")) {
@@ -855,7 +853,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + VS1) / 29;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-                    f=0;
+                    f = 0;
                 }
 
             } else if (semSpinner.getSelectedItem().toString().equals("Sem 8")) {
@@ -875,7 +873,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + VS1) / 27;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-                    f=0;
+                    f = 0;
                 }
             }
 
@@ -900,7 +898,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux) / 29;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-                    f=0;
+                    f = 0;
                 }
             } else if (semSpinner.getSelectedItem().toString().equals("Sem 2")) {
                 try {
@@ -920,7 +918,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux) / 30;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-                    f=0;
+                    f = 0;
                 }
             } else if (semSpinner.getSelectedItem().toString().equals("Sem 3")) {
                 try {
@@ -941,7 +939,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + VS1) / 30;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-                    f=0;
+                    f = 0;
                 }
             } else if (semSpinner.getSelectedItem().toString().equals("Sem 4")) {
 
@@ -965,7 +963,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + VS1 + VS2) / 32;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-                    f=0;
+                    f = 0;
                 }
 
             } else if (semSpinner.getSelectedItem().toString().equals("Sem 5")) {
@@ -986,13 +984,13 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + VS1) / 27;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-                    f=0;
+                    f = 0;
                 }
 
 
             } else if (semSpinner.getSelectedItem().toString().equals("Sem 6")) {
                 Toast.makeText(getActivity(), "Sem 6 ECE credits not found. Can't calculate result", Toast.LENGTH_LONG).show();
-                f=0;
+                f = 0;
                     /* EditText TH1editText = (EditText)a.a.findViewById(R.id.one);
 
                      tux = 4*(TH1+TH2+TH3+TH4+TH5);
@@ -1005,11 +1003,11 @@ public class CalculatorActivity extends Fragment {
                 Toast.makeText(getActivity(), "Sem 7 ECE credits not found. Can't calculate result", Toast.LENGTH_LONG).show();
                     /* EditText TH1editText = (EditText)findViewById(R.id.one);
                      resultTextView.setText(String.format("%.2f ",p));*/
-                f=0;
+                f = 0;
 
             } else if (semSpinner.getSelectedItem().toString().equals("Sem 8")) {
                 Toast.makeText(getActivity(), "Sem 8 ECE credits not found. Can't calculate result", Toast.LENGTH_LONG).show();
-                f=0;
+                f = 0;
                     /* EditText TH1editText = (EditText)findViewById(R.id.one);
                      resultTextView.setText(String.format("%.2f ",p));*/
 
@@ -1037,7 +1035,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux) / 29;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-                    f=0;
+                    f = 0;
                 }
             } else if (semSpinner.getSelectedItem().toString().equals("Sem 2")) {
                 try {
@@ -1056,7 +1054,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux) / 28;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-                    f=0;
+                    f = 0;
                 }
 
 
@@ -1080,7 +1078,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + VS1) / 30;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-                    f=0;
+                    f = 0;
                 }
 
 
@@ -1105,7 +1103,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + VS1 + VS2) / 32;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-                    f=0;
+                    f = 0;
                 }
 
             } else if (semSpinner.getSelectedItem().toString().equals("Sem 5")) {
@@ -1126,7 +1124,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + VS1) / 27;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-                    f=0;
+                    f = 0;
                 }
 
 
@@ -1148,16 +1146,16 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + VS1) / 29;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-                    f=0;
+                    f = 0;
                 }
 
 
             } else if (semSpinner.getSelectedItem().toString().equals("Sem 7")) {
                 Toast.makeText(getActivity(), "Sem 7 ICE credits not found. Can't calculate result", Toast.LENGTH_LONG).show();
-                f=0;
+                f = 0;
             } else if (semSpinner.getSelectedItem().toString().equals("Sem 8")) {
                 Toast.makeText(getActivity(), "Sem 8 ICE credits not found. Can't calculate result", Toast.LENGTH_LONG).show();
-                f=0;
+                f = 0;
             }
 
         } else if (branchSpinner.getSelectedItem().toString().equals("BT")) // 7,8 Credits not found false data taken
@@ -1181,7 +1179,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux) / 29;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-                    f=0;
+                    f = 0;
                 }
 
             } else if (semSpinner.getSelectedItem().toString().equals("Sem 2")) {
@@ -1201,7 +1199,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux) / 28;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-                    f=0;
+                    f = 0;
                 }
 
 
@@ -1222,7 +1220,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux) / 28;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-                    f=0;
+                    f = 0;
                 }
 
 
@@ -1243,7 +1241,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux) / 28;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-                    f=0;
+                    f = 0;
                 }
 
             } else if (semSpinner.getSelectedItem().toString().equals("Sem 5")) {
@@ -1263,7 +1261,7 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux) / 30;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-                    f=0;
+                    f = 0;
                 }
 
             } else if (semSpinner.getSelectedItem().toString().equals("Sem 6")) {
@@ -1283,60 +1281,60 @@ public class CalculatorActivity extends Fragment {
                     p = (tux + pux + PR4) / 28;
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Fill out all the highlighted fields.", Toast.LENGTH_LONG).show();
-                    f=0;
+                    f = 0;
                 }
 
 
             } else if (semSpinner.getSelectedItem().toString().equals("Sem 7")) {
                 Toast.makeText(getActivity(), "Sem 7 BT credits not found. Can't calculate result", Toast.LENGTH_LONG).show();
-                f=0;
+                f = 0;
             } else if (semSpinner.getSelectedItem().toString().equals("Sem 8")) {
                 Toast.makeText(getActivity(), "Sem 8 BT credits not found. Can't calculate result", Toast.LENGTH_LONG).show();
-                f=0;
+                f = 0;
             }
 
         }
 
         resultTextView.setText(String.format("%.2f ", p));
-        if(f==1)
+        if (f == 1)
             addToStorage();
 
     }
 
-    private void setColoredTextView(TextView textView, int color){
-        textView.setTextColor(ContextCompat.getColor(getContext(),color));
+    private void setColoredTextView(TextView textView, int color) {
+        textView.setTextColor(ContextCompat.getColor(getContext(), color));
     }
 
     public void addToStorage() {
         File root = android.os.Environment.getExternalStorageDirectory();
-        File dir = new File (root.getAbsolutePath() + "/NSITConnect");
+        File dir = new File(root.getAbsolutePath() + "/NSITConnect");
         dir.mkdirs();
-        File file = new File(dir, branchSpinner.getSelectedItem().toString()+"_"+ semSpinner.getSelectedItem().toString()+".txt");
+        File file = new File(dir, branchSpinner.getSelectedItem().toString() + "_" + semSpinner.getSelectedItem().toString() + ".txt");
         PrintWriter pw = null;
         FileOutputStream f = null;
-        try{
+        try {
             f = new FileOutputStream(file);
             pw = new PrintWriter(f);
-            pw.println(TH1textView.getText()+"="+ TH1);
-            pw.println(TH2textView.getText()+"="+ TH2);
-            pw.println(TH3textView.getText()+"="+ TH3);
-            pw.println(TH4textView.getText()+"="+ TH4);
-            pw.println(TH5textView.getText()+"="+ TH5);
-            pw.println(PR1textView.getText()+"="+ PR1);
-            pw.println(PR2textView.getText()+"="+ PR2);
-            pw.println(PR3textView.getText()+"="+ PR3);
-            pw.println(PR4textView.getText()+"="+ PR4);
-            pw.println(PR5textView.getText()+"="+ PR5);
-            pw.println(VS1textView.getText()+"="+ VS1);
-            pw.println(VS2textView.getText()+"="+ VS2);
+            pw.println(TH1textView.getText() + "=" + TH1);
+            pw.println(TH2textView.getText() + "=" + TH2);
+            pw.println(TH3textView.getText() + "=" + TH3);
+            pw.println(TH4textView.getText() + "=" + TH4);
+            pw.println(TH5textView.getText() + "=" + TH5);
+            pw.println(PR1textView.getText() + "=" + PR1);
+            pw.println(PR2textView.getText() + "=" + PR2);
+            pw.println(PR3textView.getText() + "=" + PR3);
+            pw.println(PR4textView.getText() + "=" + PR4);
+            pw.println(PR5textView.getText() + "=" + PR5);
+            pw.println(VS1textView.getText() + "=" + VS1);
+            pw.println(VS2textView.getText() + "=" + VS2);
             pw.flush();
             file.setReadOnly();
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
-            if(pw!=null)
+        } finally {
+            if (pw != null)
                 pw.close();
-            if(f!=null)
+            if (f != null)
                 try {
                     f.close();
                 } catch (IOException e) {
@@ -1346,49 +1344,49 @@ public class CalculatorActivity extends Fragment {
     }
 
 
-    public void readFileFromStorage(){
+    public void readFileFromStorage() {
         File root = android.os.Environment.getExternalStorageDirectory();
-        File dir = new File (root.getAbsolutePath() + "/NSITConnect");
-        File file = new File(dir, branchSpinner.getSelectedItem().toString()+"_"+ semSpinner.getSelectedItem().toString()+".txt");
-        if(!file.exists()){
-            Toast.makeText(getContext(),"Marks for "+ branchSpinner.getSelectedItem().toString()+" "+ semSpinner.getSelectedItem().toString()+" not available",Toast.LENGTH_SHORT).show();
+        File dir = new File(root.getAbsolutePath() + "/NSITConnect");
+        File file = new File(dir, branchSpinner.getSelectedItem().toString() + "_" + semSpinner.getSelectedItem().toString() + ".txt");
+        if (!file.exists()) {
+            Toast.makeText(getContext(), "Marks for " + branchSpinner.getSelectedItem().toString() + " " + semSpinner.getSelectedItem().toString() + " not available", Toast.LENGTH_SHORT).show();
             return;
         }
         BufferedReader reader = null;
-        String s="";
+        String s = "";
         try {
             reader = new BufferedReader(new FileReader(file));
-            while ((s=reader.readLine())!=null){
+            while ((s = reader.readLine()) != null) {
                 String[] splits = s.split("=");
-                if(splits[0].equals("TH 1")&&!splits[1].equals("-1.0"))
-                    TH1editText.setText(""+(int)(Double.parseDouble(splits[1])));
-                if(splits[0].equals("TH 2")&&!splits[1].equals("-1.0"))
-                    TH2editText.setText(""+(int)(Double.parseDouble(splits[1])));
-                if(splits[0].equals("TH 3")&&!splits[1].equals("-1.0"))
-                    TH3editText.setText(""+(int)(Double.parseDouble(splits[1])));
-                if(splits[0].equals("TH 4")&&!splits[1].equals("-1.0"))
-                    TH4editText.setText(""+(int)(Double.parseDouble(splits[1])));
-                if(splits[0].equals("TH 5")&&!splits[1].equals("-1.0"))
-                    TH5editText.setText(""+(int)(Double.parseDouble(splits[1])));
-                if(splits[0].equals("PR 1")&&!splits[1].equals("-1.0"))
-                    PR1editText.setText(""+(int)(Double.parseDouble(splits[1])));
-                if(splits[0].equals("PR 2")&&!splits[1].equals("-1.0"))
-                    PR2editText.setText(""+(int)(Double.parseDouble(splits[1])));
-                if(splits[0].equals("PR 3")&&!splits[1].equals("-1.0"))
-                    PR3editText.setText(""+(int)(Double.parseDouble(splits[1])));
-                if(splits[0].equals("PR 4")&&!splits[1].equals("-1.0"))
-                    PR4editText.setText(""+(int)(Double.parseDouble(splits[1])));
-                if(splits[0].equals("PR 5")&&!splits[1].equals("-1.0"))
-                    PR5editText.setText(""+(int)(Double.parseDouble(splits[1])));
-                if(splits[0].equals("VS 1")&&!splits[1].equals("-1.0"))
-                    VS1editText.setText(""+(int)(Double.parseDouble(splits[1])));
-                if(splits[0].equals("VS 2")&&!splits[1].equals("-1.0"))
-                    VS2editText.setText(""+(int)(Double.parseDouble(splits[1])));
+                if (splits[0].equals("TH 1") && !splits[1].equals("-1.0"))
+                    TH1editText.setText("" + (int) (Double.parseDouble(splits[1])));
+                if (splits[0].equals("TH 2") && !splits[1].equals("-1.0"))
+                    TH2editText.setText("" + (int) (Double.parseDouble(splits[1])));
+                if (splits[0].equals("TH 3") && !splits[1].equals("-1.0"))
+                    TH3editText.setText("" + (int) (Double.parseDouble(splits[1])));
+                if (splits[0].equals("TH 4") && !splits[1].equals("-1.0"))
+                    TH4editText.setText("" + (int) (Double.parseDouble(splits[1])));
+                if (splits[0].equals("TH 5") && !splits[1].equals("-1.0"))
+                    TH5editText.setText("" + (int) (Double.parseDouble(splits[1])));
+                if (splits[0].equals("PR 1") && !splits[1].equals("-1.0"))
+                    PR1editText.setText("" + (int) (Double.parseDouble(splits[1])));
+                if (splits[0].equals("PR 2") && !splits[1].equals("-1.0"))
+                    PR2editText.setText("" + (int) (Double.parseDouble(splits[1])));
+                if (splits[0].equals("PR 3") && !splits[1].equals("-1.0"))
+                    PR3editText.setText("" + (int) (Double.parseDouble(splits[1])));
+                if (splits[0].equals("PR 4") && !splits[1].equals("-1.0"))
+                    PR4editText.setText("" + (int) (Double.parseDouble(splits[1])));
+                if (splits[0].equals("PR 5") && !splits[1].equals("-1.0"))
+                    PR5editText.setText("" + (int) (Double.parseDouble(splits[1])));
+                if (splits[0].equals("VS 1") && !splits[1].equals("-1.0"))
+                    VS1editText.setText("" + (int) (Double.parseDouble(splits[1])));
+                if (splits[0].equals("VS 2") && !splits[1].equals("-1.0"))
+                    VS2editText.setText("" + (int) (Double.parseDouble(splits[1])));
                 //Toast.makeText(getContext(),splits[0]+splits[1],Toast.LENGTH_SHORT).show();
             }
         } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
                 reader.close();
             } catch (IOException e) {
@@ -1399,7 +1397,7 @@ public class CalculatorActivity extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        getActivity().getMenuInflater().inflate(R.menu.menu_calculator,menu);
+        getActivity().getMenuInflater().inflate(R.menu.menu_calculator, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
 

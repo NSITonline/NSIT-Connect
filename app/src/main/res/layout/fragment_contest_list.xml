@@ -1,9 +1,9 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             android:background="#4F5555"
-             tools:context="nsit.app.com.nsitapp.view.ContestListFragment">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#4F5555"
+    tools:context="nsit.app.com.nsitapp.view.ContestListFragment">
 
     <ListView
         android:id="@+id/contest_listView"
@@ -14,7 +14,7 @@
         android:dividerHeight="4dp"
         android:divider="#4F5555"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
 
 </FrameLayout>

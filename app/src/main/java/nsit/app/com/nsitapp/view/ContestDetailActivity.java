@@ -22,7 +22,7 @@ import java.io.FileOutputStream;
 
 import nsit.app.com.nsitapp.R;
 
-public  class ContestDetailActivity extends FragmentActivity  {
+public class ContestDetailActivity extends FragmentActivity {
 
     ViewPager mViewPager;
 
@@ -46,7 +46,7 @@ public  class ContestDetailActivity extends FragmentActivity  {
             Uri contestUri = getIntent().getData();
             Fragment fragment = ContestDetailFragment.newInstance(contestUri);
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.contest_detail_container,fragment)
+                    .add(R.id.contest_detail_container, fragment)
                     .commit();
         }
     }
@@ -59,16 +59,16 @@ public  class ContestDetailActivity extends FragmentActivity  {
     }
 
     private Bitmap screenShot(View view) {
-        Bitmap bitmap = Bitmap.createBitmap(view.getWidth(),view.getHeight(), Bitmap.Config.ARGB_8888);
+        Bitmap bitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
         view.draw(canvas);
         return bitmap;
     }
 
-    private static File saveBitmap(Bitmap bm){
+    private static File saveBitmap(Bitmap bm) {
         final String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Screenshots";
         File dir = new File(path);
-        if(!dir.exists())
+        if (!dir.exists())
             dir.mkdirs();
         File file = new File(dir, "mantis_image.png");
         try {
@@ -85,9 +85,9 @@ public  class ContestDetailActivity extends FragmentActivity  {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Log.v("helloooo","i am here");
-        if(item.getItemId()==R.id.share_item)
-        { Log.v("helloooo","i am here");
+        Log.v("helloooo", "i am here");
+        if (item.getItemId() == R.id.share_item) {
+            Log.v("helloooo", "i am here");
             Bitmap bm = screenShot(this.getWindow().getDecorView().findViewById(android.R.id.content));
             File file = saveBitmap(bm);
             Log.i("chase", "filepath: " + file.getAbsolutePath());
@@ -99,7 +99,7 @@ public  class ContestDetailActivity extends FragmentActivity  {
             shareIntent.setType("image/*");
             shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             startActivity(Intent.createChooser(shareIntent, "share via"));
-          return true;
+            return true;
         }
 
         return super.onOptionsItemSelected(item);

@@ -115,7 +115,7 @@ public class ContestDetailFragment extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_contest_detail,container,false);
+        View view = inflater.inflate(R.layout.fragment_contest_detail, container, false);
 
         bindView(view);
 
@@ -174,7 +174,7 @@ public class ContestDetailFragment extends Fragment
 
     @Override
     public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor data) {
-        if (data!=null && data.moveToFirst()) {
+        if (data != null && data.moveToFirst()) {
 
             mContest.title(data.getString(COLUMN_TITLE))
                     .source(data.getString(COLUMN_SOURCE))
@@ -227,14 +227,14 @@ public class ContestDetailFragment extends Fragment
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case android.R.id.home :
+            case android.R.id.home:
                 NavUtils.navigateUpFromSameTask(getActivity());
                 return true;
-            case R.id.action_calendar : {
+            case R.id.action_calendar: {
                 Intent intent = new Intent(Intent.ACTION_INSERT)
                         .setData(CalendarContract.Events.CONTENT_URI)
                         .putExtra(CalendarContract.Events.TITLE, mContest.getTitle())
-                        .putExtra(CalendarContract.Events.DESCRIPTION,mContest.getDescription())
+                        .putExtra(CalendarContract.Events.DESCRIPTION, mContest.getDescription())
                         .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, mContest.getStartDate())
                         .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, mContest.getFinishDate());
                 if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
@@ -242,9 +242,9 @@ public class ContestDetailFragment extends Fragment
                 }
                 return true;
             }
-            case R.id.action_browse : {
+            case R.id.action_browse: {
                 if (mContest.getURL().equals("")) {
-                    Toast.makeText(getActivity(),"No Url available",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "No Url available", Toast.LENGTH_SHORT).show();
                 } else {
                     Uri webpage = Uri.parse(mContest.getURL());
                     Intent intent = new Intent(Intent.ACTION_VIEW, webpage);

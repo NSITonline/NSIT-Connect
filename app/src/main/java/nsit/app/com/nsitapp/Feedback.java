@@ -18,6 +18,7 @@ import functions.Utils;
 
 public class Feedback extends Fragment {
     private ProgressBar pb;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,9 +26,9 @@ public class Feedback extends Fragment {
     }
 
     private Activity activity;
+
     @Override
-    public void onAttach(Activity activity)
-    {
+    public void onAttach(Activity activity) {
         super.onAttach(activity);
         this.activity = activity;
     }
@@ -36,10 +37,10 @@ public class Feedback extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.activity_feedback, container, false);
         WebView browser = (WebView) rootView.findViewById(R.id.webview);
-        pb= (ProgressBar) rootView.findViewById(R.id.pb);
+        pb = (ProgressBar) rootView.findViewById(R.id.pb);
 
         browser.setWebViewClient(new MyWebViewClient());
-        if(activity!=null) {
+        if (activity != null) {
             if (Utils.isNetworkAvailable(activity))
                 browser.loadUrl("http://goo.gl/forms/DS8To6mufz");
             else
@@ -51,6 +52,7 @@ public class Feedback extends Fragment {
         return rootView;
 
     }
+
     private class MyWebViewClient extends WebViewClient {
 
         @Override
@@ -58,8 +60,9 @@ public class Feedback extends Fragment {
             view.loadUrl(url);
             return false;
         }
+
         @Override
-        public void onPageFinished(WebView webview, String url){
+        public void onPageFinished(WebView webview, String url) {
             super.onPageFinished(webview, url);
             pb.setVisibility(View.GONE);
             activity.setProgressBarIndeterminateVisibility(false);

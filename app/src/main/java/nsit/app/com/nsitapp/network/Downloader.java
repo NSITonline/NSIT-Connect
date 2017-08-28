@@ -15,16 +15,16 @@ public abstract class Downloader {
         try {
             inputStream = conn.getInputStream();
             conn.connect();
-            if (conn.getResponseCode()==HttpURLConnection.HTTP_OK) {
+            if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) {
                 inputStream = conn.getInputStream();
-            }else {
+            } else {
                 isSuccess = false;
             }
 
             processData(inputStream);
 
         } finally {
-            if (conn!=null) {
+            if (conn != null) {
                 conn.disconnect();
             }
             if (inputStream != null) {
@@ -33,5 +33,6 @@ public abstract class Downloader {
         }
         return isSuccess;
     }
+
     protected abstract void processData(InputStream inputStream);
 }

@@ -22,8 +22,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import functions.Constant;
 import functions.Utils;
@@ -119,12 +117,14 @@ public class ChooseFeedItems extends AppCompatActivity implements Constant {
 
         crosslinks.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {Crosslinks = b;
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                Crosslinks = b;
             }
         });
         collegespace.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {Collegespace = b;
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                Collegespace = b;
             }
         });
         bullet.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -141,7 +141,8 @@ public class ChooseFeedItems extends AppCompatActivity implements Constant {
         });
         rotaract.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {Rotaract = b;
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                Rotaract = b;
             }
         });
         csi.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

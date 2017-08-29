@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String[] sideitems = new String[]{"Home", "My Feed", "Video", "TimeTable", "Locations",
             "Calculator", "CodeRadar", "Professors", "Feedback", "About Us"};    //items on navigation drawer
     private Fragment current;
-
+    public static Context appContext;
 
     private Integer[] imageId = {
             R.drawable.ic_action_home,
@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        appContext=getApplicationContext();
         setProgressBarIndeterminateVisibility(false);
 
         scheduleAlarm();
@@ -216,7 +217,7 @@ public class MainActivity extends AppCompatActivity {
                 getSupportActionBar().setTitle("Feedback");
                 break;
             case 10:
-                f = new AboutUs();
+                f = new AboutUs2();
                 getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 ft.replace(R.id.content_frame, f);
                 getSupportActionBar().setTitle("About Us");

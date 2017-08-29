@@ -1,0 +1,84 @@
+{
+  "TeamMembers": [
+    {
+      "name": "Sidharth Patro",
+      "batch": "IT 2012-2016",
+      "imageResId": "sidharth_patro",
+      "linkedID": "https://in.linkedin.com/in/sdpatro",
+      "fbID": "https://www.facebook.com/sidharth.patro.39?fref=ts",
+      "gitID": "https://github.com/sdpatro",
+      "role1": "Developer",
+      "role2": "UI Designer"
+    },
+    {
+      "name": "Swati Garg",
+      "batch": "IT 2013-2017",
+      "imageResId": "swati_garg",
+      "linkedID": "https://in.linkedin.com/pub/swati-garg/b9/371/a79",
+      "fbID": "https://www.facebook.com/swati.garg.1690",
+      "gitID": "https://github.com/Swati4star",
+      "role1": "Developer",
+      "role2": "Tester"
+    },
+    {
+      "name": "Prabhakar Gupta",
+      "batch": "IT 2013-2017",
+      "imageResId": "prabhakar",
+      "linkedID": "https://www.linkedin.com/in/prabhakargupta267",
+      "fbID": "https://www.facebook.com/prabhakar267",
+      "gitID": "https://github.com/prabhakar267",
+      "role1": "Backend Developer",
+      "role2": ""
+    },
+    {
+      "name": "Chetan Shukla",
+      "batch": "COE 2013-2017",
+      "imageResId": "chetan",
+      "linkedID": "https://in.linkedin.com/pub/chetan-shukla/100/415/455",
+      "fbID": "https://www.facebook.com/chetan.shukla.5205?fref=ts",
+      "gitID": "",
+      "role1": "Content Writer",
+      "role2": ""
+    },
+    {
+      "name": "Naman Maheshwari",
+      "batch": "COE 2014-2018",
+      "imageResId": "naman_maheshwari",
+      "linkedID": "https://in.linkedin.com/in/naman1901",
+      "fbID": "https://www.facebook.com/naman1901",
+      "gitID": "https://github.com/naman1901",
+      "role1": "Developer",
+      "role2": "Tester"
+    },
+    {
+      "name": "Sagar Aggrawal",
+      "batch": "COE 2014-2018",
+      "imageResId": "sagar_aggarwal",
+      "linkedID": "https://in.linkedin.com/in/sagar-aggarwal-9319b3110",
+      "fbID": "https://web.facebook.com/sagar.aggarwal.773",
+      "gitID": "https://github.com/sgaggarwal2009",
+      "role1": "Developer",
+      "role2": "Tester"
+    },
+    {
+      "name": "Saisumit Vohra",
+      "batch": "IT 2014-2018",
+      "imageResId": "saisumit_vohra",
+      "linkedID": "https://in.linkedin.com/in/sumit-vohra-224484a0",
+      "fbID": "https://www.facebook.com/sumit.vohra.353?ref=br_rs",
+      "gitID": "https://github.com/saisumit",
+      "role1": "Developer",
+      "role2": "Tester"
+    },
+    {
+      "name": "Ayush Verma",
+      "batch": "MPAE 2014-2018",
+      "imageResId": "ayush_verma",
+      "linkedID": "https://in.linkedin.com/in/ayush-verma-210082114",
+      "fbID": "https://www.facebook.com/ayush.verma.5203",
+      "gitID": "https://github.com/Ayush-V1",
+      "role1": "Developer",
+      "role2": "Tester"
+    }
+  ]
+}				

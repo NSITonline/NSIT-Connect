@@ -25,31 +25,31 @@ import functions.ButtonAnimation;
  * Created by Kartik Kwatra on 26-08-2017.
  */
 
-public class AboutUs2 extends Fragment implements LoaderManager.LoaderCallbacks<List<AboutUsMember>> {
+public class AboutUs extends Fragment implements LoaderManager.LoaderCallbacks<List<AboutUsMember>> {
 
 
     private static MemberAdapter mAdapter;
-    private static final String LOG_TAG = AboutUs2.class.getName();
+    private static final String LOG_TAG = AboutUs.class.getName();
     private static final int LOADER_ID = 1;
     private Activity aboutUsAct;
     private View rootView;
 
-    public AboutUs2() {
+    public AboutUs() {
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.aboutus_activity, container, false);
+        rootView = inflater.inflate(R.layout.fragment_aboutus, container, false);
         ListView aboutUsListView = (ListView) rootView.findViewById(R.id.teamList);
         aboutUsAct = getActivity();
-        View footerView = ((LayoutInflater) aboutUsAct.getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.aboutus_footer, null, false);
+        View footerView = ((LayoutInflater) aboutUsAct.getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.fragment_aboutus_footer, null, false);
         mAdapter = new MemberAdapter(getActivity(), new ArrayList<AboutUsMember>());
         aboutUsListView.setAdapter(mAdapter);
         aboutUsListView.addFooterView(footerView);
-        TextView rep = (TextView) rootView.findViewById(R.id.GoToRepo);
-        TextView con = (TextView) rootView.findViewById(R.id.cont);
-        rep.setOnClickListener(new View.OnClickListener() {
+        TextView goToRepo = (TextView) rootView.findViewById(R.id.GoToRepo);
+        TextView contribute = (TextView) rootView.findViewById(R.id.contribute);
+        goToRepo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ButtonAnimation btnAnimation = new ButtonAnimation();
@@ -59,7 +59,7 @@ public class AboutUs2 extends Fragment implements LoaderManager.LoaderCallbacks<
                 startActivity(intent);
             }
         });
-        con.setOnClickListener(new View.OnClickListener() {
+        contribute.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ButtonAnimation btnAnimation = new ButtonAnimation();
@@ -76,7 +76,7 @@ public class AboutUs2 extends Fragment implements LoaderManager.LoaderCallbacks<
 
     @Override
     public Loader<List<AboutUsMember>> onCreateLoader(int id, Bundle args) {
-        return new aboutUs_loader(getActivity());
+        return new AboutUsLoader(getActivity());
     }
 
     @Override

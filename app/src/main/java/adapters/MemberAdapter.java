@@ -32,7 +32,7 @@ public class MemberAdapter extends ArrayAdapter<AboutUsMember> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View listIteamView = convertView;
         if (listIteamView == null) {
-            listIteamView = LayoutInflater.from(getContext()).inflate(R.layout.aboutus_listitem, null);
+            listIteamView = LayoutInflater.from(getContext()).inflate(R.layout.fragment_aboutus_listitem, null);
         }
         final AboutUsMember currentMember = getItem(position);
 

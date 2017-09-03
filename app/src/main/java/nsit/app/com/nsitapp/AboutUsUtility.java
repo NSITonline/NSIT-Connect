@@ -22,9 +22,9 @@ import static nsit.app.com.nsitapp.MainActivity.appContext;
  * Created by Kartik Kwatra on 26-08-2017.
  */
 
-class aboutUs_utility {
+class AboutUsUtility {
 
-    private static final String LOG_TAG = aboutUs_utility.class.getName();
+    private static final String LOG_TAG = AboutUsUtility.class.getName();
 
     public static List<AboutUsMember> driver() {
         String jsonResult = fetchJsonString();

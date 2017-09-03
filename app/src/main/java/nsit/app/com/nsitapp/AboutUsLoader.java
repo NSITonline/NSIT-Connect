@@ -9,8 +9,8 @@ import java.util.List;
  * Created by Kartik Kwatra on 27-08-2017.
  */
 
-public class aboutUs_loader extends AsyncTaskLoader<List<AboutUsMember>> {
-    public aboutUs_loader(Context context) {
+public class AboutUsLoader extends AsyncTaskLoader<List<AboutUsMember>> {
+    public AboutUsLoader(Context context) {
         super(context);
     }
 
@@ -21,7 +21,7 @@ public class aboutUs_loader extends AsyncTaskLoader<List<AboutUsMember>> {
 
     @Override
     public List<AboutUsMember> loadInBackground() {
-        List<AboutUsMember> teamMembers = aboutUs_utility.driver();
+        List<AboutUsMember> teamMembers = AboutUsUtility.driver();
         return teamMembers;
     }
 }

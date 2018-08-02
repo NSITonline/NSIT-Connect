@@ -5,26 +5,21 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.preference.PreferenceManager;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.TextView;
-
-import com.nispok.snackbar.Snackbar;
-import com.nispok.snackbar.SnackbarManager;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
+import butterknife.ButterKnife;
 import functions.Constant;
 import functions.Utils;
 import okhttp3.Call;
@@ -55,37 +50,39 @@ public class ChooseFeedItems extends AppCompatActivity implements Constant {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_feed_items);
 
+        ButterKnife.bind(this);
+
         setTitle("My Feed Items");
 
-        Button next = (Button) findViewById(R.id.next);
+        Button next = findViewById(R.id.next);
         mHandler = new Handler(Looper.getMainLooper());
 
-        CheckBox collegespace = (CheckBox) findViewById(R.id.check_collegespace);
-        CheckBox crosslinks = (CheckBox) findViewById(R.id.check_crosslinks);
-        CheckBox junoon = (CheckBox) findViewById(R.id.check_junoon);
-        CheckBox rotaract = (CheckBox) findViewById(R.id.check_rotaract);
-        CheckBox bullet = (CheckBox) findViewById(R.id.check_bullet);
-        CheckBox csi = (CheckBox) findViewById(R.id.check_csi);
-        CheckBox ieee = (CheckBox) findViewById(R.id.check_ieee);
-        CheckBox deb = (CheckBox) findViewById(R.id.check_debsoc);
-        CheckBox quiz = (CheckBox) findViewById(R.id.check_quiz);
-        CheckBox ashwa = (CheckBox) findViewById(R.id.check_ashwa);
-        CheckBox enactus = (CheckBox) findViewById(R.id.check_enactus);
-        CheckBox aagaz = (CheckBox) findViewById(R.id.check_aagaz);
+        CheckBox collegespace = findViewById(R.id.check_collegespace);
+        CheckBox crosslinks = findViewById(R.id.check_crosslinks);
+        CheckBox junoon = findViewById(R.id.check_junoon);
+        CheckBox rotaract = findViewById(R.id.check_rotaract);
+        CheckBox bullet = findViewById(R.id.check_bullet);
+        CheckBox csi = findViewById(R.id.check_csi);
+        CheckBox ieee = findViewById(R.id.check_ieee);
+        CheckBox deb = findViewById(R.id.check_debsoc);
+        CheckBox quiz = findViewById(R.id.check_quiz);
+        CheckBox ashwa = findViewById(R.id.check_ashwa);
+        CheckBox enactus = findViewById(R.id.check_enactus);
+        CheckBox aagaz = findViewById(R.id.check_aagaz);
 
 
-        TextView tCollegespace = (TextView) findViewById(R.id.likes_collegespace);
-        TextView tCrosslinks = (TextView) findViewById(R.id.likes_crosslinks);
-        TextView tJunoon = (TextView) findViewById(R.id.likes_junoon);
-        TextView tRotaract = (TextView) findViewById(R.id.likes_rotaract);
-        TextView tBullet = (TextView) findViewById(R.id.likes_bullethawk);
-        TextView tCsi = (TextView) findViewById(R.id.likes_csi);
-        TextView tIeee = (TextView) findViewById(R.id.likes_ieee);
-        TextView tDeb = (TextView) findViewById(R.id.likes_debsoc);
-        TextView tQuiz = (TextView) findViewById(R.id.likes_quiz);
-        TextView tAshwa = (TextView) findViewById(R.id.likes_ashwa);
-        TextView tEnactus = (TextView) findViewById(R.id.likes_enactus);
-        TextView tAagaz = (TextView) findViewById(R.id.likes_aagaz);
+        TextView tCollegespace = findViewById(R.id.likes_collegespace);
+        TextView tCrosslinks = findViewById(R.id.likes_crosslinks);
+        TextView tJunoon = findViewById(R.id.likes_junoon);
+        TextView tRotaract = findViewById(R.id.likes_rotaract);
+        TextView tBullet = findViewById(R.id.likes_bullethawk);
+        TextView tCsi = findViewById(R.id.likes_csi);
+        TextView tIeee = findViewById(R.id.likes_ieee);
+        TextView tDeb = findViewById(R.id.likes_debsoc);
+        TextView tQuiz = findViewById(R.id.likes_quiz);
+        TextView tAshwa = findViewById(R.id.likes_ashwa);
+        TextView tEnactus = findViewById(R.id.likes_enactus);
+        TextView tAagaz = findViewById(R.id.likes_aagaz);
 
 
         SharedPreferences i = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
@@ -117,128 +114,63 @@ public class ChooseFeedItems extends AppCompatActivity implements Constant {
         enactus.setChecked(Enactus);
 
 
-        crosslinks.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {Crosslinks = b;
-            }
-        });
-        collegespace.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {Collegespace = b;
-            }
-        });
-        bullet.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                Bullet = b;
-            }
-        });
-        junoon.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                Junoon = b;
-            }
-        });
-        rotaract.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {Rotaract = b;
-            }
-        });
-        csi.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                Csi = b;
-            }
-        });
-        ieee.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                Ieee = b;
-            }
-        });
-        deb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                Deb = b;
-            }
-        });
-        quiz.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                Quiz = b;
-            }
-        });
-        ashwa.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                Ashwa = b;
-            }
-        });
-        enactus.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                Enactus = b;
-            }
-        });
-        aagaz.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                Aagaz = b;
-            }
-        });
+        crosslinks.setOnCheckedChangeListener((compoundButton, b) -> Crosslinks = b);
+        collegespace.setOnCheckedChangeListener((compoundButton, b) -> Collegespace = b);
+        bullet.setOnCheckedChangeListener((compoundButton, b) -> Bullet = b);
+        junoon.setOnCheckedChangeListener((compoundButton, b) -> Junoon = b);
+        rotaract.setOnCheckedChangeListener((compoundButton, b) -> Rotaract = b);
+        csi.setOnCheckedChangeListener((compoundButton, b) -> Csi = b);
+        ieee.setOnCheckedChangeListener((compoundButton, b) -> Ieee = b);
+        deb.setOnCheckedChangeListener((compoundButton, b) -> Deb = b);
+        quiz.setOnCheckedChangeListener((compoundButton, b) -> Quiz = b);
+        ashwa.setOnCheckedChangeListener((compoundButton, b) -> Ashwa = b);
+        enactus.setOnCheckedChangeListener((compoundButton, b) -> Enactus = b);
+        aagaz.setOnCheckedChangeListener((compoundButton, b) -> Aagaz = b);
 
 
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                SharedPreferences.Editor e = p.edit();
-                e.putBoolean(CROSSLINKS, Crosslinks);
-                e.putBoolean(COLLEGESPACE, Collegespace);
-                e.putBoolean(BULLET, Bullet);
-                e.putBoolean(JUNOON, Junoon);
-                e.putBoolean(ROTARACT, Rotaract);
-                e.putBoolean(CSI, Csi);
-                e.putBoolean(IEEE, Ieee);
-                e.putBoolean(DEB, Deb);
-                e.putBoolean(QUIZ, Quiz);
-                e.putBoolean(ASHWA, Ashwa);
-                e.putBoolean(ENACTUS, Enactus);
-                e.putBoolean(AAGAZ, Aagaz);
-                e.putBoolean(SOCIETY_SET, true);
-                e.putBoolean(SOCIETY_ITEM_CHANGED, true);
-                e.apply();
-                finish();
-            }
+        next.setOnClickListener(view -> {
+            SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            SharedPreferences.Editor e = p.edit();
+            e.putBoolean(CROSSLINKS, Crosslinks);
+            e.putBoolean(COLLEGESPACE, Collegespace);
+            e.putBoolean(BULLET, Bullet);
+            e.putBoolean(JUNOON, Junoon);
+            e.putBoolean(ROTARACT, Rotaract);
+            e.putBoolean(CSI, Csi);
+            e.putBoolean(IEEE, Ieee);
+            e.putBoolean(DEB, Deb);
+            e.putBoolean(QUIZ, Quiz);
+            e.putBoolean(ASHWA, Ashwa);
+            e.putBoolean(ENACTUS, Enactus);
+            e.putBoolean(AAGAZ, Aagaz);
+            e.putBoolean(SOCIETY_SET, true);
+            e.putBoolean(SOCIETY_ITEM_CHANGED, true);
+            e.apply();
+            finish();
         });
 
         if (Utils.isNetworkAvailable(ChooseFeedItems.this)) {
-
-            caculateLikes(tCrosslinks, id_crosslinks);
-            caculateLikes(tCrosslinks, id_crosslinks);
-            caculateLikes(tCollegespace, id_collegespace);
-            caculateLikes(tJunoon, id_junoon);
-            caculateLikes(tBullet, id_bullet);
-            caculateLikes(tRotaract, id_rotaract);
-            caculateLikes(tCsi, id_csi);
-            caculateLikes(tIeee, id_ieee);
-            caculateLikes(tDeb, id_debsoc);
-            caculateLikes(tQuiz, id_quiz);
-            caculateLikes(tAshwa, id_ashwa);
-            caculateLikes(tAagaz, id_aagaz);
-            caculateLikes(tEnactus, id_enactus);
+            calculateLikes(tCrosslinks, id_crosslinks);
+            calculateLikes(tCrosslinks, id_crosslinks);
+            calculateLikes(tCollegespace, id_collegespace);
+            calculateLikes(tJunoon, id_junoon);
+            calculateLikes(tBullet, id_bullet);
+            calculateLikes(tRotaract, id_rotaract);
+            calculateLikes(tCsi, id_csi);
+            calculateLikes(tIeee, id_ieee);
+            calculateLikes(tDeb, id_debsoc);
+            calculateLikes(tQuiz, id_quiz);
+            calculateLikes(tAshwa, id_ashwa);
+            calculateLikes(tAagaz, id_aagaz);
+            calculateLikes(tEnactus, id_enactus);
         } else
-            SnackbarManager.show(
-                    Snackbar.with(getApplicationContext())
-                            .text("Check Your Internet Connection")
-                            .duration(Snackbar.SnackbarDuration.LENGTH_SHORT), this);
+            Snackbar.make(next, R.string.internet_error, Snackbar.LENGTH_LONG).show();
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-
     }
 
-
-    private void caculateLikes(final TextView bmImage, String id) {
+    private void calculateLikes(final TextView bmImage, String id) {
 
         // Facebook URI to fetch likes
         String uri = "https://graph.facebook.com/" + id + "?access_token=" + common_access;
@@ -265,16 +197,11 @@ public class ChooseFeedItems extends AppCompatActivity implements Constant {
                         if (ob.has("likes"))
                             likes = ob.getString("likes");
                         else
-                            likes = "1000";
+                            likes = "--";
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                    mHandler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            bmImage.setText(likes);
-                        }
-                    });
+                    mHandler.post(() -> bmImage.setText(likes));
                 } catch (Exception e) {
                     Log.e("ERROR : ", e.getMessage());
                 }
@@ -282,13 +209,11 @@ public class ChooseFeedItems extends AppCompatActivity implements Constant {
         });
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_final_feed, menu);
         return true;
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

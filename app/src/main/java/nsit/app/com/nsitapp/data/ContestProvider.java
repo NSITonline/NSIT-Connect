@@ -8,6 +8,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 
 
 public class ContestProvider extends ContentProvider {
@@ -46,7 +47,7 @@ public class ContestProvider extends ContentProvider {
     }
 
     @Override
-    public String getType(Uri uri) {
+    public String getType(@NonNull Uri uri) {
         int match = sUriMatcher.match(uri);
 
         switch (match) {
@@ -62,7 +63,7 @@ public class ContestProvider extends ContentProvider {
     }
 
     @Override
-    public Cursor query(Uri uri, String[] projection, String selection,
+    public Cursor query(@NonNull Uri uri, String[] projection, String selection,
                         String[] selectionArgs, String sortOrder) {
         int match = sUriMatcher.match(uri);
         Cursor retCursor;
@@ -127,7 +128,7 @@ public class ContestProvider extends ContentProvider {
     }
 
     @Override
-    public Uri insert(Uri uri, ContentValues contentValues) {
+    public Uri insert(@NonNull Uri uri, ContentValues contentValues) {
         final SQLiteDatabase db = mOpenHelper.getWritableDatabase();
 
         int match = sUriMatcher.match(uri);
@@ -155,7 +156,7 @@ public class ContestProvider extends ContentProvider {
     }
 
     @Override
-    public int delete(Uri uri, String selection, String[] selectionArgs) {
+    public int delete(@NonNull Uri uri, String selection, String[] selectionArgs) {
         final SQLiteDatabase db = mOpenHelper.getWritableDatabase();
 
         int match = sUriMatcher.match(uri);
@@ -181,7 +182,7 @@ public class ContestProvider extends ContentProvider {
     }
 
     @Override
-    public int update(Uri uri, ContentValues newValues, String selection, String[] selectionArgs) {
+    public int update(@NonNull Uri uri, ContentValues newValues, String selection, String[] selectionArgs) {
         final SQLiteDatabase db = mOpenHelper.getWritableDatabase();
 
         int match = sUriMatcher.match(uri);
@@ -207,7 +208,7 @@ public class ContestProvider extends ContentProvider {
     }
 
     @Override
-    public int bulkInsert(Uri uri, ContentValues[] values) {
+    public int bulkInsert(@NonNull Uri uri, @NonNull ContentValues[] values) {
         final SQLiteDatabase db = mOpenHelper.getWritableDatabase();
         final int match = sUriMatcher.match(uri);
         switch (match) {

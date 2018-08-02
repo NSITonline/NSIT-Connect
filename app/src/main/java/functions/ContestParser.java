@@ -12,8 +12,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import nsit.app.com.nsitapp.model.Contest;
-import nsit.app.com.nsitapp.model.OnlineJudge;
+import models.Contest;
+import models.OnlineJudge;
 
 /**
  * Created by saisumit on 5/23/15.
@@ -70,13 +70,13 @@ public class ContestParser {
 
 
     private static String getSourceFromTitleOrURL(String title,String url) {
-        if (title.indexOf("Codeforces")!=-1) return OnlineJudge.CODEFORCES;
-        else if (title.indexOf("Topcoder")!=-1) return OnlineJudge.TOPCODER;
-        else if (title.indexOf("Codechef")!=-1) return OnlineJudge.CODECHEF;
-        else if (title.indexOf("URIOJ")!=-1) return OnlineJudge.URIOJ;
-        else if (title.indexOf("Hackerearth")!=-1) return OnlineJudge.HACKEREARTH;
+        if (title.contains("Codeforces")) return OnlineJudge.CODEFORCES;
+        else if (title.contains("Topcoder")) return OnlineJudge.TOPCODER;
+        else if (title.contains("Codechef")) return OnlineJudge.CODECHEF;
+        else if (title.contains("URIOJ")) return OnlineJudge.URIOJ;
+        else if (title.contains("Hackerearth")) return OnlineJudge.HACKEREARTH;
         else {
-            if (url.indexOf("hackerrank")!=-1) return OnlineJudge.HACKERRANK;
+            if (url.contains("hackerrank")) return OnlineJudge.HACKERRANK;
             else return OnlineJudge.UNKNOWN;
         }
     }

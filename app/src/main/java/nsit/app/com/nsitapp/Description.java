@@ -2,8 +2,10 @@ package nsit.app.com.nsitapp;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
@@ -15,180 +17,168 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.nispok.snackbar.Snackbar;
-import com.nispok.snackbar.SnackbarManager;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import functions.ButtonAnimation;
 import functions.Constant;
-import functions.ImageLoader;
 import functions.Utils;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
-import static nsit.app.com.nsitapp.R.id.imag_cont;
+public class Description extends AppCompatActivity implements Constant {
 
+    @BindView(R.id.progressBar1)
+    ProgressBar pb;
+    @BindView(R.id.image)
+    ImageView imageView;
+    @BindView(R.id.imag_cont)
+    FrameLayout imageCount;
+    @BindView(R.id.likes)
+    TextView likeTv;
+    @BindView(R.id.link)
+    Button linkTv;
+    @BindView(R.id.des)
+    TextView desTv;
+    @BindView(R.id.but_con)
+    LinearLayout showOnPage;
 
-public class Description extends AppCompatActivity implements Constant{
-    private ProgressBar pb;
-    private ImageLoader imageLoader;
     private String img;
     private String link;
-    private ImageView imageView;
     private String imglink;
     private String obid;
-    private FrameLayout img_cont;
+    private Handler mHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_decsription);
-        pb=(ProgressBar)findViewById(R.id.progressBar1);
+
+        ButterKnife.bind(this);
 
         setTitle("Post");
 
-        Intent i = getIntent();
-        img = i.getStringExtra(IMAGE);
-        String des = i.getStringExtra(DES);
-        String like = i.getStringExtra(LIKE);
-        link = i.getStringExtra(LINK);
-        imageLoader=new ImageLoader(this);
-        obid = i.getStringExtra(OBID);
+        Intent intent = getIntent();
+        img = intent.getStringExtra(IMAGE);
+        String des = intent.getStringExtra(DES);
+        String like = intent.getStringExtra(LIKE);
+        link = intent.getStringExtra(LINK);
+        obid = intent.getStringExtra(OBID);
 
-        imageView = (ImageView) findViewById(R.id.image);
-        TextView like1 = (TextView) findViewById(R.id.likes);
-        Button link1 = (Button) findViewById(R.id.link);
-        TextView des1 = (TextView) findViewById(R.id.des);
-        img_cont = (FrameLayout) findViewById(imag_cont);
-        LinearLayout but_con = (LinearLayout) findViewById(R.id.but_con);
+        mHandler = new Handler(Looper.getMainLooper());
 
-        if(like ==null)
-            like1.setText("0");
+        if (like == null)
+            likeTv.setText("0");
         else
-            like1.setText(like);
+            likeTv.setText(like);
 
-
-        if(des ==null)
-            des1.setText(R.string.no_description);
+        if (des == null)
+            desTv.setText(R.string.no_description);
         else
-            des1.setText(des);
+            desTv.setText(des);
 
-        if(link==null)
-            but_con.setVisibility(View.GONE);
+        if (link == null)
+            showOnPage.setVisibility(View.GONE);
         else
-        link1.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View view) {
-                                        Uri uri = Uri.parse(link);
-                                        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                                        startActivity(intent);
-                                        ButtonAnimation btnAnimation = new ButtonAnimation();
-                                        btnAnimation.animateButton(view, getApplicationContext());
-                                    }
-                                }
-        );
-        if(Utils.isNetworkAvailable(Description.this)) {
+            linkTv.setOnClickListener(view -> {
+                        Uri uri = Uri.parse(link);
+                        Intent in = new Intent(Intent.ACTION_VIEW, uri);
+                        startActivity(in);
+                        ButtonAnimation btnAnimation = new ButtonAnimation();
+                        btnAnimation.animateButton(view, getApplicationContext());
+                    }
+            );
+
+        if (Utils.isNetworkAvailable(Description.this)) {
             if (img == null) {
-                img_cont.setVisibility(View.GONE);
+                imageCount.setVisibility(View.GONE);
                 pb.setVisibility(View.GONE);
-            }
-            else if (obid == null) {
-                imageLoader.DisplayImage(img, imageView,pb);
-            }
-            else
-                new DownloadWebPageTask().execute();
+            } else if (obid == null) {
+                Picasso.with(Description.this).load(img).into(imageView);
+            } else
+                donwloadImages();
         } else
-            SnackbarManager.show(
-                    Snackbar.with(getApplicationContext())
-                            .text("Check You Internet Connection")
-                            .duration(Snackbar.SnackbarDuration.LENGTH_SHORT), this);
+            Snackbar.make(pb, R.string.internet_error, Snackbar.LENGTH_LONG).show();
 
         if (img == null)
-            img_cont.setVisibility(View.GONE);
-        else imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(Description.this,Description_FullImage.class);
-                i.putExtra(IMAGE,img);
-                i.putExtra(OBID,obid);
-                startActivity(i);
-                ButtonAnimation btnAnimation = new ButtonAnimation();
-                btnAnimation.animateButton(view, getApplicationContext());
-            }
+            imageCount.setVisibility(View.GONE);
+        else imageView.setOnClickListener(view -> {
+            Intent i1 = new Intent(Description.this, DescriptionFullImage.class);
+            i1.putExtra(IMAGE, img);
+            i1.putExtra(OBID, obid);
+            startActivity(i1);
+            ButtonAnimation btnAnimation = new ButtonAnimation();
+            btnAnimation.animateButton(view, getApplicationContext());
         });
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-
     }
 
-    private class DownloadWebPageTask extends AsyncTask<String, Void, String> {
+    private void donwloadImages() {
 
-        @Override
-        protected String doInBackground(String... urls) {
+        String uri = "https://graph.facebook.com/" + obid + "?fields=images&access_token=" + common_access;
 
-
-            String uri = "https://graph.facebook.com/"+obid+"?fields=images&access_token="+ common_access;
-
-            java.net.URL url;
-            String readStream = null;
-            try {
-                url = new URL(uri);
-                HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                readStream = Utils.readStream(con.getInputStream());
-            } catch (MalformedURLException e1) {
-                e1.printStackTrace();
-            } catch (IOException e1) {
-                e1.printStackTrace();
+        //Set up client
+        OkHttpClient client = new OkHttpClient();
+        //Execute request
+        Request request = new Request.Builder()
+                .url(uri)
+                .build();
+        //Setup callback
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e("Request Failed", "Message : " + e.getMessage());
             }
 
-            return readStream;
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            Log.e("YO", "Done" + obid + result);
-            JSONObject ob;
-            JSONArray arr;
-            if(result==null){
-                imageLoader.DisplayImage(img, imageView,pb);
-            }else {
-                try {
-                    ob = new JSONObject(result);
-
-                    arr = ob.getJSONArray("images");
-
-                    if (arr.getJSONObject(0).has("source"))
-                        imglink = arr.getJSONObject(0).getString("source");
-                    if (imglink != null) {
-                        if (Utils.isNetworkAvailable(Description.this)) {
-                            imageLoader.DisplayImage(imglink, imageView,pb);
-                            pb.setVisibility(View.GONE);
-                        }
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                final String result = response.body().string();
+                mHandler.post(() -> {
+                    JSONObject ob;
+                    JSONArray arr;
+                    if (result == null) {
+                        Picasso.with(Description.this).load(img).into(imageView);
                     } else {
-                        img_cont.setVisibility(View.GONE);
-                        pb.setVisibility(View.GONE);
+                        try {
+                            ob = new JSONObject(result);
+                            arr = ob.getJSONArray("images");
+
+                            if (arr.getJSONObject(0).has("source"))
+                                imglink = arr.getJSONObject(0).getString("source");
+                            if (imglink != null) {
+                                if (Utils.isNetworkAvailable(Description.this)) {
+                                    Picasso.with(Description.this).load(imglink).into(imageView);
+                                    pb.setVisibility(View.GONE);
+                                }
+                            } else {
+                                imageCount.setVisibility(View.GONE);
+                                pb.setVisibility(View.GONE);
+                            }
+                            Log.e("yrs", "Image Link is : " + imglink);
+                        } catch (Exception e) {
+                            Log.e("yo", "" + e.getMessage() + " ");
+                        }
                     }
-                    Log.e("yrs", "Image Link is : " + imglink);
-
-                } catch (Exception e) {
-                    Log.e("yo", "" + e.getMessage()+" ");
-                }
+                    pb.setVisibility(View.GONE);
+                });
             }
-            pb.setVisibility(View.GONE);
-
-            Log.e("Yo", imglink+"");
-        }
+        });
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId()==android.R.id.home)
+        if (item.getItemId() == android.R.id.home)
             finish();
         return super.onOptionsItemSelected(item);
     }

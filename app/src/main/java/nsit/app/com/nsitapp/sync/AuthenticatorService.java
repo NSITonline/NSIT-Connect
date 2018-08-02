@@ -1,9 +1,5 @@
 package nsit.app.com.nsitapp.sync;
 
-/**
- * Created by saisumit on 5/29/15.
- */
-
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;

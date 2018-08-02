@@ -27,7 +27,7 @@
                 android:id="@+id/VideoThumbnail"
                 android:layout_width="match_parent"
                 android:layout_height="175dp"
-                android:background="#000000" />
+                android:background="@color/black" />
         </FrameLayout>
 
 

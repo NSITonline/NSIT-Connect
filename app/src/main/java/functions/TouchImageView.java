@@ -1,16 +1,5 @@
 package functions;
 
-/**
- * Android: TouchImageView
- * Created by: Mike Ortiz
- * Contributions by:
- * Patrick Lackemacher
- * Babay88
- *
- * @ipsilondev hank-cp
- * singpolyma
- */
-
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Configuration;
@@ -343,7 +332,7 @@ public class TouchImageView extends ImageView {
 
     /**
      * Set zoom to the specified scale. Image will be centered by default.
-     * @param scale
+     * @param scale - scale level to zoom
      */
     public void setZoom(float scale) {
         setZoom(scale, 0.5f, 0.5f);
@@ -354,9 +343,9 @@ public class TouchImageView extends ImageView {
      * (focusX, focusY). These floats range from 0 to 1 and denote the focus point
      * as a fraction from the left and top of the view. For example, the top left
      * corner of the image would be (0, 0). And the bottom right corner would be (1, 1).
-     * @param scale
-     * @param focusX
-     * @param focusY
+     * @param scale - scale level to zoom
+     * @param focusX - x focus point
+     * @param focusY - y focus point
      */
     private void setZoom(float scale, float focusX, float focusY) {
         setZoom(scale, focusX, focusY, mScaleType);
@@ -367,10 +356,10 @@ public class TouchImageView extends ImageView {
      * (focusX, focusY). These floats range from 0 to 1 and denote the focus point
      * as a fraction from the left and top of the view. For example, the top left
      * corner of the image would be (0, 0). And the bottom right corner would be (1, 1).
-     * @param scale
-     * @param focusX
-     * @param focusY
-     * @param scaleType
+     * @param scale - scale
+     * @param focusX - x focus point
+     * @param focusY - y focus point
+     * @param scaleType -  scale type
      */
     private void setZoom(float scale, float focusX, float focusY, ScaleType scaleType) {
         //
@@ -399,7 +388,7 @@ public class TouchImageView extends ImageView {
     /**
      * Set zoom parameters equal to another TouchImageView. Including scale, position,
      * and ScaleType.
-     * @param TouchImageView
+     * @param img - image object
      */
     private void setZoom(TouchImageView img) {
         PointF center = img.getScrollPosition();
@@ -430,8 +419,8 @@ public class TouchImageView extends ImageView {
     /**
      * Set the focus point of the zoomed image. The focus points are denoted as a fraction from the
      * left and top of the view. The focus points can range in value between 0 and 1.
-     * @param focusX
-     * @param focusY
+     * @param focusX - x focus point
+     * @param focusY - y focus point
      */
     public void setScrollPosition(float focusX, float focusY) {
         setZoom(normalizedScale, focusX, focusY);
@@ -651,10 +640,10 @@ public class TouchImageView extends ImageView {
     /**
      * Set view dimensions based on layout params
      *
-     * @param mode
-     * @param size
-     * @param drawableWidth
-     * @return
+     * @param mode - mode
+     * @param size - image size
+     * @param drawableWidth - image width
+     * @return new viewsize
      */
     private int setViewSize(int mode, int size, int drawableWidth) {
         int viewSize;
@@ -730,14 +719,9 @@ public class TouchImageView extends ImageView {
         if (getImageWidth() < viewWidth) {
             return false;
 
-        } else if (x >= -1 && direction < 0) {
-            return false;
+        } else
+            return (!(x >= -1) || direction >= 0) && (!(Math.abs(x) + viewWidth + 1 >= getImageWidth()) || direction <= 0);
 
-        } else if (Math.abs(x) + viewWidth + 1 >= getImageWidth() && direction > 0) {
-            return false;
-        }
-
-        return true;
     }
 
     /**
@@ -792,10 +776,7 @@ public class TouchImageView extends ImageView {
 
         @Override
         public boolean onDoubleTapEvent(MotionEvent e) {
-            if (doubleTapListener != null) {
-                return doubleTapListener.onDoubleTapEvent(e);
-            }
-            return false;
+            return doubleTapListener != null && doubleTapListener.onDoubleTapEvent(e);
         }
     }
 
@@ -814,7 +795,7 @@ public class TouchImageView extends ImageView {
         //
         // Remember last point position for dragging
         //
-        private PointF last = new PointF();
+        private final PointF last = new PointF();
 
         @Override
         public boolean onTouch(View v, MotionEvent event) {
@@ -954,14 +935,16 @@ public class TouchImageView extends ImageView {
      */
     private class DoubleTapZoom implements Runnable {
 
-        private long startTime;
+        private final long startTime;
         private static final float ZOOM_TIME = 500;
-        private float startZoom, targetZoom;
-        private float bitmapX, bitmapY;
-        private boolean stretchImageToSuper;
-        private AccelerateDecelerateInterpolator interpolator = new AccelerateDecelerateInterpolator();
-        private PointF startTouch;
-        private PointF endTouch;
+        private final float startZoom;
+        private final float targetZoom;
+        private final float bitmapX;
+        private final float bitmapY;
+        private final boolean stretchImageToSuper;
+        private final AccelerateDecelerateInterpolator interpolator = new AccelerateDecelerateInterpolator();
+        private final PointF startTouch;
+        private final PointF endTouch;
 
         DoubleTapZoom(float targetZoom, float focusX, float focusY, boolean stretchImageToSuper) {
             setState(State.ANIMATE_ZOOM);
@@ -1015,7 +998,7 @@ public class TouchImageView extends ImageView {
          * Interpolate between where the image should start and end in order to translate
          * the image so that the point that is touched is what ends up centered at the end
          * of the zoom.
-         * @param t
+         * @param t - float
          */
         private void translateImageToCenterTouchPosition(float t) {
             float targetX = startTouch.x + t * (endTouch.x - startTouch.x);
@@ -1026,7 +1009,7 @@ public class TouchImageView extends ImageView {
 
         /**
          * Use interpolator to get t
-         * @return
+         * @return interpolated point
          */
         private float interpolate() {
             long currTime = System.currentTimeMillis();
@@ -1038,8 +1021,8 @@ public class TouchImageView extends ImageView {
         /**
          * Interpolate the current targeted zoom and get the delta
          * from the current zoom.
-         * @param t
-         * @return
+         * @param t - float
+         * @return - new sizde
          */
         private double calculateDeltaScale(float t) {
             double zoom = startZoom + t * (targetZoom - startZoom);
@@ -1176,7 +1159,7 @@ public class TouchImageView extends ImageView {
     private class CompatScroller {
         Scroller scroller;
         OverScroller overScroller;
-        boolean isPreGingerbread;
+        final boolean isPreGingerbread;
 
         public CompatScroller(Context context) {
             if (VERSION.SDK_INT < VERSION_CODES.GINGERBREAD) {
@@ -1250,10 +1233,10 @@ public class TouchImageView extends ImageView {
     }
 
     private class ZoomVariables {
-        public float scale;
-        public float focusX;
-        public float focusY;
-        public ScaleType scaleType;
+        public final float scale;
+        public final float focusX;
+        public final float focusY;
+        public final ScaleType scaleType;
 
         public ZoomVariables(float scale, float focusX, float focusY, ScaleType scaleType) {
             this.scale = scale;

@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
-    tools:context="nsit.app.com.nsitapp.ChooseClass">
+    tools:context="nsit.app.com.nsitapp.Calendar.ChooseClass">
 
     <TextView
         android:layout_width="match_parent"

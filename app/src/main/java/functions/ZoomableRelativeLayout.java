@@ -13,23 +13,20 @@ import android.widget.RelativeLayout;
     private float mScaleFactor = 1;
     private float mPivotX;
     private float mPivotY;
-    private float MIN_SCALE = 1.0f;
-    private float MAX_SCALE = 20.0f;
+    private final float MIN_SCALE = 1.0f;
+    private final float MAX_SCALE = 20.0f;
 
     public ZoomableRelativeLayout(Context context) {
         super(context);
-        // TODO Auto-generated constructor stub
     }
 
     public ZoomableRelativeLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
-        // TODO Auto-generated constructor stub
     }
 
     public ZoomableRelativeLayout(Context context, AttributeSet attrs,
                                   int defStyle) {
         super(context, attrs, defStyle);
-        // TODO Auto-generated constructor stub
     }
 
     protected void dispatchDraw(Canvas canvas) {

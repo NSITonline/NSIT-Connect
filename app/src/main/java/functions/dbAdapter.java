@@ -60,9 +60,9 @@ public class dbAdapter implements  Constant {
                     + KEY_SOC + " TEXT "
                     + ");";
 
-    private Context context;
+    private final Context context;
 
-    private DatabaseHelper NSITConnectHelper;
+    private final DatabaseHelper NSITConnectHelper;
     private SQLiteDatabase db;
 
     public dbAdapter(Context ctx) {
@@ -74,7 +74,7 @@ public class dbAdapter implements  Constant {
         try {
             db = NSITConnectHelper.getWritableDatabase();
         }catch(Exception e){
-
+            e.printStackTrace();
         }
         return this;
     }
@@ -143,13 +143,10 @@ public class dbAdapter implements  Constant {
         whereArgs = whereArgs.substring(0,whereArgs.length()-2);
         whereArgs += " ) ";
 
-
         Cursor c = db.rawQuery("SELECT * FROM " + DATABASE_TABLE + " WHERE " + KEY_SOC + whereArgs, null);
         c.moveToFirst();
         return c;
     }
-
-
 
     public Cursor getAllnsRows() {
         String whereArgs = " IN (  "+ id_nsitonline +" )";
@@ -158,7 +155,6 @@ public class dbAdapter implements  Constant {
         return c;
 
     }
-
 
     private static class DatabaseHelper extends SQLiteOpenHelper {
         DatabaseHelper(Context context) {
@@ -178,32 +174,5 @@ public class dbAdapter implements  Constant {
         }
 
     }
-
-
-
-
-
-    /*
-
-    Redundant code. Keeping for reference only.
-
-    public boolean deleteRow(long rowID) {
-        String where = KEY_ROWID + "=" + rowID;
-        return db.delete(DATABASE_TABLE, where, null) != 0;
-    }
-
-    public void deleteAll() {
-        Cursor c = getAllRows();
-        long rowID = c.getColumnIndexOrThrow(KEY_ROWID);
-        if(c.moveToFirst()) {
-            do {
-                deleteRow(c.getLong((int) rowID));
-            } while(c.moveToNext());
-            c.close();
-        }
-    }
-*/
-
-
 
 }

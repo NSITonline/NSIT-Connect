@@ -15,7 +15,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import functions.ButtonAnimation;
-import nsit.app.com.nsitapp.AboutUsMember;
+import models.AboutUsMember;
 import nsit.app.com.nsitapp.R;
 
 /**
@@ -36,74 +36,61 @@ public class MemberAdapter extends ArrayAdapter<AboutUsMember> {
         }
         final AboutUsMember currentMember = getItem(position);
 
-        TextView name = (TextView) listIteamView.findViewById(R.id.memberName);
-        name.setText(currentMember.getName().toString());
-        TextView batch = (TextView) listIteamView.findViewById(R.id.batch);
-        batch.setText(currentMember.getBatch().toString());
-        TextView role1 = (TextView) listIteamView.findViewById(R.id.role1);
+        TextView name = listIteamView.findViewById(R.id.memberName);
+        name.setText(currentMember.getName());
+        TextView batch = listIteamView.findViewById(R.id.batch);
+        batch.setText(currentMember.getBatch());
+        TextView role1 = listIteamView.findViewById(R.id.role1);
         role1.setText(currentMember.getRole1());
-        ImageView memberImage = (ImageView) listIteamView.findViewById(R.id.memberImage);
+        ImageView memberImage = listIteamView.findViewById(R.id.memberImage);
         memberImage.setImageResource(currentMember.getImageResID());
-        if (currentMember.getName().toString().equals("Prabhakar Gupta")) {
-            memberImage.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    ButtonAnimation btnAnimation = new ButtonAnimation();
-                    btnAnimation.animateButton(v, getContext());
-                    Uri uri = Uri.parse("http://prabhakargupta.com/");
-                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                    getContext().startActivity(intent);
-                }
+        if (currentMember.getName().equals("Prabhakar Gupta")) {
+            memberImage.setOnClickListener(v -> {
+                ButtonAnimation btnAnimation = new ButtonAnimation();
+                btnAnimation.animateButton(v, getContext());
+                Uri uri = Uri.parse("http://prabhakargupta.com/");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                getContext().startActivity(intent);
             });
         }
-        ImageView fbID = (ImageView) listIteamView.findViewById(R.id.facebook_image);
+        ImageView fbID = listIteamView.findViewById(R.id.facebook_image);
         String gitId = currentMember.getGitID();
         String linkedId = currentMember.getLinkedID();
         String role2 = currentMember.getRole2();
-        fbID.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ButtonAnimation btnAnimation = new ButtonAnimation();
-                btnAnimation.animateButton(v, getContext());
-                Uri fbUri = Uri.parse(currentMember.getFbID());
-                Intent intent = new Intent(Intent.ACTION_VIEW, fbUri);
-                getContext().startActivity(intent);
-            }
+        fbID.setOnClickListener(v -> {
+            ButtonAnimation btnAnimation = new ButtonAnimation();
+            btnAnimation.animateButton(v, getContext());
+            Uri fbUri = Uri.parse(currentMember.getFbID());
+            Intent intent = new Intent(Intent.ACTION_VIEW, fbUri);
+            getContext().startActivity(intent);
         });
-        ImageView gitimage = (ImageView) listIteamView.findViewById(R.id.github_image);
+        ImageView gitimage = listIteamView.findViewById(R.id.github_image);
         gitimage.setVisibility(View.GONE);
         if (gitId != null && !gitId.isEmpty()) {
-
             gitimage.setVisibility(View.VISIBLE);
-            gitimage.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    ButtonAnimation btnAnimation = new ButtonAnimation();
-                    btnAnimation.animateButton(v, getContext());
-                    Uri gitUri = Uri.parse(currentMember.getGitID());
-                    Intent intent = new Intent(Intent.ACTION_VIEW, gitUri);
-                    getContext().startActivity(intent);
-                }
+            gitimage.setOnClickListener(v -> {
+                ButtonAnimation btnAnimation = new ButtonAnimation();
+                btnAnimation.animateButton(v, getContext());
+                Uri gitUri = Uri.parse(currentMember.getGitID());
+                Intent intent = new Intent(Intent.ACTION_VIEW, gitUri);
+                getContext().startActivity(intent);
             });
         }
-        ImageView linkedImage = (ImageView) listIteamView.findViewById(R.id.linkedIn_image);
+        ImageView linkedImage = listIteamView.findViewById(R.id.linkedIn_image);
         linkedImage.setVisibility(View.GONE);
         if (linkedId != null && !linkedId.isEmpty()) {
             linkedImage.setVisibility(View.VISIBLE);
-            linkedImage.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    ButtonAnimation btnAnimation = new ButtonAnimation();
-                    btnAnimation.animateButton(v, getContext());
-                    Uri linkedUri = Uri.parse(currentMember.getLinkedID());
-                    Intent intent = new Intent(Intent.ACTION_VIEW, linkedUri);
-                    getContext().startActivity(intent);
-                }
+            linkedImage.setOnClickListener(v -> {
+                ButtonAnimation btnAnimation = new ButtonAnimation();
+                btnAnimation.animateButton(v, getContext());
+                Uri linkedUri = Uri.parse(currentMember.getLinkedID());
+                Intent intent = new Intent(Intent.ACTION_VIEW, linkedUri);
+                getContext().startActivity(intent);
             });
         }
-        TextView role2text = (TextView) listIteamView.findViewById(R.id.role2);
+        TextView role2text = listIteamView.findViewById(R.id.role2);
         role2text.setText("");
-        ImageView role2Image = (ImageView) listIteamView.findViewById(R.id.role2image);
+        ImageView role2Image = listIteamView.findViewById(R.id.role2image);
         role2Image.setVisibility(View.GONE);
         if (role2 != null && !role2.isEmpty()) {
             role2text.setText(role2);

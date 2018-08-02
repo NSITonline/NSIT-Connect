@@ -58,7 +58,7 @@
                         android:background="#ffededed"
                         android:padding="10dp"
                         android:text="@string/repository_text"
-                        android:textColor="#000000"
+                        android:textColor="@color/black"
                         android:textAppearance="?android:attr/textAppearanceSmall" />
                 </LinearLayout>
 
@@ -94,7 +94,7 @@
                             android:layout_gravity="center_horizontal"
                             android:layout_weight="2.24"
                             android:text="@string/contribute_text"
-                            android:textColor="#000000"
+                            android:textColor="@color/black"
                             android:textSize="12sp"
                             android:textStyle="bold" />
 

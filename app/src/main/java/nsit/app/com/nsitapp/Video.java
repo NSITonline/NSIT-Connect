@@ -2,10 +2,11 @@ package nsit.app.com.nsitapp;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,7 +21,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.Objects;
 
-import adapters.VideoList_Adapter;
+import adapters.VideoListAdapter;
 import functions.ButtonAnimation;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -41,28 +42,27 @@ public class Video extends Fragment {
     private View Spinner;
     private Handler mHandler;
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
     private void populateList(JSONArray Items) {
-        listview.setAdapter(new VideoList_Adapter(activity, Items));
+        listview.setAdapter(new VideoListAdapter(activity, Items));
     }
 
     private Activity activity;
 
     @Override
-    public void onAttach(Activity activity) {
+    public void onAttach(Context activity) {
         super.onAttach(activity);
-        this.activity = activity;
+        this.activity = (Activity)activity;
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_video, container, false);
-        listview = (ListView) rootView.findViewById(R.id.videos_list);
+        listview = rootView.findViewById(R.id.videos_list);
         Spinner = rootView.findViewById(R.id.VideoProgressSpinner);
         Spinner.setVisibility(View.VISIBLE);
         mHandler = new Handler(Looper.getMainLooper());
@@ -71,32 +71,26 @@ public class Video extends Fragment {
         loadFeed();
 
         // Set up buttons for next and previous page
-        btnNextPage = (Button) rootView.findViewById(R.id.NextPageButton);
-        btnPrevPage = (Button) rootView.findViewById(R.id.PrevPageButton);
+        btnNextPage = rootView.findViewById(R.id.NextPageButton);
+        btnPrevPage = rootView.findViewById(R.id.PrevPageButton);
 
-        btnNextPage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!Objects.equals(nextPageToken, "")) {
-                    Spinner.setVisibility(View.VISIBLE);
-                    navigateTo = "next";
-                    ButtonAnimation btnAnimation = new ButtonAnimation();
-                    btnAnimation.animateButton(v, activity);
-                    loadFeed();
-                }
-
+        btnNextPage.setOnClickListener(v -> {
+            if (!Objects.equals(nextPageToken, "")) {
+                Spinner.setVisibility(View.VISIBLE);
+                navigateTo = "next";
+                ButtonAnimation btnAnimation = new ButtonAnimation();
+                btnAnimation.animateButton(v, activity);
+                loadFeed();
             }
+
         });
-        btnPrevPage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!Objects.equals(prevPageToken, "")) {
-                    Spinner.setVisibility(View.VISIBLE);
-                    navigateTo = "prev";
-                    ButtonAnimation btnAnimation = new ButtonAnimation();
-                    btnAnimation.animateButton(v, activity);
-                    loadFeed();
-                }
+        btnPrevPage.setOnClickListener(v -> {
+            if (!Objects.equals(prevPageToken, "")) {
+                Spinner.setVisibility(View.VISIBLE);
+                navigateTo = "prev";
+                ButtonAnimation btnAnimation = new ButtonAnimation();
+                btnAnimation.animateButton(v, activity);
+                loadFeed();
             }
         });
 
@@ -113,6 +107,8 @@ public class Video extends Fragment {
             uri = uri + "&pageToken=" + prevPageToken;
         }
 
+        Log.e("Video", uri);
+
         //Set up client
         OkHttpClient client = new OkHttpClient();
         //Execute request
@@ -128,8 +124,9 @@ public class Video extends Fragment {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
+                final String res = response.body().string();
                 try {
-                    JSONObject YTFeed = new JSONObject(String.valueOf(response.body().string()));
+                    JSONObject YTFeed = new JSONObject(res);
                     final JSONArray YTFeedItems = YTFeed.getJSONArray("items");
                     if (YTFeed.has("nextPageToken")) {
                         nextPageToken = YTFeed.getString("nextPageToken");
@@ -145,28 +142,18 @@ public class Video extends Fragment {
                         prevPageToken = "";
                         btnPrevPage.setAlpha(0.3f);
                     }
-                    mHandler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            populateList(YTFeedItems);
-                            Spinner.setVisibility(View.GONE);
-                        }
+                    mHandler.post(() -> {
+                        populateList(YTFeedItems);
+                        Spinner.setVisibility(View.GONE);
                     });
                 } catch (final Exception e) {
-                    mHandler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            AlertDialog alertDialog = new AlertDialog.Builder(activity).create();
-                            alertDialog.setTitle("Can't connect.");
-                            alertDialog.setMessage("We cannot connect to the internet right now. Please try again later. Exception e: " + e.toString());
-                            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                                    new DialogInterface.OnClickListener() {
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            dialog.dismiss();
-                                        }
-                                    });
-                            alertDialog.show();
-                        }
+                    mHandler.post(() -> {
+                        AlertDialog alertDialog = new AlertDialog.Builder(activity).create();
+                        alertDialog.setTitle("Can't connect.");
+                        alertDialog.setMessage("We cannot connect to the internet right now. Please try again later. Exception e: " + e.toString());
+                        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, getString(R.string.filter_dialog_ok),
+                                (dialog, which) -> dialog.dismiss());
+                        alertDialog.show();
                     });
                     Log.e("Error : ", e.getMessage());
                     e.printStackTrace();

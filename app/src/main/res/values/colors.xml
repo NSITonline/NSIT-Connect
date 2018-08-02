@@ -21,4 +21,6 @@
     <color name="calculator_selected">#01b29b</color>
     <color name="calculator_notselected">#b3b3b3</color>
 
+    <color name="black">#000000</color>
+
 </resources>

@@ -32,28 +32,28 @@
             android:name=".Description"
             android:label="@string/title_activity_decsription" />
         <activity
-            android:name=".Description_FullImage"
+            android:name=".DescriptionFullImage"
             android:label="@string/title_activity_image" />
         <activity
-            android:name=".Hangout_CollegeLocationMapView"
+            android:name=".Hangout.HangoutCollegeLocationMapView"
             android:label="LocationMapView" />
         <activity
-            android:name=".Hangout_collegeLocations"
+            android:name=".Hangout.HangoutCollegeLocations"
             android:label="LocationMapView" />
         <activity
-            android:name=".ChooseClass"
+            android:name=".Calendar.ChooseClass"
             android:label="Select" />
         <activity
             android:name=".ChooseFeedItems"
             android:label="@string/title_activity_choose_feed_items" />
         <activity
-            android:name=".SubjectsShow"
+            android:name=".subjects.SubjectsShow"
             android:label="@string/title_activity_subjects_show" />
         <activity
-            android:name=".SubjectRemove"
+            android:name=".subjects.SubjectRemove"
             android:label="@string/title_activity_subject_remove" />
         <activity
-            android:name=".ProfList"
+            android:name=".professor.ProfessorsList"
             android:label="@string/title_activity_subject_remove" />
 
         <activity android:name=".NotificationSettings"
@@ -96,43 +96,30 @@
                 android:name="android.content.SyncAdapter"
                 android:resource="@xml/syncadapter" />
         </service>
-        <receiver
-            android:name=".PushNotification.MyAlarmReceiver"
-            android:process=":remote" >
-            <intent-filter>
-                <action android:name="nsit.app.com.nsitapp.PushNotification.MyAlarmReceiver" />
-            </intent-filter>
-        </receiver>
-
-        <service
-            android:name=".PushNotification.MyNotifiactionService"
-            android:exported="false" />
-
-
         <activity
             android:name=".view.ContestDetailActivity"
             android:label="@string/title_activity_contest_detail"
-            android:parentActivityName=".view.CodeRadar_MainActivity"
+            android:parentActivityName=".view.CodeRadarActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme2">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".view.CodeRadar_MainActivity" />
+                android:value=".view.CodeRadarActivity" />
         </activity>
 
         <activity
-            android:name=".view.CodeRadar_MainActivity"
+            android:name=".view.CodeRadarActivity"
             android:label="@string/title_activity_contest_reminder"
             android:theme="@style/AppTheme2"/>
         <activity
             android:name=".PlaceMapActivity"
             android:label="Place On Map"
             android:theme="@style/AppTheme" />
-        <activity android:name=".HangoutsTypeDisplay" />
+        <activity android:name=".Hangout.HangoutsTypeDisplay" />
 
 
         <activity
-            android:name=".Sub_load"
+            android:name=".subjects.SubjectLoad"
             android:theme="@style/AppTheme" >
         </activity>
 

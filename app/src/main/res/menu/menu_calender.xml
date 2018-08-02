@@ -6,10 +6,10 @@
         android:id="@+id/subjects"
         android:icon="@drawable/ic_library_books_white_24dp"
         android:title="Subjects"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/choose"
         android:icon="@drawable/ic_settings_white"
         android:title="Select Class"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
 </menu>

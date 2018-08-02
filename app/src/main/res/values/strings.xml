@@ -87,7 +87,6 @@
     <string name="no_description">No description available.</string>
     <string name="no_url">No url available</string>
 
-
     <string-array name="branch">
         <item>Branch</item>
         <item>COE</item>
@@ -157,5 +156,16 @@
     <string name="action_show_previous_marks">Show previous marks</string>
     <string name="action_clear">clear</string>
 
+    <string name="professor">Professors</string>
+    <string name="choose_class">ChooseClass…</string>
+    <string name="loading">Loading</string>
+    <string name="loading_timetable">Fetching timetable…</string>
+    <string name="open_now">OPEN NOW</string>
+    <string name="close_now">CLOSE NOW</string>
+
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="prompt_exit">Are you sure you want to exit?</string>
+    <string name="image_saved">Image Saved to Device</string>
 </resources>
 

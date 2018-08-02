@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.CalendarContract;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.app.NavUtils;
@@ -25,10 +26,10 @@ import android.widget.Toast;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import models.Contest;
+import models.OnlineJudge;
 import nsit.app.com.nsitapp.R;
 import nsit.app.com.nsitapp.data.ContestContract;
-import nsit.app.com.nsitapp.model.Contest;
-import nsit.app.com.nsitapp.model.OnlineJudge;
 
 import static functions.Utils.getReadableDurationFromMillis;
 
@@ -113,7 +114,7 @@ public class ContestDetailFragment extends Fragment
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_contest_detail,container,false);
 
@@ -131,23 +132,23 @@ public class ContestDetailFragment extends Fragment
 
     private void bindView(View view) {
 
-        mOJCover = (RelativeLayout) view.findViewById(R.id.onlineJudge_cover);
+        mOJCover = view.findViewById(R.id.onlineJudge_cover);
 
         mBanner = view.findViewById(R.id.banner);
 
-        mOJIcon = (ImageView) view.findViewById(R.id.onlineJudge_icon);
+        mOJIcon = view.findViewById(R.id.onlineJudge_icon);
 
-        mTitleText = (TextView) view.findViewById(R.id.title_text);
-        mSourceText = (TextView) view.findViewById(R.id.source_text);
-        mDescriptionText = (TextView) view.findViewById(R.id.description_body_text);
-        mStartTimeText = (TextView) view.findViewById(R.id.start_time_body_text);
-        mDurationText = (TextView) view.findViewById(R.id.duration_body_text);
-        mURLText = (TextView) view.findViewById(R.id.url_body_text);
+        mTitleText = view.findViewById(R.id.title_text);
+        mSourceText = view.findViewById(R.id.source_text);
+        mDescriptionText = view.findViewById(R.id.description_body_text);
+        mStartTimeText = view.findViewById(R.id.start_time_body_text);
+        mDurationText = view.findViewById(R.id.duration_body_text);
+        mURLText = view.findViewById(R.id.url_body_text);
 
-        mDescriptionHeaderText = (TextView) view.findViewById(R.id.description_header_text);
-        mStartTimeHeaderText = (TextView) view.findViewById(R.id.start_time_header_text);
-        mDurationHeaderText = (TextView) view.findViewById(R.id.duration_header_text);
-        mURLHeaderText = (TextView) view.findViewById(R.id.url_header_text);
+        mDescriptionHeaderText = view.findViewById(R.id.description_header_text);
+        mStartTimeHeaderText = view.findViewById(R.id.start_time_header_text);
+        mDurationHeaderText = view.findViewById(R.id.duration_header_text);
+        mURLHeaderText = view.findViewById(R.id.url_header_text);
     }
 
     private void setThemeColor(int color) {
@@ -159,6 +160,7 @@ public class ContestDetailFragment extends Fragment
         mBanner.setBackgroundColor(color);
     }
 
+    @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle bundle) {
         return new CursorLoader(
@@ -173,7 +175,7 @@ public class ContestDetailFragment extends Fragment
 
 
     @Override
-    public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor data) {
+    public void onLoadFinished(@NonNull Loader<Cursor> cursorLoader, Cursor data) {
         if (data!=null && data.moveToFirst()) {
 
             mContest.title(data.getString(COLUMN_TITLE))
@@ -215,7 +217,7 @@ public class ContestDetailFragment extends Fragment
     }
 
     @Override
-    public void onLoaderReset(Loader<Cursor> cursorLoader) {
+    public void onLoaderReset(@NonNull Loader<Cursor> cursorLoader) {
 
     }
 

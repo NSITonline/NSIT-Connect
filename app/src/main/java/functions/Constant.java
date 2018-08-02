@@ -43,10 +43,18 @@ public interface Constant {
 
     String id = "109315262061";
 
+    String[] DEPARTMENT_LIST = new String[]{
+            "DEPARTMENT OF MANAGEMENT", "DEPARTMENT OF CHEMISTRY", "DEPARTMENT OF PHYSICS",
+            "DEPARTMENT OF MATHS", "School Of Humanities & Management",
+            "Division Of Electronics & Communication Engg",
+            "Division Of Computer Engg", "Division Of Instrumentation & Control Engg",
+            "Division Of Manufacturing Processes & Automation Engg",
+            "Division Of Information Technology",
+            "Division Of Bio-Technology", "School Of Applied Sciences"
+    };
 
-    String common_access = "CAAGZAwVFNCKgBAANhEYok6Xh7Q7UZBeTZCUqwPDLYhRZCmNn0igI8SE339jSn2zjxCpA1JUmXH" +
-            "m55XKVXslhdKKoTF3b5sLsiZBVd0ylYwX3MIGOnRyzn0T2XVywwoPKP7ML9WZCqELGRuIGxoM8ia05CiUiqcbgsb4wzTuBKkvKaqb7TPt2VnPtpr" +
-            "RZBWda4kZD";
+
+    String common_access = "EAAD4oU95i7MBAICJ3KjECgfc1vV2fISUAOejzGGH6ynp8qwVG9MrqAywpnF2CYIlhZAVF5n2yVH6ZAa4vBC5jQnFoYDhIPOvFZAZC9h1hmMDtifiqL1pGKZAJueoWLWCO4HxRdA2kjZCIQ3hm1ZALwQZBkSkl49VzDMZD";
     String id_nsitonline = "109315262061",
             id_crosslinks = "184835371535420",
             id_collegespace = "252117054812001",

@@ -3,7 +3,6 @@ package functions;
 import android.app.AlertDialog;
 import android.app.Service;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Location;
 import android.location.LocationListener;
@@ -153,19 +152,13 @@ public class GPSTracker extends Service implements LocationListener {
         //alertDialog.setIcon(R.drawable.delete);
 
         // On pressing Settings button
-        alertDialog.setPositiveButton("Settings", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                mContext.startActivity(intent);
-            }
+        alertDialog.setPositiveButton("Settings", (dialog, which) -> {
+            Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+            mContext.startActivity(intent);
         });
 
         // on pressing cancel button
-        alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
+        alertDialog.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
 
         // Showing Alert Message
         alertDialog.show();

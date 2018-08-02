@@ -1,9 +1,5 @@
 package functions;
 
-/**
- * Created by Swati garg on 04-06-2015.
- */
-
 import android.app.Activity;
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -31,6 +27,7 @@ public class Utils {
                 os.write(bytes, 0, count);
             }
         } catch (Exception ex) {
+            ex.printStackTrace();
         }
     }
 
@@ -110,7 +107,6 @@ public class Utils {
         if (millis < 0) {
             return "right now";
         }
-
         Long seconds = millis / 1000;
 
         long days = (seconds / 86400);
@@ -141,35 +137,4 @@ public class Utils {
         return "0 secs";
     }
 
-    /* private class OnPinchListener extends ScaleGestureDetector.SimpleOnScaleGestureListener
-    {
-        float currentSpan;
-        float startFocusX;
-        float startFocusY;
-
-        public boolean onScaleBegin(ScaleGestureDetector detector)
-        {
-            currentSpan = detector.getCurrentSpan();
-            startFocusX = detector.getFocusX();
-            startFocusY = detector.getFocusY();
-            return true;
-        }
-
-        public boolean onScale(ScaleGestureDetector detector)
-        {
-
-            mZoomableRelativeLayout.relativeScale(detector.getCurrentSpan() / currentSpan, startFocusX, startFocusY);
-
-            currentSpan = detector.getCurrentSpan();
-
-            return true;
-        }
-
-        public void onScaleEnd(ScaleGestureDetector detector)
-        {
-
-            mZoomableRelativeLayout.release();
-        }
-    }
-*/
 }

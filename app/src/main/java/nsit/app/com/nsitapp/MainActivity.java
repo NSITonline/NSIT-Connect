@@ -1,22 +1,17 @@
 package nsit.app.com.nsitapp;
 
 import android.app.Activity;
-import android.app.AlarmManager;
 import android.app.AlertDialog;
-import android.app.PendingIntent;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
@@ -26,27 +21,28 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import nsit.app.com.nsitapp.PushNotification.MyAlarmReceiver;
-import nsit.app.com.nsitapp.view.CodeRadar_MainActivity;
+import nsit.app.com.nsitapp.AboutUs.AboutUsFragment;
+import nsit.app.com.nsitapp.Calendar.Calendar;
+import nsit.app.com.nsitapp.Hangout.Hangouts;
+import nsit.app.com.nsitapp.professor.ProfessorsFragment;
+import nsit.app.com.nsitapp.view.CodeRadarActivity;
 
 
 public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
-    private static final String[] sideitems = new String[]{"Home", "My Feed", "Video", "TimeTable", "Locations",
+    private static final String[] sideitems = new String[]{"Home", "Video", "TimeTable", "Locations",
             "Calculator", "CodeRadar", "Professors", "Feedback", "About Us"};    //items on navigation drawer
     private Fragment current;
     public static Context appContext;
 
-    private Integer[] imageId = {
+    private final Integer[] imageId = {
             R.drawable.ic_action_home,
-            R.drawable.ic_action_tiles_large,
             R.drawable.ic_action_video,
             R.drawable.ic_action_calendar_month,
             R.drawable.ic_action_location,
@@ -61,26 +57,23 @@ public class MainActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        appContext=getApplicationContext();
+        appContext = getApplicationContext();
         setProgressBarIndeterminateVisibility(false);
 
-        scheduleAlarm();
-
-
-        if(savedInstanceState == null) {
+        if (savedInstanceState == null) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             Fragment f = new Home();
             current = f;
             ft.replace(R.id.content_frame, f);
-            getSupportActionBar().setTitle("Home");
+            getSupportActionBar().setTitle(sideitems[0]);
             ft.commit();
         }
-        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ListView mDrawerList = (ListView) findViewById(R.id.left_drawer);
+        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
+        mDrawerLayout = findViewById(R.id.drawer_layout);
+        ListView mDrawerList = findViewById(R.id.left_drawer);
 
         //All for navigation drawer
-        DrawerList_Adapter adapter2 = new DrawerList_Adapter(this, imageId);
+        DrawerListAdapter adapter2 = new DrawerListAdapter(this, imageId);
         mDrawerList.setAdapter(adapter2);
         try {
             mDrawerToggle = new ActionBarDrawerToggle(
@@ -91,19 +84,17 @@ public class MainActivity extends AppCompatActivity {
                     R.string.app_name  /* "close drawer" description */
             );
         } catch (Exception e) {
+            e.printStackTrace();
         }
-        mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                mDrawerLayout.closeDrawer(Gravity.LEFT);
-                changeItem(position);
-            }
+        mDrawerList.setOnItemClickListener((parent, view, position, id) -> {
+            mDrawerLayout.closeDrawer(Gravity.LEFT);
+            changeItem(position);
         });
 
         try {
             mDrawerLayout.setDrawerListener(mDrawerToggle);
         } catch (Exception e) {
+            e.printStackTrace();
 
         }
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -115,14 +106,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         new AlertDialog.Builder(MainActivity.this)
-                .setMessage("Are you sure you want to exit?")
+                .setMessage(R.string.prompt_exit)
                 .setCancelable(false)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        finish();
-                    }
-                })
-                .setNegativeButton("No", null)
+                .setPositiveButton(R.string.yes, (dialog, id) -> finish())
+                .setNegativeButton(R.string.no, null)
                 .show();
     }
 
@@ -134,10 +121,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (mDrawerToggle.onOptionsItemSelected(item)) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+        return mDrawerToggle.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -166,90 +150,56 @@ public class MainActivity extends AppCompatActivity {
         switch (position + 1) {
             case 1:
                 f = new Home();
-                getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                ft.replace(R.id.content_frame, f);
-                getSupportActionBar().setTitle("Home");
                 break;
-            case 2:
+            /*case 2:
                 f = new FinalFeed();
                 getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 ft.replace(R.id.content_frame, f);
                 getSupportActionBar().setTitle("My Feed");
+                break;*/
+            case 2:
+                f = new Video();
                 break;
             case 3:
-                f = new Video();
-                getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                ft.replace(R.id.content_frame, f);
-                getSupportActionBar().setTitle("Video");
+                f = new Calendar();
                 break;
             case 4:
-                f = new Calender();
-                getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                ft.replace(R.id.content_frame, f);
-                getSupportActionBar().setTitle("Time Table");
+                f = new Hangouts();
                 break;
             case 5:
-                f = new Hangouts();
-                getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                ft.replace(R.id.content_frame, f);
-                getSupportActionBar().setTitle("Hangouts");
+                f = new CalculatorActivity();
                 break;
             case 6:
-                f = new CalculatorActivity();
-                getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                ft.replace(R.id.content_frame, f);
-                getSupportActionBar().setTitle("Calculator");
-                break;
-            case 7:
-                i = new Intent(this, CodeRadar_MainActivity.class);
+                i = new Intent(this, CodeRadarActivity.class);
                 startActivity(i);
                 break;
+            case 7:
+                f = new ProfessorsFragment();
+                break;
             case 8:
-                f = new Professors();
-                getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                ft.replace(R.id.content_frame, f);
-                getSupportActionBar().setTitle("Professors List");
+                f = new Feedback();
                 break;
             case 9:
-                f = new Feedback();
-                getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                ft.replace(R.id.content_frame, f);
-                getSupportActionBar().setTitle("Feedback");
-                break;
-            case 10:
-                f = new AboutUs();
-                getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                ft.replace(R.id.content_frame, f);
-                getSupportActionBar().setTitle("About Us");
+                f = new AboutUsFragment();
                 break;
         }
         current = f;
+        if (f != null) {
+            getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            ft.replace(R.id.content_frame, f);
+            String title = sideitems[position];
+            getSupportActionBar().setTitle(title);
+        }
         ft.commit();
     }
 
-    private void scheduleAlarm() {
 
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-        boolean status = sp.getBoolean("notification_status",true);
-        if (status){
-            int timefactor = Integer.parseInt(sp.getString("notify_sync_settings","5"));
-            Intent intent = new Intent(getApplicationContext(), MyAlarmReceiver.class);
-            final PendingIntent pIntent = PendingIntent.getBroadcast(this, MyAlarmReceiver.REQUEST_CODE,
-                    intent, PendingIntent.FLAG_UPDATE_CURRENT);
-            long firstMillis = System.currentTimeMillis();
-            AlarmManager alarm = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
-            alarm.setInexactRepeating(AlarmManager.RTC_WAKEUP, firstMillis,
-                    timefactor*60000L, pIntent);
-        }
-    }
-
-
-    public class DrawerList_Adapter extends ArrayAdapter<String> {
+    public class DrawerListAdapter extends ArrayAdapter<String> {
         private final Activity context;
         private final String[] web;
         private final Integer[] imageId;
 
-        public DrawerList_Adapter(Activity context, Integer[] imageId) {
+        DrawerListAdapter(Activity context, Integer[] imageId) {
             super(context, R.layout.message, MainActivity.sideitems);
             this.context = context;
             this.web = MainActivity.sideitems;
@@ -257,23 +207,24 @@ public class MainActivity extends AppCompatActivity {
         }
 
         private class ViewHolder {
-            TextView t1;
+            TextView text;
             ImageView imag;
         }
 
+        @NonNull
         @Override
-        public View getView(int position, View view, ViewGroup parent) {
+        public View getView(int position, View view, @NonNull ViewGroup parent) {
             ViewHolder holder;
             LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
             if (view == null) {
                 view = mInflater.inflate(R.layout.message, parent, false);
                 holder = new ViewHolder();
-                holder.t1 = (TextView) view.findViewById(R.id.textView1);
-                holder.imag = (ImageView) view.findViewById(R.id.imageView1);
+                holder.text = view.findViewById(R.id.textView1);
+                holder.imag = view.findViewById(R.id.imageView1);
                 view.setTag(holder);
             } else
                 holder = (ViewHolder) view.getTag();
-            holder.t1.setText(web[position]);
+            holder.text.setText(web[position]);
             holder.imag.setImageResource(imageId[position]);
             return view;
         }

@@ -12,7 +12,7 @@ import android.support.v4.content.ContextCompat;
 public class AppPermissionChecker {
   private int permissionRequestCode;
   private PermissionRequestCallBack callBack;
-  private Activity activity;
+  private final Activity activity;
 
   public AppPermissionChecker(Activity activity) {
     this.activity = activity;

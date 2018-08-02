@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
@@ -22,9 +24,6 @@ import android.widget.AbsListView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
-import com.nispok.snackbar.Snackbar;
-import com.nispok.snackbar.SnackbarManager;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,7 +32,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import adapters.MyFeedList;
+import adapters.MyFeedFacebookPost;
 import functions.Constant;
 import functions.Utils;
 import functions.dbAdapter;
@@ -66,21 +65,20 @@ public class FinalFeed extends Fragment implements Constant {
 
     private ProgressBar progressBar;
     private SwipeRefreshLayout swipeLayout;
-    private MyFeedList adapter;
+    private MyFeedFacebookPost adapter;
     private int first = 1;  // Implies loading data for first time
     private Handler mHandler;
 
-    private List<String> list = new ArrayList<String>();
-    private List<String> list1 = new ArrayList<String>();
-    private List<String> list2 = new ArrayList<String>();
-    private List<String> list6 = new ArrayList<String>();
-    private List<String> list7 = new ArrayList<String>();
-    private List<String> list8 = new ArrayList<String>();
-    private List<String> list9 = new ArrayList<String>();
+    private final List<String> list = new ArrayList<>();
+    private final List<String> list1 = new ArrayList<>();
+    private final List<String> list2 = new ArrayList<>();
+    private final List<String> list6 = new ArrayList<>();
+    private final List<String> list7 = new ArrayList<>();
+    private final List<String> list8 = new ArrayList<>();
+    private final List<String> list9 = new ArrayList<>();
 
     private View footerView;
     private SharedPreferences sharedPreferences;
-    private SharedPreferences.Editor editor;
     private ListView listView;
 
 
@@ -93,19 +91,19 @@ public class FinalFeed extends Fragment implements Constant {
     private Activity activity;
 
     @Override
-    public void onAttach(Activity activity) {
+    public void onAttach(Context activity) {
         super.onAttach(activity);
-        this.activity = activity;
+        this.activity = (Activity)activity;
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_feedfinal, container, false);
 
         // Initialize variables
-        progressBar = (ProgressBar) rootView.findViewById(R.id.progressBar1);
-        listView = (ListView) rootView.findViewById(R.id.list);
-        swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
+        progressBar = rootView.findViewById(R.id.progressBar1);
+        listView = rootView.findViewById(R.id.list);
+        swipeLayout = rootView.findViewById(R.id.swipe_container);
         footerView = ((LayoutInflater) activity.getApplicationContext()
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.footer_layout, null, false);
         mHandler = new Handler(Looper.getMainLooper());
@@ -121,17 +119,12 @@ public class FinalFeed extends Fragment implements Constant {
         }
 
         // Set adapter
-        adapter = new MyFeedList(activity, list6, list, list2, list7, list1, list8, list9);
+        adapter = new MyFeedFacebookPost(activity, list6, list, list2, list7, list1, list8, list9);
         // fetch data for selected societies
         fetchFeed();
 
         // TODO : Refresh items on refresh layout swiped
-        swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                swipeLayout.setRefreshing(false);
-            }
-        });
+        swipeLayout.setOnRefreshListener(() -> swipeLayout.setRefreshing(false));
 
         return rootView;
     }
@@ -148,28 +141,20 @@ public class FinalFeed extends Fragment implements Constant {
 
         if (!Csi && !Collegespace && !Crosslinks && !Bullet && !Junoon && !Ieee && !Ashwa && !Quiz && !Deb
                 && !Rotaract && !Enactus && !Aagaz) {
-            SnackbarManager.show(
-                    Snackbar.with(activity.getApplicationContext())
-                            .text("No item Selected")
-                            .duration(Snackbar.SnackbarDuration.LENGTH_SHORT), activity);
+            Snackbar.make(listView, "No item Selected", Snackbar.LENGTH_LONG).show();
         } else {
 
             // If internet is available
             if (Utils.isNetworkAvailable(activity)) {
-
                 db.open();
                 db.deleteAll();
                 db.close();
-
                 // Download feed
                 downloadFeedForSociety(true);
             }
             // Internet not available Fetch data from database
             else {
-                SnackbarManager.show(
-                        Snackbar.with(activity.getApplicationContext())
-                                .text(R.string.internet_error)
-                                .duration(Snackbar.SnackbarDuration.LENGTH_SHORT), activity);
+                Snackbar.make(listView, R.string.internet_error, Snackbar.LENGTH_LONG).show();
                 db.open();
                 // Fetch from databse
                 Cursor c = db.getAllRows();
@@ -215,10 +200,7 @@ public class FinalFeed extends Fragment implements Constant {
 
                         downloadFeedForSociety(false);
                     } else {
-                        SnackbarManager.show(
-                                Snackbar.with(activity.getApplicationContext())
-                                        .text(R.string.internet_error)
-                                        .duration(Snackbar.SnackbarDuration.LENGTH_SHORT), activity);
+                        Snackbar.make(listView, R.string.internet_error, Snackbar.LENGTH_LONG).show();
 
                         db.open();
                         Cursor c = db.getAllRows();
@@ -275,39 +257,36 @@ public class FinalFeed extends Fragment implements Constant {
             @Override
             public void onResponse(Call call, final Response response) throws IOException {
                 try {
-                    mHandler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            JSONObject ob;
-                            JSONArray arr;
-                            try {
-                                ob = new JSONObject(response.body().string());
-                                arr = ob.getJSONArray("data");
-                                // Setup next variable for particular society
-                                if (ob.has("paging")) {
-                                    ob = ob.getJSONObject("paging");
-                                    if (ob.has("next"))
-                                        nextn = ob.getString("next");
-                                    else
-                                        nextn = null;
-                                } else
+                    mHandler.post(() -> {
+                        JSONObject ob;
+                        JSONArray arr;
+                        try {
+                            String res  = response.body().string();
+                            Log.v("RESPONSE", res + " ");
+                            ob = new JSONObject(res);
+                            arr = ob.getJSONArray("data");
+                            // Setup next variable for particular society
+                            if (ob.has("paging")) {
+                                ob = ob.getJSONObject("paging");
+                                if (ob.has("next"))
+                                    nextn = ob.getString("next");
+                                else
                                     nextn = null;
+                            } else
+                                nextn = null;
 
-                                // Assign next link to specific society
-                                assignNextLinkToSociety(id, nextn);
+                            // Assign next link to specific society
+                            assignNextLinkToSociety(id, nextn);
 
-                                // Populate data into lists and database
-                                populateListViewAndDatabase(arr);
+                            // Populate data into lists and database
+                            populateListViewAndDatabase(arr);
 
 
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                            if (first == 1) {
-                                done();
-                            }
+                        } catch (JSONException | IOException e) {
+                            e.printStackTrace();
+                        }
+                        if (first == 1) {
+                            done();
                         }
                     });
                 } catch (Exception e) {
@@ -525,6 +504,7 @@ public class FinalFeed extends Fragment implements Constant {
             list7.clear();
             list8.clear();
             adapter.notifyDataSetChanged();
+            SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putBoolean("item_changed", false);
             editor.apply();
             // Reload data
@@ -532,5 +512,4 @@ public class FinalFeed extends Fragment implements Constant {
         }
         super.onResume();
     }
-
 }

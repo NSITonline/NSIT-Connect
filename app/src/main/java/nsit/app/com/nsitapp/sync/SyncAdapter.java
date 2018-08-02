@@ -17,10 +17,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import functions.ContestParser;
+import models.Contest;
 import nsit.app.com.nsitapp.R;
 import nsit.app.com.nsitapp.data.ContestContract;
-import nsit.app.com.nsitapp.model.Contest;
-import nsit.app.com.nsitapp.network.StringDownloader;
 
 
 public class SyncAdapter extends AbstractThreadedSyncAdapter{

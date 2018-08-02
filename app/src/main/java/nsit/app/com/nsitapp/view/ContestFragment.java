@@ -3,9 +3,9 @@ package nsit.app.com.nsitapp.view;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
@@ -22,8 +22,8 @@ import android.view.ViewGroup;
 
 import java.util.Locale;
 
+import models.OnlineJudge;
 import nsit.app.com.nsitapp.R;
-import nsit.app.com.nsitapp.model.OnlineJudge;
 import nsit.app.com.nsitapp.view.widget.SlidingTabLayout;
 
 public class ContestFragment extends Fragment {
@@ -31,8 +31,8 @@ public class ContestFragment extends Fragment {
 
     private ViewPager mContestPager;
 
-    private ContestListFragment mRunningContestFragment = new RunningContestFragment();
-    private ContestListFragment mUpcomingContestFragment = new UpcomingContestFragment();
+    private final ContestListFragment mRunningContestFragment = new RunningContestFragment();
+    private final ContestListFragment mUpcomingContestFragment = new UpcomingContestFragment();
     private int mCurrentItem;
 
     public static final String FILTER_PREFERENCE_FILE_KEY = "nsit.app.com.nsitapp.FILTER_PREFERENCE_FILE_KEY";
@@ -61,24 +61,19 @@ public class ContestFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_contest, container, false);
         Log.v("we will win","we1");
         SectionPagerAdapter mSectionPagerAdapter = new SectionPagerAdapter(getChildFragmentManager());
 
-        mContestPager = (ViewPager) view.findViewById(R.id.contest_pager);
+        mContestPager = view.findViewById(R.id.contest_pager);
         mContestPager.setAdapter(mSectionPagerAdapter);
 
-        SlidingTabLayout mSlidingTabLayout = (SlidingTabLayout) view.findViewById(R.id.sliding_tabs);
+        SlidingTabLayout mSlidingTabLayout = view.findViewById(R.id.sliding_tabs);
         mSlidingTabLayout.setDistributeEvenly();
-        mSlidingTabLayout.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
-            @Override
-            public int getIndicatorColor(int position) {
-                return getResources().getColor(R.color.tab_scroll_color);
-            }
-        });
+        mSlidingTabLayout.setCustomTabColorizer(position -> getResources().getColor(R.color.tab_scroll_color));
         mSlidingTabLayout.setViewPager(mContestPager);
 
         Log.d("DEBUG","onCreateView()");
@@ -103,7 +98,7 @@ public class ContestFragment extends Fragment {
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState) {
+    public void onSaveInstanceState(@NonNull Bundle outState) {
         mCurrentItem = mContestPager.getCurrentItem();
         outState.putInt(VIEW_PAGER_CURRENT_ITEM,mCurrentItem);
     }
@@ -191,29 +186,21 @@ public class ContestFragment extends Fragment {
         }
 
 
+        @NonNull
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
 
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             builder.setTitle(R.string.filter_dialog_title)
-                    .setMultiChoiceItems(R.array.contest_source, mContestFlag, new DialogInterface.OnMultiChoiceClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i, boolean b) {
-                            mContestFlag[i] = b;
+                    .setMultiChoiceItems(R.array.contest_source, mContestFlag, (dialogInterface, i, b) -> mContestFlag[i] = b)
+                    .setPositiveButton(R.string.filter_dialog_ok, (dialog, id) -> {
+                        saveContestFlagToSharedPreference();
+                        if (getActivity() instanceof CodeRadarActivity) {
+                            ((CodeRadarActivity) getActivity()).onFilterChanged();
                         }
                     })
-                    .setPositiveButton(R.string.filter_dialog_ok, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            saveContestFlagToSharedPreference();
-                            if (getActivity() instanceof CodeRadar_MainActivity) {
-                                ((CodeRadar_MainActivity) getActivity()).onFilterChanged();
-                            }
-                        }
-                    })
-                    .setNegativeButton(R.string.filter_dialog_cancel, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            // Do nothing
-                        }
+                    .setNegativeButton(R.string.filter_dialog_cancel, (dialog, id) -> {
+                        // Do nothing
                     });
             return builder.create();
         }

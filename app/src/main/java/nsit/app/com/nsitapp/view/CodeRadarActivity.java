@@ -11,15 +11,14 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.transition.Fade;
 import android.transition.Slide;
+import android.view.MenuItem;
 import android.view.Window;
 import android.widget.ImageView;
 
 import nsit.app.com.nsitapp.R;
 import nsit.app.com.nsitapp.sync.SyncAdapter;
 
-
 public class CodeRadarActivity extends FragmentActivity implements ContestListFragment.Callback {
-
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +53,8 @@ public class CodeRadarActivity extends FragmentActivity implements ContestListFr
         } catch (Exception e) {
             e.printStackTrace();
         }
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setHomeButtonEnabled(true);
     }
 
     @Override
@@ -74,5 +75,13 @@ public class CodeRadarActivity extends FragmentActivity implements ContestListFr
         if (fragment instanceof ContestFragment) {
             ((ContestFragment) fragment).onFilterChanged();
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == android.R.id.home)
+            finish();
+        return super.onOptionsItemSelected(item);
     }
 }

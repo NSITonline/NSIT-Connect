@@ -9,11 +9,6 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.TranslateAnimation;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
@@ -23,12 +18,16 @@ import android.widget.TextView;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import functions.ButtonAnimation;
 import functions.Constant;
 import nsit.app.com.nsitapp.BaseActivity;
 import nsit.app.com.nsitapp.R;
 import nsit.app.com.nsitapp.helper.AppPermissionChecker;
+
+import static functions.Utils.getLocationsIdMap;
+import static functions.Utils.setAnimation;
 
 /**
  * Created by Sidharth Patro on 21-Jun-15.
@@ -38,6 +37,7 @@ public class HangoutCollegeLocations extends BaseActivity implements Constant {
     public static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
     private final ArrayList<LocationGroup> LocationsGroupsList = new ArrayList<>();
     private ExpandableListView listView;
+    private HashMap<String, Integer> locationsIdMap;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,41 +45,13 @@ public class HangoutCollegeLocations extends BaseActivity implements Constant {
         setContentView(R.layout.fragment_locations);
         listView = findViewById(R.id.locations_list);
         populateList(LocationsGroupsList);
+        locationsIdMap = getLocationsIdMap();
 
         this.listView.setOnChildClickListener((parent, v, groupPosition, childPosition, id) -> {
             ButtonAnimation btnAnimation = new ButtonAnimation();
             btnAnimation.animateButton(v, HangoutCollegeLocations.this);
             String groupType = LocationsGroupsList.get(groupPosition).GroupType;
-            Integer IconId = null;
-            switch (groupType) {
-                case "College":
-                    IconId = R.drawable.ic_school_black_24dp;
-                    break;
-                case "Campus":
-                    IconId = R.drawable.ic_business_black_24dp;
-                    break;
-                case "Hostel":
-                    IconId = R.drawable.ic_hotel_black_24dp;
-                    break;
-                case "Canteen":
-                    IconId = R.drawable.ic_local_cafe_black_24dp;
-                    break;
-                case "Stationery":
-                    IconId = R.drawable.ic_brush_black_24dp;
-                    break;
-                case "ATM":
-                    IconId = R.drawable.ic_credit_card_black_24dp;
-                    break;
-                case "WiFi":
-                    IconId = R.drawable.ic_network_wifi_black_24dp;
-                    break;
-                case "Sports":
-                    IconId = R.drawable.ic_directions_bike_black_24dp;
-                    break;
-                case "Miscellaneous":
-                    IconId = R.drawable.ic_public_black_24dp;
-                    break;
-            }
+            Integer IconId = locationsIdMap.get(groupType);
             v.setTag(groupPosition);
             ShowOnMap(v, LocationsGroupsList.get(groupPosition).Locations.get(childPosition), IconId);
             return false;
@@ -302,37 +274,7 @@ public class HangoutCollegeLocations extends BaseActivity implements Constant {
                     .findViewById(R.id.LocationsGroupHeader);
             GroupHeader.setText(headerTitle);
             ImageView GroupIcon = convertView.findViewById(R.id.GroupTypeImage);
-
-            switch (groupType) {
-                case "College":
-                    GroupIcon.setImageResource(R.drawable.ic_school_black_24dp);
-                    break;
-                case "Campus":
-                    GroupIcon.setImageResource(R.drawable.ic_business_black_24dp);
-                    break;
-                case "Hostel":
-                    GroupIcon.setImageResource(R.drawable.ic_hotel_black_24dp);
-                    break;
-                case "Canteen":
-                    GroupIcon.setImageResource(R.drawable.ic_local_cafe_black_24dp);
-                    break;
-                case "Stationery":
-                    GroupIcon.setImageResource(R.drawable.ic_brush_black_24dp);
-                    break;
-                case "ATM":
-                    GroupIcon.setImageResource(R.drawable.ic_credit_card_black_24dp);
-                    break;
-                case "WiFi":
-                    GroupIcon.setImageResource(R.drawable.ic_network_wifi_black_24dp);
-                    break;
-                case "Sports":
-                    GroupIcon.setImageResource(R.drawable.ic_directions_bike_black_24dp);
-                    break;
-                case "Miscellaneous":
-                    GroupIcon.setImageResource(R.drawable.ic_public_black_24dp);
-                    break;
-            }
-
+            GroupIcon.setImageResource(locationsIdMap.get(groupType));
             return convertView;
         }
 
@@ -345,24 +287,12 @@ public class HangoutCollegeLocations extends BaseActivity implements Constant {
                         .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 convertView = infalInflater.inflate(R.layout.locationgroup_listitem, parent, false);
             }
-
             TextView txtHeader = convertView.findViewById(R.id.LocationItem);
             txtHeader.setText(childText);
 
             if (lastExpandedGroupPosition == groupPosition) {
-                AnimationSet set = new AnimationSet(true);
-                TranslateAnimation slide = new TranslateAnimation(0, 0, -50, 0);
-                slide.setInterpolator(new DecelerateInterpolator(5.0f));
-                slide.setDuration(100);
-                Animation fade = new AlphaAnimation(0, 1.0f);
-                fade.setInterpolator(new DecelerateInterpolator(5.0f));
-                fade.setDuration(100);
-                set.addAnimation(slide);
-                set.addAnimation(fade);
-                set.setStartOffset(childPosition * 100);
-                convertView.startAnimation(set);
+                setAnimation(convertView);
             }
-
             return convertView;
         }
 

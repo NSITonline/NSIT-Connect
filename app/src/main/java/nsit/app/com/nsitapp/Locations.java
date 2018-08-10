@@ -10,11 +10,14 @@ import android.widget.ExpandableListView;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import adapters.LocationsListAdapter;
 import functions.ButtonAnimation;
 import functions.Constant;
 import nsit.app.com.nsitapp.Hangout.HangoutCollegeLocationMapView;
+
+import static functions.Utils.getLocationsIdMap;
 
 /**
  * Created by Sidharth Patro on 21-Jun-15.
@@ -23,6 +26,7 @@ public class Locations extends AppCompatActivity implements Constant {
 
     private final ArrayList<LocationGroup> LocationsGroupsList = new ArrayList<>();
     private ExpandableListView listView;
+    private HashMap<String, Integer> locationsIdMap;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -31,47 +35,19 @@ public class Locations extends AppCompatActivity implements Constant {
         setContentView(R.layout.fragment_locations);
         listView = findViewById(R.id.locations_list);
         populateList(LocationsGroupsList);
+        locationsIdMap = getLocationsIdMap();
 
         this.listView.setOnChildClickListener((parent, v, groupPosition, childPosition, id) -> {
             ButtonAnimation btnAnimation = new ButtonAnimation();
             btnAnimation.animateButton(v, Locations.this);
             String groupType = LocationsGroupsList.get(groupPosition).GroupType;
-            Integer IconId = null;
-            switch (groupType) {
-                case "College":
-                    IconId = R.drawable.ic_school_black_24dp;
-                    break;
-                case "Campus":
-                    IconId = R.drawable.ic_business_black_24dp;
-                    break;
-                case "Hostel":
-                    IconId = R.drawable.ic_hotel_black_24dp;
-                    break;
-                case "Canteen":
-                    IconId = R.drawable.ic_local_cafe_black_24dp;
-                    break;
-                case "Stationery":
-                    IconId = R.drawable.ic_brush_black_24dp;
-                    break;
-                case "ATM":
-                    IconId = R.drawable.ic_credit_card_black_24dp;
-                    break;
-                case "WiFi":
-                    IconId = R.drawable.ic_network_wifi_black_24dp;
-                    break;
-                case "Sports":
-                    IconId = R.drawable.ic_directions_bike_black_24dp;
-                    break;
-                case "Miscellaneous":
-                    IconId = R.drawable.ic_public_black_24dp;
-                    break;
-            }
+            Integer IconId = locationsIdMap.get(groupType);
             v.setTag(groupPosition);
             ShowOnMap(v, LocationsGroupsList.get(groupPosition).Locations.get(childPosition), IconId);
             return false;
         });
 
-        setTitle("College HangoutCollegeLocations");
+        setTitle("College Hangout Locations");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
     }
@@ -117,7 +93,7 @@ public class Locations extends AppCompatActivity implements Constant {
         public final String Name;
         final LatLng Coord;
 
-        public Location(String Name, LatLng Coord) {
+        Location(String Name, LatLng Coord) {
             this.Name = Name;
             this.Coord = Coord;
         }

@@ -4,6 +4,12 @@ import android.app.Activity;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.TranslateAnimation;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,7 +19,10 @@ import java.io.OutputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.TimeZone;
+
+import nsit.app.com.nsitapp.R;
 
 public class Utils {
     public static void CopyStream(InputStream is, OutputStream os) {
@@ -137,4 +146,30 @@ public class Utils {
         return "0 secs";
     }
 
+    public static void setAnimation(View view) {
+        AnimationSet set = new AnimationSet(true);
+        TranslateAnimation slide = new TranslateAnimation(-100, 0, -100, 0);
+        slide.setInterpolator(new DecelerateInterpolator(5.0f));
+        slide.setDuration(300);
+        Animation fade = new AlphaAnimation(0, 1.0f);
+        fade.setInterpolator(new DecelerateInterpolator(5.0f));
+        fade.setDuration(300);
+        set.addAnimation(slide);
+        set.addAnimation(fade);
+        view.startAnimation(set);
+    }
+
+    public static HashMap<String, Integer> getLocationsIdMap() {
+        HashMap<String, Integer> locationsIdMap = new HashMap<>();
+        locationsIdMap.put("College", R.drawable.ic_school_black_24dp);
+        locationsIdMap.put("Campus", R.drawable.ic_business_black_24dp);
+        locationsIdMap.put("Hostel", R.drawable.ic_hotel_black_24dp);
+        locationsIdMap.put("Canteen", R.drawable.ic_local_cafe_black_24dp);
+        locationsIdMap.put("Stationery", R.drawable.ic_brush_black_24dp);
+        locationsIdMap.put("ATM", R.drawable.ic_credit_card_black_24dp);
+        locationsIdMap.put("WiFi", R.drawable.ic_network_wifi_black_24dp);
+        locationsIdMap.put("Sports", R.drawable.ic_directions_bike_black_24dp);
+        locationsIdMap.put("Miscellaneous", R.drawable.ic_public_black_24dp);
+        return locationsIdMap;
+    }
 }

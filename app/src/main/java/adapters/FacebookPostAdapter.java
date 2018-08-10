@@ -7,11 +7,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.TranslateAnimation;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -26,6 +21,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import functions.ButtonAnimation;
 import functions.Utils;
 import nsit.app.com.nsitapp.Description;
@@ -37,6 +34,7 @@ import static functions.Constant.IMAGE;
 import static functions.Constant.LIKE;
 import static functions.Constant.LINK;
 import static functions.Constant.OBID;
+import static functions.Utils.setAnimation;
 
 
 public class FacebookPostAdapter extends ArrayAdapter<String> {
@@ -66,11 +64,25 @@ public class FacebookPostAdapter extends ArrayAdapter<String> {
         date = dates;
     }
 
-    private class ViewHolder {
-        TextView Des, likes, dates, read;
+    public class ViewHolder {
+        @BindView(R.id.des)
+        TextView Des;
+        @BindView(R.id.likes)
+        TextView likes;
+        @BindView(R.id.date)
+        TextView dates;
+        @BindView(R.id.read)
+        TextView read;
+        @BindView(R.id.image)
         ImageView imageView;
+        @BindView(R.id.frame)
         FrameLayout frameLayout;
+        @BindView(R.id.show)
         Button button;
+
+        ViewHolder(View view) {
+            ButterKnife.bind(this, view);
+        }
     }
 
     @NonNull
@@ -80,14 +92,7 @@ public class FacebookPostAdapter extends ArrayAdapter<String> {
         LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         if (view == null) {
             view = mInflater.inflate(R.layout.message_layout, parent, false);
-            holder = new ViewHolder();
-            holder.Des = view.findViewById(R.id.des);
-            holder.likes = view.findViewById(R.id.likes);
-            holder.dates = view.findViewById(R.id.date);
-            holder.read = view.findViewById(R.id.read);
-            holder.imageView = view.findViewById(R.id.image);
-            holder.frameLayout = view.findViewById(R.id.frame);
-            holder.button = view.findViewById(R.id.show);
+            holder = new ViewHolder(view);
             view.setTag(holder);
         } else
             holder = (ViewHolder) view.getTag();
@@ -147,17 +152,7 @@ public class FacebookPostAdapter extends ArrayAdapter<String> {
             holder.frameLayout.setVisibility(View.GONE);
         }
 
-        AnimationSet set = new AnimationSet(true);
-        TranslateAnimation slide = new TranslateAnimation(-100, 0, -100, 0);
-        slide.setInterpolator(new DecelerateInterpolator(5.0f));
-        slide.setDuration(300);
-        Animation fade = new AlphaAnimation(0, 1.0f);
-        fade.setInterpolator(new DecelerateInterpolator(5.0f));
-        fade.setDuration(300);
-        set.addAnimation(slide);
-        set.addAnimation(fade);
-        view.startAnimation(set);
-
+        setAnimation(view);
         return view;
     }
 }

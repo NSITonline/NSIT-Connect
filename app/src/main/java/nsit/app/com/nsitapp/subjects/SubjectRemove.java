@@ -15,11 +15,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.TranslateAnimation;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -34,6 +29,8 @@ import functions.ButtonAnimation;
 import functions.DBhelp;
 import functions.TableEntry;
 import nsit.app.com.nsitapp.R;
+
+import static functions.Utils.setAnimation;
 
 
 public class SubjectRemove extends AppCompatActivity {
@@ -176,16 +173,7 @@ public class SubjectRemove extends AppCompatActivity {
                 builder.show();
             });
 
-            AnimationSet set = new AnimationSet(true);
-            TranslateAnimation slide = new TranslateAnimation(-100, 0, -100, 0);
-            slide.setInterpolator(new DecelerateInterpolator(5.0f));
-            slide.setDuration(300);
-            Animation fade = new AlphaAnimation(0, 1.0f);
-            fade.setInterpolator(new DecelerateInterpolator(5.0f));
-            fade.setDuration(300);
-            set.addAnimation(slide);
-            set.addAnimation(fade);
-            view.startAnimation(set);
+            setAnimation(view);
             return view;
         }
 

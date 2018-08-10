@@ -5,11 +5,6 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.TranslateAnimation;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -25,6 +20,8 @@ import butterknife.ButterKnife;
 import models.HangoutTypeObject;
 import nsit.app.com.nsitapp.PlaceMapActivity;
 import nsit.app.com.nsitapp.R;
+
+import static functions.Utils.setAnimation;
 
 public class HangoutTypeAdapter extends BaseAdapter {
 
@@ -102,16 +99,7 @@ public class HangoutTypeAdapter extends BaseAdapter {
             mContext.startActivity(intent);
         });
 
-        AnimationSet set = new AnimationSet(true);
-        TranslateAnimation slide = new TranslateAnimation(-200, 0, -200, 0);
-        slide.setInterpolator(new DecelerateInterpolator(5.0f));
-        slide.setDuration(300);
-        Animation fade = new AlphaAnimation(0, 1.0f);
-        fade.setInterpolator(new DecelerateInterpolator(5.0f));
-        fade.setDuration(300);
-        set.addAnimation(slide);
-        set.addAnimation(fade);
-        convertview.startAnimation(set);
+        setAnimation(convertview);
         return convertview;
     }
 

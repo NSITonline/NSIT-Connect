@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import models.ProfListRowItem;
 import nsit.app.com.nsitapp.R;
 
@@ -29,10 +31,14 @@ public class ProfListCustomListViewAdapter extends ArrayAdapter<ProfListRowItem>
         profListRowItems = items;
     }
 
-    private class ViewHolder {
-        TextView txtName;
-        TextView txtPhone;
-        TextView txtEmail;
+    static class ViewHolder {
+        @BindView(R.id.tvname) TextView txtName;
+        @BindView(R.id.tvphone) TextView txtPhone;
+        @BindView(R.id.tvemail) TextView txtEmail;
+
+        public ViewHolder(View view){
+            ButterKnife.bind(this, view);
+        }
     }
 
     @NonNull
@@ -44,10 +50,10 @@ public class ProfListCustomListViewAdapter extends ArrayAdapter<ProfListRowItem>
                 .getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         if (convertView == null) {
             convertView = mInflater.inflate(R.layout.prof_list_item, parent, false);
-            holder = new ViewHolder();
-            holder.txtName = convertView.findViewById(R.id.tvname);
-            holder.txtPhone = convertView.findViewById(R.id.tvphone);
-            holder.txtEmail = convertView.findViewById(R.id.tvemail);
+            holder = new ViewHolder(convertView);
+//            holder.txtName = convertView.findViewById(R.id.tvname);
+//            holder.txtPhone = convertView.findViewById(R.id.tvphone);
+//            holder.txtEmail = convertView.findViewById(R.id.tvemail);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();

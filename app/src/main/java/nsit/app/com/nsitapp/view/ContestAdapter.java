@@ -10,6 +10,8 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import models.OnlineJudge;
 import nsit.app.com.nsitapp.R;
 
@@ -59,18 +61,19 @@ class ContestAdapter extends CursorAdapter {
     }
 
     public static class ViewHolder {
-        public final ImageView mOJImage;
-        public final TextView mTitleText;
-        public final TextView mSourceText;
-        public final TextView mTimeText;
-        public final FrameLayout mItemContainer;
+        @BindView(R.id.onlineJudge_image) ImageView mOJImage;
+        @BindView(R.id.contestName_textView) TextView mTitleText;
+        @BindView(R.id.onlineJudge_textView) TextView mSourceText;
+        @BindView(R.id.timeBeforeContest_textView) TextView mTimeText;
+        @BindView(R.id.contest_item_container) FrameLayout mItemContainer;
 
         public ViewHolder(View view) {
-            mOJImage = view.findViewById(R.id.onlineJudge_image);
-            mTitleText = view.findViewById(R.id.contestName_textView);
-            mSourceText = view.findViewById(R.id.onlineJudge_textView);
-            mTimeText = view.findViewById(R.id.timeBeforeContest_textView);
-            mItemContainer = view.findViewById(R.id.contest_item_container);
+            ButterKnife.bind(this, view);
+//            mOJImage = view.findViewById(R.id.onlineJudge_image);
+//            mTitleText = view.findViewById(R.id.contestName_textView);
+//            mSourceText = view.findViewById(R.id.onlineJudge_textView);
+//            mTimeText = view.findViewById(R.id.timeBeforeContest_textView);
+//            mItemContainer = view.findViewById(R.id.contest_item_container);
         }
     }
 

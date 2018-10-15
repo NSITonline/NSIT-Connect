@@ -30,6 +30,8 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import functions.Constant;
 import functions.Utils;
 import models.SubjectObject;
@@ -58,7 +60,7 @@ public class Calendar extends Fragment implements Constant {
     private static final ArrayList<SubjectObject> p9 = new ArrayList<>();
 
     private CalendarAdapter adapter;
-    private RecyclerView recyclerView;
+    @BindView(R.id.lvItems) RecyclerView recyclerView;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
     private Activity activity;
@@ -82,7 +84,9 @@ public class Calendar extends Fragment implements Constant {
         View rootView = inflater.inflate(R.layout.fragment_calendar, container, false);
         view = rootView;
 
-        recyclerView = rootView.findViewById(R.id.lvItems);
+        ButterKnife.bind(this, rootView);
+
+        //recyclerView = rootView.findViewById(R.id.lvItems);
         mHandler = new Handler(Looper.getMainLooper());
 
         if (activity == null)

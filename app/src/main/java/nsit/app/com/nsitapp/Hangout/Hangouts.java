@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import nsit.app.com.nsitapp.R;
 
 /**
@@ -19,6 +21,17 @@ public class Hangouts extends Fragment implements View.OnClickListener {
     public static final String CHOICE_TYPE = "Choice";
     private int choice = -1;
 
+    @BindView(R.id.hang_college) LinearLayout hcollege;
+    @BindView(R.id.hang_restaurant) LinearLayout hresturant;
+    @BindView(R.id.hang_cafe) LinearLayout hcafes;
+    @BindView(R.id.hang_nightclub) LinearLayout hnightclub;
+    @BindView(R.id.hang_shoppingmalls) LinearLayout hmalls;
+    @BindView(R.id.hang_bowling) LinearLayout hbowling;
+    @BindView(R.id.hang_movies) LinearLayout hmovies;
+    @BindView(R.id.hang_food) LinearLayout hfood;
+    @BindView(R.id.hang_amusment) LinearLayout hapark;
+    @BindView(R.id.hang_park) LinearLayout hpark;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,16 +40,17 @@ public class Hangouts extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rooview = inflater.inflate(R.layout.fragment_hangouts, container, false);
-        LinearLayout hcollege = rooview.findViewById(R.id.hang_college);
-        LinearLayout hresturant = rooview.findViewById(R.id.hang_restaurant);
-        LinearLayout hcafes = rooview.findViewById(R.id.hang_cafe);
-        LinearLayout hnightclub = rooview.findViewById(R.id.hang_nightclub);
-        LinearLayout hmalls = rooview.findViewById(R.id.hang_shoppingmalls);
-        LinearLayout hbowling = rooview.findViewById(R.id.hang_bowling);
-        LinearLayout hmovies = rooview.findViewById(R.id.hang_movies);
-        LinearLayout hfood = rooview.findViewById(R.id.hang_food);
-        LinearLayout hapark = rooview.findViewById(R.id.hang_amusment);
-        LinearLayout hpark = rooview.findViewById(R.id.hang_park);
+        ButterKnife.bind(this, rooview);
+//        LinearLayout hcollege = rooview.findViewById(R.id.hang_college);
+//        LinearLayout hresturant = rooview.findViewById(R.id.hang_restaurant);
+//        LinearLayout hcafes = rooview.findViewById(R.id.hang_cafe);
+//        LinearLayout hnightclub = rooview.findViewById(R.id.hang_nightclub);
+//        LinearLayout hmalls = rooview.findViewById(R.id.hang_shoppingmalls);
+//        LinearLayout hbowling = rooview.findViewById(R.id.hang_bowling);
+//        LinearLayout hmovies = rooview.findViewById(R.id.hang_movies);
+//        LinearLayout hfood = rooview.findViewById(R.id.hang_food);
+//        LinearLayout hapark = rooview.findViewById(R.id.hang_amusment);
+//        LinearLayout hpark = rooview.findViewById(R.id.hang_park);
 
         hcollege.setOnClickListener(this);
         hresturant.setOnClickListener(this);

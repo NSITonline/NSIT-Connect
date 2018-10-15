@@ -26,16 +26,46 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import nsit.app.com.nsitapp.subjects.SubjectLoad;
 
 import static nsit.app.com.nsitapp.R.id.per;
 
 public class CalculatorActivity extends Fragment {
 
-    private Spinner branchSpinner, semSpinner;
-    private TextView PR5textView, VS1textView, VS2textView, PR4textView, TH4textView, TH5textView, TH1textView, TH2textView, TH3textView, PR3textView, PR2textView, PR1textView, resultTextView;
+    @BindView(R.id.spinb) Spinner branchSpinner;
+    @BindView(R.id.spins) Spinner semSpinner;
+    //private TextView PR5textView, VS1textView, VS2textView, PR4textView, TH4textView, TH5textView, TH1textView, TH2textView, TH3textView, PR3textView, PR2textView, PR1textView, resultTextView;
     private double TH1 = -1.0, TH2 = -1.0, TH3 = -1.0, TH4 = -1.0, TH5 = -1.0, PR1 = -1.0, PR2 = -1.0, PR3 = -1.0, PR4 = -1.0, PR5 = -1.0, VS1 = -1.0, VS2 = -1.0;
-    private EditText TH1editText, TH2editText, TH3editText, TH4editText, TH5editText, PR1editText, PR2editText, PR3editText, PR4editText, PR5editText, VS1editText, VS2editText;
+    //private EditText TH1editText, TH2editText, TH3editText, TH4editText, TH5editText, PR1editText, PR2editText, PR3editText, PR4editText, PR5editText, VS1editText, VS2editText;
+    @BindView(R.id.one) EditText TH1editText;
+    @BindView(R.id.two) EditText TH2editText;
+    @BindView(R.id.three) EditText TH3editText;
+    @BindView(R.id.four) EditText TH4editText;
+    @BindView(R.id.five) EditText TH5editText;
+    @BindView(R.id.six) EditText PR1editText;
+    @BindView(R.id.seven) EditText PR2editText;
+    @BindView(R.id.eight) EditText PR3editText;
+    @BindView(R.id.nine) EditText PR4editText;
+    @BindView(R.id.ten) EditText PR5editText;
+    @BindView(R.id.eleven) EditText VS1editText;
+    @BindView(R.id.twelve) EditText VS2editText;
+    @BindView(R.id.tv10) TextView PR5textView;
+    @BindView(R.id.tv11) TextView VS1textView;
+    @BindView(R.id.tv12) TextView VS2textView;
+    @BindView(R.id.tv9) TextView PR4textView;
+    @BindView(R.id.tv4) TextView TH4textView;
+    @BindView(R.id.tv5) TextView TH5textView;
+    @BindView(R.id.tv1) TextView TH1textView;
+    @BindView(R.id.tv2) TextView TH2textView;
+    @BindView(R.id.tv3) TextView TH3textView;
+    @BindView(R.id.tv8) TextView PR3textView;
+    @BindView(R.id.tv7) TextView PR2textView;
+    @BindView(R.id.tv6) TextView PR1textView;
+    @BindView(R.id.per) TextView resultTextView;
+    @BindView(R.id.button) Button b;
+    @BindView(R.id.buttC) Button c;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -46,46 +76,47 @@ public class CalculatorActivity extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.activity_calculator, container, false);
-        branchSpinner = rootView.findViewById(R.id.spinb);
+//        branchSpinner = rootView.findViewById(R.id.spinb);
+        ButterKnife.bind(this, rootView);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.branch, android.R.layout.simple_list_item_1);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         branchSpinner.setAdapter(adapter);
-        TH1editText = rootView.findViewById(R.id.one);
-        TH2editText = rootView.findViewById(R.id.two);
-        TH3editText = rootView.findViewById(R.id.three);
-        TH4editText = rootView.findViewById(R.id.four);
-        TH5editText = rootView.findViewById(R.id.five);
-        PR1editText = rootView.findViewById(R.id.six);
-        PR2editText = rootView.findViewById(R.id.seven);
-        PR3editText = rootView.findViewById(R.id.eight);
-        PR4editText = rootView.findViewById(R.id.nine);
-        PR5editText = rootView.findViewById(R.id.ten);
-        VS1editText = rootView.findViewById(R.id.eleven);
-        VS2editText = rootView.findViewById(R.id.twelve);
-        resultTextView = rootView.findViewById(per);
-        Button b = rootView.findViewById(R.id.button);
+//        TH1editText = rootView.findViewById(R.id.one);
+//        TH2editText = rootView.findViewById(R.id.two);
+//        TH3editText = rootView.findViewById(R.id.three);
+//        TH4editText = rootView.findViewById(R.id.four);
+//        TH5editText = rootView.findViewById(R.id.five);
+//        PR1editText = rootView.findViewById(R.id.six);
+//        PR2editText = rootView.findViewById(R.id.seven);
+//        PR3editText = rootView.findViewById(R.id.eight);
+//        PR4editText = rootView.findViewById(R.id.nine);
+//        PR5editText = rootView.findViewById(R.id.ten);
+//        VS1editText = rootView.findViewById(R.id.eleven);
+//        VS2editText = rootView.findViewById(R.id.twelve);
+//        resultTextView = rootView.findViewById(per);
+//        b = rootView.findViewById(R.id.button);
         b.setOnClickListener(v -> {
             Intent i = new Intent(getActivity(), SubjectLoad.class);
             startActivity(i);
 
         });
 
-        b = rootView.findViewById(R.id.buttC);
-        b.setOnClickListener(v -> onCalculate(rootView));
+//        Button c = rootView.findViewById(R.id.buttC);
+        c.setOnClickListener(v -> onCalculate(rootView));
 
 
-        PR5textView = rootView.findViewById(R.id.tv10);
-        VS1textView = rootView.findViewById(R.id.tv11);
-        VS2textView = rootView.findViewById(R.id.tv12);
-        PR4textView = rootView.findViewById(R.id.tv9);
-        TH4textView = rootView.findViewById(R.id.tv4);
-        TH5textView = rootView.findViewById(R.id.tv5);
-        TH1textView = rootView.findViewById(R.id.tv1);
-        TH2textView = rootView.findViewById(R.id.tv2);
-        TH3textView = rootView.findViewById(R.id.tv3);
-        PR3textView = rootView.findViewById(R.id.tv8);
-        PR2textView = rootView.findViewById(R.id.tv7);
-        PR1textView = rootView.findViewById(R.id.tv6);
+//        PR5textView = rootView.findViewById(R.id.tv10);
+//        VS1textView = rootView.findViewById(R.id.tv11);
+//        VS2textView = rootView.findViewById(R.id.tv12);
+//        PR4textView = rootView.findViewById(R.id.tv9);
+//        TH4textView = rootView.findViewById(R.id.tv4);
+//        TH5textView = rootView.findViewById(R.id.tv5);
+//        TH1textView = rootView.findViewById(R.id.tv1);
+//        TH2textView = rootView.findViewById(R.id.tv2);
+//        TH3textView = rootView.findViewById(R.id.tv3);
+//        PR3textView = rootView.findViewById(R.id.tv8);
+//        PR2textView = rootView.findViewById(R.id.tv7);
+//        PR1textView = rootView.findViewById(R.id.tv6);
         setColoredTextView(PR1textView, R.color.calculator_selected);
         setColoredTextView(PR2textView, R.color.calculator_selected);
         setColoredTextView(PR3textView, R.color.calculator_selected);
@@ -98,7 +129,7 @@ public class CalculatorActivity extends Fragment {
         setColoredTextView(TH5textView, R.color.calculator_selected);
         setColoredTextView(VS1textView, R.color.calculator_selected);
         setColoredTextView(VS2textView, R.color.calculator_selected);
-        semSpinner = rootView.findViewById(R.id.spins);
+//        semSpinner = rootView.findViewById(R.id.spins);
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(getActivity(), R.array.semester, android.R.layout.simple_list_item_1);
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 

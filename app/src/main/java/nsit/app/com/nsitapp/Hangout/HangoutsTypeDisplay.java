@@ -22,6 +22,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import functions.GPSTracker;
 import functions.Utils;
 import models.HangoutTypeObject;
@@ -44,26 +46,28 @@ public class HangoutsTypeDisplay extends AppCompatActivity {
     private final String[] searches = {"restaurant", "cafe", "night_club", "shopping_mall", "bowling_alley", "movie_theater", "food", "amusement_park", "park"};
     private int choice = -1;
     private int progress = 0;
-    private ProgressBar progressBar;
+    @BindView(R.id.progress) ProgressBar progressBar;
     private ArrayList<HangoutTypeObject> objects;
     private HangoutTypeAdapter displayAdapter;
     private TextView radiusTextView;
+    @BindView(R.id.hangout_type_display_list) ListView display_list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.hangout_type_display_activity);
+        ButterKnife.bind(this);
         choice = getIntent().getIntExtra(Hangouts.CHOICE_TYPE, 0);
         getSupportActionBar().setTitle("   " + HangoutPlaces[choice]);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.drawable.ic_people_white_36dp);
         objects = new ArrayList<>();
 
-        ListView display_list = findViewById(R.id.hangout_type_display_list);
+        //ListView display_list = findViewById(R.id.hangout_type_display_list);
         displayAdapter = new HangoutTypeAdapter(this, objects);
         display_list.setAdapter(displayAdapter);
 
-        progressBar = findViewById(R.id.progress);
+        //progressBar = findViewById(R.id.progress);
 
         if (Utils.isNetworkAvailable(this))
             new HttpGetInfo().execute();

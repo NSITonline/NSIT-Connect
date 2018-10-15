@@ -30,6 +30,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import functions.ButtonAnimation;
 import functions.Constant;
 import functions.DBhelp;
@@ -43,6 +45,7 @@ public class SubjectsShow extends AppCompatActivity implements Constant {
     private final ArrayList<String> list1 = new ArrayList<>();
     private final ArrayList<String> list2 = new ArrayList<>();
     private SubjectsAdapter subjectsAdapter;
+    @BindView(R.id.list) ListView lv;
 
     @Override
     protected void onResume() {
@@ -54,7 +57,8 @@ public class SubjectsShow extends AppCompatActivity implements Constant {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subjects_show);
-        ListView lv = findViewById(R.id.list);
+        ButterKnife.bind(this);
+//        ListView lv = findViewById(R.id.list);
 
         setTitle("Attendance");
 
@@ -144,8 +148,12 @@ public class SubjectsShow extends AppCompatActivity implements Constant {
     public class SubjectsAdapter extends ArrayAdapter<String> {
         private final Activity context;
         private final ArrayList<String> code, title;
-        TextView cod, tit, att, msg;
-        LinearLayout add, rem;
+        @BindView(R.id.code) TextView cod;
+        @BindView(R.id.title) TextView tit;
+        @BindView(R.id.attendance) TextView att;
+        @BindView(R.id.message) TextView msg;
+        @BindView(R.id.add) LinearLayout add;
+        @BindView(R.id.rem) LinearLayout rem;
 
         SubjectsAdapter(Activity context, ArrayList<String> a, ArrayList<String> b) {
             super(context, R.layout.subject_list_item, a);
@@ -159,12 +167,13 @@ public class SubjectsShow extends AppCompatActivity implements Constant {
         public View getView(final int position, View view2, @NonNull ViewGroup parent) {
             LayoutInflater inflater = context.getLayoutInflater();
             View view = inflater.inflate(R.layout.subject_list_item, null, true);
-            cod = view.findViewById(R.id.code);
-            tit = view.findViewById(R.id.title);
-            att = view.findViewById(R.id.attendance);
-            msg = view.findViewById(R.id.message);
-            add = view.findViewById(R.id.add);
-            rem = view.findViewById(R.id.rem);
+            ButterKnife.bind(this, view);
+//            cod = view.findViewById(R.id.code);
+//            tit = view.findViewById(R.id.title);
+//            att = view.findViewById(R.id.attendance);
+//            msg = view.findViewById(R.id.message);
+//            add = view.findViewById(R.id.add);
+//            rem = view.findViewById(R.id.rem);
 
             cod.setText(code.get(position));
             tit.setText(title.get(position));

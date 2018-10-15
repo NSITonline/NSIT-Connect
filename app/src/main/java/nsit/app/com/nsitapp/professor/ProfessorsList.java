@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import functions.Constant;
 import models.ProfListRowItem;
@@ -22,6 +23,9 @@ import nsit.app.com.nsitapp.R;
 
 
 public class ProfessorsList extends AppCompatActivity implements Constant {
+
+    @BindView(R.id.profListView) ListView listView;
+    @BindView(R.id.textView) TextView tv;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,10 +39,10 @@ public class ProfessorsList extends AppCompatActivity implements Constant {
 
         setTitle(R.string.professor);
 
-        ListView listView;
-        listView = findViewById(R.id.profListView);
-        listView.setTextFilterEnabled(true);
-        TextView tv = findViewById(R.id.textView);
+//        ListView listView;
+//        listView = findViewById(R.id.profListView);
+//        listView.setTextFilterEnabled(true);
+//        TextView tv = findViewById(R.id.textView);
 
         List<ProfListRowItem> profListRowItems = new ArrayList<>();
 

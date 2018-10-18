@@ -23,6 +23,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import butterknife.BindView;
 import functions.Constant;
 import functions.TouchImageView;
 import functions.Utils;
@@ -34,7 +35,7 @@ import okhttp3.Response;
 
 public class DescriptionFullImage extends AppCompatActivity implements Constant {
     private String img, obid;
-    private TouchImageView touchImageView;
+    @BindView(R.id.iv) TouchImageView touchImageView;
     private Handler mHandler;
 
     @Override
@@ -44,7 +45,6 @@ public class DescriptionFullImage extends AppCompatActivity implements Constant 
         Intent intent = getIntent();
         img = intent.getStringExtra(IMAGE);
         obid = intent.getStringExtra(OBID);
-        touchImageView = findViewById(R.id.iv);
         mHandler = new Handler(Looper.getMainLooper());
         setTitle("Image");
 

@@ -15,6 +15,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import models.OJManager;
 import models.OnlineJudge;
 import nsit.app.com.nsitapp.R;
@@ -54,17 +56,16 @@ public class OnlineJudgeListFragment extends Fragment {
     }
 
 
-    private class OnlineJudgeListAdapter extends
+    class OnlineJudgeListAdapter extends
             RecyclerView.Adapter<OnlineJudgeListAdapter.ViewHolder> {
 
         public class ViewHolder extends RecyclerView.ViewHolder {
-            public final ImageView mOnlineJudgeCover;
-            public final TextView mOnlineJudgeName;
+            @BindView(R.id.onlineJudge_cover) ImageView mOnlineJudgeCover;
+            @BindView(R.id.onlineJudge_name) TextView mOnlineJudgeName;
 
             public ViewHolder(View view) {
                 super(view);
-                mOnlineJudgeCover = view.findViewById(R.id.onlineJudge_cover);
-                mOnlineJudgeName = view.findViewById(R.id.onlineJudge_name);
+                ButterKnife.bind(this, view);
             }
         }
 

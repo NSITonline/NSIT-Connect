@@ -22,6 +22,9 @@ import java.io.IOException;
 import java.util.Objects;
 
 import adapters.VideoListAdapter;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import functions.ButtonAnimation;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -33,13 +36,13 @@ import okhttp3.Response;
  * Created by Sidharth Patro on 21-Jun-15.
  */
 public class Video extends Fragment {
-    private ListView listview;
+    @BindView(R.id.videos_list) ListView listview;
     private String nextPageToken = "";
     private String prevPageToken = "";
     private String navigateTo = "next";
-    private Button btnNextPage;
-    private Button btnPrevPage;
-    private View Spinner;
+    @BindView(R.id.NextPageButton) Button btnNextPage;
+    @BindView(R.id.PrevPageButton) Button btnPrevPage;
+    @BindView(R.id.VideoProgressSpinner) View Spinner;
     private Handler mHandler;
 
     @Override
@@ -62,39 +65,36 @@ public class Video extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_video, container, false);
-        listview = rootView.findViewById(R.id.videos_list);
-        Spinner = rootView.findViewById(R.id.VideoProgressSpinner);
+        ButterKnife.bind(this, rootView);
         Spinner.setVisibility(View.VISIBLE);
         mHandler = new Handler(Looper.getMainLooper());
 
         // Loading videos initially
         loadFeed();
 
-        // Set up buttons for next and previous page
-        btnNextPage = rootView.findViewById(R.id.NextPageButton);
-        btnPrevPage = rootView.findViewById(R.id.PrevPageButton);
-
-        btnNextPage.setOnClickListener(v -> {
-            if (!Objects.equals(nextPageToken, "")) {
-                Spinner.setVisibility(View.VISIBLE);
-                navigateTo = "next";
-                ButtonAnimation btnAnimation = new ButtonAnimation();
-                btnAnimation.animateButton(v, activity);
-                loadFeed();
-            }
-
-        });
-        btnPrevPage.setOnClickListener(v -> {
-            if (!Objects.equals(prevPageToken, "")) {
-                Spinner.setVisibility(View.VISIBLE);
-                navigateTo = "prev";
-                ButtonAnimation btnAnimation = new ButtonAnimation();
-                btnAnimation.animateButton(v, activity);
-                loadFeed();
-            }
-        });
 
         return rootView;
+    }
+
+    @OnClick(R.id.NextPageButton)
+    public void onNextPageButtonClicked(View v){
+        if (!Objects.equals(nextPageToken, "")) {
+            Spinner.setVisibility(View.VISIBLE);
+            navigateTo = "next";
+            ButtonAnimation btnAnimation = new ButtonAnimation();
+            btnAnimation.animateButton(v, activity);
+            loadFeed();
+        }
+    }
+    @OnClick(R.id.PrevPageButton)
+    public void onPrevPageButtonClicked(View v){
+        if (!Objects.equals(prevPageToken, "")) {
+            Spinner.setVisibility(View.VISIBLE);
+            navigateTo = "prev";
+            ButtonAnimation btnAnimation = new ButtonAnimation();
+            btnAnimation.animateButton(v, activity);
+            loadFeed();
+        }
     }
 
     private void loadFeed() {

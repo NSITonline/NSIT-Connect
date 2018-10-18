@@ -25,6 +25,8 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import functions.Constant;
 import functions.GPSTracker;
 import functions.Utils;
@@ -38,18 +40,24 @@ public class HangoutCollegeLocationMapView extends Activity implements Constant,
     private String OriginLong;
     private String DestinationLat;
     private String DestinationLong;
-    private ProgressBar MapSpinner;
+    @BindView(R.id.MapProgressBar) ProgressBar MapSpinner;
     private GoogleMap mGoogleMap;
     private String des;
 
     Integer locationIcon;
     String LocationName;
 
+    @BindView(R.id.LocDescription) TextView desc;
+    @BindView(R.id.LocationTitle) TextView txtHeader;
+    @BindView(R.id.LocationDistance) TextView txtLocationDistance;
+    @BindView(R.id.TimeDrive) TextView txtTimeDrive;
+    @BindView(R.id.TimeWalk) TextView txtTimeWalk;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.map_view);
-        MapSpinner = findViewById(R.id.MapProgressBar);
+        ButterKnife.bind(this);
         MapSpinner.setVisibility(View.VISIBLE);
         Bundle extras = getIntent().getExtras();
         Log.e("extras", extras.toString() + " ");
@@ -135,10 +143,11 @@ public class HangoutCollegeLocationMapView extends Activity implements Constant,
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        TextView desc = findViewById(R.id.LocDescription);
         desc.setText(des);
         locationIcon = extras.getInt(LOCATION_ICON);
-        TextView txtHeader = findViewById(R.id.LocationTitle);
+        //Due to permission needs to be set this way
+        txtHeader = findViewById(R.id.LocationTitle);
+
         this.DestinationLat = LocationLat;
         this.DestinationLong = LocationLong;
         LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -221,9 +230,6 @@ public class HangoutCollegeLocationMapView extends Activity implements Constant,
                 String Distance = DriveObject.getJSONArray("routes").getJSONObject(0).getJSONArray("legs").getJSONObject(0).getJSONObject("distance").getString("text");
                 String TimeDrive = DriveObject.getJSONArray("routes").getJSONObject(0).getJSONArray("legs").getJSONObject(0).getJSONObject("duration").getString("text");
                 String TimeWalk = WalkObject.getJSONArray("routes").getJSONObject(0).getJSONArray("legs").getJSONObject(0).getJSONObject("duration").getString("text");
-                TextView txtLocationDistance = findViewById(R.id.LocationDistance);
-                TextView txtTimeDrive = findViewById(R.id.TimeDrive);
-                TextView txtTimeWalk = findViewById(R.id.TimeWalk);
                 txtLocationDistance.setText(Distance);
                 txtTimeDrive.setText(TimeDrive);
                 txtTimeWalk.setText(TimeWalk);

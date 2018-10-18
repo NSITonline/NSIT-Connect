@@ -26,6 +26,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import nsit.app.com.nsitapp.AboutUs.AboutUsFragment;
 import nsit.app.com.nsitapp.Calendar.Calendar;
 import nsit.app.com.nsitapp.Hangout.Hangouts;
@@ -206,9 +208,12 @@ public class MainActivity extends AppCompatActivity {
             this.imageId = imageId;
         }
 
-        private class ViewHolder {
-            TextView text;
-            ImageView imag;
+        class ViewHolder {
+            @BindView(R.id.textView1) TextView text;
+            @BindView(R.id.imageView1) ImageView imag;
+            ViewHolder(View view){
+                ButterKnife.bind(this, view);
+            }
         }
 
         @NonNull
@@ -218,9 +223,7 @@ public class MainActivity extends AppCompatActivity {
             LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
             if (view == null) {
                 view = mInflater.inflate(R.layout.message, parent, false);
-                holder = new ViewHolder();
-                holder.text = view.findViewById(R.id.textView1);
-                holder.imag = view.findViewById(R.id.imageView1);
+                holder = new ViewHolder(view);
                 view.setTag(holder);
             } else
                 holder = (ViewHolder) view.getTag();

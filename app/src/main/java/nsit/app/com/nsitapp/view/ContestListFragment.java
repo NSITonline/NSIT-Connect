@@ -14,12 +14,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import nsit.app.com.nsitapp.R;
 import nsit.app.com.nsitapp.data.ContestContract;
 
 public abstract class ContestListFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private ContestAdapter mContestAdapter;
+
+    @BindView(R.id.contest_listView) ListView mContestListView;
 
     private static final int CONTEST_LOADER_ID = 0;
 
@@ -55,10 +59,10 @@ public abstract class ContestListFragment extends Fragment implements LoaderMana
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_contest_list, container, false);
+        ButterKnife.bind(this, view);
 
         mContestAdapter = new ContestAdapter(getActivity());
 
-        ListView mContestListView = view.findViewById(R.id.contest_listView);
         mContestListView.setAdapter(mContestAdapter);
 
         mContestListView.setOnItemClickListener((adapterView, view1, position, l) -> {

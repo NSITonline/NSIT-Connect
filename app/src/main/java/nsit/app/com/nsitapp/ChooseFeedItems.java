@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
@@ -19,7 +20,9 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import functions.Constant;
 import functions.Utils;
 import okhttp3.Call;
@@ -44,45 +47,45 @@ public class ChooseFeedItems extends AppCompatActivity implements Constant {
     private Handler mHandler;
     String likes;
 
+    @BindView(R.id.next) Button next;
+    @BindView(R.id.check_collegespace) CheckBox collegespace;
+    @BindView(R.id.check_crosslinks) CheckBox crosslinks;
+    @BindView(R.id.check_junoon) CheckBox junoon;
+    @BindView(R.id.check_rotaract) CheckBox rotaract;
+    @BindView(R.id.check_bullet) CheckBox bullet;
+    @BindView(R.id.check_csi) CheckBox csi;
+    @BindView(R.id.check_ieee) CheckBox ieee;
+    @BindView(R.id.check_debsoc) CheckBox deb;
+    @BindView(R.id.check_quiz) CheckBox quiz;
+    @BindView(R.id.check_ashwa) CheckBox ashwa;
+    @BindView(R.id.check_enactus) CheckBox enactus;
+    @BindView(R.id.check_aagaz) CheckBox aagaz;
+
+
+    @BindView(R.id.likes_collegespace) TextView tCollegespace;
+    @BindView(R.id.likes_crosslinks) TextView tCrosslinks;
+    @BindView(R.id.likes_junoon) TextView tJunoon;
+    @BindView(R.id.likes_rotaract) TextView tRotaract;
+    @BindView(R.id.likes_bullethawk) TextView tBullet;
+    @BindView(R.id.likes_csi) TextView tCsi;
+    @BindView(R.id.likes_ieee) TextView tIeee;
+    @BindView(R.id.likes_debsoc) TextView tDeb;
+    @BindView(R.id.likes_quiz) TextView tQuiz;
+    @BindView(R.id.likes_ashwa) TextView tAshwa;
+    @BindView(R.id.likes_enactus) TextView tEnactus;
+    @BindView(R.id.likes_aagaz) TextView tAagaz;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_feed_items);
-
         ButterKnife.bind(this);
 
         setTitle("My Feed Items");
 
         Button next = findViewById(R.id.next);
         mHandler = new Handler(Looper.getMainLooper());
-
-        CheckBox collegespace = findViewById(R.id.check_collegespace);
-        CheckBox crosslinks = findViewById(R.id.check_crosslinks);
-        CheckBox junoon = findViewById(R.id.check_junoon);
-        CheckBox rotaract = findViewById(R.id.check_rotaract);
-        CheckBox bullet = findViewById(R.id.check_bullet);
-        CheckBox csi = findViewById(R.id.check_csi);
-        CheckBox ieee = findViewById(R.id.check_ieee);
-        CheckBox deb = findViewById(R.id.check_debsoc);
-        CheckBox quiz = findViewById(R.id.check_quiz);
-        CheckBox ashwa = findViewById(R.id.check_ashwa);
-        CheckBox enactus = findViewById(R.id.check_enactus);
-        CheckBox aagaz = findViewById(R.id.check_aagaz);
-
-
-        TextView tCollegespace = findViewById(R.id.likes_collegespace);
-        TextView tCrosslinks = findViewById(R.id.likes_crosslinks);
-        TextView tJunoon = findViewById(R.id.likes_junoon);
-        TextView tRotaract = findViewById(R.id.likes_rotaract);
-        TextView tBullet = findViewById(R.id.likes_bullethawk);
-        TextView tCsi = findViewById(R.id.likes_csi);
-        TextView tIeee = findViewById(R.id.likes_ieee);
-        TextView tDeb = findViewById(R.id.likes_debsoc);
-        TextView tQuiz = findViewById(R.id.likes_quiz);
-        TextView tAshwa = findViewById(R.id.likes_ashwa);
-        TextView tEnactus = findViewById(R.id.likes_enactus);
-        TextView tAagaz = findViewById(R.id.likes_aagaz);
 
 
         SharedPreferences i = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
@@ -128,27 +131,6 @@ public class ChooseFeedItems extends AppCompatActivity implements Constant {
         aagaz.setOnCheckedChangeListener((compoundButton, b) -> Aagaz = b);
 
 
-        next.setOnClickListener(view -> {
-            SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-            SharedPreferences.Editor e = p.edit();
-            e.putBoolean(CROSSLINKS, Crosslinks);
-            e.putBoolean(COLLEGESPACE, Collegespace);
-            e.putBoolean(BULLET, Bullet);
-            e.putBoolean(JUNOON, Junoon);
-            e.putBoolean(ROTARACT, Rotaract);
-            e.putBoolean(CSI, Csi);
-            e.putBoolean(IEEE, Ieee);
-            e.putBoolean(DEB, Deb);
-            e.putBoolean(QUIZ, Quiz);
-            e.putBoolean(ASHWA, Ashwa);
-            e.putBoolean(ENACTUS, Enactus);
-            e.putBoolean(AAGAZ, Aagaz);
-            e.putBoolean(SOCIETY_SET, true);
-            e.putBoolean(SOCIETY_ITEM_CHANGED, true);
-            e.apply();
-            finish();
-        });
-
         if (Utils.isNetworkAvailable(ChooseFeedItems.this)) {
             calculateLikes(tCrosslinks, id_crosslinks);
             calculateLikes(tCrosslinks, id_crosslinks);
@@ -168,6 +150,28 @@ public class ChooseFeedItems extends AppCompatActivity implements Constant {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+    }
+
+    @OnClick(R.id.next)
+    public void onNextClicked(View view){
+        SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor e = p.edit();
+        e.putBoolean(CROSSLINKS, Crosslinks);
+        e.putBoolean(COLLEGESPACE, Collegespace);
+        e.putBoolean(BULLET, Bullet);
+        e.putBoolean(JUNOON, Junoon);
+        e.putBoolean(ROTARACT, Rotaract);
+        e.putBoolean(CSI, Csi);
+        e.putBoolean(IEEE, Ieee);
+        e.putBoolean(DEB, Deb);
+        e.putBoolean(QUIZ, Quiz);
+        e.putBoolean(ASHWA, Ashwa);
+        e.putBoolean(ENACTUS, Enactus);
+        e.putBoolean(AAGAZ, Aagaz);
+        e.putBoolean(SOCIETY_SET, true);
+        e.putBoolean(SOCIETY_ITEM_CHANGED, true);
+        e.apply();
+        finish();
     }
 
     private void calculateLikes(final TextView bmImage, String id) {

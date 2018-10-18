@@ -20,6 +20,8 @@ import com.google.android.gms.maps.model.LatLng;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import functions.ButtonAnimation;
 import functions.Constant;
 import nsit.app.com.nsitapp.BaseActivity;
@@ -36,14 +38,14 @@ public class HangoutCollegeLocations extends BaseActivity implements Constant {
 
     public static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
     private final ArrayList<LocationGroup> LocationsGroupsList = new ArrayList<>();
-    private ExpandableListView listView;
+    @BindView(R.id.locations_list) ExpandableListView listView;
     private HashMap<String, Integer> locationsIdMap;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_locations);
-        listView = findViewById(R.id.locations_list);
+        ButterKnife.bind(this);
         populateList(LocationsGroupsList);
         locationsIdMap = getLocationsIdMap();
 

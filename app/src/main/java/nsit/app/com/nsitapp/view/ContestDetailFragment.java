@@ -26,6 +26,8 @@ import android.widget.Toast;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import models.Contest;
 import models.OnlineJudge;
 import nsit.app.com.nsitapp.R;
@@ -48,20 +50,20 @@ public class ContestDetailFragment extends Fragment
 
     private Uri mContestUri;
 
-    private RelativeLayout mOJCover;
-    private View mBanner;
-    private ImageView mOJIcon;
-    private TextView mTitleText;
-    private TextView mSourceText;
-    private TextView mDescriptionText;
-    private TextView mStartTimeText;
-    private TextView mDurationText;
-    private TextView mURLText;
+    @BindView(R.id.onlineJudge_cover) RelativeLayout mOJCover;
+    @BindView(R.id.banner) View mBanner;
+    @BindView(R.id.onlineJudge_icon) ImageView mOJIcon;
+    @BindView(R.id.title_text) TextView mTitleText;
+    @BindView(R.id.source_text) TextView mSourceText;
+    @BindView(R.id.description_body_text) TextView mDescriptionText;
+    @BindView(R.id.start_time_body_text) TextView mStartTimeText;
+    @BindView(R.id.duration_body_text) TextView mDurationText;
+    @BindView(R.id.url_body_text) TextView mURLText;
 
-    private TextView mDescriptionHeaderText;
-    private TextView mStartTimeHeaderText;
-    private TextView mDurationHeaderText;
-    private TextView mURLHeaderText;
+    @BindView(R.id.description_header_text) TextView mDescriptionHeaderText;
+    @BindView(R.id.start_time_header_text) TextView mStartTimeHeaderText;
+    @BindView(R.id.duration_header_text) TextView mDurationHeaderText;
+    @BindView(R.id.url_header_text) TextView mURLHeaderText;
 
     private Contest mContest;
 
@@ -117,8 +119,8 @@ public class ContestDetailFragment extends Fragment
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_contest_detail,container,false);
-
-        bindView(view);
+        ButterKnife.bind(this, view);
+        //bindView(view);
 
         return view;
     }
@@ -128,27 +130,6 @@ public class ContestDetailFragment extends Fragment
         int LOADER_ID = 0;
         getLoaderManager().initLoader(LOADER_ID, null, this);
         super.onActivityCreated(savedInstanceState);
-    }
-
-    private void bindView(View view) {
-
-        mOJCover = view.findViewById(R.id.onlineJudge_cover);
-
-        mBanner = view.findViewById(R.id.banner);
-
-        mOJIcon = view.findViewById(R.id.onlineJudge_icon);
-
-        mTitleText = view.findViewById(R.id.title_text);
-        mSourceText = view.findViewById(R.id.source_text);
-        mDescriptionText = view.findViewById(R.id.description_body_text);
-        mStartTimeText = view.findViewById(R.id.start_time_body_text);
-        mDurationText = view.findViewById(R.id.duration_body_text);
-        mURLText = view.findViewById(R.id.url_body_text);
-
-        mDescriptionHeaderText = view.findViewById(R.id.description_header_text);
-        mStartTimeHeaderText = view.findViewById(R.id.start_time_header_text);
-        mDurationHeaderText = view.findViewById(R.id.duration_header_text);
-        mURLHeaderText = view.findViewById(R.id.url_header_text);
     }
 
     private void setThemeColor(int color) {

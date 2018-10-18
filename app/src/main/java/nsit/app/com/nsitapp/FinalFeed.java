@@ -33,6 +33,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import adapters.MyFeedFacebookPost;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import functions.Constant;
 import functions.Utils;
 import functions.dbAdapter;
@@ -63,8 +65,8 @@ public class FinalFeed extends Fragment implements Constant {
     private String nextdeb, nextaagaz, nextenactus;
     private String nextn;
 
-    private ProgressBar progressBar;
-    private SwipeRefreshLayout swipeLayout;
+    @BindView(R.id.progressBar1) ProgressBar progressBar;
+    @BindView(R.id.swipe_container) SwipeRefreshLayout swipeLayout;
     private MyFeedFacebookPost adapter;
     private int first = 1;  // Implies loading data for first time
     private Handler mHandler;
@@ -79,7 +81,7 @@ public class FinalFeed extends Fragment implements Constant {
 
     private View footerView;
     private SharedPreferences sharedPreferences;
-    private ListView listView;
+    @BindView(R.id.list) ListView listView;
 
 
     @Override
@@ -99,11 +101,7 @@ public class FinalFeed extends Fragment implements Constant {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_feedfinal, container, false);
-
-        // Initialize variables
-        progressBar = rootView.findViewById(R.id.progressBar1);
-        listView = rootView.findViewById(R.id.list);
-        swipeLayout = rootView.findViewById(R.id.swipe_container);
+        ButterKnife.bind(this, rootView);
         footerView = ((LayoutInflater) activity.getApplicationContext()
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.footer_layout, null, false);
         mHandler = new Handler(Looper.getMainLooper());

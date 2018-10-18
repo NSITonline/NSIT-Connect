@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import adapters.LocationsListAdapter;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import functions.ButtonAnimation;
 import functions.Constant;
 import nsit.app.com.nsitapp.Hangout.HangoutCollegeLocationMapView;
@@ -25,7 +27,7 @@ import static functions.Utils.getLocationsIdMap;
 public class Locations extends AppCompatActivity implements Constant {
 
     private final ArrayList<LocationGroup> LocationsGroupsList = new ArrayList<>();
-    private ExpandableListView listView;
+    @BindView(R.id.locations_list) ExpandableListView listView;
     private HashMap<String, Integer> locationsIdMap;
 
     @Override
@@ -33,7 +35,7 @@ public class Locations extends AppCompatActivity implements Constant {
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_locations);
-        listView = findViewById(R.id.locations_list);
+        ButterKnife.bind(this);
         populateList(LocationsGroupsList);
         locationsIdMap = getLocationsIdMap();
 

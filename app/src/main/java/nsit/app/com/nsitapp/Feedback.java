@@ -13,11 +13,14 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import functions.Utils;
 
 
 public class Feedback extends Fragment {
-    private ProgressBar pb;
+    @BindView(R.id.webview) WebView browser;
+    @BindView(R.id.pb) ProgressBar pb;
     private Activity activity;
 
     @Override
@@ -35,9 +38,7 @@ public class Feedback extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.activity_feedback, container, false);
-        WebView browser = rootView.findViewById(R.id.webview);
-        pb = rootView.findViewById(R.id.pb);
-
+        ButterKnife.bind(this, rootView);
         browser.setWebViewClient(new MyWebViewClient());
         if (activity != null) {
             if (Utils.isNetworkAvailable(activity))

@@ -25,6 +25,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import functions.ButtonAnimation;
 import functions.DBhelp;
 import functions.TableEntry;
@@ -120,10 +122,14 @@ public class SubjectRemove extends AppCompatActivity {
             ids = c;
         }
 
-        private class ViewHolder {
-            TextView stat, dat;
-            LinearLayout rem;
+        class ViewHolder {
+            @BindView(R.id.status) TextView stat;
+            @BindView(R.id.date) TextView dat;
+            @BindView(R.id.rem) LinearLayout rem;
 
+            public ViewHolder(View view){
+                ButterKnife.bind(this, view);
+            }
         }
 
         @NonNull
@@ -133,10 +139,7 @@ public class SubjectRemove extends AppCompatActivity {
             LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
             if (view == null) {
                 view = mInflater.inflate(R.layout.subject_list_item_remove, parent, false);
-                holder = new ViewHolder();
-                holder.stat = view.findViewById(R.id.status);
-                holder.dat = view.findViewById(R.id.date);
-                holder.rem = view.findViewById(R.id.rem);
+                holder = new ViewHolder(view);
 
                 view.setTag(holder);
             } else {

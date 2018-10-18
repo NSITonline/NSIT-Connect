@@ -22,6 +22,8 @@ import android.view.ViewGroup;
 
 import java.util.Locale;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import models.OnlineJudge;
 import nsit.app.com.nsitapp.R;
 import nsit.app.com.nsitapp.view.widget.SlidingTabLayout;
@@ -29,7 +31,8 @@ import nsit.app.com.nsitapp.view.widget.SlidingTabLayout;
 public class ContestFragment extends Fragment {
 
 
-    private ViewPager mContestPager;
+    @BindView(R.id.contest_pager) ViewPager mContestPager;
+    @BindView(R.id.sliding_tabs) SlidingTabLayout mSlidingTabLayout;
 
     private final ContestListFragment mRunningContestFragment = new RunningContestFragment();
     private final ContestListFragment mUpcomingContestFragment = new UpcomingContestFragment();
@@ -65,13 +68,12 @@ public class ContestFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_contest, container, false);
+        ButterKnife.bind(this, view);
         Log.v("we will win","we1");
         SectionPagerAdapter mSectionPagerAdapter = new SectionPagerAdapter(getChildFragmentManager());
 
-        mContestPager = view.findViewById(R.id.contest_pager);
         mContestPager.setAdapter(mSectionPagerAdapter);
 
-        SlidingTabLayout mSlidingTabLayout = view.findViewById(R.id.sliding_tabs);
         mSlidingTabLayout.setDistributeEvenly();
         mSlidingTabLayout.setCustomTabColorizer(position -> getResources().getColor(R.color.tab_scroll_color));
         mSlidingTabLayout.setViewPager(mContestPager);

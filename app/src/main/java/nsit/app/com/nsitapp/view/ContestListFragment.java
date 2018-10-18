@@ -63,7 +63,6 @@ public abstract class ContestListFragment extends Fragment implements LoaderMana
 
         mContestAdapter = new ContestAdapter(getActivity());
 
-//        ListView mContestListView = view.findViewById(R.id.contest_listView);
         mContestListView.setAdapter(mContestAdapter);
 
         mContestListView.setOnItemClickListener((adapterView, view1, position, l) -> {

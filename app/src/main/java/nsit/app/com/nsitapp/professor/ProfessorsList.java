@@ -39,11 +39,6 @@ public class ProfessorsList extends AppCompatActivity implements Constant {
 
         setTitle(R.string.professor);
 
-//        ListView listView;
-//        listView = findViewById(R.id.profListView);
-//        listView.setTextFilterEnabled(true);
-//        TextView tv = findViewById(R.id.textView);
-
         List<ProfListRowItem> profListRowItems = new ArrayList<>();
 
         tv.setText(DEPARTMENT_LIST[dept]);

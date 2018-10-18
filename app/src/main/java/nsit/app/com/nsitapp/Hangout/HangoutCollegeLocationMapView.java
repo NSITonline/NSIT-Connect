@@ -58,7 +58,6 @@ public class HangoutCollegeLocationMapView extends Activity implements Constant,
         super.onCreate(savedInstanceState);
         setContentView(R.layout.map_view);
         ButterKnife.bind(this);
-        //MapSpinner = findViewById(R.id.MapProgressBar);
         MapSpinner.setVisibility(View.VISIBLE);
         Bundle extras = getIntent().getExtras();
         Log.e("extras", extras.toString() + " ");
@@ -144,10 +143,9 @@ public class HangoutCollegeLocationMapView extends Activity implements Constant,
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        //desc = findViewById(R.id.LocDescription);
         desc.setText(des);
         locationIcon = extras.getInt(LOCATION_ICON);
-        //TODO
+        //Due to permission needs to be set this way
         txtHeader = findViewById(R.id.LocationTitle);
 
         this.DestinationLat = LocationLat;
@@ -232,9 +230,6 @@ public class HangoutCollegeLocationMapView extends Activity implements Constant,
                 String Distance = DriveObject.getJSONArray("routes").getJSONObject(0).getJSONArray("legs").getJSONObject(0).getJSONObject("distance").getString("text");
                 String TimeDrive = DriveObject.getJSONArray("routes").getJSONObject(0).getJSONArray("legs").getJSONObject(0).getJSONObject("duration").getString("text");
                 String TimeWalk = WalkObject.getJSONArray("routes").getJSONObject(0).getJSONArray("legs").getJSONObject(0).getJSONObject("duration").getString("text");
-//                TextView txtLocationDistance = findViewById(R.id.LocationDistance);
-//                TextView txtTimeDrive = findViewById(R.id.TimeDrive);
-//                TextView txtTimeWalk = findViewById(R.id.TimeWalk);
                 txtLocationDistance.setText(Distance);
                 txtTimeDrive.setText(TimeDrive);
                 txtTimeWalk.setText(TimeWalk);

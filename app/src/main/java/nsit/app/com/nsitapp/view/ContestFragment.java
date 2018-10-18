@@ -72,10 +72,8 @@ public class ContestFragment extends Fragment {
         Log.v("we will win","we1");
         SectionPagerAdapter mSectionPagerAdapter = new SectionPagerAdapter(getChildFragmentManager());
 
-//        mContestPager = view.findViewById(R.id.contest_pager);
         mContestPager.setAdapter(mSectionPagerAdapter);
 
-//        SlidingTabLayout mSlidingTabLayout = view.findViewById(R.id.sliding_tabs);
         mSlidingTabLayout.setDistributeEvenly();
         mSlidingTabLayout.setCustomTabColorizer(position -> getResources().getColor(R.color.tab_scroll_color));
         mSlidingTabLayout.setViewPager(mContestPager);

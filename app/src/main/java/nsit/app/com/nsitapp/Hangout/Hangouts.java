@@ -39,18 +39,8 @@ public class Hangouts extends Fragment implements View.OnClickListener {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rooview = inflater.inflate(R.layout.fragment_hangouts, container, false);
-        ButterKnife.bind(this, rooview);
-//        LinearLayout hcollege = rooview.findViewById(R.id.hang_college);
-//        LinearLayout hresturant = rooview.findViewById(R.id.hang_restaurant);
-//        LinearLayout hcafes = rooview.findViewById(R.id.hang_cafe);
-//        LinearLayout hnightclub = rooview.findViewById(R.id.hang_nightclub);
-//        LinearLayout hmalls = rooview.findViewById(R.id.hang_shoppingmalls);
-//        LinearLayout hbowling = rooview.findViewById(R.id.hang_bowling);
-//        LinearLayout hmovies = rooview.findViewById(R.id.hang_movies);
-//        LinearLayout hfood = rooview.findViewById(R.id.hang_food);
-//        LinearLayout hapark = rooview.findViewById(R.id.hang_amusment);
-//        LinearLayout hpark = rooview.findViewById(R.id.hang_park);
+        View rootView = inflater.inflate(R.layout.fragment_hangouts, container, false);
+        ButterKnife.bind(this, rootView);
 
         hcollege.setOnClickListener(this);
         hresturant.setOnClickListener(this);
@@ -62,7 +52,7 @@ public class Hangouts extends Fragment implements View.OnClickListener {
         hfood.setOnClickListener(this);
         hapark.setOnClickListener(this);
         hpark.setOnClickListener(this);
-        return rooview;
+        return rootView;
     }
 
 

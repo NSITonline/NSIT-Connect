@@ -51,9 +51,6 @@ public class ProfListCustomListViewAdapter extends ArrayAdapter<ProfListRowItem>
         if (convertView == null) {
             convertView = mInflater.inflate(R.layout.prof_list_item, parent, false);
             holder = new ViewHolder(convertView);
-//            holder.txtName = convertView.findViewById(R.id.tvname);
-//            holder.txtPhone = convertView.findViewById(R.id.tvphone);
-//            holder.txtEmail = convertView.findViewById(R.id.tvemail);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();

@@ -102,10 +102,6 @@ public class FinalFeed extends Fragment implements Constant {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_feedfinal, container, false);
         ButterKnife.bind(this, rootView);
-        // Initialize variables
-//        progressBar = rootView.findViewById(R.id.progressBar1);
-//        listView = rootView.findViewById(R.id.list);
-//        swipeLayout = rootView.findViewById(R.id.swipe_container);
         footerView = ((LayoutInflater) activity.getApplicationContext()
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.footer_layout, null, false);
         mHandler = new Handler(Looper.getMainLooper());

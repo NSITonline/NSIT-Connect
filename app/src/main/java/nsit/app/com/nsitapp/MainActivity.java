@@ -224,8 +224,6 @@ public class MainActivity extends AppCompatActivity {
             if (view == null) {
                 view = mInflater.inflate(R.layout.message, parent, false);
                 holder = new ViewHolder(view);
-//                holder.text = view.findViewById(R.id.textView1);
-//                holder.imag = view.findViewById(R.id.imageView1);
                 view.setTag(holder);
             } else
                 holder = (ViewHolder) view.getTag();

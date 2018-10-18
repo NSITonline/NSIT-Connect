@@ -63,11 +63,9 @@ public class HangoutsTypeDisplay extends AppCompatActivity {
         getSupportActionBar().setIcon(R.drawable.ic_people_white_36dp);
         objects = new ArrayList<>();
 
-        //ListView display_list = findViewById(R.id.hangout_type_display_list);
         displayAdapter = new HangoutTypeAdapter(this, objects);
         display_list.setAdapter(displayAdapter);
 
-        //progressBar = findViewById(R.id.progress);
 
         if (Utils.isNetworkAvailable(this))
             new HttpGetInfo().execute();

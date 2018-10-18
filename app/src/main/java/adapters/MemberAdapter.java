@@ -14,6 +14,9 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import functions.ButtonAnimation;
 import models.AboutUsMember;
 import nsit.app.com.nsitapp.R;
@@ -23,6 +26,17 @@ import nsit.app.com.nsitapp.R;
  */
 
 public class MemberAdapter extends ArrayAdapter<AboutUsMember> {
+
+    @BindView(R.id.memberName) TextView name;
+    @BindView(R.id.batch) TextView batch;
+    @BindView(R.id.role1) TextView role1;
+    @BindView(R.id.memberImage) ImageView memberImage;
+    @BindView(R.id.facebook_image) ImageView fbID;
+    @BindView(R.id.github_image) ImageView gitimage;
+    @BindView(R.id.linkedIn_image) ImageView linkedImage;
+    @BindView(R.id.role2) TextView role2text;
+    @BindView(R.id.role2image) ImageView role2Image;
+
     public MemberAdapter(@NonNull Context context, @NonNull List<AboutUsMember> teamMembers) {
         super(context, 0, teamMembers);
     }
@@ -31,18 +45,15 @@ public class MemberAdapter extends ArrayAdapter<AboutUsMember> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View listIteamView = convertView;
+
         if (listIteamView == null) {
             listIteamView = LayoutInflater.from(getContext()).inflate(R.layout.fragment_aboutus_listitem, null);
         }
         final AboutUsMember currentMember = getItem(position);
-
-        TextView name = listIteamView.findViewById(R.id.memberName);
+        ButterKnife.bind(this, listIteamView);
         name.setText(currentMember.getName());
-        TextView batch = listIteamView.findViewById(R.id.batch);
         batch.setText(currentMember.getBatch());
-        TextView role1 = listIteamView.findViewById(R.id.role1);
         role1.setText(currentMember.getRole1());
-        ImageView memberImage = listIteamView.findViewById(R.id.memberImage);
         memberImage.setImageResource(currentMember.getImageResID());
         if (currentMember.getName().equals("Prabhakar Gupta")) {
             memberImage.setOnClickListener(v -> {
@@ -53,7 +64,6 @@ public class MemberAdapter extends ArrayAdapter<AboutUsMember> {
                 getContext().startActivity(intent);
             });
         }
-        ImageView fbID = listIteamView.findViewById(R.id.facebook_image);
         String gitId = currentMember.getGitID();
         String linkedId = currentMember.getLinkedID();
         String role2 = currentMember.getRole2();
@@ -64,7 +74,6 @@ public class MemberAdapter extends ArrayAdapter<AboutUsMember> {
             Intent intent = new Intent(Intent.ACTION_VIEW, fbUri);
             getContext().startActivity(intent);
         });
-        ImageView gitimage = listIteamView.findViewById(R.id.github_image);
         gitimage.setVisibility(View.GONE);
         if (gitId != null && !gitId.isEmpty()) {
             gitimage.setVisibility(View.VISIBLE);
@@ -76,7 +85,7 @@ public class MemberAdapter extends ArrayAdapter<AboutUsMember> {
                 getContext().startActivity(intent);
             });
         }
-        ImageView linkedImage = listIteamView.findViewById(R.id.linkedIn_image);
+
         linkedImage.setVisibility(View.GONE);
         if (linkedId != null && !linkedId.isEmpty()) {
             linkedImage.setVisibility(View.VISIBLE);
@@ -88,9 +97,9 @@ public class MemberAdapter extends ArrayAdapter<AboutUsMember> {
                 getContext().startActivity(intent);
             });
         }
-        TextView role2text = listIteamView.findViewById(R.id.role2);
+
         role2text.setText("");
-        ImageView role2Image = listIteamView.findViewById(R.id.role2image);
+
         role2Image.setVisibility(View.GONE);
         if (role2 != null && !role2.isEmpty()) {
             role2text.setText(role2);

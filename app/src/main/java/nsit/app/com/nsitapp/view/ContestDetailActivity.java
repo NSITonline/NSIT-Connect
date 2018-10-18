@@ -88,7 +88,6 @@ public  class ContestDetailActivity extends FragmentActivity  {
         Log.v("helloooo","i am here");
         if(item.getItemId()==R.id.share_item)
         { Log.v("helloooo","i am here");
-            //TODO
             Bitmap bm = screenShot(this.getWindow().getDecorView().findViewById(android.R.id.content));
             File file = saveBitmap(bm);
             Log.i("chase", "filepath: " + file.getAbsolutePath());

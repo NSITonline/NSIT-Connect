@@ -69,11 +69,6 @@ class ContestAdapter extends CursorAdapter {
 
         public ViewHolder(View view) {
             ButterKnife.bind(this, view);
-//            mOJImage = view.findViewById(R.id.onlineJudge_image);
-//            mTitleText = view.findViewById(R.id.contestName_textView);
-//            mSourceText = view.findViewById(R.id.onlineJudge_textView);
-//            mTimeText = view.findViewById(R.id.timeBeforeContest_textView);
-//            mItemContainer = view.findViewById(R.id.contest_item_container);
         }
     }
 

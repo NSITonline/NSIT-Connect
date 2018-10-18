@@ -66,8 +66,6 @@ public class OnlineJudgeListFragment extends Fragment {
             public ViewHolder(View view) {
                 super(view);
                 ButterKnife.bind(this, view);
-//                mOnlineJudgeCover = view.findViewById(R.id.onlineJudge_cover);
-//                mOnlineJudgeName = view.findViewById(R.id.onlineJudge_name);
             }
         }
 

@@ -22,6 +22,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import functions.Constant;
 import functions.Utils;
 import nsit.app.com.nsitapp.Description;
@@ -48,15 +50,20 @@ public class MyFeedFacebookPost extends ArrayAdapter<String> implements Constant
         category = e;
     }
 
-    private class ViewHolder {
+    class ViewHolder {
 
-        TextView Des;
-        TextView likes, cats;
-        TextView dates;
-        TextView read;
-        ImageView imag;
-        FrameLayout f;
-        Button b;
+        @BindView(R.id.des) TextView Des;
+        @BindView(R.id.likes) TextView likes;
+        @BindView(R.id.date) TextView cats;
+        @BindView(R.id.cat) TextView dates;
+        @BindView(R.id.read) TextView read;
+        @BindView(R.id.image) ImageView imag;
+        @BindView(R.id.frame) FrameLayout f;
+        @BindView(R.id.show) Button b;
+
+        public ViewHolder(View view){
+            ButterKnife.bind(this, view);
+        }
     }
 
     @NonNull
@@ -67,15 +74,7 @@ public class MyFeedFacebookPost extends ArrayAdapter<String> implements Constant
         LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         if (view == null) {
             view = mInflater.inflate(R.layout.myfeed_listitem, null);
-            holder = new ViewHolder();
-            holder.Des = view.findViewById(R.id.des);
-            holder.likes = view.findViewById(R.id.likes);
-            holder.dates = view.findViewById(R.id.date);
-            holder.cats = view.findViewById(R.id.cat);
-            holder.read = view.findViewById(R.id.read);
-            holder.imag = view.findViewById(R.id.image);
-            holder.f = view.findViewById(R.id.frame);
-            holder.b = view.findViewById(R.id.show);
+            holder = new ViewHolder(view);
             view.setTag(holder);
         } else
             holder = (ViewHolder) view.getTag();

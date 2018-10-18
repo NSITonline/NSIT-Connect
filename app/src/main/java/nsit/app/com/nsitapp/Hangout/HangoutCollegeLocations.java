@@ -46,7 +46,6 @@ public class HangoutCollegeLocations extends BaseActivity implements Constant {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_locations);
         ButterKnife.bind(this);
-        //listView = findViewById(R.id.locations_list);
         populateList(LocationsGroupsList);
         locationsIdMap = getLocationsIdMap();
 

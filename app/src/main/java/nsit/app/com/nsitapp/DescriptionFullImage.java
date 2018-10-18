@@ -45,7 +45,6 @@ public class DescriptionFullImage extends AppCompatActivity implements Constant 
         Intent intent = getIntent();
         img = intent.getStringExtra(IMAGE);
         obid = intent.getStringExtra(OBID);
-//        touchImageView = findViewById(R.id.iv);
         mHandler = new Handler(Looper.getMainLooper());
         setTitle("Image");
 

@@ -132,27 +132,6 @@ public class ContestDetailFragment extends Fragment
         super.onActivityCreated(savedInstanceState);
     }
 
-//    private void bindView(View view) {
-//
-//        mOJCover = view.findViewById(R.id.onlineJudge_cover);
-//
-//        mBanner = view.findViewById(R.id.banner);
-//
-//        mOJIcon = view.findViewById(R.id.onlineJudge_icon);
-//
-//        mTitleText = view.findViewById(R.id.title_text);
-//        mSourceText = view.findViewById(R.id.source_text);
-//        mDescriptionText = view.findViewById(R.id.description_body_text);
-//        mStartTimeText = view.findViewById(R.id.start_time_body_text);
-//        mDurationText = view.findViewById(R.id.duration_body_text);
-//        mURLText = view.findViewById(R.id.url_body_text);
-//
-//        mDescriptionHeaderText = view.findViewById(R.id.description_header_text);
-//        mStartTimeHeaderText = view.findViewById(R.id.start_time_header_text);
-//        mDurationHeaderText = view.findViewById(R.id.duration_header_text);
-//        mURLHeaderText = view.findViewById(R.id.url_header_text);
-//    }
-
     private void setThemeColor(int color) {
         mDescriptionHeaderText.setTextColor(color);
         mStartTimeHeaderText.setTextColor(color);

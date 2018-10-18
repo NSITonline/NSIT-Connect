@@ -19,6 +19,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import models.RowItem;
 import nsit.app.com.nsitapp.R;
 
@@ -52,6 +54,7 @@ public class ProfessorsFragment extends Fragment implements
     }
 
     private Activity activity;
+    @BindView(R.id.list) ListView listView;
 
     @Override
     public void onAttach(Context activity) {
@@ -62,7 +65,7 @@ public class ProfessorsFragment extends Fragment implements
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_prof, container, false);
-
+        ButterKnife.bind(this, rootView);
 
         List<RowItem> rowItems = new ArrayList<>();
 
@@ -71,8 +74,6 @@ public class ProfessorsFragment extends Fragment implements
             RowItem item = new RowItem(titles[i].toUpperCase(), full[i]);
             rowItems.add(item);
         }
-
-        ListView listView = rootView.findViewById(R.id.list);
         CustomListViewAdapter adapter = new CustomListViewAdapter(activity,
                 rowItems);
         if (activity != null)

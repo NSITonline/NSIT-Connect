@@ -62,11 +62,8 @@ public class PlaceMapActivity extends FragmentActivity implements OnMapReadyCall
         setContentView(R.layout.activity_place_maps);
 
         // Initialize variables
-        //Due to some permission has to be initialized this way
+        //Due to permission has to be initialized this way
         TextView transition = findViewById(R.id.destination);
-//        time = findViewById(R.id.time);
-//        distance = findViewById(R.id.distance);
-//        progressBar = findViewById(R.id.progress_path);
 
         // Get data from previous activity
         Intent intent = getIntent();

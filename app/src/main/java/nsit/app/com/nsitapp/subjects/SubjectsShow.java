@@ -58,7 +58,6 @@ public class SubjectsShow extends AppCompatActivity implements Constant {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subjects_show);
         ButterKnife.bind(this);
-//        ListView lv = findViewById(R.id.list);
 
         setTitle("Attendance");
 
@@ -168,12 +167,6 @@ public class SubjectsShow extends AppCompatActivity implements Constant {
             LayoutInflater inflater = context.getLayoutInflater();
             View view = inflater.inflate(R.layout.subject_list_item, null, true);
             ButterKnife.bind(this, view);
-//            cod = view.findViewById(R.id.code);
-//            tit = view.findViewById(R.id.title);
-//            att = view.findViewById(R.id.attendance);
-//            msg = view.findViewById(R.id.message);
-//            add = view.findViewById(R.id.add);
-//            rem = view.findViewById(R.id.rem);
 
             cod.setText(code.get(position));
             tit.setText(title.get(position));

@@ -82,39 +82,10 @@ public class ChooseFeedItems extends AppCompatActivity implements Constant {
         setContentView(R.layout.activity_choose_feed_items);
         ButterKnife.bind(this);
 
-//        ButterKnife.bind(this);
-
         setTitle("My Feed Items");
 
         Button next = findViewById(R.id.next);
         mHandler = new Handler(Looper.getMainLooper());
-
-//        CheckBox collegespace = findViewById(R.id.check_collegespace);
-//        CheckBox crosslinks = findViewById(R.id.check_crosslinks);
-//        CheckBox junoon = findViewById(R.id.check_junoon);
-//        CheckBox rotaract = findViewById(R.id.check_rotaract);
-//        CheckBox bullet = findViewById(R.id.check_bullet);
-//        CheckBox csi = findViewById(R.id.check_csi);
-//        CheckBox ieee = findViewById(R.id.check_ieee);
-//        CheckBox deb = findViewById(R.id.check_debsoc);
-//        CheckBox quiz = findViewById(R.id.check_quiz);
-//        CheckBox ashwa = findViewById(R.id.check_ashwa);
-//        CheckBox enactus = findViewById(R.id.check_enactus);
-//        CheckBox aagaz = findViewById(R.id.check_aagaz);
-//
-//
-//        TextView tCollegespace = findViewById(R.id.likes_collegespace);
-//        TextView tCrosslinks = findViewById(R.id.likes_crosslinks);
-//        TextView tJunoon = findViewById(R.id.likes_junoon);
-//        TextView tRotaract = findViewById(R.id.likes_rotaract);
-//        TextView tBullet = findViewById(R.id.likes_bullethawk);
-//        TextView tCsi = findViewById(R.id.likes_csi);
-//        TextView tIeee = findViewById(R.id.likes_ieee);
-//        TextView tDeb = findViewById(R.id.likes_debsoc);
-//        TextView tQuiz = findViewById(R.id.likes_quiz);
-//        TextView tAshwa = findViewById(R.id.likes_ashwa);
-//        TextView tEnactus = findViewById(R.id.likes_enactus);
-//        TextView tAagaz = findViewById(R.id.likes_aagaz);
 
 
         SharedPreferences i = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
@@ -159,27 +130,6 @@ public class ChooseFeedItems extends AppCompatActivity implements Constant {
         enactus.setOnCheckedChangeListener((compoundButton, b) -> Enactus = b);
         aagaz.setOnCheckedChangeListener((compoundButton, b) -> Aagaz = b);
 
-
-//        next.setOnClickListener(view -> {
-//            SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-//            SharedPreferences.Editor e = p.edit();
-//            e.putBoolean(CROSSLINKS, Crosslinks);
-//            e.putBoolean(COLLEGESPACE, Collegespace);
-//            e.putBoolean(BULLET, Bullet);
-//            e.putBoolean(JUNOON, Junoon);
-//            e.putBoolean(ROTARACT, Rotaract);
-//            e.putBoolean(CSI, Csi);
-//            e.putBoolean(IEEE, Ieee);
-//            e.putBoolean(DEB, Deb);
-//            e.putBoolean(QUIZ, Quiz);
-//            e.putBoolean(ASHWA, Ashwa);
-//            e.putBoolean(ENACTUS, Enactus);
-//            e.putBoolean(AAGAZ, Aagaz);
-//            e.putBoolean(SOCIETY_SET, true);
-//            e.putBoolean(SOCIETY_ITEM_CHANGED, true);
-//            e.apply();
-//            finish();
-//        });
 
         if (Utils.isNetworkAvailable(ChooseFeedItems.this)) {
             calculateLikes(tCrosslinks, id_crosslinks);

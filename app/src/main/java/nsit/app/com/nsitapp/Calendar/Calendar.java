@@ -86,7 +86,6 @@ public class Calendar extends Fragment implements Constant {
 
         ButterKnife.bind(this, rootView);
 
-        //recyclerView = rootView.findViewById(R.id.lvItems);
         mHandler = new Handler(Looper.getMainLooper());
 
         if (activity == null)

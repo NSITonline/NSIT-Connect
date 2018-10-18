@@ -66,37 +66,12 @@ public class Video extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_video, container, false);
         ButterKnife.bind(this, rootView);
-//        listview = rootView.findViewById(R.id.videos_list);
-//        Spinner = rootView.findViewById(R.id.VideoProgressSpinner);
         Spinner.setVisibility(View.VISIBLE);
         mHandler = new Handler(Looper.getMainLooper());
 
         // Loading videos initially
         loadFeed();
 
-        // Set up buttons for next and previous page
-//        btnNextPage = rootView.findViewById(R.id.NextPageButton);
-//        btnPrevPage = rootView.findViewById(R.id.PrevPageButton);
-
-//        btnNextPage.setOnClickListener(v -> {
-//            if (!Objects.equals(nextPageToken, "")) {
-//                Spinner.setVisibility(View.VISIBLE);
-//                navigateTo = "next";
-//                ButtonAnimation btnAnimation = new ButtonAnimation();
-//                btnAnimation.animateButton(v, activity);
-//                loadFeed();
-//            }
-//
-//        });
-//        btnPrevPage.setOnClickListener(v -> {
-//            if (!Objects.equals(prevPageToken, "")) {
-//                Spinner.setVisibility(View.VISIBLE);
-//                navigateTo = "prev";
-//                ButtonAnimation btnAnimation = new ButtonAnimation();
-//                btnAnimation.animateButton(v, activity);
-//                loadFeed();
-//            }
-//        });
 
         return rootView;
     }
@@ -111,7 +86,7 @@ public class Video extends Fragment {
             loadFeed();
         }
     }
-    @OnClick(R.id.NextPageButton)
+    @OnClick(R.id.PrevPageButton)
     public void onPrevPageButtonClicked(View v){
         if (!Objects.equals(prevPageToken, "")) {
             Spinner.setVisibility(View.VISIBLE);

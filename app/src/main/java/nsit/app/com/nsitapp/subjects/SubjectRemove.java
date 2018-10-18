@@ -140,9 +140,6 @@ public class SubjectRemove extends AppCompatActivity {
             if (view == null) {
                 view = mInflater.inflate(R.layout.subject_list_item_remove, parent, false);
                 holder = new ViewHolder(view);
-//                holder.stat = view.findViewById(R.id.status);
-//                holder.dat = view.findViewById(R.id.date);
-//                holder.rem = view.findViewById(R.id.rem);
 
                 view.setTag(holder);
             } else {

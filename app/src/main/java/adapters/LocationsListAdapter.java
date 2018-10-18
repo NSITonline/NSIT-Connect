@@ -11,6 +11,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import nsit.app.com.nsitapp.Locations;
 import nsit.app.com.nsitapp.R;
 
@@ -27,6 +29,9 @@ public class LocationsListAdapter extends BaseExpandableListAdapter {
     private ArrayList<Locations.LocationGroup> LocationItems;
     private static int lastExpandedGroupPosition = -1;
     private HashMap<String, Integer> locationsIdMap;
+
+    @BindView(R.id.LocationsGroupHeader) TextView GroupHeader;
+    @BindView(R.id.GroupTypeImage) ImageView GroupIcon;
 
     public LocationsListAdapter(Context context, ArrayList<Locations.LocationGroup> LocationItems) {
         this.context = context;
@@ -79,11 +84,9 @@ public class LocationsListAdapter extends BaseExpandableListAdapter {
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = infalInflater.inflate(R.layout.location_listitem, parent, false);
         }
+        ButterKnife.bind(this, convertView);
 
-        TextView GroupHeader = convertView
-                .findViewById(R.id.LocationsGroupHeader);
         GroupHeader.setText(headerTitle);
-        ImageView GroupIcon = convertView.findViewById(R.id.GroupTypeImage);
         GroupIcon.setImageResource(locationsIdMap.get(groupType));
         return convertView;
     }

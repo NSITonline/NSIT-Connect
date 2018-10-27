@@ -83,7 +83,7 @@
 
     <string name="contribute_text">I WANT TO CONTRIBUTE</string>
     <string name="contribute_message">Dear user, let\'s work on this app together.</string>
-    <string name="repository_text">Go to NSIT App v2 repository</string>
+    <string name="repository_text">Go to NSIT Connect repository</string>
     <string name="no_description">No description available.</string>
     <string name="no_url">No url available</string>
 
@@ -167,5 +167,8 @@
     <string name="no">No</string>
     <string name="prompt_exit">Are you sure you want to exit?</string>
     <string name="image_saved">Image Saved to Device</string>
+
+    <string name="activity_code_radar">Code Radar</string>
+
 </resources>
 

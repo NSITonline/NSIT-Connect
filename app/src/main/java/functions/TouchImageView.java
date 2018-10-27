@@ -716,11 +716,7 @@ public class TouchImageView extends ImageView {
         matrix.getValues(m);
         float x = m[Matrix.MTRANS_X];
 
-        if (getImageWidth() < viewWidth) {
-            return false;
-
-        } else
-            return (!(x >= -1) || direction >= 0) && (!(Math.abs(x) + viewWidth + 1 >= getImageWidth()) || direction <= 0);
+        return !(getImageWidth() < viewWidth) && (!(x >= -1) || direction >= 0) && (!(Math.abs(x) + viewWidth + 1 >= getImageWidth()) || direction <= 0);
 
     }
 
@@ -1161,15 +1157,9 @@ public class TouchImageView extends ImageView {
         OverScroller overScroller;
         final boolean isPreGingerbread;
 
-        public CompatScroller(Context context) {
-            if (VERSION.SDK_INT < VERSION_CODES.GINGERBREAD) {
-                isPreGingerbread = true;
-                scroller = new Scroller(context);
-
-            } else {
-                isPreGingerbread = false;
-                overScroller = new OverScroller(context);
-            }
+        CompatScroller(Context context) {
+            isPreGingerbread = false;
+            overScroller = new OverScroller(context);
         }
 
         public void fling(int startX, int startY, int velocityX, int velocityY, int minX, int maxX, int minY, int maxY) {
@@ -1224,21 +1214,17 @@ public class TouchImageView extends ImageView {
 
     @TargetApi(VERSION_CODES.JELLY_BEAN)
     private void compatPostOnAnimation(Runnable runnable) {
-        if (VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN) {
-            postOnAnimation(runnable);
+        postOnAnimation(runnable);
 
-        } else {
-            postDelayed(runnable, 1000 / 60);
-        }
     }
 
     private class ZoomVariables {
-        public final float scale;
-        public final float focusX;
-        public final float focusY;
+        final float scale;
+        final float focusX;
+        final float focusY;
         public final ScaleType scaleType;
 
-        public ZoomVariables(float scale, float focusX, float focusY, ScaleType scaleType) {
+        ZoomVariables(float scale, float focusX, float focusY, ScaleType scaleType) {
             this.scale = scale;
             this.focusX = focusX;
             this.focusY = focusY;

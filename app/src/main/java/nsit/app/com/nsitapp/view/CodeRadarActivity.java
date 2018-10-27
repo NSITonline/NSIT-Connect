@@ -22,8 +22,10 @@ public class CodeRadarActivity extends FragmentActivity implements ContestListFr
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     protected void onCreate(Bundle savedInstanceState) {
-        getIntent();
-        setTitle("Code Radar");
+
+        super.onCreate(savedInstanceState);
+        setTitle(R.string.activity_code_radar);
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             // inside your activity (if you did not enable transitions in your theme)
             getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
@@ -33,9 +35,6 @@ public class CodeRadarActivity extends FragmentActivity implements ContestListFr
             getWindow().setReenterTransition(new Slide());
             getWindow().setExitTransition(new Fade());
         }
-
-        super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_contest_reminder);
 
         if (savedInstanceState == null) {

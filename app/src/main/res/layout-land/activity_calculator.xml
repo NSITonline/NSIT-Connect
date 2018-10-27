@@ -1,40 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
+
         <Spinner
+            android:id="@+id/spinb"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:id="@+id/spinb"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="15dp" />
 
         <Spinner
+            android:id="@+id/spins"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:id="@+id/spins"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="15dp" />
     </LinearLayout>
 
     <TextView
+        android:id="@+id/textView15"
         android:layout_width="560dp"
         android:layout_height="wrap_content"
-        android:text="Choose things appropriately and dont bother to fill boxes which isn&apos;t required."
-        android:id="@+id/textView15"
         android:layout_gravity="center_horizontal"
-        android:textSize="17sp"
-        android:textColor="#ca969191"/>
+        android:text="Choose things appropriately and dont bother to fill boxes which isn&apos;t required."
+        android:textColor="#ca969191"
+        android:textSize="17sp" />
 
 
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp">
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -45,172 +48,174 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:id="@+id/tv1"
                     android:layout_width="50dp"
                     android:layout_height="30dp"
-                    android:text="TH 1"
-                    android:id="@+id/tv1"
-                    android:textSize="20dp"
-
-                    android:textColor="#01b29b"
                     android:layout_marginLeft="50dp"
                     android:layout_marginTop="12dp"
-                    />
+
+                    android:text="TH 1"
+                    android:textColor="#01b29b"
+                    android:textSize="20dp" />
 
                 <EditText
+                    android:id="@+id/one"
                     android:layout_width="70dp"
                     android:layout_height="wrap_content"
-                    android:id="@+id/one"
-                    android:layout_marginTop="12dp"
                     android:layout_marginLeft="7dp"
+                    android:layout_marginTop="12dp"
                     android:inputType="number" />
 
                 <TextView
-                    android:layout_width="50dp"
-                    android:layout_height="30dp"
-                    android:text="PR 1"
                     android:id="@+id/tv6"
-                    android:textSize="20dp"
-
-                    android:textColor="#01b29b"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
                     android:layout_marginLeft="200dp"
-                    android:layout_marginTop="12dp" />
+                    android:layout_marginTop="12dp"
+
+                    android:text="PR 1"
+                    android:textColor="#01b29b"
+                    android:textSize="20dp" />
 
                 <EditText
-                    android:layout_width="70dp"
-                    android:layout_height="wrap_content"
                     android:id="@+id/six"
-                    android:layout_marginTop="12dp"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="7dp"
-                    android:inputType="number"/>
+                    android:layout_marginTop="12dp"
+                    android:inputType="number" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:layout_width="50dp"
-                    android:layout_height="30dp"
-                    android:text="TH 2"
                     android:id="@+id/tv2"
-                    android:textSize="20sp"
-
-                    android:textColor="#01b29b"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
                     android:layout_marginLeft="50dp"
-                    android:layout_marginTop="12dp" />
+                    android:layout_marginTop="12dp"
+
+                    android:text="TH 2"
+                    android:textColor="#01b29b"
+                    android:textSize="20sp" />
 
                 <EditText
-                    android:layout_width="70dp"
-                    android:layout_height="wrap_content"
                     android:id="@+id/two"
-                    android:layout_marginTop="12dp"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="7dp"
-                    android:inputType="number"/>
+                    android:layout_marginTop="12dp"
+                    android:inputType="number" />
 
                 <TextView
-                    android:layout_width="50dp"
-                    android:layout_height="30dp"
-                    android:text="PR 2"
                     android:id="@+id/tv7"
-                    android:textSize="20dp"
-
-                    android:textColor="#01b29b"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
                     android:layout_marginLeft="200dp"
-                    android:layout_marginTop="12dp" />
+                    android:layout_marginTop="12dp"
+
+                    android:text="PR 2"
+                    android:textColor="#01b29b"
+                    android:textSize="20dp" />
 
                 <EditText
-                    android:layout_width="70dp"
-                    android:layout_height="wrap_content"
                     android:id="@+id/seven"
-                    android:layout_marginTop="12dp"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="7dp"
-                    android:inputType="number"/>
+                    android:layout_marginTop="12dp"
+                    android:inputType="number" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:layout_width="50dp"
-                    android:layout_height="30dp"
-                    android:text="TH 3"
                     android:id="@+id/tv3"
-                    android:textSize="20dp"
-
-                    android:textColor="#01b29b"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
                     android:layout_marginLeft="50dp"
-                    android:layout_marginTop="12dp" />
+                    android:layout_marginTop="12dp"
+
+                    android:text="TH 3"
+                    android:textColor="#01b29b"
+                    android:textSize="20dp" />
 
                 <EditText
-                    android:layout_width="70dp"
-                    android:layout_height="wrap_content"
                     android:id="@+id/three"
-                    android:layout_marginTop="12dp"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="7dp"
-                    android:inputType="number"/>
+                    android:layout_marginTop="12dp"
+                    android:inputType="number" />
 
                 <TextView
-                    android:layout_width="50dp"
-                    android:layout_height="30dp"
-                    android:text="PR 3"
                     android:id="@+id/tv8"
-                    android:textSize="20sp"
-
-                    android:textColor="#01b29b"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
                     android:layout_marginLeft="200dp"
-                    android:layout_marginTop="12dp" />
+                    android:layout_marginTop="12dp"
+
+                    android:text="PR 3"
+                    android:textColor="#01b29b"
+                    android:textSize="20sp" />
 
                 <EditText
-                    android:layout_width="70dp"
-                    android:layout_height="wrap_content"
                     android:id="@+id/eight"
-                    android:layout_marginTop="12dp"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="7dp"
-                    android:inputType="number"/>
+                    android:layout_marginTop="12dp"
+                    android:inputType="number" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:layout_width="50dp"
-                    android:layout_height="30dp"
-                    android:text="TH 4"
                     android:id="@+id/tv4"
-                    android:textSize="20dp"
-
-                    android:textColor="#01b29b"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginTop="12dp" />
-
-                <EditText
-                    android:layout_width="70dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/four"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginLeft="7dp"
-                    android:inputType="number"/>
-
-                <TextView
                     android:layout_width="50dp"
                     android:layout_height="30dp"
-                    android:text="PR 4"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="12dp"
+
+                    android:text="TH 4"
+                    android:textColor="#01b29b"
+                    android:textSize="20dp" />
+
+                <EditText
+                    android:id="@+id/four"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginTop="12dp"
+                    android:inputType="number" />
+
+                <TextView
                     android:id="@+id/tv9"
-                    android:textSize="20dp"
-
-                    android:textColor="#01b29b"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
                     android:layout_marginLeft="200dp"
-                    android:layout_marginTop="12dp" />
+                    android:layout_marginTop="12dp"
+
+                    android:text="PR 4"
+                    android:textColor="#01b29b"
+                    android:textSize="20dp" />
 
                 <EditText
-                    android:layout_width="70dp"
-                    android:layout_height="wrap_content"
                     android:id="@+id/nine"
-                    android:layout_marginTop="12dp"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="7dp"
-                    android:inputType="number"/>
+                    android:layout_marginTop="12dp"
+                    android:inputType="number" />
 
             </LinearLayout>
 
@@ -219,85 +224,86 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:text="TH 5"
                     android:id="@+id/tv5"
-                    android:textSize="20dp"
-
-                    android:textColor="#01b29b"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginTop="12dp" />
-
-                <EditText
-                    android:layout_width="70dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/five"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginLeft="7dp"
-                    android:inputType="number"/>
-
-                <TextView
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:text="PR 5"
-                    android:id="@+id/tv10"
-                    android:textSize="20dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="12dp"
 
+                    android:text="TH 5"
                     android:textColor="#01b29b"
-                    android:layout_marginLeft="200dp"
-                    android:layout_marginTop="12dp" />
+                    android:textSize="20dp" />
 
                 <EditText
+                    android:id="@+id/five"
                     android:layout_width="70dp"
                     android:layout_height="wrap_content"
-                    android:id="@+id/ten"
-                    android:layout_marginTop="12dp"
                     android:layout_marginLeft="7dp"
-                    android:inputType="number"/>
+                    android:layout_marginTop="12dp"
+                    android:inputType="number" />
+
+                <TextView
+                    android:id="@+id/tv10"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="200dp"
+                    android:layout_marginTop="12dp"
+
+                    android:text="PR 5"
+                    android:textColor="#01b29b"
+                    android:textSize="20dp" />
+
+                <EditText
+                    android:id="@+id/ten"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginTop="12dp"
+                    android:inputType="number" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:id="@+id/tv12"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:text="VS 2"
-                    android:id="@+id/tv12"
-                    android:textSize="20dp"
-
-                    android:textColor="#01b29b"
                     android:layout_marginLeft="50dp"
-                    android:layout_marginTop="12dp" />
+                    android:layout_marginTop="12dp"
+
+                    android:text="VS 2"
+                    android:textColor="#01b29b"
+                    android:textSize="20dp" />
 
                 <EditText
+                    android:id="@+id/twelve"
                     android:layout_width="70dp"
                     android:layout_height="wrap_content"
-                    android:id="@+id/twelve"
-                    android:layout_marginTop="12dp"
                     android:layout_marginLeft="7dp"
-                    android:inputType="number"/>
+                    android:layout_marginTop="12dp"
+                    android:inputType="number" />
 
                 <TextView
+                    android:id="@+id/tv11"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:text="VS 1"
-                    android:id="@+id/tv11"
-                    android:textSize="20dp"
-
-                    android:textColor="#01b29b"
                     android:layout_marginLeft="200dp"
-                    android:layout_marginTop="12dp" />
+                    android:layout_marginTop="12dp"
+
+                    android:text="VS 1"
+                    android:textColor="#01b29b"
+                    android:textSize="20dp" />
 
                 <EditText
+                    android:id="@+id/eleven"
                     android:layout_width="70dp"
                     android:layout_height="wrap_content"
-                    android:id="@+id/eleven"
-                    android:layout_marginTop="12dp"
                     android:layout_marginLeft="7dp"
-                    android:inputType="number"/>
+                    android:layout_marginTop="12dp"
+                    android:inputType="number" />
 
             </LinearLayout>
 
@@ -306,57 +312,59 @@
                 android:layout_height="wrap_content">
 
                 <Button
+                    android:id="@+id/button"
                     style="?android:attr/buttonStyleSmall"
                     android:layout_width="170dp"
                     android:layout_height="70dp"
-                    android:background="@color/colorPrimary"
-                    android:text="View Subjects"
-                    android:id="@+id/button"
-                    android:textColor="#ffffff"
-                    android:textSize="20dp"
-                    android:onClick="onSub"
-                    android:clickable="true"
                     android:layout_marginLeft="50dp"
-                    android:layout_marginTop="15dp" />
+                    android:layout_marginTop="15dp"
+                    android:background="@color/colorPrimary"
+                    android:clickable="true"
+                    android:onClick="onSub"
+                    android:text="View Subjects"
+                    android:textColor="#ffffff"
+                    android:textSize="20dp" />
 
                 <Button
+                    android:id="@+id/buttC"
                     style="?android:attr/buttonStyleSmall"
                     android:layout_width="170dp"
                     android:layout_height="70dp"
-                    android:text="Calculate"
+                    android:layout_marginLeft="140dp"
+                    android:layout_marginTop="15dp"
                     android:background="@color/colorPrimary"
-                    android:id="@+id/buttC"
                     android:clickable="true"
                     android:onClick="onCalculate"
-                    android:textSize="20dp"
+                    android:text="Calculate"
                     android:textColor="#ffffff"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginLeft="140dp" />
+                    android:textSize="20dp" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content">
+
                 <TextView
+                    android:id="@+id/per"
                     android:layout_width="200dp"
                     android:layout_height="50dp"
-                    android:text="@string/percentage"
-                    android:id="@+id/per"
-                    android:textSize="25dp"
                     android:layout_marginLeft="190dp"
                     android:layout_marginTop="12dp"
-                    android:textColor="#01b29b"
                     android:gravity="center_vertical|center"
-                    />
+                    android:text="@string/percentage"
+                    android:textColor="#01b29b"
+                    android:textSize="25dp" />
+
                 <TextView
+                    android:id="@+id/textView11"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:text="%"
-                    android:id="@+id/textView11"
-                    android:gravity="center|fill_vertical"
                     android:layout_marginTop="16dp"
-                    android:textSize="30dp"
+                    android:gravity="center|fill_vertical"
+                    android:text="%"
+                    android:textColor="#008978"
 
-                    android:textColor="#008978" />
+                    android:textSize="30dp" />
             </LinearLayout>
 
         </LinearLayout>

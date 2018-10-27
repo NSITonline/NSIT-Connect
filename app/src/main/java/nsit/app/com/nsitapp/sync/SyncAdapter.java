@@ -101,16 +101,11 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter{
     private static void configurePeriodicSync(Context context) {
         Account account = getSyncAccount(context);
         String authority = context.getString(R.string.content_authority);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            SyncRequest request = new SyncRequest.Builder().
-                    syncPeriodic(SyncAdapter.SYNC_INTERVAL, SyncAdapter.SYNC_FLEXTIME).
-                    setSyncAdapter(account, authority).
-                    setExtras(new Bundle()).build();
-            ContentResolver.requestSync(request);
-        } else {
-            ContentResolver.addPeriodicSync(account,
-                    authority, new Bundle(), SyncAdapter.SYNC_INTERVAL);
-        }
+        SyncRequest request = new SyncRequest.Builder().
+                syncPeriodic(SyncAdapter.SYNC_INTERVAL, SyncAdapter.SYNC_FLEXTIME).
+                setSyncAdapter(account, authority).
+                setExtras(new Bundle()).build();
+        ContentResolver.requestSync(request);
     }
 
     public static void initializeSyncAdapter(Context context) {

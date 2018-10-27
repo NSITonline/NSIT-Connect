@@ -20,7 +20,7 @@ android {
     buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "nsit.app.com.nsitapp"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 27
         versionCode 31
         versionName "3.0.3"

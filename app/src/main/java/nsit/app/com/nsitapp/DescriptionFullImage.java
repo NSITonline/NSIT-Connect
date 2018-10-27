@@ -119,7 +119,7 @@ public class DescriptionFullImage extends AppCompatActivity implements Constant 
                 final String result = response.body().string();
                 mHandler.post(() -> {
                     if (result == null) {
-                        Picasso.with(DescriptionFullImage.this).load(img).into(touchImageView);;
+                        Picasso.with(DescriptionFullImage.this).load(img).into(touchImageView);
                     } else {
                         try {
                             JSONObject ob;
@@ -134,7 +134,7 @@ public class DescriptionFullImage extends AppCompatActivity implements Constant 
                                 else touchImageView.setVisibility(View.GONE);
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Picasso.with(DescriptionFullImage.this).load(img).into(touchImageView);;
+                            Picasso.with(DescriptionFullImage.this).load(img).into(touchImageView);
                         }
                     }
                 });

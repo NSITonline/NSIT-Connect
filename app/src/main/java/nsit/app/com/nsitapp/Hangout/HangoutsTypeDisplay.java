@@ -3,6 +3,8 @@ package nsit.app.com.nsitapp.Hangout;
 import android.app.AlertDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -28,6 +30,11 @@ import functions.GPSTracker;
 import functions.Utils;
 import models.HangoutTypeObject;
 import nsit.app.com.nsitapp.R;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 /**
  * Created by AGGARWAL'S on 10/11/2015.
@@ -46,11 +53,14 @@ public class HangoutsTypeDisplay extends AppCompatActivity {
     private final String[] searches = {"restaurant", "cafe", "night_club", "shopping_mall", "bowling_alley", "movie_theater", "food", "amusement_park", "park"};
     private int choice = -1;
     private int progress = 0;
-    @BindView(R.id.progress) ProgressBar progressBar;
+    @BindView(R.id.progress)
+    ProgressBar progressBar;
     private ArrayList<HangoutTypeObject> objects;
     private HangoutTypeAdapter displayAdapter;
     private TextView radiusTextView;
-    @BindView(R.id.hangout_type_display_list) ListView display_list;
+    @BindView(R.id.hangout_type_display_list)
+    ListView display_list;
+    private Handler mHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,13 +72,14 @@ public class HangoutsTypeDisplay extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.drawable.ic_people_white_36dp);
         objects = new ArrayList<>();
+        mHandler = new Handler(Looper.getMainLooper());
 
         displayAdapter = new HangoutTypeAdapter(this, objects);
         display_list.setAdapter(displayAdapter);
 
 
         if (Utils.isNetworkAvailable(this))
-            new HttpGetInfo().execute();
+            getLocations();
         else
             Toast.makeText(getApplicationContext(), R.string.internet_error, Toast.LENGTH_LONG).show();
 
@@ -88,7 +99,7 @@ public class HangoutsTypeDisplay extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.refresh:
                 if (Utils.isNetworkAvailable(this))
-                    new HttpGetInfo().execute();
+                    getLocations();
                 else
                     Toast.makeText(getApplicationContext(), R.string.internet_error, Toast.LENGTH_LONG).show();
                 break;
@@ -135,130 +146,124 @@ public class HangoutsTypeDisplay extends AppCompatActivity {
         }).show();
     }
 
-    private class HttpGetInfo extends AsyncTask<Void, Void, Void> {
+    private void getLocations() {
+        String URL;
 
-        private String text;
-        private String URL;
+        GPSTracker gpsGetLocation = new GPSTracker(HangoutsTypeDisplay.this);
+        if (gpsGetLocation.canGetLocation())
+            URL = MAIN_HTTP + NEARBYPLACES + LOCATION + gpsGetLocation.getLatitude() + "," + gpsGetLocation.getLongitude()
+                    + RADIUS + String.valueOf(radius) + TYPE + searches[choice] + KEY;
+        else
+            return;
 
-        HttpGetInfo() {
-            text = null;
-            GPSTracker gpsGetLocation = new GPSTracker(HangoutsTypeDisplay.this);
-            if (gpsGetLocation.canGetLocation())
-                URL = MAIN_HTTP + NEARBYPLACES + LOCATION + gpsGetLocation.getLatitude() + "," + gpsGetLocation.getLongitude()
-                        + RADIUS + String.valueOf(radius) + TYPE + searches[choice] + KEY;
-        }
+        progressBar.setVisibility(View.VISIBLE);
+        objects.clear();
+        displayAdapter.notifyDataSetChanged();
 
-        @Override
-        protected void onPreExecute() {
-            progressBar.setVisibility(View.VISIBLE);
-            objects.clear();
-            displayAdapter.notifyDataSetChanged();
-        }
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-
-            if (URL == null)
-                return null;
-            String uri = URL;
-            Log.v("EXECUTING", uri);
-            java.net.URL url;
-            try {
-                url = new URL(uri);
-                HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                text = Utils.readStream(con.getInputStream());
-            } catch (IOException e1) {
-                e1.printStackTrace();
+        //Set up client
+        OkHttpClient client = new OkHttpClient();
+        //Execute request
+        Request request = new Request.Builder()
+                .url(URL)
+                .build();
+        //Setup callback
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e("Request Failed", "Message : " + e.getMessage());
             }
-            return null;
 
-        }
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                final String result = response.body().string();
+                mHandler.post(() -> {
+                    progressBar.setVisibility(View.GONE);
 
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            progressBar.setVisibility(View.GONE);
+                    progressBar.setVisibility(View.GONE);
 
-            Log.e("got responses", text + " ");
+                    Log.e("got responses", result + " ");
 
-            try {
-                JSONObject jplaceobject = new JSONObject(text);
-                JSONArray jplacearray = jplaceobject.getJSONArray("results");
-
-                if (jplaceobject.getString("status").equals("ZERO_RESULTS"))
-                    Toast.makeText(getApplicationContext(), "No " + HangoutPlaces[choice] + " Present in Current Radius", Toast.LENGTH_SHORT).show();
-
-                int i;
-                for (i = 0; i < jplacearray.length(); i++) {
                     try {
-                        String name;
-                        String icon;
-                        String place_id;
-                        String phtotref;
-                        String longi = null;
-                        String latti = null;
-                        String vicinity;
-                        boolean opennow = false;
-                        float photowidth;
-                        float photoheight;
-                        float rating;
+                        JSONObject jplaceobject = new JSONObject(result);
+                        JSONArray jplacearray = jplaceobject.getJSONArray("results");
 
-                        if (jplacearray.getJSONObject(i).has("icon"))
-                            icon = jplacearray.getJSONObject(i).getString("icon");
-                        else
-                            icon = null;
+                        if (jplaceobject.getString("status").equals("ZERO_RESULTS"))
+                            Toast.makeText(getApplicationContext(), "No " + HangoutPlaces[choice] + " Present in Current Radius", Toast.LENGTH_SHORT).show();
 
-                        if (jplacearray.getJSONObject(i).has("place_id"))
-                            place_id = jplacearray.getJSONObject(i).getString("place_id");
-                        else
-                            place_id = null;
+                        int i;
+                        for (i = 0; i < jplacearray.length(); i++) {
+                            try {
+                                String name;
+                                String icon;
+                                String place_id;
+                                String phtotref;
+                                String longi = null;
+                                String latti = null;
+                                String vicinity;
+                                boolean opennow = false;
+                                float photowidth;
+                                float photoheight;
+                                float rating;
 
-                        if (jplacearray.getJSONObject(i).has("name"))
-                            name = jplacearray.getJSONObject(i).getString("name");
-                        else
-                            name = null;
+                                if (jplacearray.getJSONObject(i).has("icon"))
+                                    icon = jplacearray.getJSONObject(i).getString("icon");
+                                else
+                                    icon = null;
 
-                        if (jplacearray.getJSONObject(i).has("rating"))
-                            rating = Float.parseFloat(jplacearray.getJSONObject(i).getString("rating"));
-                        else
-                            rating = 0;
+                                if (jplacearray.getJSONObject(i).has("place_id"))
+                                    place_id = jplacearray.getJSONObject(i).getString("place_id");
+                                else
+                                    place_id = null;
 
-                        if (jplacearray.getJSONObject(i).has("vicinity"))
-                            vicinity = jplacearray.getJSONObject(i).getString("vicinity");
-                        else
-                            vicinity = null;
+                                if (jplacearray.getJSONObject(i).has("name"))
+                                    name = jplacearray.getJSONObject(i).getString("name");
+                                else
+                                    name = null;
 
-                        if (jplacearray.getJSONObject(i).getJSONObject("geometry").getJSONObject("location").has("lng")) {
-                            JSONObject object = jplacearray.getJSONObject(i).getJSONObject("geometry").getJSONObject("location");
-                            longi = object.getString("lng");
-                            latti = object.getString("lat");
+                                if (jplacearray.getJSONObject(i).has("rating"))
+                                    rating = Float.parseFloat(jplacearray.getJSONObject(i).getString("rating"));
+                                else
+                                    rating = 0;
+
+                                if (jplacearray.getJSONObject(i).has("vicinity"))
+                                    vicinity = jplacearray.getJSONObject(i).getString("vicinity");
+                                else
+                                    vicinity = null;
+
+                                if (jplacearray.getJSONObject(i).getJSONObject("geometry").getJSONObject("location").has("lng")) {
+                                    JSONObject object = jplacearray.getJSONObject(i).getJSONObject("geometry").getJSONObject("location");
+                                    longi = object.getString("lng");
+                                    latti = object.getString("lat");
+                                }
+                                if (jplacearray.getJSONObject(i).has("photos")) {
+                                    JSONObject obj = jplacearray.getJSONObject(i).getJSONArray("photos").getJSONObject(0);
+                                    phtotref = obj.getString("photo_reference");
+                                    photoheight = Float.parseFloat(obj.getString("height"));
+                                    photowidth = Float.parseFloat(obj.getString("width"));
+                                } else {
+                                    phtotref = null;
+                                    photoheight = 0;
+                                    photowidth = 0;
+                                }
+
+                                if (jplacearray.getJSONObject(i).has("opening_hours")) {
+                                    String bool = jplacearray.getJSONObject(i).getJSONObject("opening_hours").getString("open_now");
+                                    opennow = !bool.equals("false");
+                                }
+
+                                objects.add(new HangoutTypeObject(name, icon, place_id, phtotref, longi, latti, vicinity, opennow, photowidth, photoheight, rating));
+
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                         }
-                        if (jplacearray.getJSONObject(i).has("photos")) {
-                            JSONObject obj = jplacearray.getJSONObject(i).getJSONArray("photos").getJSONObject(0);
-                            phtotref = obj.getString("photo_reference");
-                            photoheight = Float.parseFloat(obj.getString("height"));
-                            photowidth = Float.parseFloat(obj.getString("width"));
-                        } else {
-                            phtotref = null;
-                            photoheight = 0;
-                            photowidth = 0;
-                        }
-
-                        if (jplacearray.getJSONObject(i).has("opening_hours")) {
-                            String bool = jplacearray.getJSONObject(i).getJSONObject("opening_hours").getString("open_now");
-                            opennow = !bool.equals("false");
-                        }
-
-                        objects.add(new HangoutTypeObject(name, icon, place_id, phtotref, longi, latti, vicinity, opennow, photowidth, photoheight, rating));
 
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                }
-
-            } catch (Exception e) {
-                e.printStackTrace();
+                    displayAdapter.notifyDataSetChanged();
+                });
             }
-            displayAdapter.notifyDataSetChanged();
-        }
+        });
     }
 }

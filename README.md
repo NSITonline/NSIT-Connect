@@ -60,12 +60,12 @@ Locations help you to get around the whole college by providing you with all hot
 
 
 ### 6.CodeRadar 
-CodeRadar is a Coding Contest Reminder that lets you keep track of all ongoing and upcoming contests on various online judges like Codechef, Topcoder, CodeForces, URIoj, HackerRank, etc. You can filter the online judges you want to see, set reminders and do much more. Happy Coding :)
+CodeRadar is a Coding Contest Reminder that lets you keep track of all ongoing and upcoming contests on various online judges like Codechef, Topcoder, CodeForces, URIoj, HackerRank, etc. You can filter the online judges you want to see, set reminders and do much more. Happy Coding :) .
 
 <img src="/../master/screenshots/10.png" width="200"> <img src="/../master/screenshots/11.png" width="200">
 
 ### 7.Calculator 
-Calculator is a module to calculate your semester percentage. You just need to enter your class and the subjects along with their names, codes and credits will be displayed. Just enter your marks, and calculate your percentage. No need to tell anyone about it! ;)
+Calculator is a module to calculate your semester percentage. You just need to enter your class and the subjects along with their names, codes and credits will be displayed. Just enter your marks, and calculate your percentage. No need to tell anyone about it! :) .
 
 <img src="/../master/screenshots/cal1.png" width="200"> <img src="/../master/screenshots/cal2.png" width="200"> <img src="/../master/screenshots/cal3.png" width="200">
 

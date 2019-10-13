@@ -374,7 +374,7 @@
                 android:layout_height="35dp"
                 android:layout_margin="10dp"
                 android:clickable="true"
-                app:srcCompat="@drawable/vol_on" />
+                app:srcCompat="@drawable/unmute" />
 
 
         </LinearLayout>

@@ -1,7 +1,9 @@
 package nsit.app.com.nsitapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -15,6 +17,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +28,7 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -67,6 +71,11 @@ public class CalculatorActivity extends Fragment {
     @BindView(R.id.per) TextView resultTextView;
     @BindView(R.id.button) Button b;
     @BindView(R.id.buttC) Button c;
+    @BindView(R.id.vol) ImageView vol;
+
+    String s;
+    Integer k=1;
+    TextToSpeech ts;
 
     @OnClick(R.id.button)
     public void onButtonBClicked(View view){
@@ -78,6 +87,17 @@ public class CalculatorActivity extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+
+
+        ts=new TextToSpeech(getContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if(status != TextToSpeech.ERROR) {
+                    ts.setLanguage(Locale.getDefault());
+                }
+
+            }
+        });
     }
 
     @Override
@@ -104,6 +124,10 @@ public class CalculatorActivity extends Fragment {
         setColoredTextView(VS2textView, R.color.calculator_selected);
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(getActivity(), R.array.semester, android.R.layout.simple_list_item_1);
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+
+
+
 
 
         semSpinner.setAdapter(adapter1);
@@ -1401,7 +1425,33 @@ public class CalculatorActivity extends Fragment {
                 break;
         }
 
+
+
+
         resultTextView.setText(String.format("%.2f ", p));
+        s= resultTextView.getText().toString();
+
+        vol.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (k==1){
+                    k=0;
+                    vol.setImageResource(R.drawable.vol_off);
+
+
+                }
+                else{
+                    k=1;
+                    vol.setImageResource(R.drawable.vol_on);
+                }
+            }
+        });
+        if (k==1){
+            ts.speak(s,TextToSpeech.QUEUE_FLUSH,null);
+
+        }
+
+
         if (f == 1)
             addToStorage();
 

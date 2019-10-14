@@ -72,7 +72,7 @@ public class CalculatorActivity extends Fragment {
     @BindView(R.id.button) Button b;
     @BindView(R.id.buttC) Button c;
     @BindView(R.id.vol) ImageView voice_icon;
-    Integer voice_icon_status=1; /*initialising flag variable with 1*/
+    Integer voice_icon_status = 1; /*initialising flag variable with 1*/
     TextToSpeech textToSpeech;   /*using text to speech class */
 
     @OnClick(R.id.button)
@@ -85,7 +85,7 @@ public class CalculatorActivity extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-        textToSpeech=new TextToSpeech(getContext(), new TextToSpeech.OnInitListener() {
+        textToSpeech = new TextToSpeech(getContext(), new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
                 if(status != TextToSpeech.ERROR) {
@@ -1414,17 +1414,17 @@ public class CalculatorActivity extends Fragment {
         voice_icon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (voice_icon_status==1){
-                    voice_icon_status=0;
+                if (voice_icon_status == 1){
+                    voice_icon_status = 0;
                     voice_icon.setImageResource(R.drawable.mute);
                 }
                 else{
-                    voice_icon_status=1;
+                    voice_icon_status = 1;
                     voice_icon.setImageResource(R.drawable.unmute);
                 }
             }
         });
-        if (voice_icon_status==1){
+        if (voice_icon_status == 1){
             textToSpeech.speak(String.format("%.2f ", p),TextToSpeech.QUEUE_FLUSH,null);
         }
         if (f == 1)

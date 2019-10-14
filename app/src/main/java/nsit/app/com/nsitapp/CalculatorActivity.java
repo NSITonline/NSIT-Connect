@@ -1,7 +1,9 @@
 package nsit.app.com.nsitapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -15,6 +17,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +28,7 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -67,6 +71,9 @@ public class CalculatorActivity extends Fragment {
     @BindView(R.id.per) TextView resultTextView;
     @BindView(R.id.button) Button b;
     @BindView(R.id.buttC) Button c;
+    @BindView(R.id.vol) ImageView voice_icon;
+    Integer voice_icon_status = 1; /*initialising flag variable with 1*/
+    TextToSpeech textToSpeech;   /*using text to speech class */
 
     @OnClick(R.id.button)
     public void onButtonBClicked(View view){
@@ -78,8 +85,15 @@ public class CalculatorActivity extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+        textToSpeech = new TextToSpeech(getContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if(status != TextToSpeech.ERROR) {
+                    textToSpeech.setLanguage(Locale.getDefault());
+                }
+            }
+        });
     }
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.activity_calculator, container, false);
@@ -87,7 +101,6 @@ public class CalculatorActivity extends Fragment {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.branch, android.R.layout.simple_list_item_1);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         branchSpinner.setAdapter(adapter);
-
         c.setOnClickListener(v -> onCalculate(rootView));
 
         setColoredTextView(PR1textView, R.color.calculator_selected);
@@ -105,13 +118,10 @@ public class CalculatorActivity extends Fragment {
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(getActivity(), R.array.semester, android.R.layout.simple_list_item_1);
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-
         semSpinner.setAdapter(adapter1);
         semSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-
                 //cc(rootView);
                 switch (branchSpinner.getSelectedItem().toString()) {
                     case "COE":
@@ -1400,13 +1410,26 @@ public class CalculatorActivity extends Fragment {
 
                 break;
         }
-
         resultTextView.setText(String.format("%.2f ", p));
+        voice_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (voice_icon_status == 1){
+                    voice_icon_status = 0;
+                    voice_icon.setImageResource(R.drawable.mute);
+                }
+                else{
+                    voice_icon_status = 1;
+                    voice_icon.setImageResource(R.drawable.unmute);
+                }
+            }
+        });
+        if (voice_icon_status == 1){
+            textToSpeech.speak(String.format("%.2f ", p),TextToSpeech.QUEUE_FLUSH,null);
+        }
         if (f == 1)
             addToStorage();
-
     }
-
     private void setColoredTextView(TextView textView, int color) {
         textView.setTextColor(ContextCompat.getColor(getContext(), color));
     }
@@ -1448,7 +1471,6 @@ public class CalculatorActivity extends Fragment {
                 }
         }
     }
-
 
     public void readFileFromStorage() {
         File root = android.os.Environment.getExternalStorageDirectory();

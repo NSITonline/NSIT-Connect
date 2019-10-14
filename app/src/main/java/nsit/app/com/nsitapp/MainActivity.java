@@ -103,8 +103,6 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setIcon(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
     }
-
-
     @Override
     public void onBackPressed() {
         new AlertDialog.Builder(MainActivity.this)
@@ -114,7 +112,6 @@ public class MainActivity extends AppCompatActivity {
                 .setNegativeButton(R.string.no, null)
                 .show();
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);

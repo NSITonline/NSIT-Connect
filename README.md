@@ -8,7 +8,7 @@
 
 NSIT Connect is the official NSITOnline app that aims to act as a companion app for the students of NSIT. The app contains several useful modules that enable students to stay up-to-date with all the college news, maintain a schedule according to their timetable, find out all about interesting places in and around college, and more.
 
-But this project is a lot more than an app. This is an initiative that is targeted at all the emerging developers of NSIT and encourages them to take part in this as a collaborative open-source team effort. So if you are an NSITian and you love developing things and wish to see them used by a large number of people, you have come to the right place. 
+But this project is a lot more than an app. This is an initiative that is targeted at all the emerging developers of NSIT and encourages them to take part in this as a collaborative open-source team effort. So, if you are an NSITian and you love developing things and wish to see them used by a large number of people, you have come to the right place.
 
 + **[Play Store App Link](https://play.google.com/store/apps/details?id=nsit.app.com.nsitapp)**
 + **[NSITonline](http://www.nsitonline.in)**
@@ -65,7 +65,7 @@ CodeRadar is a Coding Contest Reminder that lets you keep track of all ongoing a
 <img src="/../master/screenshots/10.png" width="200"> <img src="/../master/screenshots/11.png" width="200">
 
 ### 7.Calculator
-Calculator is a module to calculate your semester percentage. You just need to enter your class and the subjects along with their names, codes and credits will be displayed. Just enter your marks, and calculate your percentage. No need to tell anyone about it! ;)
+Calculator is a module to calculate your semester percentage. You just need to enter your class and the subjects along with their names, codes and credits will be displayed. Just enter your marks and calculate your percentage. No need to tell anyone about it! ;)
 
 <img src="/../master/screenshots/cal1.png" width="200"> <img src="/../master/screenshots/cal2.png" width="200"> <img src="/../master/screenshots/cal3.png" width="200">
 
@@ -96,7 +96,7 @@ It's very easy to contribute to NSIT App v2. Just follow these steps:
 
 1. Get the prerequisites ready. (Learn Java and set up Android Studio.)
 2. Fork this project into your own repo.
-3. Make your changes to that repo, and create a pull request.
+3. Make your changes to that repo and create a pull request.
 
 That's all there is to be a contributor to NSIT App v2. We are looking forward to working together with lots of aspiring developers and to maintain this project by collaborating with the open community.
 

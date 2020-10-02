@@ -8,7 +8,7 @@
 
 NSIT Connect is the official NSITOnline app that aims to act as a companion app for the students of NSIT. The app contains several useful modules that enable students to stay up-to-date with all the college news, maintain a schedule according to their timetable, find out all about interesting places in and around college, and more.
 
-But this project is a lot more than an app. This is an initiative that is targeted at all the emerging developers of NSIT and encourages them to take part in this as a collaborative open-source team effort. So if you are an NSITian and you love developing things and wish to see them used by a large number of people, you have come to the right place. 
+But this project is a lot more than an app. This is an initiative that is targeted at all the emerging developers of NSIT and encourages them to take part in this as a collaborative open-source team effort. So, if you are an NSITian and you love developing things and wish to see them used by a large number of people, you have come to the right place.
 
 + **[Play Store App Link](https://play.google.com/store/apps/details?id=nsit.app.com.nsitapp)**
 + **[NSITonline](http://www.nsitonline.in)**
@@ -43,7 +43,7 @@ The My Feed section allows you to create your own personalized news feed by foll
 <img src="/../master/screenshots/2.png" width="200"> <img src="/../master/screenshots/3.png" width="200">
 
 ### 3.Video
-[Junoon Photography Club's YouTube channel](https://www.youtube.com/channel/UCu445B5LTXzkNr5eft8wNHg) is the source of all entertainment going on in the college. No one wants to miss out on them, so this section gets you the latest uploads and also allows you to view them right there in the app. 
+[Junoon Photography Club's YouTube channel](https://www.youtube.com/channel/UCu445B5LTXzkNr5eft8wNHg) is the source of all entertainment going on in the college. No one wants to miss out on them, so this section gets you the latest uploads and also allows you to view them right there in the app.
 
 <img src="/../master/screenshots/4.png" width="200">
 
@@ -59,13 +59,13 @@ Locations help you to get around the whole college by providing you with all hot
 <img src="/../master/screenshots/8.png" width="200"> <img src="/../master/screenshots/9.png" width="200">
 
 
-### 6.CodeRadar 
+### 6.CodeRadar
 CodeRadar is a Coding Contest Reminder that lets you keep track of all ongoing and upcoming contests on various online judges like Codechef, Topcoder, CodeForces, URIoj, HackerRank, etc. You can filter the online judges you want to see, set reminders and do much more. Happy Coding :)
 
 <img src="/../master/screenshots/10.png" width="200"> <img src="/../master/screenshots/11.png" width="200">
 
-### 7.Calculator 
-Calculator is a module to calculate your semester percentage. You just need to enter your class and the subjects along with their names, codes and credits will be displayed. Just enter your marks, and calculate your percentage. No need to tell anyone about it! ;)
+### 7.Calculator
+Calculator is a module to calculate your semester percentage. You just need to enter your class and the subjects along with their names, codes and credits will be displayed. Just enter your marks and calculate your percentage. No need to tell anyone about it! ;)
 
 <img src="/../master/screenshots/cal1.png" width="200"> <img src="/../master/screenshots/cal2.png" width="200"> <img src="/../master/screenshots/cal3.png" width="200">
 
@@ -96,7 +96,7 @@ It's very easy to contribute to NSIT App v2. Just follow these steps:
 
 1. Get the prerequisites ready. (Learn Java and set up Android Studio.)
 2. Fork this project into your own repo.
-3. Make your changes to that repo, and create a pull request.
+3. Make your changes to that repo and create a pull request.
 
 That's all there is to be a contributor to NSIT App v2. We are looking forward to working together with lots of aspiring developers and to maintain this project by collaborating with the open community.
 
